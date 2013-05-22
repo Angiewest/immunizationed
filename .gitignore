@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #################
 ## Eclipse
 #################
@@ -216,18 +217,11 @@ pip-log.txt
 
 
 #Drupal 7 .gitignore file
+=======
+>>>>>>> aedf29ab01198d8c895deb7d2410c1063270e6a6
 # Ignore configuration files that may contain sensitive information.
-sites/default/settings*.php
-sites/default/settings.php*
-
+sites/*/settings*.php
 
 # Ignore paths that contain user-generated content.
 sites/*/files
 sites/*/private
-
-
-# Pitt EWI .gitignore settings
-# Ignore Pitt Aspnet folders
-*/aspnet_client
-
-
