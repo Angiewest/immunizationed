@@ -5,17 +5,17 @@
 /**
  * @file
  *   Include routines for RDFS parsing and taxonomy/term creation.
- * 
+ *
  * THIS IS OLDER CODE, for backwards support and choice.
  * rdf_format has been updated to use the more configurable D7 'bundles' and
  * 'rdf_mapping'
- * 
+ *
  * RDF here is based on the W3C examples (using RDFS), an alternative to the
  * Drupal7 preferred SKOS version.
- * 
+ *
  * This format provides an export only, The generic RDF importer can take either
  * flavour of RDF
- * 
+ *
  * @author dman http://coders.co.nz
  *
  *
@@ -37,21 +37,21 @@ define('TAXONOMY_XML_CHILDREN_RECURSIVE', 4);
 
 
 /**
- * sub-hook 
+ * sub-hook
  * @see taxonomy_xml_HOOK_format_info()
- * 
+ *
  * Returns info about this syntax
  */
 function taxonomy_xml_rdfs_format_info() {
   return array(
     'description' => "RDFS is based on the examples from W3C, predating SKOS support. It models terms as classes and subclasses within an OWL ontology.",
-  );  
+  );
 }
 
 
 /**
  * Return an XML/RDF document representing this vocab
- * 
+ *
  * Uses PHP DOM to create DOM document and nodes.
  *
  * We use namespaces carefully here, although it may create wordy output if the
@@ -75,9 +75,9 @@ function taxonomy_xml_rdfs_create($vid, $parent = 0, $depth = -1, $max_depth = N
   $domcontainer = taxonomy_xml_rdf_document();
   $dom = $domcontainer->ownerDocument;
   #dpm(array(domcontainer => $domcontainer, dom => $dom));
-  
+
   // Use our OWN rdf mapping!
-  
+
 
   // define the vocab
   taxonomy_xml_rdfs_add_vocab($domcontainer, $vocabulary);
@@ -174,8 +174,8 @@ function taxonomy_xml_rdfs_add_terms(&$domcontainer, $termlist, $recursion_behav
     // TODO - rewrite this hunk to use the new rdf entity rdf mappings!
     // eg with
     // $termnode = rdf_entity_to_xml($term, $dom);
-    
-    
+
+
     $termnode = $dom->createelementns(TAXONOMY_XML_RDFS_NS, 'rdfs:Class');
     $termnode->setattributens(TAXONOMY_XML_RDF_NS, 'rdf:ID', 'term-' . $term->tid );
     $domcontainer->appendchild($termnode);
@@ -251,9 +251,9 @@ function taxonomy_xml_rdfs_add_terms(&$domcontainer, $termlist, $recursion_behav
           $child_node->setattributens(TAXONOMY_XML_RDF_NS, 'rdf:resource', '#term-' . $child_id );
           $termnode->appendchild($child_node);
         }
-        
+
     }
-      
+
 
     // workaround for large vocabs - extend runtime indefinately
     drupal_set_time_limit(10);

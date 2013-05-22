@@ -5,22 +5,22 @@
 /**
  * @file
  *   Include routines for the original XML parsing and taxonomy/term creation.
- * 
+ *
  * @TODO this format is largely deprecated as it's not at all portable, possibly
  * not even between Drupal versions.
  * As such, some features may be missing or untested.
  */
 
 /**
- * sub-hook 
+ * sub-hook
  * @see taxonomy_xml_HOOK_format_info()
- * 
+ *
  * Returns info about this syntax
  */
 function taxonomy_xml_xml_format_info() {
   return array(
     'description' => "This format is Drupal-only. It closely matches the internal data structure, but is not portable outside of Drupal without work.",
-  );  
+  );
 }
 
 /**

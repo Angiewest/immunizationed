@@ -3,7 +3,7 @@
 /**
  * @file
  *   Drupal Module
- * 
+ *
  * Created on Jun 9, 2010
  *
  * @author 'dman' Dan Morrison http://coders.co.nz/
@@ -31,7 +31,7 @@ function taxonomy_xml_export() {
       $row = array();
       $vocabcount = db_query("SELECT count(*) FROM {taxonomy_term_data} WHERE vid = :vid", array(':vid' => $vocabulary->vid))->fetchField();
       $row['name'] = $vocabulary->name . ' ('. $vocabcount . ' ' . t('terms') .')';
-      
+
       foreach ($format_infos as $format_id => $format_info) {
         if (!empty($format_info['create'])) {
           $link = "taxonomy/vocabulary/" . $vocabulary->vid . "/" . $format_id;
@@ -54,13 +54,13 @@ function taxonomy_xml_export() {
  * Return a flat file representation of the requested vocab
  *
  * Default format is the original custom Drupal XML file.
- * 
+ *
  * Constructs and prints result to the screen, with appropriate headers.
  */
 function taxonomy_xml_export_vocabulary($vocabulary, $format = 'xml') {
   $vocabulary = is_numeric($vocabulary) ? taxonomy_vocabulary_load($vocabulary) : $vocabulary;
   $vid = $vocabulary->vid;
-  
+
   // Retrieving Vocabulary name
   $vname = drupal_strtolower(str_replace(' ', '_', trim($vocabulary->name)));
 
@@ -86,18 +86,18 @@ function taxonomy_xml_export_vocabulary($vocabulary, $format = 'xml') {
  * Return a representation of the requested term
  *
  * Constructs and prints result to the screen, with appropriate headers.
- * 
+ *
  * @todo UNFINISHED, currently a stub copy from full vocab export
  */
 function taxonomy_xml_export_term($term, $format = 'rdf') {
   $term = is_numeric($term) ? taxonomy_term_load($term) : $term;
-  
+
   if (empty($term)) {
     trigger_error("NULL term loaded");
     dpm(func_get_args());
     return "Failed";
   }
-  
+
 
   module_load_include('inc', 'taxonomy_xml', 'formats/' . $format . '_format');
   $create_funcname = "taxonomy_xml_{$format}_create_term";

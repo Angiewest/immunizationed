@@ -11,9 +11,9 @@ class FeaturesUserTestCase extends DrupalWebTestCase {
    */
   public static function getInfo() {
     return array(
-        'name' => t('Component tests'),
-        'description' => t('Run tests for components of Features.') ,
-        'group' => t('Features'),
+      'name' => t('Component tests'),
+      'description' => t('Run tests for components of Features.') ,
+      'group' => t('Features'),
     );
   }
 
@@ -22,13 +22,13 @@ class FeaturesUserTestCase extends DrupalWebTestCase {
    */
   public function setUp() {
     parent::setUp(array(
-        'field',
-        'filter',
-        'image',
-        'taxonomy',
-        'views',
-        'features',
-        'features_test'
+      'field',
+      'filter',
+      'image',
+      'taxonomy',
+      'views',
+      'features',
+      'features_test'
     ));
 
     // Run a features rebuild to ensure our feature is fully installed.
@@ -45,12 +45,12 @@ class FeaturesUserTestCase extends DrupalWebTestCase {
     module_load_include('inc', 'features', 'features.export');
 
     $components = array_filter(array(
-        'field' => 'field',
-        'filter' => 'filter',
-        'image' => 'image',
-        'node' => 'node',
-        'user_permission' => 'user',
-        'views_view' => 'views',
+      'field' => 'field',
+      'filter' => 'filter',
+      'image' => 'image',
+      'node' => 'node',
+      'user_permission' => 'user',
+      'views_view' => 'views',
     ), 'module_exists');
 
     foreach (array_keys($components) as $component) {
@@ -179,9 +179,9 @@ class FeaturesEnableTestCase extends DrupalWebTestCase {
    */
   public static function getInfo() {
     return array(
-        'name' => t('Features enable tests'),
-        'description' => t('Run tests for enabling of features.') ,
-        'group' => t('Features'),
+      'name' => t('Features enable tests'),
+      'description' => t('Run tests for enabling of features.') ,
+      'group' => t('Features'),
     );
   }
 
@@ -193,9 +193,9 @@ class FeaturesEnableTestCase extends DrupalWebTestCase {
 
     // Testing that features_get_components returns correct after enable.
     $modules = array(
-        'features',
-        'taxonomy',
-        'features_test',
+      'features',
+      'taxonomy',
+      'features_test',
     );
 
     // Make sure features_get_components is cached if features already enabled.
@@ -228,9 +228,9 @@ class FeaturesCtoolsIntegrationTest extends DrupalWebTestCase {
    */
   public static function getInfo() {
     return array(
-        'name' => t('Features Chaos Tools integration'),
-        'description' => t('Run tests for ctool integration of features.') ,
-        'group' => t('Features'),
+      'name' => t('Features Chaos Tools integration'),
+      'description' => t('Run tests for ctool integration of features.') ,
+      'group' => t('Features'),
     );
   }
 
@@ -239,8 +239,8 @@ class FeaturesCtoolsIntegrationTest extends DrupalWebTestCase {
    */
   public function setUp() {
     parent::setUp(array(
-        'features',
-        'ctools',
+      'features',
+      'ctools',
     ));
   }
 
@@ -249,17 +249,17 @@ class FeaturesCtoolsIntegrationTest extends DrupalWebTestCase {
    */
   public function testModuleEnable() {
     $try = array(
-        'strongarm',
-        'views',
+      'strongarm',
+      'views',
     );
 
     // Trigger the first includes and the static to be set.
     features_include();
     $function_ends = array(
-        'features_export',
-        'features_export_options',
-        'features_export_render',
-        'features_revert',
+      'features_export',
+      'features_export_options',
+      'features_export_render',
+      'features_revert',
     );
     foreach ($try as $module) {
       $function = $module . '_features_api';

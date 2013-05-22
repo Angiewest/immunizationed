@@ -13,9 +13,6 @@
  * Copyright (c) 2006  Sami Khan <sami@etopian.com>
  * Copyright (c) 2005  Sheldon Rampton <sheldon@prwatch.org>
  *
- * This program is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation; either version 2 of the License.
  */
 
 /**
@@ -73,7 +70,7 @@ define('TAXONOMY_XML_OTHER_PREDICATE', 'other_rdf');
  * to manageable numbers.
  * It is impossible to extimate just how many or how deep the spidering process
  * will go - we just have to aim and go.
- * 
+ *
  * If you have a chunky server, good memory and a large timeout, it's probably
  * fine to push this up to 200 or more.
  */
@@ -164,7 +161,7 @@ function taxonomy_xml_menu() {
     'file' => 'taxonomy_xml.export.inc',
     'type' => MENU_LOCAL_TASK
   );
-  
+
 
   $items[TAXONOMY_XML_ADMIN . '/import'] = array(
     'title' => t('Import'),
@@ -230,20 +227,20 @@ function taxonomy_xml_invoke_import($text, $params, $url = NULL) {
     drupal_set_message("Unavailable format '$format'. $funcname was not found in formatting library ${format}_format .", 'error');
     return FALSE;
   }
-  
+
   // HOUSEKEEPING
   // In taxonomy_xml_absorb_vocabularies,
-  // we cached a list of vocabs and their guid. 
+  // we cached a list of vocabs and their guid.
   // Ensure it's not been deleted in the meantime
   // Or we'd be creating some bad references
   $taxonomy_xml_vocabulary_ids = variable_get('taxonomy_xml_vocabulary_ids', array());
-  foreach ($taxonomy_xml_vocabulary_ids as $guid => $vid) { 
+  foreach ($taxonomy_xml_vocabulary_ids as $guid => $vid) {
     if (! taxonomy_vocabulary_load($vid)) {
       unset($taxonomy_xml_vocabulary_ids[$guid]);
       variable_set('taxonomy_xml_vocabulary_ids', $taxonomy_xml_vocabulary_ids);
     } // yes, it's actually better to have the variable_set inside the loop, it almost never runs
   }
-  
+
 
   $vid = $params['vid'];
   if ($vid == TAXONOMY_XML_CREATE_NEW) {
@@ -367,10 +364,10 @@ function taxonomy_xml_load_format($format) {
 
 /**
  * Return info array describing a supported format.
- * 
+ *
  * Uses the sub-hook taxonomy_xml_FORMATID_format_info()
  * The format libraries themselves should create this function.
- * 
+ *
  * This also inspects the available functions to record which provide import
  * (parse) and export (create) hooks.
  */
@@ -409,7 +406,7 @@ function taxonomy_xml_set_term_guid(&$term, $guid) {
  * Return (and remember) the guid associated with this term.
  *
  * Abstracted into a getter, because it may be serialized in different ways.
- * 
+ *
  * If the term has an internal field storing someone elses guid, return that.
  * Otherwise, return our local path for it.
  */
@@ -424,7 +421,7 @@ function taxonomy_xml_get_term_guid(&$term) {
     // What the hell is 'und'? - "Undefined language'!
     $term->guid = $term->field_guid['und'][0]['value'];
   }
-  
+
   // Otherwise return a guid pointing to ourself as a source for this term.
   if (empty($term->guid)) {
     $term_guid = taxonomy_term_uri($term);
@@ -472,7 +469,7 @@ function taxonomy_xml_get_term_by_guid($guid, $vid = NULL) {
   # nope, doesn't work like that
 
   # SELECT entity_id FROM taxonomy_field_data_field_guid where bundle='mesh_server_php_looku' AND field_uri_value='http://localhost/EOL/MeSH/MeSH_server.php?lookup=DescriptorUI&id=D001628';
-  
+
   // This is probably not the best way, but I spent two hours trying to get
   // through fieldapi and things and couldn't find a clue.
   static $guid_field_id;
@@ -597,7 +594,7 @@ function taxonomy_xml_get_term_by_guid($guid, $vid = NULL) {
  * When making a request, we say
  * "Accept: application/rdf+xml"
  * .. and sometimes we get it.
- * 
+ *
  * Content-negotiation is triggered by entering either a ('format' => 'RDF') or
  * a ('mime' => 'application/rdf+xml') parameter in the options.
  * If requesting a second time, the (cached) results of the first operation will
@@ -666,7 +663,7 @@ function taxonomy_xml_cached_get_contents($url, $options = array(), $flush = FAL
     watchdog('taxonomy_xml', '<a href="!url">URL</a> will be requested as MIME type "!mime"', array('!url' => $url, '!mime' => $options['mime']), WATCHDOG_INFO);
     $opts['http']['header'] = "Accept: {$options['mime']},*/* \r\n";
   }
-  
+
   $context = stream_context_create($opts);
   // Header set - will take effect on this request
 
@@ -692,7 +689,7 @@ function taxonomy_xml_cached_get_contents($url, $options = array(), $flush = FAL
 function taxonomy_xml_flush_cache_file($hash) {
   #$cachedir = file_directory_path() . '/url_cache';
   $cachedir = drupal_realpath('public://url_cache');
-  
+
   unlink($cachedir . '/' . $hash);
   return "Deleted $hash";
 }
@@ -774,13 +771,13 @@ function taxonomy_xml_rdf_taxonomy_term_path($term) {
 
 /**
  * Appends any missing data to the given term - by ref.
- * 
+ *
  * Native taxonomy_term_load does not normally pick up the parents too. I do
  * here.
- * 
+ *
  * @todo, now that hook_taxonomy_term_load is in core, need to check if this
  * will affect performance.
- * 
+ *
  * @param $terms
  *   An array of term objects, indexed by tid.
  */
@@ -795,14 +792,23 @@ function taxonomy_xml_taxonomy_term_load($terms) {
     if (! is_object($term)) {
       watchdog('taxonomy_xml', 'taxonomy_xml_taxonomy_term_load running on a non-object, term[!tid] = <pre>!term</pre>', array('!tid' => $tid, '!term' => print_r($term, 1)), WATCHDOG_WARNING);
     }
-    if ( $parent_list = array_keys(taxonomy_get_parents($tid)) ) {
-      $term->parent = array_combine($parent_list, $parent_list);
+    // Earlier version of core did not init the parents array all the time..?
+    // Do it ourselves.
+    // Core seems confused about sometimes using 'parent' and sometimes 'parents'
+    // It seems that when core uses 'parents' it's a fully loaded object, used mosly in admin
+    // but core 'parent' is an array of ids, BUT it gets messed up with odd values sometimes.
+    // I will use 'parents' most of the time internally, but need to flatten
+    // to 'parent' just before saving with taxonomy_term_save().
+    if (empty($term->parents)) {
+      if ( $parent_list = array_keys(taxonomy_get_parents($tid)) ) {
+        $term->parents = array_combine($parent_list, $parent_list);
+      }
     }
     #$term->synonyms_array = taxonomy_get_synonyms($term->tid);
 
 ####
     // ->uri is now reserved for entities in d7?
-    
+
     if ($guid = taxonomy_xml_get_term_guid($term)) {
       $term->guid = $guid;
     }
@@ -841,10 +847,10 @@ function taxonomy_xml_shortname($uri) {
  * Choose a string from an array of language-tagged possibilities
  *
  * Util func to help read complex RDF statements.
- * 
+ *
  * If we want just one string but the RDF has given us a choice, like of
  * different languages, need to pick the right one.
- * 
+ *
  * @param attname is just for debug
  */
 function taxonomy_xml_get_literal_string($values, $attname = '') {
@@ -873,19 +879,19 @@ function taxonomy_xml_get_literal_string($values, $attname = '') {
 /**
  * Return descriptions of all the various services we can use to load schemas
  * from.
- * 
+ *
  * Scans the /services directory and loads each inc file there.
- * 
+ *
  * Calls hook_taxonomy_service_info() on each of the files in turn to find out
  * what it does.
- * 
+ *
  * @param $mode How to return the results. Default 'full' is all info array. May
  * also be 'options' which returns just the service name and ID as can be used
  * in a selectbox.
  */
 function taxonomy_xml_services($mode = 'full') {
   static $services;
-  if (! isset($services)) { 
+  if (! isset($services)) {
     $module_dir = drupal_get_path('module', 'taxonomy_xml');
     $incs = file_scan_directory($module_dir, '|.*\.taxonomy_service\.inc|');
     $services = array();
@@ -990,7 +996,7 @@ function taxonomy_xml_watchdog_levels() {
 function xmlentities($str) {
   #return $str;
   # @todo still has a problem with &?
-  return preg_replace('/[^\x00-\x25\x27-\x7F]/e', '"@#".ord("$0").";"', $str);
+  return preg_replace('/[^\x00-\x25\x27-\x7F]/e', '"&#".ord("$0").";"', $str);
 
   #return preg_replace('/[^\x00-\x7F]/e', '"@#".ord("$0").";"', $str);
 }
@@ -1023,20 +1029,20 @@ function xmlentities($str) {
  * "United States of America", "Broader", "North America"
  * "United States of America", "AKA", "USA"
  * "The States", "See", "United States of America"
- * 
+ *
  * The list below is non-namespaced. SOME of these predicates could and should
  * be namespaced, and if we were working purely with RDF, they would be. In
  * reality we work with all sorts of data sources, most of which are NOT
  * namespaced. Therefore, when resolving them, we reduce complex, namespaced
  * values to the last word at the end, the shortname, before flattening all
- * these synonyms. 
- * 
+ * these synonyms.
+ *
  * This leads to some collisions, but in this case it's
  * intentional, as the concept of 'label' is braodly the same no matter what
  * namespace it was found in.
- * 
+ *
  * @see taxonomy_xml_canonicize_predicates()
- * 
+ *
  */
 function taxonomy_xml_relationship_synonyms() {
   static $synonyms;
@@ -1116,6 +1122,7 @@ function taxonomy_xml_relationship_synonyms() {
     'belongs-to-facet' => TAXONOMY_XML_IN_VOCABULARY, # XFML
     'isDefinedBy'     => TAXONOMY_XML_IN_VOCABULARY, # rdfs
     'inScheme'        => TAXONOMY_XML_IN_VOCABULARY, # SKOS
+    'member'          => TAXONOMY_XML_IN_VOCABULARY, # SKOS
     'name'            => TAXONOMY_XML_NAME,
     'title'           => TAXONOMY_XML_NAME, # DC
     'lexicalForm'     => TAXONOMY_XML_NAME,
@@ -1146,11 +1153,12 @@ function taxonomy_xml_relationship_synonyms() {
     'common.topic.image' => TAXONOMY_XML_UNUSED, # Freenet - ignore for better debugging
     'status'          => TAXONOMY_XML_UNUSED, # Seen in SKOS from "http://metadataregistry.org/"
     'editorialNote'   => TAXONOMY_XML_UNUSED, # From Library of Congress. Ignore
-    
+    'value'           => TAXONOMY_XML_NAME, # Too unpredictable what context this may be found in
+
     'stylesheet'      => TAXONOMY_XML_UNUSED, # RDFa - often parses to include useless stuff.
     'alternate'       => TAXONOMY_XML_UNUSED, # RDFa
     'icon'            => TAXONOMY_XML_UNUSED, # RDFa
-    
+
 
     // Some arbitrary known values may come in handy. Store them as pure RDF if we can!
     'sameAs'          => TAXONOMY_XML_OTHER_PREDICATE,

@@ -10,15 +10,15 @@
  */
 
 /**
- * sub-hook 
+ * sub-hook
  * @see taxonomy_xml_HOOK_format_info()
- * 
+ *
  * Returns info about this syntax
  */
 function taxonomy_xml_tcs_format_info() {
   return array(
     'description' => "The Taxon Concept Schema is used in Life Sciences to notate biological families of living things.",
-  );  
+  );
 }
 
 

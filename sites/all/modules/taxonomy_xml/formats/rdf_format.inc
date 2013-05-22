@@ -5,13 +5,13 @@
 /**
  * @file
  *   Include routines for RDF parsing and taxonomy/term creation.
- * 
+ *
  * RDF here is based on the W3C examples (using RDFS), but also incorporates
  * support for the SKOS Dialect as well.
- * 
+ *
  * Note the use of the word 'node' here almost always refers to XML nodes, not
  * Drupal nodes.
- * 
+ *
  * @author dman http://coders.co.nz
  *
  * 2009-09 Code to support bnodes (internal references to other nodes within an
@@ -35,9 +35,9 @@ define('TAXONOMY_XML_CHILDREN_RECURSIVE', 4);
 
 
 /**
- * sub-hook 
+ * sub-hook
  * @see taxonomy_xml_HOOK_format_info()
- * 
+ *
  * Returns info about this syntax
  */
 function taxonomy_xml_rdf_format_info() {
@@ -50,7 +50,7 @@ function taxonomy_xml_rdf_format_info() {
 
 /**
  * Return a list of 'types' of things that we may import as 'terms'
- * 
+ *
  * The RDF input may come in several flavours,
  * Resources of the following 'types' may be cast into taxonomy terms for our purposes.
  * That is, an rdf:Class is a Drupal:term
@@ -77,7 +77,7 @@ function taxonomy_xml_rdf_term_types() {
 
 /**
  * Return a list of types of things that may behave like 'vocabularies'
- * 
+ *
  * A Drupal 'vocabulary' is represented by an owl:Ontology
  * or other similar shaped constructs, like a SKOS ConceptScheme
  */
@@ -155,7 +155,7 @@ function taxonomy_xml_rdf_parse(&$data, &$vid, $url = NULL) {
   // The predicates have NOT been flattened yet.
   // Resource types we expect to be dealing with are just vocabs and terms.
 
-  // Debug only:  
+  // Debug only:
   if (! $anchor ) {
     // Message is just noise if using anchors.
     watchdog('taxonomy_xml', "
@@ -170,7 +170,7 @@ function taxonomy_xml_rdf_parse(&$data, &$vid, $url = NULL) {
     );
   }
 
-  // Debug only:  
+  // Debug only:
   if (! empty($resources_by_type[TAXONOMY_XML_UNTYPED])) {
     // Just FYI, make a note about the quality of data found.
     // Do not complain about URLs - this is quite normal.
@@ -191,12 +191,12 @@ function taxonomy_xml_rdf_parse(&$data, &$vid, $url = NULL) {
     );
   }
 
-  // Debug only:  
+  // Debug only:
   if (count($resources_by_type) == 0) {
     watchdog('taxonomy_xml', "
       It sure doesn't look like this is any useful sort of RDF source.
       Zero resource entities were parsed out of it.
-      Probably need to do content-negotiation or something, 
+      Probably need to do content-negotiation or something,
       and check the validity of the file. Aborting.",
       array('%url' => ''),
       WATCHDOG_ERROR
@@ -206,8 +206,8 @@ function taxonomy_xml_rdf_parse(&$data, &$vid, $url = NULL) {
 
   #dpm($resources_by_type);
 
-  //  
-  // Almost ready to build. 
+  //
+  // Almost ready to build.
   // Prepare destination VOCAB.
   ////
 
@@ -248,9 +248,9 @@ function taxonomy_xml_rdf_parse(&$data, &$vid, $url = NULL) {
   //
   // VOCAB set up, start on TERMS...
   ///
-  
+
   // Note that when 'identifier' is used as a key here, it means the identifier
-  // according to the source document - usually a URI. 
+  // according to the source document - usually a URI.
   // A term identifier is a string distinct from the local term id.
 
   // Gather the resources that will become terms.
@@ -322,13 +322,13 @@ function taxonomy_xml_rdf_parse(&$data, &$vid, $url = NULL) {
   // Such terms will need to attach themselves to the parent terms themselves.
 
   #watchdog('taxonomy_xml', "After re-linking, we now have all terms set <pre>!data</pre>", array('!data' => print_r($terms, 1)), WATCHDOG_INFO);
-  
+
   return $terms;
 }
 
 /**
  * FREEBASE only
- * 
+ *
  * If  we are reading a top-level topic type page
  * eg  http://www.freebase.com/tools/explore/music/genre
  * type = fb:type_profile
@@ -340,7 +340,7 @@ function taxonomy_xml_rdf_process_freebase_vocab(&$resources_by_type, $vid){
   if (empty($resources_by_type[$fb_vocab_type])) {
     return;
   }
-  
+
   foreach ($resources_by_type[$fb_vocab_type] as $vocab_guid => $vocabulary) {
     if (empty($vocabulary->predicates)) {
       trigger_error("Something wrong with the vocabulary we are trying to process, it has no predicates");
@@ -371,7 +371,7 @@ function taxonomy_xml_rdf_process_freebase_vocab(&$resources_by_type, $vid){
         );
       } // loop over all term 'instances' mentioned by the vocab
     }
-  
+
     // Extra diagnostic - freebase-specific
     $instance_count = $vocabulary->predicates['freebase.type_profile.instance_count'];
     if ($instance_count > count($instances) ) {
@@ -396,10 +396,10 @@ function taxonomy_xml_rdf_process_freebase_vocab(&$resources_by_type, $vid){
 
 /**
  * Special handling for dbpedia data
- * 
+ *
  * eg
  * http://dbpedia.org/page/Category:Rock_music_genres
- * 
+ *
  * When taking data from dbpedia, it does not list sub terms as 'narrower', it
  * instead lists all the subterms individually, and tags them as having the
  * parent term as 'broader'. This means the same thing, but the parent term does
@@ -438,7 +438,7 @@ function taxonomy_xml_rdf_process_dbpedia(&$resources_by_type, &$terms) {
  * This will be optimal for one big file being called all the time (an all-in-
  * one taxonomy), and NOT fill up with crud if lots of different files are
  * requested once (as happens when spidering).
- * 
+ *
  * @return An indexed set of triples
  */
 function taxonomy_xml_rdf_parse_data_into_index($data, $url) {
@@ -454,14 +454,14 @@ function taxonomy_xml_rdf_parse_data_into_index($data, $url) {
     watchdog('taxonomy_xml', "ARC2 Parser was unavailable", array(), WATCHDOG_ERROR);
     return FALSE;
   }
-  
+
   $parser = ARC2::getRDFParser();
   $base = $url;
   $parser->parse($base, $data);
-  
+
   if ($errors = $parser->getErrors()) {
     watchdog('taxonomy_xml', "ARC2 Parser returned an error : %error", array('%error' => print_r($errors, 1)), WATCHDOG_ERROR);
-    
+
   }
   #dpm(get_defined_vars());
   #dpm($parser->getTriples());
@@ -473,7 +473,7 @@ function taxonomy_xml_rdf_parse_data_into_index($data, $url) {
   #dpm($index);
   // @todo bug in arc? attributes - eg href - nested in rdf seem to get damaged.
   // may be only when tagged as XMLLiteral rdf:parseType="Literal"
-  
+
   if (! is_array($index)) {
     drupal_set_message(t("Problem parsing input %message", array('%message' => $index)), 'error');
     return;
@@ -493,29 +493,29 @@ function taxonomy_xml_rdf_parse_data_into_index($data, $url) {
 
 /**
  * Sort a list of data objects into groups by 'type'
- * 
+ *
  * Arc2 indexing has done most of the flattening for us, we just need to throw
  * these things into different bags.
- * 
+ *
  * Ensure that objects have a 'name' and a 'type'
  */
 function taxonomy_xml_convert_index_to_sorted_objects(&$index) {
   $resources_by_type = array();
 
   foreach ($index as $subject_guid => $values) {
-    // A proto-resource object stores all the statements 
+    // A proto-resource object stores all the statements
     // in an array called 'predicates' that we will inspect later.
     $subject = (object) array('predicates' => $values);
-    
-    // This remote URI is the key we use for real indexing 
+
+    // This remote URI is the key we use for real indexing
     // when matching up children and parents.
     $subject->identifier = $subject_guid;
-    
+
     // 'predicates' given to us from ARC2 are full namespaced URIs
-    // yet through the rest of the code, we prefer to use the 
+    // yet through the rest of the code, we prefer to use the
     // predicates 'shortname' (without namespace) most of the time.
     // Remember to flatten them if comparing with cannonic types later.
-    
+
     #// Add a flattened version of all data here also!
     #foreach ($values as $predicate => $objects) {
     #  $subject->predicates[taxonomy_xml_rdf_shortname($predicate)] = $objects;
@@ -530,10 +530,10 @@ function taxonomy_xml_convert_index_to_sorted_objects(&$index) {
       // Guess a shortname based on URI
       # $subject->name = taxonomy_xml_shortname($subject_guid);
       # premature, if set here it takes priority
-      // A better, more accurate name may be deduced later on during 
+      // A better, more accurate name may be deduced later on during
       // synonym collapsing
     }
-    
+
     if (isset($values[TAXONOMY_XML_TYPE])) {
       // Types may be multiple. Don't know why or how, but they may.
       // (see http://rdfs.org/sioc/types for one such)
@@ -546,7 +546,7 @@ function taxonomy_xml_convert_index_to_sorted_objects(&$index) {
         $resources_by_type[$type][$subject_guid] = &$handle;
       }
       unset($handle);
-      
+
     }
     else {
       // No idea what this is, remember it anyway.
@@ -636,15 +636,15 @@ function taxonomy_xml_rdf_make_term(&$term) {
   }
   // The term object is now as tidy as it can be as a self-contained entity.
   #dpm($term);
-  
+
   // It may be premature to save this term if we don't know its parent yet,
   // The system will default to parent=0, which causes bad structure later on
-  if (! isset($term->parent)) {
+  if (! isset($term->parents)) {
     watchdog('taxonomy_xml', "About to save a term '%name' with no parent, this could be a problem later, but probably just means it's root-level", array('%name' => $term->name), WATCHDOG_INFO);
   }
 
   $status = taxonomy_term_save($term);
-  // This object is being passed around as a handle, so I don't expect to have 
+  // This object is being passed around as a handle, so I don't expect to have
   // lost anything important from it
 
   if ( $status == SAVED_NEW ) {
@@ -716,7 +716,7 @@ function taxonomy_xml_rdf_create($vocabulary, $parent = 0, $depth = -1, $max_dep
 /**
  * Create a vocabulary definition (just the def, not its terms) and insert it
  * into the given document element.
- * 
+ *
  * No return, it acts on the DOM document directly.
  *
  * @param $domcontainer an XML dom document, modified by ref.
@@ -725,7 +725,7 @@ function taxonomy_xml_rdf_create($vocabulary, $parent = 0, $depth = -1, $max_dep
 function taxonomy_xml_rdf_add_vocab(&$domcontainer, $vocabulary) {
   $dom = $domcontainer->ownerDocument;
   $ns = rdf_get_namespaces();
-  
+
   // Describe the vocabulary itself
   $vocabnode = rdf_entity_to_xml($vocabulary, $dom, $domcontainer);
 
@@ -733,7 +733,7 @@ function taxonomy_xml_rdf_add_vocab(&$domcontainer, $vocabulary) {
     trigger_error("Failed to create vocabnode using XML methods", E_USER_ERROR);
     return;
   }
-  
+
   // If this was a cannonic vocab, we would use a full external URI as identifiers
   // But if it's our own, we get our own vocabulary path as a URI (or URN)
   $vocabnode->setattributens($ns['rdf'], 'rdf:about', taxonomy_xml_get_vocabulary_uri($vocabulary) );
@@ -748,7 +748,7 @@ function taxonomy_xml_rdf_add_vocab(&$domcontainer, $vocabulary) {
  *
  * This term dump will directly reflect any rdf_mapping retrieved from
  * the Drupal 'entity' schema, which is based on SKOS.
- * 
+ *
  * <skos:Concept rdf:ID="term-1764" rdf:about="http://taxonomy.drupal7.
  * gadget/taxonomy/term/1764">
  * <rdfs:label>Corporate management (Internal)</rdfs:label>
@@ -759,10 +759,10 @@ function taxonomy_xml_rdf_add_vocab(&$domcontainer, $vocabulary) {
  * <skos:member>3</skos:member>
  * <skos:broader>1763</skos:broader>
  * </skos:Concept>
- * 
+ *
  * @param $termlist a FLAT array of all terms, internally cross-referenced to
  * each other defining the tree stucture
- * 
+ *
  * No return, it acts on the DOM document directly.
  */
 function taxonomy_xml_rdf_add_terms(&$domcontainer, $termlist, $recursion_behaviour = TAXONOMY_XML_CHILDREN_REF_ONLY) {
@@ -771,7 +771,7 @@ function taxonomy_xml_rdf_add_terms(&$domcontainer, $termlist, $recursion_behavi
   }
   $dom = $domcontainer->ownerDocument;
   $ns = rdf_get_namespaces();
-  
+
   // Allow submission of a single term
   if (! is_array($termlist)) {
     $termlist = array($termlist);
@@ -789,16 +789,16 @@ function taxonomy_xml_rdf_add_terms(&$domcontainer, $termlist, $recursion_behavi
     // didn't module_invoke_all do that?
     // If I have to do it myself : INEFFICIENCY HERE due to the full reload.
     if (empty($term->rdf_mapping)) {
-      $term = taxonomy_term_load($term->tid); 
+      $term = taxonomy_term_load($term->tid);
     }
 
     $termnode = rdf_entity_to_xml($term, $dom, $domcontainer);
-    
+
     if (! $termnode) {
       watchdog('taxonomy_xml', "Failed to create an XML entry for term, <pre>!data</pre>", array('!data' => print_r($term,1)), WATCHDOG_ERROR);
       continue;
     }
-    
+
     # Not allowed both an ID and an about
     #$termnode->setattributens($ns['rdf'], 'rdf:ID', 'term-' . $term->tid );
 
@@ -809,12 +809,15 @@ function taxonomy_xml_rdf_add_terms(&$domcontainer, $termlist, $recursion_behavi
 
     $guid = taxonomy_xml_get_term_guid($term);
     $termnode->setattributens($ns['rdf'], 'rdf:about', $guid );
-    
+
     $vocab_ref = $dom->createelementns($ns['skos'], 'skos:member');
     $vocabulary = taxonomy_vocabulary_load($term->vid);
     $vocab_guid = taxonomy_xml_get_vocabulary_uri($term->vid);
     $vocab_ref->setattributens($ns['rdf'], 'rdf:resource', $vocab_guid);
-    $vocab_ref->setattributens($ns['rdf'], 'rdf:value', xmlentities($vocabulary->name) );
+    #$vocab_ref->setattributens($ns['rdf'], 'rdf:value', xmlentities($vocabulary->name) );
+    // Looks like setattributens is now safe for xmlentities - does its own conversion.
+    // Previous PHP did not?
+    $vocab_ref->setattributens($ns['rdf'], 'rdf:value', $vocabulary->name);
     $termnode->appendchild($vocab_ref);
 
     /*
@@ -834,17 +837,14 @@ function taxonomy_xml_rdf_add_terms(&$domcontainer, $termlist, $recursion_behavi
     }
     */
 
-    if (!empty($term->parent)) {
-      foreach ((array) $term->parent as $parent_id) {
+    if (!empty($term->parents)) {
+      foreach ((array) $term->parents as $parent_id) {
         $parentlist = array();
         if ($parent_id) {
           $parentlist[$parent_id] = $parent =  taxonomy_term_load($parent_id);
-          #$parent_node = $dom->createelementns($ns['rdfs'], 'rdfs:subClassOf', xmlentities($parent->name));
-          #$parent_node->setattributens($ns['rdf'], 'rdf:resource', '#term-' . $parentid );
-
           $parent_node = $dom->createelementns($ns['skos'], 'skos:broader');
           $parent_node->setattributens($ns['rdf'], 'rdf:resource', taxonomy_xml_get_term_guid($parent) );
-          $parent_node->setattributens($ns['rdf'], 'rdf:value', xmlentities($parent->name) );
+          $parent_node->setattributens($ns['rdf'], 'rdf:value', $parent->name );
           $termnode->appendchild($parent_node);
         }
       }
@@ -865,12 +865,12 @@ function taxonomy_xml_rdf_add_terms(&$domcontainer, $termlist, $recursion_behavi
           #$child_node->setattributens(TAXONOMY_XML_RDF_NS, 'rdf:resource', '#term-' . $child_id );
           $child_node = $dom->createelementns($ns['skos'], 'skos:narrower');
           $child_node->setattributens($ns['rdf'], 'rdf:resource', taxonomy_xml_get_term_guid($child) );
-          $child_node->setattributens($ns['rdf'], 'rdf:value', xmlentities($child->name) );
+          $child_node->setattributens($ns['rdf'], 'rdf:value', $child->name );
           $termnode->appendchild($child_node);
         }
-        
+
     }
-      
+
 
     // workaround for large vocabs - extend runtime indefinately
     drupal_set_time_limit(10);
@@ -881,10 +881,10 @@ function taxonomy_xml_rdf_add_terms(&$domcontainer, $termlist, $recursion_behavi
 
 /**
  * Return a term as RDF-XML
- * 
+ *
  * A sub-hook implementation of taxonomy_xml_{format}_create_term()
  * @see taxonomy_xml_export_term()
- * 
+ *
  * @param Either a term object, or a term id
  * @return an XML string.
  */

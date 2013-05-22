@@ -1,9 +1,8 @@
 <?php
-// $ID:  $
 /**
  * @file
  *   Experimental library for working with RDF within taxonomy_xml
- * 
+ *
  * Created on Apr 6, 2010
  *
  * @author 'dman' Dan Morrison http://coders.co.nz/
@@ -39,10 +38,10 @@ define('TAXONOMY_XML_FB_NS', 'http://rdf.freebase.com/ns/');
 /**
  * Given a D7 entity with its 'rdf_mapping' available, create and fill in data
  * on an RDF/XML node in an XML document.
- * 
+ *
  * Fully supports namespaces, even though internally the RDF mapping only uses
  * CURIE notation.
- * 
+ *
  * @param an Drupal entity. Should contain $entity->rdf_mapping instructions.
  * @param handle on an XML Document to build the element within.
  * @param $domcontainer element to add this structure to. While it's not
@@ -63,7 +62,7 @@ function rdf_entity_to_xml($entity, $XMLDoc, $domcontainer = NULL) {
   if (empty($ns)) {
     $ns = rdf_get_namespaces();
   }
-  
+
   $mapping = $entity->rdf_mapping;
   /*
    * rdf_mapping = array(
@@ -78,7 +77,7 @@ function rdf_entity_to_xml($entity, $XMLDoc, $domcontainer = NULL) {
   // Need to know the real URI before adding it to a strict DOM
   $ns_id = fully_qualified_from_curie($rdftype);
   $entity_node = $XMLDoc->createElementNS($ns_id['ns'], $rdftype);
-  
+
   if (! $entity_node) {
     trigger_error("Failed to create an XML node '$rdftype' on the XML document");
     return FALSE;
@@ -86,7 +85,7 @@ function rdf_entity_to_xml($entity, $XMLDoc, $domcontainer = NULL) {
   if (! empty($domcontainer)) {
     $domcontainer->appendchild($entity_node);
   }
-  
+
   foreach ($mapping as $property_name => $mapping_details) {
     if (empty($mapping_details['predicates'])) continue;
     // The value of this predicate will be the corresponding property on this object
@@ -95,7 +94,7 @@ function rdf_entity_to_xml($entity, $XMLDoc, $domcontainer = NULL) {
       continue;
     }
 
-    // Skip some elements for now. 
+    // Skip some elements for now.
     // Some mapping needs special treatment!
     // Elements with 'type' rel or rev actually link to resources.
     // I THINK the rdf_mapping 'callback' may help here, but I've not seen it used correctly yet
@@ -137,7 +136,7 @@ function rdf_entity_to_xml($entity, $XMLDoc, $domcontainer = NULL) {
 function taxonomy_xml_rdf_document() {
   $dom = new domdocument('1.0', 'UTF-8');
   $ns = rdf_get_namespaces();
-  
+
   $dom->appendchild($dom->createprocessinginstruction('xml-stylesheet', 'href="render-taxonomy-rdf.xsl" type="text/xsl"' ));
   $dom->appendchild($dom->createcomment(xmlentities("
     This file was created by Drupal taxonomy_xml import/export tool.
@@ -183,7 +182,7 @@ function fully_qualified_from_curie($curie) {
 
 /**
  * Return the path of the arc2 library
- * 
+ *
  * Semi-intelligent lookup of places I expect it to be
  */
 function rdf_arc2_library_path() {
@@ -235,7 +234,7 @@ function rdf_load_arc2() {
 function taxonomy_xml_rdf_requirements() {
   $requirements = array();
   $arc2_library_path = rdf_arc2_library_path();
-  
+
   if (! is_readable($arc2_library_path . "/ARC2.php")) {
     $requirements['taxonomy_xml_rdf'] = array(
       'value' => t('ARC1 RDF Parser is unavailable.'),

@@ -5,7 +5,7 @@
 /**
  * @file
  * The workhorse processes for importing
- * taxonomies  
+ * taxonomies.
  */
 
 /**
@@ -37,20 +37,20 @@ function _taxonomy_xml_get_vocabulary_placeholder($name) {
     // A valid Vocab exists,
     // But still may need to add some fields...
   }
-  
+
   // Ensure vocab will store our URI and extra values
   if (! taxonomy_xml_prepare_vocabulary($vocabulary) ) {
     drupal_set_message("Problem preparing vocabulary", 'error');
     dpm($vocabulary);
   }
-  
+
   // The $vocabulary object will now have a vid
   return $vocabulary;
 }
 
 /**
  * Ensure a vocab will store our URI and extra values.
- * 
+ *
  * This adds a new 'guid' field and ressurects the missing 'synonym' field on
  * taxonomy terms.
  */
@@ -82,7 +82,7 @@ function taxonomy_xml_prepare_vocabulary(&$vocabulary) {
 /**
  * Create a URI field that will be applied to our vocabularies so we can
  * identify their terms.
- * 
+ *
  * Uses field API CRUD
  */
 function taxonomy_xml_create_guid_field() {
@@ -108,7 +108,7 @@ function taxonomy_xml_create_guid_field() {
 
 /**
  * Create a field instance to attach to a vocab and store the URI in
- * 
+ *
  * Uses field API CRUD
  */
 function taxonomy_xml_create_guid_instance($vocab_name, $field_name = 'field_guid') {
@@ -144,7 +144,7 @@ function taxonomy_xml_create_guid_instance($vocab_name, $field_name = 'field_gui
 /**
  * Create a synonym field that will be applied to our vocabularies.
  * A replacement for the D6 synonym table.
- * 
+ *
  * Uses field API CRUD
  */
 function taxonomy_xml_create_synonym_field() {
@@ -172,7 +172,7 @@ function taxonomy_xml_create_synonym_field() {
 
 /**
  * Create a field instance to attach to a vocab and store the synonyms in
- * 
+ *
  * Uses field API CRUD
  */
 function taxonomy_xml_create_synonym_instance($vocab_name, $field_name = 'field_synonym') {
@@ -248,7 +248,7 @@ function taxonomy_xml_absorb_vocabulary_definitions(&$vocabularies) {
     }
 
     foreach ($vocabularies as $guid => &$vocab) {
-      
+
       // Relabel any big namespaced predicates into common ones.
       // For vocabs this won't do much, but will still help consolidate descriptions and labels
       taxonomy_xml_canonicize_predicates($vocab, 'taxonomy_vocabulary');
@@ -326,7 +326,7 @@ function taxonomy_xml_absorb_vocabulary_definitions(&$vocabularies) {
   else {
     drupal_set_message("The document provided no recognisible vocabulary definitions");
   }
-  
+
 #  // Dealing with multiples is currently in flux...
 #  // If there are many, then they have a useful identifier.
 #  // return an array matching their guid with the vid.
@@ -352,11 +352,11 @@ variable_set('taxonomy_xml_vocabulary_ids', $taxonomy_xml_vocabulary_ids);
  * into canonic (known, defined) terms. This involves some duplication as the
  * original and true names are both packed into the $term->predicates array.
  * Only the true names are looked at later however.
- * 
+ *
  * This operated by reference on the object it's given.
  * It assumes it's processing a term, but the same logic holds for vocab
  * entities also.
- * 
+ *
  * @param $entity type is just a hint to avoid irrelevant warnings if we are
  * 'canonisizing' a vocab definition instead.
  */
@@ -369,10 +369,10 @@ function taxonomy_xml_canonicize_predicates(&$term, $entity_type = 'taxonomy_ter
   // Integrity Assertion
   if (empty($term->vid) && $entity_type == 'taxonomy_term') {
     watchdog('taxonomy_xml', '
-      Processing a term with no vocabulary ID, this is unexpected. 
-      Terms should have a vid set by this point. 
-      I do not require the vid here, but all term objects should have had it 
-      set before reaching this point. 
+      Processing a term with no vocabulary ID, this is unexpected.
+      Terms should have a vid set by this point.
+      I do not require the vid here, but all term objects should have had it
+      set before reaching this point.
       <pre>!term</pre>
     ', array('!term' => print_r($term, 1)), WATCHDOG_WARNING);
   }
@@ -391,8 +391,8 @@ function taxonomy_xml_canonicize_predicates(&$term, $entity_type = 'taxonomy_ter
       $predicate = $cannonic;
     }
     else {
-      // Predicates may still be namespaced at this point. 
-      // Remove the namespace and see if 
+      // Predicates may still be namespaced at this point.
+      // Remove the namespace and see if
       // the shortname matches one of our known types
       $shortname = taxonomy_xml_shortname($predicate);
       if (isset($predicate_synonyms[$shortname]) && $cannonic = $predicate_synonyms[$shortname]) {
@@ -420,7 +420,7 @@ function taxonomy_xml_canonicize_predicates(&$term, $entity_type = 'taxonomy_ter
         break;
       case TAXONOMY_XML_PARENT:
         foreach ($values as $i => $target_guid) {
-          $term->predicates[$predicate][$i] = $target_guid;
+          $term->predicates[$predicate][$target_guid] = $target_guid;
           $strings = array(
             '%predicate' => $predicate,
             '%subject' => isset($term->name) ? $term->name : $term->guid,
@@ -434,7 +434,7 @@ function taxonomy_xml_canonicize_predicates(&$term, $entity_type = 'taxonomy_ter
         // Translate each referred item from URI to its label or handle,
         // and save to be linked in later
         foreach ($values as $i => $target_guid) {
-          $term->predicates[$predicate][$i] = $target_guid;
+          $term->predicates[$predicate][$target_guid] = $target_guid;
         }
         break;
       case TAXONOMY_XML_HAS_SYNONYM:
@@ -448,12 +448,12 @@ function taxonomy_xml_canonicize_predicates(&$term, $entity_type = 'taxonomy_ter
          // Do we know a vocab with an ID matching this 'isdefinedby' value?
          dpm(array('looking for vocab' => $values));
          @see taxonomy_xml_absorb_vocabulary_definitions()
-         where we make a temporary global note of vocab guid->vid relations for 
+         where we make a temporary global note of vocab guid->vid relations for
          this purpose.
          */
          $taxonomy_xml_vocabulary_ids = variable_get('taxonomy_xml_vocabulary_ids', array());
          #watchdog('taxonomy_xml', 'looking for vocab '. join(', ', $values) .' '. print_r($taxonomy_xml_vocabulary_ids, 1), array(), WATCHDOG_INFO);
-         foreach ($values as $value) { 
+         foreach ($values as $value) {
            // Probably just one...
            // but IF it's named and IF the name is valid and we've seen it beforem
            if (isset($taxonomy_xml_vocabulary_ids[$value])) {
@@ -462,13 +462,13 @@ function taxonomy_xml_canonicize_predicates(&$term, $entity_type = 'taxonomy_ter
              #watchdog('taxonomy_xml', "I found that the identified vocab %vocab_id is vocab %vocab_num", array('%vocab_id' => $value, '%vocab_num' => $term->vid), WATCHDOG_INFO);
            }
          }
-         
-         
+
+
         break;
       case 'type':
         // These are already done. Ignore
       case TAXONOMY_XML_UNUSED:
-        // Explicitly ignore these, 
+        // Explicitly ignore these,
         // Unset and discard them in fact!
         unset($term->predicates[$original_predicate]);
         break;
@@ -560,8 +560,8 @@ function taxonomy_xml_add_all_children_to_queue($term) {
           watchdog(
             'taxonomy_xml',
             "
-              While processing %term_name, found an existing local version of it. 
-              !ref 
+              While processing %term_name, found an existing local version of it.
+              !ref
               Therefore NOT queuing it for further recursion again.
             ",
             array(
@@ -767,7 +767,6 @@ function taxonomy_xml_set_term_relations(&$terms) {
   watchdog('taxonomy_xml',  __FUNCTION__ . " Now connecting all known term relations and hierarchy links between this group of %count related terms. ", array('%count' => count($terms) ), WATCHDOG_INFO);
 
   $relationship_predicates = array(TAXONOMY_XML_PARENT, TAXONOMY_XML_CHILD, TAXONOMY_XML_RELATED);
-
   foreach ($terms as $guid => &$term) {
     if (empty($term)) {
       watchdog('taxonomy_xml', "An empty term '%guid' was in the array for relinking. This should not have happened, fix the input upstream. Ignoring.", array('%guid' => $guid ), WATCHDOG_NOTICE);
@@ -789,12 +788,16 @@ function taxonomy_xml_set_term_relations(&$terms) {
           // Keep a list just for logging
           $found_term_names = array();
 
-          foreach ($targets as $targetid => &$target) {
+          foreach ($targets as $targetix => &$target) {
+            // The target itself here is either the id,
+            // or a full representation of the item it points to.
+            // If the second then the list is expected to be keyed by identifier.
+            $targetid = (is_string($target)) ? $target : $targetix;
             #dpm(t("Term %termname references %targetid as a %predicate", array('$termname' => $term->name, '%targetid' => $targetid, '%predicate' => $predicate )));
 
             // Here we first try to find the referred term in the list of recently-made terms
             if (! isset($terms[$targetid])) {
-              #drupal_set_message(t("Referenced term %targetid seems unknown so far, need to try a bigger lookup for it", array('%targetid' => $targetid)));
+              watchdog('taxonomy_xml', "Referenced term %targetid seems unknown so far, need to try a bigger lookup for it", array('%targetid' => $targetid), WATCHDOG_DEBUG);
               // taxonomy_enhancer.module, if available, may have more data about our terms. Hopefully including a GUID.
               if ($found_term = taxonomy_xml_get_term_by_guid($targetid, $term->vid)) {
                 $terms[$targetid] = $found_term;
@@ -810,12 +813,12 @@ function taxonomy_xml_set_term_relations(&$terms) {
                   $found_term_names[] = $target;
                 }
               }
-            } // if not already loaded
+            } // ...if not already loaded.
             else {
-              // already know about it
+              // Already know about it in the current list.
               $found_term_names[] = l($terms[$targetid]->name . " (#" . $terms[$targetid]->tid . ")", 'taxonomy/term/'. $terms[$targetid]->tid);
             }
-          } // each referred term
+          } // ...each referred term.
 
           watchdog('taxonomy_xml',
             '%predicate relations of !term_name are !targets',
@@ -828,11 +831,11 @@ function taxonomy_xml_set_term_relations(&$terms) {
           );
 
         } // Is a 'relationship' sort of predicate.
-        #else {
-        #    watchdog('taxonomy_xml', "$predicate is not a ". implode(',', $relationship_predicates));
-        #}
-      } // each type of predicate
-    } // has predicates
+        else {
+            watchdog('taxonomy_xml', "$predicate is not a ". implode(',', $relationship_predicates), array(), WATCHDOG_DEBUG);
+        }
+      } // ...each type of predicate.
+    } // ...has predicates.
 
     watchdog('taxonomy_xml',  __FUNCTION__ . " Prepared the list of all required referree terms. Now establishing the actual links.", array(), WATCHDOG_INFO);
 
@@ -840,6 +843,7 @@ function taxonomy_xml_set_term_relations(&$terms) {
     // Note that a modification was made by flagging $term->taxonomy_xml_relinked = TRUE;
     //
     // The linking earlier may have given us some duplicates if the source had redundant info, so filter for uniques
+
     if (isset($term->predicates[TAXONOMY_XML_PARENT]) && is_array($term->predicates[TAXONOMY_XML_PARENT])) {
       // Link in parent
       foreach (array_unique($term->predicates[TAXONOMY_XML_PARENT]) as $key => $othertermname) {
@@ -874,10 +878,12 @@ function taxonomy_xml_set_term_relations(&$terms) {
               // If that happened, and we NOW are setting a real parent - that old relationship
               // is to be anulled. This may not always be intentional - but is likely the case
               // and produces the structure we actually expect.
-              if (isset($term->parent[0])) {
+              if (isset($term->parent[0]) && $term->parent[0] == 0) {
                 unset($term->parent[0]);
               }
-              
+              // Note that core sometimes calls the array 'parent' and
+              // sometimes 'parents'. It's just confused!
+              // To save, we use the singular.
               $term->parent[$parent->tid] = $parent->tid;
             }
           }
@@ -902,16 +908,14 @@ function taxonomy_xml_set_term_relations(&$terms) {
 
     // for efficiency, only re-save terms that really need it
     if ( !empty($term->taxonomy_xml_relinked) ) {
-
       // It may be premature to save this term if we don't know its parent yet,
       // The system will default to parent=0, which causes bad structure later on
       if (! isset($term->parent)) {
         watchdog('taxonomy_xml', __FUNCTION__ . " About to save a term with no parent, this could be a problem later. <pre>!term</pre>", array('!term' => print_r($term, 1)), WATCHDOG_INFO);
       }
-
       taxonomy_term_save($term);
     }
-  }
+  }// .. each term.
 }
 
 /**

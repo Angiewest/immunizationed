@@ -96,7 +96,7 @@ function cvsancestry_import_finished($success, $results, $operations) {
 function cvsancestry_import_row($vid, $row_data, &$context) {
   // As we may be calling back via batch, ensure the functions are loaded
   module_load_include('inc', 'taxonomy_xml', 'taxonomy_xml.process');
-  
+
   // $_taxonomy_xml_terms is semi-persistant.
   // We expect to be called atomically, but if the term has been cached recently,
   // keep a note of it in the meantime.
@@ -156,6 +156,6 @@ function csvancestry_set_parent($term, $parent_name) {
 
   if ($parent_term && isset($parent_term->tid) ) {
     drupal_set_message(t("!name # %tid is a child of !parent # %ptid ", array('!name' => $term->name, '%tid' => $term->tid, '!parent' => l($parent_term->name, 'taxonomy/term/' . $parent_term->tid), '%ptid' => $parent_term->tid)));
-    $term->parent[$parent_term->tid] = $parent_term->tid;
+    $term->parents[$parent_term->tid] = $parent_term->tid;
   }
 }

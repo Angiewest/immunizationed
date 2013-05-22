@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
  */
 
 /**
@@ -8,7 +8,7 @@
 
 /**
  * hook_taxonomy_service_info()
- */ 
+ */
 function upload_taxonomy_service_info() {
   $services = array();
   $services['file_upload'] = array(
@@ -39,13 +39,13 @@ function upload_taxonomy_service_form($form_values, $service_info) {
   $form['format'] = array(
     '#type' => 'select',
     '#title' => t('Format of file'),
-#    '#default_value' => variable_get('taxonomy_xml_format', 'xml_format'),
+    '#default_value' => variable_get('taxonomy_xml_format', 'xml_format'),
     '#options' => $formats,
   );
   $form['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Import from '. $service_info['name']),
-    '#submit' => array('upload_taxonomy_service_form_submit'),
+    '#submit' => array('taxonomy_xml_import_form_submit', 'upload_taxonomy_service_form_submit'),
   );
   return $form;
 }

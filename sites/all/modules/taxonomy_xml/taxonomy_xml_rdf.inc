@@ -5,7 +5,7 @@
 /**
  * @file
  *   Highly experimental attempt to hook into the undocumented rdf.module
- * and provide taxonomy term data
+ * and provide taxonomy term data.
  */
 
 module_load_include('inc', 'rdf', 'rdf.pages');
@@ -54,7 +54,7 @@ function taxonomy_xml_term_as_rdf_data($term) {
   if (!empty($term->description)) {
     $statements['rdfs:comment'] = rdf_literal($term->description);
   }
-  foreach ((array) $term->parent as $ptid) {
+  foreach ((array) $term->parents as $ptid) {
     $statements['rdfs:subClassOf'][$ptid] = rdf_uri( url('taxonomy/term/' . $ptid, array('absolute' => TRUE)));
   }
   foreach ((array) $term->children as $ctid => $child) {
@@ -74,15 +74,15 @@ function taxonomy_xml_term_as_rdf_data($term) {
 
 /**
  * Return an RDF representation of the requested vocab.
- * 
+ *
  * Include references to all the top-level child terms.
- * 
+ *
  */
 function taxonomy_xml_rdf_export_vocabulary($vocabulary) {
   // Expect an object, but the menu callback may have just provided the id
   $vocabulary = is_numeric($vocabulary) ? taxonomy_vocabulary_load($vocabulary) : $vocabulary;
 
-  // This URI may not resolve unless you are running taxonomy_server, but 
+  // This URI may not resolve unless you are running taxonomy_server, but
   // that's fine - it doesn't have to.
   $subject_uri  = url('taxonomy/vocabulary/' . $vocabulary->vid, array('absolute' => TRUE));
   $subject_curi = 'vocabulary:' . $vocabulary->vid;
@@ -92,11 +92,11 @@ function taxonomy_xml_rdf_export_vocabulary($vocabulary) {
   $XMLDoc = new DOMDocument();
   $XMLRDF = $XMLDoc->createElementNS(TAXONOMY_XML_RDF_NS, "rdf:RDF" );
   $XMLDoc->appendChild($XMLRDF);
-  
+
   $vocab_xml = rdf_entity_to_xml($vocabulary, $XMLDoc);
   $vocab_xml->setAttributeNS(TAXONOMY_XML_RDF_NS, 'rdf:about', $subject_uri);
   $XMLRDF->appendChild($vocab_xml);
-  
+
   // Now add the terms in this vocabulary
   // They are listed as siblings, not children of the ontology
   // TODO work with max_depth
@@ -113,7 +113,7 @@ function taxonomy_xml_rdf_export_vocabulary($vocabulary) {
       $path = url($term_uri['path'], array('absolute' => TRUE));
       // Why does that return an array now?
       $term_xml->setAttributeNS(TAXONOMY_XML_RDF_NS, 'rdf:about', $path);
-      
+
       $vocab_xml->appendChild($term_xml);
     }
   }
@@ -271,7 +271,7 @@ function taxonomy_xml_rdf_schema_load_term($term) {
   if (!empty($term->description)) {
     $statements['rdfs:comment'] = rdf_literal($term->description);
   }
-  foreach ((array) $term->parent as $ptid) {
+  foreach ((array) $term->parents as $ptid) {
     $statements['rdfs:subClassOf'][$ptid] = rdf_uri( url('taxonomy/term/' . $ptid, array('absolute' => TRUE)));
   }
   foreach ((array) $term->synonyms as $i => $synonym) {

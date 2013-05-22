@@ -5,9 +5,7 @@
 /**
  * @file
  *  UI and forms for administering taxonomy_xml
- */
-
-/**
+ *
  * 2010  D7 Dan Morrison http://coders.co.nz
  *
  */
@@ -50,7 +48,6 @@ function taxonomy_xml_import_form($form, &$form_state) {
   // Loading this list also ensures the includes are present
   $services_info = taxonomy_xml_services();
   $services_list = taxonomy_xml_services('options');
-  #$services_list = array('' => '<choose>') + $services_list;
 
   // The form has some UI additions to help select the input
   drupal_add_js(drupal_get_path('module', 'taxonomy_xml') . '/filtering_fieldset.js');
@@ -65,7 +62,7 @@ function taxonomy_xml_import_form($form, &$form_state) {
     #'#title' => t('Data Source'),
     '#options' => $services_list,
     '#id' => 'service_id',
-#    '#default_value' => variable_get('taxonomy_xml_service_id', 'none'),
+    '#default_value' => variable_get('taxonomy_xml_service_id', 'none'),
     '#attributes' => array('class' => array('filtering-selector') ),
   );
 
@@ -154,8 +151,6 @@ function taxonomy_xml_import_form($form, &$form_state) {
  * Overall form persistence, should fire on any submission whatsoever.
  */
 function taxonomy_xml_import_form_validate($form, &$form_state) {
-  // Remember current prefs, just for convenience
-  variable_set('taxonomy_xml_vid', $form_state['values']['vid']);
   $form_state['storage']['remember'] = TRUE;
   // Do not redirect and leave the page after uploading a file. This keeps
   // all the current form values in place. The file is saved by the
@@ -171,51 +166,23 @@ function taxonomy_xml_import_form_submit($form, &$form_state) {
 
   module_load_include('inc', 'taxonomy_xml', 'taxonomy_xml.process');
 
-  // This should not be set unless we are actually interrogating a service. Ensure it gets wiped.
-  variable_del('taxonomy_xml_service_id', NULL);
-
   // Remember current prefs, just for convenience
   // Speaking of convenience, why does my form discard these values all the time?
-  variable_set('taxonomy_xml_format', $form_state['values']['format']);
+  $service_id = $form_state['values']['service_id'];
+  variable_set('taxonomy_xml_service_id', $service_id);
+  variable_set('taxonomy_xml_format', @$form_state['values'][$service_id]['format']);
+  variable_set('taxonomy_xml_identifier', @$form_state['values'][$service_id]['identifier']);
+  variable_set('taxonomy_xml_url', @$form_state['values'][$service_id]['url']);
   variable_set('taxonomy_xml_vid', $form_state['values']['vid']);
   variable_set('taxonomy_xml_duplicate', $form_state['values']['duplicate']);
-  variable_set('taxonomy_xml_source_selector', $form_state['values']['source_selector']);
-  variable_set('taxonomy_xml_identifier', $form_state['values']['identifier']);
-  variable_set('taxonomy_xml_url', $form_state['values']['url']);
   variable_set('taxonomy_xml_recurse_down', $form_state['values']['recurse_down']);
   variable_set('taxonomy_xml_watchdog_level', $form_state['values']['taxonomy_xml_watchdog_level']);
 
-  // Allow either upload, web service or URL sources
-  //
-  switch ($form_state['values']['source_selector']) {
-
-    case 'url':
-      // Retrieve remote URL and parser it
-      if ($url = $form_state['values']['url']) {
-        $text = taxonomy_xml_cached_get_contents($url);
-        if (! empty($text)) {
-          drupal_set_message(t('Retrieved Submitted URL %url. Now starting an import process.', array('%url' => $url)));
-          taxonomy_xml_invoke_import($text, $form_state['values'], $url);
-        }
-        else {
-          drupal_set_message(t('Failed to retrieve content from <a href="!url">!url</a>. Check this URL and access to it. This will not work on sites requiring authentication', array('!url' => $url)), 'error');
-        }
-      }
-      break;
-
-    case 'service':
-      variable_set('taxonomy_xml_service_id', $form_state['values']['service_id']);
-      // Invoke service and parse response
-      $services = taxonomy_xml_services(NULL, 'full');
-      $service = $services[$form_state['values']['service_id']];
-      taxonomy_xml_invoke_service_request($service, $form_state['values']);
-      break;
-  }
+  // Each of the respective services will take care of this form submission in their own way.
 
   // The initial import may have queued up some further process to do.
   // Check the queue and run it when this form goes.
   batch_set(taxonomy_xml_add_term_to_batch_queue());
 }
-
 
 
