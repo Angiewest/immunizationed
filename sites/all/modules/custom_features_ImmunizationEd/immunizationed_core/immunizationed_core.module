@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the immunizationed_production feature.
+ */
+
+include_once 'immunizationed_core.features.inc';

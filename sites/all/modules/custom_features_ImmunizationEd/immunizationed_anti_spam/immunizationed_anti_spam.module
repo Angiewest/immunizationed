@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Immunizationed_anti-spam feature.
+ */
+
+include_once 'immunizationed_anti_spam.features.inc';

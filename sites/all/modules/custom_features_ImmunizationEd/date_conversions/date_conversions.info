@@ -1,0 +1,4 @@
+name = Rules date conversions
+description = "Rules functions to help convert and calculate dates."
+package = Immunizationed
+core = 7.x

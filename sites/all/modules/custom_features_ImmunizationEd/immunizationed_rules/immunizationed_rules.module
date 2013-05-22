@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Immunizationed_rules feature.
+ */
+
+include_once 'immunizationed_rules.features.inc';

@@ -1,0 +1,16 @@
+name = Immunizationed_layouts
+description = panelizer node layouts
+core = 7.x
+package = immunizationed
+version = 7.x-1.0
+project = immunizationed_layouts
+dependencies[] = ctools
+dependencies[] = immunizationed_core
+dependencies[] = page_manager
+dependencies[] = panelizer
+dependencies[] = panels
+features[ctools][] = page_manager:pages_default:1
+features[ctools][] = panels:layouts:1
+features[ctools][] = panels:pipelines:1
+features[features_api][] = api:1
+project path = sites/all/modules/custom_features_immunizationed
