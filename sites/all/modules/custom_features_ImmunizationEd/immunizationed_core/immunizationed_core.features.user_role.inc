@@ -31,6 +31,12 @@ function immunizationed_core_user_default_roles() {
   // Exported role: administrator.
   $roles['administrator'] = array(
     'name' => 'administrator',
+    'weight' => 7,
+  );
+
+  // Exported role: apprentice admin.
+  $roles['apprentice admin'] = array(
+    'name' => 'apprentice admin',
     'weight' => 6,
   );
 

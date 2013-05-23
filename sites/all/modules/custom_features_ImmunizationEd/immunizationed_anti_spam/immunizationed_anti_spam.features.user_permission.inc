@@ -32,7 +32,10 @@ function immunizationed_anti_spam_user_default_permissions() {
   $permissions['protected from spambot scans'] = array(
     'name' => 'protected from spambot scans',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'spambot',
@@ -42,7 +45,11 @@ function immunizationed_anti_spam_user_default_permissions() {
   $permissions['skip CAPTCHA'] = array(
     'name' => 'skip CAPTCHA',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),

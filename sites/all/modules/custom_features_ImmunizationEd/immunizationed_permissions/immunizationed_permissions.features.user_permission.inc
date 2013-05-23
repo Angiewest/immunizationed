@@ -15,6 +15,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'access administration menu',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'admin_menu',
@@ -25,7 +26,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'access administration pages',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'system',
   );
@@ -53,6 +54,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'access backup and migrate',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'backup_migrate',
   );
@@ -97,6 +99,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'access content overview',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -121,6 +124,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'access dashboard',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'dashboard',
   );
@@ -130,7 +134,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'access overlay',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'overlay',
   );
@@ -169,6 +173,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'access rules debug',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'rules',
   );
@@ -187,6 +192,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'access site reports',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'system',
   );
@@ -210,6 +216,7 @@ function immunizationed_permissions_user_default_permissions() {
       'Co-I admin' => 'Co-I admin',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'statistics',
@@ -244,6 +251,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'add content to books',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'book',
@@ -254,6 +262,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'add media from remote sources',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'media_internet',
@@ -291,6 +300,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'administer blocks',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'block',
   );
@@ -300,6 +310,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'administer book outlines',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'book',
@@ -310,7 +321,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'administer comments',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'comment',
   );
@@ -329,7 +340,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'administer content types',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -357,7 +368,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'administer custom content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'ctools_custom_content',
   );
@@ -421,7 +432,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'administer group',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'og',
   );
@@ -431,6 +442,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'administer image styles',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'image',
   );
@@ -440,7 +452,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'administer menu',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'menu',
   );
@@ -468,6 +480,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'administer nodes',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -478,7 +491,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'administer page manager',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'page_manager',
   );
@@ -506,7 +519,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'administer panelizer',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'panelizer',
   );
@@ -1317,6 +1330,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'administer rules',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'rules',
   );
@@ -1380,6 +1394,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'administer taxonomy',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'taxonomy',
@@ -1399,6 +1414,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'administer url aliases',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'path',
   );
@@ -1409,6 +1425,7 @@ function immunizationed_permissions_user_default_permissions() {
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'user',
@@ -1419,7 +1436,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'administer views',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'views',
   );
@@ -1429,6 +1446,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'block IP addresses',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'system',
   );
@@ -1447,6 +1465,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'bypass node access',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -1493,6 +1512,7 @@ function immunizationed_permissions_user_default_permissions() {
       'Co-I admin' => 'Co-I admin',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -1503,6 +1523,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'create article content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -1513,6 +1534,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'create book content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -1522,8 +1544,10 @@ function immunizationed_permissions_user_default_permissions() {
   $permissions['create convenient_vaccination_services content'] = array(
     'name' => 'create convenient_vaccination_services content',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -1534,6 +1558,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'create document content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -1543,7 +1568,10 @@ function immunizationed_permissions_user_default_permissions() {
   $permissions['create enhanced_vaccination_systems content'] = array(
     'name' => 'create enhanced_vaccination_systems content',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -1567,7 +1595,10 @@ function immunizationed_permissions_user_default_permissions() {
   $permissions['create meeting_agenda content'] = array(
     'name' => 'create meeting_agenda content',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -1577,7 +1608,10 @@ function immunizationed_permissions_user_default_permissions() {
   $permissions['create motivation content'] = array(
     'name' => 'create motivation content',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -1588,6 +1622,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'create new books',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'book',
@@ -1598,6 +1633,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'create nuts_bolts content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -1608,6 +1644,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'create offsite_resource content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -1627,7 +1664,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'create panel content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -1645,7 +1682,10 @@ function immunizationed_permissions_user_default_permissions() {
   $permissions['create patient_notification content'] = array(
     'name' => 'create patient_notification content',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -1656,7 +1696,6 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'create practice_admin_group content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -1677,6 +1716,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'create required_disclosure content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -1687,6 +1727,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'create roadmap_waypoint content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -1696,8 +1737,10 @@ function immunizationed_permissions_user_default_permissions() {
   $permissions['create task content'] = array(
     'name' => 'create task content',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -1708,7 +1751,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'create url aliases',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'path',
   );
@@ -1718,6 +1761,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'create video content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -1728,7 +1772,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'create webform content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -1756,6 +1800,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete any announcement content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -1765,6 +1810,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete any article content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -1774,6 +1820,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete any book content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -1783,6 +1830,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete any convenient_vaccination_services content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -1792,6 +1840,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete any document content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -1801,6 +1850,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete any enhanced_vaccination_systems content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -1810,6 +1860,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete any files',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'file_entity',
   );
@@ -1819,6 +1870,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete any meeting_agenda content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -1828,6 +1880,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete any motivation content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -1837,6 +1890,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete any nuts_bolts content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -1846,6 +1900,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete any offsite_resource content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -1864,6 +1919,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete any panel content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -1882,6 +1938,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete any patient_notification content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -1909,6 +1966,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete any required_disclosure content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -1918,6 +1976,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete any roadmap_waypoint content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -1927,6 +1986,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete any task content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -1936,6 +1996,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete any video content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -1945,6 +2006,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete any webform content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -1963,6 +2025,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete own announcement content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -1973,6 +2036,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete own article content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -1983,6 +2047,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete own book content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -1993,6 +2058,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete own convenient_vaccination_services content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2003,6 +2069,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete own document content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2013,6 +2080,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete own enhanced_vaccination_systems content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2023,6 +2091,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete own files',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'file_entity',
@@ -2033,6 +2102,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete own meeting_agenda content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2043,6 +2113,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete own motivation content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2053,6 +2124,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete own nuts_bolts content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2063,6 +2135,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete own offsite_resource content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2082,7 +2155,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete own panel content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -2101,6 +2174,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete own patient_notification content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2111,7 +2185,6 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete own practice_admin_group content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -2130,6 +2203,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete own required_disclosure content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2140,6 +2214,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete own roadmap_waypoint content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2150,6 +2225,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete own task content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2160,6 +2236,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete own video content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2170,6 +2247,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete own webform content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -2188,6 +2266,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'delete revisions',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -2302,6 +2381,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'display drupal links',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'admin_menu',
   );
@@ -2320,6 +2400,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit any announcement content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2330,6 +2411,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit any article content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2340,6 +2422,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit any book content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2349,8 +2432,8 @@ function immunizationed_permissions_user_default_permissions() {
   $permissions['edit any convenient_vaccination_services content'] = array(
     'name' => 'edit any convenient_vaccination_services content',
     'roles' => array(
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2361,6 +2444,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit any document content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2371,6 +2455,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit any enhanced_vaccination_systems content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2381,6 +2466,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit any files',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'file_entity',
@@ -2391,6 +2477,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit any meeting_agenda content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2401,6 +2488,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit any motivation content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2411,6 +2499,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit any nuts_bolts content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2421,6 +2510,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit any offsite_resource content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2440,7 +2530,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit any panel content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -2459,6 +2549,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit any patient_notification content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2469,7 +2560,6 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit any practice_admin_group content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -2478,7 +2568,9 @@ function immunizationed_permissions_user_default_permissions() {
   $permissions['edit any practice_group content'] = array(
     'name' => 'edit any practice_group content',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2489,6 +2581,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit any required_disclosure content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2499,6 +2592,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit any roadmap_waypoint content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2508,7 +2602,10 @@ function immunizationed_permissions_user_default_permissions() {
   $permissions['edit any task content'] = array(
     'name' => 'edit any task content',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2519,6 +2616,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit any video content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2529,7 +2627,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit any webform content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -2541,6 +2639,7 @@ function immunizationed_permissions_user_default_permissions() {
       'Co-I admin' => 'Co-I admin',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2551,6 +2650,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit own article content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2561,6 +2661,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit own book content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2581,8 +2682,10 @@ function immunizationed_permissions_user_default_permissions() {
   $permissions['edit own convenient_vaccination_services content'] = array(
     'name' => 'edit own convenient_vaccination_services content',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2593,6 +2696,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit own document content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2602,7 +2706,10 @@ function immunizationed_permissions_user_default_permissions() {
   $permissions['edit own enhanced_vaccination_systems content'] = array(
     'name' => 'edit own enhanced_vaccination_systems content',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2613,6 +2720,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit own files',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'file_entity',
@@ -2622,7 +2730,10 @@ function immunizationed_permissions_user_default_permissions() {
   $permissions['edit own meeting_agenda content'] = array(
     'name' => 'edit own meeting_agenda content',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2632,7 +2743,10 @@ function immunizationed_permissions_user_default_permissions() {
   $permissions['edit own motivation content'] = array(
     'name' => 'edit own motivation content',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2643,6 +2757,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit own nuts_bolts content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2653,6 +2768,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit own offsite_resource content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2672,7 +2788,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit own panel content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -2690,7 +2806,10 @@ function immunizationed_permissions_user_default_permissions() {
   $permissions['edit own patient_notification content'] = array(
     'name' => 'edit own patient_notification content',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2701,7 +2820,6 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit own practice_admin_group content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -2722,6 +2840,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit own required_disclosure content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2732,6 +2851,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit own roadmap_waypoint content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2741,8 +2861,10 @@ function immunizationed_permissions_user_default_permissions() {
   $permissions['edit own task content'] = array(
     'name' => 'edit own task content',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2753,6 +2875,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit own video content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -2763,7 +2886,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'edit own webform content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -2791,21 +2914,27 @@ function immunizationed_permissions_user_default_permissions() {
   // Exported permission: edit terms in 10.
   $permissions['edit terms in 10'] = array(
     'name' => 'edit terms in 10',
-    'roles' => array(),
+    'roles' => array(
+      'authenticated user' => 'authenticated user',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in 11.
   $permissions['edit terms in 11'] = array(
     'name' => 'edit terms in 11',
-    'roles' => array(),
+    'roles' => array(
+      'authenticated user' => 'authenticated user',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in 12.
   $permissions['edit terms in 12'] = array(
     'name' => 'edit terms in 12',
-    'roles' => array(),
+    'roles' => array(
+      'authenticated user' => 'authenticated user',
+    ),
     'module' => 'taxonomy',
   );
 
@@ -2879,7 +3008,9 @@ function immunizationed_permissions_user_default_permissions() {
   // Exported permission: edit terms in 9.
   $permissions['edit terms in 9'] = array(
     'name' => 'edit terms in 9',
-    'roles' => array(),
+    'roles' => array(
+      'authenticated user' => 'authenticated user',
+    ),
     'module' => 'taxonomy',
   );
 
@@ -2891,6 +3022,7 @@ function immunizationed_permissions_user_default_permissions() {
       'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'actions_permissions',
@@ -2903,6 +3035,7 @@ function immunizationed_permissions_user_default_permissions() {
       'Co-I admin' => 'Co-I admin',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'actions_permissions',
@@ -2916,6 +3049,7 @@ function immunizationed_permissions_user_default_permissions() {
       'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'actions_permissions',
@@ -2926,6 +3060,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'execute comment_unpublish_by_keyword_action',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'actions_permissions',
@@ -2936,6 +3071,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'execute node_assign_owner_action',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'actions_permissions',
@@ -2946,6 +3082,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'execute node_make_sticky_action',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'actions_permissions',
@@ -2956,6 +3093,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'execute node_make_unsticky_action',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'actions_permissions',
@@ -2966,6 +3104,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'execute node_promote_action',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'actions_permissions',
@@ -2978,6 +3117,7 @@ function immunizationed_permissions_user_default_permissions() {
       'Co-I admin' => 'Co-I admin',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'actions_permissions',
@@ -2991,6 +3131,7 @@ function immunizationed_permissions_user_default_permissions() {
       'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'actions_permissions',
@@ -3001,6 +3142,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'execute node_unpromote_action',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'actions_permissions',
@@ -3011,6 +3153,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'execute node_unpublish_action',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'actions_permissions',
@@ -3021,6 +3164,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'execute node_unpublish_by_keyword_action',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'actions_permissions',
   );
@@ -3033,6 +3177,7 @@ function immunizationed_permissions_user_default_permissions() {
       'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'actions_permissions',
@@ -3046,6 +3191,7 @@ function immunizationed_permissions_user_default_permissions() {
       'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'actions_permissions',
@@ -3056,7 +3202,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'execute og_user_roles_action',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'actions_permissions',
   );
@@ -3102,6 +3248,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'execute system_block_ip_action',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'actions_permissions',
   );
@@ -3111,6 +3258,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'execute system_goto_action',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'actions_permissions',
@@ -3121,6 +3269,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'execute system_message_action',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'actions_permissions',
   );
@@ -3133,6 +3282,7 @@ function immunizationed_permissions_user_default_permissions() {
       'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'actions_permissions',
@@ -3145,6 +3295,7 @@ function immunizationed_permissions_user_default_permissions() {
       'Co-I admin' => 'Co-I admin',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'actions_permissions',
@@ -3155,6 +3306,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'execute views_bulk_operations_archive_action',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'actions_permissions',
@@ -3165,6 +3317,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'execute views_bulk_operations_argument_selector_action',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'actions_permissions',
   );
@@ -3186,6 +3339,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'execute views_bulk_operations_modify_action',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'actions_permissions',
@@ -3206,6 +3360,7 @@ function immunizationed_permissions_user_default_permissions() {
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'actions_permissions',
@@ -3216,7 +3371,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'flush caches',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'admin_menu',
   );
@@ -3226,6 +3381,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'import media',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'media',
@@ -3263,6 +3419,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'perform backup',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'backup_migrate',
   );
@@ -3293,6 +3450,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'revert revisions',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -3303,7 +3461,6 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'search content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'search',
   );
@@ -3311,9 +3468,7 @@ function immunizationed_permissions_user_default_permissions() {
   // Exported permission: select account cancellation method.
   $permissions['select account cancellation method'] = array(
     'name' => 'select account cancellation method',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'user',
   );
 
@@ -3325,6 +3480,7 @@ function immunizationed_permissions_user_default_permissions() {
       'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'comment',
@@ -3335,6 +3491,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'switch shortcut sets',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'shortcut',
@@ -3345,7 +3502,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'use PHP for settings',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'php',
   );
@@ -3364,7 +3521,6 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'use advanced search',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'search',
   );
@@ -3374,7 +3530,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'use page manager',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'page_manager',
   );
@@ -3433,6 +3589,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'use text format full_html',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'filter',
   );
@@ -3442,6 +3599,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'use text format php_code',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'filter',
   );
@@ -3451,6 +3609,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'view advanced help index',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'advanced_help',
@@ -3472,6 +3631,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'view advanced help topic',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'advanced_help',
@@ -3482,6 +3642,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'view date repeats',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'date_repeat_field',
@@ -3492,6 +3653,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'view files',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'file_entity',
@@ -3502,6 +3664,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'view own files',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'file_entity',
@@ -3512,6 +3675,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'view own private files',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'file_entity',
@@ -3545,6 +3709,7 @@ function immunizationed_permissions_user_default_permissions() {
       'Co-I admin' => 'Co-I admin',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'statistics',
@@ -3555,6 +3720,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'view revisions',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -3565,7 +3731,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'view the administration theme',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'system',
   );
