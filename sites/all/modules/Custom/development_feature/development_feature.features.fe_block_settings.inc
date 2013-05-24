@@ -12,6 +12,38 @@ function development_feature_default_fe_block_settings() {
 
   $export['version'] = '2.0';
 
+  $export['devel-execute_php'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'execute_php',
+    'module' => 'devel',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'bartik' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'bartik',
+        'weight' => 0,
+      ),
+      'energetic' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'energetic',
+        'weight' => 0,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
   $export['devel-switch_user'] = array(
     'cache' => -1,
     'custom' => 0,

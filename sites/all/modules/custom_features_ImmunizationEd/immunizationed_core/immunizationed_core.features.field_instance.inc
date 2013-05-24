@@ -1295,49 +1295,6 @@ function immunizationed_core_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-convenient_vaccination_services-body'
-  $field_instances['node-convenient_vaccination_services-body'] = array(
-    'bundle' => 'convenient_vaccination_services',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'trim_length' => 600,
-        ),
-        'type' => 'text_summary_or_trimmed',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'body',
-    'label' => 'Body',
-    'required' => FALSE,
-    'settings' => array(
-      'display_summary' => TRUE,
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 20,
-        'summary_rows' => 5,
-      ),
-      'type' => 'text_textarea_with_summary',
-      'weight' => 2,
-    ),
-  );
-
   // Exported field_instance: 'node-convenient_vaccination_services-field_assembly_instruction'
   $field_instances['node-convenient_vaccination_services-field_assembly_instruction'] = array(
     'bundle' => 'convenient_vaccination_services',
@@ -1349,8 +1306,8 @@ function immunizationed_core_field_default_field_instances() {
         'label' => 'above',
         'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 2,
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1386,8 +1343,8 @@ function immunizationed_core_field_default_field_instances() {
         'label' => 'above',
         'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 5,
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1415,6 +1372,47 @@ function immunizationed_core_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-convenient_vaccination_services-field_req_assembly_instruc_p1'
+  $field_instances['node-convenient_vaccination_services-field_req_assembly_instruc_p1'] = array(
+    'bundle' => 'convenient_vaccination_services',
+    'default_value' => array(
+      0 => array(
+        'tid' => 9,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_req_assembly_instruc_p1',
+    'label' => 'Required assembly instruction',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 3,
+    ),
+  );
+
   // Exported field_instance: 'node-convenient_vaccination_services-og_group_ref'
   $field_instances['node-convenient_vaccination_services-og_group_ref'] = array(
     'bundle' => 'convenient_vaccination_services',
@@ -1427,7 +1425,7 @@ function immunizationed_core_field_default_field_instances() {
         'module' => 'og_ui',
         'settings' => array(),
         'type' => 'og_list_default',
-        'weight' => 6,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1680,50 +1678,6 @@ function immunizationed_core_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-enhanced_vaccination_systems-body'
-  $field_instances['node-enhanced_vaccination_systems-body'] = array(
-    'bundle' => 'enhanced_vaccination_systems',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'trim_length' => 600,
-        ),
-        'type' => 'text_summary_or_trimmed',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'body',
-    'label' => 'Body',
-    'required' => FALSE,
-    'settings' => array(
-      'display_summary' => TRUE,
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 20,
-        'summary_rows' => 5,
-      ),
-      'type' => 'text_textarea_with_summary',
-      'weight' => 31,
-    ),
-  );
-
   // Exported field_instance: 'node-enhanced_vaccination_systems-field_assembly_instruction_p3'
   $field_instances['node-enhanced_vaccination_systems-field_assembly_instruction_p3'] = array(
     'bundle' => 'enhanced_vaccination_systems',
@@ -1757,7 +1711,7 @@ function immunizationed_core_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 37,
+      'weight' => 4,
     ),
   );
 
@@ -1797,7 +1751,48 @@ function immunizationed_core_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 38,
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-enhanced_vaccination_systems-field_req_assembly_instruc_p3'
+  $field_instances['node-enhanced_vaccination_systems-field_req_assembly_instruc_p3'] = array(
+    'bundle' => 'enhanced_vaccination_systems',
+    'default_value' => array(
+      0 => array(
+        'tid' => 26,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_req_assembly_instruc_p3',
+    'label' => 'Required assembly instruction',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 3,
     ),
   );
 
@@ -1856,14 +1851,20 @@ function immunizationed_core_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 39,
+      'weight' => 6,
     ),
   );
 
   // Exported field_instance: 'node-meeting_agenda-body'
   $field_instances['node-meeting_agenda-body'] = array(
     'bundle' => 'meeting_agenda',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'summary' => '',
+        'value' => '<p>this is default text</p>',
+        'format' => 'filtered_html',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -1887,13 +1888,14 @@ function immunizationed_core_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'body',
     'label' => 'Body',
-    'required' => FALSE,
+    'required' => 0,
     'settings' => array(
-      'display_summary' => TRUE,
-      'text_processing' => 1,
+      'display_summary' => 0,
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'text',
       'settings' => array(
         'rows' => 20,
@@ -1936,7 +1938,7 @@ function immunizationed_core_field_default_field_instances() {
     'label' => 'Date',
     'required' => 0,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -1991,7 +1993,7 @@ function immunizationed_core_field_default_field_instances() {
     'label' => 'Next Meeting Date',
     'required' => 0,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -2056,47 +2058,62 @@ function immunizationed_core_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-motivation-body'
-  $field_instances['node-motivation-body'] = array(
-    'bundle' => 'motivation',
+  // Exported field_instance: 'node-meeting_agenda-og_group_ref'
+  $field_instances['node-meeting_agenda-og_group_ref'] = array(
+    'bundle' => 'meeting_agenda',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
+        'label' => 'above',
+        'module' => 'og_ui',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
+        'type' => 'og_list_default',
+        'weight' => 4,
       ),
       'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'trim_length' => 600,
-        ),
-        'type' => 'text_summary_or_trimmed',
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'body',
-    'label' => 'Body',
+    'field_name' => 'og_group_ref',
+    'label' => 'Groups audience',
     'required' => FALSE,
     'settings' => array(
-      'display_summary' => TRUE,
-      'text_processing' => 1,
+      'behaviors' => array(
+        'og_widget' => array(
+          'admin' => array(
+            'widget_type' => 'entityreference_autocomplete',
+          ),
+          'default' => array(
+            'widget_type' => 'options_select',
+          ),
+          'status' => TRUE,
+        ),
+      ),
       'user_register_form' => FALSE,
     ),
-    'widget' => array(
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 20,
-        'summary_rows' => 5,
+    'view modes' => array(
+      'full' => array(
+        'custom settings' => FALSE,
+        'label' => 'Full',
+        'type' => 'og_list_default',
       ),
-      'type' => 'text_textarea_with_summary',
-      'weight' => 31,
+      'teaser' => array(
+        'custom settings' => FALSE,
+        'label' => 'Teaser',
+        'type' => 'og_list_default',
+      ),
+    ),
+    'widget' => array(
+      'module' => 'og',
+      'settings' => array(),
+      'type' => 'og_complex',
+      'weight' => 35,
     ),
   );
 
@@ -2133,7 +2150,7 @@ function immunizationed_core_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 39,
+      'weight' => 3,
     ),
   );
 
@@ -2173,7 +2190,44 @@ function immunizationed_core_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 40,
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-motivation-field_req_assembly_instruc_p4'
+  $field_instances['node-motivation-field_req_assembly_instruc_p4'] = array(
+    'bundle' => 'motivation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 10,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_req_assembly_instruc_p4',
+    'label' => 'Required assembly instruction',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 2,
     ),
   );
 
@@ -2232,7 +2286,7 @@ function immunizationed_core_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 41,
+      'weight' => 5,
     ),
   );
 
@@ -2483,6 +2537,95 @@ function immunizationed_core_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-other_additions_to_views-body'
+  $field_instances['node-other_additions_to_views-body'] = array(
+    'bundle' => 'other_additions_to_views',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'trim_length' => 600,
+        ),
+        'type' => 'text_summary_or_trimmed',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'body',
+    'label' => 'Body',
+    'required' => FALSE,
+    'settings' => array(
+      'display_summary' => TRUE,
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 20,
+        'summary_rows' => 5,
+      ),
+      'type' => 'text_textarea_with_summary',
+      'weight' => 31,
+    ),
+  );
+
+  // Exported field_instance: 'node-other_additions_to_views-field_entity_reference'
+  $field_instances['node-other_additions_to_views-field_entity_reference'] = array(
+    'bundle' => 'other_additions_to_views',
+    'default_value' => NULL,
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => 'This is a reference for any additional field to add to a view. ',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_entity_reference',
+    'label' => 'Entity Reference',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 32,
+    ),
+  );
+
   // Exported field_instance: 'node-page-body'
   $field_instances['node-page-body'] = array(
     'bundle' => 'page',
@@ -2527,50 +2670,6 @@ function immunizationed_core_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-patient_notification-body'
-  $field_instances['node-patient_notification-body'] = array(
-    'bundle' => 'patient_notification',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'trim_length' => 600,
-        ),
-        'type' => 'text_summary_or_trimmed',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'body',
-    'label' => 'Body',
-    'required' => FALSE,
-    'settings' => array(
-      'display_summary' => TRUE,
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 20,
-        'summary_rows' => 5,
-      ),
-      'type' => 'text_textarea_with_summary',
-      'weight' => 31,
-    ),
-  );
-
   // Exported field_instance: 'node-patient_notification-field_assembly_instruction_p2'
   $field_instances['node-patient_notification-field_assembly_instruction_p2'] = array(
     'bundle' => 'patient_notification',
@@ -2604,7 +2703,7 @@ function immunizationed_core_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 42,
+      'weight' => 3,
     ),
   );
 
@@ -2644,27 +2743,23 @@ function immunizationed_core_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 43,
+      'weight' => 4,
     ),
   );
 
-  // Exported field_instance: 'node-patient_notification-field_send_out_mailings'
-  $field_instances['node-patient_notification-field_send_out_mailings'] = array(
+  // Exported field_instance: 'node-patient_notification-field_req_assembly_instruc_p2'
+  $field_instances['node-patient_notification-field_req_assembly_instruc_p2'] = array(
     'bundle' => 'patient_notification',
-    'default_value' => array(
-      0 => array(
-        'tid' => 21,
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Send postage mailings to your patients as a reminder to get their vaccine. They can also use this on their calendar or fridge as a reminder.',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 6,
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2674,8 +2769,8 @@ function immunizationed_core_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_send_out_mailings',
-    'label' => 'Send Out Mailings',
+    'field_name' => 'field_req_assembly_instruc_p2',
+    'label' => 'Required assembly instruction',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -2684,8 +2779,8 @@ function immunizationed_core_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 37,
+      'type' => 'options_buttons',
+      'weight' => 2,
     ),
   );
 
@@ -2744,7 +2839,7 @@ function immunizationed_core_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 44,
+      'weight' => 5,
     ),
   );
 
@@ -4841,6 +4936,7 @@ function immunizationed_core_field_default_field_instances() {
   t('Enter the date of when your next meeting will be held. ');
   t('Enter your practice address');
   t('Enter your practice phone number');
+  t('Entity Reference');
   t('Expected time to complete');
   t('Fixed due date');
   t('Fixed start date');
@@ -4873,13 +4969,12 @@ function immunizationed_core_field_default_field_instances() {
   t('Practice photo');
   t('Request message');
   t('Required Disclosures');
+  t('Required assembly instruction');
   t('Resource image');
   t('Resource links');
   t('Responsible role');
   t('Select the role responsible for this task');
   t('Select the special practice role responsible for completing this waypoint.');
-  t('Send Out Mailings');
-  t('Send postage mailings to your patients as a reminder to get their vaccine. They can also use this on their calendar or fridge as a reminder.');
   t('Sources');
   t('Start date day offset from enrollment');
   t('Tags');
@@ -4888,6 +4983,7 @@ function immunizationed_core_field_default_field_instances() {
   t('Task started date');
   t('Tell us about your practice');
   t('These are statements of disclosure that are required viewing for accreditation of Continuing Medical Education credits.');
+  t('This is a reference for any additional field to add to a view. ');
   t('This is the text a user may send to the group administrators.');
   t('This should always be set to "private"');
   t('Title Text');

@@ -19,6 +19,16 @@ function development_feature_user_default_permissions() {
     'module' => 'devel',
   );
 
+  // Exported permission: access menu clone.
+  $permissions['access menu clone'] = array(
+    'name' => 'access menu clone',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
+    'module' => 'menu_clone',
+  );
+
   // Exported permission: execute php code.
   $permissions['execute php code'] = array(
     'name' => 'execute php code',
@@ -26,6 +36,15 @@ function development_feature_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'devel',
+  );
+
+  // Exported permission: import users.
+  $permissions['import users'] = array(
+    'name' => 'import users',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'user_import',
   );
 
   // Exported permission: switch users.
@@ -44,7 +63,7 @@ function development_feature_user_default_permissions() {
     'name' => 'view devel_node_access information',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'devel_node_access',
   );

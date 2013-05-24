@@ -16,6 +16,7 @@ dependencies[] = views_bulk_operations
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
 features[rules_config][] = rules_actions_on_practice_creation
+features[rules_config][] = rules_actions_on_strategy_selection_save
 features[rules_config][] = rules_add_practice_admin_role_to_special_roles
 features[rules_config][] = rules_check_instruction_fields
 features[rules_config][] = rules_content_addition_redirect

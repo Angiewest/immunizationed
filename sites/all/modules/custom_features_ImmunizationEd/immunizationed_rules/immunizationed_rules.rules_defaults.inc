@@ -41,6 +41,32 @@ function immunizationed_rules_default_rules_configuration() {
       ]
     }
   }');
+  $items['rules_actions_on_strategy_selection_save'] = entity_import('rules_config', '{ "rules_actions_on_strategy_selection_save" : {
+      "LABEL" : "Actions on strategy selection save",
+      "PLUGIN" : "reaction rule",
+      "TAGS" : [ "autofill" ],
+      "REQUIRES" : [ "rules", "og" ],
+      "ON" : [ "node_insert" ],
+      "IF" : [
+        { "node_is_of_type" : {
+            "node" : [ "node" ],
+            "type" : { "value" : {
+                "convenient_vaccination_services" : "convenient_vaccination_services",
+                "enhanced_vaccination_systems" : "enhanced_vaccination_systems",
+                "meeting_agenda" : "meeting_agenda",
+                "motivation" : "motivation",
+                "patient_notification" : "patient_notification"
+              }
+            }
+          }
+        },
+        { "entity_has_field" : { "entity" : [ "node" ], "field" : "og_group_ref" } }
+      ],
+      "DO" : [
+        { "og_group_content_add" : { "entity" : [ "node" ], "group" : [ "node:author:og-user-node:0" ] } }
+      ]
+    }
+  }');
   $items['rules_add_practice_admin_role_to_special_roles'] = entity_import('rules_config', '{ "rules_add_practice_admin_role_to_special_roles" : {
       "LABEL" : "Add group member and practice admin role to practice admins on login",
       "PLUGIN" : "reaction rule",

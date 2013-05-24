@@ -457,6 +457,15 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'menu',
   );
 
+  // Exported permission: administer menu attributes.
+  $permissions['administer menu attributes'] = array(
+    'name' => 'administer menu attributes',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'menu_attributes',
+  );
+
   // Exported permission: administer module filter.
   $permissions['administer module filter'] = array(
     'name' => 'administer module filter',
@@ -709,9 +718,44 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'panelizer',
   );
 
+  // Exported permission: administer panelizer node meeting_agenda content.
+  $permissions['administer panelizer node meeting_agenda content'] = array(
+    'name' => 'administer panelizer node meeting_agenda content',
+    'roles' => array(),
+    'module' => 'panelizer',
+  );
+
+  // Exported permission: administer panelizer node meeting_agenda context.
+  $permissions['administer panelizer node meeting_agenda context'] = array(
+    'name' => 'administer panelizer node meeting_agenda context',
+    'roles' => array(),
+    'module' => 'panelizer',
+  );
+
   // Exported permission: administer panelizer node meeting_agenda defaults.
   $permissions['administer panelizer node meeting_agenda defaults'] = array(
     'name' => 'administer panelizer node meeting_agenda defaults',
+    'roles' => array(),
+    'module' => 'panelizer',
+  );
+
+  // Exported permission: administer panelizer node meeting_agenda layout.
+  $permissions['administer panelizer node meeting_agenda layout'] = array(
+    'name' => 'administer panelizer node meeting_agenda layout',
+    'roles' => array(),
+    'module' => 'panelizer',
+  );
+
+  // Exported permission: administer panelizer node meeting_agenda overview.
+  $permissions['administer panelizer node meeting_agenda overview'] = array(
+    'name' => 'administer panelizer node meeting_agenda overview',
+    'roles' => array(),
+    'module' => 'panelizer',
+  );
+
+  // Exported permission: administer panelizer node meeting_agenda settings.
+  $permissions['administer panelizer node meeting_agenda settings'] = array(
+    'name' => 'administer panelizer node meeting_agenda settings',
     'roles' => array(),
     'module' => 'panelizer',
   );
@@ -828,6 +872,13 @@ function immunizationed_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
     ),
+    'module' => 'panelizer',
+  );
+
+  // Exported permission: administer panelizer node other_additions_to_views defaults.
+  $permissions['administer panelizer node other_additions_to_views defaults'] = array(
+    'name' => 'administer panelizer node other_additions_to_views defaults',
+    'roles' => array(),
     'module' => 'panelizer',
   );
 
@@ -1650,6 +1701,13 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: create other_additions_to_views content.
+  $permissions['create other_additions_to_views content'] = array(
+    'name' => 'create other_additions_to_views content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: create page content.
   $permissions['create page content'] = array(
     'name' => 'create page content',
@@ -1905,6 +1963,13 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: delete any other_additions_to_views content.
+  $permissions['delete any other_additions_to_views content'] = array(
+    'name' => 'delete any other_additions_to_views content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: delete any page content.
   $permissions['delete any page content'] = array(
     'name' => 'delete any page content',
@@ -2138,6 +2203,13 @@ function immunizationed_permissions_user_default_permissions() {
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own other_additions_to_views content.
+  $permissions['delete own other_additions_to_views content'] = array(
+    'name' => 'delete own other_additions_to_views content',
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -2516,6 +2588,13 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: edit any other_additions_to_views content.
+  $permissions['edit any other_additions_to_views content'] = array(
+    'name' => 'edit any other_additions_to_views content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: edit any page content.
   $permissions['edit any page content'] = array(
     'name' => 'edit any page content',
@@ -2771,6 +2850,13 @@ function immunizationed_permissions_user_default_permissions() {
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own other_additions_to_views content.
+  $permissions['edit own other_additions_to_views content'] = array(
+    'name' => 'edit own other_additions_to_views content',
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -3461,6 +3547,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'search content',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'search',
   );
@@ -3495,6 +3582,16 @@ function immunizationed_permissions_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'shortcut',
+  );
+
+  // Exported permission: use PHP for label patterns.
+  $permissions['use PHP for label patterns'] = array(
+    'name' => 'use PHP for label patterns',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
+    'module' => 'auto_entitylabel',
   );
 
   // Exported permission: use PHP for settings.

@@ -78,6 +78,7 @@ features[menu_links][] = navigation:node/add/meeting-agenda
 features[menu_links][] = navigation:node/add/motivation
 features[menu_links][] = navigation:node/add/nuts-bolts
 features[menu_links][] = navigation:node/add/offsite-resource
+features[menu_links][] = navigation:node/add/other-additions-to-views
 features[menu_links][] = navigation:node/add/page
 features[menu_links][] = navigation:node/add/panel
 features[menu_links][] = navigation:node/add/patient-notification
