@@ -328,6 +328,7 @@ features[page_manager_handlers][] = node_edit_panel_context_6
 features[page_manager_handlers][] = node_edit_panelizer_node
 features[page_manager_handlers][] = node_view_http_response
 features[page_manager_pages][] = nuts_bolts
+features[page_manager_pages][] = practice_tasks
 features[panelizer_defaults][] = node:article:default
 features[panelizer_defaults][] = node:article:default:default
 features[panelizer_defaults][] = node:article:default:teaser
