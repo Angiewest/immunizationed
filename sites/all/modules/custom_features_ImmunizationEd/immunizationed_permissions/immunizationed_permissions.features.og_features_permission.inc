@@ -695,6 +695,7 @@ function immunizationed_permissions_og_features_default_permissions() {
   $permissions['node:practice_group:administer group'] = array(
     'roles' => array(
       'Administrator member' => 'Administrator member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -733,7 +734,9 @@ function immunizationed_permissions_og_features_default_permissions() {
 
   // Exported og permission: 'node:practice_group:create meeting_agenda content'
   $permissions['node:practice_group:create meeting_agenda content'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'Administrator member' => 'Administrator member',
+    ),
   );
 
   // Exported og permission: 'node:practice_group:create motivation content'
@@ -876,7 +879,9 @@ function immunizationed_permissions_og_features_default_permissions() {
 
   // Exported og permission: 'node:practice_group:update any announcement content'
   $permissions['node:practice_group:update any announcement content'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'Administrator member' => 'Administrator member',
+    ),
   );
 
   // Exported og permission: 'node:practice_group:update any article content'
@@ -886,7 +891,9 @@ function immunizationed_permissions_og_features_default_permissions() {
 
   // Exported og permission: 'node:practice_group:update any convenient_vaccination_services content'
   $permissions['node:practice_group:update any convenient_vaccination_services content'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'Administrator member' => 'Administrator member',
+    ),
   );
 
   // Exported og permission: 'node:practice_group:update any enhanced_vaccination_systems content'
@@ -898,7 +905,9 @@ function immunizationed_permissions_og_features_default_permissions() {
 
   // Exported og permission: 'node:practice_group:update any meeting_agenda content'
   $permissions['node:practice_group:update any meeting_agenda content'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'Administrator member' => 'Administrator member',
+    ),
   );
 
   // Exported og permission: 'node:practice_group:update any motivation content'
@@ -919,6 +928,7 @@ function immunizationed_permissions_og_features_default_permissions() {
   $permissions['node:practice_group:update any task content'] = array(
     'roles' => array(
       'Administrator member' => 'Administrator member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -926,6 +936,7 @@ function immunizationed_permissions_og_features_default_permissions() {
   $permissions['node:practice_group:update body field'] = array(
     'roles' => array(
       'Administrator member' => 'Administrator member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -1074,7 +1085,10 @@ function immunizationed_permissions_og_features_default_permissions() {
 
   // Exported og permission: 'node:practice_group:update field_tags field'
   $permissions['node:practice_group:update field_tags field'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'Administrator member' => 'Administrator member',
+      'member' => 'member',
+    ),
   );
 
   // Exported og permission: 'node:practice_group:update field_task_due_date field'
@@ -1151,7 +1165,9 @@ function immunizationed_permissions_og_features_default_permissions() {
 
   // Exported og permission: 'node:practice_group:update own meeting_agenda content'
   $permissions['node:practice_group:update own meeting_agenda content'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'Administrator member' => 'Administrator member',
+    ),
   );
 
   // Exported og permission: 'node:practice_group:update own motivation content'
@@ -1345,7 +1361,10 @@ function immunizationed_permissions_og_features_default_permissions() {
 
   // Exported og permission: 'node:practice_group:view field_tags field'
   $permissions['node:practice_group:view field_tags field'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'Administrator member' => 'Administrator member',
+      'member' => 'member',
+    ),
   );
 
   // Exported og permission: 'node:practice_group:view field_task_due_date field'
@@ -1358,10 +1377,7 @@ function immunizationed_permissions_og_features_default_permissions() {
 
   // Exported og permission: 'node:practice_group:view field_task_start_date field'
   $permissions['node:practice_group:view field_task_start_date field'] = array(
-    'roles' => array(
-      'Administrator member' => 'Administrator member',
-      'member' => 'member',
-    ),
+    'roles' => array(),
   );
 
   // Exported og permission: 'node:practice_group:view group_content_access field'

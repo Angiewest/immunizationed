@@ -1272,6 +1272,13 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'panelizer',
   );
 
+  // Exported permission: administer panelizer taxonomy_term form_relationships defaults.
+  $permissions['administer panelizer taxonomy_term form_relationships defaults'] = array(
+    'name' => 'administer panelizer taxonomy_term form_relationships defaults',
+    'roles' => array(),
+    'module' => 'panelizer',
+  );
+
   // Exported permission: administer panelizer taxonomy_term motivation defaults.
   $permissions['administer panelizer taxonomy_term motivation defaults'] = array(
     'name' => 'administer panelizer taxonomy_term motivation defaults',
@@ -2374,6 +2381,13 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: delete terms in 13.
+  $permissions['delete terms in 13'] = array(
+    'name' => 'delete terms in 13',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
   // Exported permission: delete terms in 2.
   $permissions['delete terms in 2'] = array(
     'name' => 'delete terms in 2',
@@ -3021,6 +3035,13 @@ function immunizationed_permissions_user_default_permissions() {
     'roles' => array(
       'authenticated user' => 'authenticated user',
     ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: edit terms in 13.
+  $permissions['edit terms in 13'] = array(
+    'name' => 'edit terms in 13',
+    'roles' => array(),
     'module' => 'taxonomy',
   );
 
@@ -3719,6 +3740,8 @@ function immunizationed_permissions_user_default_permissions() {
       'Co-I admin' => 'Co-I admin',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'advanced_help',
   );

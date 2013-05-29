@@ -124,6 +124,29 @@ function immunizationed_core_taxonomy_default_vocabularies() {
         ),
       ),
     ),
+    'form_relationships' => array(
+      'name' => 'Form relationships',
+      'machine_name' => 'form_relationships',
+      'description' => 'forms that need to be associated with content',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
     'motivation' => array(
       'name' => 'Motivation - other',
       'machine_name' => 'motivation',

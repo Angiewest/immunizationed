@@ -91,7 +91,7 @@ function immunizationed_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'auto_entitylabel_pattern_node_convenient_vaccination_services';
-  $strongarm->value = 'Selected convenience strategies on [current-date:custom:M d, Y]';
+  $strongarm->value = 'Selected [current-date:custom:M d, Y]';
   $export['auto_entitylabel_pattern_node_convenient_vaccination_services'] = $strongarm;
 
   $strongarm = new stdClass();

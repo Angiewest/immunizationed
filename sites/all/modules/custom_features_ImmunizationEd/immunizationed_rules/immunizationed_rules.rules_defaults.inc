@@ -225,6 +225,18 @@ function immunizationed_rules_default_rules_configuration() {
                     "node" : [ "node" ],
                     "type" : { "value" : { "practice_group" : "practice_group" } }
                   }
+                },
+                { "node_is_of_type" : {
+                    "node" : [ "node" ],
+                    "type" : { "value" : {
+                        "convenient_vaccination_services" : "convenient_vaccination_services",
+                        "enhanced_vaccination_systems" : "enhanced_vaccination_systems",
+                        "meeting_agenda" : "meeting_agenda",
+                        "motivation" : "motivation",
+                        "patient_notification" : "patient_notification"
+                      }
+                    }
+                  }
                 }
               ]
             }

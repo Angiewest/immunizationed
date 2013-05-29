@@ -1300,7 +1300,7 @@ function immunizationed_core_field_default_field_instances() {
     'bundle' => 'convenient_vaccination_services',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Below is a list of strategies you and your clinic can use to offer convenient vaccination service. The first strategy is required. Please select your choices from the optional list below. If you have a great idea on how to make your vaccine services more convenient, please type it in below. Finish by clicking "Save".',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1319,7 +1319,7 @@ function immunizationed_core_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_assembly_instruction',
     'label' => 'Assembly instruction',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -1337,7 +1337,7 @@ function immunizationed_core_field_default_field_instances() {
     'bundle' => 'convenient_vaccination_services',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please enter your original convenient vaccination system strategy, or you can create a new strategy here. ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1381,7 +1381,7 @@ function immunizationed_core_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => '',
+    'description' => 'We highly recommend that you extend your influenza vaccination season by vaccinating early and going through March. ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1400,7 +1400,7 @@ function immunizationed_core_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_req_assembly_instruc_p1',
     'label' => 'Required assembly instruction',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -1683,7 +1683,8 @@ function immunizationed_core_field_default_field_instances() {
     'bundle' => 'enhanced_vaccination_systems',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Below is a list of strategies you and your clinic can use to enhance your office vaccination system. The first strategy is required. Please select your choices from the optional list below. If you have a great idea on how to enhance your office vaccination system, please type it in below. Finish by clicking "Save".
+',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1720,7 +1721,7 @@ function immunizationed_core_field_default_field_instances() {
     'bundle' => 'enhanced_vaccination_systems',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Please enter your original strategy for enhancing vaccination systems.',
+    'description' => 'Please enter your original strategy for enhancing vaccination systems, or you can create a new strategy here. ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1764,7 +1765,7 @@ function immunizationed_core_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => '',
+    'description' => 'We highly recommend that you use Standing Orders Programs (SOPs) for vaccination in your clinic.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1783,7 +1784,7 @@ function immunizationed_core_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_req_assembly_instruc_p3',
     'label' => 'Required assembly instruction',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -2122,7 +2123,7 @@ function immunizationed_core_field_default_field_instances() {
     'bundle' => 'motivation',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Below is a list of strategies you and your clinic can use to keep people motivated. The first strategy is required. Please select your choices from the optional list below. If you have a great idea on how to motivate your clinic and staff, please type it in below. Finish by clicking "Save".',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2159,7 +2160,7 @@ function immunizationed_core_field_default_field_instances() {
     'bundle' => 'motivation',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please enter your original motivation strategy, or you can create a new strategy here. ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2197,9 +2198,13 @@ function immunizationed_core_field_default_field_instances() {
   // Exported field_instance: 'node-motivation-field_req_assembly_instruc_p4'
   $field_instances['node-motivation-field_req_assembly_instruc_p4'] = array(
     'bundle' => 'motivation',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'tid' => 27,
+      ),
+    ),
     'deleted' => 0,
-    'description' => '',
+    'description' => 'We highly recommend that you ensure that your clinic has sufficient vaccine inventory. ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2218,7 +2223,7 @@ function immunizationed_core_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_req_assembly_instruc_p4',
     'label' => 'Required assembly instruction',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -2581,21 +2586,18 @@ function immunizationed_core_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-other_additions_to_views-field_entity_reference'
-  $field_instances['node-other_additions_to_views-field_entity_reference'] = array(
+  // Exported field_instance: 'node-other_additions_to_views-field_content_type_reference_for'
+  $field_instances['node-other_additions_to_views-field_content_type_reference_for'] = array(
     'bundle' => 'other_additions_to_views',
     'default_value' => NULL,
-    'default_value_function' => '',
     'deleted' => 0,
-    'description' => 'This is a reference for any additional field to add to a view. ',
+    'description' => 'select the content type that this entry should appear on when included in a view',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
         'weight' => 1,
       ),
       'teaser' => array(
@@ -2606,22 +2608,17 @@ function immunizationed_core_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_entity_reference',
-    'label' => 'Entity Reference',
+    'field_name' => 'field_content_type_reference_for',
+    'label' => 'Content type reference for views filter',
     'required' => 0,
     'settings' => array(
-      'behaviors' => array(
-        'prepopulate' => array(
-          'status' => 0,
-        ),
-      ),
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'options',
       'settings' => array(),
-      'type' => 'options_buttons',
+      'type' => 'options_select',
       'weight' => 32,
     ),
   );
@@ -2675,7 +2672,7 @@ function immunizationed_core_field_default_field_instances() {
     'bundle' => 'patient_notification',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Below is a list of strategies you and your clinic can use to notify patients about the importance of vaccination. The first strategy is required. Please select your choices from the optional list below. If you have a great idea on how to increase patient notification about vaccinations, please type it in below. Finish by clicking "Save".',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2712,7 +2709,7 @@ function immunizationed_core_field_default_field_instances() {
     'bundle' => 'patient_notification',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Please enter your original patient notification strategy.',
+    'description' => 'Please enter your original patient notification strategy, or you can create a new strategy here. ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2750,9 +2747,13 @@ function immunizationed_core_field_default_field_instances() {
   // Exported field_instance: 'node-patient_notification-field_req_assembly_instruc_p2'
   $field_instances['node-patient_notification-field_req_assembly_instruc_p2'] = array(
     'bundle' => 'patient_notification',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'tid' => 15,
+      ),
+    ),
     'deleted' => 0,
-    'description' => '',
+    'description' => 'We highly recommend that you discuss the serious nature of vaccine preventable diseases with each patient at each patient visit. ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2771,7 +2772,7 @@ function immunizationed_core_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_req_assembly_instruc_p2',
     'label' => 'Required assembly instruction',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -3988,7 +3989,7 @@ function immunizationed_core_field_default_field_instances() {
         'text_parts' => array(),
         'year_range' => '-1:+0',
       ),
-      'type' => 'date_select',
+      'type' => 'date_popup',
       'weight' => 9,
     ),
   );
@@ -4302,7 +4303,7 @@ function immunizationed_core_field_default_field_instances() {
         'text_parts' => array(),
         'year_range' => '-0:+1',
       ),
-      'type' => 'date_text',
+      'type' => 'date_popup',
       'weight' => 8,
     ),
   );
@@ -4357,7 +4358,7 @@ function immunizationed_core_field_default_field_instances() {
         'text_parts' => array(),
         'year_range' => '-3:+3',
       ),
-      'type' => 'date_text',
+      'type' => 'date_popup',
       'weight' => 7,
     ),
   );
@@ -4922,9 +4923,15 @@ function immunizationed_core_field_default_field_instances() {
   t('Alt Text');
   t('Assembly instruction');
   t('Audience');
+  t('Below is a list of strategies you and your clinic can use to enhance your office vaccination system. The first strategy is required. Please select your choices from the optional list below. If you have a great idea on how to enhance your office vaccination system, please type it in below. Finish by clicking "Save".
+');
+  t('Below is a list of strategies you and your clinic can use to keep people motivated. The first strategy is required. Please select your choices from the optional list below. If you have a great idea on how to motivate your clinic and staff, please type it in below. Finish by clicking "Save".');
+  t('Below is a list of strategies you and your clinic can use to notify patients about the importance of vaccination. The first strategy is required. Please select your choices from the optional list below. If you have a great idea on how to increase patient notification about vaccinations, please type it in below. Finish by clicking "Save".');
+  t('Below is a list of strategies you and your clinic can use to offer convenient vaccination service. The first strategy is required. Please select your choices from the optional list below. If you have a great idea on how to make your vaccine services more convenient, please type it in below. Finish by clicking "Save".');
   t('Body');
   t('Book page graphic');
   t('Comment');
+  t('Content type reference for views filter');
   t('Date');
   t('Date Task Completed');
   t('Description');
@@ -4936,7 +4943,6 @@ function immunizationed_core_field_default_field_instances() {
   t('Enter the date of when your next meeting will be held. ');
   t('Enter your practice address');
   t('Enter your practice phone number');
-  t('Entity Reference');
   t('Expected time to complete');
   t('Fixed due date');
   t('Fixed start date');
@@ -4957,8 +4963,10 @@ function immunizationed_core_field_default_field_instances() {
   t('Optionally select an image for this task.');
   t('Other - please specify');
   t('Please choose some tags for this page.');
-  t('Please enter your original patient notification strategy.');
-  t('Please enter your original strategy for enhancing vaccination systems.');
+  t('Please enter your original convenient vaccination system strategy, or you can create a new strategy here. ');
+  t('Please enter your original motivation strategy, or you can create a new strategy here. ');
+  t('Please enter your original patient notification strategy, or you can create a new strategy here. ');
+  t('Please enter your original strategy for enhancing vaccination systems, or you can create a new strategy here. ');
   t('Please select the audience for this announcement.');
   t('Please select the audience for this item.');
   t('Poster Frame');
@@ -4983,7 +4991,6 @@ function immunizationed_core_field_default_field_instances() {
   t('Task started date');
   t('Tell us about your practice');
   t('These are statements of disclosure that are required viewing for accreditation of Continuing Medical Education credits.');
-  t('This is a reference for any additional field to add to a view. ');
   t('This is the text a user may send to the group administrators.');
   t('This should always be set to "private"');
   t('Title Text');
@@ -4994,6 +5001,10 @@ function immunizationed_core_field_default_field_instances() {
   t('Upload an image to go with this article.');
   t('Upload an image to represent your practice');
   t('Visibility');
+  t('We highly recommend that you discuss the serious nature of vaccine preventable diseases with each patient at each patient visit. ');
+  t('We highly recommend that you ensure that your clinic has sufficient vaccine inventory. ');
+  t('We highly recommend that you extend your influenza vaccination season by vaccinating early and going through March. ');
+  t('We highly recommend that you use Standing Orders Programs (SOPs) for vaccination in your clinic.');
   t('add links to resources');
   t('article image');
   t('certification entity');
@@ -5001,6 +5012,7 @@ function immunizationed_core_field_default_field_instances() {
   t('enter the date you completed this task');
   t('enter the date you started this task');
   t('optionally enter a fixed start date');
+  t('select the content type that this entry should appear on when included in a view');
   t('this link starts with sites/default/files...');
 
   return $field_instances;

@@ -1113,7 +1113,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'link_title' => 'Motivation',
     'options' => array(
       'attributes' => array(
-        'title' => 'This is Pillar 4. Content to be placed in this section should be associated with motivation strategies through Pillar 4. ',
+        'title' => 'This is Pillar 4: Motivation. Content to be placed in this section should be associated with motivation strategies through Pillar 4. ',
       ),
     ),
     'module' => 'system',

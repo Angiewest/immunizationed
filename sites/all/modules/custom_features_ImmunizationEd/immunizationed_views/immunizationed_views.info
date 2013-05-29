@@ -10,7 +10,6 @@ dependencies[] = comment
 dependencies[] = ctools
 dependencies[] = features
 dependencies[] = media
-dependencies[] = node
 dependencies[] = og
 dependencies[] = og_context
 dependencies[] = og_ui

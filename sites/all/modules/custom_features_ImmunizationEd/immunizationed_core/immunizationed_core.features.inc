@@ -298,7 +298,7 @@ function immunizationed_core_node_info() {
     'motivation' => array(
       'name' => t('Motivation'),
       'base' => 'node_content',
-      'description' => t('This is Pillar 4. Content to be placed in this section should be associated with motivation strategies through Pillar 4. '),
+      'description' => t('This is Pillar 4: Motivation. Content to be placed in this section should be associated with motivation strategies through Pillar 4. '),
       'has_title' => '1',
       'title_label' => t('Motivation'),
       'help' => '',
