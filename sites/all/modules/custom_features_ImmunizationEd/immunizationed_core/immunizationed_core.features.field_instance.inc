@@ -1856,62 +1856,11 @@ function immunizationed_core_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-meeting_agenda-body'
-  $field_instances['node-meeting_agenda-body'] = array(
-    'bundle' => 'meeting_agenda',
-    'default_value' => array(
-      0 => array(
-        'summary' => '',
-        'value' => '<p>this is default text</p>',
-        'format' => 'filtered_html',
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'trim_length' => 600,
-        ),
-        'type' => 'text_summary_or_trimmed',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'body',
-    'label' => 'Body',
-    'required' => 0,
-    'settings' => array(
-      'display_summary' => 0,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 20,
-        'summary_rows' => 5,
-      ),
-      'type' => 'text_textarea_with_summary',
-      'weight' => 31,
-    ),
-  );
-
   // Exported field_instance: 'node-meeting_agenda-field_date'
   $field_instances['node-meeting_agenda-field_date'] = array(
     'bundle' => 'meeting_agenda',
     'deleted' => 0,
-    'description' => 'Insert the date of your meeting. [current-date:short][current-date:short]',
+    'description' => 'Select the date of your meeting.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1936,10 +1885,10 @@ function immunizationed_core_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_date',
-    'label' => 'Date',
+    'label' => 'Date of meeting',
     'required' => 0,
     'settings' => array(
-      'default_value' => 'blank',
+      'default_value' => 'now',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -1955,7 +1904,7 @@ function immunizationed_core_field_default_field_instances() {
         'label_position' => 'above',
         'repeat_collapsed' => 0,
         'text_parts' => array(),
-        'year_range' => '-3:+3',
+        'year_range' => '-1:+1',
       ),
       'type' => 'date_popup',
       'weight' => 32,
@@ -2010,7 +1959,7 @@ function immunizationed_core_field_default_field_instances() {
         'label_position' => 'above',
         'repeat_collapsed' => 0,
         'text_parts' => array(),
-        'year_range' => '-3:+3',
+        'year_range' => '-1:+1',
       ),
       'type' => 'date_popup',
       'weight' => 33,
@@ -2051,7 +2000,7 @@ function immunizationed_core_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'rows' => 20,
+        'rows' => 15,
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
@@ -2123,7 +2072,7 @@ function immunizationed_core_field_default_field_instances() {
     'bundle' => 'motivation',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Below is a list of strategies you and your clinic can use to keep people motivated. The first strategy is required. Please select your choices from the optional list below. If you have a great idea on how to motivate your clinic and staff, please type it in below. Finish by clicking "Save".',
+    'description' => 'This is a list of strategies you and your clinic can use to keep people motivated. Please select your choices from the optional list above. If you have a great idea on how to motivate your clinic and staff, please type it in below. Finish by clicking "Save".',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -4925,15 +4874,14 @@ function immunizationed_core_field_default_field_instances() {
   t('Audience');
   t('Below is a list of strategies you and your clinic can use to enhance your office vaccination system. The first strategy is required. Please select your choices from the optional list below. If you have a great idea on how to enhance your office vaccination system, please type it in below. Finish by clicking "Save".
 ');
-  t('Below is a list of strategies you and your clinic can use to keep people motivated. The first strategy is required. Please select your choices from the optional list below. If you have a great idea on how to motivate your clinic and staff, please type it in below. Finish by clicking "Save".');
   t('Below is a list of strategies you and your clinic can use to notify patients about the importance of vaccination. The first strategy is required. Please select your choices from the optional list below. If you have a great idea on how to increase patient notification about vaccinations, please type it in below. Finish by clicking "Save".');
   t('Below is a list of strategies you and your clinic can use to offer convenient vaccination service. The first strategy is required. Please select your choices from the optional list below. If you have a great idea on how to make your vaccine services more convenient, please type it in below. Finish by clicking "Save".');
   t('Body');
   t('Book page graphic');
   t('Comment');
   t('Content type reference for views filter');
-  t('Date');
   t('Date Task Completed');
+  t('Date of meeting');
   t('Description');
   t('Determine if this is an OG group.');
   t('Due date day offset from enrollment');
@@ -4951,7 +4899,6 @@ function immunizationed_core_field_default_field_instances() {
   t('Groups audience');
   t('Image');
   t('Insert a quick summary about the suggested agenda items.');
-  t('Insert the date of your meeting. [current-date:short][current-date:short]');
   t('Integer used to calculate due date');
   t('Integer used to calculate suggested start date.');
   t('Internal video url');
@@ -4981,6 +4928,7 @@ function immunizationed_core_field_default_field_instances() {
   t('Resource image');
   t('Resource links');
   t('Responsible role');
+  t('Select the date of your meeting.');
   t('Select the role responsible for this task');
   t('Select the special practice role responsible for completing this waypoint.');
   t('Sources');
@@ -4991,6 +4939,7 @@ function immunizationed_core_field_default_field_instances() {
   t('Task started date');
   t('Tell us about your practice');
   t('These are statements of disclosure that are required viewing for accreditation of Continuing Medical Education credits.');
+  t('This is a list of strategies you and your clinic can use to keep people motivated. Please select your choices from the optional list above. If you have a great idea on how to motivate your clinic and staff, please type it in below. Finish by clicking "Save".');
   t('This is the text a user may send to the group administrators.');
   t('This should always be set to "private"');
   t('Title Text');
