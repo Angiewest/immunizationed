@@ -403,38 +403,6 @@ function immunizationed_core_default_fe_block_settings() {
     'visibility' => 0,
   );
 
-  $export['statistics-popular'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'popular',
-    'module' => 'statistics',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'bartik' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'bartik',
-        'weight' => 0,
-      ),
-      'energetic' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'energetic',
-        'weight' => -2,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
   $export['system-help'] = array(
     'cache' => -1,
     'custom' => 0,

@@ -116,7 +116,6 @@ features[fe_block_settings][] = node-syndicate
 features[fe_block_settings][] = profile-author-information
 features[fe_block_settings][] = search-form
 features[fe_block_settings][] = shortcut-shortcuts
-features[fe_block_settings][] = statistics-popular
 features[fe_block_settings][] = system-help
 features[fe_block_settings][] = system-main
 features[fe_block_settings][] = system-main-menu
