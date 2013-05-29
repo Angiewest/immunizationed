@@ -17,9 +17,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'router_path' => '',
     'link_title' => 'Home',
     'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
+      'attributes' => array(),
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -44,7 +42,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 20,
+    'weight' => -47,
   );
   // Exported menu link: main-menu:building-blocks
   $menu_links['main-menu:building-blocks'] = array(
@@ -58,7 +56,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -48,
   );
   // Exported menu link: main-menu:node/1
   $menu_links['main-menu:node/1'] = array(
@@ -84,17 +82,13 @@ function immunizationed_menus_menu_default_menu_links() {
     'link_path' => 'practice-admin',
     'router_path' => 'practice-admin',
     'link_title' => 'Admin',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-    ),
+    'options' => array(),
     'module' => 'system',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 45,
+    'weight' => -45,
   );
   // Exported menu link: main-menu:practices
   $menu_links['main-menu:practices'] = array(
@@ -108,7 +102,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 20,
+    'weight' => -46,
   );
   // Exported menu link: menu-add-content:node/add
   $menu_links['menu-add-content:node/add'] = array(
@@ -117,9 +111,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'router_path' => 'node/add',
     'link_title' => 'Add content',
     'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
+      'attributes' => array(),
     ),
     'module' => 'menu',
     'hidden' => 0,
