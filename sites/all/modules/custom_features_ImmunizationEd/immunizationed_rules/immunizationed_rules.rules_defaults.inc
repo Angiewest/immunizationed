@@ -45,7 +45,7 @@ function immunizationed_rules_default_rules_configuration() {
       "LABEL" : "Actions on strategy selection save",
       "PLUGIN" : "reaction rule",
       "TAGS" : [ "autofill" ],
-      "REQUIRES" : [ "rules", "og" ],
+      "REQUIRES" : [ "rules", "og", "views_bulk_operations" ],
       "ON" : [ "node_insert" ],
       "IF" : [
         { "node_is_of_type" : {
@@ -63,7 +63,25 @@ function immunizationed_rules_default_rules_configuration() {
         { "entity_has_field" : { "entity" : [ "node" ], "field" : "og_group_ref" } }
       ],
       "DO" : [
-        { "og_group_content_add" : { "entity" : [ "node" ], "group" : [ "node:author:og-user-node:0" ] } }
+        { "og_group_content_add" : { "entity" : [ "node" ], "group" : [ "node:author:og-user-node:0" ] } },
+        { "views_bulk_operations_action_load_list" : {
+            "USING" : { "view" : "vbo_list_of_strategies_for_rules|default" },
+            "PROVIDE" : { "entity_list" : { "entity_list" : "A list of entities" } }
+          }
+        },
+        { "LOOP" : {
+            "USING" : { "list" : [ "entity-list" ] },
+            "ITEM" : { "list_item" : "Current list item" },
+            "DO" : [
+              { "component_rules_unpublish_old_strategies_guts" : {
+                  "new_node" : [ "node" ],
+                  "entity_list" : [ "entity_list" ],
+                  "current_item" : [ "list-item" ]
+                }
+              }
+            ]
+          }
+        }
       ]
     }
   }');
@@ -478,6 +496,32 @@ function immunizationed_rules_default_rules_configuration() {
               }
             ],
             "LABEL" : "create lists of overdue tasks, managers, and members"
+          }
+        }
+      ]
+    }
+  }');
+  $items['rules_unpublish_old_strategies_guts'] = entity_import('rules_config', '{ "rules_unpublish_old_strategies_guts" : {
+      "LABEL" : "Unpublish old strategies",
+      "PLUGIN" : "rule",
+      "REQUIRES" : [ "rules" ],
+      "USES VARIABLES" : {
+        "new_node" : { "label" : "node", "type" : "node" },
+        "entity_list" : { "label" : "List of entity items", "type" : "list" },
+        "current_item" : { "label" : "current list item", "type" : "entity" }
+      },
+      "IF" : [
+        { "entity_is_of_type" : { "entity" : [ "current-item" ], "type" : "node" } },
+        { "data_is" : { "data" : [ "new-node:type" ], "value" : [ "current-item:type" ] } }
+      ],
+      "DO" : [
+        { "LOOP" : {
+            "USING" : { "list" : [ "entity-list" ] },
+            "ITEM" : { "list_item" : "Current list item" },
+            "DO" : [
+              { "node_unpublish" : { "node" : [ "current-item" ] } },
+              { "entity_save" : { "data" : [ "current-item" ] } }
+            ]
           }
         }
       ]

@@ -304,7 +304,6 @@ features[user_permission][] = access overlay
 features[user_permission][] = access own webform results
 features[user_permission][] = access own webform submissions
 features[user_permission][] = access printer-friendly version
-features[user_permission][] = access rules debug
 features[user_permission][] = access site in maintenance mode
 features[user_permission][] = access site reports
 features[user_permission][] = access site-wide contact form

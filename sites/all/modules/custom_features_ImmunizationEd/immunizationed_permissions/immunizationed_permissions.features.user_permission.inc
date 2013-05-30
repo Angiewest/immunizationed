@@ -168,16 +168,6 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'book',
   );
 
-  // Exported permission: access rules debug.
-  $permissions['access rules debug'] = array(
-    'name' => 'access rules debug',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'rules',
-  );
-
   // Exported permission: access site in maintenance mode.
   $permissions['access site in maintenance mode'] = array(
     'name' => 'access site in maintenance mode',

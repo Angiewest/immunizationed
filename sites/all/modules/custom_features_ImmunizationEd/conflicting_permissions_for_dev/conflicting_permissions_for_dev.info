@@ -1,0 +1,12 @@
+name = Conflicting permissions for dev
+description = collection of permissions that enable site development
+core = 7.x
+package = immunizationed
+php = 5.2.4
+version = 7.x-1.0
+project = conflicting_permissions_for_dev
+dependencies[] = features
+dependencies[] = rules
+features[features_api][] = api:2
+features[user_permission][] = access rules debug
+project path = sites/all/modules/custom_features_immunizationed
