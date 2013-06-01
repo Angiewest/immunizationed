@@ -1,5 +1,5 @@
 <?php
- /**
+/**
  * @file
  * Functions for form and batch generation and processing.
  */
@@ -389,23 +389,23 @@ function drupal_build_form($form_id, &$form_state) {
  */
 function form_state_defaults() {
   return array(
-    'rebuild' => FALSE,
-    'rebuild_info' => array(),
-    'redirect' => NULL,
-    // @todo 'args' is usually set, so no other default 'build_info' keys are
-    //   appended via += form_state_defaults().
-    'build_info' => array(
-      'args' => array(),
-      'files' => array(),
-    ),
-    'temporary' => array(),
-    'submitted' => FALSE,
-    'executed' => FALSE,
-    'programmed' => FALSE,
-    'cache'=> FALSE,
-    'method' => 'post',
-    'groups' => array(),
-    'buttons' => array(),
+      'rebuild' => FALSE,
+      'rebuild_info' => array(),
+      'redirect' => NULL,
+      // @todo 'args' is usually set, so no other default 'build_info' keys are
+      //   appended via += form_state_defaults().
+      'build_info' => array(
+          'args' => array(),
+          'files' => array(),
+      ),
+      'temporary' => array(),
+      'submitted' => FALSE,
+      'executed' => FALSE,
+      'programmed' => FALSE,
+      'cache'=> FALSE,
+      'method' => 'post',
+      'groups' => array(),
+      'buttons' => array(),
   );
 }
 
@@ -547,27 +547,27 @@ function form_set_cache($form_build_id, $form, $form_state) {
  */
 function form_state_keys_no_cache() {
   return array(
-    // Public properties defined by form constructors and form handlers.
-    'always_process',
-    'must_validate',
-    'rebuild',
-    'rebuild_info',
-    'redirect',
-    'no_redirect',
-    'temporary',
-    // Internal properties defined by form processing.
-    'buttons',
-    'triggering_element',
-    'clicked_button',
-    'complete form',
-    'groups',
-    'input',
-    'method',
-    'submit_handlers',
-    'submitted',
-    'executed',
-    'validate_handlers',
-    'values',
+      // Public properties defined by form constructors and form handlers.
+      'always_process',
+      'must_validate',
+      'rebuild',
+      'rebuild_info',
+      'redirect',
+      'no_redirect',
+      'temporary',
+      // Internal properties defined by form processing.
+      'buttons',
+      'triggering_element',
+      'clicked_button',
+      'complete form',
+      'groups',
+      'input',
+      'method',
+      'submit_handlers',
+      'submitted',
+      'executed',
+      'validate_handlers',
+      'values',
   );
 }
 
@@ -610,9 +610,9 @@ function form_load_include(&$form_state, $type, $module, $name = NULL) {
     // Only add successfully included files to the form state.
     if ($result = module_load_include($type, $module, $name)) {
       $form_state['build_info']['files']["$module:$name.$type"] = array(
-        'type' => $type,
-        'module' => $module,
-        'name' => $name,
+          'type' => $type,
+          'module' => $module,
+          'name' => $name,
       );
       return $result;
     }
@@ -979,14 +979,14 @@ function drupal_prepare_form($form_id, &$form, &$form_state) {
     $form['#build_id'] = 'form-' . drupal_hash_base64(uniqid(mt_rand(), TRUE) . mt_rand());
   }
   $form['form_build_id'] = array(
-    '#type' => 'hidden',
-    '#value' => $form['#build_id'],
-    '#id' => $form['#build_id'],
-    '#name' => 'form_build_id',
-    // Form processing and validation requires this value, so ensure the
-    // submitted form value appears literally, regardless of custom #tree
-    // and #parents being set elsewhere.
-    '#parents' => array('form_build_id'),
+      '#type' => 'hidden',
+      '#value' => $form['#build_id'],
+      '#id' => $form['#build_id'],
+      '#name' => 'form_build_id',
+      // Form processing and validation requires this value, so ensure the
+      // submitted form value appears literally, regardless of custom #tree
+      // and #parents being set elsewhere.
+      '#parents' => array('form_build_id'),
   );
 
   // Add a token, based on either #token or form_id, to any form displayed to
@@ -1007,26 +1007,26 @@ function drupal_prepare_form($form_id, &$form, &$form_state) {
     else {
       $form['#token'] = $form_id;
       $form['form_token'] = array(
-        '#id' => drupal_html_id('edit-' . $form_id . '-form-token'),
-        '#type' => 'token',
-        '#default_value' => drupal_get_token($form['#token']),
-        // Form processing and validation requires this value, so ensure the
-        // submitted form value appears literally, regardless of custom #tree
-        // and #parents being set elsewhere.
-        '#parents' => array('form_token'),
+          '#id' => drupal_html_id('edit-' . $form_id . '-form-token'),
+          '#type' => 'token',
+          '#default_value' => drupal_get_token($form['#token']),
+          // Form processing and validation requires this value, so ensure the
+          // submitted form value appears literally, regardless of custom #tree
+          // and #parents being set elsewhere.
+          '#parents' => array('form_token'),
       );
     }
   }
 
   if (isset($form_id)) {
     $form['form_id'] = array(
-      '#type' => 'hidden',
-      '#value' => $form_id,
-      '#id' => drupal_html_id("edit-$form_id"),
-      // Form processing and validation requires this value, so ensure the
-      // submitted form value appears literally, regardless of custom #tree
-      // and #parents being set elsewhere.
-      '#parents' => array('form_id'),
+        '#type' => 'hidden',
+        '#value' => $form_id,
+        '#id' => drupal_html_id("edit-$form_id"),
+        // Form processing and validation requires this value, so ensure the
+        // submitted form value appears literally, regardless of custom #tree
+        // and #parents being set elsewhere.
+        '#parents' => array('form_id'),
     );
   }
   if (!isset($form['#id'])) {
@@ -1753,15 +1753,15 @@ function form_builder($form_id, &$element, &$form_state) {
   }
   // Assign basic defaults common for all form elements.
   $element += array(
-    '#required' => FALSE,
-    '#attributes' => array(),
-    '#title_display' => 'before',
+      '#required' => FALSE,
+      '#attributes' => array(),
+      '#title_display' => 'before',
   );
 
   // Special handling if we're on the top level form element.
   if (isset($element['#type']) && $element['#type'] == 'form') {
     if (!empty($element['#https']) && variable_get('https', FALSE) &&
-        !url_is_external($element['#action'])) {
+    !url_is_external($element['#action'])) {
       global $base_root;
 
       // Not an external URL so ensure that it is secure.
@@ -2613,8 +2613,8 @@ function form_process_select($element) {
     // #empty_option, then add an option that represents emptiness.
     if (($required && !isset($element['#default_value'])) || isset($element['#empty_value']) || isset($element['#empty_option'])) {
       $element += array(
-        '#empty_value' => '',
-        '#empty_option' => $required ? t('- Select -') : t('- None -'),
+          '#empty_value' => '',
+          '#empty_option' => $required ? t('- Select -') : t('- None -'),
       );
       // The empty option is prepended to #options and purposively not merged
       // to prevent another option in #options mistakenly using the same value
@@ -2837,18 +2837,18 @@ function theme_radios($variables) {
  */
 function form_process_password_confirm($element) {
   $element['pass1'] =  array(
-    '#type' => 'password',
-    '#title' => t('Password'),
-    '#value' => empty($element['#value']) ? NULL : $element['#value']['pass1'],
-    '#required' => $element['#required'],
-    '#attributes' => array('class' => array('password-field')),
+      '#type' => 'password',
+      '#title' => t('Password'),
+      '#value' => empty($element['#value']) ? NULL : $element['#value']['pass1'],
+      '#required' => $element['#required'],
+      '#attributes' => array('class' => array('password-field')),
   );
   $element['pass2'] =  array(
-    '#type' => 'password',
-    '#title' => t('Confirm password'),
-    '#value' => empty($element['#value']) ? NULL : $element['#value']['pass2'],
-    '#required' => $element['#required'],
-    '#attributes' => array('class' => array('password-confirm')),
+      '#type' => 'password',
+      '#title' => t('Confirm password'),
+      '#value' => empty($element['#value']) ? NULL : $element['#value']['pass2'],
+      '#required' => $element['#required'],
+      '#attributes' => array('class' => array('password-confirm')),
   );
   $element['#element_validate'] = array('password_confirm_validate');
   $element['#tree'] = TRUE;
@@ -2918,9 +2918,9 @@ function form_process_date($element) {
   // Default to current date
   if (empty($element['#value'])) {
     $element['#value'] = array(
-      'day' => format_date(REQUEST_TIME, 'custom', 'j'),
-      'month' => format_date(REQUEST_TIME, 'custom', 'n'),
-      'year' => format_date(REQUEST_TIME, 'custom', 'Y'),
+        'day' => format_date(REQUEST_TIME, 'custom', 'j'),
+        'month' => format_date(REQUEST_TIME, 'custom', 'n'),
+        'year' => format_date(REQUEST_TIME, 'custom', 'Y'),
     );
   }
 
@@ -2955,12 +2955,12 @@ function form_process_date($element) {
     }
 
     $element[$type] = array(
-      '#type' => 'select',
-      '#title' => $title,
-      '#title_display' => 'invisible',
-      '#value' => $element['#value'][$type],
-      '#attributes' => $element['#attributes'],
-      '#options' => $options,
+        '#type' => 'select',
+        '#title' => $title,
+        '#title_display' => 'invisible',
+        '#value' => $element['#value'][$type],
+        '#attributes' => $element['#attributes'],
+        '#options' => $options,
     );
   }
 
@@ -2981,18 +2981,18 @@ function date_validate($element) {
  */
 function map_month($month) {
   $months = &drupal_static(__FUNCTION__, array(
-    1 => 'Jan',
-    2 => 'Feb',
-    3 => 'Mar',
-    4 => 'Apr',
-    5 => 'May',
-    6 => 'Jun',
-    7 => 'Jul',
-    8 => 'Aug',
-    9 => 'Sep',
-    10 => 'Oct',
-    11 => 'Nov',
-    12 => 'Dec',
+      1 => 'Jan',
+      2 => 'Feb',
+      3 => 'Mar',
+      4 => 'Apr',
+      5 => 'May',
+      6 => 'Jun',
+      7 => 'Jul',
+      8 => 'Aug',
+      9 => 'Sep',
+      10 => 'Oct',
+      11 => 'Nov',
+      12 => 'Dec',
   ));
   return t($months[$month]);
 }
@@ -3026,19 +3026,19 @@ function form_process_radios($element) {
       // unique id for each radio button.
       $parents_for_id = array_merge($element['#parents'], array($key));
       $element[$key] += array(
-        '#type' => 'radio',
-        '#title' => $choice,
-        // The key is sanitized in drupal_attributes() during output from the
-        // theme function.
-        '#return_value' => $key,
-        // Use default or FALSE. A value of FALSE means that the radio button is
-        // not 'checked'.
-        '#default_value' => isset($element['#default_value']) ? $element['#default_value'] : FALSE,
-        '#attributes' => $element['#attributes'],
-        '#parents' => $element['#parents'],
-        '#id' => drupal_html_id('edit-' . implode('-', $parents_for_id)),
-        '#ajax' => isset($element['#ajax']) ? $element['#ajax'] : NULL,
-        '#weight' => $weight,
+          '#type' => 'radio',
+          '#title' => $choice,
+          // The key is sanitized in drupal_attributes() during output from the
+          // theme function.
+          '#return_value' => $key,
+          // Use default or FALSE. A value of FALSE means that the radio button is
+          // not 'checked'.
+          '#default_value' => isset($element['#default_value']) ? $element['#default_value'] : FALSE,
+          '#attributes' => $element['#attributes'],
+          '#parents' => $element['#parents'],
+          '#id' => drupal_html_id('edit-' . implode('-', $parents_for_id)),
+          '#ajax' => isset($element['#ajax']) ? $element['#ajax'] : NULL,
+          '#weight' => $weight,
       );
     }
   }
@@ -3171,13 +3171,13 @@ function form_process_checkboxes($element) {
 
       $element += array($key => array());
       $element[$key] += array(
-        '#type' => 'checkbox',
-        '#title' => $choice,
-        '#return_value' => $key,
-        '#default_value' => isset($value[$key]) ? $key : NULL,
-        '#attributes' => $element['#attributes'],
-        '#ajax' => isset($element['#ajax']) ? $element['#ajax'] : NULL,
-        '#weight' => $weight,
+          '#type' => 'checkbox',
+          '#title' => $choice,
+          '#return_value' => $key,
+          '#default_value' => isset($value[$key]) ? $key : NULL,
+          '#attributes' => $element['#attributes'],
+          '#ajax' => isset($element['#ajax']) ? $element['#ajax'] : NULL,
+          '#weight' => $weight,
       );
     }
   }
@@ -3369,16 +3369,16 @@ function form_process_tableselect($element) {
           $title = '';
           if (!empty($element['#options'][$key]['title']['data']['#title'])) {
             $title = t('Update @title', array(
-              '@title' => $element['#options'][$key]['title']['data']['#title'],
+                '@title' => $element['#options'][$key]['title']['data']['#title'],
             ));
           }
           $element[$key] = array(
-            '#type' => 'checkbox',
-            '#title' => $title,
-            '#title_display' => 'invisible',
-            '#return_value' => $key,
-            '#default_value' => isset($value[$key]) ? $key : NULL,
-            '#attributes' => $element['#attributes'],
+              '#type' => 'checkbox',
+              '#title' => $title,
+              '#title_display' => 'invisible',
+              '#return_value' => $key,
+              '#default_value' => isset($value[$key]) ? $key : NULL,
+              '#attributes' => $element['#attributes'],
           );
         }
         else {
@@ -3386,14 +3386,14 @@ function form_process_tableselect($element) {
           // unique id for each radio button.
           $parents_for_id = array_merge($element['#parents'], array($key));
           $element[$key] = array(
-            '#type' => 'radio',
-            '#title' => '',
-            '#return_value' => $key,
-            '#default_value' => ($element['#default_value'] == $key) ? $key : NULL,
-            '#attributes' => $element['#attributes'],
-            '#parents' => $element['#parents'],
-            '#id' => drupal_html_id('edit-' . implode('-', $parents_for_id)),
-            '#ajax' => isset($element['#ajax']) ? $element['#ajax'] : NULL,
+              '#type' => 'radio',
+              '#title' => '',
+              '#return_value' => $key,
+              '#default_value' => ($element['#default_value'] == $key) ? $key : NULL,
+              '#attributes' => $element['#attributes'],
+              '#parents' => $element['#parents'],
+              '#id' => drupal_html_id('edit-' . implode('-', $parents_for_id)),
+              '#ajax' => isset($element['#ajax']) ? $element['#ajax'] : NULL,
           );
         }
         if (isset($element['#options'][$key]['#weight'])) {
@@ -3443,25 +3443,25 @@ function form_process_tableselect($element) {
 function form_process_machine_name($element, &$form_state) {
   // Apply default form element properties.
   $element += array(
-    '#title' => t('Machine-readable name'),
-    '#description' => t('A unique machine-readable name. Can only contain lowercase letters, numbers, and underscores.'),
-    '#machine_name' => array(),
-    '#field_prefix' => '',
-    '#field_suffix' => '',
-    '#suffix' => '',
+      '#title' => t('Machine-readable name'),
+      '#description' => t('A unique machine-readable name. Can only contain lowercase letters, numbers, and underscores.'),
+      '#machine_name' => array(),
+      '#field_prefix' => '',
+      '#field_suffix' => '',
+      '#suffix' => '',
   );
   // A form element that only wants to set one #machine_name property (usually
   // 'source' only) would leave all other properties undefined, if the defaults
   // were defined in hook_element_info(). Therefore, we apply the defaults here.
   $element['#machine_name'] += array(
-    'source' => array('name'),
-    'target' => '#' . $element['#id'],
-    'label' => t('Machine name'),
-    'replace_pattern' => '[^a-z0-9_]+',
-    'replace' => '_',
-    'standalone' => FALSE,
-    'field_prefix' => $element['#field_prefix'],
-    'field_suffix' => $element['#field_suffix'],
+      'source' => array('name'),
+      'target' => '#' . $element['#id'],
+      'label' => t('Machine name'),
+      'replace_pattern' => '[^a-z0-9_]+',
+      'replace' => '_',
+      'standalone' => FALSE,
+      'field_prefix' => $element['#field_prefix'],
+      'field_suffix' => $element['#field_suffix'],
   );
 
   // By default, machine names are restricted to Latin alphanumeric characters.
@@ -3502,12 +3502,12 @@ function form_process_machine_name($element, &$form_state) {
   }
 
   $js_settings = array(
-    'type' => 'setting',
-    'data' => array(
-      'machineName' => array(
-        '#' . $source['#id'] => $element['#machine_name'],
+      'type' => 'setting',
+      'data' => array(
+          'machineName' => array(
+              '#' . $source['#id'] => $element['#machine_name'],
+          ),
       ),
-    ),
   );
   $element['#attached']['js'][] = 'misc/machine-name.js';
   $element['#attached']['js'][] = $js_settings;
@@ -3674,9 +3674,9 @@ function form_process_vertical_tabs($element, &$form_state) {
   // Inject a new fieldset as child, so that form_process_fieldset() processes
   // this fieldset like any other fieldset.
   $element['group'] = array(
-    '#type' => 'fieldset',
-    '#theme_wrappers' => array(),
-    '#parents' => $element['#parents'],
+      '#type' => 'fieldset',
+      '#theme_wrappers' => array(),
+      '#parents' => $element['#parents'],
   );
 
   // The JavaScript stores the currently selected tab in this hidden
@@ -3688,9 +3688,9 @@ function form_process_vertical_tabs($element, &$form_state) {
     $element['#default_tab'] = $form_state['values'][$name . '__active_tab'];
   }
   $element[$name . '__active_tab'] = array(
-    '#type' => 'hidden',
-    '#default_value' => $element['#default_tab'],
-    '#attributes' => array('class' => array('vertical-tabs-active-tab')),
+      '#type' => 'hidden',
+      '#default_value' => $element['#default_tab'],
+      '#attributes' => array('class' => array('vertical-tabs-active-tab')),
   );
 
   return $element;
@@ -3875,7 +3875,7 @@ function theme_textarea($variables) {
   _form_set_class($element, array('form-textarea'));
 
   $wrapper_attributes = array(
-    'class' => array('form-textarea-wrapper'),
+      'class' => array('form-textarea-wrapper'),
   );
 
   // Add resizable behavior.
@@ -4013,7 +4013,7 @@ function theme_form_element($variables) {
   // This function is invoked as theme wrapper, but the rendered form element
   // may not necessarily have been processed by form_builder().
   $element += array(
-    '#title_display' => 'before',
+      '#title_display' => 'before',
   );
 
   // Add element #id for #type 'item'.
@@ -4082,8 +4082,8 @@ function theme_form_required_marker($variables) {
   // This is also used in the installer, pre-database setup.
   $t = get_t();
   $attributes = array(
-    'class' => 'form-required',
-    'title' => $t('This field is required.'),
+      'class' => 'form-required',
+      'title' => $t('This field is required.'),
   );
   return '<span' . drupal_attributes($attributes) . '>*</span>';
 }
@@ -4371,8 +4371,8 @@ function batch_set($batch_definition) {
     // Initialize the batch if needed.
     if (empty($batch)) {
       $batch = array(
-        'sets' => array(),
-        'has_form_submits' => FALSE,
+          'sets' => array(),
+          'has_form_submits' => FALSE,
       );
     }
 
@@ -4380,18 +4380,18 @@ function batch_set($batch_definition) {
     // Use get_t() to allow batches during installation.
     $t = get_t();
     $init = array(
-      'sandbox' => array(),
-      'results' => array(),
-      'success' => FALSE,
-      'start' => 0,
-      'elapsed' => 0,
+        'sandbox' => array(),
+        'results' => array(),
+        'success' => FALSE,
+        'start' => 0,
+        'elapsed' => 0,
     );
     $defaults = array(
-      'title' => $t('Processing'),
-      'init_message' => $t('Initializing.'),
-      'progress_message' => $t('Completed @current of @total.'),
-      'error_message' => $t('An error has occurred.'),
-      'css' => array(),
+        'title' => $t('Processing'),
+        'init_message' => $t('Initializing.'),
+        'progress_message' => $t('Completed @current of @total.'),
+        'error_message' => $t('An error has occurred.'),
+        'css' => array(),
     );
     $batch_set = $init + $batch_definition + $defaults;
 
@@ -4450,14 +4450,14 @@ function batch_process($redirect = NULL, $url = 'batch', $redirect_callback = 'd
   if (isset($batch)) {
     // Add process information
     $process_info = array(
-      'current_set' => 0,
-      'progressive' => TRUE,
-      'url' => $url,
-      'url_options' => array(),
-      'source_url' => $_GET['q'],
-      'redirect' => $redirect,
-      'theme' => $GLOBALS['theme_key'],
-      'redirect_callback' => $redirect_callback,
+        'current_set' => 0,
+        'progressive' => TRUE,
+        'url' => $url,
+        'url_options' => array(),
+        'source_url' => $_GET['q'],
+        'redirect' => $redirect,
+        'theme' => $GLOBALS['theme_key'],
+        'redirect_callback' => $redirect_callback,
     );
     $batch += $process_info;
 
@@ -4492,13 +4492,13 @@ function batch_process($redirect = NULL, $url = 'batch', $redirect_callback = 'd
 
       // Store the batch.
       db_insert('batch')
-        ->fields(array(
-          'bid' => $batch['id'],
-          'timestamp' => REQUEST_TIME,
-          'token' => drupal_get_token($batch['id']),
-          'batch' => serialize($batch),
-        ))
-        ->execute();
+      ->fields(array(
+      'bid' => $batch['id'],
+      'timestamp' => REQUEST_TIME,
+      'token' => drupal_get_token($batch['id']),
+      'batch' => serialize($batch),
+      ))
+      ->execute();
 
       // Set the batch number in the session to guarantee that it will stay alive.
       $_SESSION['batches'][$batch['id']] = TRUE;
@@ -4551,10 +4551,10 @@ function _batch_populate_queue(&$batch, $set_id) {
 
   if (isset($batch_set['operations'])) {
     $batch_set += array(
-      'queue' => array(
-        'name' => 'drupal_batch:' . $batch['id'] . ':' . $set_id,
-        'class' => $batch['progressive'] ? 'BatchQueue' : 'BatchMemoryQueue',
-      ),
+        'queue' => array(
+            'name' => 'drupal_batch:' . $batch['id'] . ':' . $set_id,
+            'class' => $batch['progressive'] ? 'BatchQueue' : 'BatchMemoryQueue',
+        ),
     );
 
     $queue = _batch_queue($batch_set);

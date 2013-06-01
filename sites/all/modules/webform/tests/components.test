@@ -13,9 +13,9 @@ class WebformComponentsTestCase extends WebformTestCase {
    */
   public static function getInfo() {
     return array(
-        'name' => t('Webform components'),
-        'description' => t('Add and remove components from a webform.'),
-        'group' => t('Webform'),
+      'name' => t('Webform components'),
+      'description' => t('Add and remove components from a webform.'),
+      'group' => t('Webform'),
     );
   }
 

@@ -13,9 +13,9 @@ class WebformPermissionsTestCase extends WebformTestCase {
    */
   public static function getInfo() {
     return array(
-        'name' => t('Webform permissions'),
-        'description' => t('Create webforms and check editing and access permissions.'),
-        'group' => t('Webform'),
+      'name' => t('Webform permissions'),
+      'description' => t('Create webforms and check editing and access permissions.'),
+      'group' => t('Webform'),
     );
   }
 
@@ -35,7 +35,7 @@ class WebformPermissionsTestCase extends WebformTestCase {
 
   /**
    * Create a webform node in which authenticated users have access to submit.
-   */
+  */
   function testWebformSubmitAccess() {
     $this->webformReset();
     $node = $this->testWebformForm();

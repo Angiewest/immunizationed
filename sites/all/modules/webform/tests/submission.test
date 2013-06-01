@@ -13,9 +13,9 @@ class WebformSubmissionTestCase extends WebformTestCase {
    */
   public static function getInfo() {
     return array(
-        'name' => t('Webform submission'),
-        'description' => t('Submits a sample webform and checks the database integrity.'),
-        'group' => t('Webform'),
+      'name' => t('Webform submission'),
+      'description' => t('Submits a sample webform and checks the database integrity.'),
+      'group' => t('Webform'),
     );
   }
 

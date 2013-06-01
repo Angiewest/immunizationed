@@ -30,6 +30,3 @@
 // function computed_field_field_status_display($field, $entity_field_item, $entity_lang, $langcode) {
 //   return number_format($entity_field_item['value'], 0);
 // }
-
-
-

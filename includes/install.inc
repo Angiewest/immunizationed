@@ -1,9 +1,9 @@
 <?php
 
 /**
-* @file
-* API functions for installing modules and themes.
-*/
+ * @file
+ * API functions for installing modules and themes.
+ */
 
 /**
  * Indicates that a module has not been installed yet.
@@ -12,72 +12,72 @@ define('SCHEMA_UNINSTALLED', -1);
 
 /**
  * Indicates that a module has been installed.
- */
+*/
 define('SCHEMA_INSTALLED', 0);
 
 /**
  * Requirement severity -- Informational message only.
- */
+*/
 define('REQUIREMENT_INFO', -1);
 
 /**
  * Requirement severity -- Requirement successfully met.
- */
+*/
 define('REQUIREMENT_OK', 0);
 
 /**
  * Requirement severity -- Warning condition; proceed but flag warning.
- */
+*/
 define('REQUIREMENT_WARNING', 1);
 
 /**
  * Requirement severity -- Error condition; abort installation.
- */
+*/
 define('REQUIREMENT_ERROR', 2);
 
 /**
  * File permission check -- File exists.
- */
+*/
 define('FILE_EXIST', 1);
 
 /**
  * File permission check -- File is readable.
- */
+*/
 define('FILE_READABLE', 2);
 
 /**
  * File permission check -- File is writable.
- */
+*/
 define('FILE_WRITABLE', 4);
 
 /**
  * File permission check -- File is executable.
- */
+*/
 define('FILE_EXECUTABLE', 8);
 
 /**
  * File permission check -- File does not exist.
- */
+*/
 define('FILE_NOT_EXIST', 16);
 
 /**
  * File permission check -- File is not readable.
- */
+*/
 define('FILE_NOT_READABLE', 32);
 
 /**
  * File permission check -- File is not writable.
- */
+*/
 define('FILE_NOT_WRITABLE', 64);
 
 /**
  * File permission check -- File is not executable.
- */
+*/
 define('FILE_NOT_EXECUTABLE', 128);
 
 /**
  * Loads .install files for installed modules to initialize the update system.
- */
+*/
 function drupal_load_updates() {
   foreach (drupal_get_installed_schema_version(NULL, FALSE, TRUE) as $module => $schema_version) {
     if ($schema_version > -1) {
@@ -176,9 +176,9 @@ function drupal_get_installed_schema_version($module, $reset = FALSE, $array = F
  */
 function drupal_set_installed_schema_version($module, $version) {
   db_update('system')
-    ->fields(array('schema_version' => $version))
-    ->condition('name', $module)
-    ->execute();
+  ->fields(array('schema_version' => $version))
+  ->condition('name', $module)
+  ->execute();
 
   // Reset the static cache of module schema versions.
   drupal_get_installed_schema_version(NULL, TRUE);
@@ -298,58 +298,58 @@ abstract class DatabaseTasks {
    * to call (optional) and any arguments to be passed to the function.
    */
   protected $tasks = array(
-    array(
-      'function'    => 'checkEngineVersion',
-      'arguments'   => array(),
-    ),
-    array(
-      'arguments'   => array(
-        'CREATE TABLE {drupal_install_test} (id int NULL)',
-        'Drupal can use CREATE TABLE database commands.',
-        'Failed to <strong>CREATE</strong> a test table on your database server with the command %query. The server reports the following message: %error.<p>Are you sure the configured username has the necessary permissions to create tables in the database?</p>',
-        TRUE,
+      array(
+          'function'    => 'checkEngineVersion',
+          'arguments'   => array(),
       ),
-    ),
-    array(
-      'arguments'   => array(
-        'INSERT INTO {drupal_install_test} (id) VALUES (1)',
-        'Drupal can use INSERT database commands.',
-        'Failed to <strong>INSERT</strong> a value into a test table on your database server. We tried inserting a value with the command %query and the server reported the following error: %error.',
+      array(
+          'arguments'   => array(
+              'CREATE TABLE {drupal_install_test} (id int NULL)',
+              'Drupal can use CREATE TABLE database commands.',
+              'Failed to <strong>CREATE</strong> a test table on your database server with the command %query. The server reports the following message: %error.<p>Are you sure the configured username has the necessary permissions to create tables in the database?</p>',
+              TRUE,
+          ),
       ),
-    ),
-    array(
-      'arguments'   => array(
-        'UPDATE {drupal_install_test} SET id = 2',
-        'Drupal can use UPDATE database commands.',
-        'Failed to <strong>UPDATE</strong> a value in a test table on your database server. We tried updating a value with the command %query and the server reported the following error: %error.',
-      ),
-    ),
-    array(
-      'arguments'   => array(
-        'DELETE FROM {drupal_install_test}',
-        'Drupal can use DELETE database commands.',
-        'Failed to <strong>DELETE</strong> a value from a test table on your database server. We tried deleting a value with the command %query and the server reported the following error: %error.',
-      ),
-    ),
-    array(
-      'arguments'   => array(
-        'DROP TABLE {drupal_install_test}',
-        'Drupal can use DROP TABLE database commands.',
-        'Failed to <strong>DROP</strong> a test table from your database server. We tried dropping a table with the command %query and the server reported the following error %error.',
-      ),
-    ),
+      array(
+          'arguments'   => array(
+              'INSERT INTO {drupal_install_test} (id) VALUES (1)',
+              'Drupal can use INSERT database commands.',
+              'Failed to <strong>INSERT</strong> a value into a test table on your database server. We tried inserting a value with the command %query and the server reported the following error: %error.',
+          ),
+          ),
+          array(
+          'arguments'   => array(
+          'UPDATE {drupal_install_test} SET id = 2',
+          'Drupal can use UPDATE database commands.',
+          'Failed to <strong>UPDATE</strong> a value in a test table on your database server. We tried updating a value with the command %query and the server reported the following error: %error.',
+          ),
+          ),
+          array(
+          'arguments'   => array(
+          'DELETE FROM {drupal_install_test}',
+          'Drupal can use DELETE database commands.',
+          'Failed to <strong>DELETE</strong> a value from a test table on your database server. We tried deleting a value with the command %query and the server reported the following error: %error.',
+          ),
+          ),
+          array(
+          'arguments'   => array(
+          'DROP TABLE {drupal_install_test}',
+          'Drupal can use DROP TABLE database commands.',
+          'Failed to <strong>DROP</strong> a test table from your database server. We tried dropping a table with the command %query and the server reported the following error %error.',
+          ),
+          ),
   );
 
   /**
    * Results from tasks.
    *
    * @var array
-   */
+  */
   protected $results = array();
 
   /**
    * Ensure the PDO driver is supported by the version of PHP in use.
-   */
+  */
   protected function hasPdoDriver() {
     return in_array($this->pdoDriver, PDO::getAvailableDrivers());
   }
@@ -386,7 +386,7 @@ abstract class DatabaseTasks {
    * @return
    *   A version string. If not NULL, it will be checked against the version
    *   reported by the Database engine using version_compare().
-   */
+  */
   public function minimumVersion() {
     return NULL;
   }
@@ -477,69 +477,69 @@ abstract class DatabaseTasks {
    */
   public function getFormOptions($database) {
     $form['database'] = array(
-      '#type' => 'textfield',
-      '#title' => st('Database name'),
-      '#default_value' => empty($database['database']) ? '' : $database['database'],
-      '#size' => 45,
-      '#required' => TRUE,
-      '#description' => st('The name of the database your @drupal data will be stored in. It must exist on your server before @drupal can be installed.', array('@drupal' => drupal_install_profile_distribution_name())),
+        '#type' => 'textfield',
+        '#title' => st('Database name'),
+        '#default_value' => empty($database['database']) ? '' : $database['database'],
+        '#size' => 45,
+        '#required' => TRUE,
+        '#description' => st('The name of the database your @drupal data will be stored in. It must exist on your server before @drupal can be installed.', array('@drupal' => drupal_install_profile_distribution_name())),
     );
 
     $form['username'] = array(
-      '#type' => 'textfield',
-      '#title' => st('Database username'),
-      '#default_value' => empty($database['username']) ? '' : $database['username'],
-      '#required' => TRUE,
-      '#size' => 45,
+        '#type' => 'textfield',
+        '#title' => st('Database username'),
+        '#default_value' => empty($database['username']) ? '' : $database['username'],
+        '#required' => TRUE,
+        '#size' => 45,
     );
 
     $form['password'] = array(
-      '#type' => 'password',
-      '#title' => st('Database password'),
-      '#default_value' => empty($database['password']) ? '' : $database['password'],
-      '#required' => FALSE,
-      '#size' => 45,
+        '#type' => 'password',
+        '#title' => st('Database password'),
+        '#default_value' => empty($database['password']) ? '' : $database['password'],
+        '#required' => FALSE,
+        '#size' => 45,
     );
 
     $form['advanced_options'] = array(
-      '#type' => 'fieldset',
-      '#title' => st('Advanced options'),
-      '#collapsible' => TRUE,
-      '#collapsed' => TRUE,
-      '#description' => st("These options are only necessary for some sites. If you're not sure what you should enter here, leave the default settings or check with your hosting provider."),
-      '#weight' => 10,
+        '#type' => 'fieldset',
+        '#title' => st('Advanced options'),
+        '#collapsible' => TRUE,
+        '#collapsed' => TRUE,
+        '#description' => st("These options are only necessary for some sites. If you're not sure what you should enter here, leave the default settings or check with your hosting provider."),
+        '#weight' => 10,
     );
 
     $profile = drupal_get_profile();
     $db_prefix = ($profile == 'standard') ? 'drupal_' : $profile . '_';
     $form['advanced_options']['db_prefix'] = array(
-      '#type' => 'textfield',
-      '#title' => st('Table prefix'),
-      '#default_value' => '',
-      '#size' => 45,
-      '#description' => st('If more than one application will be sharing this database, enter a table prefix such as %prefix for your @drupal site here.', array('@drupal' => drupal_install_profile_distribution_name(), '%prefix' => $db_prefix)),
-      '#weight' => 10,
+        '#type' => 'textfield',
+        '#title' => st('Table prefix'),
+        '#default_value' => '',
+        '#size' => 45,
+        '#description' => st('If more than one application will be sharing this database, enter a table prefix such as %prefix for your @drupal site here.', array('@drupal' => drupal_install_profile_distribution_name(), '%prefix' => $db_prefix)),
+        '#weight' => 10,
     );
 
     $form['advanced_options']['host'] = array(
-      '#type' => 'textfield',
-      '#title' => st('Database host'),
-      '#default_value' => empty($database['host']) ? 'localhost' : $database['host'],
-      '#size' => 45,
-      // Hostnames can be 255 characters long.
-      '#maxlength' => 255,
-      '#required' => TRUE,
-      '#description' => st('If your database is located on a different server, change this.'),
+        '#type' => 'textfield',
+        '#title' => st('Database host'),
+        '#default_value' => empty($database['host']) ? 'localhost' : $database['host'],
+        '#size' => 45,
+        // Hostnames can be 255 characters long.
+        '#maxlength' => 255,
+        '#required' => TRUE,
+        '#description' => st('If your database is located on a different server, change this.'),
     );
 
     $form['advanced_options']['port'] = array(
-      '#type' => 'textfield',
-      '#title' => st('Database port'),
-      '#default_value' => empty($database['port']) ? '' : $database['port'],
-      '#size' => 45,
-      // The maximum port number is 65536, 5 digits.
-      '#maxlength' => 5,
-      '#description' => st('If your database server is listening to a non-standard port, enter its number.'),
+        '#type' => 'textfield',
+        '#title' => st('Database port'),
+        '#default_value' => empty($database['port']) ? '' : $database['port'],
+        '#size' => 45,
+        // The maximum port number is 65536, 5 digits.
+        '#maxlength' => 5,
+        '#description' => st('If your database server is listening to a non-standard port, enter its number.'),
     );
 
     return $form;
@@ -703,10 +703,10 @@ function drupal_verify_profile($install_state) {
       $modules[] = '<span class="admin-missing">' . drupal_ucfirst($module) . '</span>';
     }
     $requirements['required_modules'] = array(
-      'title'       => st('Required modules'),
-      'value'       => st('Required modules not found.'),
-      'severity'    => REQUIREMENT_ERROR,
-      'description' => st('The following modules are required but were not found. Move them into the appropriate modules subdirectory, such as <em>sites/all/modules</em>. Missing modules: !modules', array('!modules' => implode(', ', $modules))),
+        'title'       => st('Required modules'),
+        'value'       => st('Required modules not found.'),
+        'severity'    => REQUIREMENT_ERROR,
+        'description' => st('The following modules are required but were not found. Move them into the appropriate modules subdirectory, such as <em>sites/all/modules</em>. Missing modules: !modules', array('!modules' => implode(', ', $modules))),
     );
   }
   return $requirements;
@@ -726,17 +726,17 @@ function drupal_install_system() {
   $system_versions = drupal_get_schema_versions('system');
   $system_version = $system_versions ? max($system_versions) : SCHEMA_INSTALLED;
   db_insert('system')
-    ->fields(array('filename', 'name', 'type', 'owner', 'status', 'schema_version', 'bootstrap'))
-    ->values(array(
-        'filename' => $system_path . '/system.module',
-        'name' => 'system',
-        'type' => 'module',
-        'owner' => '',
-        'status' => 1,
-        'schema_version' => $system_version,
-        'bootstrap' => 0,
-      ))
-    ->execute();
+  ->fields(array('filename', 'name', 'type', 'owner', 'status', 'schema_version', 'bootstrap'))
+  ->values(array(
+  'filename' => $system_path . '/system.module',
+  'name' => 'system',
+  'type' => 'module',
+  'owner' => '',
+  'status' => 1,
+  'schema_version' => $system_version,
+  'bootstrap' => 0,
+  ))
+  ->execute();
   system_rebuild_module_data();
 }
 
@@ -1135,12 +1135,12 @@ function st($string, array $args = array(), array $options = array()) {
       case '@':
         $args[$key] = check_plain($value);
         break;
-      // Escaped and placeholder
+        // Escaped and placeholder
       case '%':
       default:
         $args[$key] = '<em>' . check_plain($value) . '</em>';
         break;
-      // Pass-through
+        // Pass-through
       case '!':
     }
   }
@@ -1277,18 +1277,18 @@ function install_profile_info($profile, $locale = 'en') {
   if (!isset($cache[$profile])) {
     // Set defaults for module info.
     $defaults = array(
-      'dependencies' => array(),
-      'description' => '',
-      'distribution_name' => 'Drupal',
-      'version' => NULL,
-      'hidden' => FALSE,
-      'php' => DRUPAL_MINIMUM_PHP,
+        'dependencies' => array(),
+        'description' => '',
+        'distribution_name' => 'Drupal',
+        'version' => NULL,
+        'hidden' => FALSE,
+        'php' => DRUPAL_MINIMUM_PHP,
     );
     $info = drupal_parse_info_file("profiles/$profile/$profile.info") + $defaults;
     $info['dependencies'] = array_unique(array_merge(
-      drupal_required_modules(),
-      $info['dependencies'],
-      ($locale != 'en' && !empty($locale) ? array('locale') : array()))
+        drupal_required_modules(),
+        $info['dependencies'],
+        ($locale != 'en' && !empty($locale) ? array('locale') : array()))
     );
 
     // drupal_required_modules() includes the current profile as a dependency.

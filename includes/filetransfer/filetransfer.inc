@@ -2,13 +2,13 @@
 
 /*
  * Base FileTransfer class.
- *
- * Classes extending this class perform file operations on directories not
- * writable by the webserver. To achieve this, the class should connect back
- * to the server using some backend (for example FTP or SSH). To keep security,
- * the password should always be asked from the user and never stored. For
- * safety, all methods operate only inside a "jail", by default the Drupal root.
- */
+*
+* Classes extending this class perform file operations on directories not
+* writable by the webserver. To achieve this, the class should connect back
+* to the server using some backend (for example FTP or SSH). To keep security,
+* the password should always be asked from the user and never stored. For
+* safety, all methods operate only inside a "jail", by default the Drupal root.
+*/
 abstract class FileTransfer {
   protected $username;
   protected $password;
@@ -72,7 +72,7 @@ abstract class FileTransfer {
    *   The source path.
    * @param $destination
    *   The destination path.
-   */
+  */
   public final function copyDirectory($source, $destination) {
     $source = $this->sanitizePath($source);
     $destination = $this->fixRemotePath($destination);
@@ -186,11 +186,11 @@ abstract class FileTransfer {
   }
 
   /**
-  * Changes backslashes to slashes, also removes a trailing slash.
-  *
-  * @param string $path
-  * @return string
-  */
+   * Changes backslashes to slashes, also removes a trailing slash.
+   *
+   * @param string $path
+   * @return string
+   */
   function sanitizePath($path) {
     $path = str_replace('\\', '/', $path); // Windows path sanitization.
     if (substr($path, -1) == '/') {
@@ -238,7 +238,7 @@ abstract class FileTransfer {
    *
    * @param $directory
    *   The directory to be removed.
-   */
+  */
   abstract protected function removeDirectoryJailed($directory);
 
   /**
@@ -248,7 +248,7 @@ abstract class FileTransfer {
    *   The source file.
    * @param $destination
    *   The destination file.
-   */
+  */
   abstract protected function copyFileJailed($source, $destination);
 
   /**
@@ -256,7 +256,7 @@ abstract class FileTransfer {
    *
    * @param $destination
    *   The destination file to be removed.
-   */
+  */
   abstract protected function removeFileJailed($destination);
 
   /**
@@ -266,7 +266,7 @@ abstract class FileTransfer {
    *   The path to check
    *
    * @return boolean
-   */
+  */
   abstract public function isDirectory($path);
 
   /**
@@ -276,7 +276,7 @@ abstract class FileTransfer {
    *   The path to check
    *
    * @return boolean
-   */
+  */
   abstract public function isFile($path);
 
   /**
@@ -287,7 +287,7 @@ abstract class FileTransfer {
    *
    * @return
    *   The chroot path for this connection or FALSE.
-   */
+  */
   function findChroot() {
     // If the file exists as is, there is no chroot.
     $path = __FILE__;
@@ -328,30 +328,30 @@ abstract class FileTransfer {
    */
   public function getSettingsForm() {
     $form['username'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Username'),
+        '#type' => 'textfield',
+        '#title' => t('Username'),
     );
     $form['password'] = array(
-      '#type' => 'password',
-      '#title' => t('Password'),
-      '#description' => t('Your password is not saved in the database and is only used to establish a connection.'),
+        '#type' => 'password',
+        '#title' => t('Password'),
+        '#description' => t('Your password is not saved in the database and is only used to establish a connection.'),
     );
     $form['advanced'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Advanced settings'),
-      '#collapsible' => TRUE,
-      '#collapsed' => TRUE,
+        '#type' => 'fieldset',
+        '#title' => t('Advanced settings'),
+        '#collapsible' => TRUE,
+        '#collapsed' => TRUE,
     );
     $form['advanced']['hostname'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Host'),
-      '#default_value' => 'localhost',
-      '#description' => t('The connection will be created between your web server and the machine hosting the web server files. In the vast majority of cases, this will be the same machine, and "localhost" is correct.'),
+        '#type' => 'textfield',
+        '#title' => t('Host'),
+        '#default_value' => 'localhost',
+        '#description' => t('The connection will be created between your web server and the machine hosting the web server files. In the vast majority of cases, this will be the same machine, and "localhost" is correct.'),
     );
     $form['advanced']['port'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Port'),
-      '#default_value' => NULL,
+        '#type' => 'textfield',
+        '#title' => t('Port'),
+        '#default_value' => NULL,
     );
     return $form;
   }

@@ -46,11 +46,11 @@
  */
 function drupal_depth_first_search(&$graph) {
   $state = array(
-    // The order of last visit of the depth first search. This is the reverse
-    // of the topological order if the graph is acyclic.
-    'last_visit_order' => array(),
-    // The components of the graph.
-    'components' => array(),
+      // The order of last visit of the depth first search. This is the reverse
+      // of the topological order if the graph is acyclic.
+      'last_visit_order' => array(),
+      // The components of the graph.
+      'components' => array(),
   );
   // Perform the actual search.
   foreach ($graph as $start => $data) {
