@@ -11,7 +11,6 @@ features[menu_custom][] = main-menu
 features[menu_custom][] = menu-add-content
 features[menu_custom][] = menu-editing
 features[menu_custom][] = menu-my-practice-admin
-features[menu_custom][] = menu-practice-managment
 features[menu_custom][] = menu-views
 features[menu_custom][] = navigation
 features[menu_custom][] = user-menu

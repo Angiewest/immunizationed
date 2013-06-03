@@ -712,6 +712,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'router_path' => 'node/add/convenient-vaccination-services',
     'link_title' => 'Select convenience strategies',
     'options' => array(
+      'alter' => TRUE,
       'attributes' => array(
         'title' => 'This content will be for Pillar 1: Convenient Vaccination Services/ Easy Access. This will include all references and information for Pillar 1. ',
         'target' => '_blank',

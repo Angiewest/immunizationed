@@ -1688,6 +1688,7 @@ function immunizationed_structure_field_default_field_instances() {
   $field_instances['node-convenient_vaccination_services-og_group_ref'] = array(
     'bundle' => 'convenient_vaccination_services',
     'default_value' => NULL,
+    'default_value_function' => '',
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -1708,7 +1709,7 @@ function immunizationed_structure_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'og_group_ref',
     'label' => 'Groups audience',
-    'required' => FALSE,
+    'required' => 0,
     'settings' => array(
       'behaviors' => array(
         'og_widget' => array(
@@ -1719,6 +1720,9 @@ function immunizationed_structure_field_default_field_instances() {
             'widget_type' => 'options_select',
           ),
           'status' => TRUE,
+        ),
+        'prepopulate' => array(
+          'status' => 0,
         ),
       ),
       'user_register_form' => FALSE,
@@ -1736,6 +1740,7 @@ function immunizationed_structure_field_default_field_instances() {
       ),
     ),
     'widget' => array(
+      'active' => 0,
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
@@ -5005,46 +5010,6 @@ function immunizationed_structure_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-video-field_required_disclosures'
-  $field_instances['node-video-field_required_disclosures'] = array(
-    'bundle' => 'video',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'These are statements of disclosure that are required viewing for accreditation of Continuing Medical Education credits.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 4,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_required_disclosures',
-    'label' => 'Required Disclosures',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 7,
-    ),
-  );
-
   // Exported field_instance: 'node-video-field_tags'
   $field_instances['node-video-field_tags'] = array(
     'bundle' => 'video',
@@ -5330,7 +5295,6 @@ function immunizationed_structure_field_default_field_instances() {
   t('Task start date');
   t('Task started date');
   t('Tell us about your practice');
-  t('These are statements of disclosure that are required viewing for accreditation of Continuing Medical Education credits.');
   t('These objectives will be determined by viewer type (MD, RN, MA). ');
   t('This is a list of strategies you and your clinic can use to keep people motivated. Please select your choices from the optional list above. If you have a great idea on how to motivate your clinic and staff, please type it in below. Finish by clicking "Save".');
   t('This is the intended target audience for required CME documents');

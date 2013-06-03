@@ -512,7 +512,14 @@ function immunizationed_rules_default_rules_configuration() {
       },
       "IF" : [
         { "entity_is_of_type" : { "entity" : [ "current-item" ], "type" : "node" } },
-        { "data_is" : { "data" : [ "new-node:type" ], "value" : [ "current-item:type" ] } }
+        { "data_is" : { "data" : [ "new-node:type" ], "value" : [ "current-item:type" ] } },
+        { "entity_has_field" : { "entity" : [ "current-item" ], "field" : "og_group_ref" } },
+        { "entity_has_field" : { "entity" : [ "new-node" ], "field" : "og_group_ref" } },
+        { "data_is" : {
+            "data" : [ "new-node:og-group-ref" ],
+            "value" : [ "current-item:og-group-ref" ]
+          }
+        }
       ],
       "DO" : [
         { "LOOP" : {

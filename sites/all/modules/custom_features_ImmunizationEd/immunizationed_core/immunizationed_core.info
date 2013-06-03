@@ -108,7 +108,6 @@ features[fe_block_settings][] = comment-recent
 features[fe_block_settings][] = menu-features
 features[fe_block_settings][] = menu-menu-editing
 features[fe_block_settings][] = menu-menu-my-practice-admin
-features[fe_block_settings][] = menu-menu-practice-managment
 features[fe_block_settings][] = menu-menu-views
 features[fe_block_settings][] = node-recent
 features[fe_block_settings][] = node-syndicate

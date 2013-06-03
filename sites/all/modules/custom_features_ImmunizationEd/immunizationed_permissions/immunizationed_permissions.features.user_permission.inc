@@ -212,6 +212,15 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'statistics',
   );
 
+  // Exported permission: access system charts.
+  $permissions['access system charts'] = array(
+    'name' => 'access system charts',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'system_charts',
+  );
+
   // Exported permission: access user contact forms.
   $permissions['access user contact forms'] = array(
     'name' => 'access user contact forms',
@@ -304,6 +313,15 @@ function immunizationed_permissions_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'book',
+  );
+
+  // Exported permission: administer chart.
+  $permissions['administer chart'] = array(
+    'name' => 'administer chart',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'chart',
   );
 
   // Exported permission: administer comments.
@@ -1435,6 +1453,15 @@ function immunizationed_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'stylizer',
+  );
+
+  // Exported permission: administer system charts.
+  $permissions['administer system charts'] = array(
+    'name' => 'administer system charts',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'system_charts',
   );
 
   // Exported permission: administer taxonomy.
@@ -3111,6 +3138,13 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: execute auto_entitylabel_entity_update_action.
+  $permissions['execute auto_entitylabel_entity_update_action'] = array(
+    'name' => 'execute auto_entitylabel_entity_update_action',
+    'roles' => array(),
+    'module' => 'actions_permissions',
+  );
+
   // Exported permission: execute comment_publish_action.
   $permissions['execute comment_publish_action'] = array(
     'name' => 'execute comment_publish_action',
@@ -3731,6 +3765,7 @@ function immunizationed_permissions_user_default_permissions() {
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
     'module' => 'advanced_help',

@@ -187,7 +187,6 @@ features[field_instance][] = node-video-field_audience
 features[field_instance][] = node-video-field_educational_objectives
 features[field_instance][] = node-video-field_internal_video_url
 features[field_instance][] = node-video-field_poster_frame
-features[field_instance][] = node-video-field_required_disclosures
 features[field_instance][] = node-video-field_tags
 features[field_instance][] = node-webform-body
 features[field_instance][] = og_membership-og_membership_type_default-og_membership_request
