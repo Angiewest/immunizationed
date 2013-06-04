@@ -137,6 +137,7 @@ features[fe_profile][] = profile_manager
 features[fe_profile][] = profile_practice_job
 features[fe_profile][] = profile_project_manager
 features[fe_profile][] = profile_salutation
+features[fe_profile][] = profile_visitor
 features[features_api][] = api:2
 features[file_display][] = image__media_original__file_image
 features[filter][] = filtered_html

@@ -9,6 +9,22 @@
  */
 function immunizationed_rules_default_rules_configuration() {
   $items = array();
+  $items['rules_actions_on_login'] = entity_import('rules_config', '{ "rules_actions_on_login" : {
+      "LABEL" : "Actions on login",
+      "PLUGIN" : "reaction rule",
+      "TAGS" : [ "login" ],
+      "REQUIRES" : [ "rules" ],
+      "ON" : [ "user_login" ],
+      "DO" : [
+        { "entity_fetch" : {
+            "USING" : { "type" : "user", "id" : [ "account:uid" ] },
+            "PROVIDE" : { "entity_fetched" : { "entity_fetched" : "Fetched entity" } }
+          }
+        },
+        { "component_rules_rules_on_login" : { "user" : [ "entity-fetched" ] } }
+      ]
+    }
+  }');
   $items['rules_actions_on_practice_creation'] = entity_import('rules_config', '{ "rules_actions_on_practice_creation" : {
       "LABEL" : "Actions on practice creation",
       "PLUGIN" : "reaction rule",
@@ -37,7 +53,8 @@ function immunizationed_rules_default_rules_configuration() {
               "list_of_assembly_steps" : { "list_of_assembly_steps" : "list of assembly steps" }
             }
           }
-        }
+        },
+        { "component_rules_add_site_permissions_to_practice_creator" : { "new_practice" : [ "node" ], "practice_author" : [ "node:author" ] } }
       ]
     }
   }');
@@ -85,32 +102,18 @@ function immunizationed_rules_default_rules_configuration() {
       ]
     }
   }');
-  $items['rules_add_practice_admin_role_to_special_roles'] = entity_import('rules_config', '{ "rules_add_practice_admin_role_to_special_roles" : {
-      "LABEL" : "Add group member and practice admin role to practice admins on login",
-      "PLUGIN" : "reaction rule",
-      "TAGS" : [ "practice", "users" ],
-      "REQUIRES" : [ "og", "rules" ],
-      "ON" : [ "user_login" ],
-      "IF" : [
-        { "OR" : [
-            { "og_user_has_permission" : {
-                "permission" : "approve and deny subscription",
-                "group" : [ "site:current-user:og-user-node:0" ],
-                "account" : [ "account" ]
-              }
-            },
-            { "user_has_role" : {
-                "account" : [ "account" ],
-                "roles" : { "value" : { "4" : "4", "3" : "3" } },
-                "operation" : "OR"
-              }
-            }
-          ]
-        }
-      ],
+  $items['rules_add_site_permissions_to_practice_creator'] = entity_import('rules_config', '{ "rules_add_site_permissions_to_practice_creator" : {
+      "LABEL" : "Add site permissions to practice creator",
+      "PLUGIN" : "rule",
+      "TAGS" : [ "practice" ],
+      "REQUIRES" : [ "rules" ],
+      "USES VARIABLES" : {
+        "new_practice" : { "label" : "New practice", "type" : "node" },
+        "practice_author" : { "label" : "practice author", "type" : "user" }
+      },
       "DO" : [
         { "user_add_role" : {
-            "account" : [ "account" ],
+            "account" : [ "practice-author" ],
             "roles" : { "value" : { "5" : "5", "6" : "6" } }
           }
         }
@@ -387,6 +390,27 @@ function immunizationed_rules_default_rules_configuration() {
       ]
     }
   }');
+  $items['rules_rules_on_login'] = entity_import('rules_config', '{ "rules_rules_on_login" : {
+      "LABEL" : "Actions on login",
+      "PLUGIN" : "rule set",
+      "TAGS" : [ "login" ],
+      "REQUIRES" : [ "rules" ],
+      "USES VARIABLES" : { "user" : { "label" : "logging in user", "type" : "user" } },
+      "RULES" : [
+        { "RULE" : {
+            "IF" : [
+              { "NOT user_has_role" : { "account" : [ "user" ], "roles" : { "value" : { "5" : "5" } } } }
+            ],
+            "DO" : [
+              { "drupal_message" : { "message" : "\\u003Cb\\u003EWelcome. We noticed that you are not a member of any practices yet.\\u003C\\u002Fb\\u003E\\u003Cbr\\u003E\\u000D\\u000A\\u003Cbr\\u003E\\u000D\\u000AYou can join your team at \\u003Ca href=\\u0022[site:url]\\u002Fpractices\\u0022\\u003Ethe construction site.\\u003C\\u002Fa\\u003E Follow the link and click \\u0022subscribe to group.\\u0022\\u003Cbr\\u003E\\u000D\\u000A\\u003Cbr\\u003E\\u000D\\u000AAlternatively, if you are just observing the crew, tick the \\u003Ca href=\\u0022[user:profile-visitor]\\u0022\\u003Ejust a visitor box\\u003C\\u002Fa\\u003E, and we will stop whistling at you when you log in." } }
+            ],
+            "LABEL" : "Display join practice prompt"
+          }
+        },
+        { "RULE" : { "DO" : [  ], "LABEL" : "get contents of visitor field" } }
+      ]
+    }
+  }');
   $items['rules_send_email_for_article_posted_to_practice_page'] = entity_import('rules_config', '{ "rules_send_email_for_article_posted_to_practice_page" : {
       "LABEL" : "send email for article posted to practice page",
       "PLUGIN" : "reaction rule",
@@ -419,6 +443,20 @@ function immunizationed_rules_default_rules_configuration() {
             ]
           }
         }
+      ]
+    }
+  }');
+  $items['rules_send_instructions_to_join_practice'] = entity_import('rules_config', '{ "rules_send_instructions_to_join_practice" : {
+      "LABEL" : "Send instructions to join practice",
+      "PLUGIN" : "rule",
+      "TAGS" : [ "practice" ],
+      "REQUIRES" : [ "rules" ],
+      "USES VARIABLES" : { "user" : { "label" : "user", "type" : "user" } },
+      "IF" : [
+        { "NOT user_has_role" : { "account" : [ "user" ], "roles" : { "value" : { "5" : "5" } } } }
+      ],
+      "DO" : [
+        { "drupal_message" : { "message" : "Welcome. We noticed that you are not a member of any practices yet. You can join your team at \\u003Ca href=\\u0022[site:url]\\u002Fpractices\\u0022\\u003Ethe construction site.\\u003C\\u002Fa\\u003E Follow the link and click \\u0022subscribe to group.\\u0022\\u003Cb\\u003E\\u000D\\u000A\\u003Cb\\u003E\\u000D\\u000AAlternatively, if you are just observing the crew, \\u003Ca href=\\u0022[current-user:field_visitor]?=1\\u0022\\u003Etick this box\\u003C\\u002Fa\\u003E, and we will stop whistling at you when you log in." } }
       ]
     }
   }');

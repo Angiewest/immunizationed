@@ -216,7 +216,10 @@ function immunizationed_permissions_user_default_permissions() {
   $permissions['access system charts'] = array(
     'name' => 'access system charts',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'system_charts',
   );
@@ -320,6 +323,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'administer chart',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'chart',
   );

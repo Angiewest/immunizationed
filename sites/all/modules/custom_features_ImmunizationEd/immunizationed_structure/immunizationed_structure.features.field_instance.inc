@@ -5180,6 +5180,13 @@ function immunizationed_structure_field_default_field_instances() {
         'type' => 'og_list_default',
         'weight' => 0,
       ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'og_ui',
+        'settings' => array(),
+        'type' => 'og_list_default',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'user',
     'field_name' => 'og_user_node',
