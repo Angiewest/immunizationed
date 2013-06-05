@@ -1,0 +1,4 @@
+name = Custom module
+description = "Hacked Drupal functions just for me."
+package = Immunizationed
+core = 7.x

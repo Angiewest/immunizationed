@@ -16,7 +16,9 @@ function conflicting_permissions_for_dev_user_default_permissions() {
     'roles' => array(
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
       'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'rules',
   );
