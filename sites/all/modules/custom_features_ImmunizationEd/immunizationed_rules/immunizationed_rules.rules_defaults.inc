@@ -39,6 +39,11 @@ function immunizationed_rules_default_rules_configuration() {
         { "og_entity_is_group" : { "entity" : [ "node" ] } }
       ],
       "DO" : [
+        { "entity_fetch" : {
+            "USING" : { "type" : "user", "id" : [ "node:author:uid" ] },
+            "PROVIDE" : { "entity_fetched" : { "practice_author" : "practice author" } }
+          }
+        },
         { "component_rules_create_tasks_from_assembly_instructions" : {
             "USING" : { "new_practice" : [ "node" ] },
             "PROVIDE" : {
@@ -47,7 +52,8 @@ function immunizationed_rules_default_rules_configuration() {
             }
           }
         },
-        { "component_rules_add_site_permissions_to_practice_creator" : { "new_practice" : [ "node" ], "practice_author" : [ "node:author" ] } }
+        { "component_rules_add_site_permissions_to_practice_creator" : { "new_practice" : [ "node" ], "practice_author" : [ "node:author" ] } },
+        { "component_rules_send_email_when_practice_is_created" : { "practice" : [ "node" ], "practice_author" : [ "practice-author" ] } }
       ]
     }
   }');
@@ -525,6 +531,33 @@ function immunizationed_rules_default_rules_configuration() {
       ]
     }
   }');
+  $items['rules_send_email_when_practice_is_created'] = entity_import('rules_config', '{ "rules_send_email_when_practice_is_created" : {
+      "LABEL" : "Send email when practice is created",
+      "PLUGIN" : "rule",
+      "REQUIRES" : [ "rules" ],
+      "USES VARIABLES" : {
+        "practice" : { "label" : "practice", "type" : "node" },
+        "practice_author" : { "label" : "practice author", "type" : "user" }
+      },
+      "IF" : [
+        { "user_has_role" : {
+            "account" : [ "practice-author" ],
+            "roles" : { "value" : { "7" : "7", "4" : "4", "8" : "8", "3" : "3" } },
+            "operation" : "OR"
+          }
+        }
+      ],
+      "DO" : [
+        { "mail" : {
+            "to" : [ "practice-author:mail" ],
+            "subject" : "Welcome to [practice:title]",
+            "message" : "Hello [practice-author:field-salutations] [practice-author:field-last-names],\\u003Cbr\\u003E\\u000D\\u000A \\u003Cbr\\u003E\\u000D\\u000AThanks for your commitment to timely vaccinations. By registering [practice:title], you have taken the first step towards building a solid foundation of immunization practice. \\u003Cbr\\u003E\\u000D\\u000A \\u003Cbr\\u003E\\u000D\\u000A \\u003Cbr\\u003E\\u000D\\u000AHere are your next steps:\\u003Cbr\\u003E\\u000D\\u000AComplete your profile - [practice-author:edit-url]\\u003Cbr\\u003E\\u000D\\u000A \\u003Cbr\\u003E\\u000D\\u000AAsk your team to create accounts - mailto:Fill%20in%20your%20Team%20Email%20addresses?subject=sign%20up%20at%20ImmunizationEd\\u0026body=Hello,%20[practice-author:field-salutations]%20[practice-author:field-last-names]%20would%20like%20you%20to%20create%20an%20account%20at%20[site:url].\\u003Cbr\\u003E\\u000D\\u000A \\u003Cbr\\u003E\\u000D\\u000AEnroll your team - [site:url]group\\u002Fnode\\u002F[practice:nid]\\u002Fadmin\\u002Fpeople\\u002Fadd-user\\u003Cbr\\u003E\\u000D\\u000A \\u003Cbr\\u003E\\u000D\\u000ATake a look at [site:url].\\u003Cbr\\u003E\\u000D\\u000AYou will find relevant articles about immunization practice, the complete 4-pillars-toolkit, helpful resources that we call building-blocks, and the blueprints for your success. \\u003Cbr\\u003E\\u000D\\u000A\\u003Cbr\\u003E\\u000D\\u000A \\u003Cbr\\u003E\\u000D\\u000AWe hope that you find [site:url-brief] useful and look forward to your participation in the 4 Pillars Immunization Program.\\u003Cbr\\u003E\\u000D\\u000A \\u003Cbr\\u003E\\u000D\\u000ASincerely,\\u003Cbr\\u003E\\u000D\\u000AThe [site:name] Team",
+            "language" : [ "" ]
+          }
+        }
+      ]
+    }
+  }');
   $items['rules_send_emails'] = entity_import('rules_config', '{ "rules_send_emails" : {
       "LABEL" : "Send emails",
       "PLUGIN" : "rule set",
@@ -546,27 +579,19 @@ function immunizationed_rules_default_rules_configuration() {
                   "PROVIDE" : { "entity_fetched" : { "entity_fetched" : "Fetched entity" } }
                 }
               },
-              { "drupal_message" : { "message" : "[user:mail]\\u003Cbr\\u003E\\u000D\\u000AFrom [site:mail]\\u003Cbr\\u003E\\u000D\\u000ASubject Your new role with [user-changed:og-user-node]\\u003Cbr\\u003E\\u000D\\u000A\\u003Cbr\\u003E\\u000D\\u000AHello [user-changed:field-salutations] [user-changed:field-last-names],\\u003Cbr\\u003E\\u000D\\u000AWe are excited that you have decided to serve as your practice’s [user-changed:field_responsible_role]. Your commitment to implementing the 4 Pillars toolkit through the Practice Transformation Dashboard is a critical factor in maximizing every vaccination opportunity. We have worked hard to compile tools and resources that will help you to train your team in the latest evidence-based immunization practices. \\u003Cbr\\u003E\\u000D\\u000A\\u003Cbr\\u003E\\u000D\\u000AWe have created a personalized Practice Transformation Dashboard for \\u003Ca href=[entity-fetched:url]\\u003E[user-changed:og-user-node]\\u003C\\u002Fa\\u003E. This page is the most important point of contact with the site. You may want to save it as a bookmark for quick reference. You can also navigate to your practice home by clicking the link in the top right corner of the header bar  above the links for your account actions. We have also placed a quick link to \\u003Ca href=”[site:url]contact\\u003Econtact us\\u003C\\u002Fa\\u003E. If you run into trouble using the site, feel free to send us a message.\\u003Cbr\\u003E\\u000D\\u000A\\u003Cbr\\u003E\\u000D\\u000AAll of the instructions to build a healthy immunization practice using The 4 Pillars Toolkit appear as a list of simple \\u003Cem\\u003Eassembly steps\\u003C\\u002Fem\\u003E. That list is labeled \\u003Cb\\u003E“Project Blueprints.”\\u003C\\u002Fb\\u003E Suggested due dates and responsible roles have been assigned to each task for your convenience. Tasks that have been marked as completed will fall off of the list. To find out more information about each task and to update your progress, click the task name. We will monitor your progress through the program and offer support as necessary.\\u003Cbr\\u003E\\u000D\\u000A\\u003Cbr\\u003E\\u000D\\u000AYou can start by taking a look at \\u003Ca href=[site:url\\u003E[site:url-brief]\\u003C\\u002Fa\\u003E. You will find \\u003Ca href=[site:url]\\u003Erelevant articles\\u003C\\u002Fa\\u003E about immunization practice, the complete \\u003Ca href=[site:url]4-pillars-toolkit\\u003E4 Pillars Toolkit\\u003C\\u002Fa\\u003E, \\u003Cem\\u003Ehelpful resources\\u003C\\u002Fem\\u003E that we call \\u003Cb\\u003E\\u003Ca href=[site:url]building-blocks\\u003Ebuilding blocks\\u003C\\u002Fa\\u003E\\u003C\\u002Fb\\u003E, and the \\u003Cb\\u003E\\u003Ca href=[site:url]blueprints\\u003Eblueprints\\u003C\\u002Fa\\u003E\\u003C\\u002Fb\\u003E for your success. \\u003Cbr\\u003E\\u000D\\u000A\\u003Cbr\\u003E\\u000D\\u000AWe hope that you find \\u003Ca href=[site:name]\\u003E[site:url]\\u003C\\u002Fa\\u003E useful and look forward to your participation in the 4 Pillars Immunization Program.\\u003Cbr\\u003E\\u000D\\u000ASincerely,\\u003Cbr\\u003E\\u000D\\u000AThe [site:name] Team" } }
+              { "mail" : {
+                  "to" : [ "user-changed:mail" ],
+                  "subject" : "Your new role with [user-changed:og-user-node]",
+                  "message" : "Hello [user-changed:field-salutations] [user-changed:field-last-names],\\u003Cbr\\u003E\\u000D\\u000AWe are excited that you have decided to serve as your practice’s [user-changed:field_responsible_role]. Your commitment to implementing the 4 Pillars toolkit through the Practice Transformation Dashboard is a critical factor in maximizing every vaccination opportunity. We have worked hard to compile tools and resources that will help you to train your team in the latest evidence-based immunization practices. \\u003Cbr\\u003E\\u000D\\u000A\\u003Cbr\\u003E\\u000D\\u000AWe have created a personalized Practice Transformation Dashboard for \\u003Ca href=[entity-fetched:url]\\u003E[user-changed:og-user-node]\\u003C\\u002Fa\\u003E. This page is the most important point of contact with the site. You may want to save it as a bookmark for quick reference. You can also navigate to your practice home by clicking the link in the top right corner of the header bar  above the links for your account actions. We have also placed a quick link to \\u003Ca href=”[site:url]contact\\u003Econtact us\\u003C\\u002Fa\\u003E. If you run into trouble using the site, feel free to send us a message.\\u003Cbr\\u003E\\u000D\\u000A\\u003Cbr\\u003E\\u000D\\u000AAll of the instructions to build a healthy immunization practice using The 4 Pillars Toolkit appear as a list of simple assembly steps. That list is labeled “Project Blueprints.” Suggested due dates and responsible roles have been assigned to each task for your convenience. Tasks that have been marked as completed will fall off of the list. To find out more information about each task and to update your progress, click the task name. We will monitor your progress through the program and offer support as necessary.\\u003Cbr\\u003E\\u000D\\u000A\\u003Cbr\\u003E\\u000D\\u000AYou can start by taking a look at [site:url]. You will find relevant articles about immunization practice, the complete 4-pillars-toolkit, helpful resources that we call building blocks, and the blueprints for your success. \\u003Cbr\\u003E\\u000D\\u000A\\u003Cbr\\u003E\\u000D\\u000AWe hope that you find [site:url] useful and look forward to your participation in the 4 Pillars Immunization Program.\\u003Cbr\\u003E\\u000D\\u000ASincerely,\\u003Cbr\\u003E\\u000D\\u000AThe [site:name] Team",
+                  "language" : [ "" ]
+                }
+              }
             ],
             "LABEL" : "Send email on special member role assignment"
           }
         }
       ],
       "PROVIDES VARIABLES" : [ "user_changed" ]
-    }
-  }');
-  $items['rules_send_instructions_to_join_practice'] = entity_import('rules_config', '{ "rules_send_instructions_to_join_practice" : {
-      "LABEL" : "Send instructions to join practice",
-      "PLUGIN" : "rule",
-      "TAGS" : [ "practice" ],
-      "REQUIRES" : [ "rules" ],
-      "USES VARIABLES" : { "user" : { "label" : "user", "type" : "user" } },
-      "IF" : [
-        { "NOT user_has_role" : { "account" : [ "user" ], "roles" : { "value" : { "5" : "5" } } } }
-      ],
-      "DO" : [
-        { "drupal_message" : { "message" : "Welcome. We noticed that you are not a member of any practices yet. You can join your team at \\u003Ca href=\\u0022[site:url]\\u002Fpractices\\u0022\\u003Ethe construction site.\\u003C\\u002Fa\\u003E Follow the link and click \\u0022subscribe to group.\\u0022\\u003Cb\\u003E\\u000D\\u000A\\u003Cb\\u003E\\u000D\\u000AAlternatively, if you are just observing the crew, \\u003Ca href=\\u0022[current-user:field_visitor]?=1\\u0022\\u003Etick this box\\u003C\\u002Fa\\u003E, and we will stop whistling at you when you log in." } }
-      ]
     }
   }');
   $items['rules_send_task_email'] = entity_import('rules_config', '{ "rules_send_task_email" : {
