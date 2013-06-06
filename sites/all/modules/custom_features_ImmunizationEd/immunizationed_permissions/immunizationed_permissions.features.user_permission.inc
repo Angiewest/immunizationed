@@ -212,18 +212,6 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'statistics',
   );
 
-  // Exported permission: access system charts.
-  $permissions['access system charts'] = array(
-    'name' => 'access system charts',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'system_charts',
-  );
-
   // Exported permission: access user contact forms.
   $permissions['access user contact forms'] = array(
     'name' => 'access user contact forms',
@@ -316,16 +304,6 @@ function immunizationed_permissions_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'book',
-  );
-
-  // Exported permission: administer chart.
-  $permissions['administer chart'] = array(
-    'name' => 'administer chart',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'chart',
   );
 
   // Exported permission: administer comments.
@@ -1457,15 +1435,6 @@ function immunizationed_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'stylizer',
-  );
-
-  // Exported permission: administer system charts.
-  $permissions['administer system charts'] = array(
-    'name' => 'administer system charts',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'system_charts',
   );
 
   // Exported permission: administer taxonomy.

@@ -5226,7 +5226,7 @@ function immunizationed_structure_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 7,
+      'weight' => 4,
     ),
   );
 

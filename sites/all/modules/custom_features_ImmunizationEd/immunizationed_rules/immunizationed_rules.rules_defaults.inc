@@ -15,14 +15,10 @@ function immunizationed_rules_default_rules_configuration() {
       "TAGS" : [ "login" ],
       "REQUIRES" : [ "rules" ],
       "ON" : [ "user_login" ],
-      "DO" : [
-        { "entity_fetch" : {
-            "USING" : { "type" : "user", "id" : [ "account:uid" ] },
-            "PROVIDE" : { "entity_fetched" : { "entity_fetched" : "Fetched entity" } }
-          }
-        },
-        { "component_rules_rules_on_login" : { "user" : [ "entity-fetched" ] } }
-      ]
+      "IF" : [
+        { "entity_has_field" : { "entity" : [ "account" ], "field" : "field_visitor" } }
+      ],
+      "DO" : [ { "component_rules_rules_on_login" : { "user" : [ "account" ] } } ]
     }
   }');
   $items['rules_actions_on_practice_creation'] = entity_import('rules_config', '{ "rules_actions_on_practice_creation" : {
@@ -97,6 +93,39 @@ function immunizationed_rules_default_rules_configuration() {
                 }
               }
             ]
+          }
+        }
+      ]
+    }
+  }');
+  $items['rules_add_practice_admin_role_to_special_roles'] = entity_import('rules_config', '{ "rules_add_practice_admin_role_to_special_roles" : {
+      "LABEL" : "Add group member and practice admin role to practice admins on login",
+      "PLUGIN" : "reaction rule",
+      "TAGS" : [ "practice", "users" ],
+      "REQUIRES" : [ "rules", "og" ],
+      "ON" : [ "user_login" ],
+      "IF" : [
+        { "NOT data_is_empty" : { "data" : [ "account:og-membership" ] } },
+        { "OR" : [
+            { "og_user_has_permission" : {
+                "permission" : "approve and deny subscription",
+                "group" : [ "site:current-user:og-user-node:0" ],
+                "account" : [ "account" ]
+              }
+            },
+            { "user_has_role" : {
+                "account" : [ "account" ],
+                "roles" : { "value" : { "4" : "4", "3" : "3" } },
+                "operation" : "OR"
+              }
+            }
+          ]
+        }
+      ],
+      "DO" : [
+        { "user_add_role" : {
+            "account" : [ "account" ],
+            "roles" : { "value" : { "5" : "5", "6" : "6" } }
           }
         }
       ]
@@ -399,15 +428,15 @@ function immunizationed_rules_default_rules_configuration() {
       "RULES" : [
         { "RULE" : {
             "IF" : [
-              { "NOT user_has_role" : { "account" : [ "user" ], "roles" : { "value" : { "5" : "5" } } } }
+              { "NOT user_has_role" : { "account" : [ "user" ], "roles" : { "value" : { "5" : "5" } } } },
+              { "data_is_empty" : { "data" : [ "user:field-visitor" ] } }
             ],
             "DO" : [
-              { "drupal_message" : { "message" : "\\u003Cb\\u003EWelcome. We noticed that you are not a member of any practices yet.\\u003C\\u002Fb\\u003E\\u003Cbr\\u003E\\u000D\\u000A\\u003Cbr\\u003E\\u000D\\u000AYou can join your team at \\u003Ca href=\\u0022[site:url]\\u002Fpractices\\u0022\\u003Ethe construction site.\\u003C\\u002Fa\\u003E Follow the link and click \\u0022subscribe to group.\\u0022\\u003Cbr\\u003E\\u000D\\u000A\\u003Cbr\\u003E\\u000D\\u000AAlternatively, if you are just observing the crew, tick the \\u003Ca href=\\u0022[user:profile-visitor]\\u0022\\u003Ejust a visitor box\\u003C\\u002Fa\\u003E, and we will stop whistling at you when you log in." } }
+              { "drupal_message" : { "message" : "\\u003Cb\\u003EWelcome. We noticed that you are not a member of any practices yet.\\u003C\\u002Fb\\u003E\\u003Cbr\\u003E\\u000D\\u000A\\u003Cbr\\u003E\\u000D\\u000AYou can join your team at \\u003Ca href=\\u0022[site:url]\\u002Fpractices\\u0022\\u003Ethe construction site.\\u003C\\u002Fa\\u003E Grab you hard hat, follow the link, and click \\u0022subscribe to group.\\u0022\\u003Cbr\\u003E\\u000D\\u000A\\u003Cbr\\u003E\\u000D\\u000AAlternatively, if you are just observing the crew, tick the \\u003Ca href=\\u0022[user:edit-url]?[user:field_visitor]=1\\u0022\\u003Ejust a visitor box\\u003C\\u002Fa\\u003E, and we will stop whistling at you when you log in." } }
             ],
             "LABEL" : "Display join practice prompt"
           }
-        },
-        { "RULE" : { "DO" : [  ], "LABEL" : "get contents of visitor field" } }
+        }
       ]
     }
   }');
