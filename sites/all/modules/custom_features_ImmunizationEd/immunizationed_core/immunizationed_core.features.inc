@@ -144,7 +144,7 @@ function immunizationed_core_fe_profile_export_fields() {
       'fid' => 2,
       'title' => 'Practice job',
       'name' => 'profile_practice_job',
-      'explanation' => 'select your job at this practice',
+      'explanation' => 'Please select your job at this practice',
       'category' => 'Practice job',
       'page' => 'Practice Jobs',
       'type' => 'selection',
