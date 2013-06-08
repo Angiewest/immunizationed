@@ -4828,6 +4828,52 @@ function immunizationed_structure_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-vaccination_data_from_emr-field_epic_id'
+  $field_instances['node-vaccination_data_from_emr-field_epic_id'] = array(
+    'bundle' => 'vaccination_data_from_emr',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Epic ID of the practice',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 10,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_epic_id',
+    'label' => 'Epic ID',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 13,
+    ),
+  );
+
   // Exported field_instance: 'node-vaccination_data_from_emr-field_influenza'
   $field_instances['node-vaccination_data_from_emr-field_influenza'] = array(
     'bundle' => 'vaccination_data_from_emr',
@@ -4870,7 +4916,7 @@ function immunizationed_structure_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 5,
+      'weight' => 7,
     ),
   );
 
@@ -4916,7 +4962,47 @@ function immunizationed_structure_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 6,
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'node-vaccination_data_from_emr-field_report_id'
+  $field_instances['node-vaccination_data_from_emr-field_report_id'] = array(
+    'bundle' => 'vaccination_data_from_emr',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Unique report id created by Epic ID + Unix timestamp of report start',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_report_id',
+    'label' => 'Report ID',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
     ),
   );
 
@@ -4971,7 +5057,7 @@ function immunizationed_structure_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 3,
+      'weight' => 5,
     ),
   );
 
@@ -5017,7 +5103,7 @@ function immunizationed_structure_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 8,
+      'weight' => 10,
     ),
   );
 
@@ -5063,7 +5149,7 @@ function immunizationed_structure_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 7,
+      'weight' => 9,
     ),
   );
 
@@ -5109,7 +5195,7 @@ function immunizationed_structure_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 9,
+      'weight' => 11,
     ),
   );
 
@@ -5155,7 +5241,7 @@ function immunizationed_structure_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 4,
+      'weight' => 6,
     ),
   );
 
@@ -5214,7 +5300,7 @@ function immunizationed_structure_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -5961,6 +6047,7 @@ function immunizationed_structure_field_default_field_instances() {
   t('Enter your practice address');
   t('Enter your practice phone number');
   t('Epic ID');
+  t('Epic ID of the practice');
   t('Expected time to complete');
   t('First Name');
   t('Fixed due date');
@@ -6011,6 +6098,7 @@ function immunizationed_structure_field_default_field_instances() {
   t('Practice Website');
   t('Practice description');
   t('Practice photo');
+  t('Report ID');
   t('Reporting period');
   t('Request message');
   t('Required Disclosures');
@@ -6045,6 +6133,7 @@ function immunizationed_structure_field_default_field_instances() {
   t('Title text attribute');
   t('Total');
   t('Total number of hours to complete this item rounded to quarter hours');
+  t('Unique report id created by Epic ID + Unix timestamp of report start');
   t('Upload a graphic to be displayed with this page');
   t('Upload an image to associate with this content');
   t('Upload an image to go with this article.');

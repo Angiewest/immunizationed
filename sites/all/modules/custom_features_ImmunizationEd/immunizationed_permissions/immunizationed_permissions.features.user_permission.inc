@@ -306,6 +306,16 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'book',
   );
 
+  // Exported permission: administer chart.
+  $permissions['administer chart'] = array(
+    'name' => 'administer chart',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
+    'module' => 'chart',
+  );
+
   // Exported permission: administer comments.
   $permissions['administer comments'] = array(
     'name' => 'administer comments',
@@ -379,6 +389,15 @@ function immunizationed_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'features',
+  );
+
+  // Exported permission: administer feeds.
+  $permissions['administer feeds'] = array(
+    'name' => 'administer feeds',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'feeds',
   );
 
   // Exported permission: administer file types.
@@ -1158,6 +1177,13 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'panelizer',
   );
 
+  // Exported permission: administer panelizer node vaccination_data_from_emr defaults.
+  $permissions['administer panelizer node vaccination_data_from_emr defaults'] = array(
+    'name' => 'administer panelizer node vaccination_data_from_emr defaults',
+    'roles' => array(),
+    'module' => 'panelizer',
+  );
+
   // Exported permission: administer panelizer node video content.
   $permissions['administer panelizer node video content'] = array(
     'name' => 'administer panelizer node video content',
@@ -1551,6 +1577,27 @@ function immunizationed_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'user',
+  );
+
+  // Exported permission: clear emr_importer feeds.
+  $permissions['clear emr_importer feeds'] = array(
+    'name' => 'clear emr_importer feeds',
+    'roles' => array(),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: clear node feeds.
+  $permissions['clear node feeds'] = array(
+    'name' => 'clear node feeds',
+    'roles' => array(),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: clear user feeds.
+  $permissions['clear user feeds'] = array(
+    'name' => 'clear user feeds',
+    'roles' => array(),
+    'module' => 'feeds',
   );
 
   // Exported permission: create announcement content.
@@ -3480,6 +3527,13 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'admin_menu',
   );
 
+  // Exported permission: import emr_importer feeds.
+  $permissions['import emr_importer feeds'] = array(
+    'name' => 'import emr_importer feeds',
+    'roles' => array(),
+    'module' => 'feeds',
+  );
+
   // Exported permission: import media.
   $permissions['import media'] = array(
     'name' => 'import media',
@@ -3489,6 +3543,20 @@ function immunizationed_permissions_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'media',
+  );
+
+  // Exported permission: import node feeds.
+  $permissions['import node feeds'] = array(
+    'name' => 'import node feeds',
+    'roles' => array(),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: import user feeds.
+  $permissions['import user feeds'] = array(
+    'name' => 'import user feeds',
+    'roles' => array(),
+    'module' => 'feeds',
   );
 
   // Exported permission: manage features.
@@ -3600,6 +3668,27 @@ function immunizationed_permissions_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'shortcut',
+  );
+
+  // Exported permission: unlock emr_importer feeds.
+  $permissions['unlock emr_importer feeds'] = array(
+    'name' => 'unlock emr_importer feeds',
+    'roles' => array(),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: unlock node feeds.
+  $permissions['unlock node feeds'] = array(
+    'name' => 'unlock node feeds',
+    'roles' => array(),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: unlock user feeds.
+  $permissions['unlock user feeds'] = array(
+    'name' => 'unlock user feeds',
+    'roles' => array(),
+    'module' => 'feeds',
   );
 
   // Exported permission: use PHP for label patterns.
