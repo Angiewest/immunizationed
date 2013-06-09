@@ -314,7 +314,7 @@ function immunizationed_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_article';
-  $strongarm->value = '0';
+  $strongarm->value = '1';
   $export['comment_article'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1071,6 +1071,9 @@ function immunizationed_core_strongarm() {
         'custom_settings' => FALSE,
       ),
       'print' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
         'custom_settings' => FALSE,
       ),
     ),

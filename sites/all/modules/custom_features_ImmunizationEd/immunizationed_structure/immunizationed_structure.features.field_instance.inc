@@ -1149,18 +1149,20 @@ function immunizationed_structure_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'file_entity',
+        'settings' => array(
+          'file_view_mode' => 'default',
+        ),
+        'type' => 'file_rendered',
         'weight' => -1,
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'image',
+        'module' => 'file_entity',
         'settings' => array(
-          'image_link' => 'content',
-          'image_style' => 'thumbnail',
+          'file_view_mode' => 'teaser',
         ),
-        'type' => 'image',
+        'type' => 'file_rendered',
         'weight' => -1,
       ),
     ),
@@ -1225,7 +1227,7 @@ function immunizationed_structure_field_default_field_instances() {
         'label' => 'above',
         'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'taxonomy_term_reference_plain',
         'weight' => 10,
       ),
     ),

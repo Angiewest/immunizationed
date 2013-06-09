@@ -49,6 +49,15 @@ function immunizationed_core_filter_default_formats() {
         'status' => 1,
         'settings' => array(),
       ),
+      'pathologic' => array(
+        'weight' => 50,
+        'status' => 1,
+        'settings' => array(
+          'local_paths' => 'http://immunizationed.pitt.edu/
+http://stage.immunizationed.pitt.edu/',
+          'protocol_style' => 'path',
+        ),
+      ),
     ),
   );
 
@@ -81,6 +90,15 @@ function immunizationed_core_filter_default_formats() {
         'weight' => 10,
         'status' => 1,
         'settings' => array(),
+      ),
+      'pathologic' => array(
+        'weight' => 50,
+        'status' => 1,
+        'settings' => array(
+          'local_paths' => 'http://immunizationed.pitt.edu/
+http://stage.immunizationed.pitt.edu/',
+          'protocol_style' => 'proto-rel',
+        ),
       ),
     ),
   );
