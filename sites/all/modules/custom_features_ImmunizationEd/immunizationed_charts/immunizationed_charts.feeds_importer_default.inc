@@ -44,9 +44,9 @@ function immunizationed_charts_feeds_importer_default() {
         'expire' => '-1',
         'mappings' => array(
           0 => array(
-            'source' => 'report ID',
-            'target' => 'feeds_source',
-            'unique' => 1,
+            'source' => 'Report ID',
+            'target' => 'field_report_id',
+            'unique' => FALSE,
           ),
           1 => array(
             'source' => 'title',
@@ -74,31 +74,36 @@ function immunizationed_charts_feeds_importer_default() {
             'unique' => FALSE,
           ),
           6 => array(
+            'source' => 'Practice ID',
+            'target' => 'og_group_ref',
+            'unique' => FALSE,
+          ),
+          7 => array(
             'source' => '# Visits',
             'target' => 'field_visits',
             'unique' => FALSE,
           ),
-          7 => array(
+          8 => array(
             'source' => 'Influenza',
             'target' => 'field_influenza',
             'unique' => FALSE,
           ),
-          8 => array(
+          9 => array(
             'source' => 'Pneumo',
             'target' => 'field_pneumo',
             'unique' => FALSE,
           ),
-          9 => array(
+          10 => array(
             'source' => 'TDAP',
             'target' => 'field_tdap',
             'unique' => FALSE,
           ),
-          10 => array(
+          11 => array(
             'source' => 'TD',
             'target' => 'field_td',
             'unique' => FALSE,
           ),
-          11 => array(
+          12 => array(
             'source' => 'Total',
             'target' => 'field_total',
             'unique' => FALSE,

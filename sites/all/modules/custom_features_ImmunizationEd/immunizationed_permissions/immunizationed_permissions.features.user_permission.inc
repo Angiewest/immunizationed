@@ -551,54 +551,9 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'panelizer',
   );
 
-  // Exported permission: administer panelizer node article content.
-  $permissions['administer panelizer node article content'] = array(
-    'name' => 'administer panelizer node article content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node article context.
-  $permissions['administer panelizer node article context'] = array(
-    'name' => 'administer panelizer node article context',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
   // Exported permission: administer panelizer node article defaults.
   $permissions['administer panelizer node article defaults'] = array(
     'name' => 'administer panelizer node article defaults',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node article layout.
-  $permissions['administer panelizer node article layout'] = array(
-    'name' => 'administer panelizer node article layout',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node article overview.
-  $permissions['administer panelizer node article overview'] = array(
-    'name' => 'administer panelizer node article overview',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node article settings.
-  $permissions['administer panelizer node article settings'] = array(
-    'name' => 'administer panelizer node article settings',
     'roles' => array(
       'administrator' => 'administrator',
     ),
@@ -1069,24 +1024,6 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'panelizer',
   );
 
-  // Exported permission: administer panelizer node roadmap_waypoint content.
-  $permissions['administer panelizer node roadmap_waypoint content'] = array(
-    'name' => 'administer panelizer node roadmap_waypoint content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node roadmap_waypoint context.
-  $permissions['administer panelizer node roadmap_waypoint context'] = array(
-    'name' => 'administer panelizer node roadmap_waypoint context',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
   // Exported permission: administer panelizer node roadmap_waypoint defaults.
   $permissions['administer panelizer node roadmap_waypoint defaults'] = array(
     'name' => 'administer panelizer node roadmap_waypoint defaults',
@@ -1096,81 +1033,9 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'panelizer',
   );
 
-  // Exported permission: administer panelizer node roadmap_waypoint layout.
-  $permissions['administer panelizer node roadmap_waypoint layout'] = array(
-    'name' => 'administer panelizer node roadmap_waypoint layout',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node roadmap_waypoint overview.
-  $permissions['administer panelizer node roadmap_waypoint overview'] = array(
-    'name' => 'administer panelizer node roadmap_waypoint overview',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node roadmap_waypoint settings.
-  $permissions['administer panelizer node roadmap_waypoint settings'] = array(
-    'name' => 'administer panelizer node roadmap_waypoint settings',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node task content.
-  $permissions['administer panelizer node task content'] = array(
-    'name' => 'administer panelizer node task content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node task context.
-  $permissions['administer panelizer node task context'] = array(
-    'name' => 'administer panelizer node task context',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
   // Exported permission: administer panelizer node task defaults.
   $permissions['administer panelizer node task defaults'] = array(
     'name' => 'administer panelizer node task defaults',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node task layout.
-  $permissions['administer panelizer node task layout'] = array(
-    'name' => 'administer panelizer node task layout',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node task overview.
-  $permissions['administer panelizer node task overview'] = array(
-    'name' => 'administer panelizer node task overview',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node task settings.
-  $permissions['administer panelizer node task settings'] = array(
-    'name' => 'administer panelizer node task settings',
     'roles' => array(
       'administrator' => 'administrator',
     ),
