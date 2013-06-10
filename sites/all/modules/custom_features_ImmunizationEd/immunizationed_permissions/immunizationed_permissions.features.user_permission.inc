@@ -1177,13 +1177,6 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'panelizer',
   );
 
-  // Exported permission: administer panelizer node vaccination_data_from_emr defaults.
-  $permissions['administer panelizer node vaccination_data_from_emr defaults'] = array(
-    'name' => 'administer panelizer node vaccination_data_from_emr defaults',
-    'roles' => array(),
-    'module' => 'panelizer',
-  );
-
   // Exported permission: administer panelizer node video content.
   $permissions['administer panelizer node video content'] = array(
     'name' => 'administer panelizer node video content',
