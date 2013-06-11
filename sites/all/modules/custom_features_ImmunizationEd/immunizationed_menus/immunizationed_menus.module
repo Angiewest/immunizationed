@@ -1,5 +1,7 @@
 <?php
 /**
  * @file
- * Drupal needs this blank file.
+ * Code for the Immunizationed_menus feature.
  */
+
+include_once 'immunizationed_menus.features.inc';

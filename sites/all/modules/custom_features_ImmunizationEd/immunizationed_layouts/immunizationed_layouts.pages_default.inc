@@ -1396,7 +1396,7 @@ function immunizationed_layouts_default_page_manager_handlers() {
     ),
   );
   $display = new panels_display();
-  $display->layout = 'flexible:everything_template_best';
+  $display->layout = 'flexible';
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(
@@ -1415,29 +1415,29 @@ function immunizationed_layouts_default_page_manager_handlers() {
   $display->panels = array();
     $pane = new stdClass();
     $pane->pid = 'new-40';
-    $pane->panel = 'bottom';
-    $pane->type = 'node_form_buttons';
-    $pane->subtype = 'node_form_buttons';
+    $pane->panel = 'center';
+    $pane->type = 'entity_form_field';
+    $pane->subtype = 'node:body';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
+      'label' => '',
+      'formatter' => '',
       'context' => 'argument_node_edit_1',
-      'override_title' => 1,
-      'override_title_text' => '<none>',
+      'override_title' => 0,
+      'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
+    $pane->style = array();
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
     $display->content['new-40'] = $pane;
-    $display->panels['bottom'][0] = 'new-40';
+    $display->panels['center'][0] = 'new-40';
     $pane = new stdClass();
     $pane->pid = 'new-41';
-    $pane->panel = 'bottom_left';
+    $pane->panel = 'center';
     $pane->type = 'entity_form_field';
     $pane->subtype = 'node:field_practice_address';
     $pane->shown = TRUE;
@@ -1450,18 +1450,16 @@ function immunizationed_layouts_default_page_manager_handlers() {
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
+    $pane->style = array();
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 0;
+    $pane->position = 1;
     $pane->locks = array();
     $display->content['new-41'] = $pane;
-    $display->panels['bottom_left'][0] = 'new-41';
+    $display->panels['center'][1] = 'new-41';
     $pane = new stdClass();
     $pane->pid = 'new-42';
-    $pane->panel = 'bottom_right';
+    $pane->panel = 'center';
     $pane->type = 'entity_form_field';
     $pane->subtype = 'node:field_practice_phone';
     $pane->shown = TRUE;
@@ -1474,42 +1472,16 @@ function immunizationed_layouts_default_page_manager_handlers() {
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
+    $pane->style = array();
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 0;
+    $pane->position = 2;
     $pane->locks = array();
     $display->content['new-42'] = $pane;
-    $display->panels['bottom_right'][0] = 'new-42';
+    $display->panels['center'][2] = 'new-42';
     $pane = new stdClass();
     $pane->pid = 'new-43';
-    $pane->panel = 'bottom_right';
-    $pane->type = 'entity_form_field';
-    $pane->subtype = 'node:field_practice_website';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'label' => '',
-      'formatter' => '',
-      'context' => 'argument_node_edit_1',
-      'override_title' => 1,
-      'override_title_text' => '<none>',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 1;
-    $pane->locks = array();
-    $display->content['new-43'] = $pane;
-    $display->panels['bottom_right'][1] = 'new-43';
-    $pane = new stdClass();
-    $pane->pid = 'new-44';
-    $pane->panel = 'bottom_right';
+    $pane->panel = 'center';
     $pane->type = 'entity_form_field';
     $pane->subtype = 'node:field_practice_photo';
     $pane->shown = TRUE;
@@ -1522,63 +1494,37 @@ function immunizationed_layouts_default_page_manager_handlers() {
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
+    $pane->style = array();
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 2;
+    $pane->position = 3;
     $pane->locks = array();
-    $display->content['new-44'] = $pane;
-    $display->panels['bottom_right'][2] = 'new-44';
+    $display->content['new-43'] = $pane;
+    $display->panels['center'][3] = 'new-43';
     $pane = new stdClass();
-    $pane->pid = 'new-45';
-    $pane->panel = 'center';
-    $pane->type = 'node_form_title';
-    $pane->subtype = 'node_form_title';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => 'argument_node_edit_1',
-      'override_title' => 1,
-      'override_title_text' => '<none>',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-45'] = $pane;
-    $display->panels['center'][0] = 'new-45';
-    $pane = new stdClass();
-    $pane->pid = 'new-46';
+    $pane->pid = 'new-44';
     $pane->panel = 'center';
     $pane->type = 'entity_form_field';
-    $pane->subtype = 'node:body';
+    $pane->subtype = 'node:field_practice_website';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
       'label' => '',
       'formatter' => '',
       'context' => 'argument_node_edit_1',
-      'override_title' => 1,
-      'override_title_text' => '<none>',
+      'override_title' => 0,
+      'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
+    $pane->style = array();
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 1;
+    $pane->position = 4;
     $pane->locks = array();
-    $display->content['new-46'] = $pane;
-    $display->panels['center'][1] = 'new-46';
+    $display->content['new-44'] = $pane;
+    $display->panels['center'][4] = 'new-44';
   $display->hide_title = PANELS_TITLE_PANE;
-  $display->title_pane = 'new-40';
+  $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $export['node_edit_panel_context_7'] = $handler;
 
@@ -1613,7 +1559,7 @@ function immunizationed_layouts_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-47';
+    $pane->pid = 'new-45';
     $pane->panel = 'left';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_responsible_role';
@@ -1636,10 +1582,10 @@ function immunizationed_layouts_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-47'] = $pane;
-    $display->panels['left'][0] = 'new-47';
+    $display->content['new-45'] = $pane;
+    $display->panels['left'][0] = 'new-45';
     $pane = new stdClass();
-    $pane->pid = 'new-48';
+    $pane->pid = 'new-46';
     $pane->panel = 'left';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_date_started';
@@ -1669,10 +1615,10 @@ function immunizationed_layouts_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-48'] = $pane;
-    $display->panels['left'][1] = 'new-48';
+    $display->content['new-46'] = $pane;
+    $display->panels['left'][1] = 'new-46';
     $pane = new stdClass();
-    $pane->pid = 'new-49';
+    $pane->pid = 'new-47';
     $pane->panel = 'right';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_task_due_date';
@@ -1702,10 +1648,10 @@ function immunizationed_layouts_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-49'] = $pane;
-    $display->panels['right'][0] = 'new-49';
+    $display->content['new-47'] = $pane;
+    $display->panels['right'][0] = 'new-47';
     $pane = new stdClass();
-    $pane->pid = 'new-50';
+    $pane->pid = 'new-48';
     $pane->panel = 'right';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_date_task_completed';
@@ -1735,10 +1681,10 @@ function immunizationed_layouts_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-50'] = $pane;
-    $display->panels['right'][1] = 'new-50';
+    $display->content['new-48'] = $pane;
+    $display->panels['right'][1] = 'new-48';
     $pane = new stdClass();
-    $pane->pid = 'new-51';
+    $pane->pid = 'new-49';
     $pane->panel = 'top';
     $pane->type = 'entity_form_field';
     $pane->subtype = 'node:body';
@@ -1757,10 +1703,10 @@ function immunizationed_layouts_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-51'] = $pane;
-    $display->panels['top'][0] = 'new-51';
+    $display->content['new-49'] = $pane;
+    $display->panels['top'][0] = 'new-49';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-48';
+  $display->title_pane = 'new-46';
   $handler->conf['display'] = $display;
   $export['node_edit_panel_context_8'] = $handler;
 
