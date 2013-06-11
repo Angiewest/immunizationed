@@ -6,7 +6,6 @@ php = 5.2.4
 version = 7.x-1.0
 project = conflicting_permissions_for_production
 dependencies[] = features
-dependencies[] = immunizationed_permissions
 dependencies[] = rules
 features[features_api][] = api:2
 features[og_features_permission][] = node:practice_group:administer group

@@ -1606,7 +1606,10 @@ function immunizationed_permissions_user_default_permissions() {
   // Exported permission: create other_additions_to_views content.
   $permissions['create other_additions_to_views content'] = array(
     'name' => 'create other_additions_to_views content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
     'module' => 'node',
   );
 
@@ -1714,6 +1717,13 @@ function immunizationed_permissions_user_default_permissions() {
       'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'path',
+  );
+
+  // Exported permission: create vaccination_data_from_emr content.
+  $permissions['create vaccination_data_from_emr content'] = array(
+    'name' => 'create vaccination_data_from_emr content',
+    'roles' => array(),
+    'module' => 'node',
   );
 
   // Exported permission: create video content.
@@ -1868,7 +1878,10 @@ function immunizationed_permissions_user_default_permissions() {
   // Exported permission: delete any other_additions_to_views content.
   $permissions['delete any other_additions_to_views content'] = array(
     'name' => 'delete any other_additions_to_views content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
     'module' => 'node',
   );
 
@@ -1955,6 +1968,13 @@ function immunizationed_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any vaccination_data_from_emr content.
+  $permissions['delete any vaccination_data_from_emr content'] = array(
+    'name' => 'delete any vaccination_data_from_emr content',
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -2111,7 +2131,10 @@ function immunizationed_permissions_user_default_permissions() {
   // Exported permission: delete own other_additions_to_views content.
   $permissions['delete own other_additions_to_views content'] = array(
     'name' => 'delete own other_additions_to_views content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
     'module' => 'node',
   );
 
@@ -2202,6 +2225,13 @@ function immunizationed_permissions_user_default_permissions() {
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own vaccination_data_from_emr content.
+  $permissions['delete own vaccination_data_from_emr content'] = array(
+    'name' => 'delete own vaccination_data_from_emr content',
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -2500,7 +2530,10 @@ function immunizationed_permissions_user_default_permissions() {
   // Exported permission: edit any other_additions_to_views content.
   $permissions['edit any other_additions_to_views content'] = array(
     'name' => 'edit any other_additions_to_views content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
     'module' => 'node',
   );
 
@@ -2596,6 +2629,13 @@ function immunizationed_permissions_user_default_permissions() {
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any vaccination_data_from_emr content.
+  $permissions['edit any vaccination_data_from_emr content'] = array(
+    'name' => 'edit any vaccination_data_from_emr content',
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -2765,7 +2805,10 @@ function immunizationed_permissions_user_default_permissions() {
   // Exported permission: edit own other_additions_to_views content.
   $permissions['edit own other_additions_to_views content'] = array(
     'name' => 'edit own other_additions_to_views content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
     'module' => 'node',
   );
 
@@ -2862,6 +2905,13 @@ function immunizationed_permissions_user_default_permissions() {
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own vaccination_data_from_emr content.
+  $permissions['edit own vaccination_data_from_emr content'] = array(
+    'name' => 'edit own vaccination_data_from_emr content',
+    'roles' => array(),
     'module' => 'node',
   );
 
