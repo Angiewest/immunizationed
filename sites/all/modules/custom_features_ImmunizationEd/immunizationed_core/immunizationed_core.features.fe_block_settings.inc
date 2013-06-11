@@ -33,7 +33,7 @@ function immunizationed_core_default_fe_block_settings() {
         'region' => 'left',
         'status' => 1,
         'theme' => 'energetic',
-        'weight' => -15,
+        'weight' => -18,
       ),
       'seven' => array(
         'region' => '',
@@ -115,10 +115,14 @@ function immunizationed_core_default_fe_block_settings() {
     'custom' => 0,
     'delta' => 'menu-editing',
     'module' => 'menu',
-    'node_types' => array(),
+    'node_types' => array(
+      0 => 'practice_admin_group',
+      1 => 'practice_group',
+    ),
     'pages' => '',
     'roles' => array(
       'administrator' => 3,
+      'apprentice admin' => 8,
       'editor' => 4,
     ),
     'themes' => array(
@@ -129,10 +133,10 @@ function immunizationed_core_default_fe_block_settings() {
         'weight' => -15,
       ),
       'energetic' => array(
-        'region' => '',
-        'status' => 0,
+        'region' => 'left',
+        'status' => 1,
         'theme' => 'energetic',
-        'weight' => -9,
+        'weight' => -17,
       ),
       'seven' => array(
         'region' => '',
@@ -150,10 +154,23 @@ function immunizationed_core_default_fe_block_settings() {
     'custom' => 0,
     'delta' => 'menu-my-practice-admin',
     'module' => 'menu',
-    'node_types' => array(),
-    'pages' => 'practices',
+    'node_types' => array(
+      0 => 'convenient_vaccination_services',
+      1 => 'enhanced_vaccination_systems',
+      2 => 'meeting_agenda',
+      3 => 'motivation',
+      4 => 'patient_notification',
+      5 => 'practice_admin_group',
+      6 => 'practice_group',
+    ),
+    'pages' => '',
     'roles' => array(
-      'authenticated user' => 2,
+      'administrator' => 3,
+      'apprentice admin' => 8,
+      'Co-I admin' => 7,
+      'editor' => 4,
+      'Group member' => 5,
+      'Practice admin' => 6,
     ),
     'themes' => array(
       'bartik' => array(
@@ -163,10 +180,10 @@ function immunizationed_core_default_fe_block_settings() {
         'weight' => -13,
       ),
       'energetic' => array(
-        'region' => '',
-        'status' => 0,
+        'region' => 'left',
+        'status' => 1,
         'theme' => 'energetic',
-        'weight' => -1,
+        'weight' => -16,
       ),
       'seven' => array(
         'region' => '',
@@ -175,8 +192,8 @@ function immunizationed_core_default_fe_block_settings() {
         'weight' => 0,
       ),
     ),
-    'title' => '<none>',
-    'visibility' => 1,
+    'title' => 'Practice Admin',
+    'visibility' => 0,
   );
 
   $export['menu-menu-views'] = array(
