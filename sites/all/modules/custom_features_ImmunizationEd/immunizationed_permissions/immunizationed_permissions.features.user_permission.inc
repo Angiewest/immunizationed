@@ -551,54 +551,9 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'panelizer',
   );
 
-  // Exported permission: administer panelizer node article content.
-  $permissions['administer panelizer node article content'] = array(
-    'name' => 'administer panelizer node article content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node article context.
-  $permissions['administer panelizer node article context'] = array(
-    'name' => 'administer panelizer node article context',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
   // Exported permission: administer panelizer node article defaults.
   $permissions['administer panelizer node article defaults'] = array(
     'name' => 'administer panelizer node article defaults',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node article layout.
-  $permissions['administer panelizer node article layout'] = array(
-    'name' => 'administer panelizer node article layout',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node article overview.
-  $permissions['administer panelizer node article overview'] = array(
-    'name' => 'administer panelizer node article overview',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node article settings.
-  $permissions['administer panelizer node article settings'] = array(
-    'name' => 'administer panelizer node article settings',
     'roles' => array(
       'administrator' => 'administrator',
     ),
@@ -1069,72 +1024,9 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'panelizer',
   );
 
-  // Exported permission: administer panelizer node roadmap_waypoint content.
-  $permissions['administer panelizer node roadmap_waypoint content'] = array(
-    'name' => 'administer panelizer node roadmap_waypoint content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node roadmap_waypoint context.
-  $permissions['administer panelizer node roadmap_waypoint context'] = array(
-    'name' => 'administer panelizer node roadmap_waypoint context',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
   // Exported permission: administer panelizer node roadmap_waypoint defaults.
   $permissions['administer panelizer node roadmap_waypoint defaults'] = array(
     'name' => 'administer panelizer node roadmap_waypoint defaults',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node roadmap_waypoint layout.
-  $permissions['administer panelizer node roadmap_waypoint layout'] = array(
-    'name' => 'administer panelizer node roadmap_waypoint layout',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node roadmap_waypoint overview.
-  $permissions['administer panelizer node roadmap_waypoint overview'] = array(
-    'name' => 'administer panelizer node roadmap_waypoint overview',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node roadmap_waypoint settings.
-  $permissions['administer panelizer node roadmap_waypoint settings'] = array(
-    'name' => 'administer panelizer node roadmap_waypoint settings',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node task content.
-  $permissions['administer panelizer node task content'] = array(
-    'name' => 'administer panelizer node task content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node task context.
-  $permissions['administer panelizer node task context'] = array(
-    'name' => 'administer panelizer node task context',
     'roles' => array(
       'administrator' => 'administrator',
     ),
@@ -1147,40 +1039,6 @@ function immunizationed_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
     ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node task layout.
-  $permissions['administer panelizer node task layout'] = array(
-    'name' => 'administer panelizer node task layout',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node task overview.
-  $permissions['administer panelizer node task overview'] = array(
-    'name' => 'administer panelizer node task overview',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node task settings.
-  $permissions['administer panelizer node task settings'] = array(
-    'name' => 'administer panelizer node task settings',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node vaccination_data_from_emr defaults.
-  $permissions['administer panelizer node vaccination_data_from_emr defaults'] = array(
-    'name' => 'administer panelizer node vaccination_data_from_emr defaults',
-    'roles' => array(),
     'module' => 'panelizer',
   );
 
@@ -1748,7 +1606,10 @@ function immunizationed_permissions_user_default_permissions() {
   // Exported permission: create other_additions_to_views content.
   $permissions['create other_additions_to_views content'] = array(
     'name' => 'create other_additions_to_views content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
     'module' => 'node',
   );
 
@@ -1856,6 +1717,13 @@ function immunizationed_permissions_user_default_permissions() {
       'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'path',
+  );
+
+  // Exported permission: create vaccination_data_from_emr content.
+  $permissions['create vaccination_data_from_emr content'] = array(
+    'name' => 'create vaccination_data_from_emr content',
+    'roles' => array(),
+    'module' => 'node',
   );
 
   // Exported permission: create video content.
@@ -2010,7 +1878,10 @@ function immunizationed_permissions_user_default_permissions() {
   // Exported permission: delete any other_additions_to_views content.
   $permissions['delete any other_additions_to_views content'] = array(
     'name' => 'delete any other_additions_to_views content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
     'module' => 'node',
   );
 
@@ -2097,6 +1968,13 @@ function immunizationed_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any vaccination_data_from_emr content.
+  $permissions['delete any vaccination_data_from_emr content'] = array(
+    'name' => 'delete any vaccination_data_from_emr content',
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -2253,7 +2131,10 @@ function immunizationed_permissions_user_default_permissions() {
   // Exported permission: delete own other_additions_to_views content.
   $permissions['delete own other_additions_to_views content'] = array(
     'name' => 'delete own other_additions_to_views content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
     'module' => 'node',
   );
 
@@ -2344,6 +2225,13 @@ function immunizationed_permissions_user_default_permissions() {
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own vaccination_data_from_emr content.
+  $permissions['delete own vaccination_data_from_emr content'] = array(
+    'name' => 'delete own vaccination_data_from_emr content',
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -2642,7 +2530,10 @@ function immunizationed_permissions_user_default_permissions() {
   // Exported permission: edit any other_additions_to_views content.
   $permissions['edit any other_additions_to_views content'] = array(
     'name' => 'edit any other_additions_to_views content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
     'module' => 'node',
   );
 
@@ -2738,6 +2629,13 @@ function immunizationed_permissions_user_default_permissions() {
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any vaccination_data_from_emr content.
+  $permissions['edit any vaccination_data_from_emr content'] = array(
+    'name' => 'edit any vaccination_data_from_emr content',
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -2907,7 +2805,10 @@ function immunizationed_permissions_user_default_permissions() {
   // Exported permission: edit own other_additions_to_views content.
   $permissions['edit own other_additions_to_views content'] = array(
     'name' => 'edit own other_additions_to_views content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
     'module' => 'node',
   );
 
@@ -3004,6 +2905,13 @@ function immunizationed_permissions_user_default_permissions() {
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own vaccination_data_from_emr content.
+  $permissions['edit own vaccination_data_from_emr content'] = array(
+    'name' => 'edit own vaccination_data_from_emr content',
+    'roles' => array(),
     'module' => 'node',
   );
 

@@ -13,6 +13,10 @@ function immunizationed_layouts_ctools_plugin_api() {
     return array("version" => "1");
   }
   list($module, $api) = func_get_args();
+  if ($module == "panelizer" && $api == "panelizer") {
+    return array("version" => "1");
+  }
+  list($module, $api) = func_get_args();
   if ($module == "panels" && $api == "layouts") {
     return array("version" => "1");
   }

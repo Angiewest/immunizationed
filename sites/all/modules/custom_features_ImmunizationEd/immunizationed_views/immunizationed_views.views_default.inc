@@ -1320,7 +1320,7 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['filters']['field_content_type_reference_for_tid']['table'] = 'field_data_field_content_type_reference_for';
   $handler->display->display_options['filters']['field_content_type_reference_for_tid']['field'] = 'field_content_type_reference_for_tid';
   $handler->display->display_options['filters']['field_content_type_reference_for_tid']['value'] = array(
-    39 => '39',
+    47 => '47',
   );
   $handler->display->display_options['filters']['field_content_type_reference_for_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_content_type_reference_for_tid']['vocabulary'] = 'form_relationships';
@@ -1328,6 +1328,31 @@ function immunizationed_views_views_default_views() {
   /* Display: Convenience Pane */
   $handler = $view->new_display('panel_pane', 'Convenience Pane', 'panel_pane_1');
   $handler->display->display_options['display_description'] = 'view of text content to display on convenience form';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'other_additions_to_views' => 'other_additions_to_views',
+  );
+  /* Filter criterion: Content: Content type reference for views filter (field_content_type_reference_for) */
+  $handler->display->display_options['filters']['field_content_type_reference_for_tid']['id'] = 'field_content_type_reference_for_tid';
+  $handler->display->display_options['filters']['field_content_type_reference_for_tid']['table'] = 'field_data_field_content_type_reference_for';
+  $handler->display->display_options['filters']['field_content_type_reference_for_tid']['field'] = 'field_content_type_reference_for_tid';
+  $handler->display->display_options['filters']['field_content_type_reference_for_tid']['value'] = array(
+    35 => '35',
+  );
+  $handler->display->display_options['filters']['field_content_type_reference_for_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_content_type_reference_for_tid']['vocabulary'] = 'form_relationships';
 
   /* Display: Notification pane */
   $handler = $view->new_display('panel_pane', 'Notification pane', 'panel_pane_2');
@@ -1353,7 +1378,7 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['filters']['field_content_type_reference_for_tid']['table'] = 'field_data_field_content_type_reference_for';
   $handler->display->display_options['filters']['field_content_type_reference_for_tid']['field'] = 'field_content_type_reference_for_tid';
   $handler->display->display_options['filters']['field_content_type_reference_for_tid']['value'] = array(
-    42 => '42',
+    39 => '39',
   );
   $handler->display->display_options['filters']['field_content_type_reference_for_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_content_type_reference_for_tid']['vocabulary'] = 'form_relationships';
@@ -1382,7 +1407,7 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['filters']['field_content_type_reference_for_tid']['table'] = 'field_data_field_content_type_reference_for';
   $handler->display->display_options['filters']['field_content_type_reference_for_tid']['field'] = 'field_content_type_reference_for_tid';
   $handler->display->display_options['filters']['field_content_type_reference_for_tid']['value'] = array(
-    41 => '41',
+    38 => '38',
   );
   $handler->display->display_options['filters']['field_content_type_reference_for_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_content_type_reference_for_tid']['vocabulary'] = 'form_relationships';
@@ -1411,7 +1436,7 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['filters']['field_content_type_reference_for_tid']['table'] = 'field_data_field_content_type_reference_for';
   $handler->display->display_options['filters']['field_content_type_reference_for_tid']['field'] = 'field_content_type_reference_for_tid';
   $handler->display->display_options['filters']['field_content_type_reference_for_tid']['value'] = array(
-    43 => '43',
+    37 => '37',
   );
   $handler->display->display_options['filters']['field_content_type_reference_for_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_content_type_reference_for_tid']['vocabulary'] = 'form_relationships';
@@ -1440,10 +1465,69 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['filters']['field_content_type_reference_for_tid']['table'] = 'field_data_field_content_type_reference_for';
   $handler->display->display_options['filters']['field_content_type_reference_for_tid']['field'] = 'field_content_type_reference_for_tid';
   $handler->display->display_options['filters']['field_content_type_reference_for_tid']['value'] = array(
-    40 => '40',
+    36 => '36',
   );
   $handler->display->display_options['filters']['field_content_type_reference_for_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_content_type_reference_for_tid']['vocabulary'] = 'form_relationships';
+
+  /* Display: Assembly step pane */
+  $handler = $view->new_display('panel_pane', 'Assembly step pane', 'panel_pane_6');
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'other_additions_to_views' => 'other_additions_to_views',
+  );
+  /* Filter criterion: Content: Content type reference for views filter (field_content_type_reference_for) */
+  $handler->display->display_options['filters']['field_content_type_reference_for_tid']['id'] = 'field_content_type_reference_for_tid';
+  $handler->display->display_options['filters']['field_content_type_reference_for_tid']['table'] = 'field_data_field_content_type_reference_for';
+  $handler->display->display_options['filters']['field_content_type_reference_for_tid']['field'] = 'field_content_type_reference_for_tid';
+  $handler->display->display_options['filters']['field_content_type_reference_for_tid']['value'] = array(
+    45 => '45',
+  );
+  $handler->display->display_options['filters']['field_content_type_reference_for_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_content_type_reference_for_tid']['vocabulary'] = 'form_relationships';
+
+  /* Display: Project update pane */
+  $handler = $view->new_display('panel_pane', 'Project update pane', 'panel_pane_7');
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'other_additions_to_views' => 'other_additions_to_views',
+  );
+  /* Filter criterion: Content: Content type reference for views filter (field_content_type_reference_for) */
+  $handler->display->display_options['filters']['field_content_type_reference_for_tid']['id'] = 'field_content_type_reference_for_tid';
+  $handler->display->display_options['filters']['field_content_type_reference_for_tid']['table'] = 'field_data_field_content_type_reference_for';
+  $handler->display->display_options['filters']['field_content_type_reference_for_tid']['field'] = 'field_content_type_reference_for_tid';
+  $handler->display->display_options['filters']['field_content_type_reference_for_tid']['value'] = array(
+    46 => '46',
+  );
+  $handler->display->display_options['filters']['field_content_type_reference_for_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_content_type_reference_for_tid']['vocabulary'] = 'form_relationships';
+
+  /* Display: Create practice pane */
+  $handler = $view->new_display('panel_pane', 'Create practice pane', 'panel_pane_8');
   $export['other_additions_to_views'] = $view;
 
   $view = new view();

@@ -691,14 +691,6 @@ function immunizationed_permissions_og_features_default_permissions() {
     ),
   );
 
-  // Exported og permission: 'node:practice_group:administer group'
-  $permissions['node:practice_group:administer group'] = array(
-    'roles' => array(
-      'Administrator member' => 'Administrator member',
-      'non-member' => 'non-member',
-    ),
-  );
-
   // Exported og permission: 'node:practice_group:approve and deny subscription'
   $permissions['node:practice_group:approve and deny subscription'] = array(
     'roles' => array(
@@ -928,7 +920,6 @@ function immunizationed_permissions_og_features_default_permissions() {
   $permissions['node:practice_group:update any task content'] = array(
     'roles' => array(
       'Administrator member' => 'Administrator member',
-      'non-member' => 'non-member',
     ),
   );
 
@@ -936,7 +927,6 @@ function immunizationed_permissions_og_features_default_permissions() {
   $permissions['node:practice_group:update body field'] = array(
     'roles' => array(
       'Administrator member' => 'Administrator member',
-      'non-member' => 'non-member',
     ),
   );
 
