@@ -19,6 +19,9 @@ function immunizationed_structure_field_default_field_bases() {
       0 => 'node',
     ),
     'field_name' => 'body',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
     'foreign keys' => array(
       'format' => array(
         'columns' => array(
@@ -782,6 +785,9 @@ function immunizationed_structure_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_image',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'foreign keys' => array(
       'fid' => array(
         'columns' => array(
@@ -1742,6 +1748,9 @@ function immunizationed_structure_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_tags',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
     'foreign keys' => array(
       'tid' => array(
         'columns' => array(

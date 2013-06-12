@@ -13,6 +13,13 @@ function development_feature_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'dblog_row_limit';
+  $strongarm->value = '1000';
+  $export['dblog_row_limit'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'devel_api_url';
   $strongarm->value = 'api.drupal.org';
   $export['devel_api_url'] = $strongarm;
@@ -165,6 +172,13 @@ function development_feature_strongarm() {
   $strongarm->name = 'dev_timer';
   $strongarm->value = 0;
   $export['dev_timer'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'error_level';
+  $strongarm->value = '2';
+  $export['error_level'] = $strongarm;
 
   return $export;
 }

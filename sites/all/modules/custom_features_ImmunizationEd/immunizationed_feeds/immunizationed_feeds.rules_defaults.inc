@@ -15,11 +15,7 @@ function immunizationed_feeds_default_rules_configuration() {
       "TAGS" : [ "import" ],
       "REQUIRES" : [ "rules", "feeds" ],
       "ON" : [ "feeds_import_emr_importer" ],
-      "IF" : [
-        { "data_is_empty" : { "data" : [ "node:title" ] } },
-        { "data_is_empty" : { "data" : [ "node:field-epic-id" ] } },
-        { "data_is_empty" : { "data" : [ "node:field-visits" ] } }
-      ],
+      "IF" : [ { "data_is_empty" : { "data" : [ "node:title" ] } } ],
       "DO" : [ { "feeds_skip_item" : { "entity" : [ "node" ] } } ]
     }
   }');

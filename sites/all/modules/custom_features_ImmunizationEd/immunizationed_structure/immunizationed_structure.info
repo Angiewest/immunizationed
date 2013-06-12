@@ -15,6 +15,7 @@ dependencies[] = file
 dependencies[] = file_entity
 dependencies[] = image
 dependencies[] = immunizationed_core
+dependencies[] = immunizationed_menus
 dependencies[] = link
 dependencies[] = list
 dependencies[] = media

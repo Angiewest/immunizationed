@@ -10,15 +10,6 @@
 function immunizationed_anti_spam_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: administer BOTCHA settings.
-  $permissions['administer BOTCHA settings'] = array(
-    'name' => 'administer BOTCHA settings',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'botcha',
-  );
-
   // Exported permission: administer CAPTCHA settings.
   $permissions['administer CAPTCHA settings'] = array(
     'name' => 'administer CAPTCHA settings',
@@ -48,19 +39,6 @@ function immunizationed_anti_spam_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'spambot',
-  );
-
-  // Exported permission: skip BOTCHA.
-  $permissions['skip BOTCHA'] = array(
-    'name' => 'skip BOTCHA',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'botcha',
   );
 
   // Exported permission: skip CAPTCHA.
