@@ -42,7 +42,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -47,
+    'weight' => 20,
   );
   // Exported menu link: main-menu:building-blocks
   $menu_links['main-menu:building-blocks'] = array(
@@ -56,7 +56,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -48,
+    'weight' => 0,
   );
   // Exported menu link: main-menu:node/1
   $menu_links['main-menu:node/1'] = array(
@@ -92,7 +92,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -45,
+    'weight' => 20,
   );
   // Exported menu link: main-menu:practice-admin
   $menu_links['main-menu:practice-admin'] = array(
@@ -106,7 +106,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -44,
+    'weight' => 0,
   );
   // Exported menu link: main-menu:practices
   $menu_links['main-menu:practices'] = array(
@@ -120,7 +120,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -46,
+    'weight' => 20,
   );
   // Exported menu link: menu-add-content:node/add
   $menu_links['menu-add-content:node/add'] = array(
@@ -457,7 +457,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -45,
+    'weight' => 0,
   );
   // Exported menu link: menu-editing:admin/people/create
   $menu_links['menu-editing:admin/people/create'] = array(
