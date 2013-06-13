@@ -306,6 +306,16 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'book',
   );
 
+  // Exported permission: administer chart.
+  $permissions['administer chart'] = array(
+    'name' => 'administer chart',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
+    'module' => 'chart',
+  );
+
   // Exported permission: administer comments.
   $permissions['administer comments'] = array(
     'name' => 'administer comments',
@@ -1369,6 +1379,13 @@ function immunizationed_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'user',
+  );
+
+  // Exported permission: clear emr_importer feeds.
+  $permissions['clear emr_importer feeds'] = array(
+    'name' => 'clear emr_importer feeds',
+    'roles' => array(),
+    'module' => 'feeds',
   );
 
   // Exported permission: clear node feeds.
@@ -3362,6 +3379,13 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'admin_menu',
   );
 
+  // Exported permission: import emr_importer feeds.
+  $permissions['import emr_importer feeds'] = array(
+    'name' => 'import emr_importer feeds',
+    'roles' => array(),
+    'module' => 'feeds',
+  );
+
   // Exported permission: import media.
   $permissions['import media'] = array(
     'name' => 'import media',
@@ -3496,6 +3520,13 @@ function immunizationed_permissions_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'shortcut',
+  );
+
+  // Exported permission: unlock emr_importer feeds.
+  $permissions['unlock emr_importer feeds'] = array(
+    'name' => 'unlock emr_importer feeds',
+    'roles' => array(),
+    'module' => 'feeds',
   );
 
   // Exported permission: unlock node feeds.

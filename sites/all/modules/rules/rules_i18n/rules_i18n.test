@@ -12,10 +12,10 @@ class RulesI18nTestCase extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Rules I18n',
-        'description' => 'Tests translating Rules configs.',
-        'group' => 'Rules',
-        'dependencies' => array('i18n_string'),
+      'name' => 'Rules I18n',
+      'description' => 'Tests translating Rules configs.',
+      'group' => 'Rules',
+      'dependencies' => array('i18n_string'),
     );
   }
 
@@ -122,8 +122,8 @@ class RulesI18nTestCase extends DrupalWebTestCase {
   public function testI18nActionT() {
     $set = rules_action_set(array());
     $set->action('rules_i18n_t', array(
-        'text' => 'untranslated',
-        'language' => 'de',
+      'text' => 'untranslated',
+      'language' => 'de',
     ));
     $set->action('drupal_message', array('message:select' => 'text'));
     $set->save('rules_i18n_test');

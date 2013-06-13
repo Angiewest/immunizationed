@@ -9,9 +9,9 @@ class RulesSchedulerTestCase extends DrupalWebTestCase {
 
   static function getInfo() {
     return array(
-        'name' => 'Rules Scheduler tests',
-        'description' => 'Test scheduling components.',
-        'group' => 'Rules',
+      'name' => 'Rules Scheduler tests',
+      'description' => 'Test scheduling components.',
+      'group' => 'Rules',
     );
   }
 
@@ -29,22 +29,22 @@ class RulesSchedulerTestCase extends DrupalWebTestCase {
    */
   function testComponentSchedule() {
     $set = rules_rule_set(array(
-        'node1' => array('type' => 'node', 'label' => 'node'),
+      'node1' => array('type' => 'node', 'label' => 'node'),
     ));
     $set->rule(rule()->condition('node_is_published', array('node:select' => 'node1'))
-        ->action('node_unpublish', array('node:select' => 'node1'))
-    );
+                     ->action('node_unpublish', array('node:select' => 'node1'))
+               );
     $set->integrityCheck()->save('rules_test_set_2');
 
     // Use different names for the variables to ensure they are properly mapped.
     $rule = rule(array(
-        'node2' => array('type' => 'node', 'label' => 'node'),
+      'node2' => array('type' => 'node', 'label' => 'node'),
     ));
     $rule->action('schedule', array(
-        'component' => 'rules_test_set_2',
-        'identifier' => 'node_[node2:nid]',
-        'date' => 'now',
-        'param_node1:select' => 'node2',
+      'component' => 'rules_test_set_2',
+      'identifier' => 'node_[node2:nid]',
+      'date' => 'now',
+      'param_node1:select' => 'node2',
     ));
 
     $node = $this->drupalCreateNode(array('title' => 'The title.', 'status' => 1));
@@ -63,11 +63,11 @@ class RulesSchedulerTestCase extends DrupalWebTestCase {
    */
   function testRecursionPrevention() {
     $set = rules_rule_set(array(
-        'node1' => array('type' => 'node', 'label' => 'node'),
+      'node1' => array('type' => 'node', 'label' => 'node'),
     ));
     $set->rule(rule()->condition('node_is_published', array('node:select' => 'node1'))
-        ->action('node_unpublish', array('node:select' => 'node1'))
-    );
+                     ->action('node_unpublish', array('node:select' => 'node1'))
+               );
     $set->integrityCheck()->save('rules_test_set_2');
 
     // Add an reaction rule that is triggered upon a node save. The scheduled
@@ -77,10 +77,10 @@ class RulesSchedulerTestCase extends DrupalWebTestCase {
     $rule->event('node_insert');
     $rule->event('node_update');
     $rule->action('schedule', array(
-        'component' => 'rules_test_set_2',
-        'identifier' => '',
-        'date' => 'now',
-        'param_node1:select' => 'node',
+      'component' => 'rules_test_set_2',
+      'identifier' => '',
+      'date' => 'now',
+      'param_node1:select' => 'node',
     ));
     $rule->save();
 
