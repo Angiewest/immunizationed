@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * immunizationed_permissions.features.og_features_role.inc
+ * immunizationed_practice_field_permissions.features.og_features_role.inc
  */
 
 /**
  * Implements hook_og_features_default_roles().
  */
-function immunizationed_permissions_og_features_default_roles() {
+function immunizationed_practice_field_permissions_og_features_default_roles() {
   $roles = array();
 
   // Exported OG Role: 'node:practice_group:Administrator member'.

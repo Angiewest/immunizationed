@@ -8,7 +8,6 @@ project = conflicting_permissions_for_production
 dependencies[] = features
 dependencies[] = rules
 features[features_api][] = api:2
-features[og_features_permission][] = node:practice_group:administer group
 features[user_permission][] = access rules debug
 features_exclude[dependencies][og] = og
 features_exclude[og_features_role][node:practice_group:Administrator member] = node:practice_group:Administrator member

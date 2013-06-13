@@ -34,6 +34,12 @@ function immunizationed_menus_menu_default_menu_custom() {
     'title' => 'Practice Admin',
     'description' => 'Menu for practice adminstration',
   );
+  // Exported menu: menu-site-admin.
+  $menus['menu-site-admin'] = array(
+    'menu_name' => 'menu-site-admin',
+    'title' => 'Site admin',
+    'description' => 'Menu for site administrators',
+  );
   // Exported menu: menu-views.
   $menus['menu-views'] = array(
     'menu_name' => 'menu-views',
@@ -58,10 +64,12 @@ function immunizationed_menus_menu_default_menu_custom() {
   t('Editor menu');
   t('Main menu');
   t('Menu for practice adminstration');
+  t('Menu for site administrators');
   t('Menu for site editors');
   t('Misc. admin views');
   t('Navigation');
   t('Practice Admin');
+  t('Site admin');
   t('The <em>Content</em> menu contains links intended for practice admins.');
   t('The <em>Main</em> menu is used on many sites to show the major sections of the site, often in a top navigation bar.');
   t('The <em>Navigation</em> menu contains links intended for site visitors. Links are added to the <em>Navigation</em> menu automatically by some modules.');

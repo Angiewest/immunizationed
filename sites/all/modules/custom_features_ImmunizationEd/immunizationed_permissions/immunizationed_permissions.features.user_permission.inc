@@ -36,6 +36,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'access all views',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'views',
   );
@@ -109,12 +110,8 @@ function immunizationed_permissions_user_default_permissions() {
   $permissions['access contextual links'] = array(
     'name' => 'access contextual links',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
-      'editor' => 'editor',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'contextual',
   );
@@ -306,6 +303,16 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'book',
   );
 
+  // Exported permission: administer chart.
+  $permissions['administer chart'] = array(
+    'name' => 'administer chart',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
+    'module' => 'chart',
+  );
+
   // Exported permission: administer comments.
   $permissions['administer comments'] = array(
     'name' => 'administer comments',
@@ -321,6 +328,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'administer contact forms',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'contact',
   );
@@ -461,6 +469,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'administer menu attributes',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'menu_attributes',
   );
@@ -1215,6 +1224,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'administer shortcuts',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'shortcut',
   );
@@ -1371,17 +1381,32 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: clear emr_importer feeds.
+  $permissions['clear emr_importer feeds'] = array(
+    'name' => 'clear emr_importer feeds',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'feeds',
+  );
+
   // Exported permission: clear node feeds.
   $permissions['clear node feeds'] = array(
     'name' => 'clear node feeds',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'feeds',
   );
 
   // Exported permission: clear user feeds.
   $permissions['clear user feeds'] = array(
     'name' => 'clear user feeds',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'feeds',
   );
 
@@ -2996,7 +3021,10 @@ function immunizationed_permissions_user_default_permissions() {
   // Exported permission: execute auto_entitylabel_entity_update_action.
   $permissions['execute auto_entitylabel_entity_update_action'] = array(
     'name' => 'execute auto_entitylabel_entity_update_action',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
     'module' => 'actions_permissions',
   );
 
@@ -3160,7 +3188,6 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'execute og_membership_delete_action',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -3198,6 +3225,7 @@ function immunizationed_permissions_user_default_permissions() {
     'name' => 'execute panelizer_set_status_action',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'actions_permissions',
   );
@@ -3362,6 +3390,17 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'admin_menu',
   );
 
+  // Exported permission: import emr_importer feeds.
+  $permissions['import emr_importer feeds'] = array(
+    'name' => 'import emr_importer feeds',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'feeds',
+  );
+
   // Exported permission: import media.
   $permissions['import media'] = array(
     'name' => 'import media',
@@ -3376,14 +3415,18 @@ function immunizationed_permissions_user_default_permissions() {
   // Exported permission: import node feeds.
   $permissions['import node feeds'] = array(
     'name' => 'import node feeds',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'feeds',
   );
 
   // Exported permission: import user feeds.
   $permissions['import user feeds'] = array(
     'name' => 'import user feeds',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'feeds',
   );
 
@@ -3498,17 +3541,30 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'shortcut',
   );
 
+  // Exported permission: unlock emr_importer feeds.
+  $permissions['unlock emr_importer feeds'] = array(
+    'name' => 'unlock emr_importer feeds',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
   // Exported permission: unlock node feeds.
   $permissions['unlock node feeds'] = array(
     'name' => 'unlock node feeds',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'feeds',
   );
 
   // Exported permission: unlock user feeds.
   $permissions['unlock user feeds'] = array(
     'name' => 'unlock user feeds',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'feeds',
   );
 

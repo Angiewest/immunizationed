@@ -423,6 +423,24 @@ function immunizationed_menus_menu_default_menu_links() {
     'weight' => -36,
     'parent_path' => 'node/add',
   );
+  // Exported menu link: menu-editing:admin/content
+  $menu_links['menu-editing:admin/content'] = array(
+    'menu_name' => 'menu-editing',
+    'link_path' => 'admin/content',
+    'router_path' => 'admin/content',
+    'link_title' => 'View Content',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'View all site content',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 1,
+    'weight' => -49,
+  );
   // Exported menu link: menu-editing:admin/people
   $menu_links['menu-editing:admin/people'] = array(
     'menu_name' => 'menu-editing',
@@ -435,47 +453,11 @@ function immunizationed_menus_menu_default_menu_links() {
       ),
     ),
     'module' => 'menu',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 1,
-    'weight' => -46,
-  );
-  // Exported menu link: menu-editing:admin/people-details
-  $menu_links['menu-editing:admin/people-details'] = array(
-    'menu_name' => 'menu-editing',
-    'link_path' => 'admin/people-details',
-    'router_path' => 'admin/people-details',
-    'link_title' => 'People details',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Site user details',
-      ),
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-  );
-  // Exported menu link: menu-editing:admin/people/create
-  $menu_links['menu-editing:admin/people/create'] = array(
-    'menu_name' => 'menu-editing',
-    'link_path' => 'admin/people/create',
-    'router_path' => 'admin/people/create',
-    'link_title' => 'Add new member to site',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'add a member to ImmunizationEd',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -44,
+    'weight' => -47,
   );
   // Exported menu link: menu-editing:import
   $menu_links['menu-editing:import'] = array(
@@ -491,7 +473,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -43,
+    'weight' => -48,
   );
   // Exported menu link: menu-editing:node/add
   $menu_links['menu-editing:node/add'] = array(
@@ -505,7 +487,7 @@ function immunizationed_menus_menu_default_menu_links() {
       ),
     ),
     'module' => 'menu',
-    'hidden' => 1,
+    'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 1,
@@ -527,7 +509,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -48,
+    'weight' => -46,
   );
   // Exported menu link: menu-editing:node/add/article
   $menu_links['menu-editing:node/add/article'] = array(
@@ -545,7 +527,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -42,
+    'weight' => -44,
   );
   // Exported menu link: menu-editing:node/add/book
   $menu_links['menu-editing:node/add/book'] = array(
@@ -563,7 +545,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -39,
+    'weight' => -41,
   );
   // Exported menu link: menu-editing:node/add/document
   $menu_links['menu-editing:node/add/document'] = array(
@@ -581,7 +563,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -40,
+    'weight' => -42,
   );
   // Exported menu link: menu-editing:node/add/offsite-resource
   $menu_links['menu-editing:node/add/offsite-resource'] = array(
@@ -599,25 +581,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -38,
-  );
-  // Exported menu link: menu-editing:node/add/practice-group
-  $menu_links['menu-editing:node/add/practice-group'] = array(
-    'menu_name' => 'menu-editing',
-    'link_path' => 'node/add/practice-group',
-    'router_path' => 'node/add/practice-group',
-    'link_title' => 'Add Practice',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Create a new practice in the immunization improvement program.',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 1,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -49,
+    'weight' => -40,
   );
   // Exported menu link: menu-editing:node/add/roadmap-waypoint
   $menu_links['menu-editing:node/add/roadmap-waypoint'] = array(
@@ -635,7 +599,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -41,
+    'weight' => -43,
   );
   // Exported menu link: menu-editing:node/add/task
   $menu_links['menu-editing:node/add/task'] = array(
@@ -653,7 +617,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -47,
+    'weight' => -45,
   );
   // Exported menu link: menu-editing:node/add/video
   $menu_links['menu-editing:node/add/video'] = array(
@@ -671,7 +635,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -37,
+    'weight' => -39,
   );
   // Exported menu link: menu-editing:node/add/webform
   $menu_links['menu-editing:node/add/webform'] = array(
@@ -689,7 +653,25 @@ function immunizationed_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -36,
+    'weight' => -38,
+  );
+  // Exported menu link: menu-my-practice-admin:admin/people/create
+  $menu_links['menu-my-practice-admin:admin/people/create'] = array(
+    'menu_name' => 'menu-my-practice-admin',
+    'link_path' => 'admin/people/create',
+    'router_path' => 'admin/people/create',
+    'link_title' => 'Add new member to site',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'add a member to ImmunizationEd',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -50,
   );
   // Exported menu link: menu-my-practice-admin:node/add/announcement
   $menu_links['menu-my-practice-admin:node/add/announcement'] = array(
@@ -708,7 +690,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -45,
+    'weight' => -44,
   );
   // Exported menu link: menu-my-practice-admin:node/add/convenient-vaccination-services
   $menu_links['menu-my-practice-admin:node/add/convenient-vaccination-services'] = array(
@@ -728,7 +710,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -49,
+    'weight' => -48,
   );
   // Exported menu link: menu-my-practice-admin:node/add/enhanced-vaccination-systems
   $menu_links['menu-my-practice-admin:node/add/enhanced-vaccination-systems'] = array(
@@ -747,7 +729,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -47,
+    'weight' => -46,
   );
   // Exported menu link: menu-my-practice-admin:node/add/meeting-agenda
   $menu_links['menu-my-practice-admin:node/add/meeting-agenda'] = array(
@@ -765,7 +747,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 1,
-    'weight' => -50,
+    'weight' => -49,
   );
   // Exported menu link: menu-my-practice-admin:node/add/motivation
   $menu_links['menu-my-practice-admin:node/add/motivation'] = array(
@@ -784,7 +766,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -46,
+    'weight' => -45,
   );
   // Exported menu link: menu-my-practice-admin:node/add/patient-notification
   $menu_links['menu-my-practice-admin:node/add/patient-notification'] = array(
@@ -803,7 +785,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -48,
+    'weight' => -47,
   );
   // Exported menu link: menu-my-practice-admin:node/add/task
   $menu_links['menu-my-practice-admin:node/add/task'] = array(
@@ -822,7 +804,61 @@ function immunizationed_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -44,
+    'weight' => -43,
+  );
+  // Exported menu link: menu-site-admin:admin/people-details
+  $menu_links['menu-site-admin:admin/people-details'] = array(
+    'menu_name' => 'menu-site-admin',
+    'link_path' => 'admin/people-details',
+    'router_path' => 'admin/people-details',
+    'link_title' => 'View People',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Site user details',
+      ),
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -46,
+  );
+  // Exported menu link: menu-site-admin:admin/people/create
+  $menu_links['menu-site-admin:admin/people/create'] = array(
+    'menu_name' => 'menu-site-admin',
+    'link_path' => 'admin/people/create',
+    'router_path' => 'admin/people/create',
+    'link_title' => 'Add People',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'add a member to ImmunizationEd',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -47,
+  );
+  // Exported menu link: menu-site-admin:node/add/practice-group
+  $menu_links['menu-site-admin:node/add/practice-group'] = array(
+    'menu_name' => 'menu-site-admin',
+    'link_path' => 'node/add/practice-group',
+    'router_path' => 'node/add/practice-group',
+    'link_title' => 'Add Practice',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Create a new practice in the immunization improvement program.',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -48,
   );
   // Exported menu link: menu-views:admin/content
   $menu_links['menu-views:admin/content'] = array(
@@ -984,6 +1020,7 @@ function immunizationed_menus_menu_default_menu_links() {
   t('Add Content');
   t('Add Document');
   t('Add Offsite Resource');
+  t('Add People');
   t('Add Practice');
   t('Add Project Update');
   t('Add Video');
@@ -1014,7 +1051,6 @@ function immunizationed_menus_menu_default_menu_links() {
   t('Overdue tasks');
   t('Panel');
   t('People');
-  t('People details');
   t('Practice');
   t('Practice Admin Group');
   t('Practice tasks');
@@ -1027,6 +1063,8 @@ function immunizationed_menus_menu_default_menu_links() {
   t('Select systems strategies');
   t('User account');
   t('Video');
+  t('View Content');
+  t('View People');
   t('Webform');
 
 

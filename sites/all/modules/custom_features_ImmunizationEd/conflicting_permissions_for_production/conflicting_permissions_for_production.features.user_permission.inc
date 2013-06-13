@@ -14,8 +14,11 @@ function conflicting_permissions_for_production_user_default_permissions() {
   $permissions['access rules debug'] = array(
     'name' => 'access rules debug',
     'roles' => array(
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
       'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'rules',
   );

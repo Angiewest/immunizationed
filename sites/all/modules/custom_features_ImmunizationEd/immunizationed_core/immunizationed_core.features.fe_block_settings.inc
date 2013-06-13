@@ -33,7 +33,7 @@ function immunizationed_core_default_fe_block_settings() {
         'region' => 'left',
         'status' => 1,
         'theme' => 'energetic',
-        'weight' => -18,
+        'weight' => -19,
       ),
       'seven' => array(
         'region' => '',
@@ -116,8 +116,9 @@ function immunizationed_core_default_fe_block_settings() {
     'delta' => 'menu-editing',
     'module' => 'menu',
     'node_types' => array(
-      0 => 'practice_admin_group',
-      1 => 'practice_group',
+      0 => 'page',
+      1 => 'practice_admin_group',
+      2 => 'practice_group',
     ),
     'pages' => '',
     'roles' => array(
@@ -136,7 +137,7 @@ function immunizationed_core_default_fe_block_settings() {
         'region' => 'left',
         'status' => 1,
         'theme' => 'energetic',
-        'weight' => -17,
+        'weight' => -18,
       ),
       'seven' => array(
         'region' => '',
@@ -193,6 +194,45 @@ function immunizationed_core_default_fe_block_settings() {
       ),
     ),
     'title' => 'Practice Admin',
+    'visibility' => 0,
+  );
+
+  $export['menu-menu-site-admin'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'menu-site-admin',
+    'module' => 'menu',
+    'node_types' => array(
+      0 => 'page',
+      1 => 'practice_group',
+    ),
+    'pages' => '',
+    'roles' => array(
+      'administrator' => 3,
+      'apprentice admin' => 8,
+      'Co-I admin' => 7,
+    ),
+    'themes' => array(
+      'bartik' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'bartik',
+        'weight' => 0,
+      ),
+      'energetic' => array(
+        'region' => 'left',
+        'status' => 1,
+        'theme' => 'energetic',
+        'weight' => -17,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
     'visibility' => 0,
   );
 

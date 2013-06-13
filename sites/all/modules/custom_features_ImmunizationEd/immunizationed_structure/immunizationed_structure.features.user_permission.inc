@@ -15,6 +15,8 @@ function immunizationed_structure_user_default_permissions() {
     'name' => 'access private fields',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -24,6 +26,7 @@ function immunizationed_structure_user_default_permissions() {
     'name' => 'administer field permissions',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'field_permissions',
   );
@@ -76,7 +79,6 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['create field_epic_id'] = array(
     'name' => 'create field_epic_id',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -368,7 +370,6 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['edit field_epic_id'] = array(
     'name' => 'edit field_epic_id',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -539,6 +540,7 @@ function immunizationed_structure_user_default_permissions() {
     'name' => 'edit field_task_start_date',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'field_permissions',
   );
@@ -606,6 +608,7 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['edit og_group_ref'] = array(
     'name' => 'edit og_group_ref',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -661,7 +664,6 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['edit own field_epic_id'] = array(
     'name' => 'edit own field_epic_id',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -832,6 +834,7 @@ function immunizationed_structure_user_default_permissions() {
     'name' => 'edit own field_task_start_date',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'field_permissions',
   );
@@ -899,6 +902,7 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['edit own og_group_ref'] = array(
     'name' => 'edit own og_group_ref',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -950,7 +954,6 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view field_epic_id'] = array(
     'name' => 'view field_epic_id',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -1105,6 +1108,7 @@ function immunizationed_structure_user_default_permissions() {
     'name' => 'view field_task_start_date',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'field_permissions',
   );
@@ -1214,7 +1218,6 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view own field_epic_id'] = array(
     'name' => 'view own field_epic_id',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -1374,6 +1377,7 @@ function immunizationed_structure_user_default_permissions() {
     'name' => 'view own field_task_start_date',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'field_permissions',
   );
@@ -1433,6 +1437,7 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view own og_group_ref'] = array(
     'name' => 'view own og_group_ref',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
