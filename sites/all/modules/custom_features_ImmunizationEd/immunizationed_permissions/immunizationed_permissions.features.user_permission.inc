@@ -1381,17 +1381,6 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'user',
   );
 
-  // Exported permission: clear emr_importer feeds.
-  $permissions['clear emr_importer feeds'] = array(
-    'name' => 'clear emr_importer feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'feeds',
-  );
-
   // Exported permission: clear node feeds.
   $permissions['clear node feeds'] = array(
     'name' => 'clear node feeds',
@@ -3390,17 +3379,6 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'admin_menu',
   );
 
-  // Exported permission: import emr_importer feeds.
-  $permissions['import emr_importer feeds'] = array(
-    'name' => 'import emr_importer feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'feeds',
-  );
-
   // Exported permission: import media.
   $permissions['import media'] = array(
     'name' => 'import media',
@@ -3539,15 +3517,6 @@ function immunizationed_permissions_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'shortcut',
-  );
-
-  // Exported permission: unlock emr_importer feeds.
-  $permissions['unlock emr_importer feeds'] = array(
-    'name' => 'unlock emr_importer feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds',
   );
 
   // Exported permission: unlock node feeds.

@@ -18,45 +18,6 @@ function immunizationed_rules_default_rules_configuration() {
       "DO" : [ { "component_rules_rules_on_login" : { "user" : [ "account" ] } } ]
     }
   }');
-  $items['rules_actions_on_practice_creation'] = entity_import('rules_config', '{ "rules_actions_on_practice_creation" : {
-      "LABEL" : "Actions on practice creation",
-      "PLUGIN" : "reaction rule",
-      "TAGS" : [ "practice", "task" ],
-      "REQUIRES" : [ "rules", "og" ],
-      "ON" : [ "node_insert" ],
-      "IF" : [
-        { "node_is_of_type" : {
-            "node" : [ "node" ],
-            "type" : { "value" : { "practice_group" : "practice_group" } }
-          }
-        },
-        { "og_user_in_group" : {
-            "account" : [ "node:author" ],
-            "group" : [ "node" ],
-            "states" : { "value" : { "1" : "1", "2" : "2" } }
-          }
-        },
-        { "og_entity_is_group" : { "entity" : [ "node" ] } }
-      ],
-      "DO" : [
-        { "entity_fetch" : {
-            "USING" : { "type" : "user", "id" : [ "node:author:uid" ] },
-            "PROVIDE" : { "entity_fetched" : { "practice_author" : "practice author" } }
-          }
-        },
-        { "component_rules_create_tasks_from_assembly_instructions" : {
-            "USING" : { "new_practice" : [ "node" ] },
-            "PROVIDE" : {
-              "list_of_assembly_instructions" : { "list_of_assembly_instructions" : "list of assembly instructions" },
-              "list_of_assembly_steps" : { "list_of_assembly_steps" : "list of assembly steps" }
-            }
-          }
-        },
-        { "component_rules_add_site_permissions_to_practice_creator" : { "new_practice" : [ "node" ], "practice_author" : [ "node:author" ] } },
-        { "component_rules_send_email_when_practice_is_created" : { "practice" : [ "node" ], "practice_author" : [ "practice-author" ] } }
-      ]
-    }
-  }');
   $items['rules_actions_on_role_change'] = entity_import('rules_config', '{ "rules_actions_on_role_change" : {
       "LABEL" : "Actions on role change",
       "PLUGIN" : "reaction rule",
@@ -320,87 +281,6 @@ function immunizationed_rules_default_rules_configuration() {
         }
       ],
       "DO" : [ { "redirect" : { "url" : [ "node:og-group-ref:0:url" ] } } ]
-    }
-  }');
-  $items['rules_create_tasks_from_assembly_instructions'] = entity_import('rules_config', '{ "rules_create_tasks_from_assembly_instructions" : {
-      "LABEL" : "Create tasks from assembly instructions",
-      "PLUGIN" : "rule set",
-      "TAGS" : [ "task" ],
-      "REQUIRES" : [ "rules", "views_bulk_operations" ],
-      "USES VARIABLES" : {
-        "new_practice" : { "label" : "New practice", "type" : "node" },
-        "list_of_assembly_instructions" : {
-          "label" : "list of assembly instructions",
-          "type" : "list\\u003Centity\\u003E",
-          "parameter" : false
-        },
-        "list_of_assembly_steps" : {
-          "label" : "list of assembly steps",
-          "type" : "list\\u003Centity\\u003E",
-          "parameter" : false
-        }
-      },
-      "RULES" : [
-        { "RULE" : {
-            "PROVIDE" : {
-              "entity_fetched" : { "fetched_new_practice_nid" : "Fetched practice NID" },
-              "entity_list" : { "list_assembly_instructions" : "A list of assembly instructions" }
-            },
-            "DO" : [
-              { "entity_query" : {
-                  "USING" : {
-                    "type" : "node",
-                    "property" : "nid",
-                    "value" : [ "new-practice:nid" ],
-                    "limit" : "1"
-                  },
-                  "PROVIDE" : { "entity_fetched" : { "fetched_new_practice_nid" : "Fetched practice NID" } }
-                }
-              },
-              { "views_bulk_operations_action_load_list" : {
-                  "USING" : { "view" : "assembly_instructions_list|default" },
-                  "PROVIDE" : { "entity_list" : { "list_assembly_instructions" : "A list of assembly instructions" } }
-                }
-              }
-            ],
-            "LABEL" : "load parameters"
-          }
-        },
-        { "RULE" : {
-            "DO" : [
-              { "LOOP" : {
-                  "USING" : { "list" : [ "list-assembly-instructions" ] },
-                  "ITEM" : { "list_item" : "Current list item" },
-                  "DO" : [
-                    { "entity_create" : {
-                        "USING" : {
-                          "type" : "node",
-                          "param_type" : "task",
-                          "param_title" : [ "list-item:title" ],
-                          "param_author" : [ "new-practice:author" ]
-                        },
-                        "PROVIDE" : { "entity_created" : { "created_assembly_step" : "Created assembly step" } }
-                      }
-                    },
-                    { "data_set" : {
-                        "data" : [ "created-assembly-step:og-group-ref" ],
-                        "value" : [ "fetched-new-practice-nid" ]
-                      }
-                    },
-                    { "component_rules_check_instruction_fields" : {
-                        "fetched_instruction" : [ "list-item" ],
-                        "new_step" : [ "created-assembly-step" ]
-                      }
-                    }
-                  ]
-                }
-              }
-            ],
-            "LABEL" : "clone assembly instructions"
-          }
-        }
-      ],
-      "PROVIDES VARIABLES" : [ "list_of_assembly_instructions", "list_of_assembly_steps" ]
     }
   }');
   $items['rules_practice_member_approved'] = entity_import('rules_config', '{ "rules_practice_member_approved" : {
@@ -684,7 +564,6 @@ function immunizationed_rules_default_rules_configuration() {
       },
       "IF" : [
         { "entity_is_of_type" : { "entity" : [ "current-item" ], "type" : "node" } },
-        { "data_is" : { "data" : [ "new-node:type" ], "value" : [ "current-item:type" ] } },
         { "entity_has_field" : { "entity" : [ "current-item" ], "field" : "og_group_ref" } },
         { "entity_has_field" : { "entity" : [ "new-node" ], "field" : "og_group_ref" } },
         { "data_is" : {

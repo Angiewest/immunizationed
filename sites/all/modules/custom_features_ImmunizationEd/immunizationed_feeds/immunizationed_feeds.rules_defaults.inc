@@ -15,7 +15,14 @@ function immunizationed_feeds_default_rules_configuration() {
       "TAGS" : [ "import" ],
       "REQUIRES" : [ "rules", "feeds" ],
       "ON" : [ "feeds_import_emr_importer" ],
-      "IF" : [ { "data_is_empty" : { "data" : [ "node:title" ] } } ],
+      "IF" : [
+        { "data_is_empty" : { "data" : [ "node:title" ] } },
+        { "node_is_of_type" : {
+            "node" : [ "node" ],
+            "type" : { "value" : { "vaccination_data_from_emr" : "vaccination_data_from_emr" } }
+          }
+        }
+      ],
       "DO" : [ { "feeds_skip_item" : { "entity" : [ "node" ] } } ]
     }
   }');
