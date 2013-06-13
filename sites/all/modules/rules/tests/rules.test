@@ -9,9 +9,9 @@ class RulesTestCase extends DrupalWebTestCase {
 
   static function getInfo() {
     return array(
-        'name' => 'Rules Engine tests',
-        'description' => 'Test using the rules API to create and evaluate rules.',
-        'group' => 'Rules',
+      'name' => 'Rules Engine tests',
+      'description' => 'Test using the rules API to create and evaluate rules.',
+      'group' => 'Rules',
     );
   }
 
@@ -36,16 +36,16 @@ class RulesTestCase extends DrupalWebTestCase {
   protected function createTestRule() {
     $rule = rule();
     $rule->condition('rules_test_condition_true')
-    ->condition('rules_test_condition_true')
-    ->condition(rules_or()
-        ->condition(rules_condition('rules_test_condition_true')->negate())
-        ->condition('rules_test_condition_false')
-        ->condition(rules_and()
-            ->condition('rules_test_condition_false')
-            ->condition('rules_test_condition_true')
-            ->negate()
-        )
-    );
+         ->condition('rules_test_condition_true')
+         ->condition(rules_or()
+           ->condition(rules_condition('rules_test_condition_true')->negate())
+           ->condition('rules_test_condition_false')
+           ->condition(rules_and()
+             ->condition('rules_test_condition_false')
+             ->condition('rules_test_condition_true')
+             ->negate()
+           )
+         );
     $rule->action('rules_test_action');
     return $rule;
   }
@@ -83,6 +83,9 @@ class RulesTestCase extends DrupalWebTestCase {
   function testdependencies() {
     $action = rules_action('rules_node_publish_action');
     $this->assertEqual($action->dependencies(), array('rules_test'), 'Providing module is returned as dependency.');
+
+    $container = new RulesTestContainer();
+    $this->assertEqual($container->dependencies(), array('rules_test'), 'Providing module for container plugin is returned as dependency.');
 
     // Test handling unmet dependencies.
     $rule = rules_config_load('rules_export_test');
@@ -192,12 +195,12 @@ class RulesTestCase extends DrupalWebTestCase {
    */
   function testVariableMapping() {
     $rule = rule(array(
-        'node' => array('type' => 'node'),
-        'node_unchanged' => array('type' => 'node'),
+      'node' => array('type' => 'node'),
+      'node_unchanged' => array('type' => 'node'),
     ));
     $rule->condition(rules_condition('rules_condition_content_is_published')->negate())
-    ->condition('rules_condition_content_is_type', array('type' => array('page', 'story')))
-    ->action('rules_node_publish_action', array('node:select' => 'node_unchanged'));
+         ->condition('rules_condition_content_is_type', array('type' => array('page', 'story')))
+         ->action('rules_node_publish_action', array('node:select' => 'node_unchanged'));
 
     $node1 = $this->drupalCreateNode(array('status' => 0, 'type' => 'page'));
     $node2 = $this->drupalCreateNode(array('status' => 0, 'type' => 'page'));
@@ -244,18 +247,18 @@ class RulesTestCase extends DrupalWebTestCase {
     $rule->tags = array($tag);
     $rule->save();
     $result = db_select('rules_tags')
-    ->fields('rules_tags', array('tag'))
-    ->condition('id', $rule->id)
-    ->execute();
+      ->fields('rules_tags', array('tag'))
+      ->condition('id', $rule->id)
+      ->execute();
     $this->assertEqual($result->fetchField(), $tag, 'Associated tag has been saved.');
     // Try updating.
     $rule->tags = array($this->randomName(), $this->randomName());
     $rule->integrityCheck()->save();
     $result = db_select('rules_tags')
-    ->fields('rules_tags', array('tag'))
-    ->condition('id', $rule->id)
-    ->execute()
-    ->fetchCol();
+      ->fields('rules_tags', array('tag'))
+      ->condition('id', $rule->id)
+      ->execute()
+      ->fetchCol();
     $this->assertTrue(in_array($rule->tags[0], $result) && in_array($rule->tags[1], $result), 'Updated associated tags.');
     // Try loading multiple rules by tags.
     $rule2 = $this->createTestRule();
@@ -266,9 +269,9 @@ class RulesTestCase extends DrupalWebTestCase {
     // Try deleting.
     $rule->delete();
     $result = db_select('rules_tags')
-    ->fields('rules_tags', array('tag'))
-    ->condition('id', $rule->id)
-    ->execute();
+      ->fields('rules_tags', array('tag'))
+      ->condition('id', $rule->id)
+      ->execute();
     $this->assertEqual($result->fetchField(), FALSE, 'Deleted associated tags.');
   }
 
@@ -293,15 +296,15 @@ class RulesTestCase extends DrupalWebTestCase {
     $title = $this->randomName();
     $rule = rule();
     $rule->action('entity_create', array(
-        'type' => 'node',
-        'param_type' => 'article',
-        'param_author:select' => 'site:current-user',
-        'param_title' => $title,
-        'entity_created:var' => 'node',
+      'type' => 'node',
+      'param_type' => 'article',
+      'param_author:select' => 'site:current-user',
+      'param_title' => $title,
+      'entity_created:var' => 'node',
     ));
     $rule->action('data_set', array(
-        'data:select' => 'node:body',
-        'value' => array('value' => 'body'),
+      'data:select' => 'node:body',
+      'value' => array('value' => 'body'),
     ));
     $rule->integrityCheck();
     $rule->execute();
@@ -318,9 +321,9 @@ class RulesTestCase extends DrupalWebTestCase {
     $node = $this->drupalCreateNode();
     $rule = rule(array('nid' => array('type' => 'integer')));
     $rule->condition('rules_test_condition_true')
-    ->action('rules_action_load_node')
-    ->action('rules_action_delete_node', array('node:select' => 'node_loaded'))
-    ->execute($node->nid);
+         ->action('rules_action_load_node')
+         ->action('rules_action_delete_node', array('node:select' => 'node_loaded'))
+         ->execute($node->nid);
 
     $this->assertEqual(FALSE, node_load($node->nid), 'Variable added and skipped optional parameter.');
     RulesLog::logger()->checkLog();
@@ -333,8 +336,8 @@ class RulesTestCase extends DrupalWebTestCase {
     $node = $this->drupalCreateNode();
     $rule = rule(array('nid' => array('type' => 'integer')));
     $rule->action('rules_action_load_node', array('node_loaded:var' => 'node'))
-    ->action('rules_action_delete_node')
-    ->execute($node->nid);
+         ->action('rules_action_delete_node')
+         ->execute($node->nid);
 
     $this->assertEqual(FALSE, node_load($node->nid), 'Variable with custom name added.');
     RulesLog::logger()->checkLog();
@@ -410,8 +413,8 @@ class RulesTestCase extends DrupalWebTestCase {
 
     $rule = rule(array('nid' => array('type' => 'integer')));
     $rule->action('rules_action_load_node')
-    ->action('drupal_message', array('message:select' => 'node_loaded:body:value'))
-    ->execute($node->nid);
+         ->action('drupal_message', array('message:select' => 'node_loaded:body:value'))
+         ->execute($node->nid);
 
     RulesLog::logger()->checkLog();
     $msg = drupal_get_messages('status');
@@ -423,10 +426,10 @@ class RulesTestCase extends DrupalWebTestCase {
     $node = node_load($node->nid);
     $rule = rule(array('nid' => array('type' => 'integer')));
     $rule->action('rules_action_load_node')
-    ->action('data_set', array('data:select' => 'node_loaded:title', 'value' => 'Test title'))
-    // Use two actions and make sure the node get saved only once.
-    ->action('data_set', array('data:select' => 'node_loaded:title', 'value' => 'Test title2'))
-    ->execute($node->nid);
+         ->action('data_set', array('data:select' => 'node_loaded:title', 'value' => 'Test title'))
+         // Use two actions and make sure the node get saved only once.
+         ->action('data_set', array('data:select' => 'node_loaded:title', 'value' => 'Test title2'))
+         ->execute($node->nid);
 
     $wrapper = entity_metadata_wrapper('node', $node);
     $this->assertEqual('Test title2', $wrapper->title->value(), 'Data has been modified and saved.');
@@ -454,13 +457,13 @@ class RulesTestCase extends DrupalWebTestCase {
     // complain about missing parent data structures.
     $rule = rule();
     $rule->action('entity_create', array(
-        'type' => 'node',
-        'param_type' => 'page',
-        'param_title' => 'foo',
-        'param_author' => $GLOBALS['user'],
+      'type' => 'node',
+      'param_type' => 'page',
+      'param_title' => 'foo',
+      'param_author' => $GLOBALS['user'],
     ));
     $rule->action('data_set', array('data:select' => 'entity_created:body:value', 'value' => 'test content'))
-    ->execute();
+         ->execute();
     try {
       RulesLog::logger()->checkLog();
       $this->pass('Auto creation of nested data structures.');
@@ -487,12 +490,12 @@ class RulesTestCase extends DrupalWebTestCase {
    */
   function testRuleSets() {
     $set = rules_rule_set(array(
-        'node' => array('type' => 'node', 'label' => 'node'),
+      'node' => array('type' => 'node', 'label' => 'node'),
     ));
     $set->rule(rule()->action('drupal_message', array('message:select' => 'node:title')))
-    ->rule(rule()->condition('rules_condition_content_is_published')
-        ->action('drupal_message', array('message' => 'Node is published.'))
-    );
+        ->rule(rule()->condition('rules_condition_content_is_published')
+                     ->action('drupal_message', array('message' => 'Node is published.'))
+               );
     $set->integrityCheck()->save('rules_test_set_1');
 
     $node = $this->drupalCreateNode(array('title' => 'The title.', 'status' => 1));
@@ -505,12 +508,12 @@ class RulesTestCase extends DrupalWebTestCase {
 
     // Test a condition set.
     $set = rules_or(array(
-        'node' => array('type' => 'node', 'label' => 'node'),
+      'node' => array('type' => 'node', 'label' => 'node'),
     ));
     $set->condition('data_is', array('data:select' => 'node:author:name', 'value' => 'notthename'))
-    ->condition('data_is', array('data:select' => 'node:nid', 'value' => $node->nid))
-    ->integrityCheck()
-    ->save('test', 'rules_test');
+        ->condition('data_is', array('data:select' => 'node:nid', 'value' => $node->nid))
+        ->integrityCheck()
+        ->save('test', 'rules_test');
     // Load and execute condition set.
     $set = rules_config_load('test');
     $this->assertTrue($set->execute($node), 'Set has been correctly evaluated.');
@@ -522,17 +525,17 @@ class RulesTestCase extends DrupalWebTestCase {
    */
   function testComponentInvocations() {
     $set = rules_rule_set(array(
-        'node1' => array('type' => 'node', 'label' => 'node'),
+      'node1' => array('type' => 'node', 'label' => 'node'),
     ));
     $set->rule(rule()->condition('node_is_published', array('node:select' => 'node1'))
-        ->action('node_unpublish', array('node:select' => 'node1'))
-    );
+                     ->action('node_unpublish', array('node:select' => 'node1'))
+               );
     $set->integrityCheck()->save('rules_test_set_2');
 
     // Use different names for the variables to ensure they are properly mapped
     // when taking over the variables to be saved.
     $rule = rule(array(
-        'node2' => array('type' => 'node', 'label' => 'node'),
+      'node2' => array('type' => 'node', 'label' => 'node'),
     ));
     $rule->action('component_rules_test_set_2', array('node1:select' => 'node2'));
     $rule->action('node_make_sticky', array('node:select' => 'node2'));
@@ -553,7 +556,7 @@ class RulesTestCase extends DrupalWebTestCase {
     // Test recursion prevention on components by invoking the component from
     // itself, what should be prevented.
     $set->action('component_rules_test_set_2', array('node1:select' => 'node1'))
-    ->save();
+        ->save();
 
     $rule->execute($node);
     $text1 = RulesLog::logger()->render();
@@ -592,11 +595,11 @@ class RulesTestCase extends DrupalWebTestCase {
     $rule = rule(array('node' => array('type' => 'node')));
     // Customize action info using the settings.
     $rule->condition('data_is', array('data:select'   => 'node:type', 'value' => 'page'))
-    // Configure an condition using the body. As the body is a field,
-    // tis requires the bundle to be correctly asserted.
-    ->condition(rules_condition('data_is', array('data:select' => 'node:body:value', 'value' => 'foo'))->negate())
-    // The action also requires the page bundle in order to work.
-    ->action($action);
+         // Configure an condition using the body. As the body is a field,
+         // tis requires the bundle to be correctly asserted.
+         ->condition(rules_condition('data_is', array('data:select' => 'node:body:value', 'value' => 'foo'))->negate())
+         // The action also requires the page bundle in order to work.
+         ->action($action);
     // Make sure the integrity check doesn't throw an exception.
     $rule->integrityCheck();
     // Test the rule.
@@ -608,30 +611,30 @@ class RulesTestCase extends DrupalWebTestCase {
     // Test asserting metadata on a derived property, i.e. not a variable.
     $rule = rule(array('node' => array('type' => 'node')));
     $rule->condition('entity_is_of_type', array('entity:select' => 'node:reference', 'type' => 'node'))
-    ->condition('data_is', array('data:select' => 'node:reference:type', 'value' => 'page'))
-    ->action('rules_node_page_make_sticky_action', array('node:select' => 'node:reference'));
+         ->condition('data_is', array('data:select' => 'node:reference:type', 'value' => 'page'))
+         ->action('rules_node_page_make_sticky_action', array('node:select' => 'node:reference'));
     $rule->integrityCheck();
     $rule->execute($node);
 
     // Test asserting an entity field.
     $rule = rule(array('node' => array('type' => 'node')));
     $rule->condition('entity_has_field', array('entity:select' => 'node:reference', 'field' => 'field_tags'))
-    ->action('data_set', array('data:select' => 'node:reference:field-tags', 'value' => array()));
+         ->action('data_set', array('data:select' => 'node:reference:field-tags', 'value' => array()));
     $rule->integrityCheck();
     $rule->execute($node);
 
     // Make sure an asserted bundle can be used as argument.
     $rule = rule(array('node' => array('type' => 'node')));
     $rule->condition('entity_is_of_type', array('entity:select' => 'node:reference', 'type' => 'node'))
-    ->condition('node_is_of_type', array('node:select' => 'node:reference', 'type' => array('page')))
-    ->action('rules_node_page_make_sticky_action', array('node:select' => 'node:reference'));
+         ->condition('node_is_of_type', array('node:select' => 'node:reference', 'type' => array('page')))
+         ->action('rules_node_page_make_sticky_action', array('node:select' => 'node:reference'));
     $rule->integrityCheck();
     $rule->execute($node);
 
     // Test asserting metadata on a derived property being a list item.
     $rule = rule(array('node' => array('type' => 'node')));
     $rule->condition('node_is_of_type', array('node:select' => 'node:ref-nodes:0', 'type' => array('article')))
-    ->action('data_set', array('data:select' => 'node:ref-nodes:0:field-tags', 'value' => array()));
+         ->action('data_set', array('data:select' => 'node:ref-nodes:0:field-tags', 'value' => array()));
     $rule->integrityCheck();
     $rule->execute($node);
 
@@ -642,7 +645,7 @@ class RulesTestCase extends DrupalWebTestCase {
     // Make sure assertions of a one list item are not valid for another item.
     $rule = rule(array('node' => array('type' => 'node')));
     $rule->condition('node_is_of_type', array('node:select' => 'node:ref-nodes:0', 'type' => array('article')))
-    ->action('data_set', array('data:select' => 'node:ref-nodes:1:field-tags', 'value' => array()));
+         ->action('data_set', array('data:select' => 'node:ref-nodes:1:field-tags', 'value' => array()));
     try {
       $rule->integrityCheck();
       $this->fail('Assertion of a list item is not valid for another item.');
@@ -675,10 +678,10 @@ class RulesTestCase extends DrupalWebTestCase {
     $node3 = $this->drupalCreateNode(array('type' => 'page', 'sticky' => 0));
 
     $rule = rule(array(
-        'list' => array(
-            'type' => 'list<node>',
-            'label' => 'A list of nodes',
-        )
+      'list' => array(
+        'type' => 'list<node>',
+        'label' => 'A list of nodes',
+      )
     ));
     $loop = rules_loop(array('list:select' => 'list', 'item:var' => 'node'));
     $loop->action('data_set', array('data:select' => 'node:sticky', 'value' => TRUE));
@@ -725,22 +728,22 @@ class RulesTestCase extends DrupalWebTestCase {
 
     // Create an action set returning a variable that is no parameter.
     $set = rules_action_set(array(
-        'node' => array(
-            'type' => 'node',
-            'parameter' => FALSE,
-        )), array('node'));
+      'node' => array(
+        'type' => 'node',
+        'parameter' => FALSE,
+      )), array('node'));
     $set->action('entity_fetch', array('type' => 'node', 'id' => $node->nid))
-    ->action('data_set', array('data:select' => 'node', 'value:select' => 'entity_fetched'));
+        ->action('data_set', array('data:select' => 'node', 'value:select' => 'entity_fetched'));
     $set->integrityCheck();
     list($node3) = $set->execute();
     $this->assertTrue($node3->nid == $node->nid, 'Action set returned a variable that has not been passed as parameter.');
 
     // Test the same again with a variable holding a not wrapped data type.
     $set = rules_action_set(array(
-        'number' => array(
-            'type' => 'integer',
-            'parameter' => FALSE,
-        )), array('number'));
+      'number' => array(
+        'type' => 'integer',
+        'parameter' => FALSE,
+      )), array('number'));
     $set->action('data_set', array('data:select' => 'number', 'value' => 3));
     $set->integrityCheck();
     list($number) = $set->execute();
@@ -755,8 +758,8 @@ class RulesTestCase extends DrupalWebTestCase {
 
     $rule = rule(array('nid' => array('type' => 'integer')));
     $rule->action('rules_action_load_node')
-    ->action('drupal_message', array('message' => 'Title: [node_loaded:title]'))
-    ->execute($node->nid);
+         ->action('drupal_message', array('message' => 'Title: [node_loaded:title]'))
+         ->execute($node->nid);
 
     RulesLog::logger()->checkLog();
     $msg = drupal_get_messages();
@@ -779,19 +782,19 @@ class RulesTestCase extends DrupalWebTestCase {
     $rule = rule(array('nid' => array('type' => 'integer')));
     $rule->name = "rules_export_test";
     $rule->action('rules_action_load_node')
-    ->action('drupal_message', array('message' => 'Title: [node_loaded:title]'));
+         ->action('drupal_message', array('message' => 'Title: [node_loaded:title]'));
 
     $export =
-    '{ "rules_export_test" : {
-        "PLUGIN" : "rule",
-        "REQUIRES" : [ "rules_test", "rules" ],
-        "USES VARIABLES" : { "nid" : { "type" : "integer" } },
-        "DO" : [
-        { "rules_action_load_node" : { "PROVIDE" : { "node_loaded" : { "node_loaded" : "Loaded content" } } } },
-        { "drupal_message" : { "message" : "Title: [node_loaded:title]" } }
-        ]
+'{ "rules_export_test" : {
+    "PLUGIN" : "rule",
+    "REQUIRES" : [ "rules_test", "rules" ],
+    "USES VARIABLES" : { "nid" : { "type" : "integer" } },
+    "DO" : [
+      { "rules_action_load_node" : { "PROVIDE" : { "node_loaded" : { "node_loaded" : "Loaded content" } } } },
+      { "drupal_message" : { "message" : "Title: [node_loaded:title]" } }
+    ]
   }
-  }';
+}';
     $this->assertEqual($export, $rule->export(), 'Rule has been exported correctly.');
 
     // Test importing a rule which makes use of almost all features.
@@ -808,26 +811,26 @@ class RulesTestCase extends DrupalWebTestCase {
 
     // Now try importing a rule set.
     $export =
-    '{ "rules_test_set" : {
-        "LABEL" : "Test set",
-        "PLUGIN" : "rule set",
-        "REQUIRES" : [ "rules" ],
-        "USES VARIABLES" : { "node" : { "label" : "Test node", "type" : "node" } },
-        "RULES" : [
-        { "RULE" : {
-        "IF" : [ { "NOT data_is" : { "data" : [ "node:title" ], "value" : "test" } } ],
-        "DO" : [ { "data_set" : { "data" : [ "node:title" ], "value" : "test" } } ],
-        "LABEL" : "Test Rule"
+'{ "rules_test_set" : {
+    "LABEL" : "Test set",
+    "PLUGIN" : "rule set",
+    "REQUIRES" : [ "rules" ],
+    "USES VARIABLES" : { "node" : { "label" : "Test node", "type" : "node" } },
+    "RULES" : [
+      { "RULE" : {
+          "IF" : [ { "NOT data_is" : { "data" : [ "node:title" ], "value" : "test" } } ],
+          "DO" : [ { "data_set" : { "data" : [ "node:title" ], "value" : "test" } } ],
+          "LABEL" : "Test Rule"
+        }
+      },
+      { "RULE" : {
+          "DO" : [ { "drupal_message" : { "message" : "hi" } } ],
+          "LABEL" : "Test Rule 2"
+        }
+      }
+    ]
   }
-  },
-  { "RULE" : {
-        "DO" : [ { "drupal_message" : { "message" : "hi" } } ],
-        "LABEL" : "Test Rule 2"
-  }
-  }
-        ]
-  }
-  }';
+}';
     $set = rules_import($export);
     $this->assertTrue(!empty($set) && $set->integrityCheck(), 'Rule set has been imported.');
     // Export it and make sure the same export is generated again.
@@ -841,22 +844,22 @@ class RulesTestCase extends DrupalWebTestCase {
 
     // Try import / export for a rule component providing a variable.
     $rule = rule(array(
-        'number' => array(
-            'type' => 'integer',
-            'label' => 'Number',
-            'parameter' => FALSE,
-        )), array('number'));
+      'number' => array(
+        'type' => 'integer',
+        'label' => 'Number',
+        'parameter' => FALSE,
+      )), array('number'));
     $rule->action('data_set', array('data:select' => 'number', 'value' => 3));
     $rule->name = 'rules_test_provides';
 
     $export = '{ "rules_test_provides" : {
-        "PLUGIN" : "rule",
-        "REQUIRES" : [ "rules" ],
-        "USES VARIABLES" : { "number" : { "type" : "integer", "label" : "Number", "parameter" : false } },
-        "DO" : [ { "data_set" : { "data" : [ "number" ], "value" : 3 } } ],
-        "PROVIDES VARIABLES" : [ "number" ]
+    "PLUGIN" : "rule",
+    "REQUIRES" : [ "rules" ],
+    "USES VARIABLES" : { "number" : { "type" : "integer", "label" : "Number", "parameter" : false } },
+    "DO" : [ { "data_set" : { "data" : [ "number" ], "value" : 3 } } ],
+    "PROVIDES VARIABLES" : [ "number" ]
   }
-  }';
+}';
     $this->assertEqual($export, $rule->export(), 'Rule 2 has been exported correctly.');
     $imported_rule = rules_import($rule->export());
 
@@ -865,12 +868,12 @@ class RulesTestCase extends DrupalWebTestCase {
 
     // Test importing a negated condition component.
     $export = '{ "rules_negated_component" : {
-        "LABEL" : "negated_component",
-        "PLUGIN" : "or",
-        "REQUIRES" : [ "rules" ],
-        "NOT OR" : [ { "data_is_empty" : { "data" : [ "site:slogan" ] } } ]
+    "LABEL" : "negated_component",
+    "PLUGIN" : "or",
+    "REQUIRES" : [ "rules" ],
+    "NOT OR" : [ { "data_is_empty" : { "data" : [ "site:slogan" ] } } ]
   }
-  }';
+}';
     $or = rules_import($export);
     $this->assertTrue($or->integrityCheck() && $or->isNegated(), 'Negated condition component imported.');
   }
@@ -916,9 +919,9 @@ class RulesTestDataCase extends DrupalWebTestCase {
 
   static function getInfo() {
     return array(
-        'name' => 'Rules Data tests',
-        'description' => 'Tests rules data saving and type matching.',
-        'group' => 'Rules',
+      'name' => 'Rules Data tests',
+      'description' => 'Tests rules data saving and type matching.',
+      'group' => 'Rules',
     );
   }
 
@@ -947,8 +950,8 @@ class RulesTestDataCase extends DrupalWebTestCase {
 
     // Test skipping saving.
     $state->addVariable('node2', $node, array(
-        'type' => 'node',
-        'skip save' => TRUE,
+      'type' => 'node',
+      'skip save' => TRUE,
     ));
     $wrapper = $state->get('node2');
     $node->title = 'test2';
@@ -1001,13 +1004,13 @@ class RulesTestDataCase extends DrupalWebTestCase {
     $set->integrityCheck();
 
     $vocab = entity_create('taxonomy_vocabulary', array(
-        'name' => 'foo',
-        'machine_name' => 'foo',
+      'name' => 'foo',
+      'machine_name' => 'foo',
     ));
     entity_save('taxonomy_vocabulary', $vocab);
     $term_wrapped = entity_property_values_create_entity('taxonomy_term', array(
-        'name' => $this->randomName(),
-        'vocabulary' => $vocab,
+      'name' => $this->randomName(),
+      'vocabulary' => $vocab,
     ))->save();
     $set->execute($term_wrapped);
     $this->assertEqual($term_wrapped->vocabulary->machine_name->value(), 'tags', 'Vocabulary name used as direct input value.');
@@ -1062,9 +1065,9 @@ class RulesTriggerTestCase extends DrupalWebTestCase {
 
   static function getInfo() {
     return array(
-        'name' => 'Reaction Rules',
-        'description' => 'Tests triggering reactive rules.',
-        'group' => 'Rules',
+      'name' => 'Reaction Rules',
+      'description' => 'Tests triggering reactive rules.',
+      'group' => 'Rules',
     );
   }
 
@@ -1077,8 +1080,8 @@ class RulesTriggerTestCase extends DrupalWebTestCase {
   protected function createTestRule($action = TRUE, $event = 'node_presave') {
     $rule = rules_reaction_rule();
     $rule->event($event)
-    ->condition(rules_condition('data_is', array('data:select' => 'node:status', 'value' => TRUE))->negate())
-    ->condition('data_is', array('data:select' => 'node:type', 'value' => 'page'));
+         ->condition(rules_condition('data_is', array('data:select' => 'node:status', 'value' => TRUE))->negate())
+         ->condition('data_is', array('data:select' => 'node:type', 'value' => 'page'));
     if ($action) {
       $rule->action('rules_action_delete_node');
     }
@@ -1213,7 +1216,7 @@ class RulesTriggerTestCase extends DrupalWebTestCase {
     $node2 = $this->drupalCreateNode(array('type' => 'page', 'sticky' => 0, 'status' => 0));
     $rule2 = $this->createTestRule(FALSE, 'node_update');
     $rule2->action('rules_action_load_node', array('nid' => $node2->nid))
-    ->action('rules_node_make_sticky_action', array('node:select' => 'node_loaded'));
+          ->action('rules_node_make_sticky_action', array('node:select' => 'node_loaded'));
     $rule2->label = 'rule 2';
     $rule2->save();
 
@@ -1260,9 +1263,9 @@ class RulesIntegrationTestCase extends DrupalWebTestCase {
 
   static function getInfo() {
     return array(
-        'name' => 'Rules Core Integration',
-        'description' => 'Tests provided integration for drupal core.',
-        'group' => 'Rules',
+      'name' => 'Rules Core Integration',
+      'description' => 'Tests provided integration for drupal core.',
+      'group' => 'Rules',
     );
   }
 
@@ -1292,12 +1295,12 @@ class RulesIntegrationTestCase extends DrupalWebTestCase {
   function testDataIntegration() {
     // Test data_create action.
     $action = rules_action('data_create', array(
-        'type' => 'log_entry',
-        'param_type' => 'rules_test',
-        'param_message' => 'Rules test log message',
-        'param_severity' => WATCHDOG_WARNING,
-        'param_request_uri' => 'http://example.com',
-        'param_link' => '',
+      'type' => 'log_entry',
+      'param_type' => 'rules_test',
+      'param_message' => 'Rules test log message',
+      'param_severity' => WATCHDOG_WARNING,
+      'param_request_uri' => 'http://example.com',
+      'param_link' => '',
     ));
     $action->access();
     $action->execute();
@@ -1308,11 +1311,11 @@ class RulesIntegrationTestCase extends DrupalWebTestCase {
 
     // Test variable_add action.
     $action = rules_action('variable_add', array(
-        'type' => 'text_formatted',
-        'value' => array(
-            'value' => 'test text',
-            'format' => 1,
-        )
+      'type' => 'text_formatted',
+      'value' => array(
+        'value' => 'test text',
+        'format' => 1,
+      )
     ));
     $action->access();
     $action->execute();
@@ -1323,10 +1326,10 @@ class RulesIntegrationTestCase extends DrupalWebTestCase {
 
     // Test using the list actions.
     $rule = rule(array(
-        'list' => array(
-            'type' => 'list<text>',
-            'label' => 'A list of text',
-        )
+      'list' => array(
+        'type' => 'list<text>',
+        'label' => 'A list of text',
+      )
     ));
     $rule->action('list_add', array('list:select' => 'list', 'item' => 'bar2'));
     $rule->action('list_add', array('list:select' => 'list', 'item' => 'bar', 'pos' => 'start'));
@@ -1391,7 +1394,7 @@ class RulesIntegrationTestCase extends DrupalWebTestCase {
     // Test moving a date.
     $action_set = rules_action_set(array('date' => array('type' => 'date')), array('date'));
     $action_set->action('data_calc', array('input_1:select' => 'date', 'op' => '+', 'input_2' => 3600))
-    ->action('data_set', array('data:select' => 'date', 'value:select' => 'result'));
+               ->action('data_set', array('data:select' => 'date', 'value:select' => 'result'));
     $action_set->integrityCheck();
     list($result) = $action_set->execute(REQUEST_TIME);
     $this->assertEqual($result, REQUEST_TIME + 3600, 'Used data calculation action to move a date by an hour.');
@@ -1405,8 +1408,8 @@ class RulesIntegrationTestCase extends DrupalWebTestCase {
     $this->assertEqual($result, url('user', array('absolute' => TRUE)), 'Converted URI to text.');
 
     $set = rules_action_set(array(
-        'result' => array('type' => 'integer', 'parameter' => FALSE),
-        'source' => array('type' => 'text'),
+      'result' => array('type' => 'integer', 'parameter' => FALSE),
+      'source' => array('type' => 'text'),
     ), array('result'));
     $set->action('data_convert', array('type' => 'integer', 'value:select' => 'source'));
     $set->action('data_set', array('data:select' => 'result', 'value:select' => 'conversion_result'));
@@ -1414,8 +1417,8 @@ class RulesIntegrationTestCase extends DrupalWebTestCase {
     $this->assertEqual($result, 9, 'Converted decimal to integer using rounding.');
 
     $set = rules_action_set(array(
-        'result' => array('type' => 'integer', 'parameter' => FALSE),
-        'source' => array('type' => 'text'),
+      'result' => array('type' => 'integer', 'parameter' => FALSE),
+      'source' => array('type' => 'text'),
     ), array('result'));
     $set->action('data_convert', array('type' => 'integer', 'value:select' => 'source', 'rounding_behavior' => 'down'));
     $set->action('data_set', array('data:select' => 'result', 'value:select' => 'conversion_result'));
@@ -1423,8 +1426,8 @@ class RulesIntegrationTestCase extends DrupalWebTestCase {
     $this->assertEqual($result, 9, 'Converted decimal to integer using roundin behavio down.');
 
     $set = rules_action_set(array(
-        'result' => array('type' => 'integer', 'parameter' => FALSE),
-        'source' => array('type' => 'text'),
+      'result' => array('type' => 'integer', 'parameter' => FALSE),
+      'source' => array('type' => 'text'),
     ), array('result'));
     $set->action('data_convert', array('type' => 'integer', 'value:select' => 'source', 'rounding_behavior' => 'up'));
     $set->action('data_set', array('data:select' => 'result', 'value:select' => 'conversion_result'));
@@ -1459,32 +1462,32 @@ class RulesIntegrationTestCase extends DrupalWebTestCase {
     $article = $this->drupalCreateNode(array('type' => 'article'));
 
     $result = rules_condition('entity_field_access')
-    ->execute(entity_metadata_wrapper('node', $article), 'field_tags');
+      ->execute(entity_metadata_wrapper('node', $article), 'field_tags');
     $this->assertTrue($result);
 
     // Test entiy_is_of_bundle condition.
     $result = rules_condition('entity_is_of_bundle', array(
-        'type' => 'node',
-        'bundle' => array('article'),
+      'type' => 'node',
+      'bundle' => array('article'),
     ))->execute(entity_metadata_wrapper('node', $page));
     $this->assertFalse($result, 'Entity is of bundle condition has not been met.');
     $result = rules_condition('entity_is_of_bundle', array(
-        'type' => 'node',
-        'bundle' => array('article'),
+      'type' => 'node',
+      'bundle' => array('article'),
     ))->execute(entity_metadata_wrapper('node', $article));
     $this->assertTrue($result, 'Entity is of bundle condition has been met.');
 
     // Also test a full rule so the integrity check must work.
     $term_wrapped = entity_property_values_create_entity('taxonomy_term', array(
-        'name' => $this->randomName(),
-        'vocabulary' => 1,
+      'name' => $this->randomName(),
+      'vocabulary' => 1,
     ))->save();
     $rule = rule(array(
-        'node' => array('type' => 'node'),
+      'node' => array('type' => 'node'),
     ));
     $rule->condition('entity_is_of_bundle', array(
-        'entity:select' => 'node',
-        'bundle' => array('article'),
+      'entity:select' => 'node',
+      'bundle' => array('article'),
     ));
     $rule->action('data_set', array('data:select' => 'node:field_tags', 'value' => array($term_wrapped->getIdentifier())));
     $rule->integrityCheck();
@@ -1494,12 +1497,12 @@ class RulesIntegrationTestCase extends DrupalWebTestCase {
     // Test again using an entity variable.
     $article = $this->drupalCreateNode(array('type' => 'article'));
     $rule = rule(array(
-        'entity' => array('type' => 'entity'),
+      'entity' => array('type' => 'entity'),
     ));
     $rule->condition('entity_is_of_bundle', array(
-        'entity:select' => 'entity',
-        'type' => 'node',
-        'bundle' => array('article'),
+      'entity:select' => 'entity',
+      'type' => 'node',
+      'bundle' => array('article'),
     ));
     $rule->action('data_set', array('data:select' => 'entity:field_tags', 'value' => array($term_wrapped->getIdentifier())));
     $rule->integrityCheck();
@@ -1508,10 +1511,10 @@ class RulesIntegrationTestCase extends DrupalWebTestCase {
 
     // Test CRUD actions.
     $action = rules_action('entity_create', array(
-        'type' => 'node',
-        'param_type' => 'page',
-        'param_title' => 'foo',
-        'param_author' => $GLOBALS['user'],
+      'type' => 'node',
+      'param_type' => 'page',
+      'param_title' => 'foo',
+      'param_author' => $GLOBALS['user'],
     ));
     $action->access();
     $action->execute();
@@ -1539,13 +1542,13 @@ class RulesIntegrationTestCase extends DrupalWebTestCase {
 
 
     $node = entity_property_values_create_entity('node', array(
-        'type' => 'article',
-        'author' => $user,
-        'title' => 'foo',
+      'type' => 'article',
+      'author' => $user,
+      'title' => 'foo',
     ))->value();
     $term_wrapped = entity_property_values_create_entity('taxonomy_term', array(
-        'name' => $this->randomName(),
-        'vocabulary' => 1,
+      'name' => $this->randomName(),
+      'vocabulary' => 1,
     ))->save();
 
     // Test asserting the field and using it afterwards.
@@ -1578,7 +1581,7 @@ class RulesIntegrationTestCase extends DrupalWebTestCase {
     $node = $this->drupalCreateNode(array('type' => 'page', 'title' => 'foo2'));
     $rule = rule();
     $rule->action('entity_query', array('type' => 'node', 'property' => 'title', 'value' => 'foo2'))
-    ->action('data_set', array('data:select' => 'entity_fetched:0:title', 'value' => 'bar'));
+         ->action('data_set', array('data:select' => 'entity_fetched:0:title', 'value' => 'bar'));
     $rule->access();
     $rule->integrityCheck();
     $rule->execute();
@@ -1593,8 +1596,8 @@ class RulesIntegrationTestCase extends DrupalWebTestCase {
    */
   function testTaxonomyIntegration() {
     $term = entity_property_values_create_entity('taxonomy_term', array(
-        'name' => $this->randomName(),
-        'vocabulary' => 1,
+      'name' => $this->randomName(),
+      'vocabulary' => 1,
     ))->value();
     $term2 = clone $term;
     taxonomy_term_save($term);
@@ -1616,46 +1619,46 @@ class RulesIntegrationTestCase extends DrupalWebTestCase {
     // Test using the taxonomy term reference field on a term object.
     $field_name = drupal_strtolower($this->randomName() . '_field_name');
     $field = field_create_field(array(
-        'field_name' => $field_name,
-        'type' => 'taxonomy_term_reference',
-        // Set cardinality to unlimited for tagging.
-        'cardinality' => FIELD_CARDINALITY_UNLIMITED,
-        'settings' => array(
-            'allowed_values' => array(
-                array(
-                    'vocabulary' => 'tags',
-                    'parent' => 0,
-                ),
-            ),
+      'field_name' => $field_name,
+      'type' => 'taxonomy_term_reference',
+      // Set cardinality to unlimited for tagging.
+      'cardinality' => FIELD_CARDINALITY_UNLIMITED,
+      'settings' => array(
+        'allowed_values' => array(
+          array(
+            'vocabulary' => 'tags',
+            'parent' => 0,
+          ),
         ),
+      ),
     ));
     $instance = array(
-        'field_name' => $field_name,
-        'entity_type' => 'taxonomy_term',
-        'bundle' => 'tags', // Machine name of vocabulary.
-        'label' => $this->randomName() . '_label',
-        'description' => $this->randomName() . '_description',
-        'weight' => mt_rand(0, 127),
-        'widget' => array(
-            'type' => 'taxonomy_autocomplete',
-            'weight' => -4,
+      'field_name' => $field_name,
+      'entity_type' => 'taxonomy_term',
+      'bundle' => 'tags', // Machine name of vocabulary.
+      'label' => $this->randomName() . '_label',
+      'description' => $this->randomName() . '_description',
+      'weight' => mt_rand(0, 127),
+      'widget' => array(
+        'type' => 'taxonomy_autocomplete',
+        'weight' => -4,
+      ),
+      'display' => array(
+        'default' => array(
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 10,
         ),
-        'display' => array(
-            'default' => array(
-                'type' => 'taxonomy_term_reference_link',
-                'weight' => 10,
-            ),
-        ),
+      ),
     );
     field_create_instance($instance);
 
     $term1 = entity_property_values_create_entity('taxonomy_term', array(
-        'name' => $this->randomName(),
-        'vocabulary' => 1,
+      'name' => $this->randomName(),
+      'vocabulary' => 1,
     ))->save();
     $term2 = entity_property_values_create_entity('taxonomy_term', array(
-        'name' => $this->randomName(),
-        'vocabulary' => 1,
+      'name' => $this->randomName(),
+      'vocabulary' => 1,
     ))->save();
 
     // Test asserting the term reference field and using it afterwards.
@@ -1673,9 +1676,9 @@ class RulesIntegrationTestCase extends DrupalWebTestCase {
     // Test an action set for merging term parents, which is provided as default
     // config.
     $term = entity_property_values_create_entity('taxonomy_term', array(
-        'name' => $this->randomName(),
-        'vocabulary' => 1,
-        'parent' => array($term1->value()),
+      'name' => $this->randomName(),
+      'vocabulary' => 1,
+      'parent' => array($term1->value()),
     ))->save();
 
     $action = rules_action('component_rules_retrieve_term_parents');
@@ -1689,9 +1692,9 @@ class RulesIntegrationTestCase extends DrupalWebTestCase {
    */
   function testNodeIntegration() {
     $tests = array(
-        array('node_unpublish', 'node_is_published', 'node_publish', 'status'),
-        array('node_make_unsticky', 'node_is_sticky', 'node_make_sticky', 'sticky'),
-        array('node_unpromote', 'node_is_promoted', 'node_promote', 'promote'),
+      array('node_unpublish', 'node_is_published', 'node_publish', 'status'),
+      array('node_make_unsticky', 'node_is_sticky', 'node_make_sticky', 'sticky'),
+      array('node_unpromote', 'node_is_promoted', 'node_promote', 'promote'),
     );
     $node = $this->drupalCreateNode(array('type' => 'page', 'status' => 1, 'sticky' => 1, 'promote' => 1));
 
@@ -1721,7 +1724,7 @@ class RulesIntegrationTestCase extends DrupalWebTestCase {
     $rule = rules_reaction_rule();
     $rand = $this->randomName();
     $rule->event('node_insert')
-    ->action('data_set', array('data:select' => 'node:title', 'value' => $rand));
+         ->action('data_set', array('data:select' => 'node:title', 'value' => $rand));
     $rule->save('test');
     $node = $this->drupalCreateNode();
     $node = node_load($node->nid);
@@ -1785,8 +1788,8 @@ class RulesIntegrationTestCase extends DrupalWebTestCase {
     $node = $this->drupalCreateNode(array('title' => 'foo'));
     $rule = rule(array('var_name' => array('type' => 'node')));
     $rule->condition('php_eval', array('code' => 'return TRUE;'))
-    ->action('php_eval', array('code' => 'drupal_set_message("Executed-" . $var_name->title);'))
-    ->action('drupal_message', array('message' => 'Title: <?php echo $var_name->title; ?> Token: [var_name:title]'));
+         ->action('php_eval', array('code' => 'drupal_set_message("Executed-" . $var_name->title);'))
+         ->action('drupal_message', array('message' => 'Title: <?php echo $var_name->title; ?> Token: [var_name:title]'));
 
     $rule->execute($node);
     $rule->access();
@@ -1798,10 +1801,10 @@ class RulesIntegrationTestCase extends DrupalWebTestCase {
     // Test PHP data processor
     $rule = rule(array('var_name' => array('type' => 'node')));
     $rule->action('drupal_message', array(
-        'message:select' => 'var_name:title',
-        'message:process' => array(
-            'php' => array('code' => 'return "Title: $value";')
-        ),
+      'message:select' => 'var_name:title',
+      'message:process' => array(
+        'php' => array('code' => 'return "Title: $value";')
+      ),
     ));
     $rule->execute($node);
     $rule->access();
@@ -1829,11 +1832,11 @@ class RulesIntegrationTestCase extends DrupalWebTestCase {
     // Test using a numeric offset.
     $rule = rule(array('number' => array('type' => 'decimal')), array('number'));
     $rule->action('data_set', array(
-        'data:select' => 'number',
-        'value:select' => 'number',
-        'value:process' => array(
-            'num_offset' => array('value' => 1),
-        ),
+      'data:select' => 'number',
+      'value:select' => 'number',
+      'value:process' => array(
+        'num_offset' => array('value' => 1),
+      ),
     ));
     $rule->integrityCheck();
     list($result) = $rule->execute(10);
@@ -1842,11 +1845,11 @@ class RulesIntegrationTestCase extends DrupalWebTestCase {
     // Test using a date offset.
     $set = rules_action_set(array('date' => array('type' => 'date')), array('date'));
     $set->action('data_set', array(
-        'data:select' => 'date',
-        'value:select' => 'date',
-        'value:process' => array(
-            'date_offset' => array('value' => 1000),
-        ),
+      'data:select' => 'date',
+      'value:select' => 'date',
+      'value:process' => array(
+        'date_offset' => array('value' => 1000),
+      ),
     ));
     $date = date_create("14 Mar 1984 10:19:23 +01:00")->format('U');
     list($result) = $set->execute($date);
@@ -1855,11 +1858,11 @@ class RulesIntegrationTestCase extends DrupalWebTestCase {
     // Test using a negative offset of 2 months.
     $set = rules_action_set(array('date' => array('type' => 'date')), array('date'));
     $set->action('data_set', array(
-        'data:select' => 'date',
-        'value:select' => 'date',
-        'value:process' => array(
-            'date_offset' => array('value' => - 86400 * 30 * 2),
-        ),
+      'data:select' => 'date',
+      'value:select' => 'date',
+      'value:process' => array(
+        'date_offset' => array('value' => - 86400 * 30 * 2),
+      ),
     ));
     $date = date_create("14 Mar 1984 10:19:23 +01:00")->format('U');
     list($result) = $set->execute($date);
@@ -1868,11 +1871,11 @@ class RulesIntegrationTestCase extends DrupalWebTestCase {
     // Test using a positive offset of 1 year 6 months and 30 minutes.
     $set = rules_action_set(array('date' => array('type' => 'date')), array('date'));
     $set->action('data_set', array(
-        'data:select' => 'date',
-        'value:select' => 'date',
-        'value:process' => array(
-            'date_offset' => array('value' => 86400 * 30 * 18 + 30 * 60),
-        ),
+      'data:select' => 'date',
+      'value:select' => 'date',
+      'value:process' => array(
+        'date_offset' => array('value' => 86400 * 30 * 18 + 30 * 60),
+      ),
     ));
     $date = date_create("14 Mar 1984 10:19:23 +01:00")->format('U');
     list($result) = $set->execute($date);
@@ -1895,8 +1898,8 @@ class RulesIntegrationTestCase extends DrupalWebTestCase {
     // Test breadcrumbs and drupal set message.
     $rule = rules_reaction_rule();
     $rule->event('init')
-    ->action('breadcrumb_set', array('titles' => array('foo'), 'paths' => array('bar')))
-    ->action('drupal_message', array('message' => 'A message.'));
+         ->action('breadcrumb_set', array('titles' => array('foo'), 'paths' => array('bar')))
+         ->action('drupal_message', array('message' => 'A message.'));
     $rule->save('test');
 
     $this->drupalGet('node');
@@ -1907,7 +1910,7 @@ class RulesIntegrationTestCase extends DrupalWebTestCase {
     $node = $this->drupalCreateNode();
     $rule = rules_reaction_rule();
     $rule->event('node_view')
-    ->action('redirect', array('url' => 'user'));
+         ->action('redirect', array('url' => 'user'));
     $rule->save('test2');
 
     $this->drupalGet('node/' . $node->nid);
@@ -1974,8 +1977,8 @@ class RulesIntegrationTestCase extends DrupalWebTestCase {
 
     // Test term alias action.
     $term = entity_property_values_create_entity('taxonomy_term', array(
-        'name' => $this->randomName(),
-        'vocabulary' => 1,
+      'name' => $this->randomName(),
+      'vocabulary' => 1,
     ))->value();
     rules_action('taxonomy_term_path_alias')->execute($term, 'term-test');
     $path = path_load("taxonomy/term/$term->tid");
