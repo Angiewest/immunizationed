@@ -10,6 +10,17 @@
 function conflicting_permissions_for_production_user_default_permissions() {
   $permissions = array();
 
+  // Exported permission: access administration menu.
+  $permissions['access administration menu'] = array(
+    'name' => 'access administration menu',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'admin_menu',
+  );
+
   // Exported permission: access rules debug.
   $permissions['access rules debug'] = array(
     'name' => 'access rules debug',
@@ -21,6 +32,26 @@ function conflicting_permissions_for_production_user_default_permissions() {
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'rules',
+  );
+
+  // Exported permission: display drupal links.
+  $permissions['display drupal links'] = array(
+    'name' => 'display drupal links',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
+    'module' => 'admin_menu',
+  );
+
+  // Exported permission: flush caches.
+  $permissions['flush caches'] = array(
+    'name' => 'flush caches',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
+    'module' => 'admin_menu',
   );
 
   return $permissions;

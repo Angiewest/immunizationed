@@ -2563,6 +2563,28 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['sorts']['field_task_due_date_value']['id'] = 'field_task_due_date_value';
   $handler->display->display_options['sorts']['field_task_due_date_value']['table'] = 'field_data_field_task_due_date';
   $handler->display->display_options['sorts']['field_task_due_date_value']['field'] = 'field_task_due_date_value';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  /* Filter criterion: OG membership: Group_type */
+  $handler->display->display_options['filters']['group_type']['id'] = 'group_type';
+  $handler->display->display_options['filters']['group_type']['table'] = 'og_membership';
+  $handler->display->display_options['filters']['group_type']['field'] = 'group_type';
+  $handler->display->display_options['filters']['group_type']['relationship'] = 'og_membership_rel';
+  $handler->display->display_options['filters']['group_type']['value'] = array(
+    'node' => 'node',
+  );
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'task' => 'task',
+  );
   $handler->display->display_options['path'] = 'node/%/blueprints';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Our Blueprints';
@@ -2681,6 +2703,19 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['filters']['field_date_task_completed_value']['table'] = 'field_data_field_date_task_completed';
   $handler->display->display_options['filters']['field_date_task_completed_value']['field'] = 'field_date_task_completed_value';
   $handler->display->display_options['filters']['field_date_task_completed_value']['operator'] = 'empty';
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'task' => 'task',
+  );
+  /* Filter criterion: Content: Task start date (field_task_start_date) */
+  $handler->display->display_options['filters']['field_task_start_date_value']['id'] = 'field_task_start_date_value';
+  $handler->display->display_options['filters']['field_task_start_date_value']['table'] = 'field_data_field_task_start_date';
+  $handler->display->display_options['filters']['field_task_start_date_value']['field'] = 'field_task_start_date_value';
+  $handler->display->display_options['filters']['field_task_start_date_value']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_task_start_date_value']['default_date'] = 'now';
   $export['practice_task_content'] = $view;
 
   $view = new view();

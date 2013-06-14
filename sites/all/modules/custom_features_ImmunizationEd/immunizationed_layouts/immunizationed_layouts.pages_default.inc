@@ -1586,7 +1586,9 @@ function immunizationed_layouts_default_page_manager_handlers() {
     $pane->access = array();
     $pane->configuration = array();
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
@@ -1606,7 +1608,9 @@ function immunizationed_layouts_default_page_manager_handlers() {
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
@@ -1628,7 +1632,9 @@ function immunizationed_layouts_default_page_manager_handlers() {
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 2;
@@ -1650,7 +1656,9 @@ function immunizationed_layouts_default_page_manager_handlers() {
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 3;
@@ -1672,7 +1680,9 @@ function immunizationed_layouts_default_page_manager_handlers() {
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 4;
@@ -1694,7 +1704,9 @@ function immunizationed_layouts_default_page_manager_handlers() {
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 5;
@@ -1716,7 +1728,9 @@ function immunizationed_layouts_default_page_manager_handlers() {
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 6;
@@ -1725,6 +1739,30 @@ function immunizationed_layouts_default_page_manager_handlers() {
     $display->panels['center'][6] = 'new-52';
     $pane = new stdClass();
     $pane->pid = 'new-53';
+    $pane->panel = 'center';
+    $pane->type = 'entity_form_field';
+    $pane->subtype = 'node:body';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'label' => '',
+      'formatter' => '',
+      'context' => 'argument_node_edit_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 7;
+    $pane->locks = array();
+    $display->content['new-53'] = $pane;
+    $display->panels['center'][7] = 'new-53';
+    $pane = new stdClass();
+    $pane->pid = 'new-54';
     $pane->panel = 'center';
     $pane->type = 'node_form_buttons';
     $pane->subtype = 'node_form_buttons';
@@ -1736,13 +1774,15 @@ function immunizationed_layouts_default_page_manager_handlers() {
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 7;
+    $pane->position = 8;
     $pane->locks = array();
-    $display->content['new-53'] = $pane;
-    $display->panels['center'][7] = 'new-53';
+    $display->content['new-54'] = $pane;
+    $display->panels['center'][8] = 'new-54';
   $display->hide_title = PANELS_TITLE_PANE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -1807,7 +1847,7 @@ function immunizationed_layouts_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-54';
+    $pane->pid = 'new-55';
     $pane->panel = 'left';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_responsible_role';
@@ -1830,10 +1870,10 @@ function immunizationed_layouts_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-54'] = $pane;
-    $display->panels['left'][0] = 'new-54';
+    $display->content['new-55'] = $pane;
+    $display->panels['left'][0] = 'new-55';
     $pane = new stdClass();
-    $pane->pid = 'new-55';
+    $pane->pid = 'new-56';
     $pane->panel = 'left';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_date_started';
@@ -1863,10 +1903,10 @@ function immunizationed_layouts_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-55'] = $pane;
-    $display->panels['left'][1] = 'new-55';
+    $display->content['new-56'] = $pane;
+    $display->panels['left'][1] = 'new-56';
     $pane = new stdClass();
-    $pane->pid = 'new-56';
+    $pane->pid = 'new-57';
     $pane->panel = 'right';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_task_due_date';
@@ -1896,10 +1936,10 @@ function immunizationed_layouts_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-56'] = $pane;
-    $display->panels['right'][0] = 'new-56';
+    $display->content['new-57'] = $pane;
+    $display->panels['right'][0] = 'new-57';
     $pane = new stdClass();
-    $pane->pid = 'new-57';
+    $pane->pid = 'new-58';
     $pane->panel = 'right';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_date_task_completed';
@@ -1929,10 +1969,10 @@ function immunizationed_layouts_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-57'] = $pane;
-    $display->panels['right'][1] = 'new-57';
+    $display->content['new-58'] = $pane;
+    $display->panels['right'][1] = 'new-58';
     $pane = new stdClass();
-    $pane->pid = 'new-58';
+    $pane->pid = 'new-59';
     $pane->panel = 'top';
     $pane->type = 'entity_form_field';
     $pane->subtype = 'node:body';
@@ -1951,10 +1991,10 @@ function immunizationed_layouts_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-58'] = $pane;
-    $display->panels['top'][0] = 'new-58';
+    $display->content['new-59'] = $pane;
+    $display->panels['top'][0] = 'new-59';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-55';
+  $display->title_pane = 'new-56';
   $handler->conf['display'] = $display;
   $export['node_edit_panel_context_8'] = $handler;
 
@@ -2286,7 +2326,7 @@ function immunizationed_layouts_default_page_manager_pages() {
     'type' => 'normal',
     'title' => 'Admin',
     'name' => 'main-menu',
-    'weight' => '20',
+    'weight' => '50',
     'parent' => array(
       'type' => 'none',
       'title' => '',

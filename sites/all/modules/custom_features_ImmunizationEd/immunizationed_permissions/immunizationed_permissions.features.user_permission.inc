@@ -10,17 +10,6 @@
 function immunizationed_permissions_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: access administration menu.
-  $permissions['access administration menu'] = array(
-    'name' => 'access administration menu',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'admin_menu',
-  );
-
   // Exported permission: access administration pages.
   $permissions['access administration pages'] = array(
     'name' => 'access administration pages',
@@ -2328,16 +2317,6 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
-  // Exported permission: display drupal links.
-  $permissions['display drupal links'] = array(
-    'name' => 'display drupal links',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'admin_menu',
-  );
-
   // Exported permission: edit all webform submissions.
   $permissions['edit all webform submissions'] = array(
     'name' => 'edit all webform submissions',
@@ -3369,16 +3348,6 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: flush caches.
-  $permissions['flush caches'] = array(
-    'name' => 'flush caches',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'admin_menu',
-  );
-
   // Exported permission: import media.
   $permissions['import media'] = array(
     'name' => 'import media',
@@ -3654,42 +3623,6 @@ function immunizationed_permissions_user_default_permissions() {
       'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'filter',
-  );
-
-  // Exported permission: view advanced help index.
-  $permissions['view advanced help index'] = array(
-    'name' => 'view advanced help index',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'advanced_help',
-  );
-
-  // Exported permission: view advanced help popup.
-  $permissions['view advanced help popup'] = array(
-    'name' => 'view advanced help popup',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'authenticated user' => 'authenticated user',
-      'editor' => 'editor',
-    ),
-    'module' => 'advanced_help',
-  );
-
-  // Exported permission: view advanced help topic.
-  $permissions['view advanced help topic'] = array(
-    'name' => 'view advanced help topic',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'advanced_help',
   );
 
   // Exported permission: view date repeats.
