@@ -2,6 +2,7 @@ name = immunizationed_production
 description = Immunizationed without admin settings
 core = 7.x
 package = immunizationed
+php = 5.2.4
 version = 7.x-6.0
 project = immunizationed_core
 dependencies[] = actions_permissions
