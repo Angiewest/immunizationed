@@ -25,7 +25,7 @@ function immunizationed_menus_menu_default_menu_custom() {
   // Exported menu: menu-editing.
   $menus['menu-editing'] = array(
     'menu_name' => 'menu-editing',
-    'title' => 'Editor menu',
+    'title' => 'Content',
     'description' => 'Menu for site editors',
   );
   // Exported menu: menu-my-practice-admin.
@@ -61,7 +61,6 @@ function immunizationed_menus_menu_default_menu_custom() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Content');
-  t('Editor menu');
   t('Main menu');
   t('Menu for practice adminstration');
   t('Menu for site administrators');

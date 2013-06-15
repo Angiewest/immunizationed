@@ -860,6 +860,24 @@ function immunizationed_menus_menu_default_menu_links() {
     'expanded' => 1,
     'weight' => -49,
   );
+  // Exported menu link: menu-views:list-of-assembly-instructions
+  $menu_links['menu-views:list-of-assembly-instructions'] = array(
+    'menu_name' => 'menu-views',
+    'link_path' => 'list-of-assembly-instructions',
+    'router_path' => 'list-of-assembly-instructions',
+    'link_title' => 'Assembly instructions',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'table of asembly instructions',
+      ),
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+  );
   // Exported menu link: menu-views:practice-admin/overdue-tasks
   $menu_links['menu-views:practice-admin/overdue-tasks'] = array(
     'menu_name' => 'menu-views',
@@ -887,24 +905,6 @@ function immunizationed_menus_menu_default_menu_links() {
     'options' => array(
       'attributes' => array(
         'title' => 'all practice assembly steps',
-      ),
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-  );
-  // Exported menu link: menu-views:test-view
-  $menu_links['menu-views:test-view'] = array(
-    'menu_name' => 'menu-views',
-    'link_path' => 'test-view',
-    'router_path' => 'test-view',
-    'link_title' => 'Assembly instructions',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'table of asembly instructions',
       ),
     ),
     'module' => 'system',

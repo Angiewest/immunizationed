@@ -353,7 +353,7 @@ function immunizationed_rules_default_rules_configuration() {
                 }
               },
               { "views_bulk_operations_action_load_list" : {
-                  "USING" : { "view" : "assembly_instructions_list|default" },
+                  "USING" : { "view" : "test_view|page" },
                   "PROVIDE" : { "entity_list" : { "list_assembly_instructions" : "A list of assembly instructions" } }
                 }
               }

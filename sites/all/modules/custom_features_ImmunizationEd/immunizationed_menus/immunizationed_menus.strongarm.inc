@@ -13,6 +13,25 @@ function immunizationed_menus_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'menu_default_active_menus';
+  $strongarm->value = array(
+    0 => 'devel',
+    2 => 'main-menu',
+    3 => 'management',
+    4 => 'navigation',
+    6 => 'user-menu',
+    7 => 'menu-my-practice-admin',
+    9 => 'menu-editing',
+    10 => 'menu-additional-information',
+    11 => 'menu-views',
+    13 => 'menu-add-content',
+    14 => 'menu-site-admin',
+  );
+  $export['menu_default_active_menus'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_announcement';
   $strongarm->value = array(
     0 => 'main-menu',
