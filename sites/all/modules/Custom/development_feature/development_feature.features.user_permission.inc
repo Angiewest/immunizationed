@@ -15,6 +15,7 @@ function development_feature_user_default_permissions() {
     'name' => 'access devel information',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'devel',
   );

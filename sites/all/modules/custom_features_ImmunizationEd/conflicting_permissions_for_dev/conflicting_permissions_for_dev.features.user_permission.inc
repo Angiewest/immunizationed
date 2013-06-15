@@ -36,18 +36,6 @@ function conflicting_permissions_for_dev_user_default_permissions() {
     'module' => 'rules',
   );
 
-  // Exported permission: display drupal links.
-  $permissions['display drupal links'] = array(
-    'name' => 'display drupal links',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'anonymous user' => 'anonymous user',
-      'apprentice admin' => 'apprentice admin',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'admin_menu',
-  );
-
   // Exported permission: flush caches.
   $permissions['flush caches'] = array(
     'name' => 'flush caches',
