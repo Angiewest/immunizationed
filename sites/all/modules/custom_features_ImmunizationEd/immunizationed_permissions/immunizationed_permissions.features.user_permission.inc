@@ -292,16 +292,6 @@ function immunizationed_permissions_user_default_permissions() {
     'module' => 'book',
   );
 
-  // Exported permission: administer chart.
-  $permissions['administer chart'] = array(
-    'name' => 'administer chart',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'chart',
-  );
-
   // Exported permission: administer comments.
   $permissions['administer comments'] = array(
     'name' => 'administer comments',
