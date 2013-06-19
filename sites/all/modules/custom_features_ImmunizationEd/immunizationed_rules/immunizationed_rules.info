@@ -32,5 +32,6 @@ features[rules_config][] = rules_send_email_when_practice_is_created
 features[rules_config][] = rules_send_emails
 features[rules_config][] = rules_send_task_email
 features[rules_config][] = rules_unpublish_old_strategies_guts
+features[rules_config][] = rules_unpublish_old_strategy
 features_exclude[dependencies][immunizationed_views] = immunizationed_views
 project path = sites/all/modules/custom_features_immunizationed

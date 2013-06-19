@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * immunizationed_feeds.feeds_importer_default.inc
+ * immunizationed_charts.feeds_importer_default.inc
  */
 
 /**
  * Implements hook_feeds_importer_default().
  */
-function immunizationed_feeds_feeds_importer_default() {
+function immunizationed_charts_feeds_importer_default() {
   $export = array();
 
   $feeds_importer = new stdClass();
@@ -20,9 +20,9 @@ function immunizationed_feeds_feeds_importer_default() {
     'fetcher' => array(
       'plugin_key' => 'FeedsFileFetcher',
       'config' => array(
-        'allowed_extensions' => 'txt csv tsv xml opml',
         'direct' => 0,
-        'directory' => 'private://feeds',
+        'allowed_extensions' => 'txt csv tsv xml opml',
+        'directory' => 'private://emr_reports',
         'allowed_schemes' => array(
           'public' => 'public',
           'private' => 'private',
@@ -39,85 +39,80 @@ function immunizationed_feeds_feeds_importer_default() {
     'processor' => array(
       'plugin_key' => 'FeedsNodeProcessor',
       'config' => array(
+        'bundle' => 'vaccination_data_from_emr',
+        'update_existing' => '2',
         'expire' => '-1',
-        'author' => '1',
-        'authorize' => 1,
         'mappings' => array(
           0 => array(
-            'source' => 'Report ID',
-            'target' => 'nid',
-            'unique' => 1,
-          ),
-          1 => array(
             'source' => 'Report ID',
             'target' => 'field_report_id',
             'unique' => FALSE,
           ),
-          2 => array(
-            'source' => 'Title',
+          1 => array(
+            'source' => 'title',
             'target' => 'title',
             'unique' => FALSE,
           ),
-          3 => array(
+          2 => array(
             'source' => 'published',
             'target' => 'created',
             'unique' => FALSE,
           ),
-          4 => array(
-            'source' => 'Start',
+          3 => array(
+            'source' => 'start',
             'target' => 'field_reporting_period:start',
             'unique' => FALSE,
           ),
-          5 => array(
+          4 => array(
             'source' => 'end',
             'target' => 'field_reporting_period:end',
             'unique' => FALSE,
           ),
-          6 => array(
+          5 => array(
             'source' => 'Epic ID#',
             'target' => 'field_epic_id',
             'unique' => FALSE,
           ),
-          7 => array(
+          6 => array(
             'source' => 'Practice ID',
             'target' => 'og_group_ref',
             'unique' => FALSE,
           ),
-          8 => array(
+          7 => array(
             'source' => '# Visits',
             'target' => 'field_visits',
             'unique' => FALSE,
           ),
-          9 => array(
+          8 => array(
             'source' => 'Influenza',
             'target' => 'field_influenza',
             'unique' => FALSE,
           ),
-          10 => array(
+          9 => array(
             'source' => 'Pneumo',
             'target' => 'field_pneumo',
             'unique' => FALSE,
           ),
-          11 => array(
+          10 => array(
             'source' => 'TDAP',
             'target' => 'field_tdap',
             'unique' => FALSE,
           ),
-          12 => array(
+          11 => array(
             'source' => 'TD',
             'target' => 'field_td',
             'unique' => FALSE,
           ),
-          13 => array(
+          12 => array(
             'source' => 'Total',
             'target' => 'field_total',
             'unique' => FALSE,
           ),
         ),
-        'update_existing' => '1',
         'input_format' => 'plain_text',
+        'author' => 0,
+        'authorize' => 0,
         'skip_hash_check' => 0,
-        'bundle' => 'vaccination_data_from_emr',
       ),
     ),
     'content_type' => '',
