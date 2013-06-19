@@ -28,7 +28,7 @@ function immunizationed_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'admin_menu_tweak_modules';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['admin_menu_tweak_modules'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -56,7 +56,7 @@ function immunizationed_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'advanced__active_tab';
-  $strongarm->value = 'edit-performance';
+  $strongarm->value = 'edit-plugins';
   $export['advanced__active_tab'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -183,11 +183,10 @@ function immunizationed_core_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'book_allowed_types';
   $strongarm->value = array(
-    0 => 'roadmap_waypoint',
-    1 => 'book',
-    2 => 'document',
-    3 => 'video',
-    4 => 'webform',
+    0 => 'book',
+    1 => 'document',
+    2 => 'video',
+    3 => 'webform',
   );
   $export['book_allowed_types'] = $strongarm;
 
@@ -920,6 +919,46 @@ function immunizationed_core_strongarm() {
   $strongarm->name = 'field_bundle_settings';
   $strongarm->value = '';
   $export['field_bundle_settings'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_comment__comment_node_article';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(
+        'author' => array(
+          'weight' => '-2',
+        ),
+        'subject' => array(
+          'weight' => '-1',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_comment__comment_node_article'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_comment__comment_node_practice_group';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(
+        'author' => array(
+          'weight' => '-2',
+        ),
+        'subject' => array(
+          'weight' => '-1',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_comment__comment_node_practice_group'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

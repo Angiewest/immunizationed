@@ -13,6 +13,27 @@ function immunizationed_structure_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'auto_entitylabel_node_meeting_agenda';
+  $strongarm->value = '1';
+  $export['auto_entitylabel_node_meeting_agenda'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'auto_entitylabel_pattern_node_meeting_agenda';
+  $strongarm->value = 'Meeting held [current-date:short]';
+  $export['auto_entitylabel_pattern_node_meeting_agenda'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'auto_entitylabel_php_node_meeting_agenda';
+  $strongarm->value = 0;
+  $export['auto_entitylabel_php_node_meeting_agenda'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_convenient_vaccination_services';
   $strongarm->value = 0;
   $export['comment_anonymous_convenient_vaccination_services'] = $strongarm;

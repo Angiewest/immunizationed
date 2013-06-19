@@ -1,7 +1,5 @@
 <?php
 /**
  * @file
- * Code for the Conflicting permissions for dev feature.
+ * Drupal needs this blank file.
  */
-
-include_once 'conflicting_permissions_for_dev.features.inc';

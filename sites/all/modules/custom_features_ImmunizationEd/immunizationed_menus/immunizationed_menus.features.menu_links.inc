@@ -122,307 +122,6 @@ function immunizationed_menus_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 20,
   );
-  // Exported menu link: menu-add-content:node/add
-  $menu_links['menu-add-content:node/add'] = array(
-    'menu_name' => 'menu-add-content',
-    'link_path' => 'node/add',
-    'router_path' => 'node/add',
-    'link_title' => 'Add content',
-    'options' => array(
-      'attributes' => array(),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 1,
-    'expanded' => 1,
-    'weight' => -50,
-  );
-  // Exported menu link: menu-add-content:node/add/announcement
-  $menu_links['menu-add-content:node/add/announcement'] = array(
-    'menu_name' => 'menu-add-content',
-    'link_path' => 'node/add/announcement',
-    'router_path' => 'node/add/announcement',
-    'link_title' => 'Project Update',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Broadcast an announcement to your practice',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -39,
-    'parent_path' => 'node/add',
-  );
-  // Exported menu link: menu-add-content:node/add/article
-  $menu_links['menu-add-content:node/add/article'] = array(
-    'menu_name' => 'menu-add-content',
-    'link_path' => 'node/add/article',
-    'router_path' => 'node/add/article',
-    'link_title' => 'Article',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Use <em>articles</em> for text content like instructions or posts to be used as building blocks',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -50,
-    'parent_path' => 'node/add',
-  );
-  // Exported menu link: menu-add-content:node/add/book
-  $menu_links['menu-add-content:node/add/book'] = array(
-    'menu_name' => 'menu-add-content',
-    'link_path' => 'node/add/book',
-    'router_path' => 'node/add/book',
-    'link_title' => 'Book page',
-    'options' => array(
-      'attributes' => array(
-        'title' => '<em>Books</em> have a built-in hierarchical navigation. Use for handbooks or tutorials to be used as building blocks.',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -46,
-    'parent_path' => 'node/add',
-  );
-  // Exported menu link: menu-add-content:node/add/document
-  $menu_links['menu-add-content:node/add/document'] = array(
-    'menu_name' => 'menu-add-content',
-    'link_path' => 'node/add/document',
-    'router_path' => 'node/add/document',
-    'link_title' => 'Document',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Use to upload a document as a building block',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -45,
-    'parent_path' => 'node/add',
-  );
-  // Exported menu link: menu-add-content:node/add/nuts-bolts
-  $menu_links['menu-add-content:node/add/nuts-bolts'] = array(
-    'menu_name' => 'menu-add-content',
-    'link_path' => 'node/add/nuts-bolts',
-    'router_path' => 'node/add/nuts-bolts',
-    'link_title' => 'Nuts & Bolts',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'This will include information for viewers to understand the foundational items of PittVax, the Toolkit, and the website. This includes info on technical requirements, Privacy Policy, etc. ',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -44,
-    'parent_path' => 'node/add',
-  );
-  // Exported menu link: menu-add-content:node/add/offsite-resource
-  $menu_links['menu-add-content:node/add/offsite-resource'] = array(
-    'menu_name' => 'menu-add-content',
-    'link_path' => 'node/add/offsite-resource',
-    'router_path' => 'node/add/offsite-resource',
-    'link_title' => 'Offsite Resource',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Use for resources like toolkits, forms, or materials from other websites. ',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -43,
-    'parent_path' => 'node/add',
-  );
-  // Exported menu link: menu-add-content:node/add/page
-  $menu_links['menu-add-content:node/add/page'] = array(
-    'menu_name' => 'menu-add-content',
-    'link_path' => 'node/add/page',
-    'router_path' => 'node/add/page',
-    'link_title' => 'Basic page',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Use <em>basic pages</em> for your static content, such as an \'About us\' page.',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -47,
-    'parent_path' => 'node/add',
-  );
-  // Exported menu link: menu-add-content:node/add/panel
-  $menu_links['menu-add-content:node/add/panel'] = array(
-    'menu_name' => 'menu-add-content',
-    'link_path' => 'node/add/panel',
-    'router_path' => 'node/add/panel',
-    'link_title' => 'Panel',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'A panel layout broken up into rows and columns.',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -42,
-    'parent_path' => 'node/add',
-  );
-  // Exported menu link: menu-add-content:node/add/practice-admin-group
-  $menu_links['menu-add-content:node/add/practice-admin-group'] = array(
-    'menu_name' => 'menu-add-content',
-    'link_path' => 'node/add/practice-admin-group',
-    'router_path' => 'node/add/practice-admin-group',
-    'link_title' => 'Practice Admin Group',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Private group for practice admins',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -40,
-    'parent_path' => 'node/add',
-  );
-  // Exported menu link: menu-add-content:node/add/practice-group
-  $menu_links['menu-add-content:node/add/practice-group'] = array(
-    'menu_name' => 'menu-add-content',
-    'link_path' => 'node/add/practice-group',
-    'router_path' => 'node/add/practice-group',
-    'link_title' => 'Practice',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Clinical practice enrolled in the 4 Pillars Toolkit Project to Build Adult Immunizations',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -41,
-    'parent_path' => 'node/add',
-  );
-  // Exported menu link: menu-add-content:node/add/required-disclosure
-  $menu_links['menu-add-content:node/add/required-disclosure'] = array(
-    'menu_name' => 'menu-add-content',
-    'link_path' => 'node/add/required-disclosure',
-    'router_path' => 'node/add/required-disclosure',
-    'link_title' => 'Required Disclosure',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Required disclosures',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -38,
-    'parent_path' => 'node/add',
-  );
-  // Exported menu link: menu-add-content:node/add/roadmap-waypoint
-  $menu_links['menu-add-content:node/add/roadmap-waypoint'] = array(
-    'menu_name' => 'menu-add-content',
-    'link_path' => 'node/add/roadmap-waypoint',
-    'router_path' => 'node/add/roadmap-waypoint',
-    'link_title' => 'Assembly instructions',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Master instructions for assembly steps. All elements will be cloned as assembly steps at enrollment',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -48,
-    'parent_path' => 'node/add',
-  );
-  // Exported menu link: menu-add-content:node/add/task
-  $menu_links['menu-add-content:node/add/task'] = array(
-    'menu_name' => 'menu-add-content',
-    'link_path' => 'node/add/task',
-    'router_path' => 'node/add/task',
-    'link_title' => 'Assembly Step',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Use to create single assembly steps for individual practices.',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -49,
-    'parent_path' => 'node/add',
-  );
-  // Exported menu link: menu-add-content:node/add/video
-  $menu_links['menu-add-content:node/add/video'] = array(
-    'menu_name' => 'menu-add-content',
-    'link_path' => 'node/add/video',
-    'router_path' => 'node/add/video',
-    'link_title' => 'Video',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Use to upload a video as a building block',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -37,
-    'parent_path' => 'node/add',
-  );
-  // Exported menu link: menu-add-content:node/add/webform
-  $menu_links['menu-add-content:node/add/webform'] = array(
-    'menu_name' => 'menu-add-content',
-    'link_path' => 'node/add/webform',
-    'router_path' => 'node/add/webform',
-    'link_title' => 'Webform',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Create a new form or questionnaire accessible to users. Submission results and statistics are recorded and accessible to privileged users.',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -36,
-    'parent_path' => 'node/add',
-  );
   // Exported menu link: menu-editing:admin/content
   $menu_links['menu-editing:admin/content'] = array(
     'menu_name' => 'menu-editing',
@@ -458,6 +157,25 @@ function immunizationed_menus_menu_default_menu_links() {
     'has_children' => 0,
     'expanded' => 1,
     'weight' => -47,
+  );
+  // Exported menu link: menu-editing:admin/people-details
+  $menu_links['menu-editing:admin/people-details'] = array(
+    'menu_name' => 'menu-editing',
+    'link_path' => 'admin/people-details',
+    'router_path' => 'admin/people-details',
+    'link_title' => 'People details',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Site user details',
+      ),
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'parent_path' => 'admin/people',
   );
   // Exported menu link: menu-editing:import
   $menu_links['menu-editing:import'] = array(
@@ -583,6 +301,25 @@ function immunizationed_menus_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -40,
   );
+  // Exported menu link: menu-editing:node/add/practice-group
+  $menu_links['menu-editing:node/add/practice-group'] = array(
+    'menu_name' => 'menu-editing',
+    'link_path' => 'node/add/practice-group',
+    'router_path' => 'node/add/practice-group',
+    'link_title' => 'Practice',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Create a new practice in the immunization improvement program.',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -49,
+    'parent_path' => 'node/add',
+  );
   // Exported menu link: menu-editing:node/add/roadmap-waypoint
   $menu_links['menu-editing:node/add/roadmap-waypoint'] = array(
     'menu_name' => 'menu-editing',
@@ -654,6 +391,24 @@ function immunizationed_menus_menu_default_menu_links() {
     'has_children' => 0,
     'expanded' => 0,
     'weight' => -38,
+  );
+  // Exported menu link: menu-my-practice-admin:admin/people/create
+  $menu_links['menu-my-practice-admin:admin/people/create'] = array(
+    'menu_name' => 'menu-my-practice-admin',
+    'link_path' => 'admin/people/create',
+    'router_path' => 'admin/people/create',
+    'link_title' => 'Add new member to site',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'add a member to ImmunizationEd',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -50,
   );
   // Exported menu link: menu-my-practice-admin:node/add/announcement
   $menu_links['menu-my-practice-admin:node/add/announcement'] = array(
@@ -860,24 +615,6 @@ function immunizationed_menus_menu_default_menu_links() {
     'expanded' => 1,
     'weight' => -49,
   );
-  // Exported menu link: menu-views:list-of-assembly-instructions
-  $menu_links['menu-views:list-of-assembly-instructions'] = array(
-    'menu_name' => 'menu-views',
-    'link_path' => 'list-of-assembly-instructions',
-    'router_path' => 'list-of-assembly-instructions',
-    'link_title' => 'Assembly instructions',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'table of asembly instructions',
-      ),
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-  );
   // Exported menu link: menu-views:practice-admin/overdue-tasks
   $menu_links['menu-views:practice-admin/overdue-tasks'] = array(
     'menu_name' => 'menu-views',
@@ -905,6 +642,24 @@ function immunizationed_menus_menu_default_menu_links() {
     'options' => array(
       'attributes' => array(
         'title' => 'all practice assembly steps',
+      ),
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+  );
+  // Exported menu link: menu-views:test-view
+  $menu_links['menu-views:test-view'] = array(
+    'menu_name' => 'menu-views',
+    'link_path' => 'test-view',
+    'router_path' => 'test-view',
+    'link_title' => 'Assembly instructions',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'table of asembly instructions',
       ),
     ),
     'module' => 'system',
@@ -1008,45 +763,34 @@ function immunizationed_menus_menu_default_menu_links() {
   t('Add Video');
   t('Add Webform');
   t('Add assembly step');
-  t('Add content');
+  t('Add new member to site');
   t('Add project update');
   t('Admin');
   t('All Content');
-  t('Article');
-  t('Assembly Step');
   t('Assembly instructions');
-  t('Basic page');
   t('Blueprints');
-  t('Book page');
   t('Building Blocks');
   t('Contact admin');
   t('Create meeting agenda');
   t('Create new account');
-  t('Document');
   t('Home');
   t('Import data');
   t('Log in');
   t('Log out');
   t('Nuts & Bolts');
-  t('Offsite Resource');
   t('Overdue tasks');
-  t('Panel');
   t('People');
+  t('People details');
   t('Practice');
-  t('Practice Admin Group');
   t('Practice tasks');
   t('Practices');
-  t('Project Update');
-  t('Required Disclosure');
   t('Select convenience strategies');
   t('Select motivation strategies');
   t('Select notification strategies');
   t('Select systems strategies');
   t('User account');
-  t('Video');
   t('View Content');
   t('View People');
-  t('Webform');
 
 
   return $menu_links;

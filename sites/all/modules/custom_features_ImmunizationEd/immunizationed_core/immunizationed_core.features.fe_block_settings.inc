@@ -33,7 +33,7 @@ function immunizationed_core_default_fe_block_settings() {
         'region' => 'left',
         'status' => 1,
         'theme' => 'energetic',
-        'weight' => -19,
+        'weight' => -18,
       ),
       'seven' => array(
         'region' => '',
@@ -116,9 +116,8 @@ function immunizationed_core_default_fe_block_settings() {
     'delta' => 'menu-editing',
     'module' => 'menu',
     'node_types' => array(
-      0 => 'page',
-      1 => 'practice_admin_group',
-      2 => 'practice_group',
+      0 => 'practice_admin_group',
+      1 => 'practice_group',
     ),
     'pages' => '',
     'roles' => array(
@@ -137,7 +136,7 @@ function immunizationed_core_default_fe_block_settings() {
         'region' => 'left',
         'status' => 1,
         'theme' => 'energetic',
-        'weight' => -18,
+        'weight' => -17,
       ),
       'seven' => array(
         'region' => '',
@@ -156,15 +155,13 @@ function immunizationed_core_default_fe_block_settings() {
     'delta' => 'menu-my-practice-admin',
     'module' => 'menu',
     'node_types' => array(
-      0 => 'announcement',
-      1 => 'convenient_vaccination_services',
-      2 => 'enhanced_vaccination_systems',
-      3 => 'meeting_agenda',
-      4 => 'motivation',
-      5 => 'patient_notification',
-      6 => 'practice_admin_group',
-      7 => 'practice_group',
-      8 => 'task',
+      0 => 'convenient_vaccination_services',
+      1 => 'enhanced_vaccination_systems',
+      2 => 'meeting_agenda',
+      3 => 'motivation',
+      4 => 'patient_notification',
+      5 => 'practice_admin_group',
+      6 => 'practice_group',
     ),
     'pages' => '',
     'roles' => array(
