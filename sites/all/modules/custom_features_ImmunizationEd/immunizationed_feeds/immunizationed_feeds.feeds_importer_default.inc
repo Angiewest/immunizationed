@@ -167,7 +167,7 @@ function immunizationed_feeds_feeds_importer_default() {
           0 => array(
             'source' => 'name',
             'target' => 'name',
-            'unique' => 0,
+            'unique' => 1,
           ),
           1 => array(
             'source' => 'mail',
