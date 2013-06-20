@@ -15,7 +15,6 @@ function development_feature_user_default_permissions() {
     'name' => 'access devel information',
     'roles' => array(
       'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'devel',
   );
@@ -44,6 +43,7 @@ function development_feature_user_default_permissions() {
     'name' => 'import users',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'user_import',
   );

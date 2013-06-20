@@ -1,0 +1,4 @@
+name = Custom rules
+description = "Hacked rules functions just for me."
+package = Immunizationed
+core = 7.x

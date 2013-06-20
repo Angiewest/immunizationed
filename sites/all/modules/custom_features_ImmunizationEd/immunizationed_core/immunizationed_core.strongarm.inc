@@ -161,7 +161,7 @@ function immunizationed_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'backup_migrate_destination_id';
-  $strongarm->value = 'download';
+  $strongarm->value = 'manual';
   $export['backup_migrate_destination_id'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1789,7 +1789,6 @@ function immunizationed_core_strongarm() {
   $strongarm->name = 'node_options_meeting_agenda';
   $strongarm->value = array(
     0 => 'status',
-    1 => 'promote',
   );
   $export['node_options_meeting_agenda'] = $strongarm;
 
