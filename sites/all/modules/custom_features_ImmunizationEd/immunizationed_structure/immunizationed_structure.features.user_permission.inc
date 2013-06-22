@@ -392,6 +392,7 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['create field_responsible_role'] = array(
     'name' => 'create field_responsible_role',
     'roles' => array(
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
@@ -1586,6 +1587,7 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['edit field_responsible_role'] = array(
     'name' => 'edit field_responsible_role',
     'roles' => array(
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -2001,6 +2003,7 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['edit own field_responsible_role'] = array(
     'name' => 'edit own field_responsible_role',
     'roles' => array(
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
@@ -2512,6 +2515,7 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view field_responsible_role'] = array(
     'name' => 'view field_responsible_role',
     'roles' => array(
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
@@ -2832,6 +2836,7 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view own field_responsible_role'] = array(
     'name' => 'view own field_responsible_role',
     'roles' => array(
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',

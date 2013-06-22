@@ -60,11 +60,14 @@ function immunizationed_rules_default_rules_configuration() {
   $items['rules_actions_on_role_change'] = entity_import('rules_config', '{ "rules_actions_on_role_change" : {
       "LABEL" : "Actions on role change",
       "PLUGIN" : "reaction rule",
+      "ACTIVE" : false,
       "TAGS" : [ "role", "users" ],
       "REQUIRES" : [ "rules" ],
       "ON" : [ "user_presave" ],
       "IF" : [
-        { "NOT data_is_empty" : { "data" : [ "account:field-responsible-role" ] } }
+        { "data_is_empty" : { "data" : [ "account-unchanged:field-responsible-role" ] } },
+        { "NOT data_is_empty" : { "data" : [ "account:field-responsible-role" ] } },
+        { "NOT data_is_empty" : { "data" : [ "account:og-user-node" ] } }
       ],
       "DO" : [
         { "component_rules_send_emails" : {
@@ -118,7 +121,8 @@ function immunizationed_rules_default_rules_configuration() {
                   "entity_list" : [ "entity-list" ],
                   "current_item" : [ "list-item" ]
                 }
-              }
+              },
+              { "drupal_message" : { "message" : [ "list-item:nid" ] } }
             ]
           }
         }
