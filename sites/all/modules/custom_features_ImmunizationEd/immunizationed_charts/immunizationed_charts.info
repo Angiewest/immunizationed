@@ -6,7 +6,6 @@ php = 5.2.4
 version = 7.x-1.0
 project = immunizationed_charts
 dependencies[] = features
-dependencies[] = feeds_import
 dependencies[] = feeds_ui
 dependencies[] = google_chart_tools
 dependencies[] = google_chart_tools_views

@@ -75,7 +75,6 @@ dependencies[] = panels
 dependencies[] = panels_node
 dependencies[] = path
 dependencies[] = pathauto
-dependencies[] = pathologic
 dependencies[] = php
 dependencies[] = profile
 dependencies[] = rdf
