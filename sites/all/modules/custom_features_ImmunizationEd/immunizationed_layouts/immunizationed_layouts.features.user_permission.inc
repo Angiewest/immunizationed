@@ -19,6 +19,16 @@ function immunizationed_layouts_user_default_permissions() {
     'module' => 'panels',
   );
 
+  // Exported permission: administer blocks.
+  $permissions['administer blocks'] = array(
+    'name' => 'administer blocks',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
+    'module' => 'block',
+  );
+
   // Exported permission: administer page manager.
   $permissions['administer page manager'] = array(
     'name' => 'administer page manager',
@@ -948,6 +958,16 @@ function immunizationed_layouts_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'panels_node',
+  );
+
+  // Exported permission: execute panelizer_set_status_action.
+  $permissions['execute panelizer_set_status_action'] = array(
+    'name' => 'execute panelizer_set_status_action',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
+    'module' => 'actions_permissions',
   );
 
   // Exported permission: use page manager.

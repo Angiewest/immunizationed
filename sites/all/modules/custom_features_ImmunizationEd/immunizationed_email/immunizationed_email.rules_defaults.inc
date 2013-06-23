@@ -13,7 +13,7 @@ function immunizationed_email_default_rules_configuration() {
       "LABEL" : "test email rule",
       "PLUGIN" : "reaction rule",
       "TAGS" : [ "test" ],
-      "REQUIRES" : [ "rules" ],
+      "REQUIRES" : [ "rules", "mimemail" ],
       "ON" : [ "user_login" ],
       "DO" : [
         { "drupal_message" : { "message" : "sending test email to SU" } },
@@ -22,6 +22,13 @@ function immunizationed_email_default_rules_configuration() {
             "subject" : "login from [site:current-user]",
             "message" : "[site:current-user] just logged in.",
             "language" : [ "" ]
+          }
+        },
+        { "mimemail" : {
+            "to" : "raviottaj@upmc.edu",
+            "subject" : "[site:current-user] logged in",
+            "body" : "[site:current-user] logged in",
+            "plaintext" : "[site:current-user] logged in plain text"
           }
         }
       ]

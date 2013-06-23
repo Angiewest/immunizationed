@@ -95,7 +95,8 @@ function immunizationed_email_strongarm() {
 contact_*
 system_*
 update_*
-user_*';
+user_*
+mimemail_*';
   $export['queue_mail_keys'] = $strongarm;
 
   return $export;
