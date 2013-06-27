@@ -163,7 +163,7 @@ function immunizationed_core_default_fe_block_settings() {
       5 => 'practice_admin_group',
       6 => 'practice_group',
     ),
-    'pages' => '',
+    'pages' => 'practice-admin',
     'roles' => array(
       'administrator' => 3,
       'apprentice admin' => 8,

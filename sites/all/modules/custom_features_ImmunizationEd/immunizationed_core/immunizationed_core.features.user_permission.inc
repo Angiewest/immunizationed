@@ -368,6 +368,7 @@ function immunizationed_core_user_default_permissions() {
     'name' => 'administer pathauto',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'pathauto',
   );
@@ -406,6 +407,7 @@ function immunizationed_core_user_default_permissions() {
     'name' => 'administer site configuration',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'system',
   );
@@ -453,6 +455,7 @@ function immunizationed_core_user_default_permissions() {
     'name' => 'administer themes',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'system',
   );
@@ -1362,7 +1365,10 @@ function immunizationed_core_user_default_permissions() {
   $permissions['view analytics dashboard'] = array(
     'name' => 'view analytics dashboard',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'analytics_dashboard',
   );

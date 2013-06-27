@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * immunizationed_core.layouts.inc
+ * immunizationed_layouts.layouts.inc
  */
 
 /**
  * Implements hook_default_panels_layout().
  */
-function immunizationed_core_default_panels_layout() {
+function immunizationed_layouts_default_panels_layout() {
   $export = array();
 
   $layout = new stdClass();

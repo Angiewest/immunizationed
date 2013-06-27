@@ -75,6 +75,16 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: administer redirects.
+  $permissions['administer redirects'] = array(
+    'name' => 'administer redirects',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
+    'module' => 'redirect',
+  );
+
   // Exported permission: bypass node access.
   $permissions['bypass node access'] = array(
     'name' => 'bypass node access',
@@ -1433,6 +1443,7 @@ function immunizationed_structure_user_default_permissions() {
     'name' => 'edit field_date_task_completed',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'field_permissions',
   );

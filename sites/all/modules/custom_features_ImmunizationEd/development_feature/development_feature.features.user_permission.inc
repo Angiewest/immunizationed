@@ -35,6 +35,7 @@ function development_feature_user_default_permissions() {
     'name' => 'execute php code',
     'roles' => array(
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'devel',
   );
