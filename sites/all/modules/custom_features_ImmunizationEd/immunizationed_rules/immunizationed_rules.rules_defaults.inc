@@ -529,12 +529,13 @@ function immunizationed_rules_default_rules_configuration() {
             "DO" : [
               { "mimemail" : {
                   "to" : "raviottaj@upmc.edu",
+                  "bcc" : "nestlern@upmc.edu",
                   "subject" : "test email",
                   "body" : "[user:name] logged in at \\u003Ca href=[site:login-url]\\u003EImmunizationEd\\u003C\\u002Fa\\u003E",
                   "plaintext" : "login from user"
                 }
               },
-              { "drupal_message" : { "message" : "Sending test email to SU. \\u002Fbr\\u000D\\u000A[user:name] logged in at \\u003Ca href=[site:login-url]\\u003EImmunizationEd\\u003C\\u002Fa\\u003E" } }
+              { "drupal_message" : { "message" : "Sending test email to SU.\\u000D\\u000A[user:name] logged in at \\u003Ca href=[site:login-url]\\u003EImmunizationEd\\u003C\\u002Fa\\u003E" } }
             ],
             "LABEL" : "Send test email"
           }

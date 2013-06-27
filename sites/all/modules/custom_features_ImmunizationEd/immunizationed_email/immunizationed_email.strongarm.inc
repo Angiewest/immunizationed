@@ -50,9 +50,8 @@ function immunizationed_email_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'mail_system';
   $strongarm->value = array(
-    'default-system' => 'MaillogMailSystem',
+    'default-system' => 'DefaultMailSystem',
     'mimemail' => 'MimeMailSystem',
-    'maillog' => 'MaillogMailSystem',
   );
   $export['mail_system'] = $strongarm;
 

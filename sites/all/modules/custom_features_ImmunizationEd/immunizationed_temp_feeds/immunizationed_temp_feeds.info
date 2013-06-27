@@ -1,0 +1,16 @@
+name = immunizationed_temp_feeds
+description = feed to update nodes
+core = 7.x
+package = immunizationed
+version = 7.x-1.0
+project = immunizationed_temp_feeds
+dependencies[] = feeds
+dependencies[] = views
+dependencies[] = views_data_export
+features[ctools][] = feeds:feeds_importer_default:1
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[feeds_importer][] = assembly_instructions_date_changed
+features[feeds_importer][] = assembly_step_date_changed
+features[views_view][] = date_changed_view
+project path = sites/all/modules/custom_features_immunizationed

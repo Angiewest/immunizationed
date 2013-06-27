@@ -30,6 +30,15 @@ function development_feature_user_default_permissions() {
     'module' => 'menu_clone',
   );
 
+  // Exported permission: administer reroute email.
+  $permissions['administer reroute email'] = array(
+    'name' => 'administer reroute email',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'reroute_email',
+  );
+
   // Exported permission: execute php code.
   $permissions['execute php code'] = array(
     'name' => 'execute php code',

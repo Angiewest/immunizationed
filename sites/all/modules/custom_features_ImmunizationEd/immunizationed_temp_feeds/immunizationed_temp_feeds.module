@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the immunizationed_temp_feeds feature.
+ */
+
+include_once 'immunizationed_temp_feeds.features.inc';
