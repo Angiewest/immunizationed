@@ -10,6 +10,15 @@
 function immunizationed_email_user_default_permissions() {
   $permissions = array();
 
+  // Exported permission: administer maillog.
+  $permissions['administer maillog'] = array(
+    'name' => 'administer maillog',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'maillog',
+  );
+
   // Exported permission: administer mailsystem.
   $permissions['administer mailsystem'] = array(
     'name' => 'administer mailsystem',
@@ -17,6 +26,15 @@ function immunizationed_email_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'mailsystem',
+  );
+
+  // Exported permission: delete maillog.
+  $permissions['delete maillog'] = array(
+    'name' => 'delete maillog',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'maillog',
   );
 
   // Exported permission: edit mimemail user settings.
@@ -48,6 +66,15 @@ function immunizationed_email_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'actions_permissions',
+  );
+
+  // Exported permission: view maillog.
+  $permissions['view maillog'] = array(
+    'name' => 'view maillog',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'maillog',
   );
 
   return $permissions;
