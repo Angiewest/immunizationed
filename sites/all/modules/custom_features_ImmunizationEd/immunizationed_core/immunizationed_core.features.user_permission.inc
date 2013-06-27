@@ -84,16 +84,6 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'contextual',
   );
 
-  // Exported permission: access dashboard.
-  $permissions['access dashboard'] = array(
-    'name' => 'access dashboard',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'dashboard',
-  );
-
   // Exported permission: access overlay.
   $permissions['access overlay'] = array(
     'name' => 'access overlay',
@@ -230,15 +220,6 @@ function immunizationed_core_user_default_permissions() {
       'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'system',
-  );
-
-  // Exported permission: administer analytics dashboard.
-  $permissions['administer analytics dashboard'] = array(
-    'name' => 'administer analytics dashboard',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'analytics_dashboard',
   );
 
   // Exported permission: administer backup and migrate.
@@ -1359,18 +1340,6 @@ function immunizationed_core_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'advanced_help',
-  );
-
-  // Exported permission: view analytics dashboard.
-  $permissions['view analytics dashboard'] = array(
-    'name' => 'view analytics dashboard',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'analytics_dashboard',
   );
 
   // Exported permission: view date repeats.

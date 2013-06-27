@@ -123,13 +123,13 @@ function immunizationed_temp_feeds_feeds_importer_default() {
             'unique' => 1,
           ),
           2 => array(
-            'source' => 'New Start Date',
-            'target' => 'field_date_started:start',
+            'source' => 'New End Date',
+            'target' => 'field_task_due_date:start',
             'unique' => FALSE,
           ),
           3 => array(
-            'source' => 'New End Date',
-            'target' => 'field_task_due_date:start',
+            'source' => 'New Start Date',
+            'target' => 'field_task_start_date:start',
             'unique' => FALSE,
           ),
         ),
