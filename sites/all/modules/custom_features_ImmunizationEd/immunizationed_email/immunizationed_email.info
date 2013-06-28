@@ -22,7 +22,6 @@ features[user_permission][] = administer mailsystem
 features[user_permission][] = edit mimemail user settings
 features[user_permission][] = execute mimemail_send_email_action
 features[user_permission][] = execute system_send_email_action
-features[variable][] = mail_system
 features[variable][] = maillog_devel
 features[variable][] = maillog_engine
 features[variable][] = maillog_log

@@ -48,16 +48,6 @@ function immunizationed_email_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'mail_system';
-  $strongarm->value = array(
-    'default-system' => 'DefaultMailSystem',
-    'mimemail' => 'MimeMailSystem',
-  );
-  $export['mail_system'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'mimemail_engine';
   $strongarm->value = '';
   $export['mimemail_engine'] = $strongarm;
