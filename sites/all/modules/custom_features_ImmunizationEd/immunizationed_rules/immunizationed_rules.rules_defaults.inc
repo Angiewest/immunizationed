@@ -92,7 +92,6 @@ function immunizationed_rules_default_rules_configuration() {
   $items['rules_actions_on_role_change'] = entity_import('rules_config', '{ "rules_actions_on_role_change" : {
       "LABEL" : "Actions on role change",
       "PLUGIN" : "reaction rule",
-      "ACTIVE" : false,
       "TAGS" : [ "role", "users" ],
       "REQUIRES" : [ "rules" ],
       "ON" : [ "user_presave" ],
@@ -481,7 +480,7 @@ function immunizationed_rules_default_rules_configuration() {
       "LABEL" : "Actions on login",
       "PLUGIN" : "rule set",
       "TAGS" : [ "login" ],
-      "REQUIRES" : [ "rules", "og", "mimemail" ],
+      "REQUIRES" : [ "rules", "og" ],
       "USES VARIABLES" : { "user" : { "label" : "logging in user", "type" : "user" } },
       "RULES" : [
         { "RULE" : {
@@ -523,21 +522,6 @@ function immunizationed_rules_default_rules_configuration() {
               }
             ],
             "LABEL" : "Add group member and practice admin role to practice admins on login"
-          }
-        },
-        { "RULE" : {
-            "DO" : [
-              { "mimemail" : {
-                  "to" : "raviottaj@upmc.edu",
-                  "bcc" : "nestlern@upmc.edu",
-                  "subject" : "test email",
-                  "body" : "[user:name] logged in at \\u003Ca href=[site:login-url]\\u003EImmunizationEd\\u003C\\u002Fa\\u003E",
-                  "plaintext" : "login from user"
-                }
-              },
-              { "drupal_message" : { "message" : "Sending test email to SU.\\u000D\\u000A[user:name] logged in at \\u003Ca href=[site:login-url]\\u003EImmunizationEd\\u003C\\u002Fa\\u003E" } }
-            ],
-            "LABEL" : "Send test email"
           }
         }
       ]
