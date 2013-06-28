@@ -366,6 +366,7 @@ function immunizationed_views_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['path'] = 'practice-admin/overdue-tasks';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Overdue tasks';
@@ -2860,27 +2861,15 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
-    'edit_node' => 'edit_node',
-    'field_task_due_date' => 'field_task_due_date',
     'title' => 'title',
-    'field_person_responsible' => 'field_person_responsible',
+    'field_task_start_date' => 'field_task_start_date',
     'field_date_started' => 'field_date_started',
     'field_date_task_completed' => 'field_date_task_completed',
+    'field_task_due_date' => 'field_task_due_date',
+    'field_responsible_role' => 'field_responsible_role',
   );
   $handler->display->display_options['style_options']['default'] = 'field_task_due_date';
   $handler->display->display_options['style_options']['info'] = array(
-    'edit_node' => array(
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_task_due_date' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
     'title' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
@@ -2888,7 +2877,9 @@ function immunizationed_views_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-    'field_person_responsible' => array(
+    'field_task_start_date' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -2907,6 +2898,18 @@ function immunizationed_views_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
+    'field_task_due_date' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_responsible_role' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
   );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -2915,12 +2918,12 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = 'Task';
   $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['path'] = '!2/[edit_node]';
-  /* Field: Content: Task due date */
-  $handler->display->display_options['fields']['field_task_due_date']['id'] = 'field_task_due_date';
-  $handler->display->display_options['fields']['field_task_due_date']['table'] = 'field_data_field_task_due_date';
-  $handler->display->display_options['fields']['field_task_due_date']['field'] = 'field_task_due_date';
-  $handler->display->display_options['fields']['field_task_due_date']['label'] = 'Due date';
-  $handler->display->display_options['fields']['field_task_due_date']['settings'] = array(
+  /* Field: Content: Task started date */
+  $handler->display->display_options['fields']['field_date_started']['id'] = 'field_date_started';
+  $handler->display->display_options['fields']['field_date_started']['table'] = 'field_data_field_date_started';
+  $handler->display->display_options['fields']['field_date_started']['field'] = 'field_date_started';
+  $handler->display->display_options['fields']['field_date_started']['label'] = 'Start Date';
+  $handler->display->display_options['fields']['field_date_started']['settings'] = array(
     'format_type' => 'us_short',
     'fromto' => 'both',
     'multiple_number' => '',
@@ -2928,12 +2931,12 @@ function immunizationed_views_views_default_views() {
     'multiple_to' => '',
     'show_repeat_rule' => 'show',
   );
-  /* Field: Content: Task started date */
-  $handler->display->display_options['fields']['field_date_started']['id'] = 'field_date_started';
-  $handler->display->display_options['fields']['field_date_started']['table'] = 'field_data_field_date_started';
-  $handler->display->display_options['fields']['field_date_started']['field'] = 'field_date_started';
-  $handler->display->display_options['fields']['field_date_started']['label'] = 'Start Date';
-  $handler->display->display_options['fields']['field_date_started']['settings'] = array(
+  /* Field: Content: Task due date */
+  $handler->display->display_options['fields']['field_task_due_date']['id'] = 'field_task_due_date';
+  $handler->display->display_options['fields']['field_task_due_date']['table'] = 'field_data_field_task_due_date';
+  $handler->display->display_options['fields']['field_task_due_date']['field'] = 'field_task_due_date';
+  $handler->display->display_options['fields']['field_task_due_date']['label'] = 'Due date';
+  $handler->display->display_options['fields']['field_task_due_date']['settings'] = array(
     'format_type' => 'us_short',
     'fromto' => 'both',
     'multiple_number' => '',
@@ -2989,6 +2992,13 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['filters']['group_type']['value'] = array(
     'node' => 'node',
   );
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'task' => 'task',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page_1');
@@ -2997,11 +3007,76 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = 'Task';
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['path'] = '!2/[edit_node]';
+  /* Field: Content: Task start date */
+  $handler->display->display_options['fields']['field_task_start_date']['id'] = 'field_task_start_date';
+  $handler->display->display_options['fields']['field_task_start_date']['table'] = 'field_data_field_task_start_date';
+  $handler->display->display_options['fields']['field_task_start_date']['field'] = 'field_task_start_date';
+  $handler->display->display_options['fields']['field_task_start_date']['label'] = 'Suggested Start Date';
+  $handler->display->display_options['fields']['field_task_start_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: Content: Task started date */
+  $handler->display->display_options['fields']['field_date_started']['id'] = 'field_date_started';
+  $handler->display->display_options['fields']['field_date_started']['table'] = 'field_data_field_date_started';
+  $handler->display->display_options['fields']['field_date_started']['field'] = 'field_date_started';
+  $handler->display->display_options['fields']['field_date_started']['label'] = 'Task Started Date';
+  $handler->display->display_options['fields']['field_date_started']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: Content: Date Task Completed */
+  $handler->display->display_options['fields']['field_date_task_completed']['id'] = 'field_date_task_completed';
+  $handler->display->display_options['fields']['field_date_task_completed']['table'] = 'field_data_field_date_task_completed';
+  $handler->display->display_options['fields']['field_date_task_completed']['field'] = 'field_date_task_completed';
+  $handler->display->display_options['fields']['field_date_task_completed']['label'] = 'Date Completed';
+  $handler->display->display_options['fields']['field_date_task_completed']['settings'] = array(
+    'format_type' => 'us_short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: Content: Task due date */
+  $handler->display->display_options['fields']['field_task_due_date']['id'] = 'field_task_due_date';
+  $handler->display->display_options['fields']['field_task_due_date']['table'] = 'field_data_field_task_due_date';
+  $handler->display->display_options['fields']['field_task_due_date']['field'] = 'field_task_due_date';
+  $handler->display->display_options['fields']['field_task_due_date']['label'] = 'Due date';
+  $handler->display->display_options['fields']['field_task_due_date']['settings'] = array(
+    'format_type' => 'us_short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: Field: Responsible role */
+  $handler->display->display_options['fields']['field_responsible_role']['id'] = 'field_responsible_role';
+  $handler->display->display_options['fields']['field_responsible_role']['table'] = 'field_data_field_responsible_role';
+  $handler->display->display_options['fields']['field_responsible_role']['field'] = 'field_responsible_role';
+  $handler->display->display_options['fields']['field_responsible_role']['delta_offset'] = '0';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Content: Due date day offset from enrollment (field_due_day_offset_enrollment) */
-  $handler->display->display_options['sorts']['field_due_day_offset_enrollment_value']['id'] = 'field_due_day_offset_enrollment_value';
-  $handler->display->display_options['sorts']['field_due_day_offset_enrollment_value']['table'] = 'field_data_field_due_day_offset_enrollment';
-  $handler->display->display_options['sorts']['field_due_day_offset_enrollment_value']['field'] = 'field_due_day_offset_enrollment_value';
+  /* Sort criterion: Content: Task start date (field_task_start_date) */
+  $handler->display->display_options['sorts']['field_task_start_date_value']['id'] = 'field_task_start_date_value';
+  $handler->display->display_options['sorts']['field_task_start_date_value']['table'] = 'field_data_field_task_start_date';
+  $handler->display->display_options['sorts']['field_task_start_date_value']['field'] = 'field_task_start_date_value';
   /* Sort criterion: Content: Task due date (field_task_due_date) */
   $handler->display->display_options['sorts']['field_task_due_date_value']['id'] = 'field_task_due_date_value';
   $handler->display->display_options['sorts']['field_task_due_date_value']['table'] = 'field_data_field_task_due_date';
@@ -3124,6 +3199,12 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['filters']['field_date_task_completed_value']['table'] = 'field_data_field_date_task_completed';
   $handler->display->display_options['filters']['field_date_task_completed_value']['field'] = 'field_date_task_completed_value';
   $handler->display->display_options['filters']['field_date_task_completed_value']['operator'] = 'empty';
+  /* Filter criterion: Content: Task start date (field_task_start_date) */
+  $handler->display->display_options['filters']['field_task_start_date_value']['id'] = 'field_task_start_date_value';
+  $handler->display->display_options['filters']['field_task_start_date_value']['table'] = 'field_data_field_task_start_date';
+  $handler->display->display_options['filters']['field_task_start_date_value']['field'] = 'field_task_start_date_value';
+  $handler->display->display_options['filters']['field_task_start_date_value']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_task_start_date_value']['default_date'] = 'now';
   $export['practice_task_content'] = $view;
 
   $view = new view();
