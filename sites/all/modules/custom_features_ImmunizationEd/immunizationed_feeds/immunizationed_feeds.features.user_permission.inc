@@ -20,6 +20,26 @@ function immunizationed_feeds_user_default_permissions() {
     'module' => 'feeds',
   );
 
+  // Exported permission: clear assembly_instructions_date_changed feeds.
+  $permissions['clear assembly_instructions_date_changed feeds'] = array(
+    'name' => 'clear assembly_instructions_date_changed feeds',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: clear assembly_step_date_changed feeds.
+  $permissions['clear assembly_step_date_changed feeds'] = array(
+    'name' => 'clear assembly_step_date_changed feeds',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
+    'module' => 'feeds',
+  );
+
   // Exported permission: clear emr_importer feeds.
   $permissions['clear emr_importer feeds'] = array(
     'name' => 'clear emr_importer feeds',
@@ -33,7 +53,30 @@ function immunizationed_feeds_user_default_permissions() {
   // Exported permission: clear user_import_form feeds.
   $permissions['clear user_import_form feeds'] = array(
     'name' => 'clear user_import_form feeds',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: import assembly_instructions_date_changed feeds.
+  $permissions['import assembly_instructions_date_changed feeds'] = array(
+    'name' => 'import assembly_instructions_date_changed feeds',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: import assembly_step_date_changed feeds.
+  $permissions['import assembly_step_date_changed feeds'] = array(
+    'name' => 'import assembly_step_date_changed feeds',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
     'module' => 'feeds',
   );
 
@@ -50,7 +93,30 @@ function immunizationed_feeds_user_default_permissions() {
   // Exported permission: import user_import_form feeds.
   $permissions['import user_import_form feeds'] = array(
     'name' => 'import user_import_form feeds',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: unlock assembly_instructions_date_changed feeds.
+  $permissions['unlock assembly_instructions_date_changed feeds'] = array(
+    'name' => 'unlock assembly_instructions_date_changed feeds',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: unlock assembly_step_date_changed feeds.
+  $permissions['unlock assembly_step_date_changed feeds'] = array(
+    'name' => 'unlock assembly_step_date_changed feeds',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
     'module' => 'feeds',
   );
 
@@ -67,7 +133,10 @@ function immunizationed_feeds_user_default_permissions() {
   // Exported permission: unlock user_import_form feeds.
   $permissions['unlock user_import_form feeds'] = array(
     'name' => 'unlock user_import_form feeds',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+    ),
     'module' => 'feeds',
   );
 
