@@ -442,8 +442,6 @@ function rules_action_data_calc_operator_options(RulesPlugin $element, $param_na
     '-' => '( - )',
     '*' => '( * )',
     '/' => '( / )',
-    'min' => 'min',
-    'max' => 'max',
   );
   // Only show +/- in case a date has been selected.
   if (($info = $element->getArgumentInfo('input_1')) && $info['type'] == 'date') {

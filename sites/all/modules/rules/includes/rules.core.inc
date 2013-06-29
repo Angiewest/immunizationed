@@ -1937,7 +1937,7 @@ abstract class RulesContainerPlugin extends RulesPlugin implements IteratorAggre
   }
 
   public function dependencies() {
-    $modules = array_flip(parent::dependencies());
+    $modules = array();
     foreach ($this->children as $child) {
       $modules += array_flip($child->dependencies());
     }
@@ -2104,7 +2104,7 @@ abstract class RulesContainerPlugin extends RulesPlugin implements IteratorAggre
 
     // Fix up the weights afterwards to be unique integers.
     foreach (array_values($this->children) as $i => $child) {
-      $child->weight = $i;
+      $child->weight = $i * 2;
     }
 
     if ($deep) {

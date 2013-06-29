@@ -366,7 +366,6 @@ function immunizationed_views_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page_1');
-  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['path'] = 'practice-admin/overdue-tasks';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Overdue tasks';
@@ -3204,7 +3203,7 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['filters']['field_task_start_date_value']['table'] = 'field_data_field_task_start_date';
   $handler->display->display_options['filters']['field_task_start_date_value']['field'] = 'field_task_start_date_value';
   $handler->display->display_options['filters']['field_task_start_date_value']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_task_start_date_value']['default_date'] = 'now';
+  $handler->display->display_options['filters']['field_task_start_date_value']['default_date'] = 'now-1';
   $export['practice_task_content'] = $view;
 
   $view = new view();
