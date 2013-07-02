@@ -14,8 +14,10 @@ function immunizationed_practice_user_default_permissions() {
   $permissions['administer group'] = array(
     'name' => 'administer group',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'og',
   );
