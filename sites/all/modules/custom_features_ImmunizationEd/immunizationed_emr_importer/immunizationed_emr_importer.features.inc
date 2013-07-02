@@ -19,13 +19,6 @@ function immunizationed_emr_importer_ctools_plugin_api() {
 }
 
 /**
- * Implements hook_views_api().
- */
-function immunizationed_emr_importer_views_api() {
-  return array("api" => "3.0");
-}
-
-/**
  * Implements hook_node_info().
  */
 function immunizationed_emr_importer_node_info() {

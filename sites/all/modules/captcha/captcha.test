@@ -17,13 +17,13 @@
 
 // Some constants for better reuse.
 define('CAPTCHA_WRONG_RESPONSE_ERROR_MESSAGE',
-  'The answer you entered for the CAPTCHA was not correct.');
+'The answer you entered for the CAPTCHA was not correct.');
 
 define('CAPTCHA_SESSION_REUSE_ATTACK_ERROR_MESSAGE',
-  'CAPTCHA session reuse attack detected.');
+'CAPTCHA session reuse attack detected.');
 
 define('CAPTCHA_UNKNOWN_CSID_ERROR_MESSAGE',
-  'CAPTCHA validation error: unknown CAPTCHA session ID. Contact the site administrator if this problem persists.');
+'CAPTCHA validation error: unknown CAPTCHA session ID. Contact the site administrator if this problem persists.');
 
 
 
@@ -31,7 +31,7 @@ define('CAPTCHA_UNKNOWN_CSID_ERROR_MESSAGE',
  * Base class for CAPTCHA tests.
  *
  * Provides common setup stuff and various helper functions
- */
+*/
 abstract class CaptchaBaseWebTestCase extends DrupalWebTestCase {
 
   /**
@@ -65,8 +65,8 @@ abstract class CaptchaBaseWebTestCase extends DrupalWebTestCase {
 
     // Create a normal user.
     $permissions = array(
-      'access comments', 'post comments', 'skip comment approval',
-      'access content', 'create page content', 'edit own page content',
+        'access comments', 'post comments', 'skip comment approval',
+        'access content', 'create page content', 'edit own page content',
     );
     $this->normal_user = $this->drupalCreateUser($permissions);
 
@@ -90,16 +90,16 @@ abstract class CaptchaBaseWebTestCase extends DrupalWebTestCase {
   protected function assertCaptchaResponseAccepted() {
     // There should be no error message about unknown CAPTCHA session ID.
     $this->assertNoText(t(CAPTCHA_UNKNOWN_CSID_ERROR_MESSAGE),
-      'CAPTCHA response should be accepted (known CSID).',
-      'CAPTCHA');
+        'CAPTCHA response should be accepted (known CSID).',
+        'CAPTCHA');
     // There should be no error message about CSID reuse attack.
     $this->assertNoText(t(CAPTCHA_SESSION_REUSE_ATTACK_ERROR_MESSAGE),
-      'CAPTCHA response should be accepted (no CAPTCHA session reuse attack detection).',
-      'CAPTCHA');
+        'CAPTCHA response should be accepted (no CAPTCHA session reuse attack detection).',
+        'CAPTCHA');
     // There should be no error message about wrong response.
     $this->assertNoText(t(CAPTCHA_WRONG_RESPONSE_ERROR_MESSAGE),
-      'CAPTCHA response should be accepted (correct response).',
-      'CAPTCHA');
+        'CAPTCHA response should be accepted (correct response).',
+        'CAPTCHA');
   }
 
   /**
@@ -109,11 +109,11 @@ abstract class CaptchaBaseWebTestCase extends DrupalWebTestCase {
   protected function assertCaptchaPresence($presence) {
     if ($presence) {
       $this->assertText(_captcha_get_description(),
-        'There should be a CAPTCHA on the form.', 'CAPTCHA');
+          'There should be a CAPTCHA on the form.', 'CAPTCHA');
     }
     else {
       $this->assertNoText(_captcha_get_description(),
-        'There should be no CAPTCHA on the form.', 'CAPTCHA');
+          'There should be no CAPTCHA on the form.', 'CAPTCHA');
     }
   }
 
@@ -125,8 +125,8 @@ abstract class CaptchaBaseWebTestCase extends DrupalWebTestCase {
    */
   protected function createNodeWithCommentsEnabled($type='page') {
     $node_settings = array(
-      'type' => $type,
-      'comment' => COMMENT_NODE_OPEN,
+        'type' => $type,
+        'comment' => COMMENT_NODE_OPEN,
     );
     $node = $this->drupalCreateNode($node_settings);
     return $node;
@@ -137,8 +137,8 @@ abstract class CaptchaBaseWebTestCase extends DrupalWebTestCase {
    */
   protected function getCommentFormValues() {
     $edit = array(
-      'subject' => 'comment_subject ' . $this->randomName(32),
-      'comment_body[' . LANGUAGE_NONE . '][0][value]' => 'comment_body ' . $this->randomName(256),
+        'subject' => 'comment_subject ' . $this->randomName(32),
+        'comment_body[' . LANGUAGE_NONE . '][0][value]' => 'comment_body ' . $this->randomName(256),
     );
     return $edit;
   }
@@ -148,8 +148,8 @@ abstract class CaptchaBaseWebTestCase extends DrupalWebTestCase {
    */
   protected function getNodeFormValues() {
     $edit = array(
-      'title' => 'node_title ' . $this->randomName(32),
-      'body[' . LANGUAGE_NONE . '][0][value]' => 'node_body ' . $this->randomName(256),
+        'title' => 'node_title ' . $this->randomName(32),
+        'body[' . LANGUAGE_NONE . '][0][value]' => 'node_body ' . $this->randomName(256),
     );
     return $edit;
   }
@@ -197,9 +197,9 @@ abstract class CaptchaBaseWebTestCase extends DrupalWebTestCase {
     $this->drupalLogin($this->admin_user);
     // Post user permissions form
     $edit = array(
-      '1[access comments]' => true,
-      '1[post comments]' => true,
-      '1[skip comment approval]' => true,
+        '1[access comments]' => true,
+        '1[post comments]' => true,
+        '1[skip comment approval]' => true,
     );
     $this->drupalPost('admin/people/permissions', $edit, 'Save permissions');
     $this->assertText('The changes have been saved.');
@@ -215,9 +215,9 @@ class CaptchaTestCase extends CaptchaBaseWebTestCase {
 
   public static function getInfo() {
     return array(
-      'name' => t('General CAPTCHA functionality'),
-      'description' => t('Testing of the basic CAPTCHA functionality.'),
-      'group' => t('CAPTCHA'),
+        'name' => t('General CAPTCHA functionality'),
+        'description' => t('Testing of the basic CAPTCHA functionality.'),
+        'group' => t('CAPTCHA'),
     );
   }
 
@@ -240,14 +240,14 @@ class CaptchaTestCase extends CaptchaBaseWebTestCase {
 
     // Try to log in, which should fail.
     $edit = array(
-      'name' => $user->name,
-      'pass' => $user->pass_raw,
-      'captcha_response' => '?',
+        'name' => $user->name,
+        'pass' => $user->pass_raw,
+        'captcha_response' => '?',
     );
     $this->drupalPost('user', $edit, t('Log in'));
     // Check for error message.
     $this->assertText(t(CAPTCHA_WRONG_RESPONSE_ERROR_MESSAGE),
-      'CAPTCHA should block user login form', 'CAPTCHA');
+        'CAPTCHA should block user login form', 'CAPTCHA');
 
     // And make sure that user is not logged in: check for name and password fields on ?q=user
     $this->drupalGet('user');
@@ -302,7 +302,7 @@ class CaptchaTestCase extends CaptchaBaseWebTestCase {
 
   /*
    * Testing the case sensistive/insensitive validation.
-   */
+  */
   function testCaseInsensitiveValidation() {
     // Set Test CAPTCHA on comment form
     captcha_set_form_id_setting(self::COMMENT_FORM_ID, 'captcha/Test');
@@ -376,24 +376,6 @@ class CaptchaTestCase extends CaptchaBaseWebTestCase {
     $this->assertCaptchaPresence(FALSE);
   }
 
-
-  /**
-   * CAPTCHA should also be put on admin pages even if visitor
-   * has no access
-   */
-  function testCaptchaOnLoginBlockOnAdminPagesIssue893810() {
-    // Set a CAPTCHA on login block form
-    captcha_set_form_id_setting('user_login_block', 'captcha/Math');
-
-    // Check if there is a CAPTCHA on home page.
-    $this->drupalGet('node');
-    $this->assertCaptchaPresence(TRUE);
-
-    // Check there is a CAPTCHA on "forbidden" admin pages
-    $this->drupalGet('admin');
-    $this->assertCaptchaPresence(TRUE);
-  }
-
 }
 
 
@@ -401,9 +383,9 @@ class CaptchaAdminTestCase extends CaptchaBaseWebTestCase {
 
   public static function getInfo() {
     return array(
-      'name' => t('CAPTCHA administration functionality'),
-      'description' => t('Testing of the CAPTCHA administration interface and functionality.'),
-      'group' => t('CAPTCHA'),
+        'name' => t('CAPTCHA administration functionality'),
+        'description' => t('Testing of the CAPTCHA administration interface and functionality.'),
+        'group' => t('CAPTCHA'),
     );
   }
 
@@ -482,9 +464,9 @@ class CaptchaAdminTestCase extends CaptchaBaseWebTestCase {
   protected function assertCaptchaSetting($form_id, $challenge_type) {
     $result = captcha_get_form_id_setting(self::COMMENT_FORM_ID, TRUE);
     $this->assertEqual($result, $challenge_type,
-      t('Check CAPTCHA setting for form: expected: @expected, received: @received.',
-      array('@expected' => var_export($challenge_type, TRUE), '@received' => var_export($result, TRUE))),
-      'CAPTCHA');
+        t('Check CAPTCHA setting for form: expected: @expected, received: @received.',
+            array('@expected' => var_export($challenge_type, TRUE), '@received' => var_export($result, TRUE))),
+        'CAPTCHA');
   }
 
   /**
@@ -496,7 +478,7 @@ class CaptchaAdminTestCase extends CaptchaBaseWebTestCase {
 
     // Enable CAPTCHA administration links.
     $edit = array(
-      'captcha_administration_mode' => TRUE,
+        'captcha_administration_mode' => TRUE,
     );
     $this->drupalPost(self::CAPTCHA_ADMIN_PATH, $edit, 'Save configuration');
 
@@ -521,10 +503,10 @@ class CaptchaAdminTestCase extends CaptchaBaseWebTestCase {
 
     // Check if returned to original comment form.
     $this->assertUrl($add_comment_url, array(),
-      'After setting CAPTCHA with CAPTCHA admin links: should return to original form.', 'CAPTCHA');
+        'After setting CAPTCHA with CAPTCHA admin links: should return to original form.', 'CAPTCHA');
     // Check if CAPTCHA was successfully enabled (on CAPTCHA admin links fieldset).
     $this->assertText(t('CAPTCHA: challenge "@type" enabled', array('@type' => 'Math')),
-      'Enable a challenge through the CAPTCHA admin links', 'CAPTCHA');
+        'Enable a challenge through the CAPTCHA admin links', 'CAPTCHA');
     // Check if CAPTCHA was successfully enabled (through API).
     $this->assertCaptchaSetting(self::COMMENT_FORM_ID, 'captcha/Math');
 
@@ -537,12 +519,12 @@ class CaptchaAdminTestCase extends CaptchaBaseWebTestCase {
 
     // Check if returned to original comment form.
     $this->assertEqual($add_comment_url, $this->getUrl(),
-      'After editing challenge type CAPTCHA admin links: should return to original form.', 'CAPTCHA');
+        'After editing challenge type CAPTCHA admin links: should return to original form.', 'CAPTCHA');
     // Check if CAPTCHA was successfully changed (on CAPTCHA admin links fieldset).
     // This is actually the same as the previous setting because the captcha/Math is the
     // default for the default challenge. TODO Make sure the edit is a real change.
     $this->assertText(t('CAPTCHA: challenge "@type" enabled', array('@type' => 'Math')),
-      'Enable a challenge through the CAPTCHA admin links', 'CAPTCHA');
+        'Enable a challenge through the CAPTCHA admin links', 'CAPTCHA');
     // Check if CAPTCHA was successfully edited (through API).
     $this->assertCaptchaSetting(self::COMMENT_FORM_ID, 'default');
 
@@ -556,10 +538,10 @@ class CaptchaAdminTestCase extends CaptchaBaseWebTestCase {
 
     // Check if returned to original comment form.
     $this->assertEqual($add_comment_url, $this->getUrl(),
-      'After disablin challenge with CAPTCHA admin links: should return to original form.', 'CAPTCHA');
+        'After disablin challenge with CAPTCHA admin links: should return to original form.', 'CAPTCHA');
     // Check if CAPTCHA was successfully disabled (on CAPTCHA admin links fieldset).
     $this->assertText(t('CAPTCHA: no challenge enabled'),
-      'Disable challenge through the CAPTCHA admin links', 'CAPTCHA');
+        'Disable challenge through the CAPTCHA admin links', 'CAPTCHA');
     // Check if CAPTCHA was successfully disabled (through API).
     $this->assertCaptchaSetting(self::COMMENT_FORM_ID, 'none');
 
@@ -588,7 +570,7 @@ class CaptchaAdminTestCase extends CaptchaBaseWebTestCase {
     $edit['captcha_response'] = 'xx';
     $this->drupalPost($add_comment_url, $edit, t('Preview'));
     $this->assertText(t(CAPTCHA_WRONG_RESPONSE_ERROR_MESSAGE),
-      'wrong CAPTCHA should block form submission.', 'CAPTCHA');
+        'wrong CAPTCHA should block form submission.', 'CAPTCHA');
 
     //TODO: more testing for untrusted posts.
   }
@@ -616,9 +598,9 @@ class CaptchaAdminTestCase extends CaptchaBaseWebTestCase {
   }
 
   /**
-   * Test the CAPTCHA placement clearing.
+   * Test the CAPTCHA placement flushing.
    */
-  function testCaptchaPlacementCacheClearing() {
+  function testCaptchaPlacementCacheFlushing() {
     // Set CAPTCHA on user register form.
     captcha_set_form_id_setting('user_register_form', 'captcha/Math');
     // Visit user register form to fill the CAPTCHA placement cache.
@@ -626,12 +608,12 @@ class CaptchaAdminTestCase extends CaptchaBaseWebTestCase {
     // Check if there is CAPTCHA placement cache.
     $placement_map = variable_get('captcha_placement_map_cache', NULL);
     $this->assertNotNull($placement_map, 'CAPTCHA placement cache should be set.');
-    // Clear the cache
+    // Flush the cache
     $this->drupalLogin($this->admin_user);
-    $this->drupalPost(self::CAPTCHA_ADMIN_PATH, array(), t('Clear the CAPTCHA placement cache'));
+    $this->drupalPost(self::CAPTCHA_ADMIN_PATH, array(), t('Flush the CAPTCHA placement cache'));
     // Check that the placement cache is unset
     $placement_map = variable_get('captcha_placement_map_cache', NULL);
-    $this->assertNull($placement_map, 'CAPTCHA placement cache should be unset after cache clear.');
+    $this->assertNull($placement_map, 'CAPTCHA placement cache should be unset after flush.');
   }
 
   /**
@@ -641,8 +623,8 @@ class CaptchaAdminTestCase extends CaptchaBaseWebTestCase {
    */
   private function getCaptchaPointSettingFromDatabase($form_id) {
     $result = db_query(
-      "SELECT * FROM {captcha_points} WHERE form_id = :form_id",
-      array(':form_id' => $form_id)
+        "SELECT * FROM {captcha_points} WHERE form_id = :form_id",
+        array(':form_id' => $form_id)
     )->fetchObject();
     return $result;
   }
@@ -663,19 +645,19 @@ class CaptchaAdminTestCase extends CaptchaBaseWebTestCase {
 
     // Set CAPTCHA point through admin/user/captcha/captcha/captcha_point
     $form_values = array(
-      'captcha_point_form_id' => $captcha_point_form_id,
-      'captcha_type' => $captcha_point_module .'/'. $captcha_point_type,
+        'captcha_point_form_id' => $captcha_point_form_id,
+        'captcha_type' => $captcha_point_module .'/'. $captcha_point_type,
     );
     $this->drupalPost(self::CAPTCHA_ADMIN_PATH . '/captcha/captcha_point', $form_values, t('Save'));
     $this->assertText(t('Saved CAPTCHA point settings.'),
-      'Saving of CAPTCHA point settings');
+        'Saving of CAPTCHA point settings');
 
     // Check in database
     $result = $this->getCaptchaPointSettingFromDatabase($captcha_point_form_id);
     $this->assertEqual($result->module, $captcha_point_module,
-      'Enabled CAPTCHA point should have module set');
+        'Enabled CAPTCHA point should have module set');
     $this->assertEqual($result->captcha_type, $captcha_point_type,
-      'Enabled CAPTCHA point should have type set');
+        'Enabled CAPTCHA point should have type set');
 
     // Disable CAPTCHA point again
     $this->drupalPost(self::CAPTCHA_ADMIN_PATH . '/captcha/captcha_point/'. $captcha_point_form_id .'/disable', array(), t('Disable'));
@@ -684,29 +666,29 @@ class CaptchaAdminTestCase extends CaptchaBaseWebTestCase {
     // Check in database
     $result = $this->getCaptchaPointSettingFromDatabase($captcha_point_form_id);
     $this->assertNull($result->module,
-      'Disabled CAPTCHA point should have NULL as module');
+        'Disabled CAPTCHA point should have NULL as module');
     $this->assertNull($result->captcha_type,
-      'Disabled CAPTCHA point should have NULL as type');
+        'Disabled CAPTCHA point should have NULL as type');
 
     // Set CAPTCHA point through admin/user/captcha/captcha/captcha_point/$form_id
     $form_values = array(
-      'captcha_type' => $captcha_point_module .'/'. $captcha_point_type,
+        'captcha_type' => $captcha_point_module .'/'. $captcha_point_type,
     );
     $this->drupalPost(self::CAPTCHA_ADMIN_PATH . '/captcha/captcha_point/'. $captcha_point_form_id, $form_values, t('Save'));
     $this->assertText(t('Saved CAPTCHA point settings.'),
-      'Saving of CAPTCHA point settings');
+        'Saving of CAPTCHA point settings');
 
     // Check in database
     $result = $this->getCaptchaPointSettingFromDatabase($captcha_point_form_id);
     $this->assertEqual($result->module, $captcha_point_module,
-      'Enabled CAPTCHA point should have module set');
+        'Enabled CAPTCHA point should have module set');
     $this->assertEqual($result->captcha_type, $captcha_point_type,
-      'Enabled CAPTCHA point should have type set');
+        'Enabled CAPTCHA point should have type set');
 
     // Delete CAPTCHA point
     $this->drupalPost(self::CAPTCHA_ADMIN_PATH . '/captcha/captcha_point/'. $captcha_point_form_id .'/delete', array(), t('Delete'));
     $this->assertRaw(t('Deleted CAPTCHA for form %form_id.', array('%form_id' => $captcha_point_form_id)),
-      'Deleting of CAPTCHA point');
+        'Deleting of CAPTCHA point');
 
     // Check in database
     $result = $this->getCaptchaPointSettingFromDatabase($captcha_point_form_id);
@@ -723,12 +705,12 @@ class CaptchaAdminTestCase extends CaptchaBaseWebTestCase {
     $captcha_point_module = 'captcha';
     $captcha_point_type = 'Math';
     $form_values = array(
-      'captcha_point_form_id' => $captcha_point_form_id,
-      'captcha_type' => $captcha_point_module .'/'. $captcha_point_type,
+        'captcha_point_form_id' => $captcha_point_form_id,
+        'captcha_type' => $captcha_point_module .'/'. $captcha_point_type,
     );
     $this->drupalPost(self::CAPTCHA_ADMIN_PATH . '/captcha/captcha_point/', $form_values, t('Save'));
     $this->assertText(t('Saved CAPTCHA point settings.'),
-      'Saving of CAPTCHA point settings');
+        'Saving of CAPTCHA point settings');
 
     // Switch from admin to nonadmin
     $this->drupalGet(url('logout', array('absolute' => TRUE)));
@@ -738,22 +720,22 @@ class CaptchaAdminTestCase extends CaptchaBaseWebTestCase {
     // Try to set CAPTCHA point through admin/user/captcha/captcha/captcha_point
     $this->drupalGet(self::CAPTCHA_ADMIN_PATH . '/captcha/captcha_point');
     $this->assertText(t('You are not authorized to access this page.'),
-      'Non admin should not be able to set a CAPTCHA point');
+        'Non admin should not be able to set a CAPTCHA point');
 
     // Try to set CAPTCHA point through admin/user/captcha/captcha/captcha_point/$form_id
     $this->drupalGet(self::CAPTCHA_ADMIN_PATH . '/captcha/captcha_point/' . 'form_' . strtolower($this->randomName(32)));
     $this->assertText(t('You are not authorized to access this page.'),
-      'Non admin should not be able to set a CAPTCHA point');
+        'Non admin should not be able to set a CAPTCHA point');
 
     // Try to disable the CAPTCHA point
     $this->drupalGet(self::CAPTCHA_ADMIN_PATH . '/captcha/captcha_point/'. $captcha_point_form_id .'/disable');
     $this->assertText(t('You are not authorized to access this page.'),
-      'Non admin should not be able to disable a CAPTCHA point');
+        'Non admin should not be able to disable a CAPTCHA point');
 
     // Try to delete the CAPTCHA point
     $this->drupalGet(self::CAPTCHA_ADMIN_PATH . '/captcha/captcha_point/'. $captcha_point_form_id .'/delete');
     $this->assertText(t('You are not authorized to access this page.'),
-      'Non admin should not be able to delete a CAPTCHA point');
+        'Non admin should not be able to delete a CAPTCHA point');
 
     // Switch from nonadmin to admin again
     $this->drupalGet(url('logout', array('absolute' => TRUE)));
@@ -762,14 +744,14 @@ class CaptchaAdminTestCase extends CaptchaBaseWebTestCase {
     // Check if original CAPTCHA point still exists in database
     $result = $this->getCaptchaPointSettingFromDatabase($captcha_point_form_id);
     $this->assertEqual($result->module, $captcha_point_module,
-      'Enabled CAPTCHA point should still have module set');
+        'Enabled CAPTCHA point should still have module set');
     $this->assertEqual($result->captcha_type, $captcha_point_type,
-      'Enabled CAPTCHA point should still have type set');
+        'Enabled CAPTCHA point should still have type set');
 
     // Delete CAPTCHA point
     $this->drupalPost(self::CAPTCHA_ADMIN_PATH . '/captcha/captcha_point/'. $captcha_point_form_id .'/delete', array(), t('Delete'));
     $this->assertRaw(t('Deleted CAPTCHA for form %form_id.', array('%form_id' => $captcha_point_form_id)),
-      'Deleting of CAPTCHA point');
+        'Deleting of CAPTCHA point');
   }
 
 
@@ -782,9 +764,9 @@ class CaptchaPersistenceTestCase extends CaptchaBaseWebTestCase {
 
   public static function getInfo() {
     return array(
-      'name' => t('CAPTCHA persistence functionality'),
-      'description' => t('Testing of the CAPTCHA persistence functionality.'),
-      'group' => t('CAPTCHA'),
+        'name' => t('CAPTCHA persistence functionality'),
+        'description' => t('Testing of the CAPTCHA persistence functionality.'),
+        'group' => t('CAPTCHA'),
     );
   }
 
@@ -817,13 +799,13 @@ class CaptchaPersistenceTestCase extends CaptchaBaseWebTestCase {
   protected function assertPreservedCsid($captcha_sid_initial) {
     $captcha_sid = $this->getCaptchaSidFromForm();
     $this->assertEqual($captcha_sid_initial, $captcha_sid,
-      "CAPTCHA session ID should be preserved (expected: $captcha_sid_initial, found: $captcha_sid).");
+        "CAPTCHA session ID should be preserved (expected: $captcha_sid_initial, found: $captcha_sid).");
   }
 
   protected function assertDifferentCsid($captcha_sid_initial) {
     $captcha_sid = $this->getCaptchaSidFromForm();
     $this->assertNotEqual($captcha_sid_initial, $captcha_sid,
-      "CAPTCHA session ID should be different.");
+        "CAPTCHA session ID should be different.");
   }
 
   function testPersistenceAlways(){
@@ -837,9 +819,9 @@ class CaptchaPersistenceTestCase extends CaptchaBaseWebTestCase {
 
     // Try to with wrong user name and password, but correct CAPTCHA.
     $edit = array(
-      'name' => 'foobar',
-      'pass' => 'bazlaz',
-      'captcha_response' => 'Test 123',
+        'name' => 'foobar',
+        'pass' => 'bazlaz',
+        'captcha_response' => 'Test 123',
     );
     $this->drupalPost(NULL, $edit, t('Log in'));
     // Check that there was no error message for the CAPTCHA.
@@ -868,9 +850,9 @@ class CaptchaPersistenceTestCase extends CaptchaBaseWebTestCase {
 
     // Try to with wrong user name and password, but correct CAPTCHA.
     $edit = array(
-      'name' => 'foobar',
-      'pass' => 'bazlaz',
-      'captcha_response' => 'Test 123',
+        'name' => 'foobar',
+        'pass' => 'bazlaz',
+        'captcha_response' => 'Test 123',
     );
     $this->drupalPost(NULL, $edit, t('Log in'));
     // Check that there was no error message for the CAPTCHA.
@@ -903,9 +885,9 @@ class CaptchaPersistenceTestCase extends CaptchaBaseWebTestCase {
 
     // Try to with wrong user name and password, but correct CAPTCHA.
     $edit = array(
-      'name' => 'foobar',
-      'pass' => 'bazlaz',
-      'captcha_response' => 'Test 123',
+        'name' => 'foobar',
+        'pass' => 'bazlaz',
+        'captcha_response' => 'Test 123',
     );
     $this->drupalPost(NULL, $edit, t('Log in'));
     // Check that there was no error message for the CAPTCHA.
@@ -937,9 +919,9 @@ class CaptchaPersistenceTestCase extends CaptchaBaseWebTestCase {
 
     // Try to with wrong user name and password, but correct CAPTCHA.
     $edit = array(
-      'name' => 'foobar',
-      'pass' => 'bazlaz',
-      'captcha_response' => 'Test 123',
+        'name' => 'foobar',
+        'pass' => 'bazlaz',
+        'captcha_response' => 'Test 123',
     );
     $this->drupalPost(NULL, $edit, t('Log in'));
     // Check that there was no error message for the CAPTCHA.
@@ -967,9 +949,9 @@ class CaptchaSessionReuseAttackTestCase extends CaptchaBaseWebTestCase {
 
   public static function getInfo() {
     return array(
-      'name' => t('CAPTCHA session reuse attack tests'),
-      'description' => t('Testing of the protection against CAPTCHA session reuse attacks.'),
-      'group' => t('CAPTCHA'),
+        'name' => t('CAPTCHA session reuse attack tests'),
+        'description' => t('Testing of the protection against CAPTCHA session reuse attacks.'),
+        'group' => t('CAPTCHA'),
     );
   }
 
@@ -978,12 +960,12 @@ class CaptchaSessionReuseAttackTestCase extends CaptchaBaseWebTestCase {
    */
   protected function assertCaptchaSessionIdReuseAttackDetection() {
     $this->assertText(t(CAPTCHA_SESSION_REUSE_ATTACK_ERROR_MESSAGE),
-      'CAPTCHA session ID reuse attack should be detected.',
-      'CAPTCHA');
+        'CAPTCHA session ID reuse attack should be detected.',
+        'CAPTCHA');
     // There should be an error message about wrong response.
     $this->assertText(t(CAPTCHA_WRONG_RESPONSE_ERROR_MESSAGE),
-      'CAPTCHA response should flagged as wrong.',
-      'CAPTCHA');
+        'CAPTCHA response should flagged as wrong.',
+        'CAPTCHA');
   }
 
   function testCaptchaSessionReuseAttackDetectionOnCommentPreview() {
@@ -1082,9 +1064,9 @@ class CaptchaSessionReuseAttackTestCase extends CaptchaBaseWebTestCase {
 
     // Log in through form.
     $edit = array(
-      'name' => $this->normal_user->name,
-      'pass' => $this->normal_user->pass_raw,
-      'captcha_response' => $solution,
+        'name' => $this->normal_user->name,
+        'pass' => $this->normal_user->pass_raw,
+        'captcha_response' => $solution,
     );
     $this->drupalPost(NULL, $edit, t('Log in'));
     $this->assertCaptchaResponseAccepted();
@@ -1098,8 +1080,8 @@ class CaptchaSessionReuseAttackTestCase extends CaptchaBaseWebTestCase {
 
     // Try to log in again, reusing the previous CAPTCHA session.
     $edit += array(
-      'captcha_sid' => $captcha_sid,
-      'captcha_token' => $captcha_token,
+        'captcha_sid' => $captcha_sid,
+        'captcha_token' => $captcha_token,
     );
     $this->drupalPost('user', $edit, t('Log in'));
     // CAPTCHA session reuse attack should be detected.
