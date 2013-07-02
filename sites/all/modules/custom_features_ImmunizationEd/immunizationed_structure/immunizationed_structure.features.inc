@@ -163,14 +163,6 @@ function immunizationed_structure_node_info() {
       'title_label' => t('Assembly Step'),
       'help' => '',
     ),
-    'vaccination_data_from_emr' => array(
-      'name' => t('Vaccination data from EMR'),
-      'base' => 'node_content',
-      'description' => t('Contains vaccination data from EMR'),
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
     'video' => array(
       'name' => t('Video'),
       'base' => 'node_content',

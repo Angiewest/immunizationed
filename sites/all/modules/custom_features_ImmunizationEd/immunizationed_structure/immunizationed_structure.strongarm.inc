@@ -411,6 +411,9 @@ function immunizationed_structure_strongarm() {
         'feeds' => array(
           'weight' => '0',
         ),
+        'redirect' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),

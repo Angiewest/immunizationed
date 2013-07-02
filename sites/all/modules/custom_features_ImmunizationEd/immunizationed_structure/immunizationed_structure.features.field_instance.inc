@@ -4836,482 +4836,6 @@ function immunizationed_structure_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-vaccination_data_from_emr-field_epic_id'
-  $field_instances['node-vaccination_data_from_emr-field_epic_id'] = array(
-    'bundle' => 'vaccination_data_from_emr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Epic ID of the practice',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_integer',
-        'weight' => 10,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_epic_id',
-    'label' => 'Epic ID',
-    'required' => 0,
-    'settings' => array(
-      'max' => '',
-      'min' => '',
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 13,
-    ),
-  );
-
-  // Exported field_instance: 'node-vaccination_data_from_emr-field_influenza'
-  $field_instances['node-vaccination_data_from_emr-field_influenza'] = array(
-    'bundle' => 'vaccination_data_from_emr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Number of doses of Influenza vaccine',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_integer',
-        'weight' => 4,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_influenza',
-    'label' => 'Influenza',
-    'required' => 0,
-    'settings' => array(
-      'max' => '',
-      'min' => '',
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 7,
-    ),
-  );
-
-  // Exported field_instance: 'node-vaccination_data_from_emr-field_pneumo'
-  $field_instances['node-vaccination_data_from_emr-field_pneumo'] = array(
-    'bundle' => 'vaccination_data_from_emr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Number of doses of pneumococcal vaccine',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_integer',
-        'weight' => 3,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_pneumo',
-    'label' => 'Pneumo',
-    'required' => 0,
-    'settings' => array(
-      'max' => '',
-      'min' => '',
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 8,
-    ),
-  );
-
-  // Exported field_instance: 'node-vaccination_data_from_emr-field_report_id'
-  $field_instances['node-vaccination_data_from_emr-field_report_id'] = array(
-    'bundle' => 'vaccination_data_from_emr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Unique report id created by Epic ID + Unix timestamp of report start',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 9,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_report_id',
-    'label' => 'Report ID',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 1,
-    ),
-  );
-
-  // Exported field_instance: 'node-vaccination_data_from_emr-field_reporting_period'
-  $field_instances['node-vaccination_data_from_emr-field_reporting_period'] = array(
-    'bundle' => 'vaccination_data_from_emr',
-    'deleted' => 0,
-    'description' => 'The start and end date of the reporting period',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-          'show_repeat_rule' => 'show',
-        ),
-        'type' => 'date_default',
-        'weight' => 8,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_reporting_period',
-    'label' => 'Reporting period',
-    'required' => 0,
-    'settings' => array(
-      'default_value' => 'now',
-      'default_value2' => 'same',
-      'default_value_code' => '',
-      'default_value_code2' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'date',
-      'settings' => array(
-        'increment' => 15,
-        'input_format' => 'm/d/Y - H:i:s',
-        'input_format_custom' => '',
-        'label_position' => 'above',
-        'repeat_collapsed' => 0,
-        'text_parts' => array(),
-        'year_range' => '-3:+3',
-      ),
-      'type' => 'date_popup',
-      'weight' => 5,
-    ),
-  );
-
-  // Exported field_instance: 'node-vaccination_data_from_emr-field_td'
-  $field_instances['node-vaccination_data_from_emr-field_td'] = array(
-    'bundle' => 'vaccination_data_from_emr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Number of doses of TD vaccine',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_integer',
-        'weight' => 6,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_td',
-    'label' => 'TD',
-    'required' => 0,
-    'settings' => array(
-      'max' => '',
-      'min' => '',
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 10,
-    ),
-  );
-
-  // Exported field_instance: 'node-vaccination_data_from_emr-field_tdap'
-  $field_instances['node-vaccination_data_from_emr-field_tdap'] = array(
-    'bundle' => 'vaccination_data_from_emr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Number of doses of TDAP',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_integer',
-        'weight' => 5,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_tdap',
-    'label' => 'TDAP',
-    'required' => 0,
-    'settings' => array(
-      'max' => '',
-      'min' => '',
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 9,
-    ),
-  );
-
-  // Exported field_instance: 'node-vaccination_data_from_emr-field_total'
-  $field_instances['node-vaccination_data_from_emr-field_total'] = array(
-    'bundle' => 'vaccination_data_from_emr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Number of total doses of all vaccines',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_integer',
-        'weight' => 7,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_total',
-    'label' => 'Total',
-    'required' => 0,
-    'settings' => array(
-      'max' => '',
-      'min' => '',
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 11,
-    ),
-  );
-
-  // Exported field_instance: 'node-vaccination_data_from_emr-field_visits'
-  $field_instances['node-vaccination_data_from_emr-field_visits'] = array(
-    'bundle' => 'vaccination_data_from_emr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Number of patient visits',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_integer',
-        'weight' => 1,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_visits',
-    'label' => 'Visits',
-    'required' => 0,
-    'settings' => array(
-      'max' => '',
-      'min' => '',
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance: 'node-vaccination_data_from_emr-og_group_ref'
-  $field_instances['node-vaccination_data_from_emr-og_group_ref'] = array(
-    'bundle' => 'vaccination_data_from_emr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'og_ui',
-        'settings' => array(),
-        'type' => 'og_list_default',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'og_group_ref',
-    'label' => 'Groups audience',
-    'required' => FALSE,
-    'settings' => array(
-      'behaviors' => array(
-        'og_widget' => array(
-          'admin' => array(
-            'widget_type' => 'entityreference_autocomplete',
-          ),
-          'default' => array(
-            'widget_type' => 'options_select',
-          ),
-          'status' => TRUE,
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'view modes' => array(
-      'full' => array(
-        'custom settings' => FALSE,
-        'label' => 'Full',
-        'type' => 'og_list_default',
-      ),
-      'teaser' => array(
-        'custom settings' => FALSE,
-        'label' => 'Teaser',
-        'type' => 'og_list_default',
-      ),
-    ),
-    'widget' => array(
-      'module' => 'og',
-      'settings' => array(),
-      'type' => 'og_complex',
-      'weight' => 2,
-    ),
-  );
-
   // Exported field_instance: 'node-video-body'
   $field_instances['node-video-body'] = array(
     'bundle' => 'video',
@@ -6055,7 +5579,6 @@ function immunizationed_structure_field_default_field_instances() {
   t('Enter your practice address');
   t('Enter your practice phone number');
   t('Epic ID');
-  t('Epic ID of the practice');
   t('Expected time to complete');
   t('First Name');
   t('Fixed due date');
@@ -6065,7 +5588,6 @@ function immunizationed_structure_field_default_field_instances() {
   t('Groups audience');
   t('If you did not find your job listed, please type in the name of your job at your clinic. ');
   t('Image');
-  t('Influenza');
   t('Insert a quick summary about the suggested agenda items.');
   t('Integer used to calculate due date');
   t('Integer used to calculate suggested start date.');
@@ -6077,12 +5599,6 @@ function immunizationed_structure_field_default_field_instances() {
   t('Links to resources associated with this waypoint.');
   t('Next Meeting Date');
   t('Notes about Agenda Topics');
-  t('Number of doses of Influenza vaccine');
-  t('Number of doses of TD vaccine');
-  t('Number of doses of TDAP');
-  t('Number of doses of pneumococcal vaccine');
-  t('Number of patient visits');
-  t('Number of total doses of all vaccines');
   t('Optionally enter a fixed due date');
   t('Optionally select an image for this task.');
   t('Other - please specify');
@@ -6098,7 +5614,6 @@ function immunizationed_structure_field_default_field_instances() {
   t('Please select the audience for this announcement.');
   t('Please select the audience for this item.');
   t('Please select your job at your clinic.');
-  t('Pneumo');
   t('Poster Frame');
   t('Practice Address');
   t('Practice Job');
@@ -6106,8 +5621,6 @@ function immunizationed_structure_field_default_field_instances() {
   t('Practice Website');
   t('Practice description');
   t('Practice photo');
-  t('Report ID');
-  t('Reporting period');
   t('Request message');
   t('Required Disclosures');
   t('Required assembly instruction');
@@ -6121,14 +5634,11 @@ function immunizationed_structure_field_default_field_instances() {
   t('Sources');
   t('Special Practice Role');
   t('Start date day offset from enrollment');
-  t('TD');
-  t('TDAP');
   t('Tags');
   t('Task due date');
   t('Task start date');
   t('Task started date');
   t('Tell us about your practice');
-  t('The start and end date of the reporting period');
   t('These objectives will be determined by viewer type (MD, RN, MA). ');
   t('This is a list of strategies you and your clinic can use to keep people motivated. Please select your choices from the optional list above. If you have a great idea on how to motivate your clinic and staff, please type it in below. Finish by clicking "Save".');
   t('This is the intended target audience for required CME documents');
@@ -6139,15 +5649,12 @@ function immunizationed_structure_field_default_field_instances() {
   t('Tick this box if you are not a member of a practice enrolled in the 4 Pillars Immunization Program.');
   t('Title Text');
   t('Title text attribute');
-  t('Total');
   t('Total number of hours to complete this item rounded to quarter hours');
-  t('Unique report id created by Epic ID + Unix timestamp of report start');
   t('Upload a graphic to be displayed with this page');
   t('Upload an image to associate with this content');
   t('Upload an image to go with this article.');
   t('Upload an image to represent your practice');
   t('Visibility');
-  t('Visits');
   t('We highly recommend that you discuss the serious nature of vaccine preventable diseases with each patient at each patient visit. ');
   t('We highly recommend that you ensure that your clinic has sufficient vaccine inventory. ');
   t('We highly recommend that you extend your influenza vaccination season by vaccinating early and going through March. ');

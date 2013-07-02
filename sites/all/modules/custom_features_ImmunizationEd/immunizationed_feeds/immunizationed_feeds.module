@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Immunizationed_feeds feature.
- */
-
-include_once 'immunizationed_feeds.features.inc';

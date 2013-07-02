@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * immunizationed_feeds.rules_defaults.inc
+ * immunizationed_emr_importer.rules_defaults.inc
  */
 
 /**
  * Implements hook_default_rules_configuration().
  */
-function immunizationed_feeds_default_rules_configuration() {
+function immunizationed_emr_importer_default_rules_configuration() {
   $items = array();
   $items['rules_delete_empty_emr_import_records'] = entity_import('rules_config', '{ "rules_delete_empty_emr_import_records" : {
       "LABEL" : "Delete empty emr import records",
