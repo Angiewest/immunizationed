@@ -69,6 +69,5 @@ features[variable][] = spambot_criteria_username
 features[variable][] = spambot_cron_user_limit
 features[variable][] = spambot_spam_account_action
 features[variable][] = spambot_user_register_protect
-features[variable][] = user_register
 features_exclude[dependencies][immunizationed_core] = immunizationed_core
 project path = sites/all/modules/custom_features_Immunizationed

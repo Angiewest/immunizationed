@@ -41,6 +41,7 @@ function queue_mail_menu() {
 function queue_mail_cron_queue_info() {
   $queues[QUEUE_MAIL_QUEUE_NAME] = array(
     'worker callback' => 'queue_mail_send',
+    'time' => variable_get('queue_mail_queue_time', 15),
   );
   return $queues;
 }

@@ -348,17 +348,6 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: create field_responsible_role.
-  $permissions['create field_responsible_role'] = array(
-    'name' => 'create field_responsible_role',
-    'roles' => array(
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: create field_tags.
   $permissions['create field_tags'] = array(
     'name' => 'create field_tags',
@@ -1417,18 +1406,6 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: edit field_responsible_role.
-  $permissions['edit field_responsible_role'] = array(
-    'name' => 'edit field_responsible_role',
-    'roles' => array(
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: edit field_tags.
   $permissions['edit field_tags'] = array(
     'name' => 'edit field_tags',
@@ -1733,19 +1710,6 @@ function immunizationed_structure_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit own field_responsible_role.
-  $permissions['edit own field_responsible_role'] = array(
-    'name' => 'edit own field_responsible_role',
-    'roles' => array(
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
@@ -2154,17 +2118,6 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: view field_responsible_role.
-  $permissions['view field_responsible_role'] = array(
-    'name' => 'view field_responsible_role',
-    'roles' => array(
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: view field_tags.
   $permissions['view field_tags'] = array(
     'name' => 'view field_tags',
@@ -2385,18 +2338,6 @@ function immunizationed_structure_user_default_permissions() {
     'name' => 'view own field_req_assembly_instruc_p4',
     'roles' => array(
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view own field_responsible_role.
-  $permissions['view own field_responsible_role'] = array(
-    'name' => 'view own field_responsible_role',
-    'roles' => array(
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'field_permissions',

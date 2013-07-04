@@ -1547,7 +1547,7 @@ function immunizationed_structure_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_responsible_role',
     'field_permissions' => array(
-      'type' => 2,
+      'type' => 0,
     ),
     'foreign keys' => array(
       'tid' => array(
@@ -1851,6 +1851,9 @@ function immunizationed_structure_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'og_user_node',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'foreign keys' => array(
       'node' => array(
         'columns' => array(

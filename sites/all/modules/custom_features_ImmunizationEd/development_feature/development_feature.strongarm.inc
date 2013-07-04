@@ -29,7 +29,7 @@ function development_feature_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'devel_error_handlers';
   $strongarm->value = array(
-    2 => '2',
+    4 => '4',
   );
   $export['devel_error_handlers'] = $strongarm;
 

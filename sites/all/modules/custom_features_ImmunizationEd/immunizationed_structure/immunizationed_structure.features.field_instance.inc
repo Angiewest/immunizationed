@@ -5252,306 +5252,6 @@ function immunizationed_structure_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'user-user-field_first_names'
-  $field_instances['user-user-field_first_names'] = array(
-    'bundle' => 'user',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Please enter your first name.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 6,
-      ),
-    ),
-    'entity_type' => 'user',
-    'field_name' => 'field_first_names',
-    'label' => 'First Name',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => 0,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 3,
-    ),
-  );
-
-  // Exported field_instance: 'user-user-field_job_other'
-  $field_instances['user-user-field_job_other'] = array(
-    'bundle' => 'user',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'If you did not find your job listed, please type in the name of your job at your clinic. ',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 4,
-      ),
-    ),
-    'entity_type' => 'user',
-    'field_name' => 'field_job_other',
-    'label' => 'Job Other',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => 0,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 7,
-    ),
-  );
-
-  // Exported field_instance: 'user-user-field_last_names'
-  $field_instances['user-user-field_last_names'] = array(
-    'bundle' => 'user',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Please enter your last name.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 7,
-      ),
-    ),
-    'entity_type' => 'user',
-    'field_name' => 'field_last_names',
-    'label' => 'Last Name',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => 0,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 4,
-    ),
-  );
-
-  // Exported field_instance: 'user-user-field_practice_jobs'
-  $field_instances['user-user-field_practice_jobs'] = array(
-    'bundle' => 'user',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Please select your job at your clinic.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 3,
-      ),
-    ),
-    'entity_type' => 'user',
-    'field_name' => 'field_practice_jobs',
-    'label' => 'Practice Job',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => 1,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance: 'user-user-field_responsible_role'
-  $field_instances['user-user-field_responsible_role'] = array(
-    'bundle' => 'user',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Please choose what your role is in your clinic, if any. ',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 2,
-      ),
-    ),
-    'entity_type' => 'user',
-    'field_name' => 'field_responsible_role',
-    'label' => 'Special Practice Role',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => 1,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 8,
-    ),
-  );
-
-  // Exported field_instance: 'user-user-field_salutations'
-  $field_instances['user-user-field_salutations'] = array(
-    'bundle' => 'user',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Please enter your salutation (i.e. Dr. Mr. Mrs. Miss. Ms., etc).',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 5,
-      ),
-    ),
-    'entity_type' => 'user',
-    'field_name' => 'field_salutations',
-    'label' => 'Salutation',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => 0,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 2,
-    ),
-  );
-
-  // Exported field_instance: 'user-user-field_visitor'
-  $field_instances['user-user-field_visitor'] = array(
-    'bundle' => 'user',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => 'Tick this box if you are not a member of a practice enrolled in the 4 Pillars Immunization Program.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 1,
-      ),
-    ),
-    'entity_type' => 'user',
-    'field_name' => 'field_visitor',
-    'label' => 'Just a visitor',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => 0,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-      ),
-      'type' => 'options_onoff',
-      'weight' => 5,
-    ),
-  );
-
-  // Exported field_instance: 'user-user-og_user_node'
-  $field_instances['user-user-og_user_node'] = array(
-    'bundle' => 'user',
-    'default_value' => NULL,
-    'default_value_function' => '',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'og_ui',
-        'settings' => array(),
-        'type' => 'og_list_default',
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'module' => 'og_ui',
-        'settings' => array(),
-        'type' => 'og_list_default',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'user',
-    'field_name' => 'og_user_node',
-    'label' => 'Group membership',
-    'required' => 0,
-    'settings' => array(
-      'behaviors' => array(
-        'og_widget' => array(
-          'admin' => array(
-            'widget_type' => 'entityreference_autocomplete',
-          ),
-          'default' => array(
-            'widget_type' => 'options_select',
-          ),
-          'status' => TRUE,
-        ),
-        'prepopulate' => array(
-          'status' => 0,
-        ),
-      ),
-      'user_register_form' => 1,
-    ),
-    'view modes' => array(
-      'full' => array(
-        'custom settings' => FALSE,
-        'label' => 'Full',
-        'type' => 'og_list_default',
-      ),
-      'teaser' => array(
-        'custom settings' => FALSE,
-        'label' => 'Teaser',
-        'type' => 'og_list_default',
-      ),
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'og',
-      'settings' => array(),
-      'type' => 'og_complex',
-      'weight' => 9,
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('Alt Text');
@@ -5580,21 +5280,15 @@ function immunizationed_structure_field_default_field_instances() {
   t('Enter your practice phone number');
   t('Epic ID');
   t('Expected time to complete');
-  t('First Name');
   t('Fixed due date');
   t('Fixed start date');
   t('Group');
-  t('Group membership');
   t('Groups audience');
-  t('If you did not find your job listed, please type in the name of your job at your clinic. ');
   t('Image');
   t('Insert a quick summary about the suggested agenda items.');
   t('Integer used to calculate due date');
   t('Integer used to calculate suggested start date.');
   t('Internal video url');
-  t('Job Other');
-  t('Just a visitor');
-  t('Last Name');
   t('Links');
   t('Links to resources associated with this waypoint.');
   t('Next Meeting Date');
@@ -5603,20 +5297,14 @@ function immunizationed_structure_field_default_field_instances() {
   t('Optionally select an image for this task.');
   t('Other - please specify');
   t('Please choose some tags for this page.');
-  t('Please choose what your role is in your clinic, if any. ');
-  t('Please enter your first name.');
-  t('Please enter your last name.');
   t('Please enter your original convenient vaccination system strategy, or you can create a new strategy here. ');
   t('Please enter your original motivation strategy, or you can create a new strategy here. ');
   t('Please enter your original patient notification strategy, or you can create a new strategy here. ');
   t('Please enter your original strategy for enhancing vaccination systems, or you can create a new strategy here. ');
-  t('Please enter your salutation (i.e. Dr. Mr. Mrs. Miss. Ms., etc).');
   t('Please select the audience for this announcement.');
   t('Please select the audience for this item.');
-  t('Please select your job at your clinic.');
   t('Poster Frame');
   t('Practice Address');
-  t('Practice Job');
   t('Practice Phone');
   t('Practice Website');
   t('Practice description');
@@ -5627,12 +5315,10 @@ function immunizationed_structure_field_default_field_instances() {
   t('Resource image');
   t('Resource links');
   t('Responsible role');
-  t('Salutation');
   t('Select the date of your meeting.');
   t('Select the role responsible for this task');
   t('Select the special practice role responsible for completing this waypoint.');
   t('Sources');
-  t('Special Practice Role');
   t('Start date day offset from enrollment');
   t('Tags');
   t('Task due date');
@@ -5646,7 +5332,6 @@ function immunizationed_structure_field_default_field_instances() {
   t('This should always be set to "private"');
   t('This will be used for differences in CME accreditation people. ');
   t('This will help to determine differences for CME people. ');
-  t('Tick this box if you are not a member of a practice enrolled in the 4 Pillars Immunization Program.');
   t('Title Text');
   t('Title text attribute');
   t('Total number of hours to complete this item rounded to quarter hours');

@@ -44,5 +44,25 @@ function queue_mail_settings_form() {
     '#markup' => t('The following modules send emails. The contents of the second column can be used in the options above to queue the sending of those emails.') . theme('table', array('header' => $headers, 'rows' => $rows)),
   );
 
+  $form['advanced'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Advanced settings'),
+    '#collapsed' => TRUE,
+    '#collapsible' => TRUE,
+  );
+
+  $options = array();
+  for ($i = 5; $i <= 240; $i += 5) {
+    $options[$i] = format_plural($i, '1 second', '@count seconds');
+  }
+
+  $form['advanced']['queue_mail_queue_time'] = array(
+    '#type' => 'select',
+    '#title' => t('Queue processing time (max)'),
+    '#description' => t('How much time in seconds to allow queue mail to send emails for on cron. Warning if you set a very high limit your cron run could timeout and never complete.'),
+    '#options' => $options,
+    '#default_value' => variable_get('queue_mail_queue_time', 15),
+  );
+
   return system_settings_form($form);
 }
