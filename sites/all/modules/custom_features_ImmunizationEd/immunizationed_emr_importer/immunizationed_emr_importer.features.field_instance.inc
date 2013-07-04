@@ -240,6 +240,46 @@ function immunizationed_emr_importer_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-vaccination_data_from_emr-field_practice'
+  $field_instances['node-vaccination_data_from_emr-field_practice'] = array(
+    'bundle' => 'vaccination_data_from_emr',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 15,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_practice',
+    'label' => 'Practice',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 35,
+    ),
+  );
+
   // Exported field_instance: 'node-vaccination_data_from_emr-field_report_id'
   $field_instances['node-vaccination_data_from_emr-field_report_id'] = array(
     'bundle' => 'vaccination_data_from_emr',
@@ -685,6 +725,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
   t('Number of total doses of all vaccines');
   t('Pneumo');
   t('Pneumo vax rate');
+  t('Practice');
   t('Report ID');
   t('Reporting period');
   t('TD');

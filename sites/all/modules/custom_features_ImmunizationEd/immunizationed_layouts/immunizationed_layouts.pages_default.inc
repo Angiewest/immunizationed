@@ -2634,11 +2634,11 @@ function immunizationed_layouts_default_page_manager_pages() {
     $pane->pid = 'new-4';
     $pane->panel = 'left_sidebar';
     $pane->type = 'block';
-    $pane->subtype = 'menu-menu-practice-managment';
+    $pane->subtype = 'menu-menu-views';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'override_title' => 1,
+      'override_title' => 0,
       'override_title_text' => '<none>',
     );
     $pane->cache = array();
@@ -2655,12 +2655,12 @@ function immunizationed_layouts_default_page_manager_pages() {
     $pane->pid = 'new-5';
     $pane->panel = 'left_sidebar';
     $pane->type = 'block';
-    $pane->subtype = 'menu-menu-views';
+    $pane->subtype = 'menu-menu-editing';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 0,
-      'override_title_text' => '<none>',
+      'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -2676,7 +2676,7 @@ function immunizationed_layouts_default_page_manager_pages() {
     $pane->pid = 'new-6';
     $pane->panel = 'left_sidebar';
     $pane->type = 'block';
-    $pane->subtype = 'menu-menu-editing';
+    $pane->subtype = 'menu-menu-site-admin';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -2694,7 +2694,7 @@ function immunizationed_layouts_default_page_manager_pages() {
     $display->content['new-6'] = $pane;
     $display->panels['left_sidebar'][2] = 'new-6';
   $display->hide_title = PANELS_TITLE_PANE;
-  $display->title_pane = 'new-4';
+  $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['practice_tasks'] = $page;

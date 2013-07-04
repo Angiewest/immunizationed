@@ -114,13 +114,13 @@ function immunizationed_emr_importer_feeds_importer_default() {
             'unique' => 1,
           ),
           14 => array(
-            'source' => 'og_group_ref',
-            'target' => 'og_group_ref',
+            'source' => 'pneum_rate',
+            'target' => 'field_pneumo_vax_rate',
             'unique' => FALSE,
           ),
           15 => array(
-            'source' => 'pneum_rate',
-            'target' => 'field_pneumo_vax_rate',
+            'source' => 'practice',
+            'target' => 'field_practice',
             'unique' => FALSE,
           ),
         ),
