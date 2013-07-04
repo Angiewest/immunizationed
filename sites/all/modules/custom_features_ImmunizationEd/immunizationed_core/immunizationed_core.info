@@ -110,7 +110,6 @@ features[fe_block_settings][] = menu-features
 features[fe_block_settings][] = menu-menu-views
 features[fe_block_settings][] = node-recent
 features[fe_block_settings][] = node-syndicate
-features[fe_block_settings][] = profile-author-information
 features[fe_block_settings][] = search-form
 features[fe_block_settings][] = shortcut-shortcuts
 features[fe_block_settings][] = system-help

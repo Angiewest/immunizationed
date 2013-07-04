@@ -206,38 +206,6 @@ function immunizationed_core_default_fe_block_settings() {
     'visibility' => 0,
   );
 
-  $export['profile-author-information'] = array(
-    'cache' => 5,
-    'custom' => 0,
-    'delta' => 'author-information',
-    'module' => 'profile',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'bartik' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'bartik',
-        'weight' => 0,
-      ),
-      'energetic' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'energetic',
-        'weight' => -11,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
   $export['search-form'] = array(
     'cache' => -1,
     'custom' => 0,

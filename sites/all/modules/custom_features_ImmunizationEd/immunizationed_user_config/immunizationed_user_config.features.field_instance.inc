@@ -338,7 +338,7 @@ function immunizationed_user_config_field_default_field_instances() {
           'status' => 0,
         ),
       ),
-      'user_register_form' => 1,
+      'user_register_form' => 0,
     ),
     'view modes' => array(
       'full' => array(
