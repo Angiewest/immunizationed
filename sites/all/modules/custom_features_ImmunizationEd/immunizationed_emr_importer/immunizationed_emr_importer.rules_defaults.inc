@@ -13,7 +13,7 @@ function immunizationed_emr_importer_default_rules_configuration() {
       "LABEL" : "Actions on feed import",
       "PLUGIN" : "reaction rule",
       "TAGS" : [ "import" ],
-      "REQUIRES" : [ "rules", "php", "feeds" ],
+      "REQUIRES" : [ "rules", "feeds" ],
       "ON" : [ "feeds_import_emr_importer" ],
       "IF" : [
         { "entity_has_field" : { "entity" : [ "node" ], "field" : "og_group_ref" } },
@@ -31,11 +31,11 @@ function immunizationed_emr_importer_default_rules_configuration() {
         },
         { "drupal_message" : { "message" : "fetched nid [node:nid] or maybe [entity-fetched:0]" } },
         { "variable_add" : {
-            "USING" : { "type" : "integer", "value" : [ "entity-fetched:0:nid" ] },
+            "USING" : { "type" : "text", "value" : [ "entity-fetched:0:nid" ] },
             "PROVIDE" : { "variable_added" : { "variable_added" : "Added variable" } }
           }
         },
-        { "php_eval" : { "code" : "  \\u002F\\u002FSet the values\\u000D\\u000A  $values = array(\\u000D\\u000A    \\u0027entity_type\\u0027 =\\u003E \\u0027node\\u0027,\\u000D\\u000A    \\u0027entity\\u0027 =\\u003E $node,\\u000D\\u000A    \\u0027state\\u0027 =\\u003E OG_STATE_ACTIVE,\\u000D\\u000A  );\\u000D\\u000A \\u000D\\u000A  \\u002F\\u002FAdd this node to the group\\u000D\\u000A  $result = og_group(\\u0027node\\u0027, $variable_added, $values);\\u000D\\u000A" } },
+        { "data_set" : { "data" : [ "node:og-group-ref" ], "value" : [ "entity-fetched" ] } },
         { "entity_save" : { "data" : [ "node" ], "immediate" : 1 } }
       ]
     }
@@ -59,7 +59,7 @@ function immunizationed_emr_importer_default_rules_configuration() {
               { "LOOP" : {
                   "USING" : { "list" : [ "practice-list" ] },
                   "ITEM" : { "list_item" : "Current list item" },
-                  "DO" : [  ]
+                  "DO" : []
                 }
               }
             ],

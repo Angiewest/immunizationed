@@ -3091,6 +3091,8 @@ function immunizationed_views_views_default_views() {
 
   /* Display: Content pane */
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -3149,6 +3151,10 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['sorts']['field_task_start_date_value']['id'] = 'field_task_start_date_value';
   $handler->display->display_options['sorts']['field_task_start_date_value']['table'] = 'field_data_field_task_start_date';
   $handler->display->display_options['sorts']['field_task_start_date_value']['field'] = 'field_task_start_date_value';
+  /* Sort criterion: Content: Task due date (field_task_due_date) */
+  $handler->display->display_options['sorts']['field_task_due_date_value']['id'] = 'field_task_due_date_value';
+  $handler->display->display_options['sorts']['field_task_due_date_value']['table'] = 'field_data_field_task_due_date';
+  $handler->display->display_options['sorts']['field_task_due_date_value']['field'] = 'field_task_due_date_value';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Type */
   $handler->display->display_options['arguments']['type']['id'] = 'type';
@@ -3203,7 +3209,22 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['filters']['field_task_start_date_value']['table'] = 'field_data_field_task_start_date';
   $handler->display->display_options['filters']['field_task_start_date_value']['field'] = 'field_task_start_date_value';
   $handler->display->display_options['filters']['field_task_start_date_value']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_task_start_date_value']['default_date'] = 'now-1';
+  $handler->display->display_options['filters']['field_task_start_date_value']['expose']['operator_id'] = 'field_task_start_date_value_op';
+  $handler->display->display_options['filters']['field_task_start_date_value']['expose']['label'] = 'Task start date (field_task_start_date)';
+  $handler->display->display_options['filters']['field_task_start_date_value']['expose']['use_operator'] = TRUE;
+  $handler->display->display_options['filters']['field_task_start_date_value']['expose']['operator'] = 'field_task_start_date_value_op';
+  $handler->display->display_options['filters']['field_task_start_date_value']['expose']['identifier'] = 'field_task_start_date_value';
+  $handler->display->display_options['filters']['field_task_start_date_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    4 => 0,
+    8 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_task_start_date_value']['default_date'] = 'now';
   $export['practice_task_content'] = $view;
 
   $view = new view();
