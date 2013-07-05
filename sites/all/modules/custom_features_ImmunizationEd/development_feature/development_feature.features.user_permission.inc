@@ -15,7 +15,9 @@ function development_feature_user_default_permissions() {
     'name' => 'access devel information',
     'roles' => array(
       'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
       'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'devel',
   );
@@ -44,7 +46,9 @@ function development_feature_user_default_permissions() {
     'name' => 'execute php code',
     'roles' => array(
       'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
       'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'devel',
   );
@@ -64,6 +68,7 @@ function development_feature_user_default_permissions() {
     'name' => 'switch users',
     'roles' => array(
       'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
@@ -75,7 +80,9 @@ function development_feature_user_default_permissions() {
     'name' => 'view devel_node_access information',
     'roles' => array(
       'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
       'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'devel_node_access',
   );

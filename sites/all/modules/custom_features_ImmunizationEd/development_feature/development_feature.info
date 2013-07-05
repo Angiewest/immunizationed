@@ -60,7 +60,6 @@ features[variable][] = devel_execution
 features[variable][] = devel_krumo_skin
 features[variable][] = devel_node_access_debug_mode
 features[variable][] = devel_node_access_user_ajax
-features[variable][] = devel_page_alter
 features[variable][] = devel_query_display
 features[variable][] = devel_query_sort
 features[variable][] = devel_raw_names

@@ -32,13 +32,13 @@ function immunizationed_user_config_strongarm() {
           'weight' => '0',
         ),
         'timezone' => array(
-          'weight' => '1',
+          'weight' => '9',
         ),
         'googleanalytics' => array(
           'weight' => '11',
         ),
         'mimemail' => array(
-          'weight' => '9',
+          'weight' => '8',
         ),
         'redirect' => array(
           'weight' => '12',
@@ -145,7 +145,7 @@ This link can only be used once to log in and will lead you to a page where you 
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_mail_register_admin_created_body';
-  $strongarm->value = '[user:field-last-names][user:field-salutations],
+  $strongarm->value = '[user:field-salutations] [user:field-last-names],
 
 A site administrator at [site:name] has created an account for you. You may now log in by clicking this link or copying and pasting it to your browser:
 
@@ -353,7 +353,7 @@ Your account on [site:name] has been canceled.
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_register';
-  $strongarm->value = '2';
+  $strongarm->value = '1';
   $export['user_register'] = $strongarm;
 
   $strongarm = new stdClass();

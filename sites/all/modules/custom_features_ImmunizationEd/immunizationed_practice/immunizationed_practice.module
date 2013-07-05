@@ -1,5 +1,7 @@
 <?php
 /**
  * @file
- * Drupal needs this blank file.
+ * Code for the immunizationed_practice feature.
  */
+
+include_once 'immunizationed_practice.features.inc';

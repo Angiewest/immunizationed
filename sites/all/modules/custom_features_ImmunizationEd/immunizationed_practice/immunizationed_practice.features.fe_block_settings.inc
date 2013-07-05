@@ -108,7 +108,12 @@ function immunizationed_practice_default_fe_block_settings() {
       1 => 'practice_group',
     ),
     'pages' => '',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 3,
+      'apprentice admin' => 8,
+      'Co-I admin' => 7,
+      'editor' => 4,
+    ),
     'themes' => array(
       'bartik' => array(
         'region' => '',
