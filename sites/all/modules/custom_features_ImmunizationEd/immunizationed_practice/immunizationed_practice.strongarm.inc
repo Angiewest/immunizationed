@@ -17,9 +17,9 @@ function immunizationed_practice_strongarm() {
   $strongarm->value = array(
     'url' => array(),
     'node' => array(),
+    'comment' => array(),
     'user-edit' => array(),
     'user-view' => array(),
-    'comment' => array(),
   );
   $export['og_context_negotiation_group_context'] = $strongarm;
 
@@ -30,10 +30,10 @@ function immunizationed_practice_strongarm() {
   $strongarm->value = array(
     'url' => '-5',
     'node' => '-4',
+    'user-edit' => '0',
+    'user-view' => '0',
     'comment' => '0',
     'og_extras' => '0',
-    'user-view' => '0',
-    'user-edit' => '0',
   );
   $export['og_context_providers_weight_group_context'] = $strongarm;
 

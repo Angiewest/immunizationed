@@ -15,7 +15,7 @@ function conflicting_permissions_for_dev_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'mail_system';
   $strongarm->value = array(
-    'default-system' => 'DefaultMailSystem',
+    'default-system' => 'TestingMailSystem',
     'mimemail' => 'MimeMailSystem',
   );
   $export['mail_system'] = $strongarm;
