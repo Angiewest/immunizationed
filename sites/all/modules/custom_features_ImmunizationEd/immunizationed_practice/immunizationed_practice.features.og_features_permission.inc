@@ -65,7 +65,6 @@ function immunizationed_practice_og_features_default_permissions() {
   $permissions['node:practice_group:update group'] = array(
     'roles' => array(
       'Administrator member' => 'Administrator member',
-      'member' => 'member',
     ),
   );
 

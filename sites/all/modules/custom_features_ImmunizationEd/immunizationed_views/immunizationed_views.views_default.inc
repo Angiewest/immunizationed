@@ -1163,66 +1163,56 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
-  /* Field: Profile: Personal information: First name */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value']['id'] = 'value';
   $handler->display->display_options['fields']['value']['table'] = 'profile_value_profile_first_name';
   $handler->display->display_options['fields']['value']['field'] = 'value';
   $handler->display->display_options['fields']['value']['label'] = 'PI: First name';
-  /* Field: Profile: Personal information: Last name */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_1']['id'] = 'value_1';
   $handler->display->display_options['fields']['value_1']['table'] = 'profile_value_profile_last_name';
   $handler->display->display_options['fields']['value_1']['field'] = 'value';
   $handler->display->display_options['fields']['value_1']['label'] = 'PI: Last name';
-  /* Field: Profile: Personal information: Salutation */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_2']['id'] = 'value_2';
   $handler->display->display_options['fields']['value_2']['table'] = 'profile_value_profile_salutation';
   $handler->display->display_options['fields']['value_2']['field'] = 'value';
   $handler->display->display_options['fields']['value_2']['label'] = 'PI: Salut';
-  /* Field: Profile: Practice job: Job-other */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_3']['id'] = 'value_3';
   $handler->display->display_options['fields']['value_3']['table'] = 'profile_value_profile_job_other';
   $handler->display->display_options['fields']['value_3']['field'] = 'value';
   $handler->display->display_options['fields']['value_3']['label'] = 'PrJb: J-Oth';
-  /* Field: Profile: Practice job: Just a visitor */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_4']['id'] = 'value_4';
   $handler->display->display_options['fields']['value_4']['table'] = 'profile_value_profile_visitor';
   $handler->display->display_options['fields']['value_4']['field'] = 'value';
   $handler->display->display_options['fields']['value_4']['label'] = 'PrJb: Visit';
-  $handler->display->display_options['fields']['value_4']['type'] = 'boolean';
-  $handler->display->display_options['fields']['value_4']['not'] = 0;
-  /* Field: Profile: Practice job: Practice job */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_5']['id'] = 'value_5';
   $handler->display->display_options['fields']['value_5']['table'] = 'profile_value_profile_practice_job';
   $handler->display->display_options['fields']['value_5']['field'] = 'value';
   $handler->display->display_options['fields']['value_5']['label'] = 'PrJb: Prjb';
-  /* Field: Profile: Special practice role: Architect */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_6']['id'] = 'value_6';
   $handler->display->display_options['fields']['value_6']['table'] = 'profile_value_profile_architect';
   $handler->display->display_options['fields']['value_6']['field'] = 'value';
   $handler->display->display_options['fields']['value_6']['label'] = 'SpcRle: Arc';
-  $handler->display->display_options['fields']['value_6']['type'] = 'boolean';
-  $handler->display->display_options['fields']['value_6']['not'] = 0;
-  /* Field: Profile: Special practice role: Foreman */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_7']['id'] = 'value_7';
   $handler->display->display_options['fields']['value_7']['table'] = 'profile_value_profile_foreman';
   $handler->display->display_options['fields']['value_7']['field'] = 'value';
   $handler->display->display_options['fields']['value_7']['label'] = 'SPCRLE: FM';
-  $handler->display->display_options['fields']['value_7']['type'] = 'boolean';
-  $handler->display->display_options['fields']['value_7']['not'] = 0;
-  /* Field: Profile: Special practice role: Manager */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_8']['id'] = 'value_8';
   $handler->display->display_options['fields']['value_8']['table'] = 'profile_value_profile_manager';
   $handler->display->display_options['fields']['value_8']['field'] = 'value';
   $handler->display->display_options['fields']['value_8']['label'] = 'SPCRLE: MGR';
-  $handler->display->display_options['fields']['value_8']['type'] = 'boolean';
-  $handler->display->display_options['fields']['value_8']['not'] = 0;
-  /* Field: Profile: Special practice role: Project manager */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_9']['id'] = 'value_9';
   $handler->display->display_options['fields']['value_9']['table'] = 'profile_value_profile_project_manager';
   $handler->display->display_options['fields']['value_9']['field'] = 'value';
   $handler->display->display_options['fields']['value_9']['label'] = 'SPCRLE: PMGR';
-  $handler->display->display_options['fields']['value_9']['type'] = 'boolean';
-  $handler->display->display_options['fields']['value_9']['not'] = 0;
   /* Field: Field: Responsible role */
   $handler->display->display_options['fields']['field_responsible_role']['id'] = 'field_responsible_role';
   $handler->display->display_options['fields']['field_responsible_role']['table'] = 'field_data_field_responsible_role';
@@ -1268,66 +1258,56 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['fields']['name']['label'] = 'name';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
-  /* Field: Profile: Personal information: First name */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value']['id'] = 'value';
   $handler->display->display_options['fields']['value']['table'] = 'profile_value_profile_first_name';
   $handler->display->display_options['fields']['value']['field'] = 'value';
   $handler->display->display_options['fields']['value']['label'] = 'PI: First name';
-  /* Field: Profile: Personal information: Last name */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_1']['id'] = 'value_1';
   $handler->display->display_options['fields']['value_1']['table'] = 'profile_value_profile_last_name';
   $handler->display->display_options['fields']['value_1']['field'] = 'value';
   $handler->display->display_options['fields']['value_1']['label'] = 'PI: Last name';
-  /* Field: Profile: Personal information: Salutation */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_2']['id'] = 'value_2';
   $handler->display->display_options['fields']['value_2']['table'] = 'profile_value_profile_salutation';
   $handler->display->display_options['fields']['value_2']['field'] = 'value';
   $handler->display->display_options['fields']['value_2']['label'] = 'PI: Salut';
-  /* Field: Profile: Practice job: Job-other */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_3']['id'] = 'value_3';
   $handler->display->display_options['fields']['value_3']['table'] = 'profile_value_profile_job_other';
   $handler->display->display_options['fields']['value_3']['field'] = 'value';
   $handler->display->display_options['fields']['value_3']['label'] = 'PrJb: J-Oth';
-  /* Field: Profile: Practice job: Just a visitor */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_4']['id'] = 'value_4';
   $handler->display->display_options['fields']['value_4']['table'] = 'profile_value_profile_visitor';
   $handler->display->display_options['fields']['value_4']['field'] = 'value';
   $handler->display->display_options['fields']['value_4']['label'] = 'PrJb: Visit';
-  $handler->display->display_options['fields']['value_4']['type'] = 'boolean';
-  $handler->display->display_options['fields']['value_4']['not'] = 0;
-  /* Field: Profile: Practice job: Practice job */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_5']['id'] = 'value_5';
   $handler->display->display_options['fields']['value_5']['table'] = 'profile_value_profile_practice_job';
   $handler->display->display_options['fields']['value_5']['field'] = 'value';
   $handler->display->display_options['fields']['value_5']['label'] = 'PrJb: Prjb';
-  /* Field: Profile: Special practice role: Architect */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_6']['id'] = 'value_6';
   $handler->display->display_options['fields']['value_6']['table'] = 'profile_value_profile_architect';
   $handler->display->display_options['fields']['value_6']['field'] = 'value';
   $handler->display->display_options['fields']['value_6']['label'] = 'SpcRle: Arc';
-  $handler->display->display_options['fields']['value_6']['type'] = 'boolean';
-  $handler->display->display_options['fields']['value_6']['not'] = 0;
-  /* Field: Profile: Special practice role: Foreman */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_7']['id'] = 'value_7';
   $handler->display->display_options['fields']['value_7']['table'] = 'profile_value_profile_foreman';
   $handler->display->display_options['fields']['value_7']['field'] = 'value';
   $handler->display->display_options['fields']['value_7']['label'] = 'SPCRLE: FM';
-  $handler->display->display_options['fields']['value_7']['type'] = 'boolean';
-  $handler->display->display_options['fields']['value_7']['not'] = 0;
-  /* Field: Profile: Special practice role: Manager */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_8']['id'] = 'value_8';
   $handler->display->display_options['fields']['value_8']['table'] = 'profile_value_profile_manager';
   $handler->display->display_options['fields']['value_8']['field'] = 'value';
   $handler->display->display_options['fields']['value_8']['label'] = 'SPCRLE: MGR';
-  $handler->display->display_options['fields']['value_8']['type'] = 'boolean';
-  $handler->display->display_options['fields']['value_8']['not'] = 0;
-  /* Field: Profile: Special practice role: Project manager */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_9']['id'] = 'value_9';
   $handler->display->display_options['fields']['value_9']['table'] = 'profile_value_profile_project_manager';
   $handler->display->display_options['fields']['value_9']['field'] = 'value';
   $handler->display->display_options['fields']['value_9']['label'] = 'SPCRLE: PMGR';
-  $handler->display->display_options['fields']['value_9']['type'] = 'boolean';
-  $handler->display->display_options['fields']['value_9']['not'] = 0;
   /* Field: Field: Responsible role */
   $handler->display->display_options['fields']['field_responsible_role']['id'] = 'field_responsible_role';
   $handler->display->display_options['fields']['field_responsible_role']['table'] = 'field_data_field_responsible_role';
@@ -1374,66 +1354,56 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
-  /* Field: Profile: Personal information: First name */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value']['id'] = 'value';
   $handler->display->display_options['fields']['value']['table'] = 'profile_value_profile_first_name';
   $handler->display->display_options['fields']['value']['field'] = 'value';
   $handler->display->display_options['fields']['value']['label'] = 'PI: First name';
-  /* Field: Profile: Personal information: Last name */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_1']['id'] = 'value_1';
   $handler->display->display_options['fields']['value_1']['table'] = 'profile_value_profile_last_name';
   $handler->display->display_options['fields']['value_1']['field'] = 'value';
   $handler->display->display_options['fields']['value_1']['label'] = 'PI: Last name';
-  /* Field: Profile: Personal information: Salutation */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_2']['id'] = 'value_2';
   $handler->display->display_options['fields']['value_2']['table'] = 'profile_value_profile_salutation';
   $handler->display->display_options['fields']['value_2']['field'] = 'value';
   $handler->display->display_options['fields']['value_2']['label'] = 'PI: Salut';
-  /* Field: Profile: Practice job: Job-other */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_3']['id'] = 'value_3';
   $handler->display->display_options['fields']['value_3']['table'] = 'profile_value_profile_job_other';
   $handler->display->display_options['fields']['value_3']['field'] = 'value';
   $handler->display->display_options['fields']['value_3']['label'] = 'PrJb: J-Oth';
-  /* Field: Profile: Practice job: Just a visitor */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_4']['id'] = 'value_4';
   $handler->display->display_options['fields']['value_4']['table'] = 'profile_value_profile_visitor';
   $handler->display->display_options['fields']['value_4']['field'] = 'value';
   $handler->display->display_options['fields']['value_4']['label'] = 'PrJb: Visit';
-  $handler->display->display_options['fields']['value_4']['type'] = 'boolean';
-  $handler->display->display_options['fields']['value_4']['not'] = 0;
-  /* Field: Profile: Practice job: Practice job */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_5']['id'] = 'value_5';
   $handler->display->display_options['fields']['value_5']['table'] = 'profile_value_profile_practice_job';
   $handler->display->display_options['fields']['value_5']['field'] = 'value';
   $handler->display->display_options['fields']['value_5']['label'] = 'PrJb: Prjb';
-  /* Field: Profile: Special practice role: Architect */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_6']['id'] = 'value_6';
   $handler->display->display_options['fields']['value_6']['table'] = 'profile_value_profile_architect';
   $handler->display->display_options['fields']['value_6']['field'] = 'value';
   $handler->display->display_options['fields']['value_6']['label'] = 'SpcRle: Arc';
-  $handler->display->display_options['fields']['value_6']['type'] = 'boolean';
-  $handler->display->display_options['fields']['value_6']['not'] = 0;
-  /* Field: Profile: Special practice role: Foreman */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_7']['id'] = 'value_7';
   $handler->display->display_options['fields']['value_7']['table'] = 'profile_value_profile_foreman';
   $handler->display->display_options['fields']['value_7']['field'] = 'value';
   $handler->display->display_options['fields']['value_7']['label'] = 'SPCRLE: FM';
-  $handler->display->display_options['fields']['value_7']['type'] = 'boolean';
-  $handler->display->display_options['fields']['value_7']['not'] = 0;
-  /* Field: Profile: Special practice role: Manager */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_8']['id'] = 'value_8';
   $handler->display->display_options['fields']['value_8']['table'] = 'profile_value_profile_manager';
   $handler->display->display_options['fields']['value_8']['field'] = 'value';
   $handler->display->display_options['fields']['value_8']['label'] = 'SPCRLE: MGR';
-  $handler->display->display_options['fields']['value_8']['type'] = 'boolean';
-  $handler->display->display_options['fields']['value_8']['not'] = 0;
-  /* Field: Profile: Special practice role: Project manager */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_9']['id'] = 'value_9';
   $handler->display->display_options['fields']['value_9']['table'] = 'profile_value_profile_project_manager';
   $handler->display->display_options['fields']['value_9']['field'] = 'value';
   $handler->display->display_options['fields']['value_9']['label'] = 'SPCRLE: PMGR';
-  $handler->display->display_options['fields']['value_9']['type'] = 'boolean';
-  $handler->display->display_options['fields']['value_9']['not'] = 0;
   /* Field: Field: Responsible role */
   $handler->display->display_options['fields']['field_responsible_role']['id'] = 'field_responsible_role';
   $handler->display->display_options['fields']['field_responsible_role']['table'] = 'field_data_field_responsible_role';
@@ -2076,24 +2046,22 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
-  /* Field: Profile: Personal information: Salutation */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_2']['id'] = 'value_2';
   $handler->display->display_options['fields']['value_2']['table'] = 'profile_value_profile_salutation';
   $handler->display->display_options['fields']['value_2']['field'] = 'value';
   $handler->display->display_options['fields']['value_2']['label'] = '';
   $handler->display->display_options['fields']['value_2']['element_label_colon'] = FALSE;
-  /* Field: Profile: Personal information: First name */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value']['id'] = 'value';
   $handler->display->display_options['fields']['value']['table'] = 'profile_value_profile_first_name';
   $handler->display->display_options['fields']['value']['field'] = 'value';
   $handler->display->display_options['fields']['value']['label'] = 'First name';
-  $handler->display->display_options['fields']['value']['link_to_user'] = FALSE;
-  /* Field: Profile: Personal information: Last name */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_1']['id'] = 'value_1';
   $handler->display->display_options['fields']['value_1']['table'] = 'profile_value_profile_last_name';
   $handler->display->display_options['fields']['value_1']['field'] = 'value';
   $handler->display->display_options['fields']['value_1']['label'] = 'Last name';
-  $handler->display->display_options['fields']['value_1']['link_to_user'] = FALSE;
   /* Field: User: Roles */
   $handler->display->display_options['fields']['rid']['id'] = 'rid';
   $handler->display->display_options['fields']['rid']['table'] = 'users_roles';
@@ -2120,44 +2088,36 @@ function immunizationed_views_views_default_views() {
     'link' => 1,
   );
   $handler->display->display_options['fields']['og_user_node']['delta_offset'] = '0';
-  /* Field: Profile: Practice job: Practice job */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_3']['id'] = 'value_3';
   $handler->display->display_options['fields']['value_3']['table'] = 'profile_value_profile_practice_job';
   $handler->display->display_options['fields']['value_3']['field'] = 'value';
   $handler->display->display_options['fields']['value_3']['label'] = 'Practice job';
   $handler->display->display_options['fields']['value_3']['empty_zero'] = TRUE;
-  /* Field: Profile: Special practice role: Architect */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_4']['id'] = 'value_4';
   $handler->display->display_options['fields']['value_4']['table'] = 'profile_value_profile_architect';
   $handler->display->display_options['fields']['value_4']['field'] = 'value';
   $handler->display->display_options['fields']['value_4']['label'] = 'Architect';
   $handler->display->display_options['fields']['value_4']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['value_4']['type'] = 'true-false';
-  $handler->display->display_options['fields']['value_4']['not'] = 0;
-  /* Field: Profile: Special practice role: Foreman */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_5']['id'] = 'value_5';
   $handler->display->display_options['fields']['value_5']['table'] = 'profile_value_profile_foreman';
   $handler->display->display_options['fields']['value_5']['field'] = 'value';
   $handler->display->display_options['fields']['value_5']['label'] = 'Foreman';
   $handler->display->display_options['fields']['value_5']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['value_5']['type'] = 'true-false';
-  $handler->display->display_options['fields']['value_5']['not'] = 0;
-  /* Field: Profile: Special practice role: Manager */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_6']['id'] = 'value_6';
   $handler->display->display_options['fields']['value_6']['table'] = 'profile_value_profile_manager';
   $handler->display->display_options['fields']['value_6']['field'] = 'value';
   $handler->display->display_options['fields']['value_6']['label'] = 'Manager';
   $handler->display->display_options['fields']['value_6']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['value_6']['type'] = 'true-false';
-  $handler->display->display_options['fields']['value_6']['not'] = 0;
-  /* Field: Profile: Special practice role: Project manager */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['value_7']['id'] = 'value_7';
   $handler->display->display_options['fields']['value_7']['table'] = 'profile_value_profile_project_manager';
   $handler->display->display_options['fields']['value_7']['field'] = 'value';
   $handler->display->display_options['fields']['value_7']['label'] = 'Project manager';
   $handler->display->display_options['fields']['value_7']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['value_7']['type'] = 'true-false';
-  $handler->display->display_options['fields']['value_7']['not'] = 0;
   /* Field: User: Last access */
   $handler->display->display_options['fields']['access']['id'] = 'access';
   $handler->display->display_options['fields']['access']['table'] = 'users';
@@ -2174,7 +2134,7 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['fields']['status_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['status_1']['type'] = 'active-blocked';
   $handler->display->display_options['fields']['status_1']['not'] = 0;
-  /* Filter criterion: Profile: Special practice role: Architect */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['value']['id'] = 'value';
   $handler->display->display_options['filters']['value']['table'] = 'profile_value_profile_architect';
   $handler->display->display_options['filters']['value']['field'] = 'value';
@@ -2194,7 +2154,7 @@ function immunizationed_views_views_default_views() {
     4 => 0,
     3 => 0,
   );
-  /* Filter criterion: Profile: Special practice role: Foreman */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['value_1']['id'] = 'value_1';
   $handler->display->display_options['filters']['value_1']['table'] = 'profile_value_profile_foreman';
   $handler->display->display_options['filters']['value_1']['field'] = 'value';
@@ -2214,7 +2174,7 @@ function immunizationed_views_views_default_views() {
     4 => 0,
     3 => 0,
   );
-  /* Filter criterion: Profile: Special practice role: Manager */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['value_2']['id'] = 'value_2';
   $handler->display->display_options['filters']['value_2']['table'] = 'profile_value_profile_manager';
   $handler->display->display_options['filters']['value_2']['field'] = 'value';
@@ -2234,7 +2194,7 @@ function immunizationed_views_views_default_views() {
     4 => 0,
     3 => 0,
   );
-  /* Filter criterion: Profile: Special practice role: Project manager */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['value_3']['id'] = 'value_3';
   $handler->display->display_options['filters']['value_3']['table'] = 'profile_value_profile_project_manager';
   $handler->display->display_options['filters']['value_3']['field'] = 'value';
@@ -2389,7 +2349,8 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['title'] = 'Latest News';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'og_context';
-  $handler->display->display_options['access']['perm'] = 'update group';
+  $handler->display->display_options['access']['perm'] = 'unsubscribe';
+  $handler->display->display_options['access']['group_id_arg'] = '';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
@@ -2466,7 +2427,7 @@ function immunizationed_views_views_default_views() {
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'og_context';
-  $handler->display->display_options['access']['perm'] = 'update group';
+  $handler->display->display_options['access']['perm'] = 'unsubscribe';
   $handler->display->display_options['argument_input'] = array(
     'gid' => array(
       'type' => 'panel',
@@ -2851,7 +2812,7 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['title'] = 'Project Blueprints';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'og_context';
-  $handler->display->display_options['access']['perm'] = 'update group';
+  $handler->display->display_options['access']['perm'] = 'unsubscribe';
   $handler->display->display_options['access']['group_id_arg'] = '1';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';

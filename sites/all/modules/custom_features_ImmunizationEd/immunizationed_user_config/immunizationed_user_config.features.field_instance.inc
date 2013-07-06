@@ -22,7 +22,7 @@ function immunizationed_user_config_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
-        'weight' => 4,
+        'weight' => 2,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -47,7 +47,7 @@ function immunizationed_user_config_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 9,
     ),
   );
 
@@ -60,10 +60,9 @@ function immunizationed_user_config_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_plain',
-        'weight' => 2,
+        'type' => 'hidden',
+        'weight' => 7,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -88,7 +87,7 @@ function immunizationed_user_config_field_default_field_instances() {
         'rows' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 6,
+      'weight' => 12,
     ),
   );
 
@@ -104,7 +103,7 @@ function immunizationed_user_config_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
-        'weight' => 5,
+        'weight' => 3,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -129,7 +128,7 @@ function immunizationed_user_config_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 10,
     ),
   );
 
@@ -145,7 +144,7 @@ function immunizationed_user_config_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 6,
+        'weight' => 4,
       ),
       'full' => array(
         'label' => 'above',
@@ -167,7 +166,7 @@ function immunizationed_user_config_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 5,
+      'weight' => 11,
     ),
   );
 
@@ -187,7 +186,7 @@ function immunizationed_user_config_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 1,
+        'weight' => 5,
       ),
       'full' => array(
         'label' => 'above',
@@ -209,7 +208,7 @@ function immunizationed_user_config_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 7,
+      'weight' => 13,
     ),
   );
 
@@ -225,7 +224,7 @@ function immunizationed_user_config_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
-        'weight' => 3,
+        'weight' => 1,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -250,7 +249,7 @@ function immunizationed_user_config_field_default_field_instances() {
         'size' => 20,
       ),
       'type' => 'text_textfield',
-      'weight' => 1,
+      'weight' => 8,
     ),
   );
 
@@ -292,7 +291,7 @@ function immunizationed_user_config_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 4,
+      'weight' => 14,
     ),
   );
 
@@ -357,7 +356,7 @@ function immunizationed_user_config_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 10,
+      'weight' => 15,
     ),
   );
 

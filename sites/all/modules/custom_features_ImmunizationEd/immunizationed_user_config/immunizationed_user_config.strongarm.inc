@@ -29,25 +29,37 @@ function immunizationed_user_config_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'account' => array(
-          'weight' => '0',
+          'weight' => '8',
         ),
         'timezone' => array(
           'weight' => '9',
         ),
         'googleanalytics' => array(
-          'weight' => '11',
+          'weight' => '19',
         ),
         'mimemail' => array(
-          'weight' => '8',
+          'weight' => '18',
         ),
         'redirect' => array(
-          'weight' => '12',
+          'weight' => '20',
+        ),
+        'picture' => array(
+          'weight' => '7',
+        ),
+        'overlay_control' => array(
+          'weight' => '17',
+        ),
+        'contact' => array(
+          'weight' => '10',
+        ),
+        'wysiwyg' => array(
+          'weight' => '16',
         ),
       ),
       'display' => array(
         'summary' => array(
           'default' => array(
-            'weight' => '7',
+            'weight' => '6',
             'visible' => TRUE,
           ),
           'full' => array(
