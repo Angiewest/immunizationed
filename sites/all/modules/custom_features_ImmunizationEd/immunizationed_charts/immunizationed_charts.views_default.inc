@@ -546,10 +546,28 @@ function immunizationed_charts_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
 
-  /* Display: Attachment */
-  $handler = $view->new_display('attachment', 'Attachment', 'attachment_1');
+  /* Display: Attachment 2 */
+  $handler = $view->new_display('attachment', 'Attachment 2', 'attachment_2');
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'google_chart_tools_views';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_reporting_period',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['title'] = 'Vaccinations by period for %';
+  $handler->display->display_options['style_options']['type'] = 'BarChart';
+  $handler->display->display_options['style_options']['width'] = '820';
+  $handler->display->display_options['style_options']['height'] = '400';
+  $handler->display->display_options['style_options']['isstacked'] = 0;
+  $handler->display->display_options['style_options']['pointsize'] = '0';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['displays'] = array(
     'page' => 'page',
     'default' => 0,
