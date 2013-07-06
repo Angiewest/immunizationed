@@ -214,106 +214,8 @@ function immunizationed_core_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_announcement';
-  $strongarm->value = '2';
-  $export['comment_announcement'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_anonymous_announcement';
-  $strongarm->value = 0;
-  $export['comment_anonymous_announcement'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_anonymous_article';
-  $strongarm->value = 0;
-  $export['comment_anonymous_article'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_anonymous_book';
-  $strongarm->value = 0;
-  $export['comment_anonymous_book'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_anonymous_document';
-  $strongarm->value = 0;
-  $export['comment_anonymous_document'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_anonymous_nuts_bolts';
-  $strongarm->value = 0;
-  $export['comment_anonymous_nuts_bolts'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_anonymous_offsite_resource';
-  $strongarm->value = 0;
-  $export['comment_anonymous_offsite_resource'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_anonymous_page';
-  $strongarm->value = 0;
-  $export['comment_anonymous_page'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_anonymous_practice_admin_group';
-  $strongarm->value = 0;
-  $export['comment_anonymous_practice_admin_group'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_anonymous_practice_group';
-  $strongarm->value = 0;
-  $export['comment_anonymous_practice_group'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_anonymous_required_disclosure';
-  $strongarm->value = 0;
-  $export['comment_anonymous_required_disclosure'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_anonymous_roadmap_waypoint';
-  $strongarm->value = 0;
-  $export['comment_anonymous_roadmap_waypoint'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_anonymous_task';
-  $strongarm->value = 0;
-  $export['comment_anonymous_task'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_anonymous_video';
-  $strongarm->value = 0;
-  $export['comment_anonymous_video'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'comment_article';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['comment_article'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -322,6 +224,13 @@ function immunizationed_core_strongarm() {
   $strongarm->name = 'comment_book';
   $strongarm->value = '0';
   $export['comment_book'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_convenient_vaccination_services';
+  $strongarm->value = '1';
+  $export['comment_convenient_vaccination_services'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -375,6 +284,13 @@ function immunizationed_core_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_mode_panel';
+  $strongarm->value = 1;
+  $export['comment_default_mode_panel'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_mode_practice_admin_group';
   $strongarm->value = 1;
   $export['comment_default_mode_practice_admin_group'] = $strongarm;
@@ -413,6 +329,13 @@ function immunizationed_core_strongarm() {
   $strongarm->name = 'comment_default_mode_video';
   $strongarm->value = 1;
   $export['comment_default_mode_video'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_mode_webform';
+  $strongarm->value = 1;
+  $export['comment_default_mode_webform'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -523,7 +446,7 @@ function immunizationed_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_form_location_article';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['comment_form_location_article'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -536,9 +459,30 @@ function immunizationed_core_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_form_location_convenient_vaccination_services';
+  $strongarm->value = 1;
+  $export['comment_form_location_convenient_vaccination_services'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_form_location_document';
   $strongarm->value = 1;
   $export['comment_form_location_document'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_form_location_enhanced_vaccination_systems';
+  $strongarm->value = 1;
+  $export['comment_form_location_enhanced_vaccination_systems'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_form_location_motivation';
+  $strongarm->value = 1;
+  $export['comment_form_location_motivation'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -557,9 +501,30 @@ function immunizationed_core_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_form_location_page';
+  $strongarm->name = 'comment_form_location_other_additions_to_views';
   $strongarm->value = 1;
+  $export['comment_form_location_other_additions_to_views'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_form_location_page';
+  $strongarm->value = 0;
   $export['comment_form_location_page'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_form_location_panel';
+  $strongarm->value = 1;
+  $export['comment_form_location_panel'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_form_location_patient_notification';
+  $strongarm->value = 1;
+  $export['comment_form_location_patient_notification'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -593,8 +558,15 @@ function immunizationed_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_form_location_task';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['comment_form_location_task'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_form_location_vaccination_data_from_emr';
+  $strongarm->value = 1;
+  $export['comment_form_location_vaccination_data_from_emr'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -606,8 +578,22 @@ function immunizationed_core_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_form_location_webform';
+  $strongarm->value = 1;
+  $export['comment_form_location_webform'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_motivation';
+  $strongarm->value = '0';
+  $export['comment_motivation'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_nuts_bolts';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['comment_nuts_bolts'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -620,15 +606,36 @@ function immunizationed_core_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_page';
+  $strongarm->name = 'comment_other_additions_to_views';
   $strongarm->value = '0';
+  $export['comment_other_additions_to_views'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_page';
+  $strongarm->value = '1';
   $export['comment_page'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_panel';
+  $strongarm->value = '0';
+  $export['comment_panel'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_patient_notification';
+  $strongarm->value = '0';
+  $export['comment_patient_notification'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_practice_admin_group';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['comment_practice_admin_group'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -684,7 +691,7 @@ function immunizationed_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_preview_page';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['comment_preview_page'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -719,7 +726,7 @@ function immunizationed_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_preview_task';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['comment_preview_task'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -838,7 +845,7 @@ function immunizationed_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_task';
-  $strongarm->value = '2';
+  $strongarm->value = '0';
   $export['comment_task'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -2023,7 +2030,7 @@ function immunizationed_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_task';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['node_preview_task'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -2039,132 +2046,6 @@ function immunizationed_core_strongarm() {
   $strongarm->name = 'node_submitted_announcement';
   $strongarm->value = 1;
   $export['node_submitted_announcement'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_article';
-  $strongarm->value = 1;
-  $export['node_submitted_article'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_book';
-  $strongarm->value = 0;
-  $export['node_submitted_book'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_convenient_vaccination_services';
-  $strongarm->value = 0;
-  $export['node_submitted_convenient_vaccination_services'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_document';
-  $strongarm->value = 0;
-  $export['node_submitted_document'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_enhanced_vaccination_systems';
-  $strongarm->value = 0;
-  $export['node_submitted_enhanced_vaccination_systems'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_meeting_agenda';
-  $strongarm->value = 1;
-  $export['node_submitted_meeting_agenda'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_motivation';
-  $strongarm->value = 0;
-  $export['node_submitted_motivation'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_nuts_bolts';
-  $strongarm->value = 0;
-  $export['node_submitted_nuts_bolts'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_offsite_resource';
-  $strongarm->value = 0;
-  $export['node_submitted_offsite_resource'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_other_additions_to_views';
-  $strongarm->value = 1;
-  $export['node_submitted_other_additions_to_views'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_page';
-  $strongarm->value = 0;
-  $export['node_submitted_page'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_patient_notification';
-  $strongarm->value = 0;
-  $export['node_submitted_patient_notification'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_practice_admin_group';
-  $strongarm->value = 0;
-  $export['node_submitted_practice_admin_group'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_practice_group';
-  $strongarm->value = 0;
-  $export['node_submitted_practice_group'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_required_disclosure';
-  $strongarm->value = 0;
-  $export['node_submitted_required_disclosure'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_roadmap_waypoint';
-  $strongarm->value = 0;
-  $export['node_submitted_roadmap_waypoint'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_task';
-  $strongarm->value = 0;
-  $export['node_submitted_task'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_video';
-  $strongarm->value = 0;
-  $export['node_submitted_video'] = $strongarm;
 
   return $export;
 }

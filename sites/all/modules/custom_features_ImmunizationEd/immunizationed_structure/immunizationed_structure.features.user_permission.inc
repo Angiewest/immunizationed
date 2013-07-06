@@ -2302,6 +2302,20 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: view own field_pneumo.
+  $permissions['view own field_pneumo'] = array(
+    'name' => 'view own field_pneumo',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: view own field_req_assembly_instruc_p1.
   $permissions['view own field_req_assembly_instruc_p1'] = array(
     'name' => 'view own field_req_assembly_instruc_p1',
