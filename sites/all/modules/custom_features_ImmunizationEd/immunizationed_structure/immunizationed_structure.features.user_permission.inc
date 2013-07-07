@@ -402,19 +402,6 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: create meeting_agenda content.
-  $permissions['create meeting_agenda content'] = array(
-    'name' => 'create meeting_agenda content',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: create motivation content.
   $permissions['create motivation content'] = array(
     'name' => 'create motivation content',
@@ -638,16 +625,6 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete any meeting_agenda content.
-  $permissions['delete any meeting_agenda content'] = array(
-    'name' => 'delete any meeting_agenda content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: delete any motivation content.
   $permissions['delete any motivation content'] = array(
     'name' => 'delete any motivation content',
@@ -843,17 +820,6 @@ function immunizationed_structure_user_default_permissions() {
   // Exported permission: delete own enhanced_vaccination_systems content.
   $permissions['delete own enhanced_vaccination_systems content'] = array(
     'name' => 'delete own enhanced_vaccination_systems content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: delete own meeting_agenda content.
-  $permissions['delete own meeting_agenda content'] = array(
-    'name' => 'delete own meeting_agenda content',
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -1075,17 +1041,6 @@ function immunizationed_structure_user_default_permissions() {
   // Exported permission: edit any enhanced_vaccination_systems content.
   $permissions['edit any enhanced_vaccination_systems content'] = array(
     'name' => 'edit any enhanced_vaccination_systems content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: edit any meeting_agenda content.
-  $permissions['edit any meeting_agenda content'] = array(
-    'name' => 'edit any meeting_agenda content',
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -1797,19 +1752,6 @@ function immunizationed_structure_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit own meeting_agenda content.
-  $permissions['edit own meeting_agenda content'] = array(
-    'name' => 'edit own meeting_agenda content',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
   );
 
   // Exported permission: edit own motivation content.

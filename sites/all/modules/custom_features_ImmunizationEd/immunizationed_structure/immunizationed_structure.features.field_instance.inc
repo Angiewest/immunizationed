@@ -1413,275 +1413,6 @@ function immunizationed_structure_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-meeting_agenda-field_date'
-  $field_instances['node-meeting_agenda-field_date'] = array(
-    'bundle' => 'meeting_agenda',
-    'deleted' => 0,
-    'description' => 'Select the date of your meeting.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-          'show_repeat_rule' => 'show',
-        ),
-        'type' => 'date_default',
-        'weight' => 1,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_date',
-    'label' => 'Date of meeting',
-    'required' => 0,
-    'settings' => array(
-      'default_value' => 'now',
-      'default_value2' => 'same',
-      'default_value_code' => '',
-      'default_value_code2' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'date',
-      'settings' => array(
-        'increment' => 15,
-        'input_format' => 'm/d/Y - H:i:s',
-        'input_format_custom' => '',
-        'label_position' => 'above',
-        'repeat_collapsed' => 0,
-        'text_parts' => array(),
-        'year_range' => '-1:+1',
-      ),
-      'type' => 'date_popup',
-      'weight' => 32,
-    ),
-  );
-
-  // Exported field_instance: 'node-meeting_agenda-field_document'
-  $field_instances['node-meeting_agenda-field_document'] = array(
-    'bundle' => 'meeting_agenda',
-    'deleted' => 0,
-    'description' => 'You can upload your notes as an attachment for later reference.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'file',
-        'settings' => array(),
-        'type' => 'file_default',
-        'weight' => 5,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_document',
-    'label' => 'Document',
-    'required' => 0,
-    'settings' => array(
-      'description_field' => 0,
-      'file_directory' => 'docs/[practice]/agendas',
-      'file_extensions' => 'txt pdf doc docx jpg png xls xlsx ppt pptx',
-      'max_filesize' => '2 mb',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'media',
-      'settings' => array(
-        'allowed_schemes' => array(
-          'private' => 0,
-          'public' => 'public',
-        ),
-        'allowed_types' => array(
-          'audio' => 0,
-          'document' => 0,
-          'image' => 'image',
-          'video' => 0,
-        ),
-        'browser_plugins' => array(
-          'media_default--media_browser_1' => 0,
-          'media_default--media_browser_my_files' => 0,
-          'media_internet' => 0,
-          'upload' => 'upload',
-        ),
-        'progress_indicator' => 'throbber',
-      ),
-      'type' => 'media_generic',
-      'weight' => 37,
-    ),
-  );
-
-  // Exported field_instance: 'node-meeting_agenda-field_next_meeting_date'
-  $field_instances['node-meeting_agenda-field_next_meeting_date'] = array(
-    'bundle' => 'meeting_agenda',
-    'deleted' => 0,
-    'description' => 'Enter the date of when your next meeting will be held. ',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-          'show_repeat_rule' => 'show',
-        ),
-        'type' => 'date_default',
-        'weight' => 2,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_next_meeting_date',
-    'label' => 'Next Meeting Date',
-    'required' => 0,
-    'settings' => array(
-      'default_value' => 'blank',
-      'default_value2' => 'same',
-      'default_value_code' => '',
-      'default_value_code2' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'date',
-      'settings' => array(
-        'increment' => 15,
-        'input_format' => 'm/d/Y - H:i:s',
-        'input_format_custom' => '',
-        'label_position' => 'above',
-        'repeat_collapsed' => 0,
-        'text_parts' => array(),
-        'year_range' => '-1:+1',
-      ),
-      'type' => 'date_popup',
-      'weight' => 33,
-    ),
-  );
-
-  // Exported field_instance: 'node-meeting_agenda-field_notes'
-  $field_instances['node-meeting_agenda-field_notes'] = array(
-    'bundle' => 'meeting_agenda',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Insert a quick summary about the suggested agenda items.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 3,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_notes',
-    'label' => 'Notes about Agenda Topics',
-    'required' => 0,
-    'settings' => array(
-      'display_summary' => 0,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 15,
-        'summary_rows' => 5,
-      ),
-      'type' => 'text_textarea_with_summary',
-      'weight' => 34,
-    ),
-  );
-
-  // Exported field_instance: 'node-meeting_agenda-og_group_ref'
-  $field_instances['node-meeting_agenda-og_group_ref'] = array(
-    'bundle' => 'meeting_agenda',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'og_ui',
-        'settings' => array(),
-        'type' => 'og_list_default',
-        'weight' => 4,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'og_group_ref',
-    'label' => 'Groups audience',
-    'required' => FALSE,
-    'settings' => array(
-      'behaviors' => array(
-        'og_widget' => array(
-          'admin' => array(
-            'widget_type' => 'entityreference_autocomplete',
-          ),
-          'default' => array(
-            'widget_type' => 'options_select',
-          ),
-          'status' => TRUE,
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'view modes' => array(
-      'full' => array(
-        'custom settings' => FALSE,
-        'label' => 'Full',
-        'type' => 'og_list_default',
-      ),
-      'teaser' => array(
-        'custom settings' => FALSE,
-        'label' => 'Teaser',
-        'type' => 'og_list_default',
-      ),
-    ),
-    'widget' => array(
-      'module' => 'og',
-      'settings' => array(),
-      'type' => 'og_complex',
-      'weight' => 35,
-    ),
-  );
-
   // Exported field_instance: 'node-motivation-field_assembly_instruction_p4'
   $field_instances['node-motivation-field_assembly_instruction_p4'] = array(
     'bundle' => 'motivation',
@@ -4564,17 +4295,14 @@ function immunizationed_structure_field_default_field_instances() {
   t('Book page graphic');
   t('Content type reference for views filter');
   t('Date Task Completed');
-  t('Date of meeting');
   t('Description');
   t('Determine if this is an OG group.');
-  t('Document');
   t('Due date day offset from enrollment');
   t('Educational Objectives');
   t('Enter a comma-separated list of words to describe your content.');
   t('Enter a link to your practice website');
   t('Enter any citations for this page content. You may use simple HTML.');
   t('Enter the Epic ID of your practice');
-  t('Enter the date of when your next meeting will be held. ');
   t('Enter your practice address');
   t('Enter your practice phone number');
   t('Epic ID');
@@ -4584,14 +4312,11 @@ function immunizationed_structure_field_default_field_instances() {
   t('Group');
   t('Groups audience');
   t('Image');
-  t('Insert a quick summary about the suggested agenda items.');
   t('Integer used to calculate due date');
   t('Integer used to calculate suggested start date.');
   t('Internal video url');
   t('Links');
   t('Links to resources associated with this waypoint.');
-  t('Next Meeting Date');
-  t('Notes about Agenda Topics');
   t('Optionally enter a fixed due date');
   t('Optionally select an image for this task.');
   t('Other - please specify');
@@ -4613,7 +4338,6 @@ function immunizationed_structure_field_default_field_instances() {
   t('Resource image');
   t('Resource links');
   t('Responsible role');
-  t('Select the date of your meeting.');
   t('Select the role responsible for this task');
   t('Select the special practice role responsible for completing this waypoint.');
   t('Sources');
@@ -4642,7 +4366,6 @@ function immunizationed_structure_field_default_field_instances() {
   t('We highly recommend that you ensure that your clinic has sufficient vaccine inventory. ');
   t('We highly recommend that you extend your influenza vaccination season by vaccinating early and going through March. ');
   t('We highly recommend that you use Standing Orders Programs (SOPs) for vaccination in your clinic.');
-  t('You can upload your notes as an attachment for later reference.');
   t('add links to resources');
   t('article image');
   t('certification entity');

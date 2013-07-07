@@ -10,25 +10,6 @@
 function immunizationed_emr_importer_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_epic_id'
-  $field_bases['field_epic_id'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_epic_id',
-    'field_permissions' => array(
-      'type' => 2,
-    ),
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'number',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'number_integer',
-  );
-
   // Exported field_base: 'field_influenza'
   $field_bases['field_influenza'] = array(
     'active' => 1,
@@ -321,58 +302,6 @@ function immunizationed_emr_importer_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'number_integer',
-  );
-
-  // Exported field_base: 'og_group_ref'
-  $field_bases['og_group_ref'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'og_group_ref',
-    'field_permissions' => array(
-      'type' => 2,
-    ),
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
-    'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'entityreference',
-    'settings' => array(
-      'handler' => 'og',
-      'handler_settings' => array(
-        'behaviors' => array(
-          'og_behavior' => array(
-            'status' => TRUE,
-          ),
-          'views-select-list' => array(
-            'status' => 0,
-          ),
-        ),
-        'membership_type' => 'og_membership_type_default',
-        'sort' => array(
-          'type' => 'none',
-        ),
-        'target_bundles' => array(
-          'practice_group' => 'practice_group',
-        ),
-      ),
-      'handler_submit' => 'Change handler',
-      'target_type' => 'node',
-    ),
-    'target_type' => 'node',
-    'translatable' => 0,
-    'type' => 'entityreference',
   );
 
   return $field_bases;

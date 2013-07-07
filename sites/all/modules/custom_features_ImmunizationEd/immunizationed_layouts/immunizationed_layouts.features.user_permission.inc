@@ -252,13 +252,6 @@ function immunizationed_layouts_user_default_permissions() {
     'module' => 'panelizer',
   );
 
-  // Exported permission: administer panelizer node meeting_agenda defaults.
-  $permissions['administer panelizer node meeting_agenda defaults'] = array(
-    'name' => 'administer panelizer node meeting_agenda defaults',
-    'roles' => array(),
-    'module' => 'panelizer',
-  );
-
   // Exported permission: administer panelizer node motivation defaults.
   $permissions['administer panelizer node motivation defaults'] = array(
     'name' => 'administer panelizer node motivation defaults',
@@ -906,15 +899,6 @@ function immunizationed_layouts_user_default_permissions() {
     'module' => 'panels',
   );
 
-  // Exported permission: change layouts in place editing.
-  $permissions['change layouts in place editing'] = array(
-    'name' => 'change layouts in place editing',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panels',
-  );
-
   // Exported permission: create panel-nodes.
   $permissions['create panel-nodes'] = array(
     'name' => 'create panel-nodes',
@@ -992,15 +976,6 @@ function immunizationed_layouts_user_default_permissions() {
   // Exported permission: use panels dashboard.
   $permissions['use panels dashboard'] = array(
     'name' => 'use panels dashboard',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panels',
-  );
-
-  // Exported permission: use panels in place editing.
-  $permissions['use panels in place editing'] = array(
-    'name' => 'use panels in place editing',
     'roles' => array(
       'administrator' => 'administrator',
     ),

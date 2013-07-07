@@ -67,14 +67,6 @@ function immunizationed_structure_node_info() {
       'title_label' => t('Enhanced Vaccination Systems'),
       'help' => t('Add content about Pillar 3: Enhancing Vaccination Systems. '),
     ),
-    'meeting_agenda' => array(
-      'name' => t('Meeting Agenda'),
-      'base' => 'node_content',
-      'description' => t('You can add content from the Meeting Agenda document. Information collected here will be items on the agenda.'),
-      'has_title' => '1',
-      'title_label' => t('Meeting Agenda'),
-      'help' => '',
-    ),
     'motivation' => array(
       'name' => t('Motivation'),
       'base' => 'node_content',
