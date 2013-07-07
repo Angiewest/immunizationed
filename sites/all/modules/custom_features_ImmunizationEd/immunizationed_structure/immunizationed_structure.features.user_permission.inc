@@ -248,6 +248,19 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: create field_document.
+  $permissions['create field_document'] = array(
+    'name' => 'create field_document',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: create field_expected_time_to_complete.
   $permissions['create field_expected_time_to_complete'] = array(
     'name' => 'create field_expected_time_to_complete',
@@ -1307,6 +1320,18 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: edit field_document.
+  $permissions['edit field_document'] = array(
+    'name' => 'edit field_document',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: edit field_expected_time_to_complete.
   $permissions['edit field_expected_time_to_complete'] = array(
     'name' => 'edit field_expected_time_to_complete',
@@ -1610,6 +1635,19 @@ function immunizationed_structure_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own field_document.
+  $permissions['edit own field_document'] = array(
+    'name' => 'edit own field_document',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -2025,6 +2063,19 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: view field_document.
+  $permissions['view field_document'] = array(
+    'name' => 'view field_document',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: view field_expected_time_to_complete.
   $permissions['view field_expected_time_to_complete'] = array(
     'name' => 'view field_expected_time_to_complete',
@@ -2245,6 +2296,19 @@ function immunizationed_structure_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_document.
+  $permissions['view own field_document'] = array(
+    'name' => 'view own field_document',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );

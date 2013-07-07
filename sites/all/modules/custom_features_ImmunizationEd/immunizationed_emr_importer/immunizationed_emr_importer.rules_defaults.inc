@@ -12,6 +12,7 @@ function immunizationed_emr_importer_default_rules_configuration() {
   $items['rules_actions_on_feed_import'] = entity_import('rules_config', '{ "rules_actions_on_feed_import" : {
       "LABEL" : "Actions on feed import",
       "PLUGIN" : "reaction rule",
+      "WEIGHT" : "1",
       "TAGS" : [ "import" ],
       "REQUIRES" : [ "rules", "feeds" ],
       "ON" : [ "feeds_import_emr_importer" ],
@@ -94,7 +95,6 @@ function immunizationed_emr_importer_default_rules_configuration() {
   $items['rules_delete_empty_emr_import_records'] = entity_import('rules_config', '{ "rules_delete_empty_emr_import_records" : {
       "LABEL" : "Delete empty emr import records",
       "PLUGIN" : "reaction rule",
-      "ACTIVE" : false,
       "TAGS" : [ "import" ],
       "REQUIRES" : [ "rules", "feeds" ],
       "ON" : [ "feeds_import_emr_importer" ],

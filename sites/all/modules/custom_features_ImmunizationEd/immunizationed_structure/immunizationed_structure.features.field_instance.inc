@@ -1468,6 +1468,64 @@ function immunizationed_structure_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-meeting_agenda-field_document'
+  $field_instances['node-meeting_agenda-field_document'] = array(
+    'bundle' => 'meeting_agenda',
+    'deleted' => 0,
+    'description' => 'You can upload your notes as an attachment for later reference.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_document',
+    'label' => 'Document',
+    'required' => 0,
+    'settings' => array(
+      'description_field' => 0,
+      'file_directory' => 'docs/[practice]/agendas',
+      'file_extensions' => 'txt pdf doc docx jpg png xls xlsx ppt pptx',
+      'max_filesize' => '2 mb',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'media',
+      'settings' => array(
+        'allowed_schemes' => array(
+          'private' => 0,
+          'public' => 'public',
+        ),
+        'allowed_types' => array(
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'video' => 0,
+        ),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'media_internet' => 0,
+          'upload' => 'upload',
+        ),
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'media_generic',
+      'weight' => 37,
+    ),
+  );
+
   // Exported field_instance: 'node-meeting_agenda-field_next_meeting_date'
   $field_instances['node-meeting_agenda-field_next_meeting_date'] = array(
     'bundle' => 'meeting_agenda',
@@ -4509,6 +4567,7 @@ function immunizationed_structure_field_default_field_instances() {
   t('Date of meeting');
   t('Description');
   t('Determine if this is an OG group.');
+  t('Document');
   t('Due date day offset from enrollment');
   t('Educational Objectives');
   t('Enter a comma-separated list of words to describe your content.');
@@ -4583,6 +4642,7 @@ function immunizationed_structure_field_default_field_instances() {
   t('We highly recommend that you ensure that your clinic has sufficient vaccine inventory. ');
   t('We highly recommend that you extend your influenza vaccination season by vaccinating early and going through March. ');
   t('We highly recommend that you use Standing Orders Programs (SOPs) for vaccination in your clinic.');
+  t('You can upload your notes as an attachment for later reference.');
   t('add links to resources');
   t('article image');
   t('certification entity');
