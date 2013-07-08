@@ -27,13 +27,6 @@ function immunizationed_structure_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'auto_entitylabel_node_meeting_agenda';
-  $strongarm->value = '1';
-  $export['auto_entitylabel_node_meeting_agenda'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'auto_entitylabel_node_motivation';
   $strongarm->value = '1';
   $export['auto_entitylabel_node_motivation'] = $strongarm;
@@ -62,13 +55,6 @@ function immunizationed_structure_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'auto_entitylabel_pattern_node_meeting_agenda';
-  $strongarm->value = 'Meeting held [current-date:short]';
-  $export['auto_entitylabel_pattern_node_meeting_agenda'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'auto_entitylabel_pattern_node_motivation';
   $strongarm->value = 'Selected [current-date:custom:M d, Y]';
   $export['auto_entitylabel_pattern_node_motivation'] = $strongarm;
@@ -93,13 +79,6 @@ function immunizationed_structure_strongarm() {
   $strongarm->name = 'auto_entitylabel_php_node_enhanced_vaccination_systems';
   $strongarm->value = 0;
   $export['auto_entitylabel_php_node_enhanced_vaccination_systems'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'auto_entitylabel_php_node_meeting_agenda';
-  $strongarm->value = 0;
-  $export['auto_entitylabel_php_node_meeting_agenda'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -177,13 +156,6 @@ function immunizationed_structure_strongarm() {
   $strongarm->name = 'comment_default_mode_enhanced_vaccination_systems';
   $strongarm->value = 1;
   $export['comment_default_mode_enhanced_vaccination_systems'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_default_mode_meeting_agenda';
-  $strongarm->value = 1;
-  $export['comment_default_mode_meeting_agenda'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -412,13 +384,6 @@ function immunizationed_structure_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_form_location_meeting_agenda';
-  $strongarm->value = 1;
-  $export['comment_form_location_meeting_agenda'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'comment_form_location_nuts_bolts';
   $strongarm->value = 0;
   $export['comment_form_location_nuts_bolts'] = $strongarm;
@@ -478,13 +443,6 @@ function immunizationed_structure_strongarm() {
   $strongarm->name = 'comment_form_location_video';
   $strongarm->value = 1;
   $export['comment_form_location_video'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_meeting_agenda';
-  $strongarm->value = '1';
-  $export['comment_meeting_agenda'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1399,15 +1357,6 @@ function immunizationed_structure_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'menu_options_meeting_agenda';
-  $strongarm->value = array(
-    0 => 'main-menu',
-  );
-  $export['menu_options_meeting_agenda'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_motivation';
   $strongarm->value = array(
     0 => 'main-menu',
@@ -1894,13 +1843,6 @@ function immunizationed_structure_strongarm() {
   $strongarm->name = 'pathauto_node_enhanced_vaccination_systems_pattern';
   $strongarm->value = 'strategies/[node:title]';
   $export['pathauto_node_enhanced_vaccination_systems_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_meeting_agenda_pattern';
-  $strongarm->value = 'meetings/[node:title]';
-  $export['pathauto_node_meeting_agenda_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
