@@ -28,7 +28,7 @@ function immunizationed_practice_inputs_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'auto_entitylabel_pattern_node_meeting_agenda';
-  $strongarm->value = 'Meeting held [current-date:short]';
+  $strongarm->value = '[node:og_group_ref] meeting held [current-date:short]';
   $export['auto_entitylabel_pattern_node_meeting_agenda'] = $strongarm;
 
   $strongarm = new stdClass();

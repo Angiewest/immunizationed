@@ -169,7 +169,6 @@ function immunizationed_core_user_default_permissions() {
     'name' => 'access statistics',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -1358,7 +1357,6 @@ function immunizationed_core_user_default_permissions() {
     'name' => 'view post access counter',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',

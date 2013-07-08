@@ -392,24 +392,6 @@ function immunizationed_menus_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -38,
   );
-  // Exported menu link: menu-my-practice-admin:admin/people/create
-  $menu_links['menu-my-practice-admin:admin/people/create'] = array(
-    'menu_name' => 'menu-my-practice-admin',
-    'link_path' => 'admin/people/create',
-    'router_path' => 'admin/people/create',
-    'link_title' => 'Add new member to site',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'add a member to ImmunizationEd',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -50,
-  );
   // Exported menu link: menu-my-practice-admin:node/add/announcement
   $menu_links['menu-my-practice-admin:node/add/announcement'] = array(
     'menu_name' => 'menu-my-practice-admin',
@@ -763,7 +745,6 @@ function immunizationed_menus_menu_default_menu_links() {
   t('Add Video');
   t('Add Webform');
   t('Add assembly step');
-  t('Add new member to site');
   t('Add project update');
   t('Admin');
   t('All Content');

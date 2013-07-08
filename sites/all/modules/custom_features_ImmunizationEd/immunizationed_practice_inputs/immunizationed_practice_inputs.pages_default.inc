@@ -61,7 +61,7 @@ function immunizationed_practice_inputs_default_page_manager_handlers() {
     ),
   );
   $display = new panels_display();
-  $display->layout = 'flexible:everything_template_best';
+  $display->layout = 'twocol_bricks';
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(
@@ -72,6 +72,12 @@ function immunizationed_practice_inputs_default_page_manager_handlers() {
       'bottom_right' => NULL,
       'image' => NULL,
       'body' => NULL,
+      'top' => NULL,
+      'left_above' => NULL,
+      'right_above' => NULL,
+      'middle' => NULL,
+      'left_below' => NULL,
+      'right_below' => NULL,
     ),
   );
   $display->cache = array();
@@ -80,53 +86,7 @@ function immunizationed_practice_inputs_default_page_manager_handlers() {
   $display->panels = array();
     $pane = new stdClass();
     $pane->pid = 'new-1';
-    $pane->panel = 'bottom';
-    $pane->type = 'entity_form_field';
-    $pane->subtype = 'node:field_document';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'label' => '',
-      'formatter' => '',
-      'context' => 'argument_node_edit_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-1'] = $pane;
-    $display->panels['bottom'][0] = 'new-1';
-    $pane = new stdClass();
-    $pane->pid = 'new-2';
-    $pane->panel = 'bottom';
-    $pane->type = 'node_form_buttons';
-    $pane->subtype = 'node_form_buttons';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => 'argument_node_edit_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 1;
-    $pane->locks = array();
-    $display->content['new-2'] = $pane;
-    $display->panels['bottom'][1] = 'new-2';
-    $pane = new stdClass();
-    $pane->pid = 'new-3';
-    $pane->panel = 'bottom_left';
+    $pane->panel = 'left_above';
     $pane->type = 'entity_form_field';
     $pane->subtype = 'node:field_date';
     $pane->shown = TRUE;
@@ -146,11 +106,57 @@ function immunizationed_practice_inputs_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
+    $display->content['new-1'] = $pane;
+    $display->panels['left_above'][0] = 'new-1';
+    $pane = new stdClass();
+    $pane->pid = 'new-2';
+    $pane->panel = 'left_below';
+    $pane->type = 'node_form_buttons';
+    $pane->subtype = 'node_form_buttons';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => 'argument_node_edit_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-2'] = $pane;
+    $display->panels['left_below'][0] = 'new-2';
+    $pane = new stdClass();
+    $pane->pid = 'new-3';
+    $pane->panel = 'middle';
+    $pane->type = 'entity_form_field';
+    $pane->subtype = 'node:field_document';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'label' => '',
+      'formatter' => '',
+      'context' => 'argument_node_edit_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
     $display->content['new-3'] = $pane;
-    $display->panels['bottom_left'][0] = 'new-3';
+    $display->panels['middle'][0] = 'new-3';
     $pane = new stdClass();
     $pane->pid = 'new-4';
-    $pane->panel = 'bottom_right';
+    $pane->panel = 'right_above';
     $pane->type = 'entity_form_field';
     $pane->subtype = 'node:field_next_meeting_date';
     $pane->shown = TRUE;
@@ -171,10 +177,10 @@ function immunizationed_practice_inputs_default_page_manager_handlers() {
     $pane->position = 0;
     $pane->locks = array();
     $display->content['new-4'] = $pane;
-    $display->panels['bottom_right'][0] = 'new-4';
+    $display->panels['right_above'][0] = 'new-4';
     $pane = new stdClass();
     $pane->pid = 'new-5';
-    $pane->panel = 'center';
+    $pane->panel = 'top';
     $pane->type = 'views_panes';
     $pane->subtype = 'other_additions_to_views-panel_pane_4';
     $pane->shown = TRUE;
@@ -189,10 +195,10 @@ function immunizationed_practice_inputs_default_page_manager_handlers() {
     $pane->position = 0;
     $pane->locks = array();
     $display->content['new-5'] = $pane;
-    $display->panels['center'][0] = 'new-5';
+    $display->panels['top'][0] = 'new-5';
     $pane = new stdClass();
     $pane->pid = 'new-6';
-    $pane->panel = 'center';
+    $pane->panel = 'top';
     $pane->type = 'entity_form_field';
     $pane->subtype = 'node:field_notes';
     $pane->shown = TRUE;
@@ -213,7 +219,7 @@ function immunizationed_practice_inputs_default_page_manager_handlers() {
     $pane->position = 1;
     $pane->locks = array();
     $display->content['new-6'] = $pane;
-    $display->panels['center'][1] = 'new-6';
+    $display->panels['top'][1] = 'new-6';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-2';
   $handler->conf['display'] = $display;

@@ -349,6 +349,11 @@ function immunizationed_rules_default_rules_configuration() {
                       }
                     }
                   }
+                },
+                { "node_is_of_type" : {
+                    "node" : [ "node" ],
+                    "type" : { "value" : { "meeting_agenda" : "meeting_agenda" } }
+                  }
                 }
               ]
             }

@@ -19,6 +19,13 @@ function immunizationed_practice_inputs_ctools_plugin_api() {
 }
 
 /**
+ * Implements hook_views_api().
+ */
+function immunizationed_practice_inputs_views_api() {
+  return array("api" => "3.0");
+}
+
+/**
  * Implements hook_node_info().
  */
 function immunizationed_practice_inputs_node_info() {
