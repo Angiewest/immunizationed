@@ -197,9 +197,11 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['create field_assembly_instruction_p2'] = array(
     'name' => 'create field_assembly_instruction_p2',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
@@ -209,8 +211,12 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['create field_assembly_instruction_p3'] = array(
     'name' => 'create field_assembly_instruction_p3',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -219,9 +225,11 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['create field_assembly_instruction_p4'] = array(
     'name' => 'create field_assembly_instruction_p4',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
@@ -258,10 +266,10 @@ function immunizationed_structure_user_default_permissions() {
     'name' => 'create field_document',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
@@ -284,9 +292,11 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['create field_other_please_specify_p1'] = array(
     'name' => 'create field_other_please_specify_p1',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
@@ -296,9 +306,11 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['create field_other_please_specify_p2'] = array(
     'name' => 'create field_other_please_specify_p2',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
@@ -308,8 +320,12 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['create field_other_please_specify_p3'] = array(
     'name' => 'create field_other_please_specify_p3',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -318,8 +334,12 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['create field_other_please_specify_p4'] = array(
     'name' => 'create field_other_please_specify_p4',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -1294,7 +1314,6 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['edit field_document'] = array(
     'name' => 'edit field_document',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -1417,7 +1436,6 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['edit field_task_due_date'] = array(
     'name' => 'edit field_task_due_date',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -1618,11 +1636,8 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['edit own field_document'] = array(
     'name' => 'edit own field_document',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
@@ -1980,8 +1995,12 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view field_assembly_instruction_p2'] = array(
     'name' => 'view field_assembly_instruction_p2',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -1990,8 +2009,12 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view field_assembly_instruction_p3'] = array(
     'name' => 'view field_assembly_instruction_p3',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -2000,8 +2023,12 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view field_assembly_instruction_p4'] = array(
     'name' => 'view field_assembly_instruction_p4',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -2039,10 +2066,10 @@ function immunizationed_structure_user_default_permissions() {
     'name' => 'view field_document',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
@@ -2066,8 +2093,12 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view field_other_please_specify_p1'] = array(
     'name' => 'view field_other_please_specify_p1',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -2076,8 +2107,12 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view field_other_please_specify_p2'] = array(
     'name' => 'view field_other_please_specify_p2',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -2086,8 +2121,12 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view field_other_please_specify_p3'] = array(
     'name' => 'view field_other_please_specify_p3',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -2096,8 +2135,12 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view field_other_please_specify_p4'] = array(
     'name' => 'view field_other_please_specify_p4',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -2106,8 +2149,12 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view field_req_assembly_instruc_p1'] = array(
     'name' => 'view field_req_assembly_instruc_p1',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -2126,8 +2173,12 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view field_req_assembly_instruc_p3'] = array(
     'name' => 'view field_req_assembly_instruc_p3',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -2136,8 +2187,12 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view field_req_assembly_instruc_p4'] = array(
     'name' => 'view field_req_assembly_instruc_p4',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -2156,9 +2211,11 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view field_task_due_date'] = array(
     'name' => 'view field_task_due_date',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
@@ -2230,8 +2287,12 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view own field_assembly_instruction_p2'] = array(
     'name' => 'view own field_assembly_instruction_p2',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -2240,8 +2301,12 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view own field_assembly_instruction_p3'] = array(
     'name' => 'view own field_assembly_instruction_p3',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -2250,8 +2315,12 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view own field_assembly_instruction_p4'] = array(
     'name' => 'view own field_assembly_instruction_p4',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -2292,7 +2361,6 @@ function immunizationed_structure_user_default_permissions() {
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
@@ -2316,8 +2384,12 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view own field_other_please_specify_p1'] = array(
     'name' => 'view own field_other_please_specify_p1',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -2326,8 +2398,12 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view own field_other_please_specify_p2'] = array(
     'name' => 'view own field_other_please_specify_p2',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -2336,8 +2412,12 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view own field_other_please_specify_p3'] = array(
     'name' => 'view own field_other_please_specify_p3',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -2346,8 +2426,12 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view own field_other_please_specify_p4'] = array(
     'name' => 'view own field_other_please_specify_p4',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -2357,10 +2441,10 @@ function immunizationed_structure_user_default_permissions() {
     'name' => 'view own field_pneumo',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
@@ -2391,8 +2475,12 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view own field_req_assembly_instruc_p3'] = array(
     'name' => 'view own field_req_assembly_instruc_p3',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -2401,8 +2489,12 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view own field_req_assembly_instruc_p4'] = array(
     'name' => 'view own field_req_assembly_instruc_p4',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -2421,8 +2513,12 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view own field_task_due_date'] = array(
     'name' => 'view own field_task_due_date',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );

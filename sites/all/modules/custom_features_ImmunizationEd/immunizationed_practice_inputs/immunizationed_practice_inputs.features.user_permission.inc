@@ -21,8 +21,11 @@ function immunizationed_practice_inputs_user_default_permissions() {
   $permissions['create field_date'] = array(
     'name' => 'create field_date',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -32,11 +35,9 @@ function immunizationed_practice_inputs_user_default_permissions() {
     'name' => 'create field_next_meeting_date',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
@@ -46,8 +47,11 @@ function immunizationed_practice_inputs_user_default_permissions() {
   $permissions['create field_notes'] = array(
     'name' => 'create field_notes',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -57,7 +61,6 @@ function immunizationed_practice_inputs_user_default_permissions() {
     'name' => 'create meeting_agenda content',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -71,7 +74,6 @@ function immunizationed_practice_inputs_user_default_permissions() {
     'name' => 'delete any meeting_agenda content',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -85,8 +87,6 @@ function immunizationed_practice_inputs_user_default_permissions() {
     'name' => 'delete own meeting_agenda content',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -99,8 +99,6 @@ function immunizationed_practice_inputs_user_default_permissions() {
     'name' => 'edit any meeting_agenda content',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -113,7 +111,8 @@ function immunizationed_practice_inputs_user_default_permissions() {
     'name' => 'edit field_date',
     'roles' => array(
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -122,11 +121,8 @@ function immunizationed_practice_inputs_user_default_permissions() {
   $permissions['edit field_next_meeting_date'] = array(
     'name' => 'edit field_next_meeting_date',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
@@ -137,7 +133,8 @@ function immunizationed_practice_inputs_user_default_permissions() {
     'name' => 'edit field_notes',
     'roles' => array(
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -147,7 +144,8 @@ function immunizationed_practice_inputs_user_default_permissions() {
     'name' => 'edit own field_date',
     'roles' => array(
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -160,7 +158,6 @@ function immunizationed_practice_inputs_user_default_permissions() {
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
@@ -171,7 +168,8 @@ function immunizationed_practice_inputs_user_default_permissions() {
     'name' => 'edit own field_notes',
     'roles' => array(
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -181,8 +179,6 @@ function immunizationed_practice_inputs_user_default_permissions() {
     'name' => 'edit own meeting_agenda content',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -194,8 +190,12 @@ function immunizationed_practice_inputs_user_default_permissions() {
   $permissions['view field_date'] = array(
     'name' => 'view field_date',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -209,7 +209,6 @@ function immunizationed_practice_inputs_user_default_permissions() {
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
@@ -219,8 +218,12 @@ function immunizationed_practice_inputs_user_default_permissions() {
   $permissions['view field_notes'] = array(
     'name' => 'view field_notes',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -229,8 +232,12 @@ function immunizationed_practice_inputs_user_default_permissions() {
   $permissions['view own field_date'] = array(
     'name' => 'view own field_date',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -240,10 +247,10 @@ function immunizationed_practice_inputs_user_default_permissions() {
     'name' => 'view own field_next_meeting_date',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
@@ -253,8 +260,12 @@ function immunizationed_practice_inputs_user_default_permissions() {
   $permissions['view own field_notes'] = array(
     'name' => 'view own field_notes',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
