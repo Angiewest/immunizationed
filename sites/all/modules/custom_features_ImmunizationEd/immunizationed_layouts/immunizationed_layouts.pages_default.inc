@@ -2043,7 +2043,6 @@ function immunizationed_layouts_default_page_manager_handlers() {
             'type' => array(
               'convenient_vaccination_services' => 'convenient_vaccination_services',
               'enhanced_vaccination_systems' => 'enhanced_vaccination_systems',
-              'meeting_agenda' => 'meeting_agenda',
               'motivation' => 'motivation',
               'patient_notification' => 'patient_notification',
               'task' => 'task',

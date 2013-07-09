@@ -13,6 +13,80 @@ function immunizationed_practice_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'additional_settings__active_tab_practice';
+  $strongarm->value = 'edit-og';
+  $export['additional_settings__active_tab_practice'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'additional_settings__active_tab_practice_group';
+  $strongarm->value = 'edit-og';
+  $export['additional_settings__active_tab_practice_group'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'botcha_enabled_comment_node_practice_group_form';
+  $strongarm->value = 1;
+  $export['botcha_enabled_comment_node_practice_group_form'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_enable_revisions_page_node_practice_group';
+  $strongarm->value = 1;
+  $export['diff_enable_revisions_page_node_practice_group'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_show_preview_changes_node_practice_group';
+  $strongarm->value = 1;
+  $export['diff_show_preview_changes_node_practice_group'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_view_mode_preview_node_practice_group';
+  $strongarm->value = 'full';
+  $export['diff_view_mode_preview_node_practice_group'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_options_practice';
+  $strongarm->value = array(
+    0 => 'main-menu',
+  );
+  $export['menu_options_practice'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_parent_practice';
+  $strongarm->value = 'main-menu:0';
+  $export['menu_parent_practice'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_options_practice';
+  $strongarm->value = array(
+    0 => 'status',
+  );
+  $export['node_options_practice'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_submitted_practice';
+  $strongarm->value = 0;
+  $export['node_submitted_practice'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'og_context_negotiation_group_context';
   $strongarm->value = array(
     'url' => array(),
@@ -105,6 +179,13 @@ function immunizationed_practice_strongarm() {
   $strongarm->name = 'og_use_queue';
   $strongarm->value = 0;
   $export['og_use_queue'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'save_continue_practice_group';
+  $strongarm->value = 'Save and add fields';
+  $export['save_continue_practice_group'] = $strongarm;
 
   return $export;
 }

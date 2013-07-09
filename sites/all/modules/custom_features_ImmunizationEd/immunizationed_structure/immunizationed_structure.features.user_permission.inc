@@ -40,6 +40,7 @@ function immunizationed_structure_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -143,19 +144,6 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: create convenient_vaccination_services content.
-  $permissions['create convenient_vaccination_services content'] = array(
-    'name' => 'create convenient_vaccination_services content',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: create document content.
   $permissions['create document content'] = array(
     'name' => 'create document content',
@@ -165,32 +153,6 @@ function immunizationed_structure_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'node',
-  );
-
-  // Exported permission: create enhanced_vaccination_systems content.
-  $permissions['create enhanced_vaccination_systems content'] = array(
-    'name' => 'create enhanced_vaccination_systems content',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: create field_assembly_instruction.
-  $permissions['create field_assembly_instruction'] = array(
-    'name' => 'create field_assembly_instruction',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
   );
 
   // Exported permission: create field_assembly_instruction_p2.
@@ -261,39 +223,11 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: create field_document.
-  $permissions['create field_document'] = array(
-    'name' => 'create field_document',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: create field_expected_time_to_complete.
   $permissions['create field_expected_time_to_complete'] = array(
     'name' => 'create field_expected_time_to_complete',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: create field_other_please_specify_p1.
-  $permissions['create field_other_please_specify_p1'] = array(
-    'name' => 'create field_other_please_specify_p1',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -337,17 +271,6 @@ function immunizationed_structure_user_default_permissions() {
       'Co-I admin' => 'Co-I admin',
       'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: create field_req_assembly_instruc_p1.
-  $permissions['create field_req_assembly_instruc_p1'] = array(
-    'name' => 'create field_req_assembly_instruc_p1',
-    'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -434,19 +357,6 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: create motivation content.
-  $permissions['create motivation content'] = array(
-    'name' => 'create motivation content',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: create nuts_bolts content.
   $permissions['create nuts_bolts content'] = array(
     'name' => 'create nuts_bolts content',
@@ -479,16 +389,6 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: create other_additions_to_views content.
-  $permissions['create other_additions_to_views content'] = array(
-    'name' => 'create other_additions_to_views content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: create page content.
   $permissions['create page content'] = array(
     'name' => 'create page content',
@@ -504,19 +404,6 @@ function immunizationed_structure_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: create patient_notification content.
-  $permissions['create patient_notification content'] = array(
-    'name' => 'create patient_notification content',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -627,39 +514,9 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete any convenient_vaccination_services content.
-  $permissions['delete any convenient_vaccination_services content'] = array(
-    'name' => 'delete any convenient_vaccination_services content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: delete any document content.
   $permissions['delete any document content'] = array(
     'name' => 'delete any document content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: delete any enhanced_vaccination_systems content.
-  $permissions['delete any enhanced_vaccination_systems content'] = array(
-    'name' => 'delete any enhanced_vaccination_systems content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: delete any motivation content.
-  $permissions['delete any motivation content'] = array(
-    'name' => 'delete any motivation content',
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -687,16 +544,6 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete any other_additions_to_views content.
-  $permissions['delete any other_additions_to_views content'] = array(
-    'name' => 'delete any other_additions_to_views content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: delete any page content.
   $permissions['delete any page content'] = array(
     'name' => 'delete any page content',
@@ -709,16 +556,6 @@ function immunizationed_structure_user_default_permissions() {
   // Exported permission: delete any panel content.
   $permissions['delete any panel content'] = array(
     'name' => 'delete any panel content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: delete any patient_notification content.
-  $permissions['delete any patient_notification content'] = array(
-    'name' => 'delete any patient_notification content',
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -827,42 +664,9 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete own convenient_vaccination_services content.
-  $permissions['delete own convenient_vaccination_services content'] = array(
-    'name' => 'delete own convenient_vaccination_services content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: delete own document content.
   $permissions['delete own document content'] = array(
     'name' => 'delete own document content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: delete own enhanced_vaccination_systems content.
-  $permissions['delete own enhanced_vaccination_systems content'] = array(
-    'name' => 'delete own enhanced_vaccination_systems content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: delete own motivation content.
-  $permissions['delete own motivation content'] = array(
-    'name' => 'delete own motivation content',
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -893,16 +697,6 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete own other_additions_to_views content.
-  $permissions['delete own other_additions_to_views content'] = array(
-    'name' => 'delete own other_additions_to_views content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: delete own page content.
   $permissions['delete own page content'] = array(
     'name' => 'delete own page content',
@@ -918,17 +712,6 @@ function immunizationed_structure_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: delete own patient_notification content.
-  $permissions['delete own patient_notification content'] = array(
-    'name' => 'delete own patient_notification content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -1048,42 +831,9 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit any convenient_vaccination_services content.
-  $permissions['edit any convenient_vaccination_services content'] = array(
-    'name' => 'edit any convenient_vaccination_services content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: edit any document content.
   $permissions['edit any document content'] = array(
     'name' => 'edit any document content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: edit any enhanced_vaccination_systems content.
-  $permissions['edit any enhanced_vaccination_systems content'] = array(
-    'name' => 'edit any enhanced_vaccination_systems content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: edit any motivation content.
-  $permissions['edit any motivation content'] = array(
-    'name' => 'edit any motivation content',
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -1114,16 +864,6 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit any other_additions_to_views content.
-  $permissions['edit any other_additions_to_views content'] = array(
-    'name' => 'edit any other_additions_to_views content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: edit any page content.
   $permissions['edit any page content'] = array(
     'name' => 'edit any page content',
@@ -1139,17 +879,6 @@ function immunizationed_structure_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: edit any patient_notification content.
-  $permissions['edit any patient_notification content'] = array(
-    'name' => 'edit any patient_notification content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -1242,18 +971,6 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: edit field_assembly_instruction.
-  $permissions['edit field_assembly_instruction'] = array(
-    'name' => 'edit field_assembly_instruction',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: edit field_assembly_instruction_p2.
   $permissions['edit field_assembly_instruction_p2'] = array(
     'name' => 'edit field_assembly_instruction_p2',
@@ -1310,31 +1027,9 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: edit field_document.
-  $permissions['edit field_document'] = array(
-    'name' => 'edit field_document',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: edit field_expected_time_to_complete.
   $permissions['edit field_expected_time_to_complete'] = array(
     'name' => 'edit field_expected_time_to_complete',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit field_other_please_specify_p1.
-  $permissions['edit field_other_please_specify_p1'] = array(
-    'name' => 'edit field_other_please_specify_p1',
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -1368,17 +1063,6 @@ function immunizationed_structure_user_default_permissions() {
   // Exported permission: edit field_other_please_specify_p4.
   $permissions['edit field_other_please_specify_p4'] = array(
     'name' => 'edit field_other_please_specify_p4',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit field_req_assembly_instruc_p1.
-  $permissions['edit field_req_assembly_instruc_p1'] = array(
-    'name' => 'edit field_req_assembly_instruc_p1',
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -1523,19 +1207,6 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit own convenient_vaccination_services content.
-  $permissions['edit own convenient_vaccination_services content'] = array(
-    'name' => 'edit own convenient_vaccination_services content',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: edit own document content.
   $permissions['edit own document content'] = array(
     'name' => 'edit own document content',
@@ -1545,32 +1216,6 @@ function immunizationed_structure_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'node',
-  );
-
-  // Exported permission: edit own enhanced_vaccination_systems content.
-  $permissions['edit own enhanced_vaccination_systems content'] = array(
-    'name' => 'edit own enhanced_vaccination_systems content',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: edit own field_assembly_instruction.
-  $permissions['edit own field_assembly_instruction'] = array(
-    'name' => 'edit own field_assembly_instruction',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
   );
 
   // Exported permission: edit own field_assembly_instruction_p2.
@@ -1632,34 +1277,12 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: edit own field_document.
-  $permissions['edit own field_document'] = array(
-    'name' => 'edit own field_document',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: edit own field_expected_time_to_complete.
   $permissions['edit own field_expected_time_to_complete'] = array(
     'name' => 'edit own field_expected_time_to_complete',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
       'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit own field_other_please_specify_p1.
-  $permissions['edit own field_other_please_specify_p1'] = array(
-    'name' => 'edit own field_other_please_specify_p1',
-    'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -1692,17 +1315,6 @@ function immunizationed_structure_user_default_permissions() {
   // Exported permission: edit own field_other_please_specify_p4.
   $permissions['edit own field_other_please_specify_p4'] = array(
     'name' => 'edit own field_other_please_specify_p4',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit own field_req_assembly_instruc_p1.
-  $permissions['edit own field_req_assembly_instruc_p1'] = array(
-    'name' => 'edit own field_req_assembly_instruc_p1',
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -1789,19 +1401,6 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: edit own motivation content.
-  $permissions['edit own motivation content'] = array(
-    'name' => 'edit own motivation content',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: edit own nuts_bolts content.
   $permissions['edit own nuts_bolts content'] = array(
     'name' => 'edit own nuts_bolts content',
@@ -1835,16 +1434,6 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: edit own other_additions_to_views content.
-  $permissions['edit own other_additions_to_views content'] = array(
-    'name' => 'edit own other_additions_to_views content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: edit own page content.
   $permissions['edit own page content'] = array(
     'name' => 'edit own page content',
@@ -1860,19 +1449,6 @@ function immunizationed_structure_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: edit own patient_notification content.
-  $permissions['edit own patient_notification content'] = array(
-    'name' => 'edit own patient_notification content',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -1977,20 +1553,6 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: view field_assembly_instruction.
-  $permissions['view field_assembly_instruction'] = array(
-    'name' => 'view field_assembly_instruction',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: view field_assembly_instruction_p2.
   $permissions['view field_assembly_instruction_p2'] = array(
     'name' => 'view field_assembly_instruction_p2',
@@ -2061,37 +1623,9 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: view field_document.
-  $permissions['view field_document'] = array(
-    'name' => 'view field_document',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: view field_expected_time_to_complete.
   $permissions['view field_expected_time_to_complete'] = array(
     'name' => 'view field_expected_time_to_complete',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view field_other_please_specify_p1.
-  $permissions['view field_other_please_specify_p1'] = array(
-    'name' => 'view field_other_please_specify_p1',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
       'Group member' => 'Group member',
@@ -2134,20 +1668,6 @@ function immunizationed_structure_user_default_permissions() {
   // Exported permission: view field_other_please_specify_p4.
   $permissions['view field_other_please_specify_p4'] = array(
     'name' => 'view field_other_please_specify_p4',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view field_req_assembly_instruc_p1.
-  $permissions['view field_req_assembly_instruc_p1'] = array(
-    'name' => 'view field_req_assembly_instruc_p1',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
       'Group member' => 'Group member',
@@ -2269,20 +1789,6 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: view own field_assembly_instruction.
-  $permissions['view own field_assembly_instruction'] = array(
-    'name' => 'view own field_assembly_instruction',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: view own field_assembly_instruction_p2.
   $permissions['view own field_assembly_instruction_p2'] = array(
     'name' => 'view own field_assembly_instruction_p2',
@@ -2352,37 +1858,9 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: view own field_document.
-  $permissions['view own field_document'] = array(
-    'name' => 'view own field_document',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: view own field_expected_time_to_complete.
   $permissions['view own field_expected_time_to_complete'] = array(
     'name' => 'view own field_expected_time_to_complete',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view own field_other_please_specify_p1.
-  $permissions['view own field_other_please_specify_p1'] = array(
-    'name' => 'view own field_other_please_specify_p1',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
       'Group member' => 'Group member',
@@ -2429,31 +1907,6 @@ function immunizationed_structure_user_default_permissions() {
       'Co-I admin' => 'Co-I admin',
       'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view own field_pneumo.
-  $permissions['view own field_pneumo'] = array(
-    'name' => 'view own field_pneumo',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view own field_req_assembly_instruc_p1.
-  $permissions['view own field_req_assembly_instruc_p1'] = array(
-    'name' => 'view own field_req_assembly_instruc_p1',
-    'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',

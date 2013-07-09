@@ -555,27 +555,6 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
-  // Exported permission: delete terms in 10.
-  $permissions['delete terms in 10'] = array(
-    'name' => 'delete terms in 10',
-    'roles' => array(),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: delete terms in 11.
-  $permissions['delete terms in 11'] = array(
-    'name' => 'delete terms in 11',
-    'roles' => array(),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: delete terms in 12.
-  $permissions['delete terms in 12'] = array(
-    'name' => 'delete terms in 12',
-    'roles' => array(),
-    'module' => 'taxonomy',
-  );
-
   // Exported permission: delete terms in 13.
   $permissions['delete terms in 13'] = array(
     'name' => 'delete terms in 13',
@@ -610,50 +589,6 @@ function immunizationed_core_user_default_permissions() {
       'administrator' => 'administrator',
       'editor' => 'editor',
     ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: delete terms in 5.
-  $permissions['delete terms in 5'] = array(
-    'name' => 'delete terms in 5',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: delete terms in 6.
-  $permissions['delete terms in 6'] = array(
-    'name' => 'delete terms in 6',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: delete terms in 7.
-  $permissions['delete terms in 7'] = array(
-    'name' => 'delete terms in 7',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: delete terms in 8.
-  $permissions['delete terms in 8'] = array(
-    'name' => 'delete terms in 8',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: delete terms in 9.
-  $permissions['delete terms in 9'] = array(
-    'name' => 'delete terms in 9',
-    'roles' => array(),
     'module' => 'taxonomy',
   );
 
@@ -704,33 +639,6 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
-  // Exported permission: edit terms in 10.
-  $permissions['edit terms in 10'] = array(
-    'name' => 'edit terms in 10',
-    'roles' => array(
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: edit terms in 11.
-  $permissions['edit terms in 11'] = array(
-    'name' => 'edit terms in 11',
-    'roles' => array(
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: edit terms in 12.
-  $permissions['edit terms in 12'] = array(
-    'name' => 'edit terms in 12',
-    'roles' => array(
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'taxonomy',
-  );
-
   // Exported permission: edit terms in 13.
   $permissions['edit terms in 13'] = array(
     'name' => 'edit terms in 13',
@@ -764,52 +672,6 @@ function immunizationed_core_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'editor' => 'editor',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: edit terms in 5.
-  $permissions['edit terms in 5'] = array(
-    'name' => 'edit terms in 5',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: edit terms in 6.
-  $permissions['edit terms in 6'] = array(
-    'name' => 'edit terms in 6',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: edit terms in 7.
-  $permissions['edit terms in 7'] = array(
-    'name' => 'edit terms in 7',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: edit terms in 8.
-  $permissions['edit terms in 8'] = array(
-    'name' => 'edit terms in 8',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: edit terms in 9.
-  $permissions['edit terms in 9'] = array(
-    'name' => 'edit terms in 9',
-    'roles' => array(
-      'authenticated user' => 'authenticated user',
     ),
     'module' => 'taxonomy',
   );

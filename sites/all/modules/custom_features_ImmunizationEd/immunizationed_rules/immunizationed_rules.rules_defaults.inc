@@ -325,6 +325,11 @@ function immunizationed_rules_default_rules_configuration() {
       "ON" : [ "node_insert", "node_update" ],
       "IF" : [
         { "entity_has_field" : { "entity" : [ "node" ], "field" : "og_group_ref" } },
+        { "node_is_of_type" : {
+            "node" : [ "node" ],
+            "type" : { "value" : { "meeting_agenda" : "meeting_agenda" } }
+          }
+        },
         { "AND" : [
             { "OR" : [
                 { "node_is_of_type" : {
@@ -348,11 +353,6 @@ function immunizationed_rules_default_rules_configuration() {
                         "patient_notification" : "patient_notification"
                       }
                     }
-                  }
-                },
-                { "node_is_of_type" : {
-                    "node" : [ "node" ],
-                    "type" : { "value" : { "meeting_agenda" : "meeting_agenda" } }
                   }
                 }
               ]

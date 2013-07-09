@@ -245,20 +245,6 @@ function immunizationed_layouts_user_default_permissions() {
     'module' => 'panelizer',
   );
 
-  // Exported permission: administer panelizer node enhanced_vaccination_systems defaults.
-  $permissions['administer panelizer node enhanced_vaccination_systems defaults'] = array(
-    'name' => 'administer panelizer node enhanced_vaccination_systems defaults',
-    'roles' => array(),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node motivation defaults.
-  $permissions['administer panelizer node motivation defaults'] = array(
-    'name' => 'administer panelizer node motivation defaults',
-    'roles' => array(),
-    'module' => 'panelizer',
-  );
-
   // Exported permission: administer panelizer node nuts_bolts content.
   $permissions['administer panelizer node nuts_bolts content'] = array(
     'name' => 'administer panelizer node nuts_bolts content',
@@ -660,13 +646,6 @@ function immunizationed_layouts_user_default_permissions() {
     'module' => 'panelizer',
   );
 
-  // Exported permission: administer panelizer node vaccination_data_from_emr defaults.
-  $permissions['administer panelizer node vaccination_data_from_emr defaults'] = array(
-    'name' => 'administer panelizer node vaccination_data_from_emr defaults',
-    'roles' => array(),
-    'module' => 'panelizer',
-  );
-
   // Exported permission: administer panelizer node video content.
   $permissions['administer panelizer node video content'] = array(
     'name' => 'administer panelizer node video content',
@@ -739,74 +718,10 @@ function immunizationed_layouts_user_default_permissions() {
     'module' => 'panelizer',
   );
 
-  // Exported permission: administer panelizer taxonomy_term convenient_vaccination_services_other defaults.
-  $permissions['administer panelizer taxonomy_term convenient_vaccination_services_other defaults'] = array(
-    'name' => 'administer panelizer taxonomy_term convenient_vaccination_services_other defaults',
-    'roles' => array(),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer taxonomy_term convenient_vaccination_services_strategies defaults.
-  $permissions['administer panelizer taxonomy_term convenient_vaccination_services_strategies defaults'] = array(
-    'name' => 'administer panelizer taxonomy_term convenient_vaccination_services_strategies defaults',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer taxonomy_term enhanced_office_vaccination_systems_strategies defaults.
-  $permissions['administer panelizer taxonomy_term enhanced_office_vaccination_systems_strategies defaults'] = array(
-    'name' => 'administer panelizer taxonomy_term enhanced_office_vaccination_systems_strategies defaults',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer taxonomy_term enhanced_vaccination_systems_other defaults.
-  $permissions['administer panelizer taxonomy_term enhanced_vaccination_systems_other defaults'] = array(
-    'name' => 'administer panelizer taxonomy_term enhanced_vaccination_systems_other defaults',
-    'roles' => array(),
-    'module' => 'panelizer',
-  );
-
   // Exported permission: administer panelizer taxonomy_term form_relationships defaults.
   $permissions['administer panelizer taxonomy_term form_relationships defaults'] = array(
     'name' => 'administer panelizer taxonomy_term form_relationships defaults',
     'roles' => array(),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer taxonomy_term motivation defaults.
-  $permissions['administer panelizer taxonomy_term motivation defaults'] = array(
-    'name' => 'administer panelizer taxonomy_term motivation defaults',
-    'roles' => array(),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer taxonomy_term motivation_strategies_ defaults.
-  $permissions['administer panelizer taxonomy_term motivation_strategies_ defaults'] = array(
-    'name' => 'administer panelizer taxonomy_term motivation_strategies_ defaults',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer taxonomy_term patient_notification_other defaults.
-  $permissions['administer panelizer taxonomy_term patient_notification_other defaults'] = array(
-    'name' => 'administer panelizer taxonomy_term patient_notification_other defaults',
-    'roles' => array(),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer taxonomy_term patient_notification_strategies defaults.
-  $permissions['administer panelizer taxonomy_term patient_notification_strategies defaults'] = array(
-    'name' => 'administer panelizer taxonomy_term patient_notification_strategies defaults',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
     'module' => 'panelizer',
   );
 
@@ -819,47 +734,12 @@ function immunizationed_layouts_user_default_permissions() {
     'module' => 'panelizer',
   );
 
-  // Exported permission: administer panelizer taxonomy_term special_practice_role content.
-  $permissions['administer panelizer taxonomy_term special_practice_role content'] = array(
-    'name' => 'administer panelizer taxonomy_term special_practice_role content',
-    'roles' => array(),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer taxonomy_term special_practice_role context.
-  $permissions['administer panelizer taxonomy_term special_practice_role context'] = array(
-    'name' => 'administer panelizer taxonomy_term special_practice_role context',
-    'roles' => array(),
-    'module' => 'panelizer',
-  );
-
   // Exported permission: administer panelizer taxonomy_term special_practice_role defaults.
   $permissions['administer panelizer taxonomy_term special_practice_role defaults'] = array(
     'name' => 'administer panelizer taxonomy_term special_practice_role defaults',
     'roles' => array(
       'administrator' => 'administrator',
     ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer taxonomy_term special_practice_role layout.
-  $permissions['administer panelizer taxonomy_term special_practice_role layout'] = array(
-    'name' => 'administer panelizer taxonomy_term special_practice_role layout',
-    'roles' => array(),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer taxonomy_term special_practice_role overview.
-  $permissions['administer panelizer taxonomy_term special_practice_role overview'] = array(
-    'name' => 'administer panelizer taxonomy_term special_practice_role overview',
-    'roles' => array(),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer taxonomy_term special_practice_role settings.
-  $permissions['administer panelizer taxonomy_term special_practice_role settings'] = array(
-    'name' => 'administer panelizer taxonomy_term special_practice_role settings',
-    'roles' => array(),
     'module' => 'panelizer',
   );
 
