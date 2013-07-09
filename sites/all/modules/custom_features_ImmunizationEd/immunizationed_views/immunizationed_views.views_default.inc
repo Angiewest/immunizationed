@@ -3039,11 +3039,12 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['sorts']['field_task_due_date_value']['field'] = 'field_task_due_date_value';
   $handler->display->display_options['path'] = 'node/%/blueprints';
   $handler->display->display_options['menu']['type'] = 'tab';
-  $handler->display->display_options['menu']['title'] = 'Our Blueprints';
+  $handler->display->display_options['menu']['title'] = 'Blueprints';
   $handler->display->display_options['menu']['description'] = 'Your customized blueprints';
   $handler->display->display_options['menu']['weight'] = '15';
   $handler->display->display_options['menu']['name'] = 'main-menu';
   $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
   $handler->display->display_options['tab_options']['weight'] = '0';
 
   /* Display: Content pane */

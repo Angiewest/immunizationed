@@ -74,7 +74,7 @@ function immunizationed_structure_field_default_field_bases() {
   // Exported field_base: 'field_audience'
   $field_bases['field_audience'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => 3,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_audience',

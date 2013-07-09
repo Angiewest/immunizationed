@@ -160,24 +160,12 @@ function immunizationed_practice_og_features_default_permissions() {
     ),
   );
 
-  // Exported og permission: 'node:practice_group:view field_epic_id field'
-  $permissions['node:practice_group:view field_epic_id field'] = array(
-    'roles' => array(),
-  );
-
   // Exported og permission: 'node:practice_group:view field_image field'
   $permissions['node:practice_group:view field_image field'] = array(
     'roles' => array(
       'Administrator member' => 'Administrator member',
       'member' => 'member',
-    ),
-  );
-
-  // Exported og permission: 'node:practice_group:view field_practice field'
-  $permissions['node:practice_group:view field_practice field'] = array(
-    'roles' => array(
-      'Administrator member' => 'Administrator member',
-      'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -222,6 +210,7 @@ function immunizationed_practice_og_features_default_permissions() {
     'roles' => array(
       'Administrator member' => 'Administrator member',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
