@@ -126,6 +126,7 @@ function immunizationed_practice_inputs_user_default_permissions() {
     'name' => 'create field_assembly_instruction',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -629,8 +630,6 @@ function immunizationed_practice_inputs_user_default_permissions() {
   $permissions['edit own field_assembly_instruction'] = array(
     'name' => 'edit own field_assembly_instruction',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',

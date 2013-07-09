@@ -611,6 +611,7 @@ features[variable][] = pathauto_update_action
 features[variable][] = pathauto_user_pattern
 features[variable][] = pathauto_verbose
 features_exclude[dependencies][immunizationed_core] = immunizationed_core
+features_exclude[dependencies][immunizationed_practice] = immunizationed_practice
 features_exclude[variable][menu_options_vaccination_data_from_emr] = menu_options_vaccination_data_from_emr
 features_exclude[variable][menu_parent_convenient_vaccination_services] = menu_parent_convenient_vaccination_services
 features_exclude[variable][menu_parent_enhanced_vaccination_systems] = menu_parent_enhanced_vaccination_systems

@@ -16,6 +16,12 @@ function immunizationed_menus_menu_default_menu_custom() {
     'title' => 'Main menu',
     'description' => 'The <em>Main</em> menu is used on many sites to show the major sections of the site, often in a top navigation bar.',
   );
+  // Exported menu: menu-add-content.
+  $menus['menu-add-content'] = array(
+    'menu_name' => 'menu-add-content',
+    'title' => 'Content',
+    'description' => 'The <em>Content</em> menu contains links intended for practice admins.',
+  );
   // Exported menu: menu-editing.
   $menus['menu-editing'] = array(
     'menu_name' => 'menu-editing',
@@ -56,6 +62,7 @@ function immunizationed_menus_menu_default_menu_custom() {
   t('Misc. admin views');
   t('Practice Admin');
   t('Site admin');
+  t('The <em>Content</em> menu contains links intended for practice admins.');
   t('The <em>Main</em> menu is used on many sites to show the major sections of the site, often in a top navigation bar.');
   t('The <em>User</em> menu contains links related to the user\'s account, as well as the \'Log out\' link.');
   t('User menu');

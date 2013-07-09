@@ -1683,8 +1683,12 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view field_req_assembly_instruc_p2'] = array(
     'name' => 'view field_req_assembly_instruc_p2',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -1918,8 +1922,12 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view own field_req_assembly_instruc_p2'] = array(
     'name' => 'view own field_req_assembly_instruc_p2',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );

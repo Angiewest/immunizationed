@@ -213,7 +213,7 @@ function immunizationed_practice_inputs_field_default_field_instances() {
     'bundle' => 'convenient_vaccination_services',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Below is a list of strategies you and your clinic can use to offer convenient vaccination service. The first strategy is required. Please select your choices from the optional list below. If you have a great idea on how to make your vaccine services more convenient, please type it in below. Finish by clicking "Save".',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1305,7 +1305,6 @@ function immunizationed_practice_inputs_field_default_field_instances() {
   t('Below is a list of strategies you and your clinic can use to enhance your office vaccination system. The first strategy is required. Please select your choices from the optional list below. If you have a great idea on how to enhance your office vaccination system, please type it in below. Finish by clicking "Save".
 ');
   t('Below is a list of strategies you and your clinic can use to notify patients about the importance of vaccination. The first strategy is required. Please select your choices from the optional list below. If you have a great idea on how to increase patient notification about vaccinations, please type it in below. Finish by clicking "Save".');
-  t('Below is a list of strategies you and your clinic can use to offer convenient vaccination service. The first strategy is required. Please select your choices from the optional list below. If you have a great idea on how to make your vaccine services more convenient, please type it in below. Finish by clicking "Save".');
   t('Body');
   t('Comment');
   t('Content type reference for views filter');

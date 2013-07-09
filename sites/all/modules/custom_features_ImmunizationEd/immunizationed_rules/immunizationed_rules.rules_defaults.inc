@@ -152,8 +152,7 @@ function immunizationed_rules_default_rules_configuration() {
                   "entity_list" : [ "entity-list" ],
                   "current_item" : [ "list-item" ]
                 }
-              },
-              { "drupal_message" : { "message" : [ "list-item:nid" ] } }
+              }
             ]
           }
         }
@@ -320,18 +319,19 @@ function immunizationed_rules_default_rules_configuration() {
   $items['rules_content_addition_redirect'] = entity_import('rules_config', '{ "rules_content_addition_redirect" : {
       "LABEL" : "Redirect to group home after group content addition",
       "PLUGIN" : "reaction rule",
+      "WEIGHT" : "10",
       "TAGS" : [ "content" ],
       "REQUIRES" : [ "rules" ],
       "ON" : [ "node_insert", "node_update" ],
       "IF" : [
         { "entity_has_field" : { "entity" : [ "node" ], "field" : "og_group_ref" } },
-        { "node_is_of_type" : {
-            "node" : [ "node" ],
-            "type" : { "value" : { "meeting_agenda" : "meeting_agenda" } }
-          }
-        },
         { "AND" : [
             { "OR" : [
+                { "node_is_of_type" : {
+                    "node" : [ "node" ],
+                    "type" : { "value" : { "meeting_agenda" : "meeting_agenda" } }
+                  }
+                },
                 { "node_is_of_type" : {
                     "node" : [ "node" ],
                     "type" : { "value" : { "announcement" : "announcement" } }
