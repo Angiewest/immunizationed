@@ -87,3 +87,4 @@
       <p class="page-footer"><!--?php print $footer_message; ?--></p>
     </div>
     <!--?php print $closure; ?-->
+
