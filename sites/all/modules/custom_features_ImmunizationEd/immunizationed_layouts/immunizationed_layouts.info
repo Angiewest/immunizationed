@@ -137,7 +137,6 @@ features[user_permission][] = administer panelizer taxonomy_term form_relationsh
 features[user_permission][] = administer panelizer taxonomy_term practice_jobs defaults
 features[user_permission][] = administer panelizer taxonomy_term special_practice_role defaults
 features[user_permission][] = administer panelizer taxonomy_term tags defaults
-features[user_permission][] = administer panelizer user user defaults
 features[user_permission][] = administer panels layouts
 features[user_permission][] = administer panels styles
 features[user_permission][] = create panel-nodes

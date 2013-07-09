@@ -16,18 +16,6 @@ function immunizationed_user_config_user_default_roles() {
     'weight' => 4,
   );
 
-  // Exported role: Group member.
-  $roles['Group member'] = array(
-    'name' => 'Group member',
-    'weight' => 2,
-  );
-
-  // Exported role: Practice admin.
-  $roles['Practice admin'] = array(
-    'name' => 'Practice admin',
-    'weight' => 3,
-  );
-
   // Exported role: administrator.
   $roles['administrator'] = array(
     'name' => 'administrator',

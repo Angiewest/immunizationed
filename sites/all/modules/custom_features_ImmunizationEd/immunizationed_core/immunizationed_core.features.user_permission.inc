@@ -22,17 +22,6 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'admin_menu',
   );
 
-  // Exported permission: access administration pages.
-  $permissions['access administration pages'] = array(
-    'name' => 'access administration pages',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'system',
-  );
-
   // Exported permission: access all webform results.
   $permissions['access all webform results'] = array(
     'name' => 'access all webform results',
@@ -132,26 +121,6 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'security_review',
   );
 
-  // Exported permission: access site in maintenance mode.
-  $permissions['access site in maintenance mode'] = array(
-    'name' => 'access site in maintenance mode',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'system',
-  );
-
-  // Exported permission: access site reports.
-  $permissions['access site reports'] = array(
-    'name' => 'access site reports',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'system',
-  );
-
   // Exported permission: access site-wide contact form.
   $permissions['access site-wide contact form'] = array(
     'name' => 'access site-wide contact form',
@@ -186,18 +155,6 @@ function immunizationed_core_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'contact',
-  );
-
-  // Exported permission: access user profiles.
-  $permissions['access user profiles'] = array(
-    'name' => 'access user profiles',
-    'roles' => array(
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
-      'editor' => 'editor',
-    ),
-    'module' => 'user',
   );
 
   // Exported permission: add content to books.
@@ -334,15 +291,6 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'module_filter',
   );
 
-  // Exported permission: administer modules.
-  $permissions['administer modules'] = array(
-    'name' => 'administer modules',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'system',
-  );
-
   // Exported permission: administer pathauto.
   $permissions['administer pathauto'] = array(
     'name' => 'administer pathauto',
@@ -351,16 +299,6 @@ function immunizationed_core_user_default_permissions() {
       'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'pathauto',
-  );
-
-  // Exported permission: administer permissions.
-  $permissions['administer permissions'] = array(
-    'name' => 'administer permissions',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'user',
   );
 
   // Exported permission: administer search.
@@ -380,25 +318,6 @@ function immunizationed_core_user_default_permissions() {
       'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'shortcut',
-  );
-
-  // Exported permission: administer site configuration.
-  $permissions['administer site configuration'] = array(
-    'name' => 'administer site configuration',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'system',
-  );
-
-  // Exported permission: administer software updates.
-  $permissions['administer software updates'] = array(
-    'name' => 'administer software updates',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'system',
   );
 
   // Exported permission: administer statistics.
@@ -430,16 +349,6 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
-  // Exported permission: administer themes.
-  $permissions['administer themes'] = array(
-    'name' => 'administer themes',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'system',
-  );
-
   // Exported permission: administer url aliases.
   $permissions['administer url aliases'] = array(
     'name' => 'administer url aliases',
@@ -448,44 +357,6 @@ function immunizationed_core_user_default_permissions() {
       'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'path',
-  );
-
-  // Exported permission: administer users.
-  $permissions['administer users'] = array(
-    'name' => 'administer users',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'user',
-  );
-
-  // Exported permission: block IP addresses.
-  $permissions['block IP addresses'] = array(
-    'name' => 'block IP addresses',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'system',
-  );
-
-  // Exported permission: cancel account.
-  $permissions['cancel account'] = array(
-    'name' => 'cancel account',
-    'roles' => array(),
-    'module' => 'user',
-  );
-
-  // Exported permission: change own username.
-  $permissions['change own username'] = array(
-    'name' => 'change own username',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'user',
   );
 
   // Exported permission: create new books.
@@ -507,15 +378,6 @@ function immunizationed_core_user_default_permissions() {
       'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'path',
-  );
-
-  // Exported permission: customize shortcut links.
-  $permissions['customize shortcut links'] = array(
-    'name' => 'customize shortcut links',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'shortcut',
   );
 
   // Exported permission: delete all webform submissions.
@@ -1066,13 +928,6 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'search',
   );
 
-  // Exported permission: select account cancellation method.
-  $permissions['select account cancellation method'] = array(
-    'name' => 'select account cancellation method',
-    'roles' => array(),
-    'module' => 'user',
-  );
-
   // Exported permission: skip comment approval.
   $permissions['skip comment approval'] = array(
     'name' => 'skip comment approval',
@@ -1085,17 +940,6 @@ function immunizationed_core_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'comment',
-  );
-
-  // Exported permission: switch shortcut sets.
-  $permissions['switch shortcut sets'] = array(
-    'name' => 'switch shortcut sets',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'shortcut',
   );
 
   // Exported permission: use PHP for label patterns.
@@ -1224,16 +1068,6 @@ function immunizationed_core_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'statistics',
-  );
-
-  // Exported permission: view the administration theme.
-  $permissions['view the administration theme'] = array(
-    'name' => 'view the administration theme',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'system',
   );
 
   return $permissions;

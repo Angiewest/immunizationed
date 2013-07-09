@@ -185,15 +185,16 @@ function immunizationed_emr_importer_og_features_default_permissions() {
 
   // Exported og permission: 'node:practice_group:view field_td field'
   $permissions['node:practice_group:view field_td field'] = array(
-    'roles' => array(
-      'Administrator member' => 'Administrator member',
-      'member' => 'member',
-    ),
+    'roles' => array(),
   );
 
   // Exported og permission: 'node:practice_group:view field_tdap field'
   $permissions['node:practice_group:view field_tdap field'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'Administrator member' => 'Administrator member',
+      'member' => 'member',
+      'non-member' => 'non-member',
+    ),
   );
 
   // Exported og permission: 'node:practice_group:view field_tdap_vax_rate field'

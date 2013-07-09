@@ -14,7 +14,7 @@ function immunizationed_emr_importer_default_rules_configuration() {
       "PLUGIN" : "reaction rule",
       "WEIGHT" : "1",
       "TAGS" : [ "import" ],
-      "REQUIRES" : [ "rules", "feeds" ],
+      "REQUIRES" : [ "rules" ],
       "ON" : [ "feeds_import_emr_importer" ],
       "IF" : [
         { "entity_has_field" : { "entity" : [ "node" ], "field" : "og_group_ref" } },

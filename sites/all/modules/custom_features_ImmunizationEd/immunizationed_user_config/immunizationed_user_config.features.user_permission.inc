@@ -62,15 +62,6 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'system',
   );
 
-  // Exported permission: administer panelizer user user defaults.
-  $permissions['administer panelizer user user defaults'] = array(
-    'name' => 'administer panelizer user user defaults',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
   // Exported permission: administer permissions.
   $permissions['administer permissions'] = array(
     'name' => 'administer permissions',
@@ -155,16 +146,6 @@ function immunizationed_user_config_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'shortcut',
-  );
-
-  // Exported permission: import users.
-  $permissions['import users'] = array(
-    'name' => 'import users',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'user_import',
   );
 
   // Exported permission: select account cancellation method.

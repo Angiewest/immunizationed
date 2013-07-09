@@ -99,7 +99,6 @@ features[user_role][] = Group member
 features[user_role][] = Practice admin
 features[variable][] = additional_settings__active_tab_practice
 features[variable][] = additional_settings__active_tab_practice_group
-features[variable][] = botcha_enabled_comment_node_practice_group_form
 features[variable][] = diff_enable_revisions_page_node_practice_group
 features[variable][] = diff_show_preview_changes_node_practice_group
 features[variable][] = diff_view_mode_preview_node_practice_group

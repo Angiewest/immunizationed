@@ -752,15 +752,6 @@ function immunizationed_layouts_user_default_permissions() {
     'module' => 'panelizer',
   );
 
-  // Exported permission: administer panelizer user user defaults.
-  $permissions['administer panelizer user user defaults'] = array(
-    'name' => 'administer panelizer user user defaults',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
   // Exported permission: administer panels layouts.
   $permissions['administer panels layouts'] = array(
     'name' => 'administer panels layouts',
