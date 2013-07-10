@@ -1,0 +1,4 @@
+name = ImmunizationEd Miscellaneous
+description = "ImmunizationEd site configurations and tweaks."
+package = Immunizationed
+core = 7.x
