@@ -142,6 +142,7 @@ features[og_features_permission][] = node:practice_group:view field_req_assembly
 features[og_features_permission][] = node:practice_group:view field_task_due_date field
 features[og_features_permission][] = node:practice_group:view field_task_start_date field
 features[og_features_role][] = node:practice_group:Administrator member
+features[page_manager_handlers][] = node_edit_panel_context_10
 features[taxonomy][] = convenient_vaccination_services_other
 features[taxonomy][] = convenient_vaccination_services_strategies
 features[taxonomy][] = enhanced_office_vaccination_systems_strategies
