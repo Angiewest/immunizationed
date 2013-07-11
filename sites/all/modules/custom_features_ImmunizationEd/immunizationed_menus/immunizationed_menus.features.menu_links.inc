@@ -773,6 +773,12 @@ function immunizationed_menus_menu_default_menu_links() {
     'router_path' => 'node/add/meeting-agenda',
     'link_title' => 'Create meeting agenda',
     'options' => array(
+      'menu_token_link_path' => 'node/add/meeting-agenda',
+      'menu_token_data' => array(),
+      'menu_token_options' => array(
+        'clear' => 1,
+      ),
+      'alter' => TRUE,
       'attributes' => array(
         'title' => 'You can add content from the Meeting Agenda document. Information collected here will be items on the agenda.',
       ),

@@ -332,7 +332,7 @@ function immunizationed_practice_inputs_field_default_field_instances() {
     'default_value' => NULL,
     'default_value_function' => 'entityreference_prepopulate_field_default_value',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Select the practice this should be associated with',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -350,7 +350,7 @@ function immunizationed_practice_inputs_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'og_group_ref',
-    'label' => 'Groups audience',
+    'label' => 'Practice',
     'required' => 0,
     'settings' => array(
       'behaviors' => array(
@@ -1320,8 +1320,10 @@ function immunizationed_practice_inputs_field_default_field_instances() {
   t('Please enter your original motivation strategy, or you can create a new strategy here. ');
   t('Please enter your original patient notification strategy, or you can create a new strategy here. ');
   t('Please enter your original strategy for enhancing vaccination systems, or you can create a new strategy here. ');
+  t('Practice');
   t('Required assembly instruction');
   t('Select the date of your meeting.');
+  t('Select the practice this should be associated with');
   t('This is a list of strategies you and your clinic can use to keep people motivated. Please select your choices from the optional list above. If you have a great idea on how to motivate your clinic and staff, please type it in below. Finish by clicking "Save".');
   t('We highly recommend that you discuss the serious nature of vaccine preventable diseases with each patient at each patient visit. ');
   t('We highly recommend that you ensure that your clinic has sufficient vaccine inventory. ');

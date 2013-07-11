@@ -155,48 +155,6 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: create field_assembly_instruction_p2.
-  $permissions['create field_assembly_instruction_p2'] = array(
-    'name' => 'create field_assembly_instruction_p2',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: create field_assembly_instruction_p3.
-  $permissions['create field_assembly_instruction_p3'] = array(
-    'name' => 'create field_assembly_instruction_p3',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: create field_assembly_instruction_p4.
-  $permissions['create field_assembly_instruction_p4'] = array(
-    'name' => 'create field_assembly_instruction_p4',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: create field_date_started.
   $permissions['create field_date_started'] = array(
     'name' => 'create field_date_started',
@@ -229,81 +187,6 @@ function immunizationed_structure_user_default_permissions() {
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
       'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: create field_other_please_specify_p2.
-  $permissions['create field_other_please_specify_p2'] = array(
-    'name' => 'create field_other_please_specify_p2',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: create field_other_please_specify_p3.
-  $permissions['create field_other_please_specify_p3'] = array(
-    'name' => 'create field_other_please_specify_p3',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: create field_other_please_specify_p4.
-  $permissions['create field_other_please_specify_p4'] = array(
-    'name' => 'create field_other_please_specify_p4',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: create field_req_assembly_instruc_p2.
-  $permissions['create field_req_assembly_instruc_p2'] = array(
-    'name' => 'create field_req_assembly_instruc_p2',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: create field_req_assembly_instruc_p3.
-  $permissions['create field_req_assembly_instruc_p3'] = array(
-    'name' => 'create field_req_assembly_instruc_p3',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: create field_req_assembly_instruc_p4.
-  $permissions['create field_req_assembly_instruc_p4'] = array(
-    'name' => 'create field_req_assembly_instruc_p4',
-    'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -971,39 +854,6 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: edit field_assembly_instruction_p2.
-  $permissions['edit field_assembly_instruction_p2'] = array(
-    'name' => 'edit field_assembly_instruction_p2',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit field_assembly_instruction_p3.
-  $permissions['edit field_assembly_instruction_p3'] = array(
-    'name' => 'edit field_assembly_instruction_p3',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit field_assembly_instruction_p4.
-  $permissions['edit field_assembly_instruction_p4'] = array(
-    'name' => 'edit field_assembly_instruction_p4',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: edit field_date_started.
   $permissions['edit field_date_started'] = array(
     'name' => 'edit field_date_started',
@@ -1030,72 +880,6 @@ function immunizationed_structure_user_default_permissions() {
   // Exported permission: edit field_expected_time_to_complete.
   $permissions['edit field_expected_time_to_complete'] = array(
     'name' => 'edit field_expected_time_to_complete',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit field_other_please_specify_p2.
-  $permissions['edit field_other_please_specify_p2'] = array(
-    'name' => 'edit field_other_please_specify_p2',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit field_other_please_specify_p3.
-  $permissions['edit field_other_please_specify_p3'] = array(
-    'name' => 'edit field_other_please_specify_p3',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit field_other_please_specify_p4.
-  $permissions['edit field_other_please_specify_p4'] = array(
-    'name' => 'edit field_other_please_specify_p4',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit field_req_assembly_instruc_p2.
-  $permissions['edit field_req_assembly_instruc_p2'] = array(
-    'name' => 'edit field_req_assembly_instruc_p2',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit field_req_assembly_instruc_p3.
-  $permissions['edit field_req_assembly_instruc_p3'] = array(
-    'name' => 'edit field_req_assembly_instruc_p3',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit field_req_assembly_instruc_p4.
-  $permissions['edit field_req_assembly_instruc_p4'] = array(
-    'name' => 'edit field_req_assembly_instruc_p4',
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -1218,39 +1002,6 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit own field_assembly_instruction_p2.
-  $permissions['edit own field_assembly_instruction_p2'] = array(
-    'name' => 'edit own field_assembly_instruction_p2',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit own field_assembly_instruction_p3.
-  $permissions['edit own field_assembly_instruction_p3'] = array(
-    'name' => 'edit own field_assembly_instruction_p3',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit own field_assembly_instruction_p4.
-  $permissions['edit own field_assembly_instruction_p4'] = array(
-    'name' => 'edit own field_assembly_instruction_p4',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: edit own field_date_started.
   $permissions['edit own field_date_started'] = array(
     'name' => 'edit own field_date_started',
@@ -1283,72 +1034,6 @@ function immunizationed_structure_user_default_permissions() {
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
       'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit own field_other_please_specify_p2.
-  $permissions['edit own field_other_please_specify_p2'] = array(
-    'name' => 'edit own field_other_please_specify_p2',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit own field_other_please_specify_p3.
-  $permissions['edit own field_other_please_specify_p3'] = array(
-    'name' => 'edit own field_other_please_specify_p3',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit own field_other_please_specify_p4.
-  $permissions['edit own field_other_please_specify_p4'] = array(
-    'name' => 'edit own field_other_please_specify_p4',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit own field_req_assembly_instruc_p2.
-  $permissions['edit own field_req_assembly_instruc_p2'] = array(
-    'name' => 'edit own field_req_assembly_instruc_p2',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit own field_req_assembly_instruc_p3.
-  $permissions['edit own field_req_assembly_instruc_p3'] = array(
-    'name' => 'edit own field_req_assembly_instruc_p3',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit own field_req_assembly_instruc_p4.
-  $permissions['edit own field_req_assembly_instruc_p4'] = array(
-    'name' => 'edit own field_req_assembly_instruc_p4',
-    'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -1553,48 +1238,6 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: view field_assembly_instruction_p2.
-  $permissions['view field_assembly_instruction_p2'] = array(
-    'name' => 'view field_assembly_instruction_p2',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view field_assembly_instruction_p3.
-  $permissions['view field_assembly_instruction_p3'] = array(
-    'name' => 'view field_assembly_instruction_p3',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view field_assembly_instruction_p4.
-  $permissions['view field_assembly_instruction_p4'] = array(
-    'name' => 'view field_assembly_instruction_p4',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: view field_date_started.
   $permissions['view field_date_started'] = array(
     'name' => 'view field_date_started',
@@ -1626,90 +1269,6 @@ function immunizationed_structure_user_default_permissions() {
   // Exported permission: view field_expected_time_to_complete.
   $permissions['view field_expected_time_to_complete'] = array(
     'name' => 'view field_expected_time_to_complete',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view field_other_please_specify_p2.
-  $permissions['view field_other_please_specify_p2'] = array(
-    'name' => 'view field_other_please_specify_p2',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view field_other_please_specify_p3.
-  $permissions['view field_other_please_specify_p3'] = array(
-    'name' => 'view field_other_please_specify_p3',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view field_other_please_specify_p4.
-  $permissions['view field_other_please_specify_p4'] = array(
-    'name' => 'view field_other_please_specify_p4',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view field_req_assembly_instruc_p2.
-  $permissions['view field_req_assembly_instruc_p2'] = array(
-    'name' => 'view field_req_assembly_instruc_p2',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view field_req_assembly_instruc_p3.
-  $permissions['view field_req_assembly_instruc_p3'] = array(
-    'name' => 'view field_req_assembly_instruc_p3',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view field_req_assembly_instruc_p4.
-  $permissions['view field_req_assembly_instruc_p4'] = array(
-    'name' => 'view field_req_assembly_instruc_p4',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
       'Group member' => 'Group member',
@@ -1793,48 +1352,6 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: view own field_assembly_instruction_p2.
-  $permissions['view own field_assembly_instruction_p2'] = array(
-    'name' => 'view own field_assembly_instruction_p2',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view own field_assembly_instruction_p3.
-  $permissions['view own field_assembly_instruction_p3'] = array(
-    'name' => 'view own field_assembly_instruction_p3',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view own field_assembly_instruction_p4.
-  $permissions['view own field_assembly_instruction_p4'] = array(
-    'name' => 'view own field_assembly_instruction_p4',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: view own field_date_started.
   $permissions['view own field_date_started'] = array(
     'name' => 'view own field_date_started',
@@ -1865,90 +1382,6 @@ function immunizationed_structure_user_default_permissions() {
   // Exported permission: view own field_expected_time_to_complete.
   $permissions['view own field_expected_time_to_complete'] = array(
     'name' => 'view own field_expected_time_to_complete',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view own field_other_please_specify_p2.
-  $permissions['view own field_other_please_specify_p2'] = array(
-    'name' => 'view own field_other_please_specify_p2',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view own field_other_please_specify_p3.
-  $permissions['view own field_other_please_specify_p3'] = array(
-    'name' => 'view own field_other_please_specify_p3',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view own field_other_please_specify_p4.
-  $permissions['view own field_other_please_specify_p4'] = array(
-    'name' => 'view own field_other_please_specify_p4',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view own field_req_assembly_instruc_p2.
-  $permissions['view own field_req_assembly_instruc_p2'] = array(
-    'name' => 'view own field_req_assembly_instruc_p2',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view own field_req_assembly_instruc_p3.
-  $permissions['view own field_req_assembly_instruc_p3'] = array(
-    'name' => 'view own field_req_assembly_instruc_p3',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view own field_req_assembly_instruc_p4.
-  $permissions['view own field_req_assembly_instruc_p4'] = array(
-    'name' => 'view own field_req_assembly_instruc_p4',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
       'Group member' => 'Group member',

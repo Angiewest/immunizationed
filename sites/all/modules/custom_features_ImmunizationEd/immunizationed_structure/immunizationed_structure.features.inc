@@ -75,14 +75,6 @@ function immunizationed_structure_node_info() {
       'title_label' => t('Title'),
       'help' => '',
     ),
-    'practice_admin_group' => array(
-      'name' => t('Practice Admin Group'),
-      'base' => 'node_content',
-      'description' => t('Private group for practice admins'),
-      'has_title' => '1',
-      'title_label' => t('Practice Admin Group Name'),
-      'help' => '',
-    ),
     'practice_group' => array(
       'name' => t('Practice'),
       'base' => 'node_content',
