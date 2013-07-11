@@ -10,36 +10,6 @@
 function immunizationed_practice_inputs_og_features_default_permissions() {
   $permissions = array();
 
-  // Exported og permission: 'node:practice_admin_group:create convenient_vaccination_services content'
-  $permissions['node:practice_admin_group:create convenient_vaccination_services content'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:practice_admin_group:create enhanced_vaccination_systems content'
-  $permissions['node:practice_admin_group:create enhanced_vaccination_systems content'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:practice_admin_group:create meeting_agenda content'
-  $permissions['node:practice_admin_group:create meeting_agenda content'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:practice_admin_group:create motivation content'
-  $permissions['node:practice_admin_group:create motivation content'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:practice_admin_group:create patient_notification content'
-  $permissions['node:practice_admin_group:create patient_notification content'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:practice_admin_group:delete any convenient_vaccination_services content'
-  $permissions['node:practice_admin_group:delete any convenient_vaccination_services content'] = array(
-    'roles' => array(),
-  );
-
   // Exported og permission: 'node:practice_group:create convenient_vaccination_services content'
   $permissions['node:practice_group:create convenient_vaccination_services content'] = array(
     'roles' => array(

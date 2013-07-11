@@ -123,15 +123,6 @@ function immunizationed_practice_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'og_group_manager_default_rids_node_practice_admin_group';
-  $strongarm->value = array(
-    13 => '13',
-  );
-  $export['og_group_manager_default_rids_node_practice_admin_group'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'og_group_manager_default_rids_node_practice_group';
   $strongarm->value = array(
     14 => '14',
