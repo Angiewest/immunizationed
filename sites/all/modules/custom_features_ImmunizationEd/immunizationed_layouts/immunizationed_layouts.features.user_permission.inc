@@ -245,54 +245,9 @@ function immunizationed_layouts_user_default_permissions() {
     'module' => 'panelizer',
   );
 
-  // Exported permission: administer panelizer node nuts_bolts content.
-  $permissions['administer panelizer node nuts_bolts content'] = array(
-    'name' => 'administer panelizer node nuts_bolts content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node nuts_bolts context.
-  $permissions['administer panelizer node nuts_bolts context'] = array(
-    'name' => 'administer panelizer node nuts_bolts context',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
   // Exported permission: administer panelizer node nuts_bolts defaults.
   $permissions['administer panelizer node nuts_bolts defaults'] = array(
     'name' => 'administer panelizer node nuts_bolts defaults',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node nuts_bolts layout.
-  $permissions['administer panelizer node nuts_bolts layout'] = array(
-    'name' => 'administer panelizer node nuts_bolts layout',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node nuts_bolts overview.
-  $permissions['administer panelizer node nuts_bolts overview'] = array(
-    'name' => 'administer panelizer node nuts_bolts overview',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node nuts_bolts settings.
-  $permissions['administer panelizer node nuts_bolts settings'] = array(
-    'name' => 'administer panelizer node nuts_bolts settings',
     'roles' => array(
       'administrator' => 'administrator',
     ),
@@ -421,54 +376,9 @@ function immunizationed_layouts_user_default_permissions() {
     'module' => 'panelizer',
   );
 
-  // Exported permission: administer panelizer node practice_admin_group content.
-  $permissions['administer panelizer node practice_admin_group content'] = array(
-    'name' => 'administer panelizer node practice_admin_group content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node practice_admin_group context.
-  $permissions['administer panelizer node practice_admin_group context'] = array(
-    'name' => 'administer panelizer node practice_admin_group context',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
   // Exported permission: administer panelizer node practice_admin_group defaults.
   $permissions['administer panelizer node practice_admin_group defaults'] = array(
     'name' => 'administer panelizer node practice_admin_group defaults',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node practice_admin_group layout.
-  $permissions['administer panelizer node practice_admin_group layout'] = array(
-    'name' => 'administer panelizer node practice_admin_group layout',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node practice_admin_group overview.
-  $permissions['administer panelizer node practice_admin_group overview'] = array(
-    'name' => 'administer panelizer node practice_admin_group overview',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node practice_admin_group settings.
-  $permissions['administer panelizer node practice_admin_group settings'] = array(
-    'name' => 'administer panelizer node practice_admin_group settings',
     'roles' => array(
       'administrator' => 'administrator',
     ),

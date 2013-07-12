@@ -291,15 +291,6 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: create practice_admin_group content.
-  $permissions['create practice_admin_group content'] = array(
-    'name' => 'create practice_admin_group content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: create practice_group content.
   $permissions['create practice_group content'] = array(
     'name' => 'create practice_group content',
@@ -446,15 +437,6 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete any practice_admin_group content.
-  $permissions['delete any practice_admin_group content'] = array(
-    'name' => 'delete any practice_admin_group content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: delete any practice_group content.
   $permissions['delete any practice_group content'] = array(
     'name' => 'delete any practice_group content',
@@ -595,15 +577,6 @@ function immunizationed_structure_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: delete own practice_admin_group content.
-  $permissions['delete own practice_admin_group content'] = array(
-    'name' => 'delete own practice_admin_group content',
-    'roles' => array(
-      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -762,15 +735,6 @@ function immunizationed_structure_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: edit any practice_admin_group content.
-  $permissions['edit any practice_admin_group content'] = array(
-    'name' => 'edit any practice_admin_group content',
-    'roles' => array(
-      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -1134,15 +1098,6 @@ function immunizationed_structure_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: edit own practice_admin_group content.
-  $permissions['edit own practice_admin_group content'] = array(
-    'name' => 'edit own practice_admin_group content',
-    'roles' => array(
-      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );

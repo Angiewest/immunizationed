@@ -983,7 +983,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'menu_name' => 'navigation',
     'link_path' => 'node/add/convenient-vaccination-services',
     'router_path' => 'node/add/convenient-vaccination-services',
-    'link_title' => 'Convenient Vaccination Services',
+    'link_title' => 'Pillar-1 - Convenient Vaccination Services',
     'options' => array(
       'attributes' => array(
         'title' => 'This content will be for Pillar 1: Convenient Vaccination Services/ Easy Access. This will include all references and information for Pillar 1. ',
@@ -1021,7 +1021,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'menu_name' => 'navigation',
     'link_path' => 'node/add/enhanced-vaccination-systems',
     'router_path' => 'node/add/enhanced-vaccination-systems',
-    'link_title' => 'Enhanced Vaccination Systems',
+    'link_title' => 'Pillar-3 - Enhanced Vaccination Systems',
     'options' => array(
       'attributes' => array(
         'title' => 'This is Pillar 3: Enhanced Office Vaccination Systems. Any content here will be associated with enhancing office system to reduce missed opportunities and increase immunizations. Pillar 3. ',
@@ -1059,7 +1059,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'menu_name' => 'navigation',
     'link_path' => 'node/add/motivation',
     'router_path' => 'node/add/motivation',
-    'link_title' => 'Motivation',
+    'link_title' => 'Pillar-4 - Motivation',
     'options' => array(
       'attributes' => array(
         'title' => 'This is Pillar 4: Motivation. Content to be placed in this section should be associated with motivation strategies through Pillar 4. ',
@@ -1173,7 +1173,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'menu_name' => 'navigation',
     'link_path' => 'node/add/patient-notification',
     'router_path' => 'node/add/patient-notification',
-    'link_title' => 'Patient Notification',
+    'link_title' => 'Pillar-2 - Patient Notification',
     'options' => array(
       'attributes' => array(
         'title' => 'This is Pillar 2: Patient notification about the importance of vaccination and the availability of convenient programs. This content will be about Pillar 2.',
@@ -1481,25 +1481,25 @@ function immunizationed_menus_menu_default_menu_links() {
   t('Compose tips');
   t('Contact');
   t('Contact admin');
-  t('Convenient Vaccination Services');
   t('Create new account');
   t('Document');
-  t('Enhanced Vaccination Systems');
   t('Home');
   t('Import');
   t('Import data');
   t('Log in');
   t('Log out');
   t('Meeting Agenda');
-  t('Motivation');
   t('Nuts & Bolts');
   t('Offsite Resource');
   t('Other Additions to Views');
   t('Overdue tasks');
   t('Panel');
-  t('Patient Notification');
   t('People');
   t('People details');
+  t('Pillar-1 - Convenient Vaccination Services');
+  t('Pillar-2 - Patient Notification');
+  t('Pillar-3 - Enhanced Vaccination Systems');
+  t('Pillar-4 - Motivation');
   t('Practice');
   t('Practice Admin Group');
   t('Practice tasks');

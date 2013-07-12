@@ -14,7 +14,7 @@ function immunizationed_practice_inputs_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_convenient_vaccination_services';
-  $strongarm->value = 'edit-og';
+  $strongarm->value = 'edit-panelizer';
   $export['additional_settings__active_tab_convenient_vaccination_services'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -42,7 +42,7 @@ function immunizationed_practice_inputs_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_patient_notification';
-  $strongarm->value = 'edit-og';
+  $strongarm->value = 'edit-diff';
   $export['additional_settings__active_tab_patient_notification'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -308,7 +308,7 @@ function immunizationed_practice_inputs_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'diff_enable_revisions_page_node_enhanced_vaccination_systems';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['diff_enable_revisions_page_node_enhanced_vaccination_systems'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -322,14 +322,14 @@ function immunizationed_practice_inputs_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'diff_enable_revisions_page_node_motivation';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['diff_enable_revisions_page_node_motivation'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'diff_enable_revisions_page_node_patient_notification';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['diff_enable_revisions_page_node_patient_notification'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -343,7 +343,7 @@ function immunizationed_practice_inputs_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'diff_show_preview_changes_node_enhanced_vaccination_systems';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['diff_show_preview_changes_node_enhanced_vaccination_systems'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -357,14 +357,14 @@ function immunizationed_practice_inputs_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'diff_show_preview_changes_node_motivation';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['diff_show_preview_changes_node_motivation'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'diff_show_preview_changes_node_patient_notification';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['diff_show_preview_changes_node_patient_notification'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -585,9 +585,79 @@ function immunizationed_practice_inputs_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_convenient_vaccination_services_pattern';
+  $strongarm->value = 'strategies/[node:title]';
+  $export['pathauto_node_convenient_vaccination_services_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_enhanced_vaccination_systems_pattern';
+  $strongarm->value = 'strategies/[node:title]';
+  $export['pathauto_node_enhanced_vaccination_systems_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_meeting_agenda_pattern';
   $strongarm->value = 'meetings/[node:title]';
   $export['pathauto_node_meeting_agenda_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_motivation_pattern';
+  $strongarm->value = 'strategies/[node:title]';
+  $export['pathauto_node_motivation_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_convenient_vaccination_services_other_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_convenient_vaccination_services_other_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_convenient_vaccination_services_strategies_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_convenient_vaccination_services_strategies_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_enhanced_vaccination_systems_other_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_enhanced_vaccination_systems_other_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_motivation_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_motivation_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_motivation_strategies__pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_motivation_strategies__pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_patient_notification_other_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_patient_notification_other_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_patient_notification_strategies_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_patient_notification_strategies_pattern'] = $strongarm;
 
   return $export;
 }
