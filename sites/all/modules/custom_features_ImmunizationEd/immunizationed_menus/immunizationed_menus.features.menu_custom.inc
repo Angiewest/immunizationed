@@ -28,12 +28,6 @@ function immunizationed_menus_menu_default_menu_custom() {
     'title' => 'Content',
     'description' => 'Menu for site editors',
   );
-  // Exported menu: menu-my-practice-admin.
-  $menus['menu-my-practice-admin'] = array(
-    'menu_name' => 'menu-my-practice-admin',
-    'title' => 'Practice Admin',
-    'description' => 'Menu for practice adminstration',
-  );
   // Exported menu: menu-site-admin.
   $menus['menu-site-admin'] = array(
     'menu_name' => 'menu-site-admin',
@@ -56,11 +50,9 @@ function immunizationed_menus_menu_default_menu_custom() {
   // Included for use with string extractors like potx.
   t('Content');
   t('Main menu');
-  t('Menu for practice adminstration');
   t('Menu for site administrators');
   t('Menu for site editors');
   t('Misc. admin views');
-  t('Practice Admin');
   t('Site admin');
   t('The <em>Content</em> menu contains links intended for practice admins.');
   t('The <em>Main</em> menu is used on many sites to show the major sections of the site, often in a top navigation bar.');

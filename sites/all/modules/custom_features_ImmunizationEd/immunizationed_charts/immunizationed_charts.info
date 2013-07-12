@@ -21,6 +21,7 @@ features[features_api][] = api:2
 features[page_manager_pages][] = all_practices_immunization_charts
 features[user_permission][] = administer analytics dashboard
 features[user_permission][] = view analytics dashboard
+features[views_view][] = influenza_progress_charts_by_practice
 features[views_view][] = practice_vaccination_rate_emr_chart
 features[views_view][] = vaccination_charts_by_practice
 project path = sites/all/modules/custom_features_Immunizationed

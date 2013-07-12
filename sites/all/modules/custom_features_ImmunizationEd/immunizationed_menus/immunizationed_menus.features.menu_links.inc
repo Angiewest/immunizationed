@@ -711,139 +711,6 @@ function immunizationed_menus_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -38,
   );
-  // Exported menu link: menu-my-practice-admin:node/add/announcement
-  $menu_links['menu-my-practice-admin:node/add/announcement'] = array(
-    'menu_name' => 'menu-my-practice-admin',
-    'link_path' => 'node/add/announcement',
-    'router_path' => 'node/add/announcement',
-    'link_title' => 'Add project update',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Broadcast an announcement to your practice',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -44,
-  );
-  // Exported menu link: menu-my-practice-admin:node/add/convenient-vaccination-services
-  $menu_links['menu-my-practice-admin:node/add/convenient-vaccination-services'] = array(
-    'menu_name' => 'menu-my-practice-admin',
-    'link_path' => 'node/add/convenient-vaccination-services',
-    'router_path' => 'node/add/convenient-vaccination-services',
-    'link_title' => 'Select convenience strategies',
-    'options' => array(
-      'alter' => TRUE,
-      'attributes' => array(
-        'title' => 'This content will be for Pillar 1: Convenient Vaccination Services/ Easy Access. This will include all references and information for Pillar 1. ',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -48,
-  );
-  // Exported menu link: menu-my-practice-admin:node/add/enhanced-vaccination-systems
-  $menu_links['menu-my-practice-admin:node/add/enhanced-vaccination-systems'] = array(
-    'menu_name' => 'menu-my-practice-admin',
-    'link_path' => 'node/add/enhanced-vaccination-systems',
-    'router_path' => 'node/add/enhanced-vaccination-systems',
-    'link_title' => 'Select systems strategies',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'This is Pillar 3: Enhanced Office Vaccination Systems. Any content here will be associated with enhancing office system to reduce missed opportunities and increase immunizations. Pillar 3. ',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -46,
-  );
-  // Exported menu link: menu-my-practice-admin:node/add/meeting-agenda
-  $menu_links['menu-my-practice-admin:node/add/meeting-agenda'] = array(
-    'menu_name' => 'menu-my-practice-admin',
-    'link_path' => 'node/add/meeting-agenda',
-    'router_path' => 'node/add/meeting-agenda',
-    'link_title' => 'Create meeting agenda',
-    'options' => array(
-      'menu_token_link_path' => 'node/add/meeting-agenda',
-      'menu_token_data' => array(),
-      'menu_token_options' => array(
-        'clear' => 1,
-      ),
-      'alter' => TRUE,
-      'attributes' => array(
-        'title' => 'You can add content from the Meeting Agenda document. Information collected here will be items on the agenda.',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 1,
-    'weight' => -49,
-  );
-  // Exported menu link: menu-my-practice-admin:node/add/motivation
-  $menu_links['menu-my-practice-admin:node/add/motivation'] = array(
-    'menu_name' => 'menu-my-practice-admin',
-    'link_path' => 'node/add/motivation',
-    'router_path' => 'node/add/motivation',
-    'link_title' => 'Select motivation strategies',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'This is Pillar 4. Content to be placed in this section should be associated with motivation strategies through Pillar 4. ',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -45,
-  );
-  // Exported menu link: menu-my-practice-admin:node/add/patient-notification
-  $menu_links['menu-my-practice-admin:node/add/patient-notification'] = array(
-    'menu_name' => 'menu-my-practice-admin',
-    'link_path' => 'node/add/patient-notification',
-    'router_path' => 'node/add/patient-notification',
-    'link_title' => 'Select notification strategies',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'This is Pillar 2: Patient notification about the importance of vaccination and the availability of convenient programs. This content will be about Pillar 2.',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -47,
-  );
-  // Exported menu link: menu-my-practice-admin:node/add/task
-  $menu_links['menu-my-practice-admin:node/add/task'] = array(
-    'menu_name' => 'menu-my-practice-admin',
-    'link_path' => 'node/add/task',
-    'router_path' => 'node/add/task',
-    'link_title' => 'Add assembly step',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'add a task to your dashboard',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -43,
-  );
   // Exported menu link: menu-site-admin:admin/people-details
   $menu_links['menu-site-admin:admin/people-details'] = array(
     'menu_name' => 'menu-site-admin',
@@ -1598,11 +1465,9 @@ function immunizationed_menus_menu_default_menu_links() {
   t('Add Project Update');
   t('Add Video');
   t('Add Webform');
-  t('Add assembly step');
   t('Add content');
   t('Add file');
   t('Add new member to site');
-  t('Add project update');
   t('Admin');
   t('All Content');
   t('Article');
@@ -1617,7 +1482,6 @@ function immunizationed_menus_menu_default_menu_links() {
   t('Contact');
   t('Contact admin');
   t('Convenient Vaccination Services');
-  t('Create meeting agenda');
   t('Create new account');
   t('Document');
   t('Enhanced Vaccination Systems');
@@ -1643,10 +1507,6 @@ function immunizationed_menus_menu_default_menu_links() {
   t('Project Update');
   t('Required Disclosure');
   t('Search');
-  t('Select convenience strategies');
-  t('Select motivation strategies');
-  t('Select notification strategies');
-  t('Select systems strategies');
   t('User account');
   t('Vaccination data from EMR');
   t('Video');

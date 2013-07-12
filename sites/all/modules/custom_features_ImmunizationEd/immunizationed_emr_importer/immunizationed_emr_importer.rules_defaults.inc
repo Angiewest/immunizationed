@@ -60,7 +60,7 @@ function immunizationed_emr_importer_default_rules_configuration() {
               { "LOOP" : {
                   "USING" : { "list" : [ "practice-list" ] },
                   "ITEM" : { "list_item" : "Current list item" },
-                  "DO" : [  ]
+                  "DO" : []
                 }
               }
             ],
