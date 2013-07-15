@@ -49,7 +49,6 @@ function immunizationed_charts_views_default_views() {
   $handler->display->display_options['fields']['field_reporting_period']['id'] = 'field_reporting_period';
   $handler->display->display_options['fields']['field_reporting_period']['table'] = 'field_data_field_reporting_period';
   $handler->display->display_options['fields']['field_reporting_period']['field'] = 'field_reporting_period';
-  $handler->display->display_options['fields']['field_reporting_period']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_reporting_period']['settings'] = array(
     'format_type' => 'short',
     'fromto' => 'value',
@@ -57,19 +56,6 @@ function immunizationed_charts_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
     'show_repeat_rule' => 'show',
-  );
-  $handler->display->display_options['fields']['field_reporting_period']['group_columns'] = array(
-    'value2' => 'value2',
-  );
-  /* Field: SUM(Content: Visits) */
-  $handler->display->display_options['fields']['field_visits']['id'] = 'field_visits';
-  $handler->display->display_options['fields']['field_visits']['table'] = 'field_data_field_visits';
-  $handler->display->display_options['fields']['field_visits']['field'] = 'field_visits';
-  $handler->display->display_options['fields']['field_visits']['group_type'] = 'sum';
-  $handler->display->display_options['fields']['field_visits']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_visits']['settings'] = array(
-    'thousand_separator' => '',
-    'prefix_suffix' => 1,
   );
   /* Field: SUM(Content: Influenza) */
   $handler->display->display_options['fields']['field_influenza']['id'] = 'field_influenza';
@@ -79,6 +65,9 @@ function immunizationed_charts_views_default_views() {
   $handler->display->display_options['fields']['field_influenza']['settings'] = array(
     'thousand_separator' => '',
     'prefix_suffix' => 1,
+  );
+  $handler->display->display_options['fields']['field_influenza']['group_columns'] = array(
+    'bundle' => 'bundle',
   );
   /* Contextual filter: OG membership: Group ID */
   $handler->display->display_options['arguments']['gid']['id'] = 'gid';
@@ -131,13 +120,6 @@ function immunizationed_charts_views_default_views() {
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'google_chart_tools_views';
-  $handler->display->display_options['style_options']['grouping'] = array(
-    0 => array(
-      'field' => 'field_reporting_period',
-      'rendered' => 1,
-      'rendered_strip' => 0,
-    ),
-  );
   $handler->display->display_options['style_options']['title'] = 'Cummulative Vaccinations vs Target';
   $handler->display->display_options['style_options']['vaxis_title'] = 'Doses';
   $handler->display->display_options['style_options']['width'] = '820';
@@ -322,12 +304,42 @@ function immunizationed_charts_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['displays'] = array(
+    'default' => 'default',
     'page' => 'page',
     'panel_pane_2' => 'panel_pane_2',
     'panel_pane_3' => 'panel_pane_3',
-    'default' => 0,
   );
   $handler->display->display_options['attachment_position'] = 'after';
+
+  /* Display: Table pane */
+  $handler = $view->new_display('panel_pane', 'Table pane', 'panel_pane_1');
+  $handler->display->display_options['display_description'] = 'Table of chart data';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_reporting_period' => 'field_reporting_period',
+    'field_influenza' => 'field_influenza',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_reporting_period' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_influenza' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $export['influenza_progress_charts_by_practice'] = $view;
 
   $view = new view();
