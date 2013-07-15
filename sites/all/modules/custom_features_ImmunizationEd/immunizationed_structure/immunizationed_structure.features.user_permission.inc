@@ -806,6 +806,8 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['edit field_date_task_completed'] = array(
     'name' => 'edit field_date_task_completed',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -954,6 +956,7 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['edit own field_date_task_completed'] = array(
     'name' => 'edit own field_date_task_completed',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -1003,6 +1006,7 @@ function immunizationed_structure_user_default_permissions() {
     'name' => 'edit own field_task_start_date',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
