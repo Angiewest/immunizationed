@@ -10,6 +10,13 @@
 function immunizationed_practice_inputs_user_default_permissions() {
   $permissions = array();
 
+  // Exported permission: administer panelizer node convenient_vaccination_services defaults.
+  $permissions['administer panelizer node convenient_vaccination_services defaults'] = array(
+    'name' => 'administer panelizer node convenient_vaccination_services defaults',
+    'roles' => array(),
+    'module' => 'panelizer',
+  );
+
   // Exported permission: administer panelizer node enhanced_vaccination_systems defaults.
   $permissions['administer panelizer node enhanced_vaccination_systems defaults'] = array(
     'name' => 'administer panelizer node enhanced_vaccination_systems defaults',
@@ -27,6 +34,13 @@ function immunizationed_practice_inputs_user_default_permissions() {
   // Exported permission: administer panelizer node motivation defaults.
   $permissions['administer panelizer node motivation defaults'] = array(
     'name' => 'administer panelizer node motivation defaults',
+    'roles' => array(),
+    'module' => 'panelizer',
+  );
+
+  // Exported permission: administer panelizer node patient_notification defaults.
+  $permissions['administer panelizer node patient_notification defaults'] = array(
+    'name' => 'administer panelizer node patient_notification defaults',
     'roles' => array(),
     'module' => 'panelizer',
   );
@@ -182,20 +196,6 @@ function immunizationed_practice_inputs_user_default_permissions() {
     'name' => 'create field_date',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: create field_document.
-  $permissions['create field_document'] = array(
-    'name' => 'create field_document',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -695,17 +695,6 @@ function immunizationed_practice_inputs_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: edit field_document.
-  $permissions['edit field_document'] = array(
-    'name' => 'edit field_document',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: edit field_next_meeting_date.
   $permissions['edit field_next_meeting_date'] = array(
     'name' => 'edit field_next_meeting_date',
@@ -889,17 +878,6 @@ function immunizationed_practice_inputs_user_default_permissions() {
   // Exported permission: edit own field_date.
   $permissions['edit own field_date'] = array(
     'name' => 'edit own field_date',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit own field_document.
-  $permissions['edit own field_document'] = array(
-    'name' => 'edit own field_document',
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -1209,20 +1187,6 @@ function immunizationed_practice_inputs_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: view field_document.
-  $permissions['view field_document'] = array(
-    'name' => 'view field_document',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: view field_next_meeting_date.
   $permissions['view field_next_meeting_date'] = array(
     'name' => 'view field_next_meeting_date',
@@ -1422,20 +1386,6 @@ function immunizationed_practice_inputs_user_default_permissions() {
   // Exported permission: view own field_date.
   $permissions['view own field_date'] = array(
     'name' => 'view own field_date',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view own field_document.
-  $permissions['view own field_document'] = array(
-    'name' => 'view own field_document',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
       'Group member' => 'Group member',

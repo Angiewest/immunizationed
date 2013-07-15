@@ -1908,7 +1908,7 @@ function immunizationed_structure_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'body',
-    'label' => 'Body',
+    'label' => 'Task description',
     'required' => 0,
     'settings' => array(
       'display_summary' => 1,
@@ -1919,7 +1919,7 @@ function immunizationed_structure_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'rows' => 20,
+        'rows' => 10,
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
@@ -2132,6 +2132,7 @@ function immunizationed_structure_field_default_field_instances() {
           'public' => 'public',
         ),
         'allowed_types' => array(
+          0 => 0,
           'audio' => 0,
           'document' => 0,
           'image' => 'image',
@@ -2924,6 +2925,7 @@ function immunizationed_structure_field_default_field_instances() {
   t('Sources');
   t('Start date day offset from enrollment');
   t('Tags');
+  t('Task description');
   t('Task due date');
   t('Task start date');
   t('Task started date');

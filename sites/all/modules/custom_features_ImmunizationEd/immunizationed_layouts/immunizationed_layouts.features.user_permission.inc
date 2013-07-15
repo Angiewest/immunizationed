@@ -67,15 +67,6 @@ function immunizationed_layouts_user_default_permissions() {
     'module' => 'panelizer',
   );
 
-  // Exported permission: administer panelizer node announcement defaults.
-  $permissions['administer panelizer node announcement defaults'] = array(
-    'name' => 'administer panelizer node announcement defaults',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
   // Exported permission: administer panelizer node article content.
   $permissions['administer panelizer node article content'] = array(
     'name' => 'administer panelizer node article content',
@@ -181,13 +172,6 @@ function immunizationed_layouts_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
     ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node convenient_vaccination_services defaults.
-  $permissions['administer panelizer node convenient_vaccination_services defaults'] = array(
-    'name' => 'administer panelizer node convenient_vaccination_services defaults',
-    'roles' => array(),
     'module' => 'panelizer',
   );
 
@@ -369,76 +353,6 @@ function immunizationed_layouts_user_default_permissions() {
     'module' => 'panelizer',
   );
 
-  // Exported permission: administer panelizer node patient_notification defaults.
-  $permissions['administer panelizer node patient_notification defaults'] = array(
-    'name' => 'administer panelizer node patient_notification defaults',
-    'roles' => array(),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node practice_admin_group defaults.
-  $permissions['administer panelizer node practice_admin_group defaults'] = array(
-    'name' => 'administer panelizer node practice_admin_group defaults',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node practice_group content.
-  $permissions['administer panelizer node practice_group content'] = array(
-    'name' => 'administer panelizer node practice_group content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node practice_group context.
-  $permissions['administer panelizer node practice_group context'] = array(
-    'name' => 'administer panelizer node practice_group context',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node practice_group defaults.
-  $permissions['administer panelizer node practice_group defaults'] = array(
-    'name' => 'administer panelizer node practice_group defaults',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node practice_group layout.
-  $permissions['administer panelizer node practice_group layout'] = array(
-    'name' => 'administer panelizer node practice_group layout',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node practice_group overview.
-  $permissions['administer panelizer node practice_group overview'] = array(
-    'name' => 'administer panelizer node practice_group overview',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node practice_group settings.
-  $permissions['administer panelizer node practice_group settings'] = array(
-    'name' => 'administer panelizer node practice_group settings',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
   // Exported permission: administer panelizer node required_disclosure defaults.
   $permissions['administer panelizer node required_disclosure defaults'] = array(
     'name' => 'administer panelizer node required_disclosure defaults',
@@ -502,54 +416,9 @@ function immunizationed_layouts_user_default_permissions() {
     'module' => 'panelizer',
   );
 
-  // Exported permission: administer panelizer node task content.
-  $permissions['administer panelizer node task content'] = array(
-    'name' => 'administer panelizer node task content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node task context.
-  $permissions['administer panelizer node task context'] = array(
-    'name' => 'administer panelizer node task context',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
   // Exported permission: administer panelizer node task defaults.
   $permissions['administer panelizer node task defaults'] = array(
     'name' => 'administer panelizer node task defaults',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node task layout.
-  $permissions['administer panelizer node task layout'] = array(
-    'name' => 'administer panelizer node task layout',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node task overview.
-  $permissions['administer panelizer node task overview'] = array(
-    'name' => 'administer panelizer node task overview',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer node task settings.
-  $permissions['administer panelizer node task settings'] = array(
-    'name' => 'administer panelizer node task settings',
     'roles' => array(
       'administrator' => 'administrator',
     ),
@@ -632,15 +501,6 @@ function immunizationed_layouts_user_default_permissions() {
   $permissions['administer panelizer taxonomy_term form_relationships defaults'] = array(
     'name' => 'administer panelizer taxonomy_term form_relationships defaults',
     'roles' => array(),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: administer panelizer taxonomy_term practice_jobs defaults.
-  $permissions['administer panelizer taxonomy_term practice_jobs defaults'] = array(
-    'name' => 'administer panelizer taxonomy_term practice_jobs defaults',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
     'module' => 'panelizer',
   );
 

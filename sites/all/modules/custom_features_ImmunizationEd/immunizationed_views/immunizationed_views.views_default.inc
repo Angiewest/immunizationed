@@ -2740,10 +2740,11 @@ function immunizationed_views_views_default_views() {
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
 
-  /* Display: Content pane */
-  $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
+  /* Display: grid pane */
+  $handler = $view->new_display('panel_pane', 'grid pane', 'panel_pane_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Our 4 Pillars Vaccination Strategies';
+  $handler->display->display_options['display_description'] = 'Selected strategies for pillars one and two';
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'og_context';
   $handler->display->display_options['access']['perm'] = 'unsubscribe';
@@ -2780,19 +2781,57 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['fields']['term_node_tid']['link_to_taxonomy'] = FALSE;
   $handler->display->display_options['fields']['term_node_tid']['limit'] = TRUE;
   $handler->display->display_options['fields']['term_node_tid']['vocabularies'] = array(
+    'convenient_vaccination_services_strategies' => 'convenient_vaccination_services_strategies',
+    'patient_notification_strategies' => 'patient_notification_strategies',
+    'enhanced_office_vaccination_systems_strategies' => 'enhanced_office_vaccination_systems_strategies',
+    'convenient_vaccination_services_other' => 'convenient_vaccination_services_other',
+    'enhanced_vaccination_systems_other' => 'enhanced_vaccination_systems_other',
+    'motivation' => 'motivation',
+    'motivation_strategies_' => 'motivation_strategies_',
+    'patient_notification_other' => 'patient_notification_other',
     'certification_entities' => 0,
-    'convenient_vaccination_services_strategies' => 0,
-    'patient_notification_strategies' => 0,
-    'enhanced_office_vaccination_systems_strategies' => 0,
     'practice_jobs' => 0,
     'special_practice_role' => 0,
     'tags' => 0,
-    'convenient_vaccination_services_other' => 0,
-    'enhanced_vaccination_systems_other' => 0,
-    'motivation' => 0,
-    'motivation_strategies_' => 0,
-    'patient_notification_other' => 0,
+    'form_relationships' => 0,
+    'pillar_tags' => 0,
   );
+  /* Field: Content: Pillar tag */
+  $handler->display->display_options['fields']['field_pillar_tag']['id'] = 'field_pillar_tag';
+  $handler->display->display_options['fields']['field_pillar_tag']['table'] = 'field_data_field_pillar_tag';
+  $handler->display->display_options['fields']['field_pillar_tag']['field'] = 'field_pillar_tag';
+  $handler->display->display_options['fields']['field_pillar_tag']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_pillar_tag']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_pillar_tag']['delta_offset'] = '0';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Pillar tag (field_pillar_tag) */
+  $handler->display->display_options['sorts']['field_pillar_tag_tid']['id'] = 'field_pillar_tag_tid';
+  $handler->display->display_options['sorts']['field_pillar_tag_tid']['table'] = 'field_data_field_pillar_tag';
+  $handler->display->display_options['sorts']['field_pillar_tag_tid']['field'] = 'field_pillar_tag_tid';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'AND',
+  );
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'convenient_vaccination_services' => 'convenient_vaccination_services',
+    'patient_notification' => 'patient_notification',
+    'enhanced_vaccination_systems' => 'enhanced_vaccination_systems',
+    'motivation' => 'motivation',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
 
   /* Display: VBO pane for rules */
   $handler = $view->new_display('panel_pane', 'VBO pane for rules', 'panel_pane_2');

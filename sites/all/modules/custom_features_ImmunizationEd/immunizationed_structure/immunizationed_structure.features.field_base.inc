@@ -42,35 +42,6 @@ function immunizationed_structure_field_default_field_bases() {
     'type' => 'text_with_summary',
   );
 
-  // Exported field_base: 'comment_body'
-  $field_bases['comment_body'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(
-      0 => 'comment',
-    ),
-    'field_name' => 'comment_body',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'text_long',
-  );
-
   // Exported field_base: 'field_audience'
   $field_bases['field_audience'] = array(
     'active' => 1,
@@ -197,74 +168,6 @@ function immunizationed_structure_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'text_long',
-  );
-
-  // Exported field_base: 'field_content_type_reference_for'
-  $field_bases['field_content_type_reference_for'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_content_type_reference_for',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
-    'indexes' => array(
-      'tid' => array(
-        0 => 'tid',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'taxonomy',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => 'form_relationships',
-          'parent' => 0,
-        ),
-      ),
-    ),
-    'translatable' => 0,
-    'type' => 'taxonomy_term_reference',
-  );
-
-  // Exported field_base: 'field_date'
-  $field_bases['field_date'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_date',
-    'field_permissions' => array(
-      'type' => 2,
-    ),
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'date',
-    'settings' => array(
-      'cache_count' => 4,
-      'cache_enabled' => 0,
-      'granularity' => array(
-        'day' => 'day',
-        'hour' => 0,
-        'minute' => 0,
-        'month' => 'month',
-        'second' => 0,
-        'year' => 'year',
-      ),
-      'repeat' => 0,
-      'timezone_db' => '',
-      'todate' => '',
-      'tz_handling' => 'none',
-    ),
-    'translatable' => 0,
-    'type' => 'datetime',
   );
 
   // Exported field_base: 'field_date_started'
@@ -445,25 +348,6 @@ function immunizationed_structure_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_epic_id'
-  $field_bases['field_epic_id'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_epic_id',
-    'field_permissions' => array(
-      'type' => 2,
-    ),
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'number',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'number_integer',
-  );
-
   // Exported field_base: 'field_expected_time_to_complete'
   $field_bases['field_expected_time_to_complete'] = array(
     'active' => 1,
@@ -615,7 +499,7 @@ function immunizationed_structure_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_image',
     'field_permissions' => array(
-      'type' => 0,
+      'type' => 2,
     ),
     'foreign keys' => array(
       'fid' => array(
@@ -700,70 +584,6 @@ function immunizationed_structure_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_next_meeting_date'
-  $field_bases['field_next_meeting_date'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_next_meeting_date',
-    'field_permissions' => array(
-      'type' => 2,
-    ),
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'date',
-    'settings' => array(
-      'cache_count' => 4,
-      'cache_enabled' => 0,
-      'granularity' => array(
-        'day' => 'day',
-        'hour' => 0,
-        'minute' => 0,
-        'month' => 'month',
-        'second' => 0,
-        'year' => 'year',
-      ),
-      'repeat' => 0,
-      'timezone_db' => '',
-      'todate' => '',
-      'tz_handling' => 'none',
-    ),
-    'translatable' => 0,
-    'type' => 'datetime',
-  );
-
-  // Exported field_base: 'field_notes'
-  $field_bases['field_notes'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_notes',
-    'field_permissions' => array(
-      'type' => 2,
-    ),
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'text_with_summary',
-  );
-
   // Exported field_base: 'field_poster_frame'
   $field_bases['field_poster_frame'] = array(
     'active' => 1,
@@ -792,138 +612,6 @@ function immunizationed_structure_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'image',
-  );
-
-  // Exported field_base: 'field_practice_address'
-  $field_bases['field_practice_address'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_practice_address',
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'addressfield',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'addressfield',
-  );
-
-  // Exported field_base: 'field_practice_phone'
-  $field_bases['field_practice_phone'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_practice_phone',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 20,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
-  );
-
-  // Exported field_base: 'field_practice_photo'
-  $field_bases['field_practice_photo'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_practice_photo',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
-    'indexes' => array(
-      'fid' => array(
-        0 => 'fid',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'image',
-    'settings' => array(
-      'default_image' => 136,
-      'uri_scheme' => 'public',
-    ),
-    'translatable' => 0,
-    'type' => 'image',
-  );
-
-  // Exported field_base: 'field_practice_website'
-  $field_bases['field_practice_website'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_practice_website',
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'link',
-    'settings' => array(
-      'attributes' => array(
-        'class' => '',
-        'rel' => '',
-        'target' => 'default',
-      ),
-      'display' => array(
-        'url_cutoff' => 80,
-      ),
-      'enable_tokens' => 1,
-      'title' => 'optional',
-      'title_maxlength' => 128,
-      'title_value' => '',
-      'url' => 0,
-    ),
-    'translatable' => 0,
-    'type' => 'link_field',
-  );
-
-  // Exported field_base: 'field_required_disclosures'
-  $field_bases['field_required_disclosures'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_required_disclosures',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'text_long',
   );
 
   // Exported field_base: 'field_resource_image'
@@ -963,6 +651,9 @@ function immunizationed_structure_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_resource_links',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
     'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
@@ -994,7 +685,7 @@ function immunizationed_structure_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_responsible_role',
     'field_permissions' => array(
-      'type' => 0,
+      'type' => 2,
     ),
     'foreign keys' => array(
       'tid' => array(
@@ -1175,32 +866,6 @@ function immunizationed_structure_field_default_field_bases() {
     'type' => 'list_integer',
   );
 
-  // Exported field_base: 'group_group'
-  $field_bases['group_group'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'group_group',
-    'foreign keys' => array(),
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => 'Not a group',
-        1 => 'Group',
-      ),
-      'allowed_values_function' => '',
-    ),
-    'translatable' => 0,
-    'type' => 'list_boolean',
-  );
-
   // Exported field_base: 'og_group_ref'
   $field_bases['og_group_ref'] = array(
     'active' => 1,
@@ -1280,57 +945,6 @@ function immunizationed_structure_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'text_long',
-  );
-
-  // Exported field_base: 'og_user_node'
-  $field_bases['og_user_node'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'og_user_node',
-    'field_permissions' => array(
-      'type' => 0,
-    ),
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
-    'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'entityreference',
-    'settings' => array(
-      'handler' => 'og',
-      'handler_settings' => array(
-        'behaviors' => array(
-          'og_behavior' => array(
-            'status' => TRUE,
-          ),
-          'views-select-list' => array(
-            'status' => 1,
-          ),
-        ),
-        'membership_type' => 'og_membership_type_default',
-        'sort' => array(
-          'type' => 'none',
-        ),
-        'target_bundles' => array(
-          'practice_group' => 'practice_group',
-        ),
-      ),
-      'handler_submit' => 'Change handler',
-      'target_type' => 'node',
-    ),
-    'translatable' => 0,
-    'type' => 'entityreference',
   );
 
   return $field_bases;

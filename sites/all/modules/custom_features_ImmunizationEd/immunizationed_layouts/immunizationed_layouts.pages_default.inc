@@ -13,13 +13,13 @@ function immunizationed_layouts_default_page_manager_handlers() {
   $handler = new stdClass();
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
-  $handler->name = 'node_edit_panel_context_2';
+  $handler->name = 'node_edit_panel_context_7';
   $handler->task = 'node_edit';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
-  $handler->weight = -28;
+  $handler->weight = -24;
   $handler->conf = array(
-    'title' => 'Convenient vaccination edit form panellized',
+    'title' => 'Practice add/edit for site users',
     'no_blocks' => 0,
     'pipeline' => 'standard',
     'body_classes_to_remove' => '',
@@ -34,7 +34,7 @@ function immunizationed_layouts_default_page_manager_handlers() {
           'name' => 'node_type',
           'settings' => array(
             'type' => array(
-              'convenient_vaccination_services' => 'convenient_vaccination_services',
+              'practice_group' => 'practice_group',
             ),
           ),
           'context' => 'argument_node_edit_1',
@@ -61,7 +61,7 @@ function immunizationed_layouts_default_page_manager_handlers() {
     ),
   );
   $display = new panels_display();
-  $display->layout = 'onecol';
+  $display->layout = 'twocol_bricks';
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(
@@ -72,7 +72,12 @@ function immunizationed_layouts_default_page_manager_handlers() {
       'bottom_right' => NULL,
       'image' => NULL,
       'body' => NULL,
+      'top' => NULL,
+      'left_above' => NULL,
+      'right_above' => NULL,
       'middle' => NULL,
+      'left_below' => NULL,
+      'right_below' => NULL,
     ),
   );
   $display->cache = array();
@@ -81,9 +86,9 @@ function immunizationed_layouts_default_page_manager_handlers() {
   $display->panels = array();
     $pane = new stdClass();
     $pane->pid = 'new-1';
-    $pane->panel = 'middle';
+    $pane->panel = 'top';
     $pane->type = 'views_panes';
-    $pane->subtype = 'other_additions_to_views-panel_pane_1';
+    $pane->subtype = 'other_additions_to_views-panel_pane_8';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array();
@@ -96,24 +101,18 @@ function immunizationed_layouts_default_page_manager_handlers() {
     $pane->position = 0;
     $pane->locks = array();
     $display->content['new-1'] = $pane;
-    $display->panels['middle'][0] = 'new-1';
+    $display->panels['top'][0] = 'new-1';
     $pane = new stdClass();
     $pane->pid = 'new-2';
-    $pane->panel = 'middle';
-    $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_req_assembly_instruc_p1';
+    $pane->panel = 'top';
+    $pane->type = 'node_form_title';
+    $pane->subtype = 'node_form_title';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'label' => 'title',
-      'formatter' => 'taxonomy_term_reference_plain',
-      'delta_limit' => '0',
-      'delta_offset' => '0',
-      'delta_reversed' => 0,
-      'formatter_settings' => array(),
       'context' => 'argument_node_edit_1',
-      'override_title' => 1,
-      'override_title_text' => 'Selected Strategies',
+      'override_title' => 0,
+      'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -124,20 +123,20 @@ function immunizationed_layouts_default_page_manager_handlers() {
     $pane->position = 1;
     $pane->locks = array();
     $display->content['new-2'] = $pane;
-    $display->panels['middle'][1] = 'new-2';
+    $display->panels['top'][1] = 'new-2';
     $pane = new stdClass();
     $pane->pid = 'new-3';
-    $pane->panel = 'middle';
+    $pane->panel = 'top';
     $pane->type = 'entity_form_field';
-    $pane->subtype = 'node:field_req_assembly_instruc_p1';
+    $pane->subtype = 'node:body';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
       'label' => '',
       'formatter' => '',
       'context' => 'argument_node_edit_1',
-      'override_title' => 1,
-      'override_title_text' => '<none>',
+      'override_title' => 0,
+      'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -148,20 +147,20 @@ function immunizationed_layouts_default_page_manager_handlers() {
     $pane->position = 2;
     $pane->locks = array();
     $display->content['new-3'] = $pane;
-    $display->panels['middle'][2] = 'new-3';
+    $display->panels['top'][2] = 'new-3';
     $pane = new stdClass();
     $pane->pid = 'new-4';
-    $pane->panel = 'middle';
+    $pane->panel = 'top';
     $pane->type = 'entity_form_field';
-    $pane->subtype = 'node:field_assembly_instruction';
+    $pane->subtype = 'node:field_practice_address';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
       'label' => '',
       'formatter' => '',
       'context' => 'argument_node_edit_1',
-      'override_title' => 1,
-      'override_title_text' => '<none>',
+      'override_title' => 0,
+      'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -172,24 +171,20 @@ function immunizationed_layouts_default_page_manager_handlers() {
     $pane->position = 3;
     $pane->locks = array();
     $display->content['new-4'] = $pane;
-    $display->panels['middle'][3] = 'new-4';
+    $display->panels['top'][3] = 'new-4';
     $pane = new stdClass();
     $pane->pid = 'new-5';
-    $pane->panel = 'middle';
-    $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_assembly_instruction';
+    $pane->panel = 'top';
+    $pane->type = 'entity_form_field';
+    $pane->subtype = 'node:field_practice_phone';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'label' => 'title',
-      'formatter' => 'taxonomy_term_reference_plain',
-      'delta_limit' => '0',
-      'delta_offset' => '0',
-      'delta_reversed' => 0,
-      'formatter_settings' => array(),
+      'label' => '',
+      'formatter' => '',
       'context' => 'argument_node_edit_1',
-      'override_title' => 1,
-      'override_title_text' => '<none>',
+      'override_title' => 0,
+      'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -200,24 +195,20 @@ function immunizationed_layouts_default_page_manager_handlers() {
     $pane->position = 4;
     $pane->locks = array();
     $display->content['new-5'] = $pane;
-    $display->panels['middle'][4] = 'new-5';
+    $display->panels['top'][4] = 'new-5';
     $pane = new stdClass();
     $pane->pid = 'new-6';
-    $pane->panel = 'middle';
-    $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_other_please_specify_p1';
+    $pane->panel = 'top';
+    $pane->type = 'entity_form_field';
+    $pane->subtype = 'node:field_practice_photo';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'label' => 'hidden',
-      'formatter' => 'taxonomy_term_reference_plain',
-      'delta_limit' => '0',
-      'delta_offset' => '0',
-      'delta_reversed' => 0,
-      'formatter_settings' => array(),
+      'label' => '',
+      'formatter' => '',
       'context' => 'argument_node_edit_1',
       'override_title' => 0,
-      'override_title_text' => '<none>',
+      'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -228,12 +219,12 @@ function immunizationed_layouts_default_page_manager_handlers() {
     $pane->position = 5;
     $pane->locks = array();
     $display->content['new-6'] = $pane;
-    $display->panels['middle'][5] = 'new-6';
+    $display->panels['top'][5] = 'new-6';
     $pane = new stdClass();
     $pane->pid = 'new-7';
-    $pane->panel = 'middle';
+    $pane->panel = 'top';
     $pane->type = 'entity_form_field';
-    $pane->subtype = 'node:field_other_please_specify_p1';
+    $pane->subtype = 'node:field_practice_website';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -252,10 +243,198 @@ function immunizationed_layouts_default_page_manager_handlers() {
     $pane->position = 6;
     $pane->locks = array();
     $display->content['new-7'] = $pane;
-    $display->panels['middle'][6] = 'new-7';
+    $display->panels['top'][6] = 'new-7';
     $pane = new stdClass();
     $pane->pid = 'new-8';
-    $pane->panel = 'middle';
+    $pane->panel = 'top';
+    $pane->type = 'node_form_buttons';
+    $pane->subtype = 'node_form_buttons';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => 'argument_node_edit_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 7;
+    $pane->locks = array();
+    $display->content['new-8'] = $pane;
+    $display->panels['top'][7] = 'new-8';
+  $display->hide_title = PANELS_TITLE_PANE;
+  $display->title_pane = '0';
+  $handler->conf['display'] = $display;
+  $export['node_edit_panel_context_7'] = $handler;
+
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'node_edit_panel_context_9';
+  $handler->task = 'node_edit';
+  $handler->subtask = '';
+  $handler->handler = 'panel_context';
+  $handler->weight = -23;
+  $handler->conf = array(
+    'title' => 'Project update ',
+    'no_blocks' => 0,
+    'pipeline' => 'standard',
+    'body_classes_to_remove' => '',
+    'body_classes_to_add' => '',
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+    'access' => array(
+      'logic' => 'and',
+      'plugins' => array(
+        0 => array(
+          'name' => 'node_type',
+          'settings' => array(
+            'type' => array(
+              'announcement' => 'announcement',
+            ),
+          ),
+          'context' => 'argument_node_edit_1',
+          'not' => FALSE,
+        ),
+        1 => array(
+          'name' => 'perm',
+          'settings' => array(
+            'perm' => 'view advanced help popup',
+          ),
+          'context' => 'logged-in-user',
+          'not' => FALSE,
+        ),
+        2 => array(
+          'name' => 'perm',
+          'settings' => array(
+            'perm' => 'view advanced help index',
+          ),
+          'context' => 'logged-in-user',
+          'not' => TRUE,
+        ),
+      ),
+    ),
+  );
+  $display = new panels_display();
+  $display->layout = 'twocol_bricks';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'top' => NULL,
+      'left_above' => NULL,
+      'right_above' => NULL,
+      'middle' => NULL,
+      'left_below' => NULL,
+      'right_below' => NULL,
+      'bottom' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = '';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-9';
+    $pane->panel = 'top';
+    $pane->type = 'node_form_title';
+    $pane->subtype = 'node_form_title';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => 'argument_node_edit_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-9'] = $pane;
+    $display->panels['top'][0] = 'new-9';
+    $pane = new stdClass();
+    $pane->pid = 'new-10';
+    $pane->panel = 'top';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'other_additions_to_views-panel_pane_7';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-10'] = $pane;
+    $display->panels['top'][1] = 'new-10';
+    $pane = new stdClass();
+    $pane->pid = 'new-11';
+    $pane->panel = 'top';
+    $pane->type = 'entity_form_field';
+    $pane->subtype = 'node:body';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'label' => '',
+      'formatter' => '',
+      'context' => 'argument_node_edit_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $display->content['new-11'] = $pane;
+    $display->panels['top'][2] = 'new-11';
+    $pane = new stdClass();
+    $pane->pid = 'new-12';
+    $pane->panel = 'top';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'node:group_content_access';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'label' => 'title',
+      'formatter' => 'list_default',
+      'delta_limit' => 0,
+      'delta_offset' => '0',
+      'delta_reversed' => FALSE,
+      'formatter_settings' => array(),
+      'context' => 'argument_node_edit_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 3;
+    $pane->locks = array();
+    $display->content['new-12'] = $pane;
+    $display->panels['top'][3] = 'new-12';
+    $pane = new stdClass();
+    $pane->pid = 'new-13';
+    $pane->panel = 'top';
     $pane->type = 'entity_form_field';
     $pane->subtype = 'node:og_group_ref';
     $pane->shown = TRUE;
@@ -273,13 +452,13 @@ function immunizationed_layouts_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 7;
+    $pane->position = 4;
     $pane->locks = array();
-    $display->content['new-8'] = $pane;
-    $display->panels['middle'][7] = 'new-8';
+    $display->content['new-13'] = $pane;
+    $display->panels['top'][4] = 'new-13';
     $pane = new stdClass();
-    $pane->pid = 'new-9';
-    $pane->panel = 'middle';
+    $pane->pid = 'new-14';
+    $pane->panel = 'top';
     $pane->type = 'node_form_buttons';
     $pane->subtype = 'node_form_buttons';
     $pane->shown = TRUE;
@@ -295,14 +474,14 @@ function immunizationed_layouts_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 8;
+    $pane->position = 5;
     $pane->locks = array();
-    $display->content['new-9'] = $pane;
-    $display->panels['middle'][8] = 'new-9';
+    $display->content['new-14'] = $pane;
+    $display->panels['top'][5] = 'new-14';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
-  $export['node_edit_panel_context_2'] = $handler;
+  $export['node_edit_panel_context_9'] = $handler;
 
   $handler = new stdClass();
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */

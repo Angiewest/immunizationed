@@ -125,6 +125,7 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['create body'] = array(
     'name' => 'create body',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -185,8 +186,6 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['create field_expected_time_to_complete'] = array(
     'name' => 'create field_expected_time_to_complete',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -221,6 +220,8 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['create field_task_start_date'] = array(
     'name' => 'create field_task_start_date',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -437,15 +438,6 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete any practice_group content.
-  $permissions['delete any practice_group content'] = array(
-    'name' => 'delete any practice_group content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: delete any required_disclosure content.
   $permissions['delete any required_disclosure content'] = array(
     'name' => 'delete any required_disclosure content',
@@ -577,15 +569,6 @@ function immunizationed_structure_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: delete own practice_group content.
-  $permissions['delete own practice_group content'] = array(
-    'name' => 'delete own practice_group content',
-    'roles' => array(
-      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -739,18 +722,6 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit any practice_group content.
-  $permissions['edit any practice_group content'] = array(
-    'name' => 'edit any practice_group content',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: edit any required_disclosure content.
   $permissions['edit any required_disclosure content'] = array(
     'name' => 'edit any required_disclosure content',
@@ -822,6 +793,8 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['edit field_date_started'] = array(
     'name' => 'edit field_date_started',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -833,7 +806,6 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['edit field_date_task_completed'] = array(
     'name' => 'edit field_date_task_completed',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -936,7 +908,6 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['edit own body'] = array(
     'name' => 'edit own body',
     'roles' => array(
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -983,7 +954,6 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['edit own field_date_task_completed'] = array(
     'name' => 'edit own field_date_task_completed',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -996,8 +966,6 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['edit own field_expected_time_to_complete'] = array(
     'name' => 'edit own field_expected_time_to_complete',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -1021,6 +989,8 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['edit own field_task_due_date'] = array(
     'name' => 'edit own field_task_due_date',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -1032,6 +1002,7 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['edit own field_task_start_date'] = array(
     'name' => 'edit own field_task_start_date',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -1098,17 +1069,6 @@ function immunizationed_structure_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: edit own practice_group content.
-  $permissions['edit own practice_group content'] = array(
-    'name' => 'edit own practice_group content',
-    'roles' => array(
-      'Practice admin' => 'Practice admin',
-      'authenticated user' => 'authenticated user',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -1230,6 +1190,7 @@ function immunizationed_structure_user_default_permissions() {
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
@@ -1264,8 +1225,11 @@ function immunizationed_structure_user_default_permissions() {
     'name' => 'view field_task_start_date',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
@@ -1343,6 +1307,7 @@ function immunizationed_structure_user_default_permissions() {
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
@@ -1381,6 +1346,7 @@ function immunizationed_structure_user_default_permissions() {
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',

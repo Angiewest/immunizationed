@@ -75,14 +75,6 @@ function immunizationed_structure_node_info() {
       'title_label' => t('Title'),
       'help' => '',
     ),
-    'practice_group' => array(
-      'name' => t('Practice'),
-      'base' => 'node_content',
-      'description' => t('Clinical practice enrolled in the 4 Pillars Toolkit Project to Build Adult Immunizations'),
-      'has_title' => '1',
-      'title_label' => t('Practice Name'),
-      'help' => '',
-    ),
     'required_disclosure' => array(
       'name' => t('Required Disclosure'),
       'base' => 'node_content',

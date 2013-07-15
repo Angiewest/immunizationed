@@ -48,9 +48,51 @@ function immunizationed_practice_inputs_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'auto_entitylabel_node_convenient_vaccination_services';
+  $strongarm->value = '1';
+  $export['auto_entitylabel_node_convenient_vaccination_services'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'auto_entitylabel_node_enhanced_vaccination_systems';
+  $strongarm->value = '1';
+  $export['auto_entitylabel_node_enhanced_vaccination_systems'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'auto_entitylabel_node_meeting_agenda';
   $strongarm->value = '1';
   $export['auto_entitylabel_node_meeting_agenda'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'auto_entitylabel_node_motivation';
+  $strongarm->value = '1';
+  $export['auto_entitylabel_node_motivation'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'auto_entitylabel_node_patient_notification';
+  $strongarm->value = '1';
+  $export['auto_entitylabel_node_patient_notification'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'auto_entitylabel_pattern_node_convenient_vaccination_services';
+  $strongarm->value = 'Selected [current-date:custom:M d, Y]';
+  $export['auto_entitylabel_pattern_node_convenient_vaccination_services'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'auto_entitylabel_pattern_node_enhanced_vaccination_systems';
+  $strongarm->value = 'Selected [current-date:custom:M d, Y]';
+  $export['auto_entitylabel_pattern_node_enhanced_vaccination_systems'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -62,9 +104,51 @@ function immunizationed_practice_inputs_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'auto_entitylabel_pattern_node_motivation';
+  $strongarm->value = 'Selected [current-date:custom:M d, Y]';
+  $export['auto_entitylabel_pattern_node_motivation'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'auto_entitylabel_pattern_node_patient_notification';
+  $strongarm->value = 'Selected [current-date:custom:M d, Y]';
+  $export['auto_entitylabel_pattern_node_patient_notification'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'auto_entitylabel_php_node_convenient_vaccination_services';
+  $strongarm->value = 0;
+  $export['auto_entitylabel_php_node_convenient_vaccination_services'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'auto_entitylabel_php_node_enhanced_vaccination_systems';
+  $strongarm->value = 0;
+  $export['auto_entitylabel_php_node_enhanced_vaccination_systems'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'auto_entitylabel_php_node_meeting_agenda';
   $strongarm->value = 0;
   $export['auto_entitylabel_php_node_meeting_agenda'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'auto_entitylabel_php_node_motivation';
+  $strongarm->value = 0;
+  $export['auto_entitylabel_php_node_motivation'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'auto_entitylabel_php_node_patient_notification';
+  $strongarm->value = 0;
+  $export['auto_entitylabel_php_node_patient_notification'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -93,13 +177,6 @@ function immunizationed_practice_inputs_strongarm() {
   $strongarm->name = 'botcha_enabled_comment_node_motivation_form';
   $strongarm->value = 1;
   $export['botcha_enabled_comment_node_motivation_form'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'botcha_enabled_comment_node_patient_notification_form';
-  $strongarm->value = 1;
-  $export['botcha_enabled_comment_node_patient_notification_form'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -146,9 +223,37 @@ function immunizationed_practice_inputs_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_mode_convenient_vaccination_services';
+  $strongarm->value = 1;
+  $export['comment_default_mode_convenient_vaccination_services'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_mode_enhanced_vaccination_systems';
+  $strongarm->value = 1;
+  $export['comment_default_mode_enhanced_vaccination_systems'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_mode_meeting_agenda';
   $strongarm->value = 1;
   $export['comment_default_mode_meeting_agenda'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_mode_motivation';
+  $strongarm->value = 1;
+  $export['comment_default_mode_motivation'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_mode_other_additions_to_views';
+  $strongarm->value = 1;
+  $export['comment_default_mode_other_additions_to_views'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -398,9 +503,73 @@ function immunizationed_practice_inputs_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'diff_view_mode_preview_node_patient_notification';
-  $strongarm->value = 'full';
-  $export['diff_view_mode_preview_node_patient_notification'] = $strongarm;
+  $strongarm->name = 'field_bundle_settings_node__convenient_vaccination_services';
+  $strongarm->value = array(
+    'view_modes' => array(
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_index' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_result' => array(
+        'custom_settings' => FALSE,
+      ),
+      'print' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
+    'extra_fields' => array(
+      'form' => array(
+        'title' => array(
+          'weight' => '0',
+        ),
+        'path' => array(
+          'weight' => '1',
+        ),
+        'redirect' => array(
+          'weight' => '30',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_node__convenient_vaccination_services'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_node__enhanced_vaccination_systems';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(
+        'title' => array(
+          'weight' => '0',
+        ),
+        'path' => array(
+          'weight' => '1',
+        ),
+        'redirect' => array(
+          'weight' => '30',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_node__enhanced_vaccination_systems'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -450,11 +619,99 @@ function immunizationed_practice_inputs_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_node__motivation';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(
+        'title' => array(
+          'weight' => '0',
+        ),
+        'path' => array(
+          'weight' => '1',
+        ),
+        'redirect' => array(
+          'weight' => '30',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_node__motivation'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_node__other_additions_to_views';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(
+        'title' => array(
+          'weight' => '-5',
+        ),
+        'path' => array(
+          'weight' => '30',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_node__other_additions_to_views'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_options_convenient_vaccination_services';
+  $strongarm->value = array(
+    0 => 'main-menu',
+  );
+  $export['menu_options_convenient_vaccination_services'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_options_enhanced_vaccination_systems';
+  $strongarm->value = array(
+    0 => 'main-menu',
+  );
+  $export['menu_options_enhanced_vaccination_systems'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_meeting_agenda';
   $strongarm->value = array(
     0 => 'main-menu',
   );
   $export['menu_options_meeting_agenda'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_options_motivation';
+  $strongarm->value = array(
+    0 => 'main-menu',
+  );
+  $export['menu_options_motivation'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_options_other_additions_to_views';
+  $strongarm->value = array(
+    0 => 'main-menu',
+  );
+  $export['menu_options_other_additions_to_views'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_options_patient_notification';
+  $strongarm->value = array(
+    0 => 'main-menu',
+  );
+  $export['menu_options_patient_notification'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -501,6 +758,24 @@ function immunizationed_practice_inputs_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'node_options_convenient_vaccination_services';
+  $strongarm->value = array(
+    0 => 'status',
+  );
+  $export['node_options_convenient_vaccination_services'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_options_enhanced_vaccination_systems';
+  $strongarm->value = array(
+    0 => 'status',
+  );
+  $export['node_options_enhanced_vaccination_systems'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'node_options_meeting_agenda';
   $strongarm->value = array(
     0 => 'status',
@@ -510,9 +785,71 @@ function immunizationed_practice_inputs_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'node_options_motivation';
+  $strongarm->value = array(
+    0 => 'status',
+  );
+  $export['node_options_motivation'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_options_other_additions_to_views';
+  $strongarm->value = array(
+    0 => 'status',
+  );
+  $export['node_options_other_additions_to_views'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_options_patient_notification';
+  $strongarm->value = array(
+    0 => 'status',
+  );
+  $export['node_options_patient_notification'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_preview_convenient_vaccination_services';
+  $strongarm->value = '1';
+  $export['node_preview_convenient_vaccination_services'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_preview_enhanced_vaccination_systems';
+  $strongarm->value = '1';
+  $export['node_preview_enhanced_vaccination_systems'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_meeting_agenda';
   $strongarm->value = '0';
   $export['node_preview_meeting_agenda'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_preview_motivation';
+  $strongarm->value = '1';
+  $export['node_preview_motivation'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_preview_other_additions_to_views';
+  $strongarm->value = '1';
+  $export['node_preview_other_additions_to_views'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_preview_patient_notification';
+  $strongarm->value = '0';
+  $export['node_preview_patient_notification'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -559,6 +896,58 @@ function immunizationed_practice_inputs_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'panelizer_defaults_node_convenient_vaccination_services';
+  $strongarm->value = array(
+    'status' => 0,
+    'view modes' => array(
+      'page_manager' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+      'default' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+      'teaser' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+    ),
+  );
+  $export['panelizer_defaults_node_convenient_vaccination_services'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'panelizer_defaults_node_enhanced_vaccination_systems';
+  $strongarm->value = array(
+    'status' => 0,
+    'view modes' => array(
+      'page_manager' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+      'default' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+      'teaser' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+    ),
+  );
+  $export['panelizer_defaults_node_enhanced_vaccination_systems'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'panelizer_defaults_node_meeting_agenda';
   $strongarm->value = array(
     'status' => 0,
@@ -581,6 +970,252 @@ function immunizationed_practice_inputs_strongarm() {
     ),
   );
   $export['panelizer_defaults_node_meeting_agenda'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'panelizer_defaults_node_motivation';
+  $strongarm->value = array(
+    'status' => 0,
+    'view modes' => array(
+      'page_manager' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+      'default' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+      'teaser' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+    ),
+  );
+  $export['panelizer_defaults_node_motivation'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'panelizer_defaults_node_other_additions_to_views';
+  $strongarm->value = array(
+    'status' => 0,
+    'view modes' => array(
+      'page_manager' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+      'default' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+      'teaser' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+    ),
+  );
+  $export['panelizer_defaults_node_other_additions_to_views'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'panelizer_defaults_node_patient_notification';
+  $strongarm->value = array(
+    'status' => 0,
+    'view modes' => array(
+      'page_manager' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+      'default' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+      'teaser' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+    ),
+  );
+  $export['panelizer_defaults_node_patient_notification'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'panelizer_defaults_taxonomy_term_convenient_vaccination_services_other';
+  $strongarm->value = array(
+    'status' => 0,
+    'view modes' => array(
+      'page_manager' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+      'default' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+    ),
+  );
+  $export['panelizer_defaults_taxonomy_term_convenient_vaccination_services_other'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'panelizer_defaults_taxonomy_term_convenient_vaccination_services_strategies';
+  $strongarm->value = array(
+    'status' => 0,
+    'view modes' => array(
+      'page_manager' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+      'default' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+    ),
+  );
+  $export['panelizer_defaults_taxonomy_term_convenient_vaccination_services_strategies'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'panelizer_defaults_taxonomy_term_enhanced_office_vaccination_systems_strategies';
+  $strongarm->value = array(
+    'status' => 0,
+    'view modes' => array(
+      'page_manager' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+      'default' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+    ),
+  );
+  $export['panelizer_defaults_taxonomy_term_enhanced_office_vaccination_systems_strategies'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'panelizer_defaults_taxonomy_term_enhanced_vaccination_systems_other';
+  $strongarm->value = array(
+    'status' => 0,
+    'view modes' => array(
+      'page_manager' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+      'default' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+    ),
+  );
+  $export['panelizer_defaults_taxonomy_term_enhanced_vaccination_systems_other'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'panelizer_defaults_taxonomy_term_motivation';
+  $strongarm->value = array(
+    'status' => 0,
+    'view modes' => array(
+      'page_manager' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+      'default' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+    ),
+  );
+  $export['panelizer_defaults_taxonomy_term_motivation'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'panelizer_defaults_taxonomy_term_motivation_strategies_';
+  $strongarm->value = array(
+    'status' => 0,
+    'view modes' => array(
+      'page_manager' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+      'default' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+    ),
+  );
+  $export['panelizer_defaults_taxonomy_term_motivation_strategies_'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'panelizer_defaults_taxonomy_term_patient_notification_other';
+  $strongarm->value = array(
+    'status' => 0,
+    'view modes' => array(
+      'page_manager' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+      'default' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+    ),
+  );
+  $export['panelizer_defaults_taxonomy_term_patient_notification_other'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'panelizer_defaults_taxonomy_term_patient_notification_strategies';
+  $strongarm->value = array(
+    'status' => 0,
+    'view modes' => array(
+      'page_manager' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+      'default' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+    ),
+  );
+  $export['panelizer_defaults_taxonomy_term_patient_notification_strategies'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
