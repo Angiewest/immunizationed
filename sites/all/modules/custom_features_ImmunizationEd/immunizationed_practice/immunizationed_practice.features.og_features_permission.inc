@@ -417,8 +417,8 @@ function immunizationed_practice_og_features_default_permissions() {
     ),
   );
 
-  // Exported og permission: 'node:practice_group:update field_pillar_tag field'
-  $permissions['node:practice_group:update field_pillar_tag field'] = array(
+  // Exported og permission: 'node:practice_group:update field_pillar_tags field'
+  $permissions['node:practice_group:update field_pillar_tags field'] = array(
     'roles' => array(),
   );
 
@@ -881,8 +881,8 @@ function immunizationed_practice_og_features_default_permissions() {
     ),
   );
 
-  // Exported og permission: 'node:practice_group:view field_pillar_tag field'
-  $permissions['node:practice_group:view field_pillar_tag field'] = array(
+  // Exported og permission: 'node:practice_group:view field_pillar_tags field'
+  $permissions['node:practice_group:view field_pillar_tags field'] = array(
     'roles' => array(),
   );
 
