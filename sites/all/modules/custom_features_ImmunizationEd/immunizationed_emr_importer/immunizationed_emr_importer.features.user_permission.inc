@@ -10,23 +10,6 @@
 function immunizationed_emr_importer_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: administer panelizer node vaccination_data_from_emr defaults.
-  $permissions['administer panelizer node vaccination_data_from_emr defaults'] = array(
-    'name' => 'administer panelizer node vaccination_data_from_emr defaults',
-    'roles' => array(),
-    'module' => 'panelizer',
-  );
-
-  // Exported permission: clear emr_importer feeds.
-  $permissions['clear emr_importer feeds'] = array(
-    'name' => 'clear emr_importer feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'feeds',
-  );
-
   // Exported permission: create field_epic_id.
   $permissions['create field_epic_id'] = array(
     'name' => 'create field_epic_id',
@@ -125,34 +108,6 @@ function immunizationed_emr_importer_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
-  );
-
-  // Exported permission: create vaccination_data_from_emr content.
-  $permissions['create vaccination_data_from_emr content'] = array(
-    'name' => 'create vaccination_data_from_emr content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
-  // Exported permission: delete any vaccination_data_from_emr content.
-  $permissions['delete any vaccination_data_from_emr content'] = array(
-    'name' => 'delete any vaccination_data_from_emr content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
-  // Exported permission: delete own vaccination_data_from_emr content.
-  $permissions['delete own vaccination_data_from_emr content'] = array(
-    'name' => 'delete own vaccination_data_from_emr content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
-  // Exported permission: edit any vaccination_data_from_emr content.
-  $permissions['edit any vaccination_data_from_emr content'] = array(
-    'name' => 'edit any vaccination_data_from_emr content',
-    'roles' => array(),
-    'module' => 'node',
   );
 
   // Exported permission: edit field_epic_id.
@@ -330,33 +285,6 @@ function immunizationed_emr_importer_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit own vaccination_data_from_emr content.
-  $permissions['edit own vaccination_data_from_emr content'] = array(
-    'name' => 'edit own vaccination_data_from_emr content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
-  // Exported permission: import emr_importer feeds.
-  $permissions['import emr_importer feeds'] = array(
-    'name' => 'import emr_importer feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'feeds',
-  );
-
-  // Exported permission: unlock emr_importer feeds.
-  $permissions['unlock emr_importer feeds'] = array(
-    'name' => 'unlock emr_importer feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'feeds',
   );
 
   // Exported permission: view field_epic_id.
