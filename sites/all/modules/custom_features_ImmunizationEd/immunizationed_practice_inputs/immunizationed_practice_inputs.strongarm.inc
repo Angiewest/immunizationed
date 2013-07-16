@@ -21,7 +21,7 @@ function immunizationed_practice_inputs_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_enhanced_vaccination_systems';
-  $strongarm->value = 'edit-og';
+  $strongarm->value = 'edit-submission';
   $export['additional_settings__active_tab_enhanced_vaccination_systems'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -42,7 +42,7 @@ function immunizationed_practice_inputs_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_patient_notification';
-  $strongarm->value = 'edit-diff';
+  $strongarm->value = 'edit-panelizer';
   $export['additional_settings__active_tab_patient_notification'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -357,7 +357,7 @@ function immunizationed_practice_inputs_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_preview_patient_notification';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['comment_preview_patient_notification'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -813,14 +813,14 @@ function immunizationed_practice_inputs_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_convenient_vaccination_services';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['node_preview_convenient_vaccination_services'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_enhanced_vaccination_systems';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['node_preview_enhanced_vaccination_systems'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -834,7 +834,7 @@ function immunizationed_practice_inputs_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_motivation';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['node_preview_motivation'] = $strongarm;
 
   $strongarm = new stdClass();

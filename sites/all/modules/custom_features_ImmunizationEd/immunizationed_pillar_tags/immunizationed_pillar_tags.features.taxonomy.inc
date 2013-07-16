@@ -9,10 +9,10 @@
  */
 function immunizationed_pillar_tags_taxonomy_default_vocabularies() {
   return array(
-    'pillar_tags' => array(
+    'taxonomy_pillar_tags_' => array(
       'name' => 'Pillar tags',
-      'machine_name' => 'pillar_tags',
-      'description' => 'Tags for categorizing content associated with pillars',
+      'machine_name' => 'taxonomy_pillar_tags_',
+      'description' => '',
       'hierarchy' => 0,
       'module' => 'taxonomy',
       'weight' => 0,
