@@ -49,6 +49,8 @@ function immunizationed_charts_views_default_views() {
   $handler->display->display_options['fields']['field_reporting_period']['id'] = 'field_reporting_period';
   $handler->display->display_options['fields']['field_reporting_period']['table'] = 'field_data_field_reporting_period';
   $handler->display->display_options['fields']['field_reporting_period']['field'] = 'field_reporting_period';
+  $handler->display->display_options['fields']['field_reporting_period']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_reporting_period']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_reporting_period']['settings'] = array(
     'format_type' => 'short',
     'fromto' => 'value',
@@ -188,7 +190,9 @@ function immunizationed_charts_views_default_views() {
       'rendered_strip' => 0,
     ),
   );
-  $handler->display->display_options['style_options']['width'] = '640';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
+  $handler->display->display_options['style_options']['width'] = '820';
   $handler->display->display_options['style_options']['height'] = '350';
   $handler->display->display_options['style_options']['isstacked'] = 1;
   $handler->display->display_options['style_options']['pointsize'] = '0';
@@ -266,6 +270,7 @@ function immunizationed_charts_views_default_views() {
 
   /* Display: Table Attachment */
   $handler = $view->new_display('attachment', 'Table Attachment', 'attachment_1');
+  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['display_description'] = 'Table of values feeding chart';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';

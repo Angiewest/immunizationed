@@ -2796,18 +2796,11 @@ function immunizationed_views_views_default_views() {
     'form_relationships' => 0,
     'pillar_tags' => 0,
   );
-  /* Field: Content: Pillar tag */
-  $handler->display->display_options['fields']['field_pillar_tag']['id'] = 'field_pillar_tag';
-  $handler->display->display_options['fields']['field_pillar_tag']['table'] = 'field_data_field_pillar_tag';
-  $handler->display->display_options['fields']['field_pillar_tag']['field'] = 'field_pillar_tag';
-  $handler->display->display_options['fields']['field_pillar_tag']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_pillar_tag']['type'] = 'taxonomy_term_reference_plain';
-  $handler->display->display_options['fields']['field_pillar_tag']['delta_offset'] = '0';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Content: Pillar tag (field_pillar_tag) */
-  $handler->display->display_options['sorts']['field_pillar_tag_tid']['id'] = 'field_pillar_tag_tid';
-  $handler->display->display_options['sorts']['field_pillar_tag_tid']['table'] = 'field_data_field_pillar_tag';
-  $handler->display->display_options['sorts']['field_pillar_tag_tid']['field'] = 'field_pillar_tag_tid';
+  /* Sort criterion: Content: Pillar tags (field_pillar_tags) */
+  $handler->display->display_options['sorts']['field_pillar_tags_tid']['id'] = 'field_pillar_tags_tid';
+  $handler->display->display_options['sorts']['field_pillar_tags_tid']['table'] = 'field_data_field_pillar_tags';
+  $handler->display->display_options['sorts']['field_pillar_tags_tid']['field'] = 'field_pillar_tags_tid';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['filter_groups']['groups'] = array(
     1 => 'AND',
