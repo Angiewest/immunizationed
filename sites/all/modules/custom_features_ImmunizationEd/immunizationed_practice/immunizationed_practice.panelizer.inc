@@ -204,7 +204,21 @@ function immunizationed_practice_panelizer_defaults() {
     $pane->type = 'node_prepopulate';
     $pane->subtype = 'node_prepopulate';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        2 => array(
+          'name' => 'og_perm',
+          'settings' => array(
+            'perm' => 'update group',
+          ),
+          'context' => array(
+            0 => 'logged-in-user',
+            1 => 'panelizer',
+          ),
+          'not' => FALSE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'types' => array(
         'convenient_vaccination_services' => 'convenient_vaccination_services',
@@ -338,6 +352,19 @@ function immunizationed_practice_panelizer_defaults() {
     $pane->shown = TRUE;
     $pane->access = array(
       'logic' => 'and',
+      'plugins' => array(
+        0 => array(
+          'name' => 'og_perm',
+          'settings' => array(
+            'perm' => 'update group',
+          ),
+          'context' => array(
+            0 => 'logged-in-user',
+            1 => 'panelizer',
+          ),
+          'not' => FALSE,
+        ),
+      ),
     );
     $pane->configuration = array(
       'types' => array(

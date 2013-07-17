@@ -19,9 +19,7 @@ function immunizationed_practice_og_features_default_permissions() {
 
   // Exported og permission: 'node:practice_group:administer group'
   $permissions['node:practice_group:administer group'] = array(
-    'roles' => array(
-      'Administrator member' => 'Administrator member',
-    ),
+    'roles' => array(),
   );
 
   // Exported og permission: 'node:practice_group:approve and deny subscription'
@@ -87,9 +85,7 @@ function immunizationed_practice_og_features_default_permissions() {
 
   // Exported og permission: 'node:practice_group:create vaccination_data_from_emr content'
   $permissions['node:practice_group:create vaccination_data_from_emr content'] = array(
-    'roles' => array(
-      'Administrator member' => 'Administrator member',
-    ),
+    'roles' => array(),
   );
 
   // Exported og permission: 'node:practice_group:delete any announcement content'
@@ -221,7 +217,10 @@ function immunizationed_practice_og_features_default_permissions() {
 
   // Exported og permission: 'node:practice_group:update any announcement content'
   $permissions['node:practice_group:update any announcement content'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'Administrator member' => 'Administrator member',
+      'member' => 'member',
+    ),
   );
 
   // Exported og permission: 'node:practice_group:update any article content'
@@ -231,32 +230,50 @@ function immunizationed_practice_og_features_default_permissions() {
 
   // Exported og permission: 'node:practice_group:update any convenient_vaccination_services content'
   $permissions['node:practice_group:update any convenient_vaccination_services content'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'Administrator member' => 'Administrator member',
+      'member' => 'member',
+    ),
   );
 
   // Exported og permission: 'node:practice_group:update any enhanced_vaccination_systems content'
   $permissions['node:practice_group:update any enhanced_vaccination_systems content'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'Administrator member' => 'Administrator member',
+      'member' => 'member',
+    ),
   );
 
   // Exported og permission: 'node:practice_group:update any meeting_agenda content'
   $permissions['node:practice_group:update any meeting_agenda content'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'Administrator member' => 'Administrator member',
+      'member' => 'member',
+    ),
   );
 
   // Exported og permission: 'node:practice_group:update any motivation content'
   $permissions['node:practice_group:update any motivation content'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'Administrator member' => 'Administrator member',
+      'member' => 'member',
+    ),
   );
 
   // Exported og permission: 'node:practice_group:update any patient_notification content'
   $permissions['node:practice_group:update any patient_notification content'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'Administrator member' => 'Administrator member',
+      'member' => 'member',
+    ),
   );
 
   // Exported og permission: 'node:practice_group:update any task content'
   $permissions['node:practice_group:update any task content'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'Administrator member' => 'Administrator member',
+      'member' => 'member',
+    ),
   );
 
   // Exported og permission: 'node:practice_group:update any vaccination_data_from_emr content'
