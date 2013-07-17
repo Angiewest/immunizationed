@@ -944,7 +944,6 @@ function immunizationed_structure_user_default_permissions() {
     'name' => 'edit own field_date_started',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -957,7 +956,6 @@ function immunizationed_structure_user_default_permissions() {
     'name' => 'edit own field_date_task_completed',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',

@@ -13,6 +13,20 @@ function immunizationed_structure_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'additional_settings__active_tab_announcement';
+  $strongarm->value = 'edit-panelizer';
+  $export['additional_settings__active_tab_announcement'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'additional_settings__active_tab_practice_announcement';
+  $strongarm->value = 'edit-og';
+  $export['additional_settings__active_tab_practice_announcement'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_announcement';
   $strongarm->value = '2';
   $export['comment_announcement'] = $strongarm;
@@ -392,7 +406,7 @@ function immunizationed_structure_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_preview_announcement';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['comment_preview_announcement'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -583,6 +597,27 @@ function immunizationed_structure_strongarm() {
   $strongarm->name = 'comment_webform';
   $strongarm->value = '0';
   $export['comment_webform'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_enable_revisions_page_node_announcement';
+  $strongarm->value = 0;
+  $export['diff_enable_revisions_page_node_announcement'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_show_preview_changes_node_announcement';
+  $strongarm->value = 0;
+  $export['diff_show_preview_changes_node_announcement'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_view_mode_preview_node_announcement';
+  $strongarm->value = '';
+  $export['diff_view_mode_preview_node_announcement'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1126,6 +1161,15 @@ function immunizationed_structure_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'menu_options_practice_announcement';
+  $strongarm->value = array(
+    0 => 'main-menu',
+  );
+  $export['menu_options_practice_announcement'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_required_disclosure';
   $strongarm->value = array();
   $export['menu_options_required_disclosure'] = $strongarm;
@@ -1210,6 +1254,13 @@ function immunizationed_structure_strongarm() {
   $strongarm->name = 'menu_parent_page';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_page'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_parent_practice_announcement';
+  $strongarm->value = 'main-menu:0';
+  $export['menu_parent_practice_announcement'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1305,6 +1356,15 @@ function immunizationed_structure_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'node_options_practice_announcement';
+  $strongarm->value = array(
+    0 => 'status',
+  );
+  $export['node_options_practice_announcement'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'node_options_required_disclosure';
   $strongarm->value = array(
     0 => 'status',
@@ -1342,7 +1402,7 @@ function immunizationed_structure_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_announcement';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['node_preview_announcement'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1467,6 +1527,13 @@ function immunizationed_structure_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'node_submitted_practice_announcement';
+  $strongarm->value = 1;
+  $export['node_submitted_practice_announcement'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_practice_group';
   $strongarm->value = 0;
   $export['node_submitted_practice_group'] = $strongarm;
@@ -1498,6 +1565,32 @@ function immunizationed_structure_strongarm() {
   $strongarm->name = 'node_submitted_video';
   $strongarm->value = 0;
   $export['node_submitted_video'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'panelizer_defaults_node_announcement';
+  $strongarm->value = array(
+    'status' => 0,
+    'view modes' => array(
+      'page_manager' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+      'default' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+      'teaser' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+    ),
+  );
+  $export['panelizer_defaults_node_announcement'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1932,6 +2025,20 @@ function immunizationed_structure_strongarm() {
   $strongarm->name = 'pathauto_verbose';
   $strongarm->value = 0;
   $export['pathauto_verbose'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'save_continue_announcement';
+  $strongarm->value = 'Save and add fields';
+  $export['save_continue_announcement'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'save_continue_practice_announcement';
+  $strongarm->value = 'Save and add fields';
+  $export['save_continue_practice_announcement'] = $strongarm;
 
   return $export;
 }

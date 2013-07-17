@@ -246,5 +246,6 @@ features[variable][] = pathauto_node_practice_group_pattern
 features[variable][] = pathauto_taxonomy_term_practice_jobs_pattern
 features[variable][] = pathauto_taxonomy_term_special_practice_role_pattern
 features[variable][] = save_continue_practice_group
+features[views_view][] = meeting_minutes
 features[views_view][] = practice_crew
 project path = sites/all/modules/custom_features_immunizationed
