@@ -33,7 +33,6 @@ features[rules_config][] = rules_send_email_for_article_posted_to_practice_page
 features[rules_config][] = rules_send_email_when_practice_is_created
 features[rules_config][] = rules_send_emails
 features[rules_config][] = rules_send_task_email
-features[rules_config][] = rules_unpublish_old_strategies_guts
 features[rules_config][] = rules_unpublish_old_strategy
 features[user_permission][] = administer rules
 features[user_permission][] = bypass rules access

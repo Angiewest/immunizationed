@@ -299,7 +299,7 @@ function immunizationed_user_config_field_default_field_instances() {
   $field_instances['user-user-og_user_node'] = array(
     'bundle' => 'user',
     'default_value' => NULL,
-    'default_value_function' => '',
+    'default_value_function' => 'entityreference_prepopulate_field_default_value',
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -320,7 +320,7 @@ function immunizationed_user_config_field_default_field_instances() {
     ),
     'entity_type' => 'user',
     'field_name' => 'og_user_node',
-    'label' => 'Group membership',
+    'label' => 'Practice membership',
     'required' => 0,
     'settings' => array(
       'behaviors' => array(
@@ -334,10 +334,15 @@ function immunizationed_user_config_field_default_field_instances() {
           'status' => TRUE,
         ),
         'prepopulate' => array(
-          'status' => 0,
+          'action' => 'hide',
+          'action_on_edit' => 0,
+          'fallback' => 'none',
+          'og_context' => 1,
+          'skip_perm' => 0,
+          'status' => 1,
         ),
       ),
-      'user_register_form' => 0,
+      'user_register_form' => 1,
     ),
     'view modes' => array(
       'full' => array(
@@ -363,7 +368,6 @@ function immunizationed_user_config_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('First Name');
-  t('Group membership');
   t('If you did not find your job listed, please type in the name of your job at your clinic. ');
   t('Job Other');
   t('Just a visitor');
@@ -378,6 +382,7 @@ function immunizationed_user_config_field_default_field_instances() {
   t('Please enter your salutation (i.e. Dr. Mr. Mrs. Miss. Ms., etc).');
   t('Please select your job at your clinic.');
   t('Practice Job');
+  t('Practice membership');
   t('Salutation');
   t('Special Practice Role');
   t('Tick this box if you are not a member of a practice enrolled in the 4 Pillars Immunization Program.');

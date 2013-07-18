@@ -683,17 +683,6 @@ function immunizationed_rules_default_rules_configuration() {
       ]
     }
   }');
-  $items['rules_unpublish_old_strategies_guts'] = entity_import('rules_config', '{ "rules_unpublish_old_strategies_guts" : {
-      "LABEL" : "Unpublish old strategies",
-      "PLUGIN" : "rule",
-      "USES VARIABLES" : {
-        "new_node" : { "label" : "node", "type" : "node" },
-        "entity_list" : { "label" : "List of entity items", "type" : "list" },
-        "current_item" : { "label" : "current list item", "type" : "entity" }
-      },
-      "DO" : [  ]
-    }
-  }');
   $items['rules_unpublish_old_strategy'] = entity_import('rules_config', '{ "rules_unpublish_old_strategy" : {
       "LABEL" : "Unpublish old strategy",
       "PLUGIN" : "rule",
