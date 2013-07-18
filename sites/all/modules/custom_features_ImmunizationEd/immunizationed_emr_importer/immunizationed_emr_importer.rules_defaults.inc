@@ -14,63 +14,100 @@ function immunizationed_emr_importer_default_rules_configuration() {
       "PLUGIN" : "reaction rule",
       "WEIGHT" : "1",
       "TAGS" : [ "import" ],
-      "REQUIRES" : [ "rules", "views_bulk_operations", "feeds" ],
+      "REQUIRES" : [ "rules", "feeds" ],
       "ON" : [ "feeds_import_emr_importer" ],
       "IF" : [
-        { "entity_has_field" : { "entity" : [ "node" ], "field" : "og_group_ref" } },
-        { "data_is_empty" : { "data" : [ "node:og-group-ref" ] } }
+        { "component_rules_check_feed_item_for_practice_assignment" : { "unsaved_feed_item" : [ "node" ] } }
       ],
       "DO" : [
-        { "views_bulk_operations_action_load_list" : {
-            "USING" : { "view" : "practices|default" },
-            "PROVIDE" : { "entity_list" : { "practice_entity_list" : "A list of practice entities" } }
-          }
-        },
-        { "LOOP" : {
-            "USING" : { "list" : [ "practice-entity-list" ] },
-            "ITEM" : { "current_practice_list_item" : "Current practice item" },
-            "DO" : [
-              { "component_rules_add_emr_item_to_practice" : {
-                  "current_practice_list_item" : [ "current_practice_list_item" ],
-                  "feed_item" : [ "node" ]
-                }
-              }
-            ]
+        { "component_rules_skip_import_of_empty_feed_items" : { "unsaved_feed_item" : [ "node" ] } },
+        { "component_rules_loop_through_list_of_practices" : {
+            "USING" : { "unsaved_feed_item" : [ "node" ] },
+            "PROVIDE" : { "practice_list_item" : { "practice_list_item" : "practice list item" } }
           }
         }
       ]
     }
   }');
-  $items['rules_add_emr_item_to_practice'] = entity_import('rules_config', '{ "rules_add_emr_item_to_practice" : {
-      "LABEL" : "add emr item to practice",
-      "PLUGIN" : "rule set",
-      "TAGS" : [ "emr" ],
-      "REQUIRES" : [ "rules", "og" ],
+  $items['rules_assign_practice_to_emr_import_record'] = entity_import('rules_config', '{ "rules_assign_practice_to_emr_import_record" : {
+      "LABEL" : "Assign practice to EMR import record",
+      "PLUGIN" : "rule",
+      "TAGS" : [ "import" ],
+      "REQUIRES" : [ "rules" ],
       "USES VARIABLES" : {
-        "current_practice_list_item" : { "label" : "current practice item", "type" : "entity" },
-        "feed_item" : { "label" : "current feed item", "type" : "node" }
+        "practice_list_item" : { "label" : "practice list item", "type" : "node" },
+        "unsaved_feed_item" : { "label" : "unsaved feed item", "type" : "node" }
       },
-      "RULES" : [
-        { "RULE" : {
-            "IF" : [
-              { "entity_has_field" : { "entity" : [ "current-practice-list-item" ], "field" : "field_epic_id" } },
-              { "entity_has_field" : { "entity" : [ "feed-item" ], "field" : "field_epic_id" } },
-              { "data_is" : {
-                  "data" : [ "current-practice-list-item:field-epic-id" ],
-                  "value" : [ "feed-item:field-epic-id" ]
-                }
-              },
-              { "entity_is_of_type" : { "entity" : [ "current-practice-list-item" ], "type" : "node" } }
-            ],
-            "DO" : [
-              { "og_group_content_add" : { "entity" : [ "feed-item" ], "group" : [ "current-practice-list-item" ] } },
-              { "drupal_message" : { "message" : "[feed-item:title] added to [current-practice-list-item:title]" } },
-              { "entity_save" : { "data" : [ "feed-item" ], "immediate" : 1 } }
-            ],
-            "LABEL" : "iterate through practices and add item"
+      "IF" : [
+        { "entity_has_field" : { "entity" : [ "practice-list-item" ], "field" : "field_epic_id" } },
+        { "entity_has_field" : { "entity" : [ "unsaved-feed-item" ], "field" : "field_epic_id" } },
+        { "data_is" : {
+            "data" : [ "practice-list-item:field-epic-id" ],
+            "value" : [ "unsaved-feed-item:field-epic-id" ]
+          }
+        },
+        { "entity_has_field" : { "entity" : [ "unsaved-feed-item" ], "field" : "og_group_ref" } }
+      ],
+      "DO" : [
+        { "data_set" : {
+            "data" : [ "unsaved-feed-item:og-group-ref" ],
+            "value" : [ "practice-list-item" ]
           }
         }
       ]
+    }
+  }');
+  $items['rules_check_feed_item_for_practice_assignment'] = entity_import('rules_config', '{ "rules_check_feed_item_for_practice_assignment" : {
+      "LABEL" : "check feed item for practice assignment",
+      "PLUGIN" : "and",
+      "TAGS" : [ "practice" ],
+      "REQUIRES" : [ "rules" ],
+      "USES VARIABLES" : { "unsaved_feed_item" : { "label" : "unsaved feed item", "type" : "entity" } },
+      "AND" : [
+        { "entity_has_field" : { "entity" : [ "unsaved-feed-item" ], "field" : "og_group_ref" } },
+        { "data_is_empty" : { "data" : [ "unsaved-feed-item:og-group-ref" ] } }
+      ]
+    }
+  }');
+  $items['rules_loop_through_list_of_practices'] = entity_import('rules_config', '{ "rules_loop_through_list_of_practices" : {
+      "LABEL" : "loop through list of practices",
+      "PLUGIN" : "rule",
+      "TAGS" : [ "import" ],
+      "REQUIRES" : [ "views_bulk_operations", "rules" ],
+      "USES VARIABLES" : {
+        "practice_list_item" : { "label" : "practice list item", "type" : "entity", "parameter" : false },
+        "unsaved_feed_item" : { "label" : "unsaved feed item", "type" : "node" }
+      },
+      "DO" : [
+        { "views_bulk_operations_action_load_list" : {
+            "USING" : { "view" : "practices|default" },
+            "PROVIDE" : { "entity_list" : { "entity_list" : "A list of entities" } }
+          }
+        },
+        { "LOOP" : {
+            "USING" : { "list" : [ "entity-list" ] },
+            "ITEM" : { "practice_list_item" : "Current practice list item" },
+            "DO" : [
+              { "component_rules_assign_practice_to_emr_import_record" : {
+                  "practice_list_item" : [ "practice_list_item" ],
+                  "unsaved_feed_item" : [ "unsaved_feed_item" ]
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "PROVIDES VARIABLES" : [ "practice_list_item" ]
+    }
+  }');
+  $items['rules_skip_import_of_empty_feed_items'] = entity_import('rules_config', '{ "rules_skip_import_of_empty_feed_items" : {
+      "LABEL" : "skip import of empty feed items",
+      "PLUGIN" : "rule",
+      "TAGS" : [ "import" ],
+      "REQUIRES" : [ "rules", "feeds" ],
+      "USES VARIABLES" : { "unsaved_feed_item" : { "label" : "unsaved feed item", "type" : "node" } },
+      "IF" : [ { "data_is_empty" : { "data" : [ "unsaved-feed-item:title" ] } } ],
+      "DO" : [ { "feeds_skip_item" : { "entity" : [ "unsaved-feed-item" ] } } ]
     }
   }');
   return $items;

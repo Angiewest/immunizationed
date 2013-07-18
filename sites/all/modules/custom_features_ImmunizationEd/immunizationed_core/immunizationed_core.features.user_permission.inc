@@ -137,7 +137,6 @@ function immunizationed_core_user_default_permissions() {
   $permissions['access statistics'] = array(
     'name' => 'access statistics',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -1062,7 +1061,6 @@ function immunizationed_core_user_default_permissions() {
   $permissions['view post access counter'] = array(
     'name' => 'view post access counter',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',

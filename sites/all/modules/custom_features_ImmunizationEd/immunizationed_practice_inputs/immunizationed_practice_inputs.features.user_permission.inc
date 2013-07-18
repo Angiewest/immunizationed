@@ -382,10 +382,7 @@ function immunizationed_practice_inputs_user_default_permissions() {
   // Exported permission: delete any convenient_vaccination_services content.
   $permissions['delete any convenient_vaccination_services content'] = array(
     'name' => 'delete any convenient_vaccination_services content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -445,11 +442,7 @@ function immunizationed_practice_inputs_user_default_permissions() {
   // Exported permission: delete own convenient_vaccination_services content.
   $permissions['delete own convenient_vaccination_services content'] = array(
     'name' => 'delete own convenient_vaccination_services content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 

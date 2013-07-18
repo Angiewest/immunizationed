@@ -61,12 +61,18 @@ function immunizationed_rules_default_rules_configuration() {
       "LABEL" : "Actions on role change",
       "PLUGIN" : "reaction rule",
       "TAGS" : [ "role", "users" ],
-      "REQUIRES" : [ "rules" ],
+      "REQUIRES" : [ "rules", "og" ],
       "ON" : [ "user_presave" ],
       "IF" : [
         { "data_is_empty" : { "data" : [ "account-unchanged:field-responsible-role" ] } },
         { "NOT data_is_empty" : { "data" : [ "account:field-responsible-role" ] } },
-        { "NOT data_is_empty" : { "data" : [ "account:og-user-node" ] } }
+        { "NOT data_is_empty" : { "data" : [ "account:og-user-node" ] } },
+        { "og_user_in_group" : {
+            "account" : [ "account" ],
+            "group" : [ "site:og-context--node" ],
+            "states" : { "value" : { "1" : "1" } }
+          }
+        }
       ],
       "DO" : [
         { "component_rules_send_emails" : {
@@ -84,7 +90,7 @@ function immunizationed_rules_default_rules_configuration() {
       "LABEL" : "Actions on strategy selection save",
       "PLUGIN" : "reaction rule",
       "TAGS" : [ "autofill" ],
-      "REQUIRES" : [ "rules", "og", "views_bulk_operations" ],
+      "REQUIRES" : [ "rules", "views_bulk_operations" ],
       "ON" : [ "node_insert" ],
       "IF" : [
         { "node_is_of_type" : {
@@ -102,7 +108,6 @@ function immunizationed_rules_default_rules_configuration() {
         { "entity_has_field" : { "entity" : [ "node" ], "field" : "og_group_ref" } }
       ],
       "DO" : [
-        { "og_group_content_add" : { "entity" : [ "node" ], "group" : [ "node:author:og-user-node:0" ] } },
         { "views_bulk_operations_action_load_list" : {
             "USING" : {
               "view" : "practice_selected_strategies|panel_pane_2",
@@ -496,7 +501,8 @@ function immunizationed_rules_default_rules_configuration() {
             ],
             "LABEL" : "Add group member and practice admin role to practice admins on login"
           }
-        }
+        },
+        { "RULE" : { "DO" : [  ], "LABEL" : "make special member a group admin" } }
       ]
     }
   }');
@@ -680,26 +686,12 @@ function immunizationed_rules_default_rules_configuration() {
   $items['rules_unpublish_old_strategies_guts'] = entity_import('rules_config', '{ "rules_unpublish_old_strategies_guts" : {
       "LABEL" : "Unpublish old strategies",
       "PLUGIN" : "rule",
-      "REQUIRES" : [ "rules" ],
       "USES VARIABLES" : {
         "new_node" : { "label" : "node", "type" : "node" },
         "entity_list" : { "label" : "List of entity items", "type" : "list" },
         "current_item" : { "label" : "current list item", "type" : "entity" }
       },
-      "IF" : [
-        { "entity_is_of_type" : { "entity" : [ "current-item" ], "type" : "node" } },
-        { "entity_has_field" : { "entity" : [ "current-item" ], "field" : "og_group_ref" } },
-        { "entity_has_field" : { "entity" : [ "new-node" ], "field" : "og_group_ref" } },
-        { "data_is" : {
-            "data" : [ "new-node:og-group-ref" ],
-            "value" : [ "current-item:og-group-ref" ]
-          }
-        }
-      ],
-      "DO" : [
-        { "node_unpublish" : { "node" : [ "current-item" ] } },
-        { "entity_save" : { "data" : [ "current-item" ] } }
-      ]
+      "DO" : [  ]
     }
   }');
   $items['rules_unpublish_old_strategy'] = entity_import('rules_config', '{ "rules_unpublish_old_strategy" : {
