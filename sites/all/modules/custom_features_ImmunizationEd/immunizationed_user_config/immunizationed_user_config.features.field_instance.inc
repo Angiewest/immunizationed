@@ -87,7 +87,7 @@ function immunizationed_user_config_field_default_field_instances() {
         'rows' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 4,
+      'weight' => 20,
     ),
   );
 
@@ -166,7 +166,7 @@ function immunizationed_user_config_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 3,
+      'weight' => 19,
     ),
   );
 
