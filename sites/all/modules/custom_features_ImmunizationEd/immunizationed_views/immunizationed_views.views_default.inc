@@ -128,6 +128,7 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['title'] = '<none>';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'view advanced help index';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
@@ -378,6 +379,8 @@ function immunizationed_views_views_default_views() {
   /* Display: VBO for rules */
   $handler = $view->new_display('panel_pane', 'VBO for rules', 'panel_pane_2');
   $handler->display->display_options['display_description'] = 'View of overdue tasks for rules';
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
@@ -677,7 +680,7 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['title'] = 'All practice tasks';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'administer users';
+  $handler->display->display_options['access']['perm'] = 'view advanced help index';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
