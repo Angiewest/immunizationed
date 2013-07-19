@@ -47,7 +47,7 @@ function immunizationed_user_config_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 16,
     ),
   );
 
@@ -87,7 +87,7 @@ function immunizationed_user_config_field_default_field_instances() {
         'rows' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 12,
+      'weight' => 4,
     ),
   );
 
@@ -128,7 +128,7 @@ function immunizationed_user_config_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 10,
+      'weight' => 17,
     ),
   );
 
@@ -166,7 +166,7 @@ function immunizationed_user_config_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 11,
+      'weight' => 3,
     ),
   );
 
@@ -208,7 +208,7 @@ function immunizationed_user_config_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 13,
+      'weight' => 5,
     ),
   );
 
@@ -249,7 +249,7 @@ function immunizationed_user_config_field_default_field_instances() {
         'size' => 20,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 15,
     ),
   );
 
@@ -291,7 +291,7 @@ function immunizationed_user_config_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 14,
+      'weight' => 6,
     ),
   );
 
@@ -361,7 +361,7 @@ function immunizationed_user_config_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 15,
+      'weight' => 8,
     ),
   );
 

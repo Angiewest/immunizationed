@@ -565,11 +565,8 @@ function immunizationed_core_user_default_permissions() {
   $permissions['execute comment_save_action'] = array(
     'name' => 'execute comment_save_action',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'actions_permissions',
   );
@@ -594,7 +591,6 @@ function immunizationed_core_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'actions_permissions',
   );
@@ -647,8 +643,6 @@ function immunizationed_core_user_default_permissions() {
   $permissions['execute node_publish_action'] = array(
     'name' => 'execute node_publish_action',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -764,8 +758,6 @@ function immunizationed_core_user_default_permissions() {
   $permissions['execute user_block_user_action'] = array(
     'name' => 'execute user_block_user_action',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -798,9 +790,8 @@ function immunizationed_core_user_default_permissions() {
   $permissions['execute views_bulk_operations_delete_item'] = array(
     'name' => 'execute views_bulk_operations_delete_item',
     'roles' => array(
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'actions_permissions',
@@ -830,7 +821,6 @@ function immunizationed_core_user_default_permissions() {
   $permissions['execute views_bulk_operations_user_roles_action'] = array(
     'name' => 'execute views_bulk_operations_user_roles_action',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',

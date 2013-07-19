@@ -29,31 +29,31 @@ function immunizationed_user_config_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'account' => array(
-          'weight' => '8',
+          'weight' => '1',
         ),
         'timezone' => array(
-          'weight' => '9',
+          'weight' => '6',
         ),
         'googleanalytics' => array(
-          'weight' => '19',
+          'weight' => '12',
         ),
         'mimemail' => array(
-          'weight' => '18',
+          'weight' => '11',
         ),
         'redirect' => array(
-          'weight' => '20',
+          'weight' => '13',
         ),
         'picture' => array(
-          'weight' => '7',
+          'weight' => '18',
         ),
         'overlay_control' => array(
-          'weight' => '17',
-        ),
-        'contact' => array(
           'weight' => '10',
         ),
+        'contact' => array(
+          'weight' => '7',
+        ),
         'wysiwyg' => array(
-          'weight' => '16',
+          'weight' => '9',
         ),
       ),
       'display' => array(
