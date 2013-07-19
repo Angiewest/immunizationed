@@ -342,7 +342,7 @@ function immunizationed_views_views_default_views() {
   );
   $handler->display->display_options['filters']['field_task_due_date_value']['default_date'] = 'now';
   $handler->display->display_options['filters']['field_task_due_date_value']['year_range'] = '-1:+1';
-  /* Filter criterion: User: Group membership (og_user_node) */
+  /* Filter criterion: User: Practice membership (og_user_node) */
   $handler->display->display_options['filters']['og_user_node_target_id']['id'] = 'og_user_node_target_id';
   $handler->display->display_options['filters']['og_user_node_target_id']['table'] = 'og_membership';
   $handler->display->display_options['filters']['og_user_node_target_id']['field'] = 'og_user_node_target_id';
@@ -897,7 +897,7 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'task' => 'task',
   );
-  /* Filter criterion: User: Group membership (og_user_node) */
+  /* Filter criterion: User: Practice membership (og_user_node) */
   $handler->display->display_options['filters']['og_user_node_target_id']['id'] = 'og_user_node_target_id';
   $handler->display->display_options['filters']['og_user_node_target_id']['table'] = 'og_membership';
   $handler->display->display_options['filters']['og_user_node_target_id']['field'] = 'og_user_node_target_id';
@@ -2072,7 +2072,7 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['fields']['contact']['table'] = 'users';
   $handler->display->display_options['fields']['contact']['field'] = 'contact';
   $handler->display->display_options['fields']['contact']['label'] = 'Contact';
-  /* Field: User: Group membership */
+  /* Field: User: Practice membership */
   $handler->display->display_options['fields']['og_user_node']['id'] = 'og_user_node';
   $handler->display->display_options['fields']['og_user_node']['table'] = 'og_membership';
   $handler->display->display_options['fields']['og_user_node']['field'] = 'og_user_node';
@@ -2207,7 +2207,7 @@ function immunizationed_views_views_default_views() {
     4 => 0,
     3 => 0,
   );
-  /* Filter criterion: User: Group membership (og_user_node) */
+  /* Filter criterion: User: Practice membership (og_user_node) */
   $handler->display->display_options['filters']['og_user_node_target_id']['id'] = 'og_user_node_target_id';
   $handler->display->display_options['filters']['og_user_node_target_id']['table'] = 'og_membership';
   $handler->display->display_options['filters']['og_user_node_target_id']['field'] = 'og_user_node_target_id';
@@ -2751,6 +2751,7 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'grid';
   $handler->display->display_options['style_options']['columns'] = '2';
+  $handler->display->display_options['style_options']['alignment'] = 'vertical';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
