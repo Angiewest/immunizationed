@@ -622,7 +622,9 @@ function immunizationed_practice_og_features_default_permissions() {
 
   // Exported og permission: 'node:practice_group:update og_group_ref field'
   $permissions['node:practice_group:update og_group_ref field'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'Administrator member' => 'Administrator member',
+    ),
   );
 
   // Exported og permission: 'node:practice_group:update og_user_node field'

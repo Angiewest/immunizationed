@@ -210,7 +210,7 @@ function immunizationed_user_config_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'og_user_node',
     'field_permissions' => array(
-      'type' => 0,
+      'type' => 2,
     ),
     'foreign keys' => array(
       'node' => array(

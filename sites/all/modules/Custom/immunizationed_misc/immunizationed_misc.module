@@ -6,10 +6,15 @@
  */
 
 /* Hook form alter
- * Sets "notify user of new account" chosen by default
+ * Sets "notify user of new account" chosen by default and hidden
 */
 function immunizationed_misc_form_alter(&$form, $form_state, $form_id){
   if ($form_id == 'user_register_form') {
+    dsm($form);
     $form['account']['notify']['#default_value'] = TRUE;
+    $form['account']['notify']['#access'] = False;
+   // Hides active/blocked status selector    
+    $form['account']['status']['#access'] = False;
+    //todo try to show og_user_node form
   }
 }

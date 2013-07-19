@@ -334,7 +334,7 @@ function immunizationed_user_config_field_default_field_instances() {
           'status' => TRUE,
         ),
         'prepopulate' => array(
-          'action' => 'hide',
+          'action' => 'none',
           'action_on_edit' => 0,
           'fallback' => 'none',
           'og_context' => 1,
@@ -361,7 +361,7 @@ function immunizationed_user_config_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 8,
+      'weight' => 2,
     ),
   );
 

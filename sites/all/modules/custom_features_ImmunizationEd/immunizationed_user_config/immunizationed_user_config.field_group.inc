@@ -23,14 +23,13 @@ function immunizationed_user_config_field_group_info() {
     'label' => 'Administration',
     'weight' => '2',
     'children' => array(
-      0 => 'og_user_node',
-      1 => 'googleanalytics',
-      2 => 'mimemail',
-      3 => 'redirect',
-      4 => 'timezone',
-      5 => 'overlay_control',
-      6 => 'contact',
-      7 => 'wysiwyg',
+      0 => 'googleanalytics',
+      1 => 'mimemail',
+      2 => 'redirect',
+      3 => 'timezone',
+      4 => 'overlay_control',
+      5 => 'contact',
+      6 => 'wysiwyg',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -114,7 +113,8 @@ function immunizationed_user_config_field_group_info() {
     'label' => 'Registration',
     'weight' => '3',
     'children' => array(
-      0 => 'account',
+      0 => 'og_user_node',
+      1 => 'account',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
