@@ -1014,6 +1014,7 @@ function immunizationed_core_user_default_permissions() {
   $permissions['view advanced help index'] = array(
     'name' => 'view advanced help index',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',

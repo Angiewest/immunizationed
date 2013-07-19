@@ -15,7 +15,6 @@ dependencies[] = og_ui
 dependencies[] = search
 dependencies[] = statistics
 dependencies[] = taxonomy
-dependencies[] = users_export
 dependencies[] = views
 dependencies[] = views_content
 dependencies[] = views_data_export

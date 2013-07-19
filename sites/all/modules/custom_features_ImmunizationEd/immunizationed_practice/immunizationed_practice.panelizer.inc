@@ -369,7 +369,7 @@ function immunizationed_practice_panelizer_defaults() {
     $pane->configuration = array(
       'admin_title' => 'entityreference prepopulate url link to add user',
       'title' => 'Manage the crew',
-      'body' => '<ul><li><a href="admin/people/create?og_user_node=%node:nid&amp;destination=node/%node:nid"><span style="line-height: 1.538em;">Add new member to site</span></a></li><li><a href="/group/node/%node:nid/admin/people">Manage members</a></li></ul>',
+      'body' => '<ul><li><a href="/admin/people/create?og_user_node=%node:nid&amp;destination=node/%node:nid"><span style="line-height: 1.538em;">Add new member to site</span></a></li><li><a href="/group/node/%node:nid/admin/people">Manage members</a></li></ul>',
       'format' => 'filtered_html',
       'substitute' => 1,
     );
