@@ -63,6 +63,19 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: administer group.
+  $permissions['administer group'] = array(
+    'name' => 'administer group',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'og',
+  );
+
   // Exported permission: administer modules.
   $permissions['administer modules'] = array(
     'name' => 'administer modules',

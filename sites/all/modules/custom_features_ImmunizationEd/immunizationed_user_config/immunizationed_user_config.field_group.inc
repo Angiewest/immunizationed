@@ -52,7 +52,7 @@ function immunizationed_user_config_field_group_info() {
   $field_group->parent_name = 'group_personal';
   $field_group->data = array(
     'label' => 'Personal',
-    'weight' => '1',
+    'weight' => '4',
     'children' => array(
       0 => 'field_first_names',
       1 => 'field_job_other',
@@ -86,8 +86,8 @@ function immunizationed_user_config_field_group_info() {
     'label' => 'Account',
     'weight' => '1',
     'children' => array(
-      0 => 'group_registration',
-      1 => 'group_personal_tab',
+      0 => 'group_personal_tab',
+      1 => 'group_registration',
       2 => 'group_roles',
     ),
     'format_type' => 'htabs',
@@ -139,7 +139,7 @@ function immunizationed_user_config_field_group_info() {
   $field_group->parent_name = 'group_personal';
   $field_group->data = array(
     'label' => 'Roles',
-    'weight' => '2',
+    'weight' => '5',
     'children' => array(
       0 => 'field_responsible_role',
       1 => 'field_visitor',
