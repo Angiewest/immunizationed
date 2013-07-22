@@ -758,6 +758,8 @@ function immunizationed_core_user_default_permissions() {
   $permissions['execute user_block_user_action'] = array(
     'name' => 'execute user_block_user_action',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',

@@ -511,6 +511,7 @@ function immunizationed_user_config_user_default_permissions() {
     'name' => 'edit users with role Practiceadmin',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
