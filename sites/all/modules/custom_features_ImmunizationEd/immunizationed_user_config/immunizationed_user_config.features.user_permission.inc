@@ -336,6 +336,28 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: create field_responsible_role.
+  $permissions['create field_responsible_role'] = array(
+    'name' => 'create field_responsible_role',
+    'roles' => array(
+      'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: create og_user_node.
+  $permissions['create og_user_node'] = array(
+    'name' => 'create og_user_node',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: create users.
   $permissions['create users'] = array(
     'name' => 'create users',
@@ -356,6 +378,57 @@ function immunizationed_user_config_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'shortcut',
+  );
+
+  // Exported permission: edit field_responsible_role.
+  $permissions['edit field_responsible_role'] = array(
+    'name' => 'edit field_responsible_role',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit og_user_node.
+  $permissions['edit og_user_node'] = array(
+    'name' => 'edit og_user_node',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own field_responsible_role.
+  $permissions['edit own field_responsible_role'] = array(
+    'name' => 'edit own field_responsible_role',
+    'roles' => array(
+      'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own og_user_node.
+  $permissions['edit own og_user_node'] = array(
+    'name' => 'edit own og_user_node',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
   );
 
   // Exported permission: edit users with no custom roles.
@@ -400,6 +473,7 @@ function immunizationed_user_config_user_default_permissions() {
     'name' => 'edit users with role Groupmember',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -569,6 +643,51 @@ function immunizationed_user_config_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'shortcut',
+  );
+
+  // Exported permission: view field_responsible_role.
+  $permissions['view field_responsible_role'] = array(
+    'name' => 'view field_responsible_role',
+    'roles' => array(
+      'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view og_user_node.
+  $permissions['view og_user_node'] = array(
+    'name' => 'view og_user_node',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_responsible_role.
+  $permissions['view own field_responsible_role'] = array(
+    'name' => 'view own field_responsible_role',
+    'roles' => array(
+      'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own og_user_node.
+  $permissions['view own og_user_node'] = array(
+    'name' => 'view own og_user_node',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
   );
 
   // Exported permission: view the administration theme.
