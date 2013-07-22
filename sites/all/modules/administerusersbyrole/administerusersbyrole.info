@@ -3,10 +3,11 @@ description = "Allows users with 'administer users' permission and a role (speci
 core = 7.x
 
 files[] = administerusersbyrole.test
-
-; Information added by drupal.org packaging script on 2012-07-07
-version = "7.x-1.0-beta1"
+files[] = views/administerusersbyrole_handler_field_user_link_edit.inc
+files[] = views/administerusersbyrole_handler_field_user_link_cancel.inc
+; Information added by drupal.org packaging script on 2013-05-14
+version = "7.x-1.0-beta1+7-dev"
 core = "7.x"
 project = "administerusersbyrole"
-datestamp = "1341660376"
+datestamp = "1368534655"
 
