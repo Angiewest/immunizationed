@@ -35,7 +35,7 @@ function immunizationed_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'admin_menu_tweak_permissions';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['admin_menu_tweak_permissions'] = $strongarm;
 
   $strongarm = new stdClass();

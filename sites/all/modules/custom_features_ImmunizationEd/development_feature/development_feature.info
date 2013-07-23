@@ -13,6 +13,7 @@ dependencies[] = devel_node_access
 dependencies[] = diff
 dependencies[] = fe_block
 dependencies[] = features
+dependencies[] = filter_perms
 dependencies[] = menu
 dependencies[] = menu_clone
 dependencies[] = reroute_email
