@@ -19,7 +19,9 @@ function immunizationed_practice_og_features_default_permissions() {
 
   // Exported og permission: 'node:practice_group:administer group'
   $permissions['node:practice_group:administer group'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'Administrator member' => 'Administrator member',
+    ),
   );
 
   // Exported og permission: 'node:practice_group:approve and deny subscription'
@@ -176,6 +178,13 @@ function immunizationed_practice_og_features_default_permissions() {
   // Exported og permission: 'node:practice_group:delete own vaccination_data_from_emr content'
   $permissions['node:practice_group:delete own vaccination_data_from_emr content'] = array(
     'roles' => array(),
+  );
+
+  // Exported og permission: 'node:practice_group:invite people'
+  $permissions['node:practice_group:invite people'] = array(
+    'roles' => array(
+      'Administrator member' => 'Administrator member',
+    ),
   );
 
   // Exported og permission: 'node:practice_group:manage members'
