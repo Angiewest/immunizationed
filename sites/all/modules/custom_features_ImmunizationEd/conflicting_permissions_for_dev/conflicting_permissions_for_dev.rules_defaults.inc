@@ -10,7 +10,7 @@
 function conflicting_permissions_for_dev_default_rules_configuration() {
   $items = array();
   $items['rules_email_on_off_test'] = entity_import('rules_config', '{ "rules_email_on_off_test" : {
-      "LABEL" : "Email on\\u002Foff test",
+      "LABEL" : "Email on\\/off test",
       "PLUGIN" : "reaction rule",
       "REQUIRES" : [ "rules", "mimemail" ],
       "ON" : [ "user_login" ],
