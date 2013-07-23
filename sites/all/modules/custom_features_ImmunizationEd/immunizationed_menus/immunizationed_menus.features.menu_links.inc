@@ -471,11 +471,11 @@ function immunizationed_menus_menu_default_menu_links() {
       ),
     ),
     'module' => 'system',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -49,
     'parent_path' => 'admin/people',
   );
   // Exported menu link: menu-editing:admin/people/create
@@ -490,11 +490,12 @@ function immunizationed_menus_menu_default_menu_links() {
       ),
     ),
     'module' => 'menu',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -44,
+    'weight' => -50,
+    'parent_path' => 'admin/people',
   );
   // Exported menu link: menu-editing:import
   $menu_links['menu-editing:import'] = array(
