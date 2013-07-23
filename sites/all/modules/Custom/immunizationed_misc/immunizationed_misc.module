@@ -10,7 +10,6 @@
 */
 function immunizationed_misc_form_alter(&$form, $form_state, $form_id){
   if ($form_id == 'user_register_form') {
-    dsm($form);
     $form['account']['notify']['#default_value'] = TRUE;
     $form['account']['notify']['#access'] = False;
    // Hides active/blocked status selector    
