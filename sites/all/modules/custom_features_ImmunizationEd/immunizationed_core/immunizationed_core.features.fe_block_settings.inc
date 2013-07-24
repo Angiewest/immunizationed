@@ -33,7 +33,7 @@ function immunizationed_core_default_fe_block_settings() {
         'region' => 'left',
         'status' => 1,
         'theme' => 'energetic',
-        'weight' => -18,
+        'weight' => -16,
       ),
       'seven' => array(
         'region' => '',
@@ -483,7 +483,7 @@ function immunizationed_core_default_fe_block_settings() {
         'region' => 'featured',
         'status' => 1,
         'theme' => 'energetic',
-        'weight' => -16,
+        'weight' => -15,
       ),
       'seven' => array(
         'region' => '',
@@ -711,7 +711,7 @@ function immunizationed_core_default_fe_block_settings() {
         'region' => 'featured',
         'status' => 1,
         'theme' => 'energetic',
-        'weight' => -17,
+        'weight' => -16,
       ),
       'seven' => array(
         'region' => '',
