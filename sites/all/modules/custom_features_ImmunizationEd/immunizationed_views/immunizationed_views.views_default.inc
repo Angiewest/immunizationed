@@ -3254,7 +3254,8 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Field: Content: Title */
@@ -3415,11 +3416,28 @@ function immunizationed_views_views_default_views() {
       'label' => '',
     ),
   );
+  /* Field: Content: Epic ID */
+  $handler->display->display_options['fields']['field_epic_id']['id'] = 'field_epic_id';
+  $handler->display->display_options['fields']['field_epic_id']['table'] = 'field_data_field_epic_id';
+  $handler->display->display_options['fields']['field_epic_id']['field'] = 'field_epic_id';
+  $handler->display->display_options['fields']['field_epic_id']['label'] = 'EMR ID';
+  $handler->display->display_options['fields']['field_epic_id']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Contextual filter: Content: Epic ID (field_epic_id) */
+  $handler->display->display_options['arguments']['field_epic_id_value']['id'] = 'field_epic_id_value';
+  $handler->display->display_options['arguments']['field_epic_id_value']['table'] = 'field_data_field_epic_id';
+  $handler->display->display_options['arguments']['field_epic_id_value']['field'] = 'field_epic_id_value';
+  $handler->display->display_options['arguments']['field_epic_id_value']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_epic_id_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_epic_id_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_epic_id_value']['summary_options']['items_per_page'] = '25';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';

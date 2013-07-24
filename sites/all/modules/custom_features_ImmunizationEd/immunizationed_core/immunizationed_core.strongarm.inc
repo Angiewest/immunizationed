@@ -101,8 +101,6 @@ function immunizationed_core_strongarm() {
   $strongarm->value = array(
     0 => 'book',
     1 => 'document',
-    2 => 'video',
-    3 => 'webform',
   );
   $export['book_allowed_types'] = $strongarm;
 

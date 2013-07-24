@@ -30,7 +30,7 @@ function development_feature_default_fe_block_settings() {
         'weight' => 0,
       ),
       'energetic' => array(
-        'region' => 'featured',
+        'region' => 'content',
         'status' => 1,
         'theme' => 'energetic',
         'weight' => 0,

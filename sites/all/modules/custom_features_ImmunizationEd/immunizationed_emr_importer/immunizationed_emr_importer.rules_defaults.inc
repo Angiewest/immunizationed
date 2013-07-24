@@ -33,7 +33,7 @@ function immunizationed_emr_importer_default_rules_configuration() {
       "LABEL" : "Assign practice to EMR import record",
       "PLUGIN" : "rule",
       "TAGS" : [ "import" ],
-      "REQUIRES" : [ "rules", "og" ],
+      "REQUIRES" : [ "rules" ],
       "USES VARIABLES" : {
         "practice_list_item" : { "label" : "practice list item", "type" : "node" },
         "unsaved_feed_item" : { "label" : "unsaved feed item", "type" : "node" }
@@ -46,10 +46,27 @@ function immunizationed_emr_importer_default_rules_configuration() {
             "value" : [ "unsaved-feed-item:field-epic-id" ]
           }
         },
-        { "entity_has_field" : { "entity" : [ "unsaved-feed-item" ], "field" : "og_group_ref" } }
+        { "entity_has_field" : { "entity" : [ "unsaved-feed-item" ], "field" : "og_group_ref" } },
+        { "entity_is_of_type" : { "entity" : [ "practice-list-item" ], "type" : "node" } },
+        { "node_is_of_type" : {
+            "node" : [ "practice-list-item" ],
+            "type" : { "value" : { "practice_group" : "practice_group" } }
+          }
+        }
       ],
       "DO" : [
-        { "og_group_content_add" : { "entity" : [ "unsaved-feed-item" ], "group" : [ "practice-list-item" ] } }
+        { "entity_fetch" : {
+            "USING" : { "type" : "node", "id" : [ "practice-list-item:nid" ] },
+            "PROVIDE" : { "entity_fetched" : { "entity_fetched" : "Fetched entity" } }
+          }
+        },
+        { "data_set" : {
+            "data" : [ "unsaved-feed-item:og-group-ref:0" ],
+            "value" : [ "practice-list-item" ]
+          }
+        },
+        { "entity_save" : { "data" : [ "unsaved-feed-item" ], "immediate" : 1 } },
+        { "drupal_message" : { "message" : "[unsaved-feed-item:title]\\u0009" } }
       ]
     }
   }');
@@ -69,23 +86,29 @@ function immunizationed_emr_importer_default_rules_configuration() {
       "LABEL" : "loop through list of practices",
       "PLUGIN" : "rule",
       "TAGS" : [ "import" ],
-      "REQUIRES" : [ "views_bulk_operations", "rules" ],
+      "REQUIRES" : [ "rules", "views_bulk_operations" ],
       "USES VARIABLES" : {
         "practice_list_item" : { "label" : "practice list item", "type" : "entity", "parameter" : false },
         "unsaved_feed_item" : { "label" : "unsaved feed item", "type" : "node" }
       },
+      "IF" : [
+        { "entity_has_field" : { "entity" : [ "unsaved-feed-item" ], "field" : "field_epic_id" } }
+      ],
       "DO" : [
         { "views_bulk_operations_action_load_list" : {
-            "USING" : { "view" : "practices|default" },
-            "PROVIDE" : { "entity_list" : { "entity_list" : "A list of entities" } }
+            "USING" : {
+              "view" : "practices|default",
+              "args" : [ "unsaved-feed-item:field-epic-id" ]
+            },
+            "PROVIDE" : { "entity_list" : { "practice_entity_list" : "A list of practice entities" } }
           }
         },
         { "LOOP" : {
-            "USING" : { "list" : [ "entity-list" ] },
-            "ITEM" : { "practice_list_item" : "Current practice list item" },
+            "USING" : { "list" : [ "practice-entity-list" ] },
+            "ITEM" : { "current_practice_list_item" : "Current practice list item" },
             "DO" : [
               { "component_rules_assign_practice_to_emr_import_record" : {
-                  "practice_list_item" : [ "practice_list_item" ],
+                  "practice_list_item" : [ "current-practice-list-item" ],
                   "unsaved_feed_item" : [ "unsaved_feed_item" ]
                 }
               }
