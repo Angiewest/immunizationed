@@ -340,14 +340,14 @@ function immunizationed_rules_default_rules_configuration() {
           ]
         }
       ],
-      "DO" : [ { "redirect" : { "url" : [ "node:og-group-ref:url" ] } } ]
+      "DO" : [ { "redirect" : { "url" : [ "node:og-group-ref:0:url" ] } } ]
     }
   }');
   $items['rules_create_tasks_from_assembly_instructions'] = entity_import('rules_config', '{ "rules_create_tasks_from_assembly_instructions" : {
       "LABEL" : "Create tasks from assembly instructions",
       "PLUGIN" : "rule set",
       "TAGS" : [ "task" ],
-      "REQUIRES" : [ "rules", "views_bulk_operations" ],
+      "REQUIRES" : [ "rules", "views_bulk_operations", "og" ],
       "USES VARIABLES" : {
         "new_practice" : { "label" : "New practice", "type" : "node" },
         "list_of_assembly_instructions" : {
@@ -398,16 +398,12 @@ function immunizationed_rules_default_rules_configuration() {
                         "PROVIDE" : { "entity_created" : { "created_assembly_step" : "Created assembly step" } }
                       }
                     },
-                    { "data_set" : {
-                        "data" : [ "created-assembly-step:og-group-ref" ],
-                        "value" : [ "fetched-new-practice-nid:0" ]
-                      }
-                    },
                     { "component_rules_check_instruction_fields" : {
                         "fetched_instruction" : [ "list-item" ],
                         "new_step" : [ "created-assembly-step" ]
                       }
-                    }
+                    },
+                    { "og_group_content_add" : { "entity" : [ "created-assembly-step" ], "group" : [ "new-practice" ] } }
                   ]
                 }
               }

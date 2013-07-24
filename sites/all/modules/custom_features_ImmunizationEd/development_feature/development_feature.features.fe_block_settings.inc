@@ -19,7 +19,9 @@ function development_feature_default_fe_block_settings() {
     'module' => 'devel',
     'node_types' => array(),
     'pages' => '',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 3,
+    ),
     'themes' => array(
       'bartik' => array(
         'region' => '',
@@ -28,14 +30,14 @@ function development_feature_default_fe_block_settings() {
         'weight' => 0,
       ),
       'energetic' => array(
-        'region' => '',
-        'status' => 0,
+        'region' => 'featured',
+        'status' => 1,
         'theme' => 'energetic',
         'weight' => 0,
       ),
       'seven' => array(
-        'region' => '',
-        'status' => 0,
+        'region' => 'help',
+        'status' => 1,
         'theme' => 'seven',
         'weight' => 0,
       ),

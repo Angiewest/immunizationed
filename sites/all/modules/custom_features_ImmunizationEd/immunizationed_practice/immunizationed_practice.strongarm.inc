@@ -21,7 +21,7 @@ function immunizationed_practice_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_practice_group';
-  $strongarm->value = 'edit-og';
+  $strongarm->value = 'edit-panelizer';
   $export['additional_settings__active_tab_practice_group'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -56,21 +56,21 @@ function immunizationed_practice_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_preview_practice_group';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['comment_preview_practice_group'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'diff_enable_revisions_page_node_practice_group';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['diff_enable_revisions_page_node_practice_group'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'diff_show_preview_changes_node_practice_group';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['diff_show_preview_changes_node_practice_group'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -136,7 +136,7 @@ function immunizationed_practice_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_practice_group';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['node_preview_practice_group'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -172,7 +172,7 @@ function immunizationed_practice_strongarm() {
       'page_manager' => array(
         'status' => 1,
         'default' => 1,
-        'choice' => 1,
+        'choice' => 0,
       ),
       'default' => array(
         'status' => 0,

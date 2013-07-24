@@ -514,7 +514,7 @@ function immunizationed_structure_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'og_group_ref',
-    'label' => 'Groups audience',
+    'label' => 'Practice audiences',
     'required' => 0,
     'settings' => array(
       'behaviors' => array(
@@ -523,7 +523,7 @@ function immunizationed_structure_field_default_field_instances() {
             'widget_type' => 'options_buttons',
           ),
           'default' => array(
-            'widget_type' => 'options_select',
+            'widget_type' => 'options_buttons',
           ),
           'status' => TRUE,
         ),
@@ -2902,7 +2902,6 @@ function immunizationed_structure_field_default_field_instances() {
   t('Expected time to complete');
   t('Fixed due date');
   t('Fixed start date');
-  t('Groups audience');
   t('Image');
   t('Integer used to calculate due date');
   t('Integer used to calculate suggested start date.');
@@ -2916,6 +2915,7 @@ function immunizationed_structure_field_default_field_instances() {
   t('Please select the audience for this item.');
   t('Poster Frame');
   t('Practice');
+  t('Practice audiences');
   t('Request message');
   t('Resource image');
   t('Resource links');

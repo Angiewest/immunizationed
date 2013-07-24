@@ -60,7 +60,7 @@ function immunizationed_practice_field_default_field_instances() {
     'bundle' => 'practice_group',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Enter the Epic ID of your practice',
+    'description' => 'Enter the EMR ID# associated with your practice',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -83,7 +83,7 @@ function immunizationed_practice_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_epic_id',
-    'label' => 'Epic ID',
+    'label' => 'EMR ID',
     'required' => 0,
     'settings' => array(
       'max' => 99999999,
@@ -451,11 +451,11 @@ function immunizationed_practice_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Determine if this is an OG group.');
+  t('EMR ID');
   t('Enter a link to your practice website');
-  t('Enter the Epic ID of your practice');
+  t('Enter the EMR ID# associated with your practice');
   t('Enter your practice address');
   t('Enter your practice phone number');
-  t('Epic ID');
   t('Group');
   t('Practice Address');
   t('Practice Phone');

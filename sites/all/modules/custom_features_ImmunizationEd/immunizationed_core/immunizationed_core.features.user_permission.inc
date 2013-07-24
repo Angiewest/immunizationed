@@ -1019,6 +1019,7 @@ function immunizationed_core_user_default_permissions() {
     'name' => 'view advanced help popup',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',

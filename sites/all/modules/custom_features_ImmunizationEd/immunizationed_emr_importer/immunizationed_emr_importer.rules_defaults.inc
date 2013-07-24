@@ -33,7 +33,7 @@ function immunizationed_emr_importer_default_rules_configuration() {
       "LABEL" : "Assign practice to EMR import record",
       "PLUGIN" : "rule",
       "TAGS" : [ "import" ],
-      "REQUIRES" : [ "rules" ],
+      "REQUIRES" : [ "rules", "og" ],
       "USES VARIABLES" : {
         "practice_list_item" : { "label" : "practice list item", "type" : "node" },
         "unsaved_feed_item" : { "label" : "unsaved feed item", "type" : "node" }
@@ -49,11 +49,7 @@ function immunizationed_emr_importer_default_rules_configuration() {
         { "entity_has_field" : { "entity" : [ "unsaved-feed-item" ], "field" : "og_group_ref" } }
       ],
       "DO" : [
-        { "data_set" : {
-            "data" : [ "unsaved-feed-item:og-group-ref" ],
-            "value" : [ "practice-list-item" ]
-          }
-        }
+        { "og_group_content_add" : { "entity" : [ "unsaved-feed-item" ], "group" : [ "practice-list-item" ] } }
       ]
     }
   }');

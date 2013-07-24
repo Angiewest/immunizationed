@@ -5,6 +5,7 @@
  * Miscellaneous functions for ImmunizationEd.
  */
 
+
 /* Hook form alter
  * Sets "notify user of new account" chosen by default and hidden
 */
@@ -12,8 +13,25 @@ function immunizationed_misc_form_alter(&$form, $form_state, $form_id){
   if ($form_id == 'user_register_form') {
     $form['account']['notify']['#default_value'] = TRUE;
     $form['account']['notify']['#access'] = False;
-   // Hides active/blocked status selector    
+   // Hides active/blocked status selector
     $form['account']['status']['#access'] = False;
-    //todo try to show og_user_node form
   }
+}
+/*
+	implements hook_form_id_alter
+	sets global preferences for node_type_forms
+*/
+function immunizationed_misc_form_node_type_form_alter(&$form, &$form_state){
+     //sets node previews to off and hides setting
+     $form['submission']['node_preview']['#default_value'] = 0;
+     $form['submission']['#access'] = False;
+     //sets comments to closed
+     $form['comment']['comment_default_mode']['#default_value'] = 1;
+     //sets comment preview to off and hidden
+     $form['comment']['comment_preview']['#default_value'] = 0;
+     $form['comment']['comment_preview']['#access'] = false;
+     //sets diff defaults to off and hidden
+     $form['diff']['diff_show_preview_changes_node']['#default_value']=0;
+     $form['diff']['diff_enable_revisions_page_node']['#default_value']=0;
+     $form['diff']['#access'] = false;
 }

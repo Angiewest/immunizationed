@@ -455,7 +455,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'module' => 'menu',
     'hidden' => 1,
     'external' => 0,
-    'has_children' => 0,
+    'has_children' => 1,
     'expanded' => 1,
     'weight' => -47,
   );
@@ -471,11 +471,11 @@ function immunizationed_menus_menu_default_menu_links() {
       ),
     ),
     'module' => 'system',
-    'hidden' => 1,
+    'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -49,
+    'weight' => 0,
     'parent_path' => 'admin/people',
   );
   // Exported menu link: menu-editing:admin/people/create
