@@ -79,16 +79,16 @@ function immunizationed_structure_field_group_info() {
     'children' => array(
       0 => 'field_tags',
       1 => 'field_pillar_tags',
-      2 => 'group_help_topics_tags',
     ),
     'format_type' => 'accordion-item',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Content tags',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
         'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'open',
     ),
   );
   $export['group_content_tags|node|video|form'] = $field_group;
@@ -101,10 +101,10 @@ function immunizationed_structure_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'video';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_content_tags';
+  $field_group->parent_name = 'group_tags';
   $field_group->data = array(
     'label' => 'Help topics',
-    'weight' => '37',
+    'weight' => '11',
     'children' => array(
       0 => 'field_help_topics_tags',
     ),
@@ -135,7 +135,8 @@ function immunizationed_structure_field_group_info() {
     'children' => array(
       0 => 'group_content_tags',
       1 => 'group_audience_tags',
-      2 => 'group_cme',
+      2 => 'group_help_topics_tags',
+      3 => 'group_cme',
     ),
     'format_type' => 'accordion',
     'format_settings' => array(

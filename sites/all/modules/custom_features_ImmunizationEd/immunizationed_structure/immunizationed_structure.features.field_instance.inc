@@ -767,45 +767,7 @@ function immunizationed_structure_field_default_field_instances() {
   // Exported field_instance: 'node-book-field_tags'
   $field_instances['node-book-field_tags'] = array(
     'bundle' => 'book',
-    'default_value' => array(
-      0 => array(
-        'tid' => 1,
-        'vid' => 1,
-        'name' => 'toolkit',
-        'description' => NULL,
-        'format' => NULL,
-        'weight' => 0,
-        'vocabulary_machine_name' => 'tags',
-        'rdf_mapping' => array(
-          'description' => array(
-            'predicates' => array(
-              0 => 'skos:definition',
-            ),
-          ),
-          'name' => array(
-            'predicates' => array(
-              0 => 'rdfs:label',
-              1 => 'skos:prefLabel',
-            ),
-          ),
-          'parent' => array(
-            'predicates' => array(
-              0 => 'skos:broader',
-            ),
-            'type' => 'rel',
-          ),
-          'rdftype' => array(
-            0 => 'skos:Concept',
-          ),
-          'vid' => array(
-            'predicates' => array(
-              0 => 'skos:inScheme',
-            ),
-            'type' => 'rel',
-          ),
-        ),
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => 'Please choose some tags for this page.',
     'display' => array(
@@ -826,7 +788,7 @@ function immunizationed_structure_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_tags',
     'label' => 'Tags',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -2732,7 +2694,7 @@ function immunizationed_structure_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 35,
+      'weight' => 37,
     ),
   );
 
