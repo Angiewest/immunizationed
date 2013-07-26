@@ -255,4 +255,6 @@ features[variable][] = save_continue_practice
 features[variable][] = save_continue_practice_group
 features[views_view][] = meeting_minutes
 features[views_view][] = practice_crew
+features_exclude[field_base][body] = body
+features_exclude[field_base][group_content_access] = group_content_access
 project path = sites/all/modules/custom_features_immunizationed

@@ -2479,7 +2479,7 @@ function immunizationed_structure_field_default_field_instances() {
     'bundle' => 'video',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Create a short description about this video',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -2511,14 +2511,14 @@ function immunizationed_structure_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'display_summary' => 1,
-      'text_processing' => 1,
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'rows' => 20,
+        'rows' => 5,
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
@@ -2531,7 +2531,7 @@ function immunizationed_structure_field_default_field_instances() {
     'bundle' => 'video',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'This is the intended target audience for required CME documents',
+    'description' => 'Select the most appropriate audience',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2559,7 +2559,7 @@ function immunizationed_structure_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 8,
+      'weight' => 10,
     ),
   );
 
@@ -2599,7 +2599,7 @@ function immunizationed_structure_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 9,
+      'weight' => 8,
     ),
   );
 
@@ -2646,9 +2646,9 @@ function immunizationed_structure_field_default_field_instances() {
       ),
       'enable_tokens' => 1,
       'rel_remove' => 'rel_remove_internal',
-      'title' => 'required',
+      'title' => 'value',
       'title_maxlength' => 128,
-      'title_value' => '',
+      'title_value' => '[current-page:title]',
       'url' => 0,
       'user_register_form' => FALSE,
       'validate_url' => 1,
@@ -2659,6 +2659,43 @@ function immunizationed_structure_field_default_field_instances() {
       'settings' => array(),
       'type' => 'link_field',
       'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-video-field_pillar_tags'
+  $field_instances['node-video-field_pillar_tags'] = array(
+    'bundle' => 'video',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_pillar_tags',
+    'label' => 'Pillar tags',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 35,
     ),
   );
 
@@ -2725,10 +2762,25 @@ function immunizationed_structure_field_default_field_instances() {
           'media_internet' => 0,
           'upload' => 0,
         ),
+        'filefield_sources' => array(
+          'filefield_sources' => array(),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+          ),
+        ),
+        'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 2,
+      'weight' => 1,
     ),
   );
 
@@ -2738,44 +2790,10 @@ function immunizationed_structure_field_default_field_instances() {
     'default_value' => array(
       0 => array(
         'tid' => 2,
-        'vid' => 1,
-        'name' => 'building blocks',
-        'description' => NULL,
-        'format' => NULL,
-        'weight' => 0,
-        'vocabulary_machine_name' => 'tags',
-        'rdf_mapping' => array(
-          'description' => array(
-            'predicates' => array(
-              0 => 'skos:definition',
-            ),
-          ),
-          'name' => array(
-            'predicates' => array(
-              0 => 'rdfs:label',
-              1 => 'skos:prefLabel',
-            ),
-          ),
-          'parent' => array(
-            'predicates' => array(
-              0 => 'skos:broader',
-            ),
-            'type' => 'rel',
-          ),
-          'rdftype' => array(
-            0 => 'skos:Concept',
-          ),
-          'vid' => array(
-            'predicates' => array(
-              0 => 'skos:inScheme',
-            ),
-            'type' => 'rel',
-          ),
-        ),
       ),
     ),
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Tag this video for display with similar content',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2793,20 +2811,17 @@ function immunizationed_structure_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_tags',
-    'label' => 'Tags',
-    'required' => 0,
+    'label' => 'Content tags',
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 0,
-      'module' => 'taxonomy',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'size' => 60,
-      ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 5,
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 36,
     ),
   );
 
@@ -2893,6 +2908,8 @@ function immunizationed_structure_field_default_field_instances() {
   t('Audience');
   t('Body');
   t('Book page graphic');
+  t('Content tags');
+  t('Create a short description about this video');
   t('Date Task Completed');
   t('Description');
   t('Due date day offset from enrollment');
@@ -2910,6 +2927,7 @@ function immunizationed_structure_field_default_field_instances() {
   t('Links to resources associated with this waypoint.');
   t('Optionally enter a fixed due date');
   t('Optionally select an image for this task.');
+  t('Pillar tags');
   t('Please choose some tags for this page.');
   t('Please select the audience for this announcement.');
   t('Please select the audience for this item.');
@@ -2920,17 +2938,18 @@ function immunizationed_structure_field_default_field_instances() {
   t('Resource image');
   t('Resource links');
   t('Responsible role');
+  t('Select the most appropriate audience');
   t('Select the role responsible for this task');
   t('Select the special practice role responsible for completing this waypoint.');
   t('Sources');
   t('Start date day offset from enrollment');
+  t('Tag this video for display with similar content');
   t('Tags');
   t('Task description');
   t('Task due date');
   t('Task start date');
   t('Task started date');
   t('These objectives will be determined by viewer type (MD, RN, MA). ');
-  t('This is the intended target audience for required CME documents');
   t('This is the text a user may send to the group administrators.');
   t('This should always be set to "private"');
   t('This will be used for differences in CME accreditation people. ');

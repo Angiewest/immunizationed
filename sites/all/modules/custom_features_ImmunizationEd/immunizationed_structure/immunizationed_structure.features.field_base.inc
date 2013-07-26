@@ -45,12 +45,12 @@ function immunizationed_structure_field_default_field_bases() {
   // Exported field_base: 'field_audience'
   $field_bases['field_audience'] = array(
     'active' => 1,
-    'cardinality' => 3,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_audience',
     'field_permissions' => array(
-      'type' => 0,
+      'type' => 2,
     ),
     'foreign keys' => array(
       'tid' => array(
@@ -531,6 +531,9 @@ function immunizationed_structure_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_internal_video_url',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
     'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
@@ -617,10 +620,13 @@ function immunizationed_structure_field_default_field_bases() {
   // Exported field_base: 'field_resource_image'
   $field_bases['field_resource_image'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_resource_image',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
     'foreign keys' => array(
       'fid' => array(
         'columns' => array(
@@ -733,7 +739,7 @@ function immunizationed_structure_field_default_field_bases() {
   // Exported field_base: 'field_tags'
   $field_bases['field_tags'] = array(
     'active' => 1,
-    'cardinality' => 5,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_tags',

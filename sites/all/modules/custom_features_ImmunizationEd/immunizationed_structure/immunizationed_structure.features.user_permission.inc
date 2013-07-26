@@ -125,8 +125,6 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['create body'] = array(
     'name' => 'create body',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -198,7 +196,8 @@ function immunizationed_structure_user_default_permissions() {
     'name' => 'create field_tags',
     'roles' => array(
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -830,7 +829,6 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['edit field_tags'] = array(
     'name' => 'edit field_tags',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -978,7 +976,6 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['edit own field_tags'] = array(
     'name' => 'edit own field_tags',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',

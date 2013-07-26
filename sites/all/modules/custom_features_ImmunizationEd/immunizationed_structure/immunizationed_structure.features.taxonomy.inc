@@ -56,9 +56,9 @@ function immunizationed_structure_taxonomy_default_vocabularies() {
       ),
     ),
     'tags' => array(
-      'name' => 'Tags',
+      'name' => 'Content Tags',
       'machine_name' => 'tags',
-      'description' => 'Use tags to group articles on similar topics into categories.',
+      'description' => 'Use tags to group content into categories.',
       'hierarchy' => 0,
       'module' => 'taxonomy',
       'weight' => -3,

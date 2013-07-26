@@ -56,7 +56,7 @@ function immunizationed_layouts_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_video';
-  $strongarm->value = 'edit-submission';
+  $strongarm->value = 'edit-panelizer';
   $export['additional_settings__active_tab_video'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -84,7 +84,7 @@ function immunizationed_layouts_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'diff_enable_revisions_page_node_video';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['diff_enable_revisions_page_node_video'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -112,7 +112,7 @@ function immunizationed_layouts_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'diff_show_preview_changes_node_video';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['diff_show_preview_changes_node_video'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -387,17 +387,17 @@ function immunizationed_layouts_strongarm() {
       'page_manager' => array(
         'status' => 1,
         'default' => 1,
-        'choice' => 1,
+        'choice' => 0,
       ),
       'default' => array(
-        'status' => 1,
-        'default' => 1,
-        'choice' => 1,
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
       ),
       'teaser' => array(
         'status' => 1,
         'default' => 1,
-        'choice' => 1,
+        'choice' => 0,
       ),
     ),
   );
