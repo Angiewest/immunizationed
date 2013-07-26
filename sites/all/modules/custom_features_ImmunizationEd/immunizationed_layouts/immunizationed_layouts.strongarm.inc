@@ -208,7 +208,7 @@ function immunizationed_layouts_strongarm() {
         'choice' => 1,
       ),
       'default' => array(
-        'status' => 1,
+        'status' => 0,
         'default' => 1,
         'choice' => 1,
       ),
@@ -338,7 +338,7 @@ function immunizationed_layouts_strongarm() {
         'choice' => 1,
       ),
       'default' => array(
-        'status' => 1,
+        'status' => 0,
         'default' => 1,
         'choice' => 1,
       ),
@@ -472,6 +472,11 @@ function immunizationed_layouts_strongarm() {
         'default' => 0,
         'choice' => 0,
       ),
+      'full' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
     ),
   );
   $export['panelizer_defaults_taxonomy_term_certification_entities'] = $strongarm;
@@ -510,6 +515,11 @@ function immunizationed_layouts_strongarm() {
         'choice' => 0,
       ),
       'default' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+      'full' => array(
         'status' => 0,
         'default' => 0,
         'choice' => 0,

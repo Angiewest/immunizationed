@@ -27,6 +27,11 @@ function immunizationed_pillar_tags_strongarm() {
         'default' => 0,
         'choice' => 0,
       ),
+      'full' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
     ),
   );
   $export['panelizer_defaults_taxonomy_term_taxonomy_pillar_tags_'] = $strongarm;
