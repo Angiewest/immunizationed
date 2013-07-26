@@ -150,5 +150,12 @@ function immunizationed_emr_importer_strongarm() {
   );
   $export['panelizer_defaults_node_vaccination_data_from_emr'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_vaccination_data_from_emr_pattern';
+  $strongarm->value = 'emr-data/[node:title]';
+  $export['pathauto_node_vaccination_data_from_emr_pattern'] = $strongarm;
+
   return $export;
 }

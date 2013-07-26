@@ -14,9 +14,12 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['access content'] = array(
     'name' => 'access content',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
@@ -97,6 +100,15 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: change layouts in place editing.
+  $permissions['change layouts in place editing'] = array(
+    'name' => 'change layouts in place editing',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels',
+  );
+
   // Exported permission: create announcement content.
   $permissions['create announcement content'] = array(
     'name' => 'create announcement content',
@@ -154,6 +166,28 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: create field_applicable_roles.
+  $permissions['create field_applicable_roles'] = array(
+    'name' => 'create field_applicable_roles',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: create field_audience.
+  $permissions['create field_audience'] = array(
+    'name' => 'create field_audience',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: create field_date_started.
   $permissions['create field_date_started'] = array(
     'name' => 'create field_date_started',
@@ -180,6 +214,17 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: create field_document.
+  $permissions['create field_document'] = array(
+    'name' => 'create field_document',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: create field_expected_time_to_complete.
   $permissions['create field_expected_time_to_complete'] = array(
     'name' => 'create field_expected_time_to_complete',
@@ -188,6 +233,35 @@ function immunizationed_structure_user_default_permissions() {
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: create field_internal_video_url.
+  $permissions['create field_internal_video_url'] = array(
+    'name' => 'create field_internal_video_url',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: create field_reference_to_onsite_video.
+  $permissions['create field_reference_to_onsite_video'] = array(
+    'name' => 'create field_reference_to_onsite_video',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: create field_resource_links.
+  $permissions['create field_resource_links'] = array(
+    'name' => 'create field_resource_links',
+    'roles' => array(),
     'module' => 'field_permissions',
   );
 
@@ -246,7 +320,6 @@ function immunizationed_structure_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -295,7 +368,11 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['create practice_group content'] = array(
     'name' => 'create practice_group content',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
@@ -308,7 +385,6 @@ function immunizationed_structure_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -493,7 +569,6 @@ function immunizationed_structure_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -537,7 +612,6 @@ function immunizationed_structure_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -578,7 +652,6 @@ function immunizationed_structure_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -631,7 +704,6 @@ function immunizationed_structure_user_default_permissions() {
     'name' => 'delete revisions',
     'roles' => array(
       'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'node',
   );
@@ -686,7 +758,6 @@ function immunizationed_structure_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -727,7 +798,6 @@ function immunizationed_structure_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -788,6 +858,28 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: edit field_applicable_roles.
+  $permissions['edit field_applicable_roles'] = array(
+    'name' => 'edit field_applicable_roles',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit field_audience.
+  $permissions['edit field_audience'] = array(
+    'name' => 'edit field_audience',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: edit field_date_started.
   $permissions['edit field_date_started'] = array(
     'name' => 'edit field_date_started',
@@ -814,6 +906,17 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: edit field_document.
+  $permissions['edit field_document'] = array(
+    'name' => 'edit field_document',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: edit field_expected_time_to_complete.
   $permissions['edit field_expected_time_to_complete'] = array(
     'name' => 'edit field_expected_time_to_complete',
@@ -822,6 +925,35 @@ function immunizationed_structure_user_default_permissions() {
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit field_internal_video_url.
+  $permissions['edit field_internal_video_url'] = array(
+    'name' => 'edit field_internal_video_url',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit field_reference_to_onsite_video.
+  $permissions['edit field_reference_to_onsite_video'] = array(
+    'name' => 'edit field_reference_to_onsite_video',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit field_resource_links.
+  $permissions['edit field_resource_links'] = array(
+    'name' => 'edit field_resource_links',
+    'roles' => array(),
     'module' => 'field_permissions',
   );
 
@@ -937,6 +1069,28 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: edit own field_applicable_roles.
+  $permissions['edit own field_applicable_roles'] = array(
+    'name' => 'edit own field_applicable_roles',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own field_audience.
+  $permissions['edit own field_audience'] = array(
+    'name' => 'edit own field_audience',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: edit own field_date_started.
   $permissions['edit own field_date_started'] = array(
     'name' => 'edit own field_date_started',
@@ -961,6 +1115,17 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: edit own field_document.
+  $permissions['edit own field_document'] = array(
+    'name' => 'edit own field_document',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: edit own field_expected_time_to_complete.
   $permissions['edit own field_expected_time_to_complete'] = array(
     'name' => 'edit own field_expected_time_to_complete',
@@ -969,6 +1134,35 @@ function immunizationed_structure_user_default_permissions() {
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own field_internal_video_url.
+  $permissions['edit own field_internal_video_url'] = array(
+    'name' => 'edit own field_internal_video_url',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own field_reference_to_onsite_video.
+  $permissions['edit own field_reference_to_onsite_video'] = array(
+    'name' => 'edit own field_reference_to_onsite_video',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own field_resource_links.
+  $permissions['edit own field_resource_links'] = array(
+    'name' => 'edit own field_resource_links',
+    'roles' => array(),
     'module' => 'field_permissions',
   );
 
@@ -1026,7 +1220,6 @@ function immunizationed_structure_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -1078,7 +1271,6 @@ function immunizationed_structure_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -1133,16 +1325,50 @@ function immunizationed_structure_user_default_permissions() {
     'name' => 'revert revisions',
     'roles' => array(
       'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: use panels in place editing.
+  $permissions['use panels in place editing'] = array(
+    'name' => 'use panels in place editing',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels',
   );
 
   // Exported permission: view body.
   $permissions['view body'] = array(
     'name' => 'view body',
     'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view field_applicable_roles.
+  $permissions['view field_applicable_roles'] = array(
+    'name' => 'view field_applicable_roles',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view field_audience.
+  $permissions['view field_audience'] = array(
+    'name' => 'view field_audience',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'apprentice admin' => 'apprentice admin',
@@ -1180,6 +1406,21 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: view field_document.
+  $permissions['view field_document'] = array(
+    'name' => 'view field_document',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: view field_expected_time_to_complete.
   $permissions['view field_expected_time_to_complete'] = array(
     'name' => 'view field_expected_time_to_complete',
@@ -1192,6 +1433,34 @@ function immunizationed_structure_user_default_permissions() {
       'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view field_internal_video_url.
+  $permissions['view field_internal_video_url'] = array(
+    'name' => 'view field_internal_video_url',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view field_reference_to_onsite_video.
+  $permissions['view field_reference_to_onsite_video'] = array(
+    'name' => 'view field_reference_to_onsite_video',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view field_resource_links.
+  $permissions['view field_resource_links'] = array(
+    'name' => 'view field_resource_links',
+    'roles' => array(),
     'module' => 'field_permissions',
   );
 
@@ -1270,6 +1539,30 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: view own field_applicable_roles.
+  $permissions['view own field_applicable_roles'] = array(
+    'name' => 'view own field_applicable_roles',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_audience.
+  $permissions['view own field_audience'] = array(
+    'name' => 'view own field_audience',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: view own field_date_started.
   $permissions['view own field_date_started'] = array(
     'name' => 'view own field_date_started',
@@ -1297,6 +1590,21 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: view own field_document.
+  $permissions['view own field_document'] = array(
+    'name' => 'view own field_document',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: view own field_expected_time_to_complete.
   $permissions['view own field_expected_time_to_complete'] = array(
     'name' => 'view own field_expected_time_to_complete',
@@ -1309,6 +1617,38 @@ function immunizationed_structure_user_default_permissions() {
       'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_internal_video_url.
+  $permissions['view own field_internal_video_url'] = array(
+    'name' => 'view own field_internal_video_url',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_reference_to_onsite_video.
+  $permissions['view own field_reference_to_onsite_video'] = array(
+    'name' => 'view own field_reference_to_onsite_video',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_resource_links.
+  $permissions['view own field_resource_links'] = array(
+    'name' => 'view own field_resource_links',
+    'roles' => array(),
     'module' => 'field_permissions',
   );
 
@@ -1380,8 +1720,11 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view own unpublished content'] = array(
     'name' => 'view own unpublished content',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
@@ -1393,8 +1736,6 @@ function immunizationed_structure_user_default_permissions() {
     'name' => 'view revisions',
     'roles' => array(
       'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );

@@ -2603,6 +2603,43 @@ function immunizationed_structure_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-video-field_help_topics_tags'
+  $field_instances['node-video-field_help_topics_tags'] = array(
+    'bundle' => 'video',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'If this is help content, choose the topic',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_help_topics_tags',
+    'label' => 'Help topics',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 36,
+    ),
+  );
+
   // Exported field_instance: 'node-video-field_internal_video_url'
   $field_instances['node-video-field_internal_video_url'] = array(
     'bundle' => 'video',
@@ -2919,6 +2956,8 @@ function immunizationed_structure_field_default_field_instances() {
   t('Expected time to complete');
   t('Fixed due date');
   t('Fixed start date');
+  t('Help topics');
+  t('If this is help content, choose the topic');
   t('Image');
   t('Integer used to calculate due date');
   t('Integer used to calculate suggested start date.');

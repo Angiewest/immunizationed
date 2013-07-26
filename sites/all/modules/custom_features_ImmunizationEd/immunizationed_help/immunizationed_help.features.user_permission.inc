@@ -59,24 +59,47 @@ function immunizationed_help_user_default_permissions() {
     'module' => 'panelizer',
   );
 
+  // Exported permission: create field_help_topics_tags.
+  $permissions['create field_help_topics_tags'] = array(
+    'name' => 'create field_help_topics_tags',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: create help_topic content.
   $permissions['create help_topic content'] = array(
     'name' => 'create help_topic content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: delete any help_topic content.
   $permissions['delete any help_topic content'] = array(
     'name' => 'delete any help_topic content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: delete own help_topic content.
   $permissions['delete own help_topic content'] = array(
     'name' => 'delete own help_topic content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
     'module' => 'node',
   );
 
@@ -90,22 +113,78 @@ function immunizationed_help_user_default_permissions() {
   // Exported permission: edit any help_topic content.
   $permissions['edit any help_topic content'] = array(
     'name' => 'edit any help_topic content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
     'module' => 'node',
+  );
+
+  // Exported permission: edit field_help_topics_tags.
+  $permissions['edit field_help_topics_tags'] = array(
+    'name' => 'edit field_help_topics_tags',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own field_help_topics_tags.
+  $permissions['edit own field_help_topics_tags'] = array(
+    'name' => 'edit own field_help_topics_tags',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
   );
 
   // Exported permission: edit own help_topic content.
   $permissions['edit own help_topic content'] = array(
     'name' => 'edit own help_topic content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: edit terms in 15.
   $permissions['edit terms in 15'] = array(
     'name' => 'edit terms in 15',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
     'module' => 'taxonomy',
+  );
+
+  // Exported permission: view field_help_topics_tags.
+  $permissions['view field_help_topics_tags'] = array(
+    'name' => 'view field_help_topics_tags',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_help_topics_tags.
+  $permissions['view own field_help_topics_tags'] = array(
+    'name' => 'view own field_help_topics_tags',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
   );
 
   return $permissions;

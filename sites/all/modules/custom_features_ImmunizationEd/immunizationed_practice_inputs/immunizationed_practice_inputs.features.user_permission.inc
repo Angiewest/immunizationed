@@ -400,11 +400,8 @@ function immunizationed_practice_inputs_user_default_permissions() {
   $permissions['delete any meeting_agenda content'] = array(
     'name' => 'delete any meeting_agenda content',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -452,7 +449,6 @@ function immunizationed_practice_inputs_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -461,10 +457,8 @@ function immunizationed_practice_inputs_user_default_permissions() {
   $permissions['delete own meeting_agenda content'] = array(
     'name' => 'delete own meeting_agenda content',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -475,7 +469,6 @@ function immunizationed_practice_inputs_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -496,7 +489,6 @@ function immunizationed_practice_inputs_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -527,7 +519,6 @@ function immunizationed_practice_inputs_user_default_permissions() {
     'name' => 'delete terms in 5',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -1041,7 +1032,13 @@ function immunizationed_practice_inputs_user_default_permissions() {
   $permissions['edit terms in 10'] = array(
     'name' => 'edit terms in 10',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -1050,7 +1047,13 @@ function immunizationed_practice_inputs_user_default_permissions() {
   $permissions['edit terms in 11'] = array(
     'name' => 'edit terms in 11',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -1059,7 +1062,13 @@ function immunizationed_practice_inputs_user_default_permissions() {
   $permissions['edit terms in 12'] = array(
     'name' => 'edit terms in 12',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -1069,7 +1078,6 @@ function immunizationed_practice_inputs_user_default_permissions() {
     'name' => 'edit terms in 5',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -1087,7 +1095,13 @@ function immunizationed_practice_inputs_user_default_permissions() {
   $permissions['edit terms in 7'] = array(
     'name' => 'edit terms in 7',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -1105,7 +1119,13 @@ function immunizationed_practice_inputs_user_default_permissions() {
   $permissions['edit terms in 9'] = array(
     'name' => 'edit terms in 9',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'taxonomy',
   );

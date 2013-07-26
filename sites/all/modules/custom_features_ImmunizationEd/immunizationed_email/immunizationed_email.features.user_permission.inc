@@ -24,7 +24,6 @@ function immunizationed_email_user_default_permissions() {
     'name' => 'edit mimemail user settings',
     'roles' => array(
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
     ),
     'module' => 'mimemail',
   );

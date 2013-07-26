@@ -13,6 +13,13 @@ function immunizationed_help_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'additional_settings__active_tab_help_topic';
+  $strongarm->value = 'edit-panelizer';
+  $export['additional_settings__active_tab_help_topic'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_help_topic';
   $strongarm->value = 0;
   $export['comment_anonymous_help_topic'] = $strongarm;
@@ -258,6 +265,13 @@ function immunizationed_help_strongarm() {
     ),
   );
   $export['panelizer_defaults_taxonomy_term_help'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'save_continue_help_topic';
+  $strongarm->value = 'Save and add fields';
+  $export['save_continue_help_topic'] = $strongarm;
 
   return $export;
 }

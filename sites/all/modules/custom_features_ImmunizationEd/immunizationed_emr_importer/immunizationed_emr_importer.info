@@ -124,6 +124,7 @@ features[variable][] = node_options_vaccination_data_from_emr
 features[variable][] = node_preview_vaccination_data_from_emr
 features[variable][] = node_submitted_vaccination_data_from_emr
 features[variable][] = panelizer_defaults_node_vaccination_data_from_emr
+features[variable][] = pathauto_node_vaccination_data_from_emr_pattern
 features_exclude[dependencies][immunizationed_structure] = immunizationed_structure
 features_exclude[dependencies][immunizationed_core] = immunizationed_core
 features_exclude[dependencies][immunizationed_practice] = immunizationed_practice

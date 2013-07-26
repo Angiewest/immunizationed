@@ -87,6 +87,24 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'system',
   );
 
+  // Exported permission: administer panelizer taxonomy_term practice_jobs defaults.
+  $permissions['administer panelizer taxonomy_term practice_jobs defaults'] = array(
+    'name' => 'administer panelizer taxonomy_term practice_jobs defaults',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panelizer',
+  );
+
+  // Exported permission: administer panelizer user user defaults.
+  $permissions['administer panelizer user user defaults'] = array(
+    'name' => 'administer panelizer user user defaults',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panelizer',
+  );
+
   // Exported permission: administer permissions.
   $permissions['administer permissions'] = array(
     'name' => 'administer permissions',
@@ -349,6 +367,13 @@ function immunizationed_user_config_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'user',
+  );
+
+  // Exported permission: clear user_import feeds.
+  $permissions['clear user_import feeds'] = array(
+    'name' => 'clear user_import feeds',
+    'roles' => array(),
+    'module' => 'feeds',
   );
 
   // Exported permission: create field_responsible_role.
@@ -643,6 +668,13 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
+  // Exported permission: import user_import feeds.
+  $permissions['import user_import feeds'] = array(
+    'name' => 'import user_import feeds',
+    'roles' => array(),
+    'module' => 'feeds',
+  );
+
   // Exported permission: select account cancellation method.
   $permissions['select account cancellation method'] = array(
     'name' => 'select account cancellation method',
@@ -659,6 +691,13 @@ function immunizationed_user_config_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'shortcut',
+  );
+
+  // Exported permission: unlock user_import feeds.
+  $permissions['unlock user_import feeds'] = array(
+    'name' => 'unlock user_import feeds',
+    'roles' => array(),
+    'module' => 'feeds',
   );
 
   // Exported permission: view field_responsible_role.

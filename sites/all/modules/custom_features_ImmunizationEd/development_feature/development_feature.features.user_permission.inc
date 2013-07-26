@@ -91,10 +91,14 @@ function development_feature_user_default_permissions() {
   $permissions['view devel_node_access information'] = array(
     'name' => 'view devel_node_access information',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'devel_node_access',
   );

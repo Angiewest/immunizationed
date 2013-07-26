@@ -54,10 +54,11 @@ function immunizationed_core_user_default_permissions() {
   $permissions['access comments'] = array(
     'name' => 'access comments',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'comment',
@@ -130,8 +131,11 @@ function immunizationed_core_user_default_permissions() {
   $permissions['access site-wide contact form'] = array(
     'name' => 'access site-wide contact form',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
@@ -153,8 +157,11 @@ function immunizationed_core_user_default_permissions() {
   $permissions['access user contact forms'] = array(
     'name' => 'access user contact forms',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
@@ -415,7 +422,6 @@ function immunizationed_core_user_default_permissions() {
     'name' => 'delete terms in 1',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -442,7 +448,6 @@ function immunizationed_core_user_default_permissions() {
     'name' => 'delete terms in 3',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -452,7 +457,6 @@ function immunizationed_core_user_default_permissions() {
     'name' => 'delete terms in 4',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -477,8 +481,11 @@ function immunizationed_core_user_default_permissions() {
   $permissions['edit own comments'] = array(
     'name' => 'edit own comments',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
     'module' => 'comment',
@@ -498,8 +505,6 @@ function immunizationed_core_user_default_permissions() {
     'name' => 'edit terms in 1',
     'roles' => array(
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
-      'editor' => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -515,7 +520,11 @@ function immunizationed_core_user_default_permissions() {
   $permissions['edit terms in 2'] = array(
     'name' => 'edit terms in 2',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
@@ -536,7 +545,6 @@ function immunizationed_core_user_default_permissions() {
     'name' => 'edit terms in 4',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'taxonomy',
   );

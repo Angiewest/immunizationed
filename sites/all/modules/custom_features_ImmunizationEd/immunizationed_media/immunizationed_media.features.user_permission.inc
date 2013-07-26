@@ -58,6 +58,28 @@ function immunizationed_media_user_default_permissions() {
     'module' => 'file_entity',
   );
 
+  // Exported permission: create field_image.
+  $permissions['create field_image'] = array(
+    'name' => 'create field_image',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: create field_resource_image.
+  $permissions['create field_resource_image'] = array(
+    'name' => 'create field_resource_image',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: create files.
   $permissions['create files'] = array(
     'name' => 'create files',
@@ -66,6 +88,7 @@ function immunizationed_media_user_default_permissions() {
       'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
@@ -104,6 +127,50 @@ function immunizationed_media_user_default_permissions() {
     'module' => 'file_entity',
   );
 
+  // Exported permission: edit field_image.
+  $permissions['edit field_image'] = array(
+    'name' => 'edit field_image',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit field_resource_image.
+  $permissions['edit field_resource_image'] = array(
+    'name' => 'edit field_resource_image',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own field_image.
+  $permissions['edit own field_image'] = array(
+    'name' => 'edit own field_image',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own field_resource_image.
+  $permissions['edit own field_resource_image'] = array(
+    'name' => 'edit own field_resource_image',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: edit own files.
   $permissions['edit own files'] = array(
     'name' => 'edit own files',
@@ -126,6 +193,30 @@ function immunizationed_media_user_default_permissions() {
     'module' => 'media',
   );
 
+  // Exported permission: view field_image.
+  $permissions['view field_image'] = array(
+    'name' => 'view field_image',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view field_resource_image.
+  $permissions['view field_resource_image'] = array(
+    'name' => 'view field_resource_image',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: view files.
   $permissions['view files'] = array(
     'name' => 'view files',
@@ -135,6 +226,30 @@ function immunizationed_media_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'file_entity',
+  );
+
+  // Exported permission: view own field_image.
+  $permissions['view own field_image'] = array(
+    'name' => 'view own field_image',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_resource_image.
+  $permissions['view own field_resource_image'] = array(
+    'name' => 'view own field_resource_image',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
   );
 
   // Exported permission: view own files.

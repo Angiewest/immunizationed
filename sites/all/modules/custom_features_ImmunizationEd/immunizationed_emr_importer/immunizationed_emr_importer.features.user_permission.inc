@@ -130,28 +130,36 @@ function immunizationed_emr_importer_user_default_permissions() {
   // Exported permission: create vaccination_data_from_emr content.
   $permissions['create vaccination_data_from_emr content'] = array(
     'name' => 'create vaccination_data_from_emr content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: delete any vaccination_data_from_emr content.
   $permissions['delete any vaccination_data_from_emr content'] = array(
     'name' => 'delete any vaccination_data_from_emr content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: delete own vaccination_data_from_emr content.
   $permissions['delete own vaccination_data_from_emr content'] = array(
     'name' => 'delete own vaccination_data_from_emr content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: edit any vaccination_data_from_emr content.
   $permissions['edit any vaccination_data_from_emr content'] = array(
     'name' => 'edit any vaccination_data_from_emr content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -335,7 +343,9 @@ function immunizationed_emr_importer_user_default_permissions() {
   // Exported permission: edit own vaccination_data_from_emr content.
   $permissions['edit own vaccination_data_from_emr content'] = array(
     'name' => 'edit own vaccination_data_from_emr content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
