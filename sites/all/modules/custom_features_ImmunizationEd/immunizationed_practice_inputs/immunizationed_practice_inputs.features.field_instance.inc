@@ -87,47 +87,6 @@ function immunizationed_practice_inputs_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-convenient_vaccination_services-field_pillar_tags'
-  $field_instances['node-convenient_vaccination_services-field_pillar_tags'] = array(
-    'bundle' => 'convenient_vaccination_services',
-    'default_value' => array(
-      0 => array(
-        'tid' => 52,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => 'Tag this content with a reference to a pillar if appropriate',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 6,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_pillar_tags',
-    'label' => 'Pillar tags',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 31,
-    ),
-  );
-
   // Exported field_instance: 'node-convenient_vaccination_services-field_req_assembly_instruc_p1'
   $field_instances['node-convenient_vaccination_services-field_req_assembly_instruc_p1'] = array(
     'bundle' => 'convenient_vaccination_services',
@@ -313,47 +272,6 @@ function immunizationed_practice_inputs_field_default_field_instances() {
       ),
       'type' => 'taxonomy_autocomplete',
       'weight' => 5,
-    ),
-  );
-
-  // Exported field_instance: 'node-enhanced_vaccination_systems-field_pillar_tags'
-  $field_instances['node-enhanced_vaccination_systems-field_pillar_tags'] = array(
-    'bundle' => 'enhanced_vaccination_systems',
-    'default_value' => array(
-      0 => array(
-        'tid' => 54,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => 'Tag this content with a reference to a pillar if appropriate.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 9,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_pillar_tags',
-    'label' => 'Pillar tags',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 32,
     ),
   );
 
@@ -844,47 +762,6 @@ function immunizationed_practice_inputs_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-motivation-field_pillar_tags'
-  $field_instances['node-motivation-field_pillar_tags'] = array(
-    'bundle' => 'motivation',
-    'default_value' => array(
-      0 => array(
-        'tid' => 55,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => 'Tag this content with a reference to a pillar if appropriate.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 11,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_pillar_tags',
-    'label' => 'Pillar tags',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 32,
-    ),
-  );
-
   // Exported field_instance: 'node-motivation-field_req_assembly_instruc_p4'
   $field_instances['node-motivation-field_req_assembly_instruc_p4'] = array(
     'bundle' => 'motivation',
@@ -1154,47 +1031,6 @@ function immunizationed_practice_inputs_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-patient_notification-field_pillar_tags'
-  $field_instances['node-patient_notification-field_pillar_tags'] = array(
-    'bundle' => 'patient_notification',
-    'default_value' => array(
-      0 => array(
-        'tid' => 53,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => 'Tag this content with a reference to a pillar if appropriate.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 14,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_pillar_tags',
-    'label' => 'Pillar tags',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 32,
-    ),
-  );
-
   // Exported field_instance: 'node-patient_notification-field_req_assembly_instruc_p2'
   $field_instances['node-patient_notification-field_req_assembly_instruc_p2'] = array(
     'bundle' => 'patient_notification',
@@ -1321,7 +1157,6 @@ function immunizationed_practice_inputs_field_default_field_instances() {
   t('Next Meeting Date');
   t('Notes about Agenda Topics');
   t('Other - please specify');
-  t('Pillar tags');
   t('Please enter your original convenient vaccination system strategy, or you can create a new strategy here. ');
   t('Please enter your original motivation strategy, or you can create a new strategy here. ');
   t('Please enter your original patient notification strategy, or you can create a new strategy here. ');
@@ -1330,8 +1165,6 @@ function immunizationed_practice_inputs_field_default_field_instances() {
   t('Required assembly instruction');
   t('Select the date of your meeting.');
   t('Select the practice this should be associated with');
-  t('Tag this content with a reference to a pillar if appropriate');
-  t('Tag this content with a reference to a pillar if appropriate.');
   t('This is a list of strategies you and your clinic can use to keep people motivated. Please select your choices from the optional list above. If you have a great idea on how to motivate your clinic and staff, please type it in below. Finish by clicking "Save".');
   t('We highly recommend that you discuss the serious nature of vaccine preventable diseases with each patient at each patient visit. ');
   t('We highly recommend that you ensure that your clinic has sufficient vaccine inventory. ');
