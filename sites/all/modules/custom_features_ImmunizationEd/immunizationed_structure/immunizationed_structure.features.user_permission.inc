@@ -68,6 +68,15 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: administer fieldgroups.
+  $permissions['administer fieldgroups'] = array(
+    'name' => 'administer fieldgroups',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'field_group',
+  );
+
   // Exported permission: administer nodes.
   $permissions['administer nodes'] = array(
     'name' => 'administer nodes',
@@ -188,6 +197,17 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: create field_certification_entity.
+  $permissions['create field_certification_entity'] = array(
+    'name' => 'create field_certification_entity',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: create field_date_started.
   $permissions['create field_date_started'] = array(
     'name' => 'create field_date_started',
@@ -217,6 +237,17 @@ function immunizationed_structure_user_default_permissions() {
   // Exported permission: create field_document.
   $permissions['create field_document'] = array(
     'name' => 'create field_document',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: create field_educational_objectives.
+  $permissions['create field_educational_objectives'] = array(
+    'name' => 'create field_educational_objectives',
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -880,6 +911,17 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: edit field_certification_entity.
+  $permissions['edit field_certification_entity'] = array(
+    'name' => 'edit field_certification_entity',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: edit field_date_started.
   $permissions['edit field_date_started'] = array(
     'name' => 'edit field_date_started',
@@ -909,6 +951,17 @@ function immunizationed_structure_user_default_permissions() {
   // Exported permission: edit field_document.
   $permissions['edit field_document'] = array(
     'name' => 'edit field_document',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit field_educational_objectives.
+  $permissions['edit field_educational_objectives'] = array(
+    'name' => 'edit field_educational_objectives',
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -1091,6 +1144,17 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: edit own field_certification_entity.
+  $permissions['edit own field_certification_entity'] = array(
+    'name' => 'edit own field_certification_entity',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: edit own field_date_started.
   $permissions['edit own field_date_started'] = array(
     'name' => 'edit own field_date_started',
@@ -1118,6 +1182,17 @@ function immunizationed_structure_user_default_permissions() {
   // Exported permission: edit own field_document.
   $permissions['edit own field_document'] = array(
     'name' => 'edit own field_document',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own field_educational_objectives.
+  $permissions['edit own field_educational_objectives'] = array(
+    'name' => 'edit own field_educational_objectives',
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -1378,6 +1453,16 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: view field_certification_entity.
+  $permissions['view field_certification_entity'] = array(
+    'name' => 'view field_certification_entity',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: view field_date_started.
   $permissions['view field_date_started'] = array(
     'name' => 'view field_date_started',
@@ -1417,6 +1502,16 @@ function immunizationed_structure_user_default_permissions() {
       'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
       'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view field_educational_objectives.
+  $permissions['view field_educational_objectives'] = array(
+    'name' => 'view field_educational_objectives',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'field_permissions',
   );
@@ -1563,6 +1658,16 @@ function immunizationed_structure_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: view own field_certification_entity.
+  $permissions['view own field_certification_entity'] = array(
+    'name' => 'view own field_certification_entity',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: view own field_date_started.
   $permissions['view own field_date_started'] = array(
     'name' => 'view own field_date_started',
@@ -1601,6 +1706,16 @@ function immunizationed_structure_user_default_permissions() {
       'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
       'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_educational_objectives.
+  $permissions['view own field_educational_objectives'] = array(
+    'name' => 'view own field_educational_objectives',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'field_permissions',
   );

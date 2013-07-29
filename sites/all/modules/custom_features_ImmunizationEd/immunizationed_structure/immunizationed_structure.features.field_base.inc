@@ -116,6 +116,9 @@ function immunizationed_structure_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_certification_entity',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
     'foreign keys' => array(
       'tid' => array(
         'columns' => array(
@@ -326,7 +329,7 @@ function immunizationed_structure_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_educational_objectives',
     'field_permissions' => array(
-      'type' => 0,
+      'type' => 2,
     ),
     'foreign keys' => array(
       'format' => array(

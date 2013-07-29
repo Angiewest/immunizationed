@@ -10,13 +10,6 @@
 function immunizationed_pillar_tags_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: administer panelizer taxonomy_term taxonomy_pillar_tags_ defaults.
-  $permissions['administer panelizer taxonomy_term taxonomy_pillar_tags_ defaults'] = array(
-    'name' => 'administer panelizer taxonomy_term taxonomy_pillar_tags_ defaults',
-    'roles' => array(),
-    'module' => 'panelizer',
-  );
-
   // Exported permission: create field_pillar_tags.
   $permissions['create field_pillar_tags'] = array(
     'name' => 'create field_pillar_tags',
