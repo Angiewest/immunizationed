@@ -712,6 +712,22 @@ function immunizationed_menus_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -38,
   );
+  // Exported menu link: menu-site-admin:admin/people
+  $menu_links['menu-site-admin:admin/people'] = array(
+    'menu_name' => 'menu-site-admin',
+    'link_path' => 'admin/people',
+    'router_path' => 'admin/people',
+    'link_title' => 'Manage people',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+  );
   // Exported menu link: menu-site-admin:admin/people-details
   $menu_links['menu-site-admin:admin/people-details'] = array(
     'menu_name' => 'menu-site-admin',
@@ -1489,6 +1505,7 @@ function immunizationed_menus_menu_default_menu_links() {
   t('Import data');
   t('Log in');
   t('Log out');
+  t('Manage people');
   t('Meeting Agenda');
   t('Nuts & Bolts');
   t('Offsite Resource');
