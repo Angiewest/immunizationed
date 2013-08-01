@@ -1164,7 +1164,7 @@ function immunizationed_charts_views_default_views() {
   $view->description = 'Produces influenza baseline charts from EMR data feed';
   $view->tag = 'charts';
   $view->base_table = 'node';
-  $view->human_name = 'Influenza Vaccination charts by practice';
+  $view->human_name = 'Baseline Influenza Vaccination charts';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -1605,6 +1605,210 @@ function immunizationed_charts_views_default_views() {
       'label' => 'OG membership: Group ID',
     ),
   );
+
+  /* Display: All sites line Chart eligible */
+  $handler = $view->new_display('panel_pane', 'All sites line Chart eligible', 'panel_pane_5');
+  $handler->display->display_options['display_description'] = 'Line Chart: Flu eligible visits & doses for all sites';
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'edit users with role CoIadmin';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Reporting period */
+  $handler->display->display_options['fields']['field_reporting_period']['id'] = 'field_reporting_period';
+  $handler->display->display_options['fields']['field_reporting_period']['table'] = 'field_data_field_reporting_period';
+  $handler->display->display_options['fields']['field_reporting_period']['field'] = 'field_reporting_period';
+  $handler->display->display_options['fields']['field_reporting_period']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_reporting_period']['settings'] = array(
+    'format_type' => 'short_no_time',
+    'fromto' => 'value',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: Content: Reporting period start biweekly */
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['id'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['table'] = 'field_data_field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['field'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['settings'] = array(
+    'format_type' => 'short_no_time',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: SUM(Content: Visits) */
+  $handler->display->display_options['fields']['field_visits_1']['id'] = 'field_visits_1';
+  $handler->display->display_options['fields']['field_visits_1']['table'] = 'field_data_field_visits';
+  $handler->display->display_options['fields']['field_visits_1']['field'] = 'field_visits';
+  $handler->display->display_options['fields']['field_visits_1']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_visits_1']['label'] = 'All Visits';
+  $handler->display->display_options['fields']['field_visits_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_visits_1']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: All Flu eligible estimated visits */
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['id'] = 'field_all_flu_eligible_est_visit';
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['table'] = 'field_data_field_all_flu_eligible_est_visit';
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['field'] = 'field_all_flu_eligible_est_visit';
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['label'] = 'Estimated Flu eligible visits';
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Influenza */
+  $handler->display->display_options['fields']['field_influenza_1']['id'] = 'field_influenza_1';
+  $handler->display->display_options['fields']['field_influenza_1']['table'] = 'field_data_field_influenza';
+  $handler->display->display_options['fields']['field_influenza_1']['field'] = 'field_influenza';
+  $handler->display->display_options['fields']['field_influenza_1']['label'] = 'Influenza doses';
+  $handler->display->display_options['fields']['field_influenza_1']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['argument_input'] = array(
+    'gid' => array(
+      'type' => 'user',
+      'context' => 'entity:node.nid',
+      'context_optional' => 0,
+      'panel' => '0',
+      'fixed' => '',
+      'label' => 'OG membership: Group ID',
+    ),
+  );
+
+  /* Display: All sites table attachment */
+  $handler = $view->new_display('attachment', 'All sites table attachment', 'attachment_1');
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'edit users with role CoIadmin';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_reporting_period' => 'field_reporting_period',
+    'field_visits' => 'field_visits',
+    'field_influenza' => 'field_influenza',
+    'field_pneumo' => 'field_pneumo',
+    'field_tdap' => 'field_tdap',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_reporting_period' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_visits' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_influenza' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_pneumo' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_tdap' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Reporting period */
+  $handler->display->display_options['fields']['field_reporting_period']['id'] = 'field_reporting_period';
+  $handler->display->display_options['fields']['field_reporting_period']['table'] = 'field_data_field_reporting_period';
+  $handler->display->display_options['fields']['field_reporting_period']['field'] = 'field_reporting_period';
+  $handler->display->display_options['fields']['field_reporting_period']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_reporting_period']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'value',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: Content: Reporting period start biweekly */
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['id'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['table'] = 'field_data_field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['field'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['settings'] = array(
+    'format_type' => 'short_no_time',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: Content: Week */
+  $handler->display->display_options['fields']['field_week']['id'] = 'field_week';
+  $handler->display->display_options['fields']['field_week']['table'] = 'field_data_field_week';
+  $handler->display->display_options['fields']['field_week']['field'] = 'field_week';
+  $handler->display->display_options['fields']['field_week']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Visits */
+  $handler->display->display_options['fields']['field_visits_1']['id'] = 'field_visits_1';
+  $handler->display->display_options['fields']['field_visits_1']['table'] = 'field_data_field_visits';
+  $handler->display->display_options['fields']['field_visits_1']['field'] = 'field_visits';
+  $handler->display->display_options['fields']['field_visits_1']['label'] = 'All Visits';
+  $handler->display->display_options['fields']['field_visits_1']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: All Flu eligible estimated visits */
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['id'] = 'field_all_flu_eligible_est_visit';
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['table'] = 'field_data_field_all_flu_eligible_est_visit';
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['field'] = 'field_all_flu_eligible_est_visit';
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Influenza */
+  $handler->display->display_options['fields']['field_influenza_1']['id'] = 'field_influenza_1';
+  $handler->display->display_options['fields']['field_influenza_1']['table'] = 'field_data_field_influenza';
+  $handler->display->display_options['fields']['field_influenza_1']['field'] = 'field_influenza';
+  $handler->display->display_options['fields']['field_influenza_1']['label'] = 'Influenza doses';
+  $handler->display->display_options['fields']['field_influenza_1']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['displays'] = array(
+    'panel_pane_5' => 'panel_pane_5',
+    'default' => 0,
+    'page' => 0,
+    'panel_pane_2' => 0,
+    'panel_pane_3' => 0,
+    'panel_pane_4' => 0,
+    'panel_pane_1' => 0,
+  );
+  $handler->display->display_options['attachment_position'] = 'after';
   $export['influenza_vaccination_charts_by_practice'] = $view;
 
   $view = new view();
@@ -2142,6 +2346,255 @@ function immunizationed_charts_views_default_views() {
       'label' => 'OG membership: Group ID',
     ),
   );
+
+  /* Display: All sites line chart eligible */
+  $handler = $view->new_display('panel_pane', 'All sites line chart eligible', 'panel_pane_5');
+  $handler->display->display_options['display_description'] = 'Line Chart: Pneumo eligible visits & doses for all sites';
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'edit users with role CoIadmin';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Reporting period start biweekly */
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['id'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['table'] = 'field_data_field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['field'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['settings'] = array(
+    'format_type' => 'short_no_time',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: Content: Reporting period */
+  $handler->display->display_options['fields']['field_reporting_period']['id'] = 'field_reporting_period';
+  $handler->display->display_options['fields']['field_reporting_period']['table'] = 'field_data_field_reporting_period';
+  $handler->display->display_options['fields']['field_reporting_period']['field'] = 'field_reporting_period';
+  $handler->display->display_options['fields']['field_reporting_period']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_reporting_period']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_reporting_period']['settings'] = array(
+    'format_type' => 'short_no_time',
+    'fromto' => 'value',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: SUM(Content: Visits) */
+  $handler->display->display_options['fields']['field_visits']['id'] = 'field_visits';
+  $handler->display->display_options['fields']['field_visits']['table'] = 'field_data_field_visits';
+  $handler->display->display_options['fields']['field_visits']['field'] = 'field_visits';
+  $handler->display->display_options['fields']['field_visits']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_visits']['label'] = 'All Visits';
+  $handler->display->display_options['fields']['field_visits']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_visits']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: SUM(Content: Pneumo eligible estimated visits) */
+  $handler->display->display_options['fields']['field_pneumo_eligible_est_visits_1']['id'] = 'field_pneumo_eligible_est_visits_1';
+  $handler->display->display_options['fields']['field_pneumo_eligible_est_visits_1']['table'] = 'field_data_field_pneumo_eligible_est_visits';
+  $handler->display->display_options['fields']['field_pneumo_eligible_est_visits_1']['field'] = 'field_pneumo_eligible_est_visits';
+  $handler->display->display_options['fields']['field_pneumo_eligible_est_visits_1']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_pneumo_eligible_est_visits_1']['label'] = 'Estimated Pneumo eligible visits';
+  $handler->display->display_options['fields']['field_pneumo_eligible_est_visits_1']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: SUM(Content: Pneumo) */
+  $handler->display->display_options['fields']['field_pneumo_1']['id'] = 'field_pneumo_1';
+  $handler->display->display_options['fields']['field_pneumo_1']['table'] = 'field_data_field_pneumo';
+  $handler->display->display_options['fields']['field_pneumo_1']['field'] = 'field_pneumo';
+  $handler->display->display_options['fields']['field_pneumo_1']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_pneumo_1']['label'] = 'Pneumo Doses';
+  $handler->display->display_options['fields']['field_pneumo_1']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'vaccination_data_from_emr' => 'vaccination_data_from_emr',
+  );
+  /* Filter criterion: Content: Reporting period -  start date (field_reporting_period) */
+  $handler->display->display_options['filters']['field_reporting_period_value']['id'] = 'field_reporting_period_value';
+  $handler->display->display_options['filters']['field_reporting_period_value']['table'] = 'field_data_field_reporting_period';
+  $handler->display->display_options['filters']['field_reporting_period_value']['field'] = 'field_reporting_period_value';
+  $handler->display->display_options['filters']['field_reporting_period_value']['operator'] = 'between';
+  $handler->display->display_options['filters']['field_reporting_period_value']['expose']['operator_id'] = 'field_reporting_period_value_op';
+  $handler->display->display_options['filters']['field_reporting_period_value']['expose']['label'] = 'Reporting period';
+  $handler->display->display_options['filters']['field_reporting_period_value']['expose']['description'] = 'The start date of the reporting period';
+  $handler->display->display_options['filters']['field_reporting_period_value']['expose']['operator'] = 'field_reporting_period_value_op';
+  $handler->display->display_options['filters']['field_reporting_period_value']['expose']['identifier'] = 'field_reporting_period_value';
+  $handler->display->display_options['filters']['field_reporting_period_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    4 => 0,
+    8 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_reporting_period_value']['default_date'] = 'now - 1 year';
+  $handler->display->display_options['filters']['field_reporting_period_value']['default_to_date'] = 'now + 1 week';
+  $handler->display->display_options['filters']['field_reporting_period_value']['year_range'] = '-2:+1';
+  $handler->display->display_options['argument_input'] = array(
+    'gid' => array(
+      'type' => 'user',
+      'context' => 'entity:node.nid',
+      'context_optional' => 0,
+      'panel' => '0',
+      'fixed' => '',
+      'label' => 'OG membership: Group ID',
+    ),
+  );
+
+  /* Display: All sites table attachment */
+  $handler = $view->new_display('attachment', 'All sites table attachment', 'attachment_1');
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'edit users with role CoIadmin';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_reporting_period' => 'field_reporting_period',
+    'field_visits' => 'field_visits',
+    'field_influenza' => 'field_influenza',
+    'field_pneumo' => 'field_pneumo',
+    'field_tdap' => 'field_tdap',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_reporting_period' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_visits' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_influenza' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_pneumo' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_tdap' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Reporting period start biweekly */
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['id'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['table'] = 'field_data_field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['field'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['settings'] = array(
+    'format_type' => 'short_no_time',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: Content: Week */
+  $handler->display->display_options['fields']['field_week']['id'] = 'field_week';
+  $handler->display->display_options['fields']['field_week']['table'] = 'field_data_field_week';
+  $handler->display->display_options['fields']['field_week']['field'] = 'field_week';
+  $handler->display->display_options['fields']['field_week']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Reporting period */
+  $handler->display->display_options['fields']['field_reporting_period']['id'] = 'field_reporting_period';
+  $handler->display->display_options['fields']['field_reporting_period']['table'] = 'field_data_field_reporting_period';
+  $handler->display->display_options['fields']['field_reporting_period']['field'] = 'field_reporting_period';
+  $handler->display->display_options['fields']['field_reporting_period']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_reporting_period']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_reporting_period']['settings'] = array(
+    'format_type' => 'short_no_time',
+    'fromto' => 'value',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: SUM(Content: Visits) */
+  $handler->display->display_options['fields']['field_visits']['id'] = 'field_visits';
+  $handler->display->display_options['fields']['field_visits']['table'] = 'field_data_field_visits';
+  $handler->display->display_options['fields']['field_visits']['field'] = 'field_visits';
+  $handler->display->display_options['fields']['field_visits']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_visits']['label'] = 'All Visits';
+  $handler->display->display_options['fields']['field_visits']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: SUM(Content: Pneumo eligible estimated visits) */
+  $handler->display->display_options['fields']['field_pneumo_eligible_est_visits_1']['id'] = 'field_pneumo_eligible_est_visits_1';
+  $handler->display->display_options['fields']['field_pneumo_eligible_est_visits_1']['table'] = 'field_data_field_pneumo_eligible_est_visits';
+  $handler->display->display_options['fields']['field_pneumo_eligible_est_visits_1']['field'] = 'field_pneumo_eligible_est_visits';
+  $handler->display->display_options['fields']['field_pneumo_eligible_est_visits_1']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_pneumo_eligible_est_visits_1']['label'] = 'Estimated Pneumo eligible visits';
+  $handler->display->display_options['fields']['field_pneumo_eligible_est_visits_1']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: SUM(Content: Pneumo) */
+  $handler->display->display_options['fields']['field_pneumo_1']['id'] = 'field_pneumo_1';
+  $handler->display->display_options['fields']['field_pneumo_1']['table'] = 'field_data_field_pneumo';
+  $handler->display->display_options['fields']['field_pneumo_1']['field'] = 'field_pneumo';
+  $handler->display->display_options['fields']['field_pneumo_1']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_pneumo_1']['label'] = 'Pneumo Doses';
+  $handler->display->display_options['fields']['field_pneumo_1']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['displays'] = array(
+    'panel_pane_5' => 'panel_pane_5',
+    'default' => 0,
+    'page' => 0,
+    'panel_pane_2' => 0,
+    'panel_pane_3' => 0,
+    'panel_pane_4' => 0,
+    'panel_pane_1' => 0,
+  );
+  $handler->display->display_options['attachment_position'] = 'after';
   $export['pneumo_vaccination_charts_by_practice'] = $view;
 
   $view = new view();
@@ -2344,7 +2797,7 @@ function immunizationed_charts_views_default_views() {
   $view->description = 'Produces TDAP practice baseline charts from EMR data feed';
   $view->tag = 'charts';
   $view->base_table = 'node';
-  $view->human_name = 'TDAP Vaccination charts by practice';
+  $view->human_name = 'Baseline TDAP Vaccination charts';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -2866,6 +3319,251 @@ function immunizationed_charts_views_default_views() {
       'label' => 'OG membership: Group ID',
     ),
   );
+
+  /* Display: All sites line chart eligible */
+  $handler = $view->new_display('panel_pane', 'All sites line chart eligible', 'panel_pane_5');
+  $handler->display->display_options['display_description'] = 'Line Chart: TDAP eligible visits & doses for all sites';
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'edit users with role CoIadmin';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Reporting period start biweekly */
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['id'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['table'] = 'field_data_field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['field'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['label'] = 'Reporting period start';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['settings'] = array(
+    'format_type' => 'short_no_time',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: SUM(Content: Visits) */
+  $handler->display->display_options['fields']['field_visits']['id'] = 'field_visits';
+  $handler->display->display_options['fields']['field_visits']['table'] = 'field_data_field_visits';
+  $handler->display->display_options['fields']['field_visits']['field'] = 'field_visits';
+  $handler->display->display_options['fields']['field_visits']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_visits']['label'] = 'All Visits';
+  $handler->display->display_options['fields']['field_visits']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_visits']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: TDAP eligible estimated visits */
+  $handler->display->display_options['fields']['field_tdap_eligible_estimated_vi']['id'] = 'field_tdap_eligible_estimated_vi';
+  $handler->display->display_options['fields']['field_tdap_eligible_estimated_vi']['table'] = 'field_data_field_tdap_eligible_estimated_vi';
+  $handler->display->display_options['fields']['field_tdap_eligible_estimated_vi']['field'] = 'field_tdap_eligible_estimated_vi';
+  $handler->display->display_options['fields']['field_tdap_eligible_estimated_vi']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: SUM(Content: TDAP) */
+  $handler->display->display_options['fields']['field_tdap']['id'] = 'field_tdap';
+  $handler->display->display_options['fields']['field_tdap']['table'] = 'field_data_field_tdap';
+  $handler->display->display_options['fields']['field_tdap']['field'] = 'field_tdap';
+  $handler->display->display_options['fields']['field_tdap']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_tdap']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Reporting period */
+  $handler->display->display_options['fields']['field_reporting_period']['id'] = 'field_reporting_period';
+  $handler->display->display_options['fields']['field_reporting_period']['table'] = 'field_data_field_reporting_period';
+  $handler->display->display_options['fields']['field_reporting_period']['field'] = 'field_reporting_period';
+  $handler->display->display_options['fields']['field_reporting_period']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_reporting_period']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_reporting_period']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'value',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+  );
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'vaccination_data_from_emr' => 'vaccination_data_from_emr',
+  );
+  /* Filter criterion: Content: Reporting period -  start date (field_reporting_period) */
+  $handler->display->display_options['filters']['field_reporting_period_value']['id'] = 'field_reporting_period_value';
+  $handler->display->display_options['filters']['field_reporting_period_value']['table'] = 'field_data_field_reporting_period';
+  $handler->display->display_options['filters']['field_reporting_period_value']['field'] = 'field_reporting_period_value';
+  $handler->display->display_options['filters']['field_reporting_period_value']['operator'] = 'between';
+  $handler->display->display_options['filters']['field_reporting_period_value']['expose']['operator_id'] = 'field_reporting_period_value_op';
+  $handler->display->display_options['filters']['field_reporting_period_value']['expose']['label'] = 'Reporting period';
+  $handler->display->display_options['filters']['field_reporting_period_value']['expose']['description'] = 'The start date of the reporting period';
+  $handler->display->display_options['filters']['field_reporting_period_value']['expose']['operator'] = 'field_reporting_period_value_op';
+  $handler->display->display_options['filters']['field_reporting_period_value']['expose']['identifier'] = 'field_reporting_period_value';
+  $handler->display->display_options['filters']['field_reporting_period_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    4 => 0,
+    8 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_reporting_period_value']['default_date'] = 'now - 1 year';
+  $handler->display->display_options['filters']['field_reporting_period_value']['default_to_date'] = 'now + 1 week';
+  $handler->display->display_options['filters']['field_reporting_period_value']['year_range'] = '-2:+1';
+  $handler->display->display_options['argument_input'] = array(
+    'gid' => array(
+      'type' => 'user',
+      'context' => 'entity:node.nid',
+      'context_optional' => 0,
+      'panel' => '0',
+      'fixed' => '',
+      'label' => 'OG membership: Group ID',
+    ),
+  );
+
+  /* Display: All  sites table attachment */
+  $handler = $view->new_display('attachment', 'All  sites table attachment', 'attachment_1');
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'edit users with role CoIadmin';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_reporting_period' => 'field_reporting_period',
+    'field_visits' => 'field_visits',
+    'field_influenza' => 'field_influenza',
+    'field_pneumo' => 'field_pneumo',
+    'field_tdap' => 'field_tdap',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_reporting_period' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_visits' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_influenza' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_pneumo' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_tdap' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Reporting period start biweekly */
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['id'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['table'] = 'field_data_field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['field'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['label'] = 'Reporting period start';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['settings'] = array(
+    'format_type' => 'short_no_time',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: Content: Week */
+  $handler->display->display_options['fields']['field_week']['id'] = 'field_week';
+  $handler->display->display_options['fields']['field_week']['table'] = 'field_data_field_week';
+  $handler->display->display_options['fields']['field_week']['field'] = 'field_week';
+  $handler->display->display_options['fields']['field_week']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: SUM(Content: Visits) */
+  $handler->display->display_options['fields']['field_visits']['id'] = 'field_visits';
+  $handler->display->display_options['fields']['field_visits']['table'] = 'field_data_field_visits';
+  $handler->display->display_options['fields']['field_visits']['field'] = 'field_visits';
+  $handler->display->display_options['fields']['field_visits']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_visits']['label'] = 'All Visits';
+  $handler->display->display_options['fields']['field_visits']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: TDAP eligible estimated visits */
+  $handler->display->display_options['fields']['field_tdap_eligible_estimated_vi']['id'] = 'field_tdap_eligible_estimated_vi';
+  $handler->display->display_options['fields']['field_tdap_eligible_estimated_vi']['table'] = 'field_data_field_tdap_eligible_estimated_vi';
+  $handler->display->display_options['fields']['field_tdap_eligible_estimated_vi']['field'] = 'field_tdap_eligible_estimated_vi';
+  $handler->display->display_options['fields']['field_tdap_eligible_estimated_vi']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: SUM(Content: TDAP) */
+  $handler->display->display_options['fields']['field_tdap']['id'] = 'field_tdap';
+  $handler->display->display_options['fields']['field_tdap']['table'] = 'field_data_field_tdap';
+  $handler->display->display_options['fields']['field_tdap']['field'] = 'field_tdap';
+  $handler->display->display_options['fields']['field_tdap']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_tdap']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Reporting period */
+  $handler->display->display_options['fields']['field_reporting_period']['id'] = 'field_reporting_period';
+  $handler->display->display_options['fields']['field_reporting_period']['table'] = 'field_data_field_reporting_period';
+  $handler->display->display_options['fields']['field_reporting_period']['field'] = 'field_reporting_period';
+  $handler->display->display_options['fields']['field_reporting_period']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_reporting_period']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_reporting_period']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'value',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+  );
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['displays'] = array(
+    'panel_pane_5' => 'panel_pane_5',
+    'default' => 0,
+    'page' => 0,
+    'panel_pane_2' => 0,
+    'panel_pane_3' => 0,
+    'panel_pane_4' => 0,
+    'panel_pane_1' => 0,
+  );
+  $handler->display->display_options['attachment_position'] = 'after';
   $export['tdap_vaccination_charts_by_practice'] = $view;
 
   $view = new view();

@@ -22,7 +22,6 @@ features[features_api][] = api:2
 features[menu_custom][] = menu-charts
 features[menu_links][] = menu-charts:admin/charts/baseline
 features[page_manager_pages][] = admin_charts
-features[page_manager_pages][] = all_practices_immunization_charts
 features[page_manager_pages][] = practice_charts
 features[user_permission][] = administer analytics dashboard
 features[user_permission][] = view analytics dashboard
