@@ -1450,12 +1450,13 @@ function immunizationed_charts_views_default_views() {
     'prefix_suffix' => 1,
   );
   $handler->display->display_options['displays'] = array(
-    'panel_pane_1' => 'panel_pane_1',
     'default' => 0,
     'page' => 0,
     'panel_pane_2' => 0,
     'panel_pane_3' => 0,
     'panel_pane_4' => 0,
+    'panel_pane_1' => 0,
+    'panel_pane_5' => 0,
   );
   $handler->display->display_options['attachment_position'] = 'after';
 
@@ -1507,20 +1508,22 @@ function immunizationed_charts_views_default_views() {
     'multiple_to' => '',
     'show_repeat_rule' => 'show',
   );
-  /* Field: Content: Visits */
+  /* Field: SUM(Content: Visits) */
   $handler->display->display_options['fields']['field_visits_1']['id'] = 'field_visits_1';
   $handler->display->display_options['fields']['field_visits_1']['table'] = 'field_data_field_visits';
   $handler->display->display_options['fields']['field_visits_1']['field'] = 'field_visits';
+  $handler->display->display_options['fields']['field_visits_1']['group_type'] = 'sum';
   $handler->display->display_options['fields']['field_visits_1']['label'] = 'All Visits';
   $handler->display->display_options['fields']['field_visits_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_visits_1']['settings'] = array(
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Field: Content: All Flu eligible estimated visits */
+  /* Field: SUM(Content: All Flu eligible estimated visits) */
   $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['id'] = 'field_all_flu_eligible_est_visit';
   $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['table'] = 'field_data_field_all_flu_eligible_est_visit';
   $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['field'] = 'field_all_flu_eligible_est_visit';
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['group_type'] = 'sum';
   $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['settings'] = array(
     'thousand_separator' => '',
     'prefix_suffix' => 1,
@@ -1586,10 +1589,11 @@ function immunizationed_charts_views_default_views() {
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Field: Content: Influenza */
+  /* Field: SUM(Content: Influenza) */
   $handler->display->display_options['fields']['field_influenza_1']['id'] = 'field_influenza_1';
   $handler->display->display_options['fields']['field_influenza_1']['table'] = 'field_data_field_influenza';
   $handler->display->display_options['fields']['field_influenza_1']['field'] = 'field_influenza';
+  $handler->display->display_options['fields']['field_influenza_1']['group_type'] = 'sum';
   $handler->display->display_options['fields']['field_influenza_1']['label'] = 'Influenza doses';
   $handler->display->display_options['fields']['field_influenza_1']['settings'] = array(
     'thousand_separator' => '',
@@ -1650,19 +1654,21 @@ function immunizationed_charts_views_default_views() {
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Field: Content: All Flu eligible estimated visits */
+  /* Field: SUM(Content: All Flu eligible estimated visits) */
   $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['id'] = 'field_all_flu_eligible_est_visit';
   $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['table'] = 'field_data_field_all_flu_eligible_est_visit';
   $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['field'] = 'field_all_flu_eligible_est_visit';
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['group_type'] = 'sum';
   $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['label'] = 'Estimated Flu eligible visits';
   $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['settings'] = array(
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Field: Content: Influenza */
+  /* Field: SUM(Content: Influenza) */
   $handler->display->display_options['fields']['field_influenza_1']['id'] = 'field_influenza_1';
   $handler->display->display_options['fields']['field_influenza_1']['table'] = 'field_data_field_influenza';
   $handler->display->display_options['fields']['field_influenza_1']['field'] = 'field_influenza';
+  $handler->display->display_options['fields']['field_influenza_1']['group_type'] = 'sum';
   $handler->display->display_options['fields']['field_influenza_1']['label'] = 'Influenza doses';
   $handler->display->display_options['fields']['field_influenza_1']['settings'] = array(
     'thousand_separator' => '',
@@ -1798,15 +1804,19 @@ function immunizationed_charts_views_default_views() {
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
+  /* Field: Content: Practice */
+  $handler->display->display_options['fields']['field_practice']['id'] = 'field_practice';
+  $handler->display->display_options['fields']['field_practice']['table'] = 'field_data_field_practice';
+  $handler->display->display_options['fields']['field_practice']['field'] = 'field_practice';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['displays'] = array(
-    'panel_pane_5' => 'panel_pane_5',
     'default' => 0,
     'page' => 0,
     'panel_pane_2' => 0,
     'panel_pane_3' => 0,
     'panel_pane_4' => 0,
     'panel_pane_1' => 0,
+    'panel_pane_5' => 0,
   );
   $handler->display->display_options['attachment_position'] = 'after';
   $export['influenza_vaccination_charts_by_practice'] = $view;
@@ -2413,43 +2423,6 @@ function immunizationed_charts_views_default_views() {
     'prefix_suffix' => 1,
   );
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = '1';
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'vaccination_data_from_emr' => 'vaccination_data_from_emr',
-  );
-  /* Filter criterion: Content: Reporting period -  start date (field_reporting_period) */
-  $handler->display->display_options['filters']['field_reporting_period_value']['id'] = 'field_reporting_period_value';
-  $handler->display->display_options['filters']['field_reporting_period_value']['table'] = 'field_data_field_reporting_period';
-  $handler->display->display_options['filters']['field_reporting_period_value']['field'] = 'field_reporting_period_value';
-  $handler->display->display_options['filters']['field_reporting_period_value']['operator'] = 'between';
-  $handler->display->display_options['filters']['field_reporting_period_value']['expose']['operator_id'] = 'field_reporting_period_value_op';
-  $handler->display->display_options['filters']['field_reporting_period_value']['expose']['label'] = 'Reporting period';
-  $handler->display->display_options['filters']['field_reporting_period_value']['expose']['description'] = 'The start date of the reporting period';
-  $handler->display->display_options['filters']['field_reporting_period_value']['expose']['operator'] = 'field_reporting_period_value_op';
-  $handler->display->display_options['filters']['field_reporting_period_value']['expose']['identifier'] = 'field_reporting_period_value';
-  $handler->display->display_options['filters']['field_reporting_period_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    4 => 0,
-    8 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_reporting_period_value']['default_date'] = 'now - 1 year';
-  $handler->display->display_options['filters']['field_reporting_period_value']['default_to_date'] = 'now + 1 week';
-  $handler->display->display_options['filters']['field_reporting_period_value']['year_range'] = '-2:+1';
   $handler->display->display_options['argument_input'] = array(
     'gid' => array(
       'type' => 'user',
@@ -2584,15 +2557,19 @@ function immunizationed_charts_views_default_views() {
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
+  /* Field: Content: Practice */
+  $handler->display->display_options['fields']['field_practice']['id'] = 'field_practice';
+  $handler->display->display_options['fields']['field_practice']['table'] = 'field_data_field_practice';
+  $handler->display->display_options['fields']['field_practice']['field'] = 'field_practice';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['displays'] = array(
-    'panel_pane_5' => 'panel_pane_5',
     'default' => 0,
     'page' => 0,
     'panel_pane_2' => 0,
     'panel_pane_3' => 0,
     'panel_pane_4' => 0,
     'panel_pane_1' => 0,
+    'panel_pane_5' => 0,
   );
   $handler->display->display_options['attachment_position'] = 'after';
   $export['pneumo_vaccination_charts_by_practice'] = $view;
@@ -3352,10 +3329,11 @@ function immunizationed_charts_views_default_views() {
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Field: Content: TDAP eligible estimated visits */
+  /* Field: SUM(Content: TDAP eligible estimated visits) */
   $handler->display->display_options['fields']['field_tdap_eligible_estimated_vi']['id'] = 'field_tdap_eligible_estimated_vi';
   $handler->display->display_options['fields']['field_tdap_eligible_estimated_vi']['table'] = 'field_data_field_tdap_eligible_estimated_vi';
   $handler->display->display_options['fields']['field_tdap_eligible_estimated_vi']['field'] = 'field_tdap_eligible_estimated_vi';
+  $handler->display->display_options['fields']['field_tdap_eligible_estimated_vi']['group_type'] = 'sum';
   $handler->display->display_options['fields']['field_tdap_eligible_estimated_vi']['settings'] = array(
     'thousand_separator' => '',
     'prefix_suffix' => 1,
@@ -3384,43 +3362,6 @@ function immunizationed_charts_views_default_views() {
     'show_repeat_rule' => 'show',
   );
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = '1';
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'vaccination_data_from_emr' => 'vaccination_data_from_emr',
-  );
-  /* Filter criterion: Content: Reporting period -  start date (field_reporting_period) */
-  $handler->display->display_options['filters']['field_reporting_period_value']['id'] = 'field_reporting_period_value';
-  $handler->display->display_options['filters']['field_reporting_period_value']['table'] = 'field_data_field_reporting_period';
-  $handler->display->display_options['filters']['field_reporting_period_value']['field'] = 'field_reporting_period_value';
-  $handler->display->display_options['filters']['field_reporting_period_value']['operator'] = 'between';
-  $handler->display->display_options['filters']['field_reporting_period_value']['expose']['operator_id'] = 'field_reporting_period_value_op';
-  $handler->display->display_options['filters']['field_reporting_period_value']['expose']['label'] = 'Reporting period';
-  $handler->display->display_options['filters']['field_reporting_period_value']['expose']['description'] = 'The start date of the reporting period';
-  $handler->display->display_options['filters']['field_reporting_period_value']['expose']['operator'] = 'field_reporting_period_value_op';
-  $handler->display->display_options['filters']['field_reporting_period_value']['expose']['identifier'] = 'field_reporting_period_value';
-  $handler->display->display_options['filters']['field_reporting_period_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    4 => 0,
-    8 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_reporting_period_value']['default_date'] = 'now - 1 year';
-  $handler->display->display_options['filters']['field_reporting_period_value']['default_to_date'] = 'now + 1 week';
-  $handler->display->display_options['filters']['field_reporting_period_value']['year_range'] = '-2:+1';
   $handler->display->display_options['argument_input'] = array(
     'gid' => array(
       'type' => 'user',
@@ -3553,15 +3494,19 @@ function immunizationed_charts_views_default_views() {
     'multiple_to' => '',
     'show_repeat_rule' => 'show',
   );
+  /* Field: Content: Practice */
+  $handler->display->display_options['fields']['field_practice']['id'] = 'field_practice';
+  $handler->display->display_options['fields']['field_practice']['table'] = 'field_data_field_practice';
+  $handler->display->display_options['fields']['field_practice']['field'] = 'field_practice';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['displays'] = array(
-    'panel_pane_5' => 'panel_pane_5',
     'default' => 0,
     'page' => 0,
     'panel_pane_2' => 0,
     'panel_pane_3' => 0,
     'panel_pane_4' => 0,
     'panel_pane_1' => 0,
+    'panel_pane_5' => 0,
   );
   $handler->display->display_options['attachment_position'] = 'after';
   $export['tdap_vaccination_charts_by_practice'] = $view;
