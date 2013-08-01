@@ -571,11 +571,6 @@ function immunizationed_practice_og_features_default_permissions() {
     ),
   );
 
-  // Exported og permission: 'node:practice_group:update field_td field'
-  $permissions['node:practice_group:update field_td field'] = array(
-    'roles' => array(),
-  );
-
   // Exported og permission: 'node:practice_group:update field_tdap field'
   $permissions['node:practice_group:update field_tdap field'] = array(
     'roles' => array(),
@@ -1092,11 +1087,6 @@ function immunizationed_practice_og_features_default_permissions() {
       'member' => 'member',
       'non-member' => 'non-member',
     ),
-  );
-
-  // Exported og permission: 'node:practice_group:view field_td field'
-  $permissions['node:practice_group:view field_td field'] = array(
-    'roles' => array(),
   );
 
   // Exported og permission: 'node:practice_group:view field_tdap field'

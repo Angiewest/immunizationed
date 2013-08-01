@@ -10,6 +10,15 @@
 function immunizationed_emr_importer_user_default_permissions() {
   $permissions = array();
 
+  // Exported permission: administer panelizer node practice_admin_group defaults.
+  $permissions['administer panelizer node practice_admin_group defaults'] = array(
+    'name' => 'administer panelizer node practice_admin_group defaults',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panelizer',
+  );
+
   // Exported permission: administer panelizer node vaccination_data_from_emr defaults.
   $permissions['administer panelizer node vaccination_data_from_emr defaults'] = array(
     'name' => 'administer panelizer node vaccination_data_from_emr defaults',
@@ -27,9 +36,75 @@ function immunizationed_emr_importer_user_default_permissions() {
     'module' => 'feeds',
   );
 
+  // Exported permission: create field_all_flu_eligible_est_visit.
+  $permissions['create field_all_flu_eligible_est_visit'] = array(
+    'name' => 'create field_all_flu_eligible_est_visit',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: create field_all_flu_eligible_estimated.
+  $permissions['create field_all_flu_eligible_estimated'] = array(
+    'name' => 'create field_all_flu_eligible_estimated',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: create field_baseline_indicator.
+  $permissions['create field_baseline_indicator'] = array(
+    'name' => 'create field_baseline_indicator',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: create field_biweek_number.
+  $permissions['create field_biweek_number'] = array(
+    'name' => 'create field_biweek_number',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: create field_epic_id.
   $permissions['create field_epic_id'] = array(
     'name' => 'create field_epic_id',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: create field_gte_65_flu_eligible_estima.
+  $permissions['create field_gte_65_flu_eligible_estima'] = array(
+    'name' => 'create field_gte_65_flu_eligible_estima',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: create field_gte_65_flu_est_visits.
+  $permissions['create field_gte_65_flu_est_visits'] = array(
+    'name' => 'create field_gte_65_flu_est_visits',
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -51,12 +126,78 @@ function immunizationed_emr_importer_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: create field_lt_65_flu_eligible_estimat.
+  $permissions['create field_lt_65_flu_eligible_estimat'] = array(
+    'name' => 'create field_lt_65_flu_eligible_estimat',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: create field_lt_65_flu_est_visits.
+  $permissions['create field_lt_65_flu_est_visits'] = array(
+    'name' => 'create field_lt_65_flu_est_visits',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: create field_month.
+  $permissions['create field_month'] = array(
+    'name' => 'create field_month',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: create field_pneumo.
   $permissions['create field_pneumo'] = array(
     'name' => 'create field_pneumo',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
       'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: create field_pneumo_eligible_est_visits.
+  $permissions['create field_pneumo_eligible_est_visits'] = array(
+    'name' => 'create field_pneumo_eligible_est_visits',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: create field_pneumo_eligible_estimated_.
+  $permissions['create field_pneumo_eligible_estimated_'] = array(
+    'name' => 'create field_pneumo_eligible_estimated_',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: create field_quarter.
+  $permissions['create field_quarter'] = array(
+    'name' => 'create field_quarter',
+    'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -77,9 +218,9 @@ function immunizationed_emr_importer_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: create field_td.
-  $permissions['create field_td'] = array(
-    'name' => 'create field_td',
+  // Exported permission: create field_reporting_period_start_biw.
+  $permissions['create field_reporting_period_start_biw'] = array(
+    'name' => 'create field_reporting_period_start_biw',
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -94,6 +235,28 @@ function immunizationed_emr_importer_user_default_permissions() {
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
       'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: create field_tdap_eligible_estimated_ra.
+  $permissions['create field_tdap_eligible_estimated_ra'] = array(
+    'name' => 'create field_tdap_eligible_estimated_ra',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: create field_tdap_eligible_estimated_vi.
+  $permissions['create field_tdap_eligible_estimated_vi'] = array(
+    'name' => 'create field_tdap_eligible_estimated_vi',
+    'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -163,9 +326,75 @@ function immunizationed_emr_importer_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: edit field_all_flu_eligible_est_visit.
+  $permissions['edit field_all_flu_eligible_est_visit'] = array(
+    'name' => 'edit field_all_flu_eligible_est_visit',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit field_all_flu_eligible_estimated.
+  $permissions['edit field_all_flu_eligible_estimated'] = array(
+    'name' => 'edit field_all_flu_eligible_estimated',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit field_baseline_indicator.
+  $permissions['edit field_baseline_indicator'] = array(
+    'name' => 'edit field_baseline_indicator',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit field_biweek_number.
+  $permissions['edit field_biweek_number'] = array(
+    'name' => 'edit field_biweek_number',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: edit field_epic_id.
   $permissions['edit field_epic_id'] = array(
     'name' => 'edit field_epic_id',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit field_gte_65_flu_eligible_estima.
+  $permissions['edit field_gte_65_flu_eligible_estima'] = array(
+    'name' => 'edit field_gte_65_flu_eligible_estima',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit field_gte_65_flu_est_visits.
+  $permissions['edit field_gte_65_flu_est_visits'] = array(
+    'name' => 'edit field_gte_65_flu_est_visits',
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -185,9 +414,75 @@ function immunizationed_emr_importer_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: edit field_lt_65_flu_eligible_estimat.
+  $permissions['edit field_lt_65_flu_eligible_estimat'] = array(
+    'name' => 'edit field_lt_65_flu_eligible_estimat',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit field_lt_65_flu_est_visits.
+  $permissions['edit field_lt_65_flu_est_visits'] = array(
+    'name' => 'edit field_lt_65_flu_est_visits',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit field_month.
+  $permissions['edit field_month'] = array(
+    'name' => 'edit field_month',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: edit field_pneumo.
   $permissions['edit field_pneumo'] = array(
     'name' => 'edit field_pneumo',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit field_pneumo_eligible_est_visits.
+  $permissions['edit field_pneumo_eligible_est_visits'] = array(
+    'name' => 'edit field_pneumo_eligible_est_visits',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit field_pneumo_eligible_estimated_.
+  $permissions['edit field_pneumo_eligible_estimated_'] = array(
+    'name' => 'edit field_pneumo_eligible_estimated_',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit field_quarter.
+  $permissions['edit field_quarter'] = array(
+    'name' => 'edit field_quarter',
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -207,9 +502,9 @@ function immunizationed_emr_importer_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: edit field_td.
-  $permissions['edit field_td'] = array(
-    'name' => 'edit field_td',
+  // Exported permission: edit field_reporting_period_start_biw.
+  $permissions['edit field_reporting_period_start_biw'] = array(
+    'name' => 'edit field_reporting_period_start_biw',
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -221,6 +516,28 @@ function immunizationed_emr_importer_user_default_permissions() {
   // Exported permission: edit field_tdap.
   $permissions['edit field_tdap'] = array(
     'name' => 'edit field_tdap',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit field_tdap_eligible_estimated_ra.
+  $permissions['edit field_tdap_eligible_estimated_ra'] = array(
+    'name' => 'edit field_tdap_eligible_estimated_ra',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit field_tdap_eligible_estimated_vi.
+  $permissions['edit field_tdap_eligible_estimated_vi'] = array(
+    'name' => 'edit field_tdap_eligible_estimated_vi',
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -251,9 +568,75 @@ function immunizationed_emr_importer_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: edit own field_all_flu_eligible_est_visit.
+  $permissions['edit own field_all_flu_eligible_est_visit'] = array(
+    'name' => 'edit own field_all_flu_eligible_est_visit',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own field_all_flu_eligible_estimated.
+  $permissions['edit own field_all_flu_eligible_estimated'] = array(
+    'name' => 'edit own field_all_flu_eligible_estimated',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own field_baseline_indicator.
+  $permissions['edit own field_baseline_indicator'] = array(
+    'name' => 'edit own field_baseline_indicator',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own field_biweek_number.
+  $permissions['edit own field_biweek_number'] = array(
+    'name' => 'edit own field_biweek_number',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: edit own field_epic_id.
   $permissions['edit own field_epic_id'] = array(
     'name' => 'edit own field_epic_id',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own field_gte_65_flu_eligible_estima.
+  $permissions['edit own field_gte_65_flu_eligible_estima'] = array(
+    'name' => 'edit own field_gte_65_flu_eligible_estima',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own field_gte_65_flu_est_visits.
+  $permissions['edit own field_gte_65_flu_est_visits'] = array(
+    'name' => 'edit own field_gte_65_flu_est_visits',
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -274,9 +657,75 @@ function immunizationed_emr_importer_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: edit own field_lt_65_flu_eligible_estimat.
+  $permissions['edit own field_lt_65_flu_eligible_estimat'] = array(
+    'name' => 'edit own field_lt_65_flu_eligible_estimat',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own field_lt_65_flu_est_visits.
+  $permissions['edit own field_lt_65_flu_est_visits'] = array(
+    'name' => 'edit own field_lt_65_flu_est_visits',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own field_month.
+  $permissions['edit own field_month'] = array(
+    'name' => 'edit own field_month',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: edit own field_pneumo.
   $permissions['edit own field_pneumo'] = array(
     'name' => 'edit own field_pneumo',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own field_pneumo_eligible_est_visits.
+  $permissions['edit own field_pneumo_eligible_est_visits'] = array(
+    'name' => 'edit own field_pneumo_eligible_est_visits',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own field_pneumo_eligible_estimated_.
+  $permissions['edit own field_pneumo_eligible_estimated_'] = array(
+    'name' => 'edit own field_pneumo_eligible_estimated_',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own field_quarter.
+  $permissions['edit own field_quarter'] = array(
+    'name' => 'edit own field_quarter',
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -296,9 +745,9 @@ function immunizationed_emr_importer_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: edit own field_td.
-  $permissions['edit own field_td'] = array(
-    'name' => 'edit own field_td',
+  // Exported permission: edit own field_reporting_period_start_biw.
+  $permissions['edit own field_reporting_period_start_biw'] = array(
+    'name' => 'edit own field_reporting_period_start_biw',
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -310,6 +759,28 @@ function immunizationed_emr_importer_user_default_permissions() {
   // Exported permission: edit own field_tdap.
   $permissions['edit own field_tdap'] = array(
     'name' => 'edit own field_tdap',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own field_tdap_eligible_estimated_ra.
+  $permissions['edit own field_tdap_eligible_estimated_ra'] = array(
+    'name' => 'edit own field_tdap_eligible_estimated_ra',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own field_tdap_eligible_estimated_vi.
+  $permissions['edit own field_tdap_eligible_estimated_vi'] = array(
+    'name' => 'edit own field_tdap_eligible_estimated_vi',
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -369,6 +840,47 @@ function immunizationed_emr_importer_user_default_permissions() {
     'module' => 'feeds',
   );
 
+  // Exported permission: view field_all_flu_eligible_est_visit.
+  $permissions['view field_all_flu_eligible_est_visit'] = array(
+    'name' => 'view field_all_flu_eligible_est_visit',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view field_all_flu_eligible_estimated.
+  $permissions['view field_all_flu_eligible_estimated'] = array(
+    'name' => 'view field_all_flu_eligible_estimated',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view field_baseline_indicator.
+  $permissions['view field_baseline_indicator'] = array(
+    'name' => 'view field_baseline_indicator',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view field_biweek_number.
+  $permissions['view field_biweek_number'] = array(
+    'name' => 'view field_biweek_number',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: view field_epic_id.
   $permissions['view field_epic_id'] = array(
     'name' => 'view field_epic_id',
@@ -376,6 +888,26 @@ function immunizationed_emr_importer_user_default_permissions() {
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view field_gte_65_flu_eligible_estima.
+  $permissions['view field_gte_65_flu_eligible_estima'] = array(
+    'name' => 'view field_gte_65_flu_eligible_estima',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view field_gte_65_flu_est_visits.
+  $permissions['view field_gte_65_flu_est_visits'] = array(
+    'name' => 'view field_gte_65_flu_est_visits',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'field_permissions',
   );
@@ -394,6 +926,36 @@ function immunizationed_emr_importer_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: view field_lt_65_flu_eligible_estimat.
+  $permissions['view field_lt_65_flu_eligible_estimat'] = array(
+    'name' => 'view field_lt_65_flu_eligible_estimat',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view field_lt_65_flu_est_visits.
+  $permissions['view field_lt_65_flu_est_visits'] = array(
+    'name' => 'view field_lt_65_flu_est_visits',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view field_month.
+  $permissions['view field_month'] = array(
+    'name' => 'view field_month',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: view field_pneumo.
   $permissions['view field_pneumo'] = array(
     'name' => 'view field_pneumo',
@@ -404,6 +966,36 @@ function immunizationed_emr_importer_user_default_permissions() {
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view field_pneumo_eligible_est_visits.
+  $permissions['view field_pneumo_eligible_est_visits'] = array(
+    'name' => 'view field_pneumo_eligible_est_visits',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view field_pneumo_eligible_estimated_.
+  $permissions['view field_pneumo_eligible_estimated_'] = array(
+    'name' => 'view field_pneumo_eligible_estimated_',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view field_quarter.
+  $permissions['view field_quarter'] = array(
+    'name' => 'view field_quarter',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'field_permissions',
   );
@@ -422,11 +1014,12 @@ function immunizationed_emr_importer_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: view field_td.
-  $permissions['view field_td'] = array(
-    'name' => 'view field_td',
+  // Exported permission: view field_reporting_period_start_biw.
+  $permissions['view field_reporting_period_start_biw'] = array(
+    'name' => 'view field_reporting_period_start_biw',
     'roles' => array(
       'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'field_permissions',
   );
@@ -441,6 +1034,26 @@ function immunizationed_emr_importer_user_default_permissions() {
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view field_tdap_eligible_estimated_ra.
+  $permissions['view field_tdap_eligible_estimated_ra'] = array(
+    'name' => 'view field_tdap_eligible_estimated_ra',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view field_tdap_eligible_estimated_vi.
+  $permissions['view field_tdap_eligible_estimated_vi'] = array(
+    'name' => 'view field_tdap_eligible_estimated_vi',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'field_permissions',
   );
@@ -473,6 +1086,48 @@ function immunizationed_emr_importer_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: view own field_all_flu_eligible_est_visit.
+  $permissions['view own field_all_flu_eligible_est_visit'] = array(
+    'name' => 'view own field_all_flu_eligible_est_visit',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_all_flu_eligible_estimated.
+  $permissions['view own field_all_flu_eligible_estimated'] = array(
+    'name' => 'view own field_all_flu_eligible_estimated',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_baseline_indicator.
+  $permissions['view own field_baseline_indicator'] = array(
+    'name' => 'view own field_baseline_indicator',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_biweek_number.
+  $permissions['view own field_biweek_number'] = array(
+    'name' => 'view own field_biweek_number',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: view own field_epic_id.
   $permissions['view own field_epic_id'] = array(
     'name' => 'view own field_epic_id',
@@ -480,6 +1135,26 @@ function immunizationed_emr_importer_user_default_permissions() {
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_gte_65_flu_eligible_estima.
+  $permissions['view own field_gte_65_flu_eligible_estima'] = array(
+    'name' => 'view own field_gte_65_flu_eligible_estima',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_gte_65_flu_est_visits.
+  $permissions['view own field_gte_65_flu_est_visits'] = array(
+    'name' => 'view own field_gte_65_flu_est_visits',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'field_permissions',
   );
@@ -498,6 +1173,36 @@ function immunizationed_emr_importer_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: view own field_lt_65_flu_eligible_estimat.
+  $permissions['view own field_lt_65_flu_eligible_estimat'] = array(
+    'name' => 'view own field_lt_65_flu_eligible_estimat',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_lt_65_flu_est_visits.
+  $permissions['view own field_lt_65_flu_est_visits'] = array(
+    'name' => 'view own field_lt_65_flu_est_visits',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_month.
+  $permissions['view own field_month'] = array(
+    'name' => 'view own field_month',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: view own field_pneumo.
   $permissions['view own field_pneumo'] = array(
     'name' => 'view own field_pneumo',
@@ -508,6 +1213,36 @@ function immunizationed_emr_importer_user_default_permissions() {
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_pneumo_eligible_est_visits.
+  $permissions['view own field_pneumo_eligible_est_visits'] = array(
+    'name' => 'view own field_pneumo_eligible_est_visits',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_pneumo_eligible_estimated_.
+  $permissions['view own field_pneumo_eligible_estimated_'] = array(
+    'name' => 'view own field_pneumo_eligible_estimated_',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_quarter.
+  $permissions['view own field_quarter'] = array(
+    'name' => 'view own field_quarter',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'field_permissions',
   );
@@ -526,11 +1261,12 @@ function immunizationed_emr_importer_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: view own field_td.
-  $permissions['view own field_td'] = array(
-    'name' => 'view own field_td',
+  // Exported permission: view own field_reporting_period_start_biw.
+  $permissions['view own field_reporting_period_start_biw'] = array(
+    'name' => 'view own field_reporting_period_start_biw',
     'roles' => array(
       'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'field_permissions',
   );
@@ -545,6 +1281,26 @@ function immunizationed_emr_importer_user_default_permissions() {
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_tdap_eligible_estimated_ra.
+  $permissions['view own field_tdap_eligible_estimated_ra'] = array(
+    'name' => 'view own field_tdap_eligible_estimated_ra',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_tdap_eligible_estimated_vi.
+  $permissions['view own field_tdap_eligible_estimated_vi'] = array(
+    'name' => 'view own field_tdap_eligible_estimated_vi',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'field_permissions',
   );
