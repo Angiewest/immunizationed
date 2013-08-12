@@ -5,9 +5,9 @@ class ContextUnitTest extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'API unit tests',
-        'description' => 'Sets all possible context types and checks for integrity.',
-        'group' => 'Context',
+      'name' => 'API unit tests',
+      'description' => 'Sets all possible context types and checks for integrity.',
+      'group' => 'Context',
     );
   }
 
@@ -18,11 +18,11 @@ class ContextUnitTest extends DrupalWebTestCase {
   public function test() {
     // define possible data types
     $set_types = array(
-        'bool'    => TRUE,
-        'int'     => 1,
-        'string'  => 'lorem',
-        'array'   => array('lorem'),
-        'object'  => new stdClass(),
+      'bool'    => TRUE,
+      'int'     => 1,
+      'string'  => 'lorem',
+      'array'   => array('lorem'),
+      'object'  => new stdClass(),
     );
     $id_types = array('int', 'string');
 

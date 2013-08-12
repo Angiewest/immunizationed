@@ -11,9 +11,9 @@ class ContextUiTestCase extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Context UI functional tests',
-        'description' => 'Create and save a context.',
-        'group' => 'Context UI',
+      'name' => 'Context UI functional tests',
+      'description' => 'Create and save a context.',
+      'group' => 'Context UI',
     );
   }
 
@@ -22,10 +22,10 @@ class ContextUiTestCase extends DrupalWebTestCase {
 
     // Create and login user
     $admin_user = $this->drupalCreateUser(array(
-        'access administration pages',
-        'administer site configuration',
-        'access content',
-        'create blog content'
+      'access administration pages',
+      'administer site configuration',
+      'access content',
+      'create blog content'
     ));
     $this->drupalLogin($admin_user);
   }
@@ -43,11 +43,11 @@ class ContextUiTestCase extends DrupalWebTestCase {
     $this->drupalGet('admin/structure/context');
 
     $edit = array(
-        'name' => $context->name,
-        'description' => $context->description,
-        'tag' => $context->tag,
-        'conditions[plugins][node][values][blog]' => 'blog',
-        'reactions[plugins][menu]' => 'node/add/blog',
+      'name' => $context->name,
+      'description' => $context->description,
+      'tag' => $context->tag,
+      'conditions[plugins][node][values][blog]' => 'blog',
+      'reactions[plugins][menu]' => 'node/add/blog',
     );
     $this->drupalPost('admin/structure/context/add', $edit, 'Save');
     $this->assertText($context->name . ' has been created.', 'Context saved.');

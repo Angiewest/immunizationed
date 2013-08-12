@@ -5,17 +5,17 @@ class ContextReactionBlockTest extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Reaction: block',
-        'description' => 'Test block reaction.',
-        'group' => 'Context',
+      'name' => 'Reaction: block',
+      'description' => 'Test block reaction.',
+      'group' => 'Context',
     );
   }
 
   function setUp() {
     parent::setUp('context', 'ctools', 'block');
     $admin_user = $this->drupalCreateUser(array(
-        'administer site configuration',
-        'administer blocks'
+      'administer site configuration',
+      'administer blocks'
     ));
     $this->drupalLogin($admin_user);
   }
@@ -26,12 +26,12 @@ class ContextReactionBlockTest extends DrupalWebTestCase {
     $context->name = 'testcontext';
     $context->conditions = array('sitewide' => array('values' => array(1)));
     $context->reactions = array('block' => array('blocks' => array(
-        'user-online' => array(
-            'module' => 'user',
-            'delta' => 'online',
-            'region' => 'sidebar_first',
-            'weight' => 0,
-        ),
+      'user-online' => array(
+        'module' => 'user',
+        'delta' => 'online',
+        'region' => 'sidebar_first',
+        'weight' => 0,
+      ),
     )));
     $saved = context_save($context);
     $this->assertTrue($saved, "Context 'testcontext' saved.");
@@ -46,23 +46,24 @@ class ContextReactionBlockTest extends DrupalWebTestCase {
     // Test title override of code provided block
     $edit = array('title' => 'Context Online Block');
     $this->drupalPost('admin/structure/block/manage/user/online/configure', $edit, t('Save block'));
+    $this->drupalPost('admin/config/development/performance', array(), t('Clear all caches'));
     $this->drupalGet('node');
     $this->assertText('Context Online Block');
 
     // Test title of custom block
     $edit = array(
-        'info' => 'Context Custom Block Info',
-        'title' => 'Context Custom Block Title',
-        'body[value]' => $this->randomName(32),
+      'info' => 'Context Custom Block Info',
+      'title' => 'Context Custom Block Title',
+      'body[value]' => $this->randomName(32),
     );
     $this->drupalPost('admin/structure/block/add', $edit, t('Save block'));
     $bid = db_query("SELECT bid FROM {block_custom} WHERE info = :info", array(':info' => $edit['info']))->fetchField();
 
     $context->reactions['block']['blocks']["block-{$bid}"] = array(
-        'module' => 'block',
-        'delta' => $bid,
-        'region' => 'sidebar_first',
-        'weight' => 2,
+      'module' => 'block',
+      'delta' => $bid,
+      'region' => 'sidebar_first',
+      'weight' => 2,      
     );
     $saved = context_save($context);
     $this->assertTrue($saved, "Context 'testcontext' saved.");
@@ -80,23 +81,26 @@ class ContextReactionBlockAjaxTest extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Reaction: block ajax',
-        'description' => 'Test block reaction ajax behavior.',
-        'group' => 'Context',
+      'name' => 'Reaction: block ajax',
+      'description' => 'Test block reaction ajax behavior.',
+      'group' => 'Context',
     );
   }
 
   function setUp() {
     parent::setUp('context', 'ctools');
+    $admin_user = $this->drupalCreateUser(array('administer site configuration'));
+    $this->drupalLogin($admin_user);
   }
 
   function test() {
+    $token = drupal_hmac_base64('user-online', $this->session_id . drupal_get_private_key() . drupal_get_hash_salt());
     $this->drupalGet('node', array(
-        'query' => array('context_block' => 'user-online,testcontext')
+      'query' => array('context_block' => 'user-online,testcontext', 'context_token' => $token)
     ));
 
-    $this->assertText('"status":1');
-    $this->assertText("Who's online");
+    $this->assertText('"status":1', 'Successful return status. $drupal_hash_salt must be set explicitly for this test to pass');
+    $this->assertText('Who\\u0027s online', 'Expected text in block data. drupal_hash_salt must be set explicitly for this test to pass');
   }
 }
 
@@ -105,19 +109,19 @@ class ContextReactionMenuTest extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Reaction: menu',
-        'description' => 'Test menu reaction.',
-        'group' => 'Context',
+      'name' => 'Reaction: menu',
+      'description' => 'Test menu reaction.',
+      'group' => 'Context',
     );
   }
 
   function setUp() {
     parent::setUp('context', 'ctools', 'menu', 'blog');
     $admin_user = $this->drupalCreateUser(array(
-        'administer menu',
-        'administer nodes',
-        'administer site configuration',
-        'create blog content',
+      'administer menu',
+      'administer nodes',
+      'administer site configuration',
+      'create blog content',
     ));
     $this->drupalLogin($admin_user);
   }
@@ -151,18 +155,18 @@ class ContextReactionBreadcrumbTest extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Reaction: breadcrumb',
-        'description' => 'Test breadcrumb reaction.',
-        'group' => 'Context',
+      'name' => 'Reaction: breadcrumb',
+      'description' => 'Test breadcrumb reaction.',
+      'group' => 'Context',
     );
   }
 
   function setUp() {
     parent::setUp('context', 'ctools');
     $admin_user = $this->drupalCreateUser(array(
-        'access administration pages',
-        'administer nodes',
-        'administer site configuration'
+      'access administration pages',
+      'administer nodes',
+      'administer site configuration'
     ));
     $this->drupalLogin($admin_user);
   }
@@ -195,18 +199,18 @@ class ContextReactionThemeHtmlTest extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Reaction: theme html',
-        'description' => 'Test theme html reaction.',
-        'group' => 'Context',
+      'name' => 'Reaction: theme html',
+      'description' => 'Test theme html reaction.',
+      'group' => 'Context',
     );
   }
 
   function setUp() {
     parent::setUp('context', 'ctools');
     $admin_user = $this->drupalCreateUser(array(
-        'access administration pages',
-        'administer nodes',
-        'administer site configuration'
+      'access administration pages',
+      'administer nodes',
+      'administer site configuration'
     ));
     $this->drupalLogin($admin_user);
   }
@@ -233,18 +237,18 @@ class ContextReactionRegionTest extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Reaction: Region',
-        'description' => 'Test Region disable reaction.',
-        'group' => 'Context',
+      'name' => 'Reaction: Region',
+      'description' => 'Test Region disable reaction.',
+      'group' => 'Context',
     );
   }
 
   function setUp() {
     parent::setUp('context', 'ctools');
     $admin_user = $this->drupalCreateUser(array(
-        'access administration pages',
-        'administer nodes',
-        'administer site configuration'
+      'access administration pages',
+      'administer nodes',
+      'administer site configuration'
     ));
     $this->drupalLogin($admin_user);
   }
@@ -258,17 +262,17 @@ class ContextReactionRegionTest extends DrupalWebTestCase {
     $context->name = 'testcontext';
     $context->conditions = array('sitewide' => array('values' => array(1)));
     $context->reactions = array(
-        'block' => array(
-            'blocks' => array(
-                'user-online' => array(
-                    'module' => 'user',
-                    'delta' => 'online',
-                    'region' => 'sidebar_first',
-                    'weight' => '-10',
-                ),
-            ),
+      'block' => array(
+        'blocks' => array(
+          'user-online' => array(
+            'module' => 'user',
+            'delta' => 'online',
+            'region' => 'sidebar_first',
+            'weight' => '-10',
+          ),
         ),
-        'region' => array('bartik' => array('disable' => array('sidebar_first' => 'sidebar_first')))
+      ),
+      'region' => array('bartik' => array('disable' => array('sidebar_first' => 'sidebar_first')))
     );
     $saved = context_save($context);
     $this->assertTrue($saved, "Context 'testcontext' saved.");

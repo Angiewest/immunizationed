@@ -5,9 +5,9 @@ class ContextConditionUserTest extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Condition: user',
-        'description' => 'Test user condition.',
-        'group' => 'Context',
+      'name' => 'Condition: user',
+      'description' => 'Test user condition.',
+      'group' => 'Context',
     );
   }
 
@@ -61,9 +61,9 @@ class ContextConditionUserPageTest extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Condition: user page',
-        'description' => 'Test user page condition.',
-        'group' => 'Context',
+      'name' => 'Condition: user page',
+      'description' => 'Test user page condition.',
+      'group' => 'Context',
     );
   }
 
@@ -127,9 +127,9 @@ class ContextConditionNodeTaxonomyTest extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Condition: taxonomy',
-        'description' => 'Test taxonomy condition.',
-        'group' => 'Context',
+      'name' => 'Condition: taxonomy',
+      'description' => 'Test taxonomy condition.',
+      'group' => 'Context',
     );
   }
 
@@ -167,8 +167,8 @@ class ContextConditionNodeTaxonomyTest extends DrupalWebTestCase {
   function test() {
     // Apples does trigger the context.
     $edit = array(
-        'title' => 'Apples',
-        'field_tags[und]' => $this->terms['apples']->name
+      'title' => 'Apples', 
+      'field_tags[und]' => $this->terms['apples']->name
     );
     $this->drupalPost('node/add/article', $edit, t('Save'));
     $node = $this->drupalGetNodeByTitle($edit['title']);
@@ -177,8 +177,8 @@ class ContextConditionNodeTaxonomyTest extends DrupalWebTestCase {
 
     // Oranges does not trigger the context.
     $edit = array(
-        'title' => 'Oranges',
-        'field_tags[und]' => $this->terms['oranges']->name
+      'title' => 'Oranges', 
+      'field_tags[und]' => $this->terms['oranges']->name
     );
     $this->drupalPost('node/add/article', $edit, t('Save'));
     $node = $this->drupalGetNodeByTitle($edit['title']);
@@ -192,9 +192,9 @@ class ContextConditionLanguageTest extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Condition: language',
-        'description' => 'Test language condition.',
-        'group' => 'Context',
+      'name' => 'Condition: language',
+      'description' => 'Test language condition.',
+      'group' => 'Context',
     );
   }
 
@@ -202,6 +202,7 @@ class ContextConditionLanguageTest extends DrupalWebTestCase {
     parent::setUp('context', 'ctools', 'locale');
     $admin_user = $this->drupalCreateUser(array('administer site configuration', 'administer languages'));
     $this->drupalLogin($admin_user);
+    $this->drupalPost('admin/config/development/performance', array(), t('Clear all caches'));
 
     // Set up Spanish as second language.
     $this->drupalPost('admin/config/regional/language/add', array('langcode' => 'es'), t('Add language'));
@@ -233,9 +234,9 @@ class ContextConditionSitewideTest extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Condition: sitewide',
-        'description' => 'Test sitewide condition.',
-        'group' => 'Context',
+      'name' => 'Condition: sitewide',
+      'description' => 'Test sitewide condition.',
+      'group' => 'Context',
     );
   }
 
@@ -267,9 +268,9 @@ class ContextConditionPathTest extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Condition: path',
-        'description' => 'Test path condition.',
-        'group' => 'Context',
+      'name' => 'Condition: path',
+      'description' => 'Test path condition.',
+      'group' => 'Context',
     );
   }
 
@@ -311,9 +312,9 @@ class ContextConditionContextTest extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Condition: context',
-        'description' => 'Test context condition.',
-        'group' => 'Context',
+      'name' => 'Condition: context',
+      'description' => 'Test context condition.',
+      'group' => 'Context',
     );
   }
 
@@ -355,19 +356,19 @@ class ContextConditionNodeTest extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Condition: node',
-        'description' => 'Test node condition.',
-        'group' => 'Context',
+      'name' => 'Condition: node',
+      'description' => 'Test node condition.',
+      'group' => 'Context',
     );
   }
 
   function setUp() {
     parent::setUp('context', 'ctools', 'blog', 'book');
     $admin_user = $this->drupalCreateUser(array(
-        'administer site configuration',
-        'administer nodes',
-        'create blog content',
-        'create book content'
+      'administer site configuration',
+      'administer nodes',
+      'create blog content',
+      'create book content'
     ));
     $this->drupalLogin($admin_user);
   }
@@ -415,9 +416,9 @@ class ContextConditionMenuTest extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Condition: menu',
-        'description' => 'Test menu condition.',
-        'group' => 'Context',
+      'name' => 'Condition: menu',
+      'description' => 'Test menu condition.',
+      'group' => 'Context',
     );
   }
 
@@ -455,9 +456,9 @@ class ContextConditionBookTest extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Condition: book',
-        'description' => 'Test book condition.',
-        'group' => 'Context',
+      'name' => 'Condition: book',
+      'description' => 'Test book condition.',
+      'group' => 'Context',
     );
   }
 
@@ -499,19 +500,19 @@ class ContextConditionBookroot extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Condition: bookroot',
-        'description' => 'Test bookroot condition.',
-        'group' => 'Context',
+      'name' => 'Condition: bookroot',
+      'description' => 'Test bookroot condition.',
+      'group' => 'Context',
     );
   }
 
   function setUp() {
     parent::setUp('context', 'ctools', 'book', 'menu');
     $admin_user = $this->drupalCreateUser(array(
-        'administer site configuration',
-        'administer nodes',
-        'create book content',
-        'edit any book content',
+      'administer site configuration',
+      'administer nodes',
+      'create book content',
+      'edit any book content',
     ));
     $this->drupalLogin($admin_user);
     variable_set('book_allowed_types', array('book', 'page'));
