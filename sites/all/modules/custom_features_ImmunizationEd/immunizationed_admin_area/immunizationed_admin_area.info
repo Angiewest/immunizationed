@@ -1,0 +1,15 @@
+name = immunizationed admin area
+description = site area for admins
+core = 7.x
+package = immunizationed
+version = 7.x-1.0
+project = immunizationed_admin_area
+dependencies[] = fe_block
+dependencies[] = features
+dependencies[] = menu
+features[fe_block_settings][] = menu-menu-charts
+features[fe_block_settings][] = menu-menu-editing
+features[fe_block_settings][] = menu-menu-site-admin
+features[features_api][] = api:2
+features[menu_custom][] = menu-my-practice-admin
+project path = sites/all/modules/custom_features_immunizationed
