@@ -15,7 +15,7 @@ function immunizationed_charts_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Admin baseline charts';
   $page->admin_description = 'All site charts';
-  $page->path = 'charts/baseline';
+  $page->path = 'practice-admin/charts/baseline';
   $page->access = array(
     'plugins' => array(
       0 => array(

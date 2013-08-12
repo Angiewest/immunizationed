@@ -10,7 +10,7 @@
 function immunizationed_pillar_tags_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: create field_pillar_tags.
+  // Exported permission: 'create field_pillar_tags'.
   $permissions['create field_pillar_tags'] = array(
     'name' => 'create field_pillar_tags',
     'roles' => array(
@@ -21,14 +21,14 @@ function immunizationed_pillar_tags_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: delete terms in 14.
-  $permissions['delete terms in 14'] = array(
-    'name' => 'delete terms in 14',
+  // Exported permission: 'delete terms in taxonomy_pillar_tags_'.
+  $permissions['delete terms in taxonomy_pillar_tags_'] = array(
+    'name' => 'delete terms in taxonomy_pillar_tags_',
     'roles' => array(),
     'module' => 'taxonomy',
   );
 
-  // Exported permission: edit field_pillar_tags.
+  // Exported permission: 'edit field_pillar_tags'.
   $permissions['edit field_pillar_tags'] = array(
     'name' => 'edit field_pillar_tags',
     'roles' => array(
@@ -39,7 +39,7 @@ function immunizationed_pillar_tags_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: edit own field_pillar_tags.
+  // Exported permission: 'edit own field_pillar_tags'.
   $permissions['edit own field_pillar_tags'] = array(
     'name' => 'edit own field_pillar_tags',
     'roles' => array(
@@ -50,14 +50,14 @@ function immunizationed_pillar_tags_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: edit terms in 14.
-  $permissions['edit terms in 14'] = array(
-    'name' => 'edit terms in 14',
+  // Exported permission: 'edit terms in taxonomy_pillar_tags_'.
+  $permissions['edit terms in taxonomy_pillar_tags_'] = array(
+    'name' => 'edit terms in taxonomy_pillar_tags_',
     'roles' => array(),
     'module' => 'taxonomy',
   );
 
-  // Exported permission: view field_pillar_tags.
+  // Exported permission: 'view field_pillar_tags'.
   $permissions['view field_pillar_tags'] = array(
     'name' => 'view field_pillar_tags',
     'roles' => array(
@@ -66,7 +66,7 @@ function immunizationed_pillar_tags_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: view own field_pillar_tags.
+  // Exported permission: 'view own field_pillar_tags'.
   $permissions['view own field_pillar_tags'] = array(
     'name' => 'view own field_pillar_tags',
     'roles' => array(

@@ -2,7 +2,6 @@ name = Immunizationed_structure
 description = Content types and fields
 core = 7.x
 package = immunizationed
-php = 5.2.4
 version = 7.x-1.0
 project = immunizationed_structure
 dependencies[] = addressfield

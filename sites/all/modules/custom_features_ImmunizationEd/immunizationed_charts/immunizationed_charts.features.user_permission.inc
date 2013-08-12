@@ -10,7 +10,7 @@
 function immunizationed_charts_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: administer analytics dashboard.
+  // Exported permission: 'administer analytics dashboard'.
   $permissions['administer analytics dashboard'] = array(
     'name' => 'administer analytics dashboard',
     'roles' => array(
@@ -19,7 +19,7 @@ function immunizationed_charts_user_default_permissions() {
     'module' => 'analytics_dashboard',
   );
 
-  // Exported permission: view analytics dashboard.
+  // Exported permission: 'view analytics dashboard'.
   $permissions['view analytics dashboard'] = array(
     'name' => 'view analytics dashboard',
     'roles' => array(

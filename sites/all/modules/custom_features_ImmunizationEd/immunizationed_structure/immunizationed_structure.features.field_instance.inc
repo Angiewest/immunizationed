@@ -15,7 +15,7 @@ function immunizationed_structure_field_default_field_instances() {
     'bundle' => 'image',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Alternative text is used by screen readers, search engines, and when the image cannot be loaded. By adding alt text you improve accessibility and search engine optimization.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -96,7 +96,7 @@ function immunizationed_structure_field_default_field_instances() {
     'bundle' => 'image',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Title text attribute',
+    'description' => 'Title text is used in the tool tip when a user hovers their mouse over the image. Adding title text makes it easier to understand the context of an image and improves usability.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -3049,6 +3049,7 @@ function immunizationed_structure_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Alt Text');
+  t('Alternative text is used by screen readers, search engines, and when the image cannot be loaded. By adding alt text you improve accessibility and search engine optimization.');
   t('Audience');
   t('Body');
   t('Book page graphic');
@@ -3102,7 +3103,7 @@ function immunizationed_structure_field_default_field_instances() {
   t('This will be used for differences in CME accreditation people. ');
   t('This will help to determine differences for CME people. ');
   t('Title Text');
-  t('Title text attribute');
+  t('Title text is used in the tool tip when a user hovers their mouse over the image. Adding title text makes it easier to understand the context of an image and improves usability.');
   t('Total number of hours to complete this item rounded to quarter hours');
   t('Upload a graphic to be displayed with this page');
   t('Upload an image to associate with this content');

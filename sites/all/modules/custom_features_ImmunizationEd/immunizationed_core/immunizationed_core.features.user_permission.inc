@@ -10,7 +10,7 @@
 function immunizationed_core_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: access administration menu.
+  // Exported permission: 'access administration menu'.
   $permissions['access administration menu'] = array(
     'name' => 'access administration menu',
     'roles' => array(
@@ -22,7 +22,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'admin_menu',
   );
 
-  // Exported permission: access all webform results.
+  // Exported permission: 'access all webform results'.
   $permissions['access all webform results'] = array(
     'name' => 'access all webform results',
     'roles' => array(
@@ -31,7 +31,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'webform',
   );
 
-  // Exported permission: access backup and migrate.
+  // Exported permission: 'access backup and migrate'.
   $permissions['access backup and migrate'] = array(
     'name' => 'access backup and migrate',
     'roles' => array(
@@ -41,7 +41,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'backup_migrate',
   );
 
-  // Exported permission: access backup files.
+  // Exported permission: 'access backup files'.
   $permissions['access backup files'] = array(
     'name' => 'access backup files',
     'roles' => array(
@@ -50,7 +50,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'backup_migrate',
   );
 
-  // Exported permission: access comments.
+  // Exported permission: 'access comments'.
   $permissions['access comments'] = array(
     'name' => 'access comments',
     'roles' => array(
@@ -60,7 +60,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'comment',
   );
 
-  // Exported permission: access contextual links.
+  // Exported permission: 'access contextual links'.
   $permissions['access contextual links'] = array(
     'name' => 'access contextual links',
     'roles' => array(
@@ -70,7 +70,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'contextual',
   );
 
-  // Exported permission: access overlay.
+  // Exported permission: 'access overlay'.
   $permissions['access overlay'] = array(
     'name' => 'access overlay',
     'roles' => array(
@@ -80,7 +80,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'overlay',
   );
 
-  // Exported permission: access own webform results.
+  // Exported permission: 'access own webform results'.
   $permissions['access own webform results'] = array(
     'name' => 'access own webform results',
     'roles' => array(
@@ -89,7 +89,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'webform',
   );
 
-  // Exported permission: access own webform submissions.
+  // Exported permission: 'access own webform submissions'.
   $permissions['access own webform submissions'] = array(
     'name' => 'access own webform submissions',
     'roles' => array(
@@ -98,7 +98,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'webform',
   );
 
-  // Exported permission: access printer-friendly version.
+  // Exported permission: 'access printer-friendly version'.
   $permissions['access printer-friendly version'] = array(
     'name' => 'access printer-friendly version',
     'roles' => array(
@@ -114,7 +114,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'book',
   );
 
-  // Exported permission: access security review list.
+  // Exported permission: 'access security review list'.
   $permissions['access security review list'] = array(
     'name' => 'access security review list',
     'roles' => array(
@@ -123,7 +123,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'security_review',
   );
 
-  // Exported permission: access site-wide contact form.
+  // Exported permission: 'access site-wide contact form'.
   $permissions['access site-wide contact form'] = array(
     'name' => 'access site-wide contact form',
     'roles' => array(
@@ -138,7 +138,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'contact',
   );
 
-  // Exported permission: access statistics.
+  // Exported permission: 'access statistics'.
   $permissions['access statistics'] = array(
     'name' => 'access statistics',
     'roles' => array(
@@ -149,7 +149,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'statistics',
   );
 
-  // Exported permission: access user contact forms.
+  // Exported permission: 'access user contact forms'.
   $permissions['access user contact forms'] = array(
     'name' => 'access user contact forms',
     'roles' => array(
@@ -164,7 +164,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'contact',
   );
 
-  // Exported permission: add content to books.
+  // Exported permission: 'add content to books'.
   $permissions['add content to books'] = array(
     'name' => 'add content to books',
     'roles' => array(
@@ -175,7 +175,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'book',
   );
 
-  // Exported permission: administer actions.
+  // Exported permission: 'administer actions'.
   $permissions['administer actions'] = array(
     'name' => 'administer actions',
     'roles' => array(
@@ -185,7 +185,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'system',
   );
 
-  // Exported permission: administer backup and migrate.
+  // Exported permission: 'administer backup and migrate'.
   $permissions['administer backup and migrate'] = array(
     'name' => 'administer backup and migrate',
     'roles' => array(
@@ -194,7 +194,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'backup_migrate',
   );
 
-  // Exported permission: administer book outlines.
+  // Exported permission: 'administer book outlines'.
   $permissions['administer book outlines'] = array(
     'name' => 'administer book outlines',
     'roles' => array(
@@ -204,7 +204,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'book',
   );
 
-  // Exported permission: administer comments.
+  // Exported permission: 'administer comments'.
   $permissions['administer comments'] = array(
     'name' => 'administer comments',
     'roles' => array(
@@ -214,7 +214,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'comment',
   );
 
-  // Exported permission: administer contact forms.
+  // Exported permission: 'administer contact forms'.
   $permissions['administer contact forms'] = array(
     'name' => 'administer contact forms',
     'roles' => array(
@@ -224,7 +224,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'contact',
   );
 
-  // Exported permission: administer contexts.
+  // Exported permission: 'administer contexts'.
   $permissions['administer contexts'] = array(
     'name' => 'administer contexts',
     'roles' => array(
@@ -233,7 +233,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'context_ui',
   );
 
-  // Exported permission: administer ctools access ruleset.
+  // Exported permission: 'administer ctools access ruleset'.
   $permissions['administer ctools access ruleset'] = array(
     'name' => 'administer ctools access ruleset',
     'roles' => array(
@@ -242,7 +242,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'ctools_access_ruleset',
   );
 
-  // Exported permission: administer custom content.
+  // Exported permission: 'administer custom content'.
   $permissions['administer custom content'] = array(
     'name' => 'administer custom content',
     'roles' => array(
@@ -252,7 +252,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'ctools_custom_content',
   );
 
-  // Exported permission: administer date tools.
+  // Exported permission: 'administer date tools'.
   $permissions['administer date tools'] = array(
     'name' => 'administer date tools',
     'roles' => array(
@@ -261,7 +261,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'date_tools',
   );
 
-  // Exported permission: administer features.
+  // Exported permission: 'administer features'.
   $permissions['administer features'] = array(
     'name' => 'administer features',
     'roles' => array(
@@ -270,7 +270,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'features',
   );
 
-  // Exported permission: administer filters.
+  // Exported permission: 'administer filters'.
   $permissions['administer filters'] = array(
     'name' => 'administer filters',
     'roles' => array(
@@ -279,7 +279,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'filter',
   );
 
-  // Exported permission: administer google analytics.
+  // Exported permission: 'administer google analytics'.
   $permissions['administer google analytics'] = array(
     'name' => 'administer google analytics',
     'roles' => array(
@@ -288,7 +288,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'googleanalytics',
   );
 
-  // Exported permission: administer module filter.
+  // Exported permission: 'administer module filter'.
   $permissions['administer module filter'] = array(
     'name' => 'administer module filter',
     'roles' => array(
@@ -297,7 +297,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'module_filter',
   );
 
-  // Exported permission: administer pathauto.
+  // Exported permission: 'administer pathauto'.
   $permissions['administer pathauto'] = array(
     'name' => 'administer pathauto',
     'roles' => array(
@@ -307,7 +307,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'pathauto',
   );
 
-  // Exported permission: administer search.
+  // Exported permission: 'administer search'.
   $permissions['administer search'] = array(
     'name' => 'administer search',
     'roles' => array(
@@ -316,7 +316,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'search',
   );
 
-  // Exported permission: administer shortcuts.
+  // Exported permission: 'administer shortcuts'.
   $permissions['administer shortcuts'] = array(
     'name' => 'administer shortcuts',
     'roles' => array(
@@ -326,7 +326,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'shortcut',
   );
 
-  // Exported permission: administer statistics.
+  // Exported permission: 'administer statistics'.
   $permissions['administer statistics'] = array(
     'name' => 'administer statistics',
     'roles' => array(
@@ -335,7 +335,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'statistics',
   );
 
-  // Exported permission: administer stylizer.
+  // Exported permission: 'administer stylizer'.
   $permissions['administer stylizer'] = array(
     'name' => 'administer stylizer',
     'roles' => array(
@@ -344,7 +344,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'stylizer',
   );
 
-  // Exported permission: administer taxonomy.
+  // Exported permission: 'administer taxonomy'.
   $permissions['administer taxonomy'] = array(
     'name' => 'administer taxonomy',
     'roles' => array(
@@ -355,7 +355,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
-  // Exported permission: administer url aliases.
+  // Exported permission: 'administer url aliases'.
   $permissions['administer url aliases'] = array(
     'name' => 'administer url aliases',
     'roles' => array(
@@ -365,7 +365,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'path',
   );
 
-  // Exported permission: create new books.
+  // Exported permission: 'create new books'.
   $permissions['create new books'] = array(
     'name' => 'create new books',
     'roles' => array(
@@ -376,7 +376,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'book',
   );
 
-  // Exported permission: create url aliases.
+  // Exported permission: 'create url aliases'.
   $permissions['create url aliases'] = array(
     'name' => 'create url aliases',
     'roles' => array(
@@ -386,7 +386,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'path',
   );
 
-  // Exported permission: delete all webform submissions.
+  // Exported permission: 'delete all webform submissions'.
   $permissions['delete all webform submissions'] = array(
     'name' => 'delete all webform submissions',
     'roles' => array(
@@ -395,7 +395,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'webform',
   );
 
-  // Exported permission: delete backup files.
+  // Exported permission: 'delete backup files'.
   $permissions['delete backup files'] = array(
     'name' => 'delete backup files',
     'roles' => array(
@@ -404,7 +404,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'backup_migrate',
   );
 
-  // Exported permission: delete own webform submissions.
+  // Exported permission: 'delete own webform submissions'.
   $permissions['delete own webform submissions'] = array(
     'name' => 'delete own webform submissions',
     'roles' => array(
@@ -413,25 +413,25 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'webform',
   );
 
-  // Exported permission: delete terms in 1.
-  $permissions['delete terms in 1'] = array(
-    'name' => 'delete terms in 1',
+  // Exported permission: 'delete terms in certification_entities'.
+  $permissions['delete terms in certification_entities'] = array(
+    'name' => 'delete terms in certification_entities',
     'roles' => array(
       'administrator' => 'administrator',
     ),
     'module' => 'taxonomy',
   );
 
-  // Exported permission: delete terms in 13.
-  $permissions['delete terms in 13'] = array(
-    'name' => 'delete terms in 13',
+  // Exported permission: 'delete terms in form_relationships'.
+  $permissions['delete terms in form_relationships'] = array(
+    'name' => 'delete terms in form_relationships',
     'roles' => array(),
     'module' => 'taxonomy',
   );
 
-  // Exported permission: delete terms in 2.
-  $permissions['delete terms in 2'] = array(
-    'name' => 'delete terms in 2',
+  // Exported permission: 'delete terms in practice_jobs'.
+  $permissions['delete terms in practice_jobs'] = array(
+    'name' => 'delete terms in practice_jobs',
     'roles' => array(
       'administrator' => 'administrator',
       'editor' => 'editor',
@@ -439,32 +439,32 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
-  // Exported permission: delete terms in 3.
-  $permissions['delete terms in 3'] = array(
-    'name' => 'delete terms in 3',
+  // Exported permission: 'delete terms in special_practice_role'.
+  $permissions['delete terms in special_practice_role'] = array(
+    'name' => 'delete terms in special_practice_role',
     'roles' => array(
       'administrator' => 'administrator',
     ),
     'module' => 'taxonomy',
   );
 
-  // Exported permission: delete terms in 4.
-  $permissions['delete terms in 4'] = array(
-    'name' => 'delete terms in 4',
+  // Exported permission: 'delete terms in tags'.
+  $permissions['delete terms in tags'] = array(
+    'name' => 'delete terms in tags',
     'roles' => array(
       'administrator' => 'administrator',
     ),
     'module' => 'taxonomy',
   );
 
-  // Exported permission: display drupal links.
+  // Exported permission: 'display drupal links'.
   $permissions['display drupal links'] = array(
     'name' => 'display drupal links',
     'roles' => array(),
     'module' => 'admin_menu',
   );
 
-  // Exported permission: edit all webform submissions.
+  // Exported permission: 'edit all webform submissions'.
   $permissions['edit all webform submissions'] = array(
     'name' => 'edit all webform submissions',
     'roles' => array(
@@ -473,7 +473,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'webform',
   );
 
-  // Exported permission: edit own comments.
+  // Exported permission: 'edit own comments'.
   $permissions['edit own comments'] = array(
     'name' => 'edit own comments',
     'roles' => array(
@@ -483,7 +483,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'comment',
   );
 
-  // Exported permission: edit own webform submissions.
+  // Exported permission: 'edit own webform submissions'.
   $permissions['edit own webform submissions'] = array(
     'name' => 'edit own webform submissions',
     'roles' => array(
@@ -492,25 +492,25 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'webform',
   );
 
-  // Exported permission: edit terms in 1.
-  $permissions['edit terms in 1'] = array(
-    'name' => 'edit terms in 1',
+  // Exported permission: 'edit terms in certification_entities'.
+  $permissions['edit terms in certification_entities'] = array(
+    'name' => 'edit terms in certification_entities',
     'roles' => array(
       'administrator' => 'administrator',
     ),
     'module' => 'taxonomy',
   );
 
-  // Exported permission: edit terms in 13.
-  $permissions['edit terms in 13'] = array(
-    'name' => 'edit terms in 13',
+  // Exported permission: 'edit terms in form_relationships'.
+  $permissions['edit terms in form_relationships'] = array(
+    'name' => 'edit terms in form_relationships',
     'roles' => array(),
     'module' => 'taxonomy',
   );
 
-  // Exported permission: edit terms in 2.
-  $permissions['edit terms in 2'] = array(
-    'name' => 'edit terms in 2',
+  // Exported permission: 'edit terms in practice_jobs'.
+  $permissions['edit terms in practice_jobs'] = array(
+    'name' => 'edit terms in practice_jobs',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
       'Group member' => 'Group member',
@@ -523,25 +523,25 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
-  // Exported permission: edit terms in 3.
-  $permissions['edit terms in 3'] = array(
-    'name' => 'edit terms in 3',
+  // Exported permission: 'edit terms in special_practice_role'.
+  $permissions['edit terms in special_practice_role'] = array(
+    'name' => 'edit terms in special_practice_role',
     'roles' => array(
       'administrator' => 'administrator',
     ),
     'module' => 'taxonomy',
   );
 
-  // Exported permission: edit terms in 4.
-  $permissions['edit terms in 4'] = array(
-    'name' => 'edit terms in 4',
+  // Exported permission: 'edit terms in tags'.
+  $permissions['edit terms in tags'] = array(
+    'name' => 'edit terms in tags',
     'roles' => array(
       'administrator' => 'administrator',
     ),
     'module' => 'taxonomy',
   );
 
-  // Exported permission: execute auto_entitylabel_entity_update_action.
+  // Exported permission: 'execute auto_entitylabel_entity_update_action'.
   $permissions['execute auto_entitylabel_entity_update_action'] = array(
     'name' => 'execute auto_entitylabel_entity_update_action',
     'roles' => array(
@@ -551,7 +551,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: execute comment_publish_action.
+  // Exported permission: 'execute comment_publish_action'.
   $permissions['execute comment_publish_action'] = array(
     'name' => 'execute comment_publish_action',
     'roles' => array(
@@ -565,7 +565,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: execute comment_save_action.
+  // Exported permission: 'execute comment_save_action'.
   $permissions['execute comment_save_action'] = array(
     'name' => 'execute comment_save_action',
     'roles' => array(
@@ -575,7 +575,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: execute comment_unpublish_action.
+  // Exported permission: 'execute comment_unpublish_action'.
   $permissions['execute comment_unpublish_action'] = array(
     'name' => 'execute comment_unpublish_action',
     'roles' => array(
@@ -589,7 +589,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: execute comment_unpublish_by_keyword_action.
+  // Exported permission: 'execute comment_unpublish_by_keyword_action'.
   $permissions['execute comment_unpublish_by_keyword_action'] = array(
     'name' => 'execute comment_unpublish_by_keyword_action',
     'roles' => array(
@@ -599,7 +599,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: execute node_assign_owner_action.
+  // Exported permission: 'execute node_assign_owner_action'.
   $permissions['execute node_assign_owner_action'] = array(
     'name' => 'execute node_assign_owner_action',
     'roles' => array(
@@ -610,7 +610,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: execute node_make_sticky_action.
+  // Exported permission: 'execute node_make_sticky_action'.
   $permissions['execute node_make_sticky_action'] = array(
     'name' => 'execute node_make_sticky_action',
     'roles' => array(
@@ -621,7 +621,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: execute node_make_unsticky_action.
+  // Exported permission: 'execute node_make_unsticky_action'.
   $permissions['execute node_make_unsticky_action'] = array(
     'name' => 'execute node_make_unsticky_action',
     'roles' => array(
@@ -632,7 +632,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: execute node_promote_action.
+  // Exported permission: 'execute node_promote_action'.
   $permissions['execute node_promote_action'] = array(
     'name' => 'execute node_promote_action',
     'roles' => array(
@@ -643,7 +643,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: execute node_publish_action.
+  // Exported permission: 'execute node_publish_action'.
   $permissions['execute node_publish_action'] = array(
     'name' => 'execute node_publish_action',
     'roles' => array(
@@ -654,7 +654,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: execute node_save_action.
+  // Exported permission: 'execute node_save_action'.
   $permissions['execute node_save_action'] = array(
     'name' => 'execute node_save_action',
     'roles' => array(
@@ -668,7 +668,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: execute node_unpromote_action.
+  // Exported permission: 'execute node_unpromote_action'.
   $permissions['execute node_unpromote_action'] = array(
     'name' => 'execute node_unpromote_action',
     'roles' => array(
@@ -679,7 +679,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: execute node_unpublish_action.
+  // Exported permission: 'execute node_unpublish_action'.
   $permissions['execute node_unpublish_action'] = array(
     'name' => 'execute node_unpublish_action',
     'roles' => array(
@@ -690,7 +690,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: execute node_unpublish_by_keyword_action.
+  // Exported permission: 'execute node_unpublish_by_keyword_action'.
   $permissions['execute node_unpublish_by_keyword_action'] = array(
     'name' => 'execute node_unpublish_by_keyword_action',
     'roles' => array(
@@ -700,7 +700,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: execute pathauto_node_update_action.
+  // Exported permission: 'execute pathauto_node_update_action'.
   $permissions['execute pathauto_node_update_action'] = array(
     'name' => 'execute pathauto_node_update_action',
     'roles' => array(
@@ -709,7 +709,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: execute pathauto_taxonomy_term_update_action.
+  // Exported permission: 'execute pathauto_taxonomy_term_update_action'.
   $permissions['execute pathauto_taxonomy_term_update_action'] = array(
     'name' => 'execute pathauto_taxonomy_term_update_action',
     'roles' => array(
@@ -718,7 +718,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: execute pathauto_user_update_action.
+  // Exported permission: 'execute pathauto_user_update_action'.
   $permissions['execute pathauto_user_update_action'] = array(
     'name' => 'execute pathauto_user_update_action',
     'roles' => array(
@@ -727,7 +727,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: execute system_block_ip_action.
+  // Exported permission: 'execute system_block_ip_action'.
   $permissions['execute system_block_ip_action'] = array(
     'name' => 'execute system_block_ip_action',
     'roles' => array(
@@ -737,7 +737,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: execute system_goto_action.
+  // Exported permission: 'execute system_goto_action'.
   $permissions['execute system_goto_action'] = array(
     'name' => 'execute system_goto_action',
     'roles' => array(
@@ -748,7 +748,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: execute system_message_action.
+  // Exported permission: 'execute system_message_action'.
   $permissions['execute system_message_action'] = array(
     'name' => 'execute system_message_action',
     'roles' => array(
@@ -758,7 +758,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: execute user_block_user_action.
+  // Exported permission: 'execute user_block_user_action'.
   $permissions['execute user_block_user_action'] = array(
     'name' => 'execute user_block_user_action',
     'roles' => array(
@@ -771,7 +771,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: execute views_bulk_operations_archive_action.
+  // Exported permission: 'execute views_bulk_operations_archive_action'.
   $permissions['execute views_bulk_operations_archive_action'] = array(
     'name' => 'execute views_bulk_operations_archive_action',
     'roles' => array(
@@ -782,7 +782,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: execute views_bulk_operations_argument_selector_action.
+  // Exported permission: 'execute views_bulk_operations_argument_selector_action'.
   $permissions['execute views_bulk_operations_argument_selector_action'] = array(
     'name' => 'execute views_bulk_operations_argument_selector_action',
     'roles' => array(
@@ -792,7 +792,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: execute views_bulk_operations_delete_item.
+  // Exported permission: 'execute views_bulk_operations_delete_item'.
   $permissions['execute views_bulk_operations_delete_item'] = array(
     'name' => 'execute views_bulk_operations_delete_item',
     'roles' => array(
@@ -803,7 +803,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: execute views_bulk_operations_modify_action.
+  // Exported permission: 'execute views_bulk_operations_modify_action'.
   $permissions['execute views_bulk_operations_modify_action'] = array(
     'name' => 'execute views_bulk_operations_modify_action',
     'roles' => array(
@@ -814,7 +814,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: execute views_bulk_operations_script_action.
+  // Exported permission: 'execute views_bulk_operations_script_action'.
   $permissions['execute views_bulk_operations_script_action'] = array(
     'name' => 'execute views_bulk_operations_script_action',
     'roles' => array(
@@ -823,7 +823,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: execute views_bulk_operations_user_roles_action.
+  // Exported permission: 'execute views_bulk_operations_user_roles_action'.
   $permissions['execute views_bulk_operations_user_roles_action'] = array(
     'name' => 'execute views_bulk_operations_user_roles_action',
     'roles' => array(
@@ -834,7 +834,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
-  // Exported permission: flush caches.
+  // Exported permission: 'flush caches'.
   $permissions['flush caches'] = array(
     'name' => 'flush caches',
     'roles' => array(
@@ -844,7 +844,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'admin_menu',
   );
 
-  // Exported permission: manage features.
+  // Exported permission: 'manage features'.
   $permissions['manage features'] = array(
     'name' => 'manage features',
     'roles' => array(
@@ -853,7 +853,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'features',
   );
 
-  // Exported permission: notify of path changes.
+  // Exported permission: 'notify of path changes'.
   $permissions['notify of path changes'] = array(
     'name' => 'notify of path changes',
     'roles' => array(
@@ -862,7 +862,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'pathauto',
   );
 
-  // Exported permission: opt-in or out of tracking.
+  // Exported permission: 'opt-in or out of tracking'.
   $permissions['opt-in or out of tracking'] = array(
     'name' => 'opt-in or out of tracking',
     'roles' => array(
@@ -871,7 +871,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'googleanalytics',
   );
 
-  // Exported permission: perform backup.
+  // Exported permission: 'perform backup'.
   $permissions['perform backup'] = array(
     'name' => 'perform backup',
     'roles' => array(
@@ -881,7 +881,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'backup_migrate',
   );
 
-  // Exported permission: post comments.
+  // Exported permission: 'post comments'.
   $permissions['post comments'] = array(
     'name' => 'post comments',
     'roles' => array(
@@ -891,7 +891,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'comment',
   );
 
-  // Exported permission: restore from backup.
+  // Exported permission: 'restore from backup'.
   $permissions['restore from backup'] = array(
     'name' => 'restore from backup',
     'roles' => array(
@@ -900,7 +900,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'backup_migrate',
   );
 
-  // Exported permission: run security checks.
+  // Exported permission: 'run security checks'.
   $permissions['run security checks'] = array(
     'name' => 'run security checks',
     'roles' => array(
@@ -909,7 +909,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'security_review',
   );
 
-  // Exported permission: search content.
+  // Exported permission: 'search content'.
   $permissions['search content'] = array(
     'name' => 'search content',
     'roles' => array(
@@ -919,7 +919,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'search',
   );
 
-  // Exported permission: skip comment approval.
+  // Exported permission: 'skip comment approval'.
   $permissions['skip comment approval'] = array(
     'name' => 'skip comment approval',
     'roles' => array(
@@ -929,7 +929,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'comment',
   );
 
-  // Exported permission: use PHP for label patterns.
+  // Exported permission: 'use PHP for label patterns'.
   $permissions['use PHP for label patterns'] = array(
     'name' => 'use PHP for label patterns',
     'roles' => array(
@@ -939,7 +939,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'auto_entitylabel',
   );
 
-  // Exported permission: use PHP for settings.
+  // Exported permission: 'use PHP for settings'.
   $permissions['use PHP for settings'] = array(
     'name' => 'use PHP for settings',
     'roles' => array(
@@ -949,7 +949,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'php',
   );
 
-  // Exported permission: use PHP for tracking visibility.
+  // Exported permission: 'use PHP for tracking visibility'.
   $permissions['use PHP for tracking visibility'] = array(
     'name' => 'use PHP for tracking visibility',
     'roles' => array(
@@ -958,7 +958,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'googleanalytics',
   );
 
-  // Exported permission: use advanced search.
+  // Exported permission: 'use advanced search'.
   $permissions['use advanced search'] = array(
     'name' => 'use advanced search',
     'roles' => array(
@@ -967,7 +967,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'search',
   );
 
-  // Exported permission: use text format filtered_html.
+  // Exported permission: 'use text format filtered_html'.
   $permissions['use text format filtered_html'] = array(
     'name' => 'use text format filtered_html',
     'roles' => array(
@@ -978,7 +978,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'filter',
   );
 
-  // Exported permission: use text format full_html.
+  // Exported permission: 'use text format full_html'.
   $permissions['use text format full_html'] = array(
     'name' => 'use text format full_html',
     'roles' => array(
@@ -988,7 +988,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'filter',
   );
 
-  // Exported permission: use text format php_code.
+  // Exported permission: 'use text format php_code'.
   $permissions['use text format php_code'] = array(
     'name' => 'use text format php_code',
     'roles' => array(
@@ -998,7 +998,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'filter',
   );
 
-  // Exported permission: view advanced help index.
+  // Exported permission: 'view advanced help index'.
   $permissions['view advanced help index'] = array(
     'name' => 'view advanced help index',
     'roles' => array(
@@ -1010,7 +1010,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'advanced_help',
   );
 
-  // Exported permission: view advanced help popup.
+  // Exported permission: 'view advanced help popup'.
   $permissions['view advanced help popup'] = array(
     'name' => 'view advanced help popup',
     'roles' => array(
@@ -1025,7 +1025,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'advanced_help',
   );
 
-  // Exported permission: view advanced help topic.
+  // Exported permission: 'view advanced help topic'.
   $permissions['view advanced help topic'] = array(
     'name' => 'view advanced help topic',
     'roles' => array(
@@ -1036,7 +1036,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'advanced_help',
   );
 
-  // Exported permission: view date repeats.
+  // Exported permission: 'view date repeats'.
   $permissions['view date repeats'] = array(
     'name' => 'view date repeats',
     'roles' => array(
@@ -1047,7 +1047,7 @@ function immunizationed_core_user_default_permissions() {
     'module' => 'date_repeat_field',
   );
 
-  // Exported permission: view post access counter.
+  // Exported permission: 'view post access counter'.
   $permissions['view post access counter'] = array(
     'name' => 'view post access counter',
     'roles' => array(

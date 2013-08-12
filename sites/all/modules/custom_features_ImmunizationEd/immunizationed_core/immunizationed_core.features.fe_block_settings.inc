@@ -116,7 +116,7 @@ function immunizationed_core_default_fe_block_settings() {
     'delta' => 'menu-views',
     'module' => 'menu',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'practice-admin',
     'roles' => array(),
     'themes' => array(
       'bartik' => array(
@@ -126,10 +126,10 @@ function immunizationed_core_default_fe_block_settings() {
         'weight' => 0,
       ),
       'energetic' => array(
-        'region' => '',
-        'status' => 0,
+        'region' => 'left',
+        'status' => 1,
         'theme' => 'energetic',
-        'weight' => 0,
+        'weight' => -19,
       ),
       'seven' => array(
         'region' => '',
@@ -139,7 +139,7 @@ function immunizationed_core_default_fe_block_settings() {
       ),
     ),
     'title' => '',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['node-recent'] = array(

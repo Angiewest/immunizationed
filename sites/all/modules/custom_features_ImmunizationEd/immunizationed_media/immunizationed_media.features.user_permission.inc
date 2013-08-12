@@ -10,7 +10,7 @@
 function immunizationed_media_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: add media from remote sources.
+  // Exported permission: 'add media from remote sources'.
   $permissions['add media from remote sources'] = array(
     'name' => 'add media from remote sources',
     'roles' => array(
@@ -21,7 +21,7 @@ function immunizationed_media_user_default_permissions() {
     'module' => 'media_internet',
   );
 
-  // Exported permission: administer file types.
+  // Exported permission: 'administer file types'.
   $permissions['administer file types'] = array(
     'name' => 'administer file types',
     'roles' => array(
@@ -30,7 +30,7 @@ function immunizationed_media_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: administer files.
+  // Exported permission: 'administer files'.
   $permissions['administer files'] = array(
     'name' => 'administer files',
     'roles' => array(
@@ -39,7 +39,7 @@ function immunizationed_media_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: administer image styles.
+  // Exported permission: 'administer image styles'.
   $permissions['administer image styles'] = array(
     'name' => 'administer image styles',
     'roles' => array(
@@ -49,7 +49,7 @@ function immunizationed_media_user_default_permissions() {
     'module' => 'image',
   );
 
-  // Exported permission: bypass file access.
+  // Exported permission: 'bypass file access'.
   $permissions['bypass file access'] = array(
     'name' => 'bypass file access',
     'roles' => array(
@@ -58,7 +58,7 @@ function immunizationed_media_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: create field_image.
+  // Exported permission: 'create field_image'.
   $permissions['create field_image'] = array(
     'name' => 'create field_image',
     'roles' => array(
@@ -69,7 +69,7 @@ function immunizationed_media_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: create field_resource_image.
+  // Exported permission: 'create field_resource_image'.
   $permissions['create field_resource_image'] = array(
     'name' => 'create field_resource_image',
     'roles' => array(
@@ -80,7 +80,7 @@ function immunizationed_media_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: create files.
+  // Exported permission: 'create files'.
   $permissions['create files'] = array(
     'name' => 'create files',
     'roles' => array(
@@ -95,39 +95,7 @@ function immunizationed_media_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: delete any files.
-  $permissions['delete any files'] = array(
-    'name' => 'delete any files',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: delete own files.
-  $permissions['delete own files'] = array(
-    'name' => 'delete own files',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: edit any files.
-  $permissions['edit any files'] = array(
-    'name' => 'edit any files',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: edit field_image.
+  // Exported permission: 'edit field_image'.
   $permissions['edit field_image'] = array(
     'name' => 'edit field_image',
     'roles' => array(
@@ -138,7 +106,7 @@ function immunizationed_media_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: edit field_resource_image.
+  // Exported permission: 'edit field_resource_image'.
   $permissions['edit field_resource_image'] = array(
     'name' => 'edit field_resource_image',
     'roles' => array(
@@ -149,7 +117,7 @@ function immunizationed_media_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: edit own field_image.
+  // Exported permission: 'edit own field_image'.
   $permissions['edit own field_image'] = array(
     'name' => 'edit own field_image',
     'roles' => array(
@@ -160,7 +128,7 @@ function immunizationed_media_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: edit own field_resource_image.
+  // Exported permission: 'edit own field_resource_image'.
   $permissions['edit own field_resource_image'] = array(
     'name' => 'edit own field_resource_image',
     'roles' => array(
@@ -171,18 +139,7 @@ function immunizationed_media_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: edit own files.
-  $permissions['edit own files'] = array(
-    'name' => 'edit own files',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: import media.
+  // Exported permission: 'import media'.
   $permissions['import media'] = array(
     'name' => 'import media',
     'roles' => array(
@@ -193,7 +150,7 @@ function immunizationed_media_user_default_permissions() {
     'module' => 'media',
   );
 
-  // Exported permission: view field_image.
+  // Exported permission: 'view field_image'.
   $permissions['view field_image'] = array(
     'name' => 'view field_image',
     'roles' => array(
@@ -204,7 +161,7 @@ function immunizationed_media_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: view field_resource_image.
+  // Exported permission: 'view field_resource_image'.
   $permissions['view field_resource_image'] = array(
     'name' => 'view field_resource_image',
     'roles' => array(
@@ -217,7 +174,7 @@ function immunizationed_media_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: view files.
+  // Exported permission: 'view files'.
   $permissions['view files'] = array(
     'name' => 'view files',
     'roles' => array(
@@ -228,7 +185,7 @@ function immunizationed_media_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: view own field_image.
+  // Exported permission: 'view own field_image'.
   $permissions['view own field_image'] = array(
     'name' => 'view own field_image',
     'roles' => array(
@@ -239,7 +196,7 @@ function immunizationed_media_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: view own field_resource_image.
+  // Exported permission: 'view own field_resource_image'.
   $permissions['view own field_resource_image'] = array(
     'name' => 'view own field_resource_image',
     'roles' => array(
@@ -252,7 +209,7 @@ function immunizationed_media_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: view own files.
+  // Exported permission: 'view own files'.
   $permissions['view own files'] = array(
     'name' => 'view own files',
     'roles' => array(
@@ -263,7 +220,7 @@ function immunizationed_media_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: view own private files.
+  // Exported permission: 'view own private files'.
   $permissions['view own private files'] = array(
     'name' => 'view own private files',
     'roles' => array(
