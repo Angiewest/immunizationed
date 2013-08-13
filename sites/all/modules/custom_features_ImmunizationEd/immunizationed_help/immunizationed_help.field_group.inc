@@ -13,19 +13,18 @@ function immunizationed_help_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_attachments|node|help_topic|form';
+  $field_group->identifier = 'group_attachments|node|help_manual_page|form';
   $field_group->group_name = 'group_attachments';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'help_topic';
+  $field_group->bundle = 'help_manual_page';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Attachments',
     'weight' => '7',
     'children' => array(
-      0 => 'group_image',
-      1 => 'group_document',
-      2 => 'group_video',
+      0 => 'group_document',
+      1 => 'group_graphic',
     ),
     'format_type' => 'accordion',
     'format_settings' => array(
@@ -36,20 +35,20 @@ function immunizationed_help_field_group_info() {
       ),
     ),
   );
-  $export['group_attachments|node|help_topic|form'] = $field_group;
+  $export['group_attachments|node|help_manual_page|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_document|node|help_topic|form';
+  $field_group->identifier = 'group_document|node|help_manual_page|form';
   $field_group->group_name = 'group_document';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'help_topic';
+  $field_group->bundle = 'help_manual_page';
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_attachments';
   $field_group->data = array(
     'label' => 'Attach Document',
-    'weight' => '13',
+    'weight' => '11',
     'children' => array(
       0 => 'field_document',
     ),
@@ -64,51 +63,52 @@ function immunizationed_help_field_group_info() {
       'formatter' => 'closed',
     ),
   );
-  $export['group_document|node|help_topic|form'] = $field_group;
+  $export['group_document|node|help_manual_page|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_image|node|help_topic|form';
-  $field_group->group_name = 'group_image';
+  $field_group->identifier = 'group_graphic|node|help_manual_page|form';
+  $field_group->group_name = 'group_graphic';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'help_topic';
+  $field_group->bundle = 'help_manual_page';
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_attachments';
   $field_group->data = array(
-    'label' => 'Attach Image',
+    'label' => 'Attach Graphic',
     'weight' => '12',
     'children' => array(
-      0 => 'field_resource_image',
+      0 => 'field_book_page_graphic',
     ),
     'format_type' => 'accordion-item',
     'format_settings' => array(
-      'label' => 'Attach Image',
+      'label' => 'Attach Graphic',
       'instance_settings' => array(
         'required_fields' => 0,
         'classes' => '',
-        'description' => '',
+        'description' => 'Attach a graphic to be displayed with some views',
       ),
       'formatter' => 'closed',
     ),
   );
-  $export['group_image|node|help_topic|form'] = $field_group;
+  $export['group_graphic|node|help_manual_page|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_tags|node|help_topic|form';
+  $field_group->identifier = 'group_tags|node|help_manual_page|form';
   $field_group->group_name = 'group_tags';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'help_topic';
+  $field_group->bundle = 'help_manual_page';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tags',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_applicable_roles',
       1 => 'field_content_type_reference_for',
+      2 => 'field_pillar_tags',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -120,35 +120,7 @@ function immunizationed_help_field_group_info() {
       ),
     ),
   );
-  $export['group_tags|node|help_topic|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_video|node|help_topic|form';
-  $field_group->group_name = 'group_video';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'help_topic';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_attachments';
-  $field_group->data = array(
-    'label' => 'Attach Video',
-    'weight' => '14',
-    'children' => array(
-      0 => 'field_reference_to_onsite_video',
-    ),
-    'format_type' => 'accordion-item',
-    'format_settings' => array(
-      'label' => 'Attach Video',
-      'instance_settings' => array(
-        'required_fields' => 0,
-        'classes' => '',
-        'description' => '',
-      ),
-      'formatter' => 'closed',
-    ),
-  );
-  $export['group_video|node|help_topic|form'] = $field_group;
+  $export['group_tags|node|help_manual_page|form'] = $field_group;
 
   return $export;
 }

@@ -10,6 +10,13 @@
 function immunizationed_help_user_default_permissions() {
   $permissions = array();
 
+  // Exported permission: 'administer panelizer node help_manual_page defaults'.
+  $permissions['administer panelizer node help_manual_page defaults'] = array(
+    'name' => 'administer panelizer node help_manual_page defaults',
+    'roles' => array(),
+    'module' => 'panelizer',
+  );
+
   // Exported permission: 'administer panelizer node help_topic content'.
   $permissions['administer panelizer node help_topic content'] = array(
     'name' => 'administer panelizer node help_topic content',
@@ -59,6 +66,28 @@ function immunizationed_help_user_default_permissions() {
     'module' => 'panelizer',
   );
 
+  // Exported permission: 'create field_book_page_graphic'.
+  $permissions['create field_book_page_graphic'] = array(
+    'name' => 'create field_book_page_graphic',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'create field_content_type_reference_for'.
+  $permissions['create field_content_type_reference_for'] = array(
+    'name' => 'create field_content_type_reference_for',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'create field_help_topics_tags'.
   $permissions['create field_help_topics_tags'] = array(
     'name' => 'create field_help_topics_tags',
@@ -68,6 +97,13 @@ function immunizationed_help_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'create help_manual_page content'.
+  $permissions['create help_manual_page content'] = array(
+    'name' => 'create help_manual_page content',
+    'roles' => array(),
+    'module' => 'node',
   );
 
   // Exported permission: 'create help_topic content'.
@@ -81,6 +117,13 @@ function immunizationed_help_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'delete any help_manual_page content'.
+  $permissions['delete any help_manual_page content'] = array(
+    'name' => 'delete any help_manual_page content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: 'delete any help_topic content'.
   $permissions['delete any help_topic content'] = array(
     'name' => 'delete any help_topic content',
@@ -89,6 +132,13 @@ function immunizationed_help_user_default_permissions() {
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete own help_manual_page content'.
+  $permissions['delete own help_manual_page content'] = array(
+    'name' => 'delete own help_manual_page content',
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -110,6 +160,13 @@ function immunizationed_help_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: 'edit any help_manual_page content'.
+  $permissions['edit any help_manual_page content'] = array(
+    'name' => 'edit any help_manual_page content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit any help_topic content'.
   $permissions['edit any help_topic content'] = array(
     'name' => 'edit any help_topic content',
@@ -121,9 +178,53 @@ function immunizationed_help_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'edit field_book_page_graphic'.
+  $permissions['edit field_book_page_graphic'] = array(
+    'name' => 'edit field_book_page_graphic',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit field_content_type_reference_for'.
+  $permissions['edit field_content_type_reference_for'] = array(
+    'name' => 'edit field_content_type_reference_for',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'edit field_help_topics_tags'.
   $permissions['edit field_help_topics_tags'] = array(
     'name' => 'edit field_help_topics_tags',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit own field_book_page_graphic'.
+  $permissions['edit own field_book_page_graphic'] = array(
+    'name' => 'edit own field_book_page_graphic',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit own field_content_type_reference_for'.
+  $permissions['edit own field_content_type_reference_for'] = array(
+    'name' => 'edit own field_content_type_reference_for',
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -141,6 +242,13 @@ function immunizationed_help_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit own help_manual_page content'.
+  $permissions['edit own help_manual_page content'] = array(
+    'name' => 'edit own help_manual_page content',
+    'roles' => array(),
+    'module' => 'node',
   );
 
   // Exported permission: 'edit own help_topic content'.
@@ -165,9 +273,51 @@ function immunizationed_help_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: 'view field_book_page_graphic'.
+  $permissions['view field_book_page_graphic'] = array(
+    'name' => 'view field_book_page_graphic',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view field_content_type_reference_for'.
+  $permissions['view field_content_type_reference_for'] = array(
+    'name' => 'view field_content_type_reference_for',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'view field_help_topics_tags'.
   $permissions['view field_help_topics_tags'] = array(
     'name' => 'view field_help_topics_tags',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view own field_book_page_graphic'.
+  $permissions['view own field_book_page_graphic'] = array(
+    'name' => 'view own field_book_page_graphic',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view own field_content_type_reference_for'.
+  $permissions['view own field_content_type_reference_for'] = array(
+    'name' => 'view own field_content_type_reference_for',
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',

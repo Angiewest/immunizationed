@@ -165,6 +165,9 @@ function immunizationed_practice_inputs_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_content_type_reference_for',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
     'foreign keys' => array(
       'tid' => array(
         'columns' => array(

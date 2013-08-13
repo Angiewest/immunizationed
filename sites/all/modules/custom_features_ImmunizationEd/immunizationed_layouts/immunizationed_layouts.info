@@ -30,7 +30,6 @@ features[panelizer_defaults][] = node:offsite_resource:default:teaser
 features[panelizer_defaults][] = node:page:default
 features[panelizer_defaults][] = node:roadmap_waypoint:default
 features[panelizer_defaults][] = node:roadmap_waypoint:default:teaser
-features[panelizer_defaults][] = node:task:default
 features[panelizer_defaults][] = node:video:default
 features[panelizer_defaults][] = node:video:default:teaser
 features[user_permission][] = administer advanced pane settings

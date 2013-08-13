@@ -86,6 +86,9 @@ function immunizationed_structure_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_book_page_graphic',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
     'foreign keys' => array(
       'fid' => array(
         'columns' => array(
