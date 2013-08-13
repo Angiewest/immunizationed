@@ -83,7 +83,7 @@ function immunizationed_help_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 31,
+      'weight' => 3,
     ),
   );
 
@@ -124,7 +124,7 @@ function immunizationed_help_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 32,
+      'weight' => 5,
     ),
   );
 
@@ -161,7 +161,7 @@ function immunizationed_help_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 36,
+      'weight' => 6,
     ),
   );
 
@@ -221,7 +221,7 @@ function immunizationed_help_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 38,
+      'weight' => 14,
     ),
   );
 
@@ -266,7 +266,7 @@ function immunizationed_help_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 39,
+      'weight' => 15,
     ),
   );
 
@@ -331,7 +331,7 @@ function immunizationed_help_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 34,
+      'weight' => 13,
     ),
   );
 

@@ -83,7 +83,6 @@ function immunizationed_structure_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
