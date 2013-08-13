@@ -102,7 +102,7 @@ function immunizationed_help_field_default_field_instances() {
         'label' => 'above',
         'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'taxonomy_term_reference_plain',
         'weight' => 1,
       ),
       'teaser' => array(
@@ -133,7 +133,7 @@ function immunizationed_help_field_default_field_instances() {
     'bundle' => 'help_topic',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Select the appropriate content type for this help topic',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -152,11 +152,12 @@ function immunizationed_help_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_content_type_reference_for',
     'label' => 'Content type reference for views filter',
-    'required' => FALSE,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
@@ -204,6 +205,8 @@ function immunizationed_help_field_default_field_instances() {
           'public' => 'public',
         ),
         'allowed_types' => array(
+          0 => 0,
+          'application' => 0,
           'audio' => 0,
           'document' => 0,
           'image' => 'image',
@@ -343,6 +346,7 @@ function immunizationed_help_field_default_field_instances() {
   t('Optional - attach a document to this post');
   t('Reference an existing video on the site');
   t('Reference to onsite video');
+  t('Select the appropriate content type for this help topic');
   t('upload a image that will be displayed in some views.');
 
   return $field_instances;

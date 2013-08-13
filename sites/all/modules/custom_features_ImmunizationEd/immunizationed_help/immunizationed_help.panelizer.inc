@@ -70,7 +70,7 @@ function immunizationed_help_panelizer_defaults() {
     $pane->access = array();
     $pane->configuration = array(
       'label' => 'above',
-      'formatter' => 'taxonomy_term_reference_link',
+      'formatter' => 'taxonomy_term_reference_plain',
       'delta_limit' => 0,
       'delta_offset' => '0',
       'delta_reversed' => FALSE,
@@ -99,8 +99,8 @@ function immunizationed_help_panelizer_defaults() {
       'delta_offset' => '0',
       'delta_reversed' => FALSE,
       'formatter_settings' => array(
-        'image_style' => '',
         'image_link' => '',
+        'image_style' => '',
       ),
       'context' => 'panelizer',
     );
@@ -247,7 +247,7 @@ function immunizationed_help_panelizer_defaults() {
     $pane->pid = 'new-8';
     $pane->panel = 'center';
     $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_document';
+    $pane->subtype = 'node:field_reference_to_onsite_video';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -271,7 +271,7 @@ function immunizationed_help_panelizer_defaults() {
     $pane->pid = 'new-9';
     $pane->panel = 'center';
     $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_reference_to_onsite_video';
+    $pane->subtype = 'node:field_resource_image';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -295,7 +295,7 @@ function immunizationed_help_panelizer_defaults() {
     $pane->pid = 'new-10';
     $pane->panel = 'center';
     $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_content_type_reference_for';
+    $pane->subtype = 'node:field_document';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -319,7 +319,7 @@ function immunizationed_help_panelizer_defaults() {
     $pane->pid = 'new-11';
     $pane->panel = 'center';
     $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_resource_image';
+    $pane->subtype = 'node:field_content_type_reference_for';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(

@@ -67,7 +67,7 @@ function immunizationed_help_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => array(
-          'vocabulary' => 'help',
+          'vocabulary' => 'special_practice_role',
           'parent' => 0,
         ),
       ),
@@ -149,7 +149,7 @@ function immunizationed_help_field_default_field_bases() {
         'view' => array(
           'args' => array(),
           'display_name' => 'entityreference_1',
-          'view_name' => 'videos_for_help_content',
+          'view_name' => 'documents_for_help_content',
         ),
       ),
       'target_type' => 'node',
