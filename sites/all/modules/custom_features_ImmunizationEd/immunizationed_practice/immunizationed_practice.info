@@ -1,7 +1,6 @@
 name = immunizationed_practice
 core = 7.x
 package = immunizationed
-php = 5.2.4
 version = 7.x-1.0
 project = immunizationed_practice
 dependencies[] = actions_permissions
