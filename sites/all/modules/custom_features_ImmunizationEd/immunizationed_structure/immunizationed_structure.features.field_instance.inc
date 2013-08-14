@@ -953,7 +953,44 @@ function immunizationed_structure_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 0,
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'node-document-field_audience'
+  $field_instances['node-document-field_audience'] = array(
+    'bundle' => 'document',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Optionally tag this document with an audience',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_audience',
+    'label' => 'Audience',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 10,
     ),
   );
 
@@ -1014,7 +1051,7 @@ function immunizationed_structure_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 31,
+      'weight' => 4,
     ),
   );
 
@@ -1068,23 +1105,90 @@ function immunizationed_structure_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 32,
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-document-field_help_topics_tags'
+  $field_instances['node-document-field_help_topics_tags'] = array(
+    'bundle' => 'document',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Optionally, tag this document as a help topic.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_help_topics_tags',
+    'label' => 'Help topics',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance: 'node-document-field_pillar_tags'
+  $field_instances['node-document-field_pillar_tags'] = array(
+    'bundle' => 'document',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Optionally, tag this document with a pillar',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_pillar_tags',
+    'label' => 'Pillar tags',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 8,
     ),
   );
 
   // Exported field_instance: 'node-document-field_tags'
   $field_instances['node-document-field_tags'] = array(
     'bundle' => 'document',
-    'default_value' => array(
-      0 => array(
-        'tid' => 'autocreate',
-        'vid' => 4,
-        'name' => 'Resources',
-        'vocabulary_machine_name' => 'special_practice_role',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Optionally, tag this document for inclusion in a main menu',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1102,20 +1206,20 @@ function immunizationed_structure_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_tags',
-    'label' => 'Tags',
+    'label' => 'Organizational Tags',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'taxonomy',
+      'module' => 'options',
       'settings' => array(
         'autocomplete_path' => 'taxonomy/autocomplete',
         'size' => 60,
       ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 34,
+      'type' => 'options_buttons',
+      'weight' => 7,
     ),
   );
 
@@ -3074,6 +3178,11 @@ function immunizationed_structure_field_default_field_instances() {
   t('Links to resources associated with this waypoint.');
   t('Optionally enter a fixed due date');
   t('Optionally select an image for this task.');
+  t('Optionally tag this document with an audience');
+  t('Optionally, tag this document as a help topic.');
+  t('Optionally, tag this document for inclusion in a main menu');
+  t('Optionally, tag this document with a pillar');
+  t('Organizational Tags');
   t('Pillar tags');
   t('Please select the audience for this announcement.');
   t('Please select the audience for this item.');

@@ -335,7 +335,7 @@ function immunizationed_layouts_strongarm() {
       'page_manager' => array(
         'status' => 1,
         'default' => 1,
-        'choice' => 1,
+        'choice' => 0,
       ),
       'default' => array(
         'status' => 0,
@@ -345,7 +345,7 @@ function immunizationed_layouts_strongarm() {
       'teaser' => array(
         'status' => 1,
         'default' => 1,
-        'choice' => 1,
+        'choice' => 0,
       ),
     ),
   );
