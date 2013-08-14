@@ -13,9 +13,9 @@ class OgFieldAccessTestCase extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-      'name' => 'Organic groups field access',
-      'description' => 'Test the access control on fields.',
-      'group' => 'Organic groups field access',
+        'name' => 'Organic groups field access',
+        'description' => 'Test the access control on fields.',
+        'group' => 'Organic groups field access',
     );
   }
 
@@ -43,10 +43,10 @@ class OgFieldAccessTestCase extends DrupalWebTestCase {
     // Set global permissions.
     $anon_rid = array_search(OG_ANONYMOUS_ROLE, $og_roles);
     $permissions = array(
-      'view body field' => 0,
-      'update body field' => 0,
-      // Allow non-members to edit the group, so we can test the node-edit page.
-      'update group' => 1,
+        'view body field' => 0,
+        'update body field' => 0,
+        // Allow non-members to edit the group, so we can test the node-edit page.
+        'update group' => 1,
     );
     og_role_change_permissions($anon_rid, $permissions);
 
@@ -116,9 +116,9 @@ class OgFieldAccessTestCase extends DrupalWebTestCase {
 
     // Assert fields of nodes not related to OG are not being restricted.
     $user3 = $this->drupalCreateUser(array(
-      'access content',
-      'create page content',
-      'edit any page content',
+        'access content',
+        'create page content',
+        'edit any page content',
     ));
     $this->drupalLogin($user3);
 
