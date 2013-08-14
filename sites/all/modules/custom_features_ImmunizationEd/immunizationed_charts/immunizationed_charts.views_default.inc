@@ -2650,7 +2650,7 @@ function immunizationed_charts_views_default_views() {
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Field: Broken/missing handler */
+  /* Field: SUM(Content: TD) */
   $handler->display->display_options['fields']['field_td']['id'] = 'field_td';
   $handler->display->display_options['fields']['field_td']['table'] = 'field_data_field_td';
   $handler->display->display_options['fields']['field_td']['field'] = 'field_td';

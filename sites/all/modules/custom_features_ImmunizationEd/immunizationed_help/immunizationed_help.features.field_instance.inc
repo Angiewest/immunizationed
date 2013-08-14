@@ -157,7 +157,7 @@ function immunizationed_help_field_default_field_instances() {
       'file_directory' => 'help/pics',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
-      'max_resolution' => '',
+      'max_resolution' => '675x800',
       'min_resolution' => '',
       'title_field' => 0,
       'user_register_form' => FALSE,
@@ -167,10 +167,11 @@ function immunizationed_help_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
-          'private' => 'private',
+          'private' => 0,
           'public' => 'public',
         ),
         'allowed_types' => array(
+          0 => 0,
           'audio' => 0,
           'document' => 0,
           'image' => 'image',

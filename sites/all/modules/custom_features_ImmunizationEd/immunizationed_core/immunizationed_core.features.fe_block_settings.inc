@@ -19,6 +19,7 @@ function immunizationed_core_default_fe_block_settings() {
     'module' => 'book',
     'node_types' => array(
       0 => 'book',
+      1 => 'help_manual_page',
     ),
     'pages' => '',
     'roles' => array(),
@@ -129,7 +130,7 @@ function immunizationed_core_default_fe_block_settings() {
         'region' => 'left',
         'status' => 1,
         'theme' => 'energetic',
-        'weight' => -19,
+        'weight' => -16,
       ),
       'seven' => array(
         'region' => '',

@@ -380,7 +380,35 @@ function immunizationed_core_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_file__image';
   $strongarm->value = array(
-    'view_modes' => array(),
+    'view_modes' => array(
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'preview' => array(
+        'custom_settings' => FALSE,
+      ),
+      'media_link' => array(
+        'custom_settings' => TRUE,
+      ),
+      'media_original' => array(
+        'custom_settings' => TRUE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_index' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_result' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
     'extra_fields' => array(
       'form' => array(),
       'display' => array(
@@ -388,6 +416,14 @@ function immunizationed_core_strongarm() {
           'media_small' => array(
             'weight' => 0,
             'visible' => FALSE,
+          ),
+          'default' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
+          'full' => array(
+            'weight' => '0',
+            'visible' => TRUE,
           ),
         ),
       ),
