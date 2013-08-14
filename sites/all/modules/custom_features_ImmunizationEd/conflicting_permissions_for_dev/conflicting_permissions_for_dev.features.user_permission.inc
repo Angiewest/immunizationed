@@ -10,7 +10,7 @@
 function conflicting_permissions_for_dev_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: access rules debug.
+  // Exported permission: 'access rules debug'.
   $permissions['access rules debug'] = array(
     'name' => 'access rules debug',
     'roles' => array(
