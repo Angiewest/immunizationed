@@ -10,7 +10,7 @@
 function immunizationed_user_config_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: access administration pages.
+  // Exported permission: 'access administration pages'.
   $permissions['access administration pages'] = array(
     'name' => 'access administration pages',
     'roles' => array(
@@ -20,7 +20,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'system',
   );
 
-  // Exported permission: access dashboard.
+  // Exported permission: 'access dashboard'.
   $permissions['access dashboard'] = array(
     'name' => 'access dashboard',
     'roles' => array(
@@ -31,7 +31,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'dashboard',
   );
 
-  // Exported permission: access site in maintenance mode.
+  // Exported permission: 'access site in maintenance mode'.
   $permissions['access site in maintenance mode'] = array(
     'name' => 'access site in maintenance mode',
     'roles' => array(
@@ -41,7 +41,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'system',
   );
 
-  // Exported permission: access site reports.
+  // Exported permission: 'access site reports'.
   $permissions['access site reports'] = array(
     'name' => 'access site reports',
     'roles' => array(
@@ -51,7 +51,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'system',
   );
 
-  // Exported permission: access user profiles.
+  // Exported permission: 'access user profiles'.
   $permissions['access user profiles'] = array(
     'name' => 'access user profiles',
     'roles' => array(
@@ -66,7 +66,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'user',
   );
 
-  // Exported permission: administer group.
+  // Exported permission: 'administer group'.
   $permissions['administer group'] = array(
     'name' => 'administer group',
     'roles' => array(
@@ -78,7 +78,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'og',
   );
 
-  // Exported permission: administer modules.
+  // Exported permission: 'administer modules'.
   $permissions['administer modules'] = array(
     'name' => 'administer modules',
     'roles' => array(
@@ -87,7 +87,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'system',
   );
 
-  // Exported permission: administer panelizer taxonomy_term practice_jobs defaults.
+  // Exported permission: 'administer panelizer taxonomy_term practice_jobs defaults'.
   $permissions['administer panelizer taxonomy_term practice_jobs defaults'] = array(
     'name' => 'administer panelizer taxonomy_term practice_jobs defaults',
     'roles' => array(
@@ -96,7 +96,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'panelizer',
   );
 
-  // Exported permission: administer panelizer user user defaults.
+  // Exported permission: 'administer panelizer user user defaults'.
   $permissions['administer panelizer user user defaults'] = array(
     'name' => 'administer panelizer user user defaults',
     'roles' => array(
@@ -105,7 +105,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'panelizer',
   );
 
-  // Exported permission: administer permissions.
+  // Exported permission: 'administer permissions'.
   $permissions['administer permissions'] = array(
     'name' => 'administer permissions',
     'roles' => array(
@@ -115,7 +115,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'user',
   );
 
-  // Exported permission: administer site configuration.
+  // Exported permission: 'administer site configuration'.
   $permissions['administer site configuration'] = array(
     'name' => 'administer site configuration',
     'roles' => array(
@@ -125,7 +125,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'system',
   );
 
-  // Exported permission: administer software updates.
+  // Exported permission: 'administer software updates'.
   $permissions['administer software updates'] = array(
     'name' => 'administer software updates',
     'roles' => array(
@@ -134,7 +134,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'system',
   );
 
-  // Exported permission: administer themes.
+  // Exported permission: 'administer themes'.
   $permissions['administer themes'] = array(
     'name' => 'administer themes',
     'roles' => array(
@@ -144,7 +144,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'system',
   );
 
-  // Exported permission: administer users.
+  // Exported permission: 'administer users'.
   $permissions['administer users'] = array(
     'name' => 'administer users',
     'roles' => array(
@@ -157,7 +157,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'user',
   );
 
-  // Exported permission: block IP addresses.
+  // Exported permission: 'block IP addresses'.
   $permissions['block IP addresses'] = array(
     'name' => 'block IP addresses',
     'roles' => array(
@@ -167,14 +167,14 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'system',
   );
 
-  // Exported permission: cancel account.
+  // Exported permission: 'cancel account'.
   $permissions['cancel account'] = array(
     'name' => 'cancel account',
     'roles' => array(),
     'module' => 'user',
   );
 
-  // Exported permission: cancel users with no custom roles.
+  // Exported permission: 'cancel users with no custom roles'.
   $permissions['cancel users with no custom roles'] = array(
     'name' => 'cancel users with no custom roles',
     'roles' => array(
@@ -186,7 +186,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: cancel users with role CoIadmin.
+  // Exported permission: 'cancel users with role CoIadmin'.
   $permissions['cancel users with role CoIadmin'] = array(
     'name' => 'cancel users with role CoIadmin',
     'roles' => array(
@@ -198,7 +198,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: cancel users with role CoIadmin and other roles.
+  // Exported permission: 'cancel users with role CoIadmin and other roles'.
   $permissions['cancel users with role CoIadmin and other roles'] = array(
     'name' => 'cancel users with role CoIadmin and other roles',
     'roles' => array(
@@ -210,7 +210,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: cancel users with role Groupmember.
+  // Exported permission: 'cancel users with role Groupmember'.
   $permissions['cancel users with role Groupmember'] = array(
     'name' => 'cancel users with role Groupmember',
     'roles' => array(
@@ -222,7 +222,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: cancel users with role Groupmember and other roles.
+  // Exported permission: 'cancel users with role Groupmember and other roles'.
   $permissions['cancel users with role Groupmember and other roles'] = array(
     'name' => 'cancel users with role Groupmember and other roles',
     'roles' => array(
@@ -234,7 +234,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: cancel users with role Practiceadmin.
+  // Exported permission: 'cancel users with role Practiceadmin'.
   $permissions['cancel users with role Practiceadmin'] = array(
     'name' => 'cancel users with role Practiceadmin',
     'roles' => array(
@@ -246,7 +246,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: cancel users with role Practiceadmin and other roles.
+  // Exported permission: 'cancel users with role Practiceadmin and other roles'.
   $permissions['cancel users with role Practiceadmin and other roles'] = array(
     'name' => 'cancel users with role Practiceadmin and other roles',
     'roles' => array(
@@ -258,7 +258,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: cancel users with role administrator.
+  // Exported permission: 'cancel users with role administrator'.
   $permissions['cancel users with role administrator'] = array(
     'name' => 'cancel users with role administrator',
     'roles' => array(
@@ -267,7 +267,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: cancel users with role administrator and other roles.
+  // Exported permission: 'cancel users with role administrator and other roles'.
   $permissions['cancel users with role administrator and other roles'] = array(
     'name' => 'cancel users with role administrator and other roles',
     'roles' => array(
@@ -276,7 +276,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: cancel users with role anonymoususer.
+  // Exported permission: 'cancel users with role anonymoususer'.
   $permissions['cancel users with role anonymoususer'] = array(
     'name' => 'cancel users with role anonymoususer',
     'roles' => array(
@@ -288,7 +288,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: cancel users with role anonymoususer and other roles.
+  // Exported permission: 'cancel users with role anonymoususer and other roles'.
   $permissions['cancel users with role anonymoususer and other roles'] = array(
     'name' => 'cancel users with role anonymoususer and other roles',
     'roles' => array(
@@ -300,7 +300,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: cancel users with role apprenticeadmin.
+  // Exported permission: 'cancel users with role apprenticeadmin'.
   $permissions['cancel users with role apprenticeadmin'] = array(
     'name' => 'cancel users with role apprenticeadmin',
     'roles' => array(
@@ -309,7 +309,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: cancel users with role apprenticeadmin and other roles.
+  // Exported permission: 'cancel users with role apprenticeadmin and other roles'.
   $permissions['cancel users with role apprenticeadmin and other roles'] = array(
     'name' => 'cancel users with role apprenticeadmin and other roles',
     'roles' => array(
@@ -318,7 +318,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: cancel users with role authenticateduser.
+  // Exported permission: 'cancel users with role authenticateduser'.
   $permissions['cancel users with role authenticateduser'] = array(
     'name' => 'cancel users with role authenticateduser',
     'roles' => array(
@@ -330,7 +330,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: cancel users with role authenticateduser and other roles.
+  // Exported permission: 'cancel users with role authenticateduser and other roles'.
   $permissions['cancel users with role authenticateduser and other roles'] = array(
     'name' => 'cancel users with role authenticateduser and other roles',
     'roles' => array(
@@ -342,7 +342,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: cancel users with role editor.
+  // Exported permission: 'cancel users with role editor'.
   $permissions['cancel users with role editor'] = array(
     'name' => 'cancel users with role editor',
     'roles' => array(
@@ -351,7 +351,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: cancel users with role editor and other roles.
+  // Exported permission: 'cancel users with role editor and other roles'.
   $permissions['cancel users with role editor and other roles'] = array(
     'name' => 'cancel users with role editor and other roles',
     'roles' => array(
@@ -360,7 +360,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: change own username.
+  // Exported permission: 'change own username'.
   $permissions['change own username'] = array(
     'name' => 'change own username',
     'roles' => array(
@@ -369,14 +369,14 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'user',
   );
 
-  // Exported permission: clear user_import feeds.
+  // Exported permission: 'clear user_import feeds'.
   $permissions['clear user_import feeds'] = array(
     'name' => 'clear user_import feeds',
     'roles' => array(),
     'module' => 'feeds',
   );
 
-  // Exported permission: create field_responsible_role.
+  // Exported permission: 'create field_responsible_role'.
   $permissions['create field_responsible_role'] = array(
     'name' => 'create field_responsible_role',
     'roles' => array(
@@ -387,7 +387,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: create og_user_node.
+  // Exported permission: 'create og_user_node'.
   $permissions['create og_user_node'] = array(
     'name' => 'create og_user_node',
     'roles' => array(
@@ -398,7 +398,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: create users.
+  // Exported permission: 'create users'.
   $permissions['create users'] = array(
     'name' => 'create users',
     'roles' => array(
@@ -411,7 +411,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: customize shortcut links.
+  // Exported permission: 'customize shortcut links'.
   $permissions['customize shortcut links'] = array(
     'name' => 'customize shortcut links',
     'roles' => array(
@@ -420,7 +420,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'shortcut',
   );
 
-  // Exported permission: edit field_responsible_role.
+  // Exported permission: 'edit field_responsible_role'.
   $permissions['edit field_responsible_role'] = array(
     'name' => 'edit field_responsible_role',
     'roles' => array(
@@ -433,7 +433,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: edit og_user_node.
+  // Exported permission: 'edit og_user_node'.
   $permissions['edit og_user_node'] = array(
     'name' => 'edit og_user_node',
     'roles' => array(
@@ -445,7 +445,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: edit own field_responsible_role.
+  // Exported permission: 'edit own field_responsible_role'.
   $permissions['edit own field_responsible_role'] = array(
     'name' => 'edit own field_responsible_role',
     'roles' => array(
@@ -458,7 +458,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: edit own og_user_node.
+  // Exported permission: 'edit own og_user_node'.
   $permissions['edit own og_user_node'] = array(
     'name' => 'edit own og_user_node',
     'roles' => array(
@@ -471,7 +471,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: edit users with no custom roles.
+  // Exported permission: 'edit users with no custom roles'.
   $permissions['edit users with no custom roles'] = array(
     'name' => 'edit users with no custom roles',
     'roles' => array(
@@ -484,7 +484,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: edit users with role CoIadmin.
+  // Exported permission: 'edit users with role CoIadmin'.
   $permissions['edit users with role CoIadmin'] = array(
     'name' => 'edit users with role CoIadmin',
     'roles' => array(
@@ -496,7 +496,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: edit users with role CoIadmin and other roles.
+  // Exported permission: 'edit users with role CoIadmin and other roles'.
   $permissions['edit users with role CoIadmin and other roles'] = array(
     'name' => 'edit users with role CoIadmin and other roles',
     'roles' => array(
@@ -508,7 +508,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: edit users with role Groupmember.
+  // Exported permission: 'edit users with role Groupmember'.
   $permissions['edit users with role Groupmember'] = array(
     'name' => 'edit users with role Groupmember',
     'roles' => array(
@@ -521,7 +521,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: edit users with role Groupmember and other roles.
+  // Exported permission: 'edit users with role Groupmember and other roles'.
   $permissions['edit users with role Groupmember and other roles'] = array(
     'name' => 'edit users with role Groupmember and other roles',
     'roles' => array(
@@ -533,7 +533,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: edit users with role Practiceadmin.
+  // Exported permission: 'edit users with role Practiceadmin'.
   $permissions['edit users with role Practiceadmin'] = array(
     'name' => 'edit users with role Practiceadmin',
     'roles' => array(
@@ -546,7 +546,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: edit users with role Practiceadmin and other roles.
+  // Exported permission: 'edit users with role Practiceadmin and other roles'.
   $permissions['edit users with role Practiceadmin and other roles'] = array(
     'name' => 'edit users with role Practiceadmin and other roles',
     'roles' => array(
@@ -558,7 +558,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: edit users with role administrator.
+  // Exported permission: 'edit users with role administrator'.
   $permissions['edit users with role administrator'] = array(
     'name' => 'edit users with role administrator',
     'roles' => array(
@@ -567,7 +567,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: edit users with role administrator and other roles.
+  // Exported permission: 'edit users with role administrator and other roles'.
   $permissions['edit users with role administrator and other roles'] = array(
     'name' => 'edit users with role administrator and other roles',
     'roles' => array(
@@ -576,7 +576,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: edit users with role anonymoususer.
+  // Exported permission: 'edit users with role anonymoususer'.
   $permissions['edit users with role anonymoususer'] = array(
     'name' => 'edit users with role anonymoususer',
     'roles' => array(
@@ -589,7 +589,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: edit users with role anonymoususer and other roles.
+  // Exported permission: 'edit users with role anonymoususer and other roles'.
   $permissions['edit users with role anonymoususer and other roles'] = array(
     'name' => 'edit users with role anonymoususer and other roles',
     'roles' => array(
@@ -601,7 +601,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: edit users with role apprenticeadmin.
+  // Exported permission: 'edit users with role apprenticeadmin'.
   $permissions['edit users with role apprenticeadmin'] = array(
     'name' => 'edit users with role apprenticeadmin',
     'roles' => array(
@@ -611,7 +611,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: edit users with role apprenticeadmin and other roles.
+  // Exported permission: 'edit users with role apprenticeadmin and other roles'.
   $permissions['edit users with role apprenticeadmin and other roles'] = array(
     'name' => 'edit users with role apprenticeadmin and other roles',
     'roles' => array(
@@ -621,7 +621,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: edit users with role authenticateduser.
+  // Exported permission: 'edit users with role authenticateduser'.
   $permissions['edit users with role authenticateduser'] = array(
     'name' => 'edit users with role authenticateduser',
     'roles' => array(
@@ -634,7 +634,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: edit users with role authenticateduser and other roles.
+  // Exported permission: 'edit users with role authenticateduser and other roles'.
   $permissions['edit users with role authenticateduser and other roles'] = array(
     'name' => 'edit users with role authenticateduser and other roles',
     'roles' => array(
@@ -646,7 +646,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: edit users with role editor.
+  // Exported permission: 'edit users with role editor'.
   $permissions['edit users with role editor'] = array(
     'name' => 'edit users with role editor',
     'roles' => array(
@@ -657,7 +657,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: edit users with role editor and other roles.
+  // Exported permission: 'edit users with role editor and other roles'.
   $permissions['edit users with role editor and other roles'] = array(
     'name' => 'edit users with role editor and other roles',
     'roles' => array(
@@ -668,21 +668,21 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'administerusersbyrole',
   );
 
-  // Exported permission: import user_import feeds.
+  // Exported permission: 'import user_import feeds'.
   $permissions['import user_import feeds'] = array(
     'name' => 'import user_import feeds',
     'roles' => array(),
     'module' => 'feeds',
   );
 
-  // Exported permission: select account cancellation method.
+  // Exported permission: 'select account cancellation method'.
   $permissions['select account cancellation method'] = array(
     'name' => 'select account cancellation method',
     'roles' => array(),
     'module' => 'user',
   );
 
-  // Exported permission: switch shortcut sets.
+  // Exported permission: 'switch shortcut sets'.
   $permissions['switch shortcut sets'] = array(
     'name' => 'switch shortcut sets',
     'roles' => array(
@@ -693,14 +693,14 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'shortcut',
   );
 
-  // Exported permission: unlock user_import feeds.
+  // Exported permission: 'unlock user_import feeds'.
   $permissions['unlock user_import feeds'] = array(
     'name' => 'unlock user_import feeds',
     'roles' => array(),
     'module' => 'feeds',
   );
 
-  // Exported permission: view field_responsible_role.
+  // Exported permission: 'view field_responsible_role'.
   $permissions['view field_responsible_role'] = array(
     'name' => 'view field_responsible_role',
     'roles' => array(
@@ -711,7 +711,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: view og_user_node.
+  // Exported permission: 'view og_user_node'.
   $permissions['view og_user_node'] = array(
     'name' => 'view og_user_node',
     'roles' => array(
@@ -722,7 +722,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: view own field_responsible_role.
+  // Exported permission: 'view own field_responsible_role'.
   $permissions['view own field_responsible_role'] = array(
     'name' => 'view own field_responsible_role',
     'roles' => array(
@@ -734,7 +734,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: view own og_user_node.
+  // Exported permission: 'view own og_user_node'.
   $permissions['view own og_user_node'] = array(
     'name' => 'view own og_user_node',
     'roles' => array(
@@ -745,7 +745,7 @@ function immunizationed_user_config_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: view the administration theme.
+  // Exported permission: 'view the administration theme'.
   $permissions['view the administration theme'] = array(
     'name' => 'view the administration theme',
     'roles' => array(

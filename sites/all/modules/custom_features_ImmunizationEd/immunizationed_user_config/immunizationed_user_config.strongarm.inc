@@ -166,7 +166,9 @@ This link can only be used once to log in and will lead you to a page where you 
   $strongarm->name = 'user_mail_register_admin_created_body';
   $strongarm->value = '[user:field-salutations] [user:field-last-names],
 
-A site administrator at [site:name] has created an account for you. You may now log in by clicking this link or copying and pasting it to your browser:
+Welcome to the 4 Pillars Toolkit online Dashboard. A site administrator at [site:name] has created an account for you. Your practice has agreed to engage in this project which aims to increase adult vaccination rates in your practice. Your participation is essential to the success of this project as well as to the health of your patients as you work to increase the number of adults who receive recommended vaccinations.
+
+You may now log in by clicking this link or copying and pasting it to your browser:
 
 [user:one-time-login-url]
 
@@ -193,7 +195,8 @@ password: Your password
   $strongarm->name = 'user_mail_register_no_approval_required_body';
   $strongarm->value = '[user:name],
 
-Thank you for registering at [site:name]. You may now log in by clicking this link or copying and pasting it to your browser:
+Welcome to the 4 Pillars Toolkit online Dashboard.
+Thank you for registering at [site:name]. This project aims to increase adult vaccination rates in your practice. Your participation is essential to the success of this project as well as to the health of your patients as you work to increase the number of adults who receive recommended vaccinations.You may now log in by clicking this link or copying and pasting it to your browser:
 
 [user:one-time-login-url]
 

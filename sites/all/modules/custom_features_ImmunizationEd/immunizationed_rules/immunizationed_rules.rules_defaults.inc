@@ -436,7 +436,7 @@ function immunizationed_rules_default_rules_configuration() {
         { "mail" : {
             "to" : [ "account:mail" ],
             "subject" : "Your membership request was approved for \\u0027[group:title]\\u0027\\u000D\\u000A",
-            "message" : "[account:name],\\u000D\\u000A\\u000D\\u000AYou are now a member in the group \\u0027[group:title]\\u0027 located at [group:url]",
+            "message" : "[account:name],\\u000D\\u000A\\u000D\\u000AYou are now a member in the group \\u0027[group:title]\\u0027 located at [group:url]\\u000D\\u000A\\u000D\\u000APlease spend 10 minutes reviewing the \\u003Ca href=\\u0022[site:url]\\u002F4-pillars-toolkit\\u0022\\u003E4 Pillars Toolkit\\u003C\\u002Fa\\u003E. This toolkit provides you with evidence-based strategies that have proven to be successful in raising adult vaccination rates. \\u000D\\u000A\\u000D\\u000AThe strategies provided in this 4 Pillars Toolkit have been broken out  to create \\u003Ca href=\\u0022[group:url]\\u0022\\u003Eyour practice’s Project Blueprints\\u002FTasks list.\\u003C\\u002Fa\\u003E This page you are now on will serve as your “home” page for all of these Pillar-related project tasks and will therefore guide you successfully through this project.\\u000D\\u000A\\u000D\\u000A--[site:name] team",
             "language" : [ "" ]
           }
         },

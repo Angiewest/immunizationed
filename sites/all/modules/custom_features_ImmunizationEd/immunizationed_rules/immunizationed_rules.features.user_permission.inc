@@ -10,7 +10,7 @@
 function immunizationed_rules_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: administer rules.
+  // Exported permission: 'administer rules'.
   $permissions['administer rules'] = array(
     'name' => 'administer rules',
     'roles' => array(
@@ -20,7 +20,7 @@ function immunizationed_rules_user_default_permissions() {
     'module' => 'rules',
   );
 
-  // Exported permission: bypass rules access.
+  // Exported permission: 'bypass rules access'.
   $permissions['bypass rules access'] = array(
     'name' => 'bypass rules access',
     'roles' => array(
