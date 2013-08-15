@@ -45,6 +45,7 @@ function immunizationed_media_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'itty-bitty',
   );
 
   // Exported image style: large.
@@ -68,6 +69,7 @@ function immunizationed_media_image_default_styles() {
       ),
     ),
     'name' => 'large',
+    'label' => 'large',
   );
 
   // Exported image style: medium.
@@ -91,6 +93,7 @@ function immunizationed_media_image_default_styles() {
       ),
     ),
     'name' => 'medium',
+    'label' => 'medium',
   );
 
   // Exported image style: screenshot.
@@ -114,6 +117,7 @@ function immunizationed_media_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'screenshot',
   );
 
   // Exported image style: thumbnail.
@@ -137,6 +141,7 @@ function immunizationed_media_image_default_styles() {
       ),
     ),
     'name' => 'thumbnail',
+    'label' => 'thumbnail',
   );
 
   // Exported image style: tiny.
@@ -159,6 +164,7 @@ function immunizationed_media_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'tiny',
   );
 
   return $styles;
