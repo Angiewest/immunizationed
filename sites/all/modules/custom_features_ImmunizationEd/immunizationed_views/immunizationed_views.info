@@ -2,7 +2,6 @@ name = immunizationed_views
 description = views
 core = 7.x
 package = immunizationed
-php = 5.2.4
 version = 7.x-1.0
 project = immunizationed_views
 dependencies[] = better_exposed_filters
