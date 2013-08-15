@@ -17,7 +17,7 @@ function immunizationed_practice_inputs_default_page_manager_handlers() {
   $handler->task = 'node_edit';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
-  $handler->weight = -22;
+  $handler->weight = -25;
   $handler->conf = array(
     'title' => 'Patient notification edit form panelized',
     'no_blocks' => 0,
@@ -340,7 +340,7 @@ function immunizationed_practice_inputs_default_page_manager_handlers() {
   $handler->task = 'node_edit';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
-  $handler->weight = -30;
+  $handler->weight = -28;
   $handler->conf = array(
     'title' => 'Convenient vaccination edit form panellized',
     'no_blocks' => 0,
@@ -639,7 +639,7 @@ function immunizationed_practice_inputs_default_page_manager_handlers() {
   $handler->task = 'node_edit';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
-  $handler->weight = -28;
+  $handler->weight = -27;
   $handler->conf = array(
     'title' => 'Enhanced vaccination system edit form panelized',
     'no_blocks' => 0,
@@ -914,7 +914,7 @@ function immunizationed_practice_inputs_default_page_manager_handlers() {
   $handler->task = 'node_edit';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
-  $handler->weight = -27;
+  $handler->weight = -26;
   $handler->conf = array(
     'title' => 'Motivation edit form panelized',
     'no_blocks' => 0,
@@ -1189,7 +1189,7 @@ function immunizationed_practice_inputs_default_page_manager_handlers() {
   $handler->task = 'node_edit';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
-  $handler->weight = -21;
+  $handler->weight = -24;
   $handler->conf = array(
     'title' => 'Meeting agenda edit form',
     'no_blocks' => 0,

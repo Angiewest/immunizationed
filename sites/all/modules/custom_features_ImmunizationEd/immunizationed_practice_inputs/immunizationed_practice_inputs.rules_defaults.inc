@@ -12,24 +12,20 @@ function immunizationed_practice_inputs_default_rules_configuration() {
   $items['rules_redirect_practice_admins_to_edit_task_tab'] = entity_import('rules_config', '{ "rules_redirect_practice_admins_to_edit_task_tab" : {
       "LABEL" : "Redirect practice admins to edit task tab",
       "PLUGIN" : "reaction rule",
+      "WEIGHT" : "-10",
       "REQUIRES" : [ "rules", "og" ],
       "ON" : [ "node_view" ],
       "IF" : [
         { "node_is_of_type" : { "node" : [ "node" ], "type" : { "value" : { "task" : "task" } } } },
-        { "AND" : [
-            { "og_user_has_permission" : {
-                "permission" : "administer group",
-                "group" : [ "node:og-group-ref:0" ],
-                "account" : [ "site:current-user" ]
-              }
-            },
-            { "NOT entity_field_access" : {
-                "entity" : [ "node" ],
-                "field" : "og_group_ref",
-                "op" : "edit",
-                "account" : [ "site:current-user" ]
-              }
-            }
+        { "og_user_has_permission" : {
+            "permission" : "update any task content",
+            "group" : [ "node:og-group-ref:0" ],
+            "account" : [ "site:current-user" ]
+          }
+        },
+        { "OR" : [
+            { "data_is_empty" : { "data" : [ "node:field-date-task-completed" ] } },
+            { "data_is_empty" : { "data" : [ "node:field-date-started" ] } }
           ]
         }
       ],

@@ -228,7 +228,6 @@ function immunizationed_practice_og_features_default_permissions() {
   $permissions['node:practice_group:update any announcement content'] = array(
     'roles' => array(
       'Administrator member' => 'Administrator member',
-      'member' => 'member',
     ),
   );
 
@@ -241,7 +240,6 @@ function immunizationed_practice_og_features_default_permissions() {
   $permissions['node:practice_group:update any convenient_vaccination_services content'] = array(
     'roles' => array(
       'Administrator member' => 'Administrator member',
-      'member' => 'member',
     ),
   );
 
@@ -249,7 +247,6 @@ function immunizationed_practice_og_features_default_permissions() {
   $permissions['node:practice_group:update any enhanced_vaccination_systems content'] = array(
     'roles' => array(
       'Administrator member' => 'Administrator member',
-      'member' => 'member',
     ),
   );
 
@@ -257,7 +254,6 @@ function immunizationed_practice_og_features_default_permissions() {
   $permissions['node:practice_group:update any meeting_agenda content'] = array(
     'roles' => array(
       'Administrator member' => 'Administrator member',
-      'member' => 'member',
     ),
   );
 
@@ -265,7 +261,6 @@ function immunizationed_practice_og_features_default_permissions() {
   $permissions['node:practice_group:update any motivation content'] = array(
     'roles' => array(
       'Administrator member' => 'Administrator member',
-      'member' => 'member',
     ),
   );
 
@@ -273,7 +268,6 @@ function immunizationed_practice_og_features_default_permissions() {
   $permissions['node:practice_group:update any patient_notification content'] = array(
     'roles' => array(
       'Administrator member' => 'Administrator member',
-      'member' => 'member',
     ),
   );
 
@@ -281,7 +275,6 @@ function immunizationed_practice_og_features_default_permissions() {
   $permissions['node:practice_group:update any task content'] = array(
     'roles' => array(
       'Administrator member' => 'Administrator member',
-      'member' => 'member',
     ),
   );
 
