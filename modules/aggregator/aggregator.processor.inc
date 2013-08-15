@@ -10,8 +10,8 @@
  */
 function aggregator_aggregator_process_info() {
   return array(
-      'title' => t('Default processor'),
-      'description' => t('Creates lightweight records from feed items.'),
+    'title' => t('Default processor'),
+    'description' => t('Creates lightweight records from feed items.'),
   );
 }
 
@@ -54,12 +54,12 @@ function aggregator_aggregator_remove($feed) {
   $iids = db_query('SELECT iid FROM {aggregator_item} WHERE fid = :fid', array(':fid' => $feed->fid))->fetchCol();
   if ($iids) {
     db_delete('aggregator_category_item')
-    ->condition('iid', $iids, 'IN')
-    ->execute();
+      ->condition('iid', $iids, 'IN')
+      ->execute();
   }
   db_delete('aggregator_item')
-  ->condition('fid', $feed->fid)
-  ->execute();
+    ->condition('fid', $feed->fid)
+    ->execute();
 
   drupal_set_message(t('The news items from %site have been removed.', array('%site' => $feed->title)));
 }
@@ -80,11 +80,11 @@ function aggregator_form_aggregator_admin_form_alter(&$form, $form_state) {
     // Only wrap into a collapsible fieldset if there is a basic configuration.
     if (isset($form['basic_conf'])) {
       $form['modules']['aggregator'] = array(
-          '#type' => 'fieldset',
-          '#title' => t('Default processor settings'),
-          '#description' => $info['description'],
-          '#collapsible' => TRUE,
-          '#collapsed' => !in_array('aggregator', variable_get('aggregator_processors', array('aggregator'))),
+        '#type' => 'fieldset',
+        '#title' => t('Default processor settings'),
+        '#description' => $info['description'],
+        '#collapsible' => TRUE,
+        '#collapsed' => !in_array('aggregator', variable_get('aggregator_processors', array('aggregator'))),
       );
     }
     else {
@@ -92,35 +92,35 @@ function aggregator_form_aggregator_admin_form_alter(&$form, $form_state) {
     }
 
     $form['modules']['aggregator']['aggregator_summary_items'] = array(
-        '#type' => 'select',
-        '#title' => t('Number of items shown in listing pages'),
-        '#default_value' => variable_get('aggregator_summary_items', 3),
-        '#empty_value' => 0,
-        '#options' => $items,
+      '#type' => 'select',
+      '#title' => t('Number of items shown in listing pages'),
+      '#default_value' => variable_get('aggregator_summary_items', 3),
+      '#empty_value' => 0,
+      '#options' => $items,
     );
 
     $form['modules']['aggregator']['aggregator_clear'] = array(
-        '#type' => 'select',
-        '#title' => t('Discard items older than'),
-        '#default_value' => variable_get('aggregator_clear', 9676800),
-        '#options' => $period,
-        '#description' => t('Requires a correctly configured <a href="@cron">cron maintenance task</a>.', array('@cron' => url('admin/reports/status'))),
+      '#type' => 'select',
+      '#title' => t('Discard items older than'),
+      '#default_value' => variable_get('aggregator_clear', 9676800),
+      '#options' => $period,
+      '#description' => t('Requires a correctly configured <a href="@cron">cron maintenance task</a>.', array('@cron' => url('admin/reports/status'))),
     );
 
     $form['modules']['aggregator']['aggregator_category_selector'] = array(
-        '#type' => 'radios',
-        '#title' => t('Select categories using'),
-        '#default_value' => variable_get('aggregator_category_selector', 'checkboxes'),
-        '#options' => array('checkboxes' => t('checkboxes'),
-            'select' => t('multiple selector')),
-        '#description' => t('For a small number of categories, checkboxes are easier to use, while a multiple selector works well with large numbers of categories.'),
+      '#type' => 'radios',
+      '#title' => t('Select categories using'),
+      '#default_value' => variable_get('aggregator_category_selector', 'checkboxes'),
+      '#options' => array('checkboxes' => t('checkboxes'),
+      'select' => t('multiple selector')),
+      '#description' => t('For a small number of categories, checkboxes are easier to use, while a multiple selector works well with large numbers of categories.'),
     );
     $form['modules']['aggregator']['aggregator_teaser_length'] = array(
-        '#type' => 'select',
-        '#title' => t('Length of trimmed description'),
-        '#default_value' => variable_get('aggregator_teaser_length', 600),
-        '#options' => drupal_map_assoc(array(0, 200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800, 2000), '_aggregator_characters'),
-        '#description' => t("The maximum number of characters used in the trimmed version of content.")
+      '#type' => 'select',
+      '#title' => t('Length of trimmed description'),
+      '#default_value' => variable_get('aggregator_teaser_length', 600),
+      '#options' => drupal_map_assoc(array(0, 200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800, 2000), '_aggregator_characters'),
+      '#description' => t("The maximum number of characters used in the trimmed version of content.")
     );
 
   }
@@ -151,7 +151,7 @@ function _aggregator_characters($length) {
 function aggregator_save_item($edit) {
   if ($edit['title'] && empty($edit['iid'])) {
     $edit['iid'] = db_insert('aggregator_item')
-    ->fields(array(
+      ->fields(array(
         'title' => $edit['title'],
         'link' => $edit['link'],
         'author' => $edit['author'],
@@ -159,27 +159,27 @@ function aggregator_save_item($edit) {
         'guid' => $edit['guid'],
         'timestamp' => $edit['timestamp'],
         'fid' => $edit['fid'],
-    ))
-    ->execute();
+      ))
+      ->execute();
   }
   if ($edit['iid'] && !$edit['title']) {
     db_delete('aggregator_item')
-    ->condition('iid', $edit['iid'])
-    ->execute();
+      ->condition('iid', $edit['iid'])
+      ->execute();
     db_delete('aggregator_category_item')
-    ->condition('iid', $edit['iid'])
-    ->execute();
+      ->condition('iid', $edit['iid'])
+      ->execute();
   }
   elseif ($edit['title'] && $edit['link']) {
     // file the items in the categories indicated by the feed
     $result = db_query('SELECT cid FROM {aggregator_category_feed} WHERE fid = :fid', array(':fid' => $edit['fid']));
     foreach ($result as $category) {
       db_merge('aggregator_category_item')
-      ->key(array(
-      'iid' => $edit['iid'],
-      'cid' => $category->cid,
-      ))
-      ->execute();
+        ->key(array(
+          'iid' => $edit['iid'],
+          'cid' => $category->cid,
+        ))
+        ->execute();
     }
   }
 }
@@ -197,17 +197,17 @@ function aggregator_expire($feed) {
     // Remove all items that are older than flush item timer.
     $age = REQUEST_TIME - $aggregator_clear;
     $iids = db_query('SELECT iid FROM {aggregator_item} WHERE fid = :fid AND timestamp < :timestamp', array(
-        ':fid' => $feed->fid,
-        ':timestamp' => $age,
+      ':fid' => $feed->fid,
+      ':timestamp' => $age,
     ))
     ->fetchCol();
     if ($iids) {
       db_delete('aggregator_category_item')
-      ->condition('iid', $iids, 'IN')
-      ->execute();
+        ->condition('iid', $iids, 'IN')
+        ->execute();
       db_delete('aggregator_item')
-      ->condition('iid', $iids, 'IN')
-      ->execute();
+        ->condition('iid', $iids, 'IN')
+        ->execute();
     }
   }
 }

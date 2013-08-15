@@ -10,23 +10,23 @@
  */
 function file_field_info() {
   return array(
-      'file' => array(
-          'label' => t('File'),
-          'description' => t('This field stores the ID of a file as an integer value.'),
-          'settings' => array(
-              'display_field' => 0,
-              'display_default' => 0,
-              'uri_scheme' => variable_get('file_default_scheme', 'public'),
-          ),
-          'instance_settings' => array(
-              'file_extensions' => 'txt',
-              'file_directory' => '',
-              'max_filesize' => '',
-              'description_field' => 0,
-          ),
-          'default_widget' => 'file_generic',
-          'default_formatter' => 'file_default',
+    'file' => array(
+      'label' => t('File'),
+      'description' => t('This field stores the ID of a file as an integer value.'),
+      'settings' => array(
+        'display_field' => 0,
+        'display_default' => 0,
+        'uri_scheme' => variable_get('file_default_scheme', 'public'),
       ),
+      'instance_settings' => array(
+        'file_extensions' => 'txt',
+        'file_directory' => '',
+        'max_filesize' => '',
+        'description_field' => 0,
+      ),
+      'default_widget' => 'file_generic',
+      'default_formatter' => 'file_default',
+    ),
   );
 }
 
@@ -40,16 +40,16 @@ function file_field_settings_form($field, $instance, $has_data) {
   $form['#attached']['js'][] = drupal_get_path('module', 'file') . '/file.js';
 
   $form['display_field'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Enable <em>Display</em> field'),
-      '#default_value' => $settings['display_field'],
-      '#description' => t('The display option allows users to choose if a file should be shown when viewing the content.'),
+    '#type' => 'checkbox',
+    '#title' => t('Enable <em>Display</em> field'),
+    '#default_value' => $settings['display_field'],
+    '#description' => t('The display option allows users to choose if a file should be shown when viewing the content.'),
   );
   $form['display_default'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Files displayed by default'),
-      '#default_value' => $settings['display_default'],
-      '#description' => t('This setting only has an effect if the display option is enabled.'),
+    '#type' => 'checkbox',
+    '#title' => t('Files displayed by default'),
+    '#default_value' => $settings['display_default'],
+    '#description' => t('This setting only has an effect if the display option is enabled.'),
   );
 
   $scheme_options = array();
@@ -57,12 +57,12 @@ function file_field_settings_form($field, $instance, $has_data) {
     $scheme_options[$scheme] = $stream_wrapper['name'];
   }
   $form['uri_scheme'] = array(
-      '#type' => 'radios',
-      '#title' => t('Upload destination'),
-      '#options' => $scheme_options,
-      '#default_value' => $settings['uri_scheme'],
-      '#description' => t('Select where the final files should be stored. Private file storage has significantly more overhead than public files, but allows restricted access to files within this field.'),
-      '#disabled' => $has_data,
+    '#type' => 'radios',
+    '#title' => t('Upload destination'),
+    '#options' => $scheme_options,
+    '#default_value' => $settings['uri_scheme'],
+    '#description' => t('Select where the final files should be stored. Private file storage has significantly more overhead than public files, but allows restricted access to files within this field.'),
+    '#disabled' => $has_data,
   );
 
   return $form;
@@ -75,45 +75,45 @@ function file_field_instance_settings_form($field, $instance) {
   $settings = $instance['settings'];
 
   $form['file_directory'] = array(
-      '#type' => 'textfield',
-      '#title' => t('File directory'),
-      '#default_value' => $settings['file_directory'],
-      '#description' => t('Optional subdirectory within the upload destination where files will be stored. Do not include preceding or trailing slashes.'),
-      '#element_validate' => array('_file_generic_settings_file_directory_validate'),
-      '#weight' => 3,
+    '#type' => 'textfield',
+    '#title' => t('File directory'),
+    '#default_value' => $settings['file_directory'],
+    '#description' => t('Optional subdirectory within the upload destination where files will be stored. Do not include preceding or trailing slashes.'),
+    '#element_validate' => array('_file_generic_settings_file_directory_validate'),
+    '#weight' => 3,
   );
 
   // Make the extension list a little more human-friendly by comma-separation.
   $extensions = str_replace(' ', ', ', $settings['file_extensions']);
   $form['file_extensions'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Allowed file extensions'),
-      '#default_value' => $extensions,
-      '#description' => t('Separate extensions with a space or comma and do not include the leading dot.'),
-      '#element_validate' => array('_file_generic_settings_extensions'),
-      '#weight' => 1,
-      // By making this field required, we prevent a potential security issue
-      // that would allow files of any type to be uploaded.
-      '#required' => TRUE,
+    '#type' => 'textfield',
+    '#title' => t('Allowed file extensions'),
+    '#default_value' => $extensions,
+    '#description' => t('Separate extensions with a space or comma and do not include the leading dot.'),
+    '#element_validate' => array('_file_generic_settings_extensions'),
+    '#weight' => 1,
+    // By making this field required, we prevent a potential security issue
+    // that would allow files of any type to be uploaded.
+    '#required' => TRUE,
   );
 
   $form['max_filesize'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Maximum upload size'),
-      '#default_value' => $settings['max_filesize'],
-      '#description' => t('Enter a value like "512" (bytes), "80 KB" (kilobytes) or "50 MB" (megabytes) in order to restrict the allowed file size. If left empty the file sizes will be limited only by PHP\'s maximum post and file upload sizes (current limit <strong>%limit</strong>).', array('%limit' => format_size(file_upload_max_size()))),
-      '#size' => 10,
-      '#element_validate' => array('_file_generic_settings_max_filesize'),
-      '#weight' => 5,
+    '#type' => 'textfield',
+    '#title' => t('Maximum upload size'),
+    '#default_value' => $settings['max_filesize'],
+    '#description' => t('Enter a value like "512" (bytes), "80 KB" (kilobytes) or "50 MB" (megabytes) in order to restrict the allowed file size. If left empty the file sizes will be limited only by PHP\'s maximum post and file upload sizes (current limit <strong>%limit</strong>).', array('%limit' => format_size(file_upload_max_size()))),
+    '#size' => 10,
+    '#element_validate' => array('_file_generic_settings_max_filesize'),
+    '#weight' => 5,
   );
 
   $form['description_field'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Enable <em>Description</em> field'),
-      '#default_value' => isset($settings['description_field']) ? $settings['description_field'] : '',
-      '#description' => t('The description field allows users to enter a description about the uploaded file.'),
-      '#parents' => array('instance', 'settings', 'description_field'),
-      '#weight' => 11,
+    '#type' => 'checkbox',
+    '#title' => t('Enable <em>Description</em> field'),
+    '#default_value' => isset($settings['description_field']) ? $settings['description_field'] : '',
+    '#description' => t('The description field allows users to enter a description about the uploaded file.'),
+    '#parents' => array('instance', 'settings', 'description_field'),
+    '#weight' => 11,
   );
 
   return $form;
@@ -385,18 +385,18 @@ function file_field_displayed($item, $field) {
  */
 function file_field_formatter_info() {
   return array(
-      'file_default' => array(
-          'label' => t('Generic file'),
-          'field types' => array('file'),
-      ),
-      'file_table' => array(
-          'label' => t('Table of files'),
-          'field types' => array('file'),
-      ),
-      'file_url_plain' => array(
-          'label' => t('URL to file'),
-          'field types' => array('file'),
-      ),
+    'file_default' => array(
+      'label' => t('Generic file'),
+      'field types' => array('file'),
+    ),
+    'file_table' => array(
+      'label' => t('Table of files'),
+      'field types' => array('file'),
+    ),
+    'file_url_plain' => array(
+      'label' => t('URL to file'),
+      'field types' => array('file'),
+    ),
   );
 }
 
@@ -405,17 +405,17 @@ function file_field_formatter_info() {
  */
 function file_field_widget_info() {
   return array(
-      'file_generic' => array(
-          'label' => t('File'),
-          'field types' => array('file'),
-          'settings' => array(
-              'progress_indicator' => 'throbber',
-          ),
-          'behaviors' => array(
-              'multiple values' => FIELD_BEHAVIOR_CUSTOM,
-              'default value' => FIELD_BEHAVIOR_NONE,
-          ),
+    'file_generic' => array(
+      'label' => t('File'),
+      'field types' => array('file'),
+      'settings' => array(
+        'progress_indicator' => 'throbber',
       ),
+      'behaviors' => array(
+        'multiple values' => FIELD_BEHAVIOR_CUSTOM,
+        'default value' => FIELD_BEHAVIOR_NONE,
+      ),
+    ),
   );
 }
 
@@ -427,16 +427,16 @@ function file_field_widget_settings_form($field, $instance) {
   $settings = $widget['settings'];
 
   $form['progress_indicator'] = array(
-      '#type' => 'radios',
-      '#title' => t('Progress indicator'),
-      '#options' => array(
-          'throbber' => t('Throbber'),
-          'bar' => t('Bar with progress meter'),
-      ),
-      '#default_value' => $settings['progress_indicator'],
-      '#description' => t('The throbber display does not show the status of uploads but takes up less space. The progress bar is helpful for monitoring progress on large uploads.'),
-      '#weight' => 16,
-      '#access' => file_progress_implementation(),
+    '#type' => 'radios',
+    '#title' => t('Progress indicator'),
+    '#options' => array(
+      'throbber' => t('Throbber'),
+      'bar' => t('Bar with progress meter'),
+    ),
+    '#default_value' => $settings['progress_indicator'],
+    '#description' => t('The throbber display does not show the status of uploads but takes up less space. The progress bar is helpful for monitoring progress on large uploads.'),
+    '#weight' => 16,
+    '#access' => file_progress_implementation(),
   );
 
   return $form;
@@ -448,9 +448,9 @@ function file_field_widget_settings_form($field, $instance) {
 function file_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
 
   $defaults = array(
-      'fid' => 0,
-      'display' => !empty($field['settings']['display_default']),
-      'description' => '',
+    'fid' => 0,
+    'display' => !empty($field['settings']['display_default']),
+    'description' => '',
   );
 
   // Load the items for form rebuilds from the field state as they might not be
@@ -464,14 +464,14 @@ function file_field_widget_form(&$form, &$form_state, $field, $instance, $langco
   // Essentially we use the managed_file type, extended with some enhancements.
   $element_info = element_info('managed_file');
   $element += array(
-      '#type' => 'managed_file',
-      '#upload_location' => file_field_widget_uri($field, $instance),
-      '#upload_validators' => file_field_widget_upload_validators($field, $instance),
-      '#value_callback' => 'file_field_widget_value',
-      '#process' => array_merge($element_info['#process'], array('file_field_widget_process')),
-      '#progress_indicator' => $instance['widget']['settings']['progress_indicator'],
-      // Allows this field to return an array instead of a single value.
-      '#extended' => TRUE,
+    '#type' => 'managed_file',
+    '#upload_location' => file_field_widget_uri($field, $instance),
+    '#upload_validators' => file_field_widget_upload_validators($field, $instance),
+    '#value_callback' => 'file_field_widget_value',
+    '#process' => array_merge($element_info['#process'], array('file_field_widget_process')),
+    '#progress_indicator' => $instance['widget']['settings']['progress_indicator'],
+    // Allows this field to return an array instead of a single value.
+    '#extended' => TRUE,
   );
 
   if ($field['cardinality'] == 1) {
@@ -593,9 +593,9 @@ function file_field_widget_value($element, $input = FALSE, $form_state) {
 
   // Ensure that all the required properties are returned even if empty.
   $return += array(
-      'fid' => 0,
-      'display' => 1,
-      'description' => '',
+    'fid' => 0,
+    'display' => 1,
+    'description' => '',
   );
 
   return $return;
@@ -619,27 +619,27 @@ function file_field_widget_process($element, &$form_state, $form) {
   // Add the display field if enabled.
   if (!empty($field['settings']['display_field']) && $item['fid']) {
     $element['display'] = array(
-        '#type' => empty($item['fid']) ? 'hidden' : 'checkbox',
-        '#title' => t('Include file in display'),
-        '#value' => isset($item['display']) ? $item['display'] : $field['settings']['display_default'],
-        '#attributes' => array('class' => array('file-display')),
+      '#type' => empty($item['fid']) ? 'hidden' : 'checkbox',
+      '#title' => t('Include file in display'),
+      '#value' => isset($item['display']) ? $item['display'] : $field['settings']['display_default'],
+      '#attributes' => array('class' => array('file-display')),
     );
   }
   else {
     $element['display'] = array(
-        '#type' => 'hidden',
-        '#value' => '1',
+      '#type' => 'hidden',
+      '#value' => '1',
     );
   }
 
   // Add the description field if enabled.
   if (!empty($instance['settings']['description_field']) && $item['fid']) {
     $element['description'] = array(
-        '#type' => variable_get('file_description_type', 'textfield'),
-        '#title' => t('Description'),
-        '#value' => isset($item['description']) ? $item['description'] : '',
-        '#maxlength' => variable_get('file_description_length', 128),
-        '#description' => t('The description may be used as the label of the link to the file.'),
+      '#type' => variable_get('file_description_type', 'textfield'),
+      '#title' => t('Description'),
+      '#value' => isset($item['description']) ? $item['description'] : '',
+      '#maxlength' => variable_get('file_description_length', 128),
+      '#description' => t('The description may be used as the label of the link to the file.'),
     );
   }
 
@@ -685,11 +685,11 @@ function file_field_widget_process_multiple($element, &$form_state, $form) {
     if ($key != $element['#file_upload_delta']) {
       $description = _file_field_get_description_from_element($element[$key]);
       $element[$key]['_weight'] = array(
-          '#type' => 'weight',
-          '#title' => $description ? t('Weight for @title', array('@title' => $description)) : t('Weight for new file'),
-          '#title_display' => 'invisible',
-          '#delta' => $count,
-          '#default_value' => $delta,
+        '#type' => 'weight',
+        '#title' => $description ? t('Weight for @title', array('@title' => $description)) : t('Weight for new file'),
+        '#title_display' => 'invisible',
+        '#delta' => $count,
+        '#default_value' => $delta,
       );
     }
     else {
@@ -697,8 +697,8 @@ function file_field_widget_process_multiple($element, &$form_state, $form) {
       // errors include the correct widget label.
       $element[$key]['#title'] = $element['#title'];
       $element[$key]['_weight'] = array(
-          '#type' => 'hidden',
-          '#default_value' => $delta,
+        '#type' => 'hidden',
+        '#default_value' => $delta,
       );
     }
   }
@@ -825,8 +825,8 @@ function theme_file_widget_multiple($variables) {
   $headers[] = t('File information');
   if ($element['#display_field']) {
     $headers[] = array(
-        'data' => t('Display'),
-        'class' => array('checkbox'),
+      'data' => t('Display'),
+      'class' => array('checkbox'),
     );
   }
   $headers[] = t('Weight');
@@ -880,8 +880,8 @@ function theme_file_widget_multiple($variables) {
     if ($element['#display_field']) {
       unset($widget['display']['#title']);
       $display = array(
-          'data' => render($widget['display']),
-          'class' => array('checkbox'),
+        'data' => render($widget['display']),
+        'class' => array('checkbox'),
       );
     }
     $widget['_weight']['#attributes']['class'] = array($weight_class);
@@ -896,8 +896,8 @@ function theme_file_widget_multiple($variables) {
     $row[] = $weight;
     $row[] = $operations;
     $rows[] = array(
-        'data' => $row,
-        'class' => isset($widget['#attributes']['class']) ? array_merge($widget['#attributes']['class'], array('draggable')) : array('draggable'),
+      'data' => $row,
+      'class' => isset($widget['#attributes']['class']) ? array_merge($widget['#attributes']['class'], array('draggable')) : array('draggable'),
     );
   }
 
@@ -967,8 +967,8 @@ function file_field_formatter_view($entity_type, $entity, $field, $instance, $la
     case 'file_default':
       foreach ($items as $delta => $item) {
         $element[$delta] = array(
-            '#theme' => 'file_link',
-            '#file' => (object) $item,
+          '#theme' => 'file_link',
+          '#file' => (object) $item,
         );
       }
       break;
@@ -983,8 +983,8 @@ function file_field_formatter_view($entity_type, $entity, $field, $instance, $la
       if (!empty($items)) {
         // Display all values in a single element..
         $element[0] = array(
-            '#theme' => 'file_formatter_table',
-            '#items' => $items,
+          '#theme' => 'file_formatter_table',
+          '#items' => $items,
         );
       }
       break;
@@ -1007,8 +1007,8 @@ function theme_file_formatter_table($variables) {
   $rows = array();
   foreach ($variables['items'] as $delta => $item) {
     $rows[] = array(
-        theme('file_link', array('file' => (object) $item)),
-        format_size($item['filesize']),
+      theme('file_link', array('file' => (object) $item)),
+      format_size($item['filesize']),
     );
   }
 

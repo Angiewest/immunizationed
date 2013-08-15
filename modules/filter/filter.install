@@ -10,99 +10,99 @@
  */
 function filter_schema() {
   $schema['filter'] = array(
-      'description' => 'Table that maps filters (HTML corrector) to text formats (Filtered HTML).',
-      'fields' => array(
-          'format' => array(
-              'type' => 'varchar',
-              'length' => 255,
-              'not null' => TRUE,
-              'description' => 'Foreign key: The {filter_format}.format to which this filter is assigned.',
-          ),
-          'module' => array(
-              'type' => 'varchar',
-              'length' => 64,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => 'The origin module of the filter.',
-          ),
-          'name' => array(
-              'type' => 'varchar',
-              'length' => 32,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => 'Name of the filter being referenced.',
-          ),
-          'weight' => array(
-              'type' => 'int',
-              'not null' => TRUE,
-              'default' => 0,
-              'description' => 'Weight of filter within format.',
-          ),
-          'status' => array(
-              'type' => 'int',
-              'not null' => TRUE,
-              'default' => 0,
-              'description' => 'Filter enabled status. (1 = enabled, 0 = disabled)',
-          ),
-          'settings' => array(
-              'type' => 'blob',
-              'not null' => FALSE,
-              'size' => 'big',
-              'serialize' => TRUE,
-              'description' => 'A serialized array of name value pairs that store the filter settings for the specific format.',
-          ),
+    'description' => 'Table that maps filters (HTML corrector) to text formats (Filtered HTML).',
+    'fields' => array(
+      'format' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Foreign key: The {filter_format}.format to which this filter is assigned.',
       ),
-      'primary key' => array('format', 'name'),
-      'indexes' => array(
-          'list' => array('weight', 'module', 'name'),
+      'module' => array(
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The origin module of the filter.',
       ),
+      'name' => array(
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Name of the filter being referenced.',
+      ),
+      'weight' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Weight of filter within format.',
+      ),
+      'status' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Filter enabled status. (1 = enabled, 0 = disabled)',
+      ),
+      'settings' => array(
+        'type' => 'blob',
+        'not null' => FALSE,
+        'size' => 'big',
+        'serialize' => TRUE,
+        'description' => 'A serialized array of name value pairs that store the filter settings for the specific format.',
+      ),
+    ),
+    'primary key' => array('format', 'name'),
+    'indexes' => array(
+      'list' => array('weight', 'module', 'name'),
+    ),
   );
   $schema['filter_format'] = array(
-      'description' => 'Stores text formats: custom groupings of filters, such as Filtered HTML.',
-      'fields' => array(
-          'format' => array(
-              'type' => 'varchar',
-              'length' => 255,
-              'not null' => TRUE,
-              'description' => 'Primary Key: Unique machine name of the format.',
-          ),
-          'name' => array(
-              'type' => 'varchar',
-              'length' => 255,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => 'Name of the text format (Filtered HTML).',
-              'translatable' => TRUE,
-          ),
-          'cache' => array(
-              'type' => 'int',
-              'not null' => TRUE,
-              'default' => 0,
-              'size' => 'tiny',
-              'description' => 'Flag to indicate whether format is cacheable. (1 = cacheable, 0 = not cacheable)',
-          ),
-          'status' => array(
-              'type' => 'int',
-              'unsigned' => TRUE,
-              'not null' => TRUE,
-              'default' => 1,
-              'size' => 'tiny',
-              'description' => 'The status of the text format. (1 = enabled, 0 = disabled)',
-          ),
-          'weight' => array(
-              'type' => 'int',
-              'not null' => TRUE,
-              'default' => 0,
-              'description' => 'Weight of text format to use when listing.',
-          ),
+    'description' => 'Stores text formats: custom groupings of filters, such as Filtered HTML.',
+    'fields' => array(
+      'format' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique machine name of the format.',
       ),
-      'primary key' => array('format'),
-      'unique keys' => array(
-          'name' => array('name'),
+      'name' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Name of the text format (Filtered HTML).',
+        'translatable' => TRUE,
       ),
-      'indexes' => array(
-          'status_weight' => array('status', 'weight'),
+      'cache' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'tiny',
+        'description' => 'Flag to indicate whether format is cacheable. (1 = cacheable, 0 = not cacheable)',
       ),
+      'status' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 1,
+        'size' => 'tiny',
+        'description' => 'The status of the text format. (1 = enabled, 0 = disabled)',
+      ),
+      'weight' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Weight of text format to use when listing.',
+      ),
+    ),
+    'primary key' => array('format'),
+    'unique keys' => array(
+      'name' => array('name'),
+    ),
+    'indexes' => array(
+      'status_weight' => array('status', 'weight'),
+    ),
   );
 
   $schema['cache_filter'] = drupal_get_schema_unprocessed('system', 'cache');
@@ -120,26 +120,26 @@ function filter_install() {
   // plain text format with very basic formatting, but it can be modified by
   // installation profiles to have other properties.
   $plain_text_format = array(
-      'format' => 'plain_text',
-      'name' => 'Plain text',
-      'weight' => 10,
-      'filters' => array(
-          // Escape all HTML.
-          'filter_html_escape' => array(
-              'weight' => 0,
-              'status' => 1,
-          ),
-          // URL filter.
-          'filter_url' => array(
-              'weight' => 1,
-              'status' => 1,
-          ),
-          // Line break filter.
-          'filter_autop' => array(
-              'weight' => 2,
-              'status' => 1,
-          ),
+    'format' => 'plain_text',
+    'name' => 'Plain text',
+    'weight' => 10,
+    'filters' => array(
+      // Escape all HTML.
+      'filter_html_escape' => array(
+        'weight' => 0,
+        'status' => 1,
       ),
+      // URL filter.
+      'filter_url' => array(
+        'weight' => 1,
+        'status' => 1,
+      ),
+      // Line break filter.
+      'filter_autop' => array(
+        'weight' => 2,
+        'status' => 1,
+      ),
+    ),
   );
   $plain_text_format = (object) $plain_text_format;
   filter_format_save($plain_text_format);
@@ -156,7 +156,7 @@ function filter_update_dependencies() {
   // after the {role} and {role_permission} tables are properly set up, which
   // happens in user_update_7007().
   $dependencies['filter'][7005] = array(
-      'user' => 7007,
+    'user' => 7007,
   );
 
   return $dependencies;
@@ -174,22 +174,22 @@ function filter_update_7000() {
 
   // Add the new {filter_format}.status and {filter_format}.weight column.
   db_add_field('filter_format', 'status', array(
-  'type' => 'int',
-  'unsigned' => TRUE,
-  'not null' => TRUE,
-  'default' => 1,
-  'size' => 'tiny',
-  'description' => 'The status of the text format. (1 = enabled, 0 = disabled)',
+    'type' => 'int',
+    'unsigned' => TRUE,
+    'not null' => TRUE,
+    'default' => 1,
+    'size' => 'tiny',
+    'description' => 'The status of the text format. (1 = enabled, 0 = disabled)',
   ));
   db_add_field('filter_format', 'weight', array(
-  'type' => 'int',
-  'not null' => TRUE,
-  'default' => 0,
-  'description' => 'Weight of text format to use when listing.',
+    'type' => 'int',
+    'not null' => TRUE,
+    'default' => 0,
+    'description' => 'Weight of text format to use when listing.',
   ), array(
-  'indexes' => array(
-  'status_weight' => array('status', 'weight'),
-  ),
+    'indexes' => array(
+      'status_weight' => array('status', 'weight'),
+    ),
   ));
 }
 
@@ -204,10 +204,10 @@ function filter_update_7001() {
     // Deprecated constants FILTER_HTML_STRIP = 1 and FILTER_HTML_ESCAPE = 2.
     if (variable_get('filter_html_' . $format_id, 1) == 2) {
       $insert->values(array(
-          'format' => $format_id,
-          'module' => 'filter',
-          'delta' => 4,
-          'weight' => 0,
+        'format' => $format_id,
+        'module' => 'filter',
+        'delta' => 4,
+        'weight' => 0,
       ));
     }
     variable_del('filter_html_' . $format_id);
@@ -225,67 +225,67 @@ function filter_update_7003() {
   db_rename_table('filters', 'd6_upgrade_filter');
   // Creates the Drupal 7 filter table.
   $filter_table =  array(
-      'description' => 'Table that maps filters (HTML corrector) to text formats (Filtered HTML).',
-      'fields' => array(
-          'format' => array(
-              'type' => 'int',
-              'not null' => TRUE,
-              'default' => 0,
-              'description' => 'Foreign key: The {filter_format}.format to which this filter is assigned.',
-          ),
-          'module' => array(
-              'type' => 'varchar',
-              'length' => 64,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => 'The origin module of the filter.',
-          ),
-          'name' => array(
-              'type' => 'varchar',
-              'length' => 32,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => 'Name of the filter being referenced.',
-          ),
-          'weight' => array(
-              'type' => 'int',
-              'not null' => TRUE,
-              'default' => 0,
-              'description' => 'Weight of filter within format.',
-          ),
-          'status' => array(
-          'type' => 'int',
-          'not null' => TRUE,
-          'default' => 0,
-          'description' => 'Filter enabled status. (1 = enabled, 0 = disabled)',
-          ),
-          'settings' => array(
-          'type' => 'blob',
-          'not null' => FALSE,
-          'size' => 'big',
-          'serialize' => TRUE,
-          'description' => 'A serialized array of name value pairs that store the filter settings for the specific format.',
-          ),
+    'description' => 'Table that maps filters (HTML corrector) to text formats (Filtered HTML).',
+    'fields' => array(
+      'format' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Foreign key: The {filter_format}.format to which this filter is assigned.',
       ),
-      'primary key' => array('format', 'name'),
-      'indexes' => array(
+      'module' => array(
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The origin module of the filter.',
+      ),
+      'name' => array(
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Name of the filter being referenced.',
+      ),
+      'weight' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Weight of filter within format.',
+      ),
+      'status' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Filter enabled status. (1 = enabled, 0 = disabled)',
+      ),
+      'settings' => array(
+        'type' => 'blob',
+        'not null' => FALSE,
+        'size' => 'big',
+        'serialize' => TRUE,
+        'description' => 'A serialized array of name value pairs that store the filter settings for the specific format.',
+      ),
+    ),
+    'primary key' => array('format', 'name'),
+    'indexes' => array(
       'list' => array('weight', 'module', 'name'),
-      ),
+    ),
   );
   db_create_table('filter', $filter_table);
 
   // Get an array of the renamed filter deltas, organized by module.
   $renamed_deltas = array(
-      'filter' => array(
-          '0' => 'filter_html',
-          '1' => 'filter_autop',
-          '2' => 'filter_url',
-          '3' => 'filter_htmlcorrector',
-          '4' => 'filter_html_escape',
-      ),
-      'php' => array(
-          '0' => 'php_code',
-      ),
+    'filter' => array(
+      '0' => 'filter_html',
+      '1' => 'filter_autop',
+      '2' => 'filter_url',
+      '3' => 'filter_htmlcorrector',
+      '4' => 'filter_html_escape',
+    ),
+    'php' => array(
+      '0' => 'php_code',
+    ),
   );
 
   // Loop through each filter and make changes to the core filter table by
@@ -293,10 +293,10 @@ function filter_update_7003() {
   foreach ($renamed_deltas as $module => $deltas) {
     foreach ($deltas as $old_delta => $new_name) {
       $query = db_select('d6_upgrade_filter')
-      ->fields('d6_upgrade_filter', array('format', 'weight'))
-      ->condition('module', $module)
-      ->condition('delta', $old_delta)
-      ->distinct();
+        ->fields('d6_upgrade_filter', array('format', 'weight'))
+        ->condition('module', $module)
+        ->condition('delta', $old_delta)
+        ->distinct();
 
       foreach ($query->execute() as $record) {
         // Port the filter settings.
@@ -323,20 +323,20 @@ function filter_update_7003() {
         }
 
         db_insert('filter')
-        ->fields(array(
-        'format' => $record->format,
-        'module' => $module,
-        'name' => $new_name,
-        'weight' => $record->weight,
-        'settings' => serialize($settings),
-        'status' => 1,
-        ))
-        ->execute();
+          ->fields(array(
+            'format' => $record->format,
+            'module' => $module,
+            'name' => $new_name,
+            'weight' => $record->weight,
+            'settings' => serialize($settings),
+            'status' => 1,
+          ))
+          ->execute();
       }
       db_delete('d6_upgrade_filter')
-      ->condition('module', $module)
-      ->condition('delta', $old_delta)
-      ->execute();
+        ->condition('module', $module)
+        ->condition('delta', $old_delta)
+        ->execute();
     }
   }
 }
@@ -381,50 +381,50 @@ function filter_update_7005() {
 
   // Insert the filter format.
   $format_id = db_insert('filter_format')
-  ->fields(array(
+    ->fields(array(
       'name' => $format_name,
       'cache' => 1,
       'weight' => 1,
       'status' => 1,
-  ))
-  ->execute();
+    ))
+    ->execute();
 
   // This format should output plain text, so we escape all HTML and apply the
   // line break and URL filters only.
   db_insert('filter')
-  ->fields(array(
-  'format',
-  'name',
-  'weight',
-  'status',
-  'module',
-  'settings',
-  ))
-  ->values(array(
-  'format' => $format_id,
-  'name' => 'filter_html_escape',
-  'weight' => 0,
-  'status' => 1,
-  'module' => 'filter',
-  'settings' => serialize(array()),
-  ))
-  ->values(array(
-  'format' => $format_id,
-  'name' => 'filter_url',
-  'weight' => 1,
-  'status' => 1,
-  'module' => 'filter',
-  'settings' => serialize(array()),
-  ))
-  ->values(array(
-  'format' => $format_id,
-  'name' => 'filter_autop',
-  'weight' => 2,
-  'status' => 1,
-  'module' => 'filter',
-  'settings' => serialize(array()),
-  ))
-  ->execute();
+    ->fields(array(
+      'format',
+      'name',
+      'weight',
+      'status',
+      'module',
+      'settings',
+    ))
+    ->values(array(
+      'format' => $format_id,
+      'name' => 'filter_html_escape',
+      'weight' => 0,
+      'status' => 1,
+      'module' => 'filter',
+      'settings' => serialize(array()),
+    ))
+    ->values(array(
+      'format' => $format_id,
+      'name' => 'filter_url',
+      'weight' => 1,
+      'status' => 1,
+      'module' => 'filter',
+      'settings' => serialize(array()),
+    ))
+    ->values(array(
+      'format' => $format_id,
+      'name' => 'filter_autop',
+      'weight' => 2,
+      'status' => 1,
+      'module' => 'filter',
+      'settings' => serialize(array()),
+    ))
+    ->execute();
 
   variable_set('filter_fallback_format', $format_id);
   drupal_set_message('A new <em>Plain text</em> format has been created which will be available to all users. You can configure this text format on the <a href="' . url('admin/config/content/formats/' . $format) . '">text format configuration page</a>.');
@@ -432,9 +432,9 @@ function filter_update_7005() {
   // Move the former site-wide default text format to the top of the list, so
   // that it continues to be the default text format for all users.
   db_update('filter_format')
-  ->fields(array('weight' => -1))
-  ->condition('format', $default_format)
-  ->execute();
+    ->fields(array('weight' => -1))
+    ->condition('format', $default_format)
+    ->execute();
 
   // We do not delete the 'filter_default_format' variable, since other modules
   // need it in their update functions; for an example, see user_update_7010().
@@ -476,16 +476,16 @@ function filter_update_7009() {
  */
 function filter_update_7010() {
   db_change_field('filter_format', 'format', 'format', array(
-  'type' => 'varchar',
-  'length' => 255,
-  'not null' => TRUE,
-  'description' => 'Primary Key: Unique machine name of the format.',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'description' => 'Primary Key: Unique machine name of the format.',
   ));
   db_change_field('filter', 'format', 'format', array(
-  'type' => 'varchar',
-  'length' => 255,
-  'not null' => TRUE,
-  'description' => 'Foreign key: The {filter_format}.format to which this filter is assigned.',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'description' => 'Foreign key: The {filter_format}.format to which this filter is assigned.',
   ));
 }
 

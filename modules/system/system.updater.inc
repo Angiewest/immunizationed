@@ -78,9 +78,9 @@ class ModuleUpdater extends Updater implements DrupalUpdaterInterface {
    */
   public function postInstallTasks() {
     return array(
-        l(t('Install another module'), 'admin/modules/install'),
-        l(t('Enable newly added modules'), 'admin/modules'),
-        l(t('Administration pages'), 'admin'),
+      l(t('Install another module'), 'admin/modules/install'),
+      l(t('Enable newly added modules'), 'admin/modules'),
+      l(t('Administration pages'), 'admin'),
     );
   }
 
@@ -143,8 +143,8 @@ class ThemeUpdater extends Updater implements DrupalUpdaterInterface {
 
   public function postInstallTasks() {
     return array(
-        l(t('Enable newly added themes'), 'admin/appearance'),
-        l(t('Administration pages'), 'admin'),
+      l(t('Enable newly added themes'), 'admin/appearance'),
+      l(t('Administration pages'), 'admin'),
     );
   }
 }

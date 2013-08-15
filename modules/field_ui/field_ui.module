@@ -62,12 +62,12 @@ function field_ui_field_attach_rename_bundle($entity_type, $bundle_old, $bundle_
  */
 function field_ui_menu() {
   $items['admin/reports/fields'] = array(
-      'title' => 'Field list',
-      'description' => 'Overview of fields on all entity types.',
-      'page callback' => 'field_ui_fields_list',
-      'access arguments' => array('administer content types'),
-      'type' => MENU_NORMAL_ITEM,
-      'file' => 'field_ui.admin.inc',
+    'title' => 'Field list',
+    'description' => 'Overview of fields on all entity types.',
+    'page callback' => 'field_ui_fields_list',
+    'access arguments' => array('administer content types'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'field_ui.admin.inc',
   );
 
   // Ensure the following is not executed until field_bundles is working and
@@ -105,68 +105,68 @@ function field_ui_menu() {
           // Extract access information, providing defaults.
           $access = array_intersect_key($bundle_info['admin'], drupal_map_assoc(array('access callback', 'access arguments')));
           $access += array(
-              'access callback' => 'user_access',
-              'access arguments' => array('administer site configuration'),
+            'access callback' => 'user_access',
+            'access arguments' => array('administer site configuration'),
           );
 
           $items["$path/fields"] = array(
-              'title' => 'Manage fields',
-              'page callback' => 'drupal_get_form',
-              'page arguments' => array('field_ui_field_overview_form', $entity_type, $bundle_arg),
-              'type' => MENU_LOCAL_TASK,
-              'weight' => 1,
-              'file' => 'field_ui.admin.inc',
+            'title' => 'Manage fields',
+            'page callback' => 'drupal_get_form',
+            'page arguments' => array('field_ui_field_overview_form', $entity_type, $bundle_arg),
+            'type' => MENU_LOCAL_TASK,
+            'weight' => 1,
+            'file' => 'field_ui.admin.inc',
           ) + $access;
           $items["$path/fields/%field_ui_menu"] = array(
-              'load arguments' => array($entity_type, $bundle_arg, $bundle_pos, '%map'),
-              'title callback' => 'field_ui_menu_title',
-              'title arguments' => array($field_position),
-              'page callback' => 'drupal_get_form',
-              'page arguments' => array('field_ui_field_edit_form', $field_position),
-              'file' => 'field_ui.admin.inc',
+            'load arguments' => array($entity_type, $bundle_arg, $bundle_pos, '%map'),
+            'title callback' => 'field_ui_menu_title',
+            'title arguments' => array($field_position),
+            'page callback' => 'drupal_get_form',
+            'page arguments' => array('field_ui_field_edit_form', $field_position),
+            'file' => 'field_ui.admin.inc',
           ) + $access;
           $items["$path/fields/%field_ui_menu/edit"] = array(
-              'load arguments' => array($entity_type, $bundle_arg, $bundle_pos, '%map'),
-              'title' => 'Edit',
-              'page callback' => 'drupal_get_form',
-              'page arguments' => array('field_ui_field_edit_form', $field_position),
-              'type' => MENU_DEFAULT_LOCAL_TASK,
-              'file' => 'field_ui.admin.inc',
+            'load arguments' => array($entity_type, $bundle_arg, $bundle_pos, '%map'),
+            'title' => 'Edit',
+            'page callback' => 'drupal_get_form',
+            'page arguments' => array('field_ui_field_edit_form', $field_position),
+            'type' => MENU_DEFAULT_LOCAL_TASK,
+            'file' => 'field_ui.admin.inc',
           ) + $access;
           $items["$path/fields/%field_ui_menu/field-settings"] = array(
-              'load arguments' => array($entity_type, $bundle_arg, $bundle_pos, '%map'),
-              'title' => 'Field settings',
-              'page callback' => 'drupal_get_form',
-              'page arguments' => array('field_ui_field_settings_form', $field_position),
-              'type' => MENU_LOCAL_TASK,
-              'file' => 'field_ui.admin.inc',
+            'load arguments' => array($entity_type, $bundle_arg, $bundle_pos, '%map'),
+            'title' => 'Field settings',
+            'page callback' => 'drupal_get_form',
+            'page arguments' => array('field_ui_field_settings_form', $field_position),
+            'type' => MENU_LOCAL_TASK,
+            'file' => 'field_ui.admin.inc',
           ) + $access;
           $items["$path/fields/%field_ui_menu/widget-type"] = array(
-              'load arguments' => array($entity_type, $bundle_arg, $bundle_pos, '%map'),
-              'title' => 'Widget type',
-              'page callback' => 'drupal_get_form',
-              'page arguments' => array('field_ui_widget_type_form', $field_position),
-              'type' => MENU_LOCAL_TASK,
-              'file' => 'field_ui.admin.inc',
+            'load arguments' => array($entity_type, $bundle_arg, $bundle_pos, '%map'),
+            'title' => 'Widget type',
+            'page callback' => 'drupal_get_form',
+            'page arguments' => array('field_ui_widget_type_form', $field_position),
+            'type' => MENU_LOCAL_TASK,
+            'file' => 'field_ui.admin.inc',
           ) + $access;
           $items["$path/fields/%field_ui_menu/delete"] = array(
-              'load arguments' => array($entity_type, $bundle_arg, $bundle_pos, '%map'),
-              'title' => 'Delete',
-              'page callback' => 'drupal_get_form',
-              'page arguments' => array('field_ui_field_delete_form', $field_position),
-              'type' => MENU_LOCAL_TASK,
-              'weight' => 10,
-              'file' => 'field_ui.admin.inc',
+            'load arguments' => array($entity_type, $bundle_arg, $bundle_pos, '%map'),
+            'title' => 'Delete',
+            'page callback' => 'drupal_get_form',
+            'page arguments' => array('field_ui_field_delete_form', $field_position),
+            'type' => MENU_LOCAL_TASK,
+            'weight' => 10,
+            'file' => 'field_ui.admin.inc',
           ) + $access;
 
           // 'Manage display' tab.
           $items["$path/display"] = array(
-              'title' => 'Manage display',
-              'page callback' => 'drupal_get_form',
-              'page arguments' => array('field_ui_display_overview_form', $entity_type, $bundle_arg, 'default'),
-              'type' => MENU_LOCAL_TASK,
-              'weight' => 2,
-              'file' => 'field_ui.admin.inc',
+            'title' => 'Manage display',
+            'page callback' => 'drupal_get_form',
+            'page arguments' => array('field_ui_display_overview_form', $entity_type, $bundle_arg, 'default'),
+            'type' => MENU_LOCAL_TASK,
+            'weight' => 2,
+            'file' => 'field_ui.admin.inc',
           ) + $access;
 
           // View modes secondary tabs.
@@ -180,16 +180,16 @@ function field_ui_menu() {
           $view_modes = array('default' => array('label' => t('Default'))) + $entity_info['view modes'];
           foreach ($view_modes as $view_mode => $view_mode_info) {
             $items["$path/display/$view_mode"] = array(
-                'title' => $view_mode_info['label'],
-                'page arguments' => array('field_ui_display_overview_form', $entity_type, $bundle_arg, $view_mode),
-                // The access callback needs to check both the current 'custom
-                // display' setting for the view mode, and the overall access
-                // rules for the bundle admin pages.
-                'access callback' => '_field_ui_view_mode_menu_access',
-                'access arguments' => array_merge(array($entity_type, $bundle_arg, $view_mode, $access['access callback']), $access['access arguments']),
-                'type' => ($view_mode == 'default' ? MENU_DEFAULT_LOCAL_TASK : MENU_LOCAL_TASK),
-                'weight' => ($view_mode == 'default' ? -10 : $weight++),
-                'file' => 'field_ui.admin.inc',
+              'title' => $view_mode_info['label'],
+              'page arguments' => array('field_ui_display_overview_form', $entity_type, $bundle_arg, $view_mode),
+              // The access callback needs to check both the current 'custom
+              // display' setting for the view mode, and the overall access
+              // rules for the bundle admin pages.
+              'access callback' => '_field_ui_view_mode_menu_access',
+              'access arguments' => array_merge(array($entity_type, $bundle_arg, $view_mode, $access['access callback']), $access['access arguments']),
+              'type' => ($view_mode == 'default' ? MENU_DEFAULT_LOCAL_TASK : MENU_LOCAL_TASK),
+              'weight' => ($view_mode == 'default' ? -10 : $weight++),
+              'file' => 'field_ui.admin.inc',
             );
           }
         }
@@ -289,9 +289,9 @@ function _field_ui_view_mode_menu_access($entity_type, $bundle, $view_mode, $acc
  */
 function field_ui_theme() {
   return array(
-      'field_ui_table' => array(
-          'render element' => 'elements',
-      ),
+    'field_ui_table' => array(
+      'render element' => 'elements',
+    ),
   );
 }
 
@@ -300,11 +300,11 @@ function field_ui_theme() {
  */
 function field_ui_element_info() {
   return array(
-      'field_ui_table' => array(
-          '#theme' => 'field_ui_table',
-          '#pre_render' => array('field_ui_table_pre_render'),
-          '#regions' => array('' => array()),
-      ),
+    'field_ui_table' => array(
+      '#theme' => 'field_ui_table',
+      '#pre_render' => array('field_ui_table_pre_render'),
+      '#regions' => array('' => array()),
+    ),
   );
 }
 
@@ -374,9 +374,9 @@ function field_ui_form_node_type_form_alter(&$form, $form_state) {
   // We want to display the button only on add page.
   if (empty($form['#node_type']->type)) {
     $form['actions']['save_continue'] = array(
-        '#type' => 'submit',
-        '#value' => t('Save and add fields'),
-        '#weight' => 45,
+      '#type' => 'submit',
+      '#value' => t('Save and add fields'),
+      '#weight' => 45,
     );
     $form['#submit'][] = 'field_ui_form_node_type_form_submit';
   }

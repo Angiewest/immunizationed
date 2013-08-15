@@ -13,20 +13,20 @@ class DatabaseTasks_pgsql extends DatabaseTasks {
 
   public function __construct() {
     $this->tasks[] = array(
-        'function' => 'checkEncoding',
-        'arguments' => array(),
+      'function' => 'checkEncoding',
+      'arguments' => array(),
     );
     $this->tasks[] = array(
-        'function' => 'checkPHPVersion',
-        'arguments' => array(),
+      'function' => 'checkPHPVersion',
+      'arguments' => array(),
     );
     $this->tasks[] = array(
-        'function' => 'checkBinaryOutput',
-        'arguments' => array(),
+      'function' => 'checkBinaryOutput',
+      'arguments' => array(),
     );
     $this->tasks[] = array(
-        'function' => 'initializeDatabase',
-        'arguments' => array(),
+      'function' => 'initializeDatabase',
+      'arguments' => array(),
     );
   }
 
@@ -48,9 +48,9 @@ class DatabaseTasks_pgsql extends DatabaseTasks {
       }
       else {
         $replacements = array(
-            '%encoding' => 'UTF8',
-            '%driver' => $this->name(),
-            '!link' => '<a href="INSTALL.pgsql.txt">INSTALL.pgsql.txt</a>'
+          '%encoding' => 'UTF8',
+          '%driver' => $this->name(),
+          '!link' => '<a href="INSTALL.pgsql.txt">INSTALL.pgsql.txt</a>'
         );
         $text  = 'The %driver database must use %encoding encoding to work with Drupal.';
         $text .= 'Recreate the database with %encoding encoding. See !link for more details.';
@@ -114,10 +114,10 @@ class DatabaseTasks_pgsql extends DatabaseTasks {
         // right thing.
         if (!$this->checkBinaryOutputSuccess()) {
           $replacements = array(
-              '%setting' => 'bytea_output',
-              '%current_value' => 'hex',
-              '%needed_value' => 'escape',
-              '!query' => "<code>" . $query . "</code>",
+            '%setting' => 'bytea_output',
+            '%current_value' => 'hex',
+            '%needed_value' => 'escape',
+            '!query' => "<code>" . $query . "</code>",
           );
           $this->fail(st("The %setting setting is currently set to '%current_value', but needs to be '%needed_value'. Change this by running the following query: !query", $replacements));
         }
@@ -145,49 +145,49 @@ class DatabaseTasks_pgsql extends DatabaseTasks {
     try {
       // Create functions.
       db_query('CREATE OR REPLACE FUNCTION "greatest"(numeric, numeric) RETURNS numeric AS
-          \'SELECT CASE WHEN (($1 > $2) OR ($2 IS NULL)) THEN $1 ELSE $2 END;\'
+        \'SELECT CASE WHEN (($1 > $2) OR ($2 IS NULL)) THEN $1 ELSE $2 END;\'
+        LANGUAGE \'sql\''
+      );
+      db_query('CREATE OR REPLACE FUNCTION "greatest"(numeric, numeric, numeric) RETURNS numeric AS
+        \'SELECT greatest($1, greatest($2, $3));\'
+        LANGUAGE \'sql\''
+      );
+      // Don't use {} around pg_proc table.
+      if (!db_query("SELECT COUNT(*) FROM pg_proc WHERE proname = 'rand'")->fetchField()) {
+        db_query('CREATE OR REPLACE FUNCTION "rand"() RETURNS float AS
+          \'SELECT random();\'
           LANGUAGE \'sql\''
-          );
-          db_query('CREATE OR REPLACE FUNCTION "greatest"(numeric, numeric, numeric) RETURNS numeric AS
-              \'SELECT greatest($1, greatest($2, $3));\'
-              LANGUAGE \'sql\''
-              );
-              // Don't use {} around pg_proc table.
-              if (!db_query("SELECT COUNT(*) FROM pg_proc WHERE proname = 'rand'")->fetchField()) {
-                db_query('CREATE OR REPLACE FUNCTION "rand"() RETURNS float AS
-                    \'SELECT random();\'
-                    LANGUAGE \'sql\''
-                    );
-              }
+        );
+      }
 
-              db_query('CREATE OR REPLACE FUNCTION "substring_index"(text, text, integer) RETURNS text AS
-                  \'SELECT array_to_string((string_to_array($1, $2)) [1:$3], $2);\'
-                  LANGUAGE \'sql\''
-                  );
+      db_query('CREATE OR REPLACE FUNCTION "substring_index"(text, text, integer) RETURNS text AS
+        \'SELECT array_to_string((string_to_array($1, $2)) [1:$3], $2);\'
+        LANGUAGE \'sql\''
+      );
 
-              // Using || to concatenate in Drupal is not recommeneded because there are
-              // database drivers for Drupal that do not support the syntax, however
-              // they do support CONCAT(item1, item2) which we can replicate in
-              // PostgreSQL. PostgreSQL requires the function to be defined for each
-              // different argument variation the function can handle.
-              db_query('CREATE OR REPLACE FUNCTION "concat"(anynonarray, anynonarray) RETURNS text AS
-                  \'SELECT CAST($1 AS text) || CAST($2 AS text);\'
-                  LANGUAGE \'sql\'
-                  ');
-              db_query('CREATE OR REPLACE FUNCTION "concat"(text, anynonarray) RETURNS text AS
-                  \'SELECT $1 || CAST($2 AS text);\'
-                  LANGUAGE \'sql\'
-                  ');
-              db_query('CREATE OR REPLACE FUNCTION "concat"(anynonarray, text) RETURNS text AS
-                  \'SELECT CAST($1 AS text) || $2;\'
-                  LANGUAGE \'sql\'
-                  ');
-              db_query('CREATE OR REPLACE FUNCTION "concat"(text, text) RETURNS text AS
-                  \'SELECT $1 || $2;\'
-                  LANGUAGE \'sql\'
-                  ');
+      // Using || to concatenate in Drupal is not recommeneded because there are
+      // database drivers for Drupal that do not support the syntax, however
+      // they do support CONCAT(item1, item2) which we can replicate in
+      // PostgreSQL. PostgreSQL requires the function to be defined for each
+      // different argument variation the function can handle.
+      db_query('CREATE OR REPLACE FUNCTION "concat"(anynonarray, anynonarray) RETURNS text AS
+        \'SELECT CAST($1 AS text) || CAST($2 AS text);\'
+        LANGUAGE \'sql\'
+      ');
+      db_query('CREATE OR REPLACE FUNCTION "concat"(text, anynonarray) RETURNS text AS
+        \'SELECT $1 || CAST($2 AS text);\'
+        LANGUAGE \'sql\'
+      ');
+      db_query('CREATE OR REPLACE FUNCTION "concat"(anynonarray, text) RETURNS text AS
+        \'SELECT CAST($1 AS text) || $2;\'
+        LANGUAGE \'sql\'
+      ');
+      db_query('CREATE OR REPLACE FUNCTION "concat"(text, text) RETURNS text AS
+        \'SELECT $1 || $2;\'
+        LANGUAGE \'sql\'
+      ');
 
-              $this->pass(st('PostgreSQL has initialized itself.'));
+      $this->pass(st('PostgreSQL has initialized itself.'));
     }
     catch (Exception $e) {
       $this->fail(st('Drupal could not be correctly setup with the existing database. Revise any errors.'));

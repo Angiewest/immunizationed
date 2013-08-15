@@ -10,92 +10,92 @@
  */
 function comment_token_info() {
   $type = array(
-      'name' => t('Comments'),
-      'description' => t('Tokens for comments posted on the site.'),
-      'needs-data' => 'comment',
+    'name' => t('Comments'),
+    'description' => t('Tokens for comments posted on the site.'),
+    'needs-data' => 'comment',
   );
 
   // Comment-related tokens for nodes
   $node['comment-count'] = array(
-      'name' => t("Comment count"),
-      'description' => t("The number of comments posted on a node."),
+    'name' => t("Comment count"),
+    'description' => t("The number of comments posted on a node."),
   );
   $node['comment-count-new'] = array(
-      'name' => t("New comment count"),
-      'description' => t("The number of comments posted on a node since the reader last viewed it."),
+    'name' => t("New comment count"),
+    'description' => t("The number of comments posted on a node since the reader last viewed it."),
   );
 
   // Core comment tokens
   $comment['cid'] = array(
-      'name' => t("Comment ID"),
-      'description' => t("The unique ID of the comment."),
+    'name' => t("Comment ID"),
+    'description' => t("The unique ID of the comment."),
   );
   $comment['hostname'] = array(
-      'name' => t("IP Address"),
-      'description' => t("The IP address of the computer the comment was posted from."),
+    'name' => t("IP Address"),
+    'description' => t("The IP address of the computer the comment was posted from."),
   );
   $comment['name'] = array(
-      'name' => t("Name"),
-      'description' => t("The name left by the comment author."),
+    'name' => t("Name"),
+    'description' => t("The name left by the comment author."),
   );
   $comment['mail'] = array(
-      'name' => t("Email address"),
-      'description' => t("The email address left by the comment author."),
+    'name' => t("Email address"),
+    'description' => t("The email address left by the comment author."),
   );
   $comment['homepage'] = array(
-      'name' => t("Home page"),
-      'description' => t("The home page URL left by the comment author."),
+    'name' => t("Home page"),
+    'description' => t("The home page URL left by the comment author."),
   );
   $comment['title'] = array(
-      'name' => t("Title"),
-      'description' => t("The title of the comment."),
+    'name' => t("Title"),
+    'description' => t("The title of the comment."),
   );
   $comment['body'] = array(
-      'name' => t("Content"),
-      'description' => t("The formatted content of the comment itself."),
+    'name' => t("Content"),
+    'description' => t("The formatted content of the comment itself."),
   );
   $comment['url'] = array(
-      'name' => t("URL"),
-      'description' => t("The URL of the comment."),
+    'name' => t("URL"),
+    'description' => t("The URL of the comment."),
   );
   $comment['edit-url'] = array(
-      'name' => t("Edit URL"),
-      'description' => t("The URL of the comment's edit page."),
+    'name' => t("Edit URL"),
+    'description' => t("The URL of the comment's edit page."),
   );
 
   // Chained tokens for comments
   $comment['created'] = array(
-      'name' => t("Date created"),
-      'description' => t("The date the comment was posted."),
-      'type' => 'date',
+    'name' => t("Date created"),
+    'description' => t("The date the comment was posted."),
+    'type' => 'date',
   );
   $comment['changed'] = array(
-      'name' => t("Date changed"),
-      'description' => t("The date the comment was most recently updated."),
-      'type' => 'date',
+    'name' => t("Date changed"),
+    'description' => t("The date the comment was most recently updated."),
+    'type' => 'date',
   );
   $comment['parent'] = array(
-      'name' => t("Parent"),
-      'description' => t("The comment's parent, if comment threading is active."),
-      'type' => 'comment',
+    'name' => t("Parent"),
+    'description' => t("The comment's parent, if comment threading is active."),
+    'type' => 'comment',
   );
   $comment['node'] = array(
-      'name' => t("Node"),
-      'description' => t("The node the comment was posted to."),
-      'type' => 'node',
+    'name' => t("Node"),
+    'description' => t("The node the comment was posted to."),
+    'type' => 'node',
   );
   $comment['author'] = array(
-      'name' => t("Author"),
-      'description' => t("The author of the comment, if they were logged in."),
-      'type' => 'user',
+    'name' => t("Author"),
+    'description' => t("The author of the comment, if they were logged in."),
+    'type' => 'user',
   );
 
   return array(
-      'types' => array('comment' => $type),
-      'tokens' => array(
-          'node' => $node,
-          'comment' => $comment,
-      ),
+    'types' => array('comment' => $type),
+    'tokens' => array(
+      'node' => $node,
+      'comment' => $comment,
+    ),
   );
 }
 
@@ -125,7 +125,7 @@ function comment_tokens($type, $tokens, array $data = array(), array $options = 
           $replacements[$original] = $comment->cid;
           break;
 
-          // Poster identity information for comments
+        // Poster identity information for comments
         case 'hostname':
           $replacements[$original] = $sanitize ? check_plain($comment->hostname) : $comment->hostname;
           break;
@@ -162,7 +162,7 @@ function comment_tokens($type, $tokens, array $data = array(), array $options = 
           }
           break;
 
-          // Comment related URLs.
+        // Comment related URLs.
         case 'url':
           $url_options['fragment']  = 'comment-' . $comment->cid;
           $replacements[$original] = url('comment/' . $comment->cid, $url_options);
@@ -173,7 +173,7 @@ function comment_tokens($type, $tokens, array $data = array(), array $options = 
           $replacements[$original] = url('comment/' . $comment->cid . '/edit', $url_options);
           break;
 
-          // Default values for the chained tokens handled below.
+        // Default values for the chained tokens handled below.
         case 'author':
           $replacements[$original] = $sanitize ? filter_xss($comment->name) : $comment->name;
           break;

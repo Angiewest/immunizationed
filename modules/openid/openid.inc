@@ -14,64 +14,64 @@
  * See RFC 2631: http://www.ietf.org/rfc/rfc2631.txt
  */
 define('OPENID_DH_DEFAULT_MOD', '155172898181473697471232257763715539915724801' .
-    '966915404479707795314057629378541917580651227423698188993727816152646631' .
-    '438561595825688188889951272158842675419950341258706556549803580104870537' .
-    '681476726513255747040765857479291291572334510643245094715007229621094194' .
-    '349783925984760375594985848253359305585439638443');
+       '966915404479707795314057629378541917580651227423698188993727816152646631' .
+       '438561595825688188889951272158842675419950341258706556549803580104870537' .
+       '681476726513255747040765857479291291572334510643245094715007229621094194' .
+       '349783925984760375594985848253359305585439638443');
 
 /**
  * Diffie-Hellman generator; used for Diffie-Hellman key exchange computations.
-*/
+ */
 define('OPENID_DH_DEFAULT_GEN', '2');
 
 /**
  * SHA-1 hash block size; used for Diffie-Hellman key exchange computations.
-*/
+ */
 define('OPENID_SHA1_BLOCKSIZE', 64);
 
 /**
  * Random number generator; used for Diffie-Hellman key exchange computations.
-*/
+ */
 define('OPENID_RAND_SOURCE', '/dev/urandom');
 
 /**
  * OpenID Authentication 2.0 namespace URL.
-*/
+ */
 define('OPENID_NS_2_0', 'http://specs.openid.net/auth/2.0');
 
 /**
  * OpenID Authentication 1.1 namespace URL; used for backwards-compatibility.
-*/
+ */
 define('OPENID_NS_1_1', 'http://openid.net/signon/1.1');
 
 /**
  * OpenID Authentication 1.0 namespace URL; used for backwards-compatibility.
-*/
+ */
 define('OPENID_NS_1_0', 'http://openid.net/signon/1.0');
 
 /**
  * OpenID namespace used in Yadis documents.
-*/
+ */
 define('OPENID_NS_OPENID', 'http://openid.net/xmlns/1.0');
 
 /**
  * OpenID Simple Registration extension.
-*/
+ */
 define('OPENID_NS_SREG', 'http://openid.net/extensions/sreg/1.1');
 
 /**
  * OpenID Attribute Exchange extension.
-*/
+ */
 define('OPENID_NS_AX', 'http://openid.net/srv/ax/1.0');
 
 /**
  * Extensible Resource Descriptor documents.
-*/
+ */
 define('OPENID_NS_XRD', 'xri://$xrd*($v*2.0)');
 
 /**
  * Performs an HTTP 302 redirect (for the 1.x protocol).
-*/
+ */
 function openid_redirect_http($url, $message) {
   $query = array();
   foreach ($message as $key => $val) {
@@ -86,7 +86,7 @@ function openid_redirect_http($url, $message) {
 
 /**
  * Creates a js auto-submit redirect for (for the 2.x protocol)
-   */
+ */
 function openid_redirect($url, $message) {
   global $language;
 
@@ -112,17 +112,17 @@ function openid_redirect_form($form, &$form_state, $url, $message) {
   $form['#method'] = "post";
   foreach ($message as $key => $value) {
     $form[$key] = array(
-        '#type' => 'hidden',
-        '#name' => $key,
-        '#value' => $value,
+      '#type' => 'hidden',
+      '#name' => $key,
+      '#value' => $value,
     );
   }
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array(
-      '#type' => 'submit',
-      '#prefix' => '<noscript><div>',
-      '#suffix' => '</div></noscript>',
-      '#value' => t('Send'),
+    '#type' => 'submit',
+    '#prefix' => '<noscript><div>',
+    '#suffix' => '</div></noscript>',
+    '#value' => t('Send'),
   );
 
   return $form;
@@ -163,11 +163,11 @@ function _openid_xrds_parse($raw_xml) {
     foreach ($xml->children(OPENID_NS_XRD)->XRD as $xrd) {
       foreach ($xrd->children(OPENID_NS_XRD)->Service as $service_element) {
         $service = array(
-            'priority' => $service_element->attributes()->priority ? (int)$service_element->attributes()->priority : PHP_INT_MAX,
-            'types' => array(),
-            'uri' => (string)$service_element->children(OPENID_NS_XRD)->URI,
-            'service' => $service_element,
-            'xrd' => $xrd,
+          'priority' => $service_element->attributes()->priority ? (int)$service_element->attributes()->priority : PHP_INT_MAX,
+          'types' => array(),
+          'uri' => (string)$service_element->children(OPENID_NS_XRD)->URI,
+          'service' => $service_element,
+          'xrd' => $xrd,
         );
         foreach ($service_element->Type as $type) {
           $service['types'][] = (string)$type;
@@ -233,9 +233,9 @@ function _openid_select_service(array $services) {
       }
 
       if ($type_priority
-      && (!$selected_service
-          || $type_priority < $selected_type_priority
-          || ($type_priority == $selected_type_priority && $service['priority'] < $selected_service['priority']))) {
+          && (!$selected_service
+              || $type_priority < $selected_type_priority
+              || ($type_priority == $selected_type_priority && $service['priority'] < $selected_service['priority']))) {
         $selected_service = $service;
         $selected_type_priority = $type_priority;
       }
@@ -384,10 +384,10 @@ function _openid_parse_message($message) {
 function _openid_nonce() {
   // YYYY-MM-DDThh:mm:ssZ, plus some optional extra unique characters.
   return gmdate('Y-m-d\TH:i:s\Z') .
-  chr(mt_rand(0, 25) + 65) .
-  chr(mt_rand(0, 25) + 65) .
-  chr(mt_rand(0, 25) + 65) .
-  chr(mt_rand(0, 25) + 65);
+    chr(mt_rand(0, 25) + 65) .
+    chr(mt_rand(0, 25) + 65) .
+    chr(mt_rand(0, 25) + 65) .
+    chr(mt_rand(0, 25) + 65);
 }
 
 /**
@@ -888,12 +888,12 @@ function _openid_invalid_openid_transition($identity, $response) {
     // account, login the user and update the claimed identifier.
     if ($email && ($email == $fallback_account->mail || $email == $fallback_account->init)) {
       $query = db_insert('authmap')
-      ->fields(array(
+        ->fields(array(
           'authname' => $identity,
           'uid' => $fallback_account->uid,
           'module' => 'openid',
-      ))
-      ->execute();
+        ))
+        ->execute();
       drupal_set_message(t('New OpenID identifier %identity was added as a replacement for invalid identifier %invalid_identity. To finish the invalid OpenID transition process, please go to your <a href="@openid_url">OpenID identities page</a> and remove the old identifier %invalid_identity.', array('%invalid_identity' => $fallback_identity, '%identity' => $identity, '@openid_url' => 'user/' . $fallback_account->uid . '/openid')));
       // Set the account to the found one.
       $account = $fallback_account;

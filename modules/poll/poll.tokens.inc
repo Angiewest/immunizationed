@@ -10,28 +10,28 @@
  */
 function poll_token_info() {
   $node['poll-votes'] = array(
-      'name' => t("Poll votes"),
-      'description' => t("The number of votes that have been cast on a poll."),
+    'name' => t("Poll votes"),
+    'description' => t("The number of votes that have been cast on a poll."),
   );
   $node['poll-winner'] = array(
-      'name' => t("Poll winner"),
-      'description' => t("The winning poll answer."),
+    'name' => t("Poll winner"),
+    'description' => t("The winning poll answer."),
   );
   $node['poll-winner-votes'] = array(
-      'name' => t("Poll winner votes"),
-      'description' => t("The number of votes received by the winning poll answer."),
+    'name' => t("Poll winner votes"),
+    'description' => t("The number of votes received by the winning poll answer."),
   );
   $node['poll-winner-percent'] = array(
-      'name' => t("Poll winner percent"),
-      'description' => t("The percentage of votes received by the winning poll answer."),
+    'name' => t("Poll winner percent"),
+    'description' => t("The percentage of votes received by the winning poll answer."),
   );
   $node['poll-duration'] = array(
-      'name' => t("Poll duration"),
-      'description' => t("The length of time the poll is set to run."),
+    'name' => t("Poll duration"),
+    'description' => t("The length of time the poll is set to run."),
   );
 
   return array(
-      'tokens' => array('node' => $node),
+    'tokens' => array('node' => $node),
   );
 }
 

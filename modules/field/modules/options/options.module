@@ -23,9 +23,9 @@ function options_help($path, $arg) {
  */
 function options_theme() {
   return array(
-      'options_none' => array(
-          'variables' => array('instance' => NULL, 'option' => NULL),
-      ),
+    'options_none' => array(
+      'variables' => array('instance' => NULL, 'option' => NULL),
+    ),
   );
 }
 
@@ -40,28 +40,28 @@ function options_theme() {
  */
 function options_field_widget_info() {
   return array(
-      'options_select' => array(
-          'label' => t('Select list'),
-          'field types' => array(),
-          'behaviors' => array(
-              'multiple values' => FIELD_BEHAVIOR_CUSTOM,
-          ),
+    'options_select' => array(
+      'label' => t('Select list'),
+      'field types' => array(),
+      'behaviors' => array(
+        'multiple values' => FIELD_BEHAVIOR_CUSTOM,
       ),
-      'options_buttons' => array(
-          'label' => t('Check boxes/radio buttons'),
-          'field types' => array(),
-          'behaviors' => array(
-              'multiple values' => FIELD_BEHAVIOR_CUSTOM,
-          ),
+    ),
+    'options_buttons' => array(
+      'label' => t('Check boxes/radio buttons'),
+      'field types' => array(),
+      'behaviors' => array(
+        'multiple values' => FIELD_BEHAVIOR_CUSTOM,
       ),
-      'options_onoff' => array(
-          'label' => t('Single on/off checkbox'),
-          'field types' => array(),
-          'behaviors' => array(
-              'multiple values' => FIELD_BEHAVIOR_CUSTOM,
-          ),
-          'settings' => array('display_label' => 0),
+    ),
+    'options_onoff' => array(
+      'label' => t('Single on/off checkbox'),
+      'field types' => array(),
+      'behaviors' => array(
+        'multiple values' => FIELD_BEHAVIOR_CUSTOM,
       ),
+      'settings' => array('display_label' => 0),
+    ),
   );
 }
 
@@ -91,11 +91,11 @@ function options_field_widget_form(&$form, &$form_state, $field, $instance, $lan
   switch ($type) {
     case 'select':
       $element += array(
-      '#type' => 'select',
-      '#default_value' => $default_value,
-      // Do not display a 'multiple' select box if there is only one option.
-      '#multiple' => $multiple && count($options) > 1,
-      '#options' => $options,
+        '#type' => 'select',
+        '#default_value' => $default_value,
+        // Do not display a 'multiple' select box if there is only one option.
+        '#multiple' => $multiple && count($options) > 1,
+        '#options' => $options,
       );
       break;
 
@@ -114,10 +114,10 @@ function options_field_widget_form(&$form, &$form_state, $field, $instance, $lan
       }
 
       $element += array(
-          '#type' => $multiple ? 'checkboxes' : 'radios',
-          // Radio buttons need a scalar value.
-          '#default_value' => $default_value,
-          '#options' => $options,
+        '#type' => $multiple ? 'checkboxes' : 'radios',
+        // Radio buttons need a scalar value.
+        '#default_value' => $default_value,
+        '#options' => $options,
       );
       break;
 
@@ -126,10 +126,10 @@ function options_field_widget_form(&$form, &$form_state, $field, $instance, $lan
       $off_value = array_shift($keys);
       $on_value = array_shift($keys);
       $element += array(
-          '#type' => 'checkbox',
-          '#default_value' => (isset($default_value[0]) && $default_value[0] == $on_value) ? 1 : 0,
-          '#on_value' => $on_value,
-          '#off_value' => $off_value,
+        '#type' => 'checkbox',
+        '#default_value' => (isset($default_value[0]) && $default_value[0] == $on_value) ? 1 : 0,
+        '#on_value' => $on_value,
+        '#off_value' => $off_value,
       );
       // Override the title from the incoming $element.
       $element['#title'] = isset($options[$on_value]) ? $options[$on_value] : '';
@@ -141,9 +141,9 @@ function options_field_widget_form(&$form, &$form_state, $field, $instance, $lan
   }
 
   $element += array(
-      '#value_key' => $value_key,
-      '#element_validate' => array('options_field_widget_validate'),
-      '#properties' => $properties,
+    '#value_key' => $value_key,
+    '#element_validate' => array('options_field_widget_validate'),
+    '#properties' => $properties,
   );
 
   return $element;
@@ -156,10 +156,10 @@ function options_field_widget_settings_form($field, $instance) {
   $form = array();
   if ($instance['widget']['type'] == 'options_onoff') {
     $form['display_label'] = array(
-        '#type' => 'checkbox',
-        '#title' => t('Use field label instead of the "On value" as label'),
-        '#default_value' => $instance['widget']['settings']['display_label'],
-        '#weight' => -1,
+      '#type' => 'checkbox',
+      '#title' => t('Use field label instead of the "On value" as label'),
+      '#default_value' => $instance['widget']['settings']['display_label'],
+      '#weight' => -1,
     );
   }
   return $form;
@@ -183,10 +183,10 @@ function options_field_widget_validate($element, &$form_state) {
  */
 function _options_properties($type, $multiple, $required, $has_value) {
   $base = array(
-      'filter_xss' => FALSE,
-      'strip_tags' => FALSE,
-      'empty_option' => FALSE,
-      'optgroups' => FALSE,
+    'filter_xss' => FALSE,
+    'strip_tags' => FALSE,
+    'empty_option' => FALSE,
+    'optgroups' => FALSE,
   );
 
   $properties = array();
@@ -194,9 +194,9 @@ function _options_properties($type, $multiple, $required, $has_value) {
   switch ($type) {
     case 'select':
       $properties = array(
-      // Select boxes do not support any HTML tag.
-      'strip_tags' => TRUE,
-      'optgroups' => TRUE,
+        // Select boxes do not support any HTML tag.
+        'strip_tags' => TRUE,
+        'optgroups' => TRUE,
       );
       if ($multiple) {
         // Multiple select: add a 'none' option for non-required fields.
@@ -219,7 +219,7 @@ function _options_properties($type, $multiple, $required, $has_value) {
 
     case 'buttons':
       $properties = array(
-      'filter_xss' => TRUE,
+        'filter_xss' => TRUE,
       );
       // Add a 'none' option for non-required radio buttons.
       if (!$required && !$multiple) {
@@ -229,7 +229,7 @@ function _options_properties($type, $multiple, $required, $has_value) {
 
     case 'onoff':
       $properties = array(
-      'filter_xss' => TRUE,
+        'filter_xss' => TRUE,
       );
       break;
   }

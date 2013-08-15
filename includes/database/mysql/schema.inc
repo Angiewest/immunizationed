@@ -80,8 +80,8 @@ class DatabaseSchema_mysql extends DatabaseSchema {
 
     // Provide defaults if needed.
     $table += array(
-        'mysql_engine' => 'InnoDB',
-        'mysql_character_set' => 'utf8',
+      'mysql_engine' => 'InnoDB',
+      'mysql_character_set' => 'utf8',
     );
 
     $sql = "CREATE TABLE {" . $name . "} (\n";
@@ -218,37 +218,37 @@ class DatabaseSchema_mysql extends DatabaseSchema {
     // database types back into schema types.
     // $map does not use drupal_static as its value never changes.
     static $map = array(
-        'varchar:normal'  => 'VARCHAR',
-        'char:normal'     => 'CHAR',
+      'varchar:normal'  => 'VARCHAR',
+      'char:normal'     => 'CHAR',
 
-        'text:tiny'       => 'TINYTEXT',
-        'text:small'      => 'TINYTEXT',
-        'text:medium'     => 'MEDIUMTEXT',
-        'text:big'        => 'LONGTEXT',
-        'text:normal'     => 'TEXT',
+      'text:tiny'       => 'TINYTEXT',
+      'text:small'      => 'TINYTEXT',
+      'text:medium'     => 'MEDIUMTEXT',
+      'text:big'        => 'LONGTEXT',
+      'text:normal'     => 'TEXT',
 
-        'serial:tiny'     => 'TINYINT',
-        'serial:small'    => 'SMALLINT',
-        'serial:medium'   => 'MEDIUMINT',
-        'serial:big'      => 'BIGINT',
-        'serial:normal'   => 'INT',
+      'serial:tiny'     => 'TINYINT',
+      'serial:small'    => 'SMALLINT',
+      'serial:medium'   => 'MEDIUMINT',
+      'serial:big'      => 'BIGINT',
+      'serial:normal'   => 'INT',
 
-        'int:tiny'        => 'TINYINT',
-        'int:small'       => 'SMALLINT',
-        'int:medium'      => 'MEDIUMINT',
-        'int:big'         => 'BIGINT',
-        'int:normal'      => 'INT',
+      'int:tiny'        => 'TINYINT',
+      'int:small'       => 'SMALLINT',
+      'int:medium'      => 'MEDIUMINT',
+      'int:big'         => 'BIGINT',
+      'int:normal'      => 'INT',
 
-        'float:tiny'      => 'FLOAT',
-        'float:small'     => 'FLOAT',
-        'float:medium'    => 'FLOAT',
-        'float:big'       => 'DOUBLE',
-        'float:normal'    => 'FLOAT',
+      'float:tiny'      => 'FLOAT',
+      'float:small'     => 'FLOAT',
+      'float:medium'    => 'FLOAT',
+      'float:big'       => 'DOUBLE',
+      'float:normal'    => 'FLOAT',
 
-        'numeric:normal'  => 'DECIMAL',
+      'numeric:normal'  => 'DECIMAL',
 
-        'blob:big'        => 'LONGBLOB',
-        'blob:normal'     => 'BLOB',
+      'blob:big'        => 'LONGBLOB',
+      'blob:normal'     => 'BLOB',
     );
     return $map;
   }
@@ -341,8 +341,8 @@ class DatabaseSchema_mysql extends DatabaseSchema {
     $this->connection->query($query);
     if (isset($spec['initial'])) {
       $this->connection->update($table)
-      ->fields(array($field => $spec['initial']))
-      ->execute();
+        ->fields(array($field => $spec['initial']))
+        ->execute();
     }
     if ($fixnull) {
       $spec['not null'] = TRUE;

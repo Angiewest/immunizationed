@@ -62,6 +62,8 @@
  *
  * @see theme()
  * @see hook_theme()
+ * @see hooks
+ * @see callbacks
  *
  * @} End of "defgroup themeable".
  */
@@ -85,10 +87,10 @@
 function hook_form_system_theme_settings_alter(&$form, &$form_state) {
   // Add a checkbox to toggle the breadcrumb trail.
   $form['toggle_breadcrumb'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Display the breadcrumb'),
-      '#default_value' => theme_get_setting('toggle_breadcrumb'),
-      '#description'   => t('Show a trail of links from the homepage to the current page.'),
+    '#type' => 'checkbox',
+    '#title' => t('Display the breadcrumb'),
+    '#default_value' => theme_get_setting('toggle_breadcrumb'),
+    '#description'   => t('Show a trail of links from the homepage to the current page.'),
   );
 }
 
@@ -109,7 +111,7 @@ function hook_form_system_theme_settings_alter(&$form, &$form_state) {
  *   The name of the theme hook.
  */
 function hook_preprocess(&$variables, $hook) {
-  static $hooks;
+ static $hooks;
 
   // Add contextual links to the variables, if the user has permission.
 
@@ -181,9 +183,9 @@ function hook_process(&$variables, $hook) {
   if (!empty($variables['rdf_template_variable_attributes_array'])) {
     foreach ($variables['rdf_template_variable_attributes_array'] as $variable_name => $attributes) {
       $context = array(
-          'hook' => $hook,
-          'variable_name' => $variable_name,
-          'variables' => $variables,
+        'hook' => $hook,
+        'variable_name' => $variable_name,
+        'variables' => $variables,
       );
       $variables[$variable_name] = theme('rdf_template_variable_wrapper', array('content' => $variables[$variable_name], 'attributes' => $attributes, 'context' => $context));
     }
@@ -233,6 +235,6 @@ function hook_themes_enabled($theme_list) {
  * @see theme_disable()
  */
 function hook_themes_disabled($theme_list) {
-  // Clear all update module caches.
+ // Clear all update module caches.
   _update_cache_clear();
 }

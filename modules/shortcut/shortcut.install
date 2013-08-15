@@ -14,16 +14,16 @@ function shortcut_install() {
   $shortcut_set = new stdClass();
   $shortcut_set->title = $t('Default');
   $shortcut_set->links = array(
-      array(
-          'link_path' => 'node/add',
-          'link_title' => $t('Add content'),
-          'weight' => -20,
-      ),
-      array(
-          'link_path' => 'admin/content',
-          'link_title' => $t('Find content'),
-          'weight' => -19,
-      ),
+    array(
+      'link_path' => 'node/add',
+      'link_title' => $t('Add content'),
+      'weight' => -20,
+    ),
+    array(
+      'link_path' => 'admin/content',
+      'link_title' => $t('Find content'),
+      'weight' => -19,
+    ),
   );
   // If Drupal is being installed, rebuild the menu before saving the shortcut
   // set, to make sure the links defined above can be correctly saved. (During
@@ -51,64 +51,64 @@ function shortcut_uninstall() {
  */
 function shortcut_schema() {
   $schema['shortcut_set'] = array(
-      'description' => 'Stores information about sets of shortcuts links.',
-      'fields' => array(
-          'set_name' => array(
-              'type' => 'varchar',
-              'length' => 32,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => "Primary Key: The {menu_links}.menu_name under which the set's links are stored.",
-          ),
-          'title' => array(
-              'type' => 'varchar',
-              'length' => 255,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => 'The title of the set.',
-          ),
+    'description' => 'Stores information about sets of shortcuts links.',
+    'fields' => array(
+      'set_name' => array(
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => "Primary Key: The {menu_links}.menu_name under which the set's links are stored.",
       ),
-      'primary key' => array('set_name'),
-      'foreign keys' => array(
-          'menu_name' => array(
-              'table' => 'menu_links',
-              'columns' => array('set_name' => 'menu_name'),
-          ),
+      'title' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The title of the set.',
       ),
+    ),
+    'primary key' => array('set_name'),
+    'foreign keys' => array(
+      'menu_name' => array(
+        'table' => 'menu_links',
+        'columns' => array('set_name' => 'menu_name'),
+      ),
+    ),
   );
 
   $schema['shortcut_set_users'] = array(
-      'description' => 'Maps users to shortcut sets.',
-      'fields' => array(
-          'uid' => array(
-              'type' => 'int',
-              'unsigned' => TRUE,
-              'not null' => TRUE,
-              'default' => 0,
-              'description' => 'The {users}.uid for this set.',
-          ),
-          'set_name' => array(
-              'type' => 'varchar',
-              'length' => 32,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => "The {shortcut_set}.set_name that will be displayed for this user.",
-          ),
+    'description' => 'Maps users to shortcut sets.',
+    'fields' => array(
+      'uid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The {users}.uid for this set.',
       ),
-      'primary key' => array('uid'),
-      'indexes' => array(
-          'set_name' => array('set_name'),
+      'set_name' => array(
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => "The {shortcut_set}.set_name that will be displayed for this user.",
       ),
-      'foreign keys' => array(
-          'set_user' => array(
-              'table' => 'users',
-              'columns' => array('uid' => 'uid'),
-          ),
-          'set_name' => array(
-              'table' => 'shortcut_set',
-              'columns' => array('set_name' => 'set_name'),
-          ),
+    ),
+    'primary key' => array('uid'),
+    'indexes' => array(
+      'set_name' => array('set_name'),
+    ),
+    'foreign keys' => array(
+      'set_user' => array(
+        'table' => 'users',
+        'columns' => array('uid' => 'uid'),
       ),
+      'set_name' => array(
+        'table' => 'shortcut_set',
+        'columns' => array('set_name' => 'set_name'),
+      ),
+    ),
   );
 
   return $schema;

@@ -35,12 +35,12 @@ function openid_user_identities($account) {
   if ($result['status'] == 'success') {
     $identity = $result['openid.claimed_id'];
     $query = db_insert('authmap')
-    ->fields(array(
+      ->fields(array(
         'uid' => $account->uid,
         'authname' => $identity,
         'module' => 'openid',
-    ))
-    ->execute();
+      ))
+      ->execute();
     drupal_set_message(t('Successfully added %identity', array('%identity' => $identity)));
   }
 
@@ -53,10 +53,10 @@ function openid_user_identities($account) {
   }
 
   $build['openid_table'] = array(
-      '#theme' => 'table',
-      '#header' => $header,
-      '#rows' => $rows,
-      '#empty' => t('No OpenID identities available for this account.'),
+    '#theme' => 'table',
+    '#header' => $header,
+    '#rows' => $rows,
+    '#empty' => t('No OpenID identities available for this account.'),
   );
   $build['openid_user_add'] = drupal_get_form('openid_user_add');
   return $build;
@@ -70,8 +70,8 @@ function openid_user_identities($account) {
  */
 function openid_user_add() {
   $form['openid_identifier'] = array(
-      '#type' => 'textfield',
-      '#title' => t('OpenID'),
+    '#type' => 'textfield',
+    '#title' => t('OpenID'),
   );
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array('#type' => 'submit', '#value' => t('Add an OpenID'));
@@ -96,8 +96,8 @@ function openid_user_add_submit($form, &$form_state) {
  */
 function openid_user_delete_form($form, $form_state, $account, $aid = 0) {
   $authname = db_query("SELECT authname FROM {authmap} WHERE uid = :uid AND aid = :aid AND module = 'openid'", array(
-      ':uid' => $account->uid,
-      ':aid' => $aid,
+    ':uid' => $account->uid,
+    ':aid' => $aid,
   ))
   ->fetchField();
   return confirm_form(array(), t('Are you sure you want to delete the OpenID %authname for %user?', array('%authname' => $authname, '%user' => $account->name)), 'user/' . $account->uid . '/openid');
@@ -105,10 +105,10 @@ function openid_user_delete_form($form, $form_state, $account, $aid = 0) {
 
 function openid_user_delete_form_submit($form, &$form_state) {
   $query = db_delete('authmap')
-  ->condition('uid', $form_state['build_info']['args'][0]->uid)
-  ->condition('aid', $form_state['build_info']['args'][1])
-  ->condition('module', 'openid')
-  ->execute();
+    ->condition('uid', $form_state['build_info']['args'][0]->uid)
+    ->condition('aid', $form_state['build_info']['args'][1])
+    ->condition('module', 'openid')
+    ->execute();
   if ($query) {
     drupal_set_message(t('OpenID deleted.'));
   }

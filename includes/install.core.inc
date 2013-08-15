@@ -22,7 +22,7 @@ define('INSTALL_TASK_SKIP', 1);
  * Run the task on each installation request until the database is set up.
  *
  * This is primarily used by the Drupal installer for bootstrap-related tasks.
-*/
+ */
 define('INSTALL_TASK_RUN_IF_REACHED', 2);
 
 /**
@@ -36,7 +36,7 @@ define('INSTALL_TASK_RUN_IF_REACHED', 2);
  * example, the Drupal installer uses this flag for the batch installation of
  * modules on the new site, and also for the configuration form that collects
  * basic site information and sets up the site maintenance account.
-*/
+ */
 define('INSTALL_TASK_RUN_IF_NOT_COMPLETED', 3);
 
 /**
@@ -60,7 +60,7 @@ define('INSTALL_TASK_RUN_IF_NOT_COMPLETED', 3);
  *   elements that are allowed to appear in this array.
  *
  * @see install_state_defaults()
-*/
+ */
 function install_drupal($settings = array()) {
   global $install_state;
   // Initialize the installation state with the settings that were passed in,
@@ -123,76 +123,76 @@ function install_drupal($settings = array()) {
  */
 function install_state_defaults() {
   $defaults = array(
-      // The current task being processed.
-      'active_task' => NULL,
-      // The last task that was completed during the previous installation
-      // request.
-      'completed_task' => NULL,
-      // This becomes TRUE only when Drupal's system module is installed.
-      'database_tables_exist' => FALSE,
-      // An array of forms to be programmatically submitted during the
-      // installation. The keys of each element indicate the name of the
-      // installation task that the form submission is for, and the values are
-      // used as the $form_state['values'] array that is passed on to the form
-      // submission via drupal_form_submit().
-      'forms' => array(),
-      // This becomes TRUE only at the end of the installation process, after
-      // all available tasks have been completed and Drupal is fully installed.
-      // It is used by the installer to store correct information in the database
-      // about the completed installation, as well as to inform theme functions
-      // that all tasks are finished (so that the task list can be displayed
-      // correctly).
-      'installation_finished' => FALSE,
-      // Whether or not this installation is interactive. By default this will
-      // be set to FALSE if settings are passed in to install_drupal().
-      'interactive' => TRUE,
-      // An array of available languages for the installation.
-      'locales' => array(),
-      // An array of parameters for the installation, pre-populated by the URL
-      // or by the settings passed in to install_drupal(). This is primarily
-      // used to store 'profile' (the name of the chosen installation profile)
-      // and 'locale' (the name of the chosen installation language), since
-      // these settings need to persist from page request to page request before
-      // the database is available for storage.
-      'parameters' => array(),
-      // Whether or not the parameters have changed during the current page
-      // request. For interactive installations, this will trigger a page
-      // redirect.
-      'parameters_changed' => FALSE,
-      // An array of information about the chosen installation profile. This will
-      // be filled in based on the profile's .info file.
-      'profile_info' => array(),
-      // An array of available installation profiles.
-      'profiles' => array(),
-      // An array of server variables that will be substituted into the global
-      // $_SERVER array via drupal_override_server_variables(). Used by
-      // non-interactive installations only.
-      'server' => array(),
-      // This becomes TRUE only when a valid database connection can be
-      // established.
-      'settings_verified' => FALSE,
-      // Installation tasks can set this to TRUE to force the page request to
-      // end (even if there is no themable output), in the case of an interactive
-      // installation. This is needed only rarely; for example, it would be used
-      // by an installation task that prints JSON output rather than returning a
-      // themed page. The most common example of this is during batch processing,
-      // but the Drupal installer automatically takes care of setting this
-      // parameter properly in that case, so that individual installation tasks
-      // which implement the batch API do not need to set it themselves.
-      'stop_page_request' => FALSE,
-      // Installation tasks can set this to TRUE to indicate that the task should
-      // be run again, even if it normally wouldn't be. This can be used, for
-      // example, if a single task needs to be spread out over multiple page
-      // requests, or if it needs to perform some validation before allowing
-      // itself to be marked complete. The most common examples of this are batch
-      // processing and form submissions, but the Drupal installer automatically
-      // takes care of setting this parameter properly in those cases, so that
-      // individual installation tasks which implement the batch API or form API
-      // do not need to set it themselves.
-      'task_not_complete' => FALSE,
-      // A list of installation tasks which have already been performed during
-      // the current page request.
-      'tasks_performed' => array(),
+    // The current task being processed.
+    'active_task' => NULL,
+    // The last task that was completed during the previous installation
+    // request.
+    'completed_task' => NULL,
+    // This becomes TRUE only when Drupal's system module is installed.
+    'database_tables_exist' => FALSE,
+    // An array of forms to be programmatically submitted during the
+    // installation. The keys of each element indicate the name of the
+    // installation task that the form submission is for, and the values are
+    // used as the $form_state['values'] array that is passed on to the form
+    // submission via drupal_form_submit().
+    'forms' => array(),
+    // This becomes TRUE only at the end of the installation process, after
+    // all available tasks have been completed and Drupal is fully installed.
+    // It is used by the installer to store correct information in the database
+    // about the completed installation, as well as to inform theme functions
+    // that all tasks are finished (so that the task list can be displayed
+    // correctly).
+    'installation_finished' => FALSE,
+    // Whether or not this installation is interactive. By default this will
+    // be set to FALSE if settings are passed in to install_drupal().
+    'interactive' => TRUE,
+    // An array of available languages for the installation.
+    'locales' => array(),
+    // An array of parameters for the installation, pre-populated by the URL
+    // or by the settings passed in to install_drupal(). This is primarily
+    // used to store 'profile' (the name of the chosen installation profile)
+    // and 'locale' (the name of the chosen installation language), since
+    // these settings need to persist from page request to page request before
+    // the database is available for storage.
+    'parameters' => array(),
+    // Whether or not the parameters have changed during the current page
+    // request. For interactive installations, this will trigger a page
+    // redirect.
+    'parameters_changed' => FALSE,
+    // An array of information about the chosen installation profile. This will
+    // be filled in based on the profile's .info file.
+    'profile_info' => array(),
+    // An array of available installation profiles.
+    'profiles' => array(),
+    // An array of server variables that will be substituted into the global
+    // $_SERVER array via drupal_override_server_variables(). Used by
+    // non-interactive installations only.
+    'server' => array(),
+    // This becomes TRUE only when a valid database connection can be
+    // established.
+    'settings_verified' => FALSE,
+    // Installation tasks can set this to TRUE to force the page request to
+    // end (even if there is no themable output), in the case of an interactive
+    // installation. This is needed only rarely; for example, it would be used
+    // by an installation task that prints JSON output rather than returning a
+    // themed page. The most common example of this is during batch processing,
+    // but the Drupal installer automatically takes care of setting this
+    // parameter properly in that case, so that individual installation tasks
+    // which implement the batch API do not need to set it themselves.
+    'stop_page_request' => FALSE,
+    // Installation tasks can set this to TRUE to indicate that the task should
+    // be run again, even if it normally wouldn't be. This can be used, for
+    // example, if a single task needs to be spread out over multiple page
+    // requests, or if it needs to perform some validation before allowing
+    // itself to be marked complete. The most common examples of this are batch
+    // processing and form submissions, but the Drupal installer automatically
+    // takes care of setting this parameter properly in those cases, so that
+    // individual installation tasks which implement the batch API or form API
+    // do not need to set it themselves.
+    'task_not_complete' => FALSE,
+    // A list of installation tasks which have already been performed during
+    // the current page request.
+    'tasks_performed' => array(),
   );
   return $defaults;
 }
@@ -380,11 +380,11 @@ function install_run_task($task, &$install_state) {
       // redirect, since the installer handles its own redirection only after
       // marking the form submission task complete.
       $form_state = array(
-          // We need to pass $install_state by reference in order for forms to
-          // modify it, since the form API will use it in call_user_func_array(),
-          // which requires that referenced variables be passed explicitly.
-          'build_info' => array('args' => array(&$install_state)),
-          'no_redirect' => TRUE,
+        // We need to pass $install_state by reference in order for forms to
+        // modify it, since the form API will use it in call_user_func_array(),
+        // which requires that referenced variables be passed explicitly.
+        'build_info' => array('args' => array(&$install_state)),
+        'no_redirect' => TRUE,
       );
       $form = drupal_build_form($function, $form_state);
       // If a successful form submission did not occur, the form needs to be
@@ -402,11 +402,11 @@ function install_run_task($task, &$install_state) {
       // values taken from the installation state. Throw an exception if any
       // errors were encountered.
       $form_state = array(
-          'values' => !empty($install_state['forms'][$function]) ? $install_state['forms'][$function] : array(),
-          // We need to pass $install_state by reference in order for forms to
-          // modify it, since the form API will use it in call_user_func_array(),
-          // which requires that referenced variables be passed explicitly.
-          'build_info' => array('args' => array(&$install_state)),
+        'values' => !empty($install_state['forms'][$function]) ? $install_state['forms'][$function] : array(),
+        // We need to pass $install_state by reference in order for forms to
+        // modify it, since the form API will use it in call_user_func_array(),
+        // which requires that referenced variables be passed explicitly.
+        'build_info' => array('args' => array(&$install_state)),
       );
       drupal_form_submit($function, $form_state);
       $errors = form_get_errors();
@@ -524,45 +524,45 @@ function install_tasks($install_state) {
   // Start with the core installation tasks that run before handing control
   // to the installation profile.
   $tasks = array(
-      'install_select_profile' => array(
-          'display_name' => st('Choose profile'),
-          'display' => count($install_state['profiles']) != 1,
-          'run' => INSTALL_TASK_RUN_IF_REACHED,
-      ),
-      'install_select_locale' => array(
-          'display_name' => st('Choose language'),
-          'run' => INSTALL_TASK_RUN_IF_REACHED,
-      ),
-      'install_load_profile' => array(
-          'run' => INSTALL_TASK_RUN_IF_REACHED,
-      ),
-      'install_verify_requirements' => array(
-          'display_name' => st('Verify requirements'),
-      ),
-      'install_settings_form' => array(
-          'display_name' => st('Set up database'),
-          'type' => 'form',
-          'run' => $install_state['settings_verified'] ? INSTALL_TASK_SKIP : INSTALL_TASK_RUN_IF_NOT_COMPLETED,
-      ),
-      'install_system_module' => array(
-      ),
-      'install_bootstrap_full' => array(
+    'install_select_profile' => array(
+      'display_name' => st('Choose profile'),
+      'display' => count($install_state['profiles']) != 1,
       'run' => INSTALL_TASK_RUN_IF_REACHED,
-      ),
-      'install_profile_modules' => array(
+    ),
+    'install_select_locale' => array(
+      'display_name' => st('Choose language'),
+      'run' => INSTALL_TASK_RUN_IF_REACHED,
+    ),
+    'install_load_profile' => array(
+      'run' => INSTALL_TASK_RUN_IF_REACHED,
+    ),
+    'install_verify_requirements' => array(
+      'display_name' => st('Verify requirements'),
+    ),
+    'install_settings_form' => array(
+      'display_name' => st('Set up database'),
+      'type' => 'form',
+      'run' => $install_state['settings_verified'] ? INSTALL_TASK_SKIP : INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+    ),
+    'install_system_module' => array(
+    ),
+    'install_bootstrap_full' => array(
+      'run' => INSTALL_TASK_RUN_IF_REACHED,
+    ),
+    'install_profile_modules' => array(
       'display_name' => count($install_state['profiles']) == 1 ? st('Install site') : st('Install profile'),
       'type' => 'batch',
-      ),
-      'install_import_locales' => array(
+    ),
+    'install_import_locales' => array(
       'display_name' => st('Set up translations'),
       'display' => $needs_translations,
       'type' => 'batch',
       'run' => $needs_translations ? INSTALL_TASK_RUN_IF_NOT_COMPLETED : INSTALL_TASK_SKIP,
-      ),
-      'install_configure_form' => array(
+    ),
+    'install_configure_form' => array(
       'display_name' => st('Configure site'),
       'type' => 'form',
-      ),
+    ),
   );
 
   // Now add any tasks defined by the installation profile.
@@ -584,15 +584,15 @@ function install_tasks($install_state) {
 
   // Finish by adding the remaining core tasks.
   $tasks += array(
-      'install_import_locales_remaining' => array(
-          'display_name' => st('Finish translations'),
-          'display' => $needs_translations,
-          'type' => 'batch',
-          'run' => $needs_translations ? INSTALL_TASK_RUN_IF_NOT_COMPLETED : INSTALL_TASK_SKIP,
-      ),
-      'install_finished' => array(
-          'display_name' => st('Finished'),
-      ),
+    'install_import_locales_remaining' => array(
+      'display_name' => st('Finish translations'),
+      'display' => $needs_translations,
+      'type' => 'batch',
+      'run' => $needs_translations ? INSTALL_TASK_RUN_IF_NOT_COMPLETED : INSTALL_TASK_SKIP,
+    ),
+    'install_finished' => array(
+      'display_name' => st('Finished'),
+    ),
   );
 
   // Allow the installation profile to modify the full list of tasks.
@@ -610,11 +610,11 @@ function install_tasks($install_state) {
   // Fill in default parameters for each task before returning the list.
   foreach ($tasks as $task_name => &$task) {
     $task += array(
-        'display_name' => NULL,
-        'display' => !empty($task['display_name']),
-        'type' => 'normal',
-        'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
-        'function' => $task_name,
+      'display_name' => NULL,
+      'display' => !empty($task['display_name']),
+      'type' => 'normal',
+      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+      'function' => $task_name,
     );
   }
   return $tasks;
@@ -864,11 +864,11 @@ function install_settings_form($form, &$form_state, &$install_state) {
   $drivers_keys = array_keys($drivers);
 
   $form['driver'] = array(
-      '#type' => 'radios',
-      '#title' => st('Database type'),
-      '#required' => TRUE,
-      '#default_value' => !empty($database['driver']) ? $database['driver'] : current($drivers_keys),
-      '#description' => st('The type of database your @drupal data will be stored in.', array('@drupal' => drupal_install_profile_distribution_name())),
+    '#type' => 'radios',
+    '#title' => st('Database type'),
+    '#required' => TRUE,
+    '#default_value' => !empty($database['driver']) ? $database['driver'] : current($drivers_keys),
+    '#description' => st('The type of database your @drupal data will be stored in.', array('@drupal' => drupal_install_profile_distribution_name())),
   );
   if (count($drivers) == 1) {
     $form['driver']['#disabled'] = TRUE;
@@ -885,21 +885,21 @@ function install_settings_form($form, &$form_state, &$install_state) {
     $form['settings'][$key]['#tree'] = TRUE;
     $form['settings'][$key]['advanced_options']['#parents'] = array($key);
     $form['settings'][$key]['#states'] = array(
-        'visible' => array(
-            ':input[name=driver]' => array('value' => $key),
-        )
+      'visible' => array(
+        ':input[name=driver]' => array('value' => $key),
+      )
     );
   }
 
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['save'] = array(
-      '#type' => 'submit',
-      '#value' => st('Save and continue'),
-      '#limit_validation_errors' => array(
-          array('driver'),
-          array(isset($form_state['input']['driver']) ? $form_state['input']['driver'] : current($drivers_keys)),
-      ),
-      '#submit' => array('install_settings_form_submit'),
+    '#type' => 'submit',
+    '#value' => st('Save and continue'),
+    '#limit_validation_errors' => array(
+      array('driver'),
+      array(isset($form_state['input']['driver']) ? $form_state['input']['driver'] : current($drivers_keys)),
+    ),
+    '#submit' => array('install_settings_form_submit'),
   );
 
   $form['errors'] = array();
@@ -977,12 +977,12 @@ function install_settings_form_submit($form, &$form_state) {
 
   // Update global settings array and save.
   $settings['databases'] = array(
-      'value'    => array('default' => array('default' => $form_state['storage']['database'])),
-      'required' => TRUE,
+    'value'    => array('default' => array('default' => $form_state['storage']['database'])),
+    'required' => TRUE,
   );
   $settings['drupal_hash_salt'] = array(
-      'value'    => drupal_hash_base64(drupal_random_bytes(55)),
-      'required' => TRUE,
+    'value'    => drupal_hash_base64(drupal_random_bytes(55)),
+    'required' => TRUE,
   );
   drupal_rewrite_settings($settings);
   // Indicate that the settings file has been verified, and check the database
@@ -1145,18 +1145,18 @@ function install_select_profile_form($form, &$form_state, $profile_files) {
 
   foreach ($names as $profile => $name) {
     $form['profile'][$name] = array(
-        '#type' => 'radio',
-        '#value' => 'standard',
-        '#return_value' => $profile,
-        '#title' => $name,
-        '#description' => isset($profiles[$profile]['description']) ? $profiles[$profile]['description'] : '',
-        '#parents' => array('profile'),
+      '#type' => 'radio',
+      '#value' => 'standard',
+      '#return_value' => $profile,
+      '#title' => $name,
+      '#description' => isset($profiles[$profile]['description']) ? $profiles[$profile]['description'] : '',
+      '#parents' => array('profile'),
     );
   }
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] =  array(
-      '#type' => 'submit',
-      '#value' => st('Save and continue'),
+    '#type' => 'submit',
+    '#value' => st('Save and continue'),
   );
   return $form;
 }
@@ -1221,9 +1221,9 @@ function install_select_locale(&$install_state) {
           $output .= '<ol>';
           $output .= '<li>Download a translation from the <a href="http://localize.drupal.org/download" target="_blank">translation server</a>.</li>';
           $output .= '<li>Place it into the following directory:
-              <pre>
-              /profiles/' . $profilename . '/translations/
-                  </pre></li>';
+<pre>
+/profiles/' . $profilename . '/translations/
+</pre></li>';
           $output .= '</ol>';
           $output .= '<p>For more information on installing Drupal in different languages, visit the <a href="http://drupal.org/localize" target="_blank">drupal.org handbook page</a>.</p>';
           $output .= '<p>How should the installation continue?</p>';
@@ -1292,22 +1292,22 @@ function install_select_locale_form($form, &$form_state, $locales, $profilename)
       $name = $languages[$name][0] . (isset($languages[$name][1]) ? ' ' . st('(@language)', array('@language' => $languages[$name][1])) : '');
     }
     $form['locale'][$locale->langcode] = array(
-        '#type' => 'radio',
-        '#return_value' => $locale->langcode,
-        '#default_value' => $locale->langcode == 'en' ? 'en' : '',
-        '#title' => $name . ($locale->langcode == 'en' ? ' ' . st('(built-in)') : ''),
-        '#parents' => array('locale')
+      '#type' => 'radio',
+      '#return_value' => $locale->langcode,
+      '#default_value' => $locale->langcode == 'en' ? 'en' : '',
+      '#title' => $name . ($locale->langcode == 'en' ? ' ' . st('(built-in)') : ''),
+      '#parents' => array('locale')
     );
   }
   if (count($locales) == 1) {
     $form['help'] = array(
-        '#markup' => '<p><a href="install.php?profile=' . $profilename . '&amp;localize=true">' . st('Learn how to install Drupal in other languages') . '</a></p>',
+      '#markup' => '<p><a href="install.php?profile=' . $profilename . '&amp;localize=true">' . st('Learn how to install Drupal in other languages') . '</a></p>',
     );
   }
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] =  array(
-      '#type' => 'submit',
-      '#value' => st('Save and continue'),
+    '#type' => 'submit',
+    '#value' => st('Save and continue'),
   );
   return $form;
 }
@@ -1404,10 +1404,10 @@ function install_profile_modules(&$install_state) {
     $operations[] = array('_install_module_batch', array($module, $files[$module]->info['name']));
   }
   $batch = array(
-      'operations' => $operations,
-      'title' => st('Installing @drupal', array('@drupal' => drupal_install_profile_distribution_name())),
-      'error_message' => st('The installation has encountered an error.'),
-      'finished' => '_install_profile_modules_finished',
+    'operations' => $operations,
+    'title' => st('Installing @drupal', array('@drupal' => drupal_install_profile_distribution_name())),
+    'error_message' => st('The installation has encountered an error.'),
+    'finished' => '_install_profile_modules_finished',
   );
   return $batch;
 }
@@ -1544,10 +1544,10 @@ function install_finished(&$install_state) {
 
   // Installation profiles are always loaded last
   db_update('system')
-  ->fields(array('weight' => 1000))
-  ->condition('type', 'module')
-  ->condition('name', drupal_get_profile())
-  ->execute();
+    ->fields(array('weight' => 1000))
+    ->condition('type', 'module')
+    ->condition('name', drupal_get_profile())
+    ->execute();
 
   // Cache a fully-built schema.
   drupal_get_schema(NULL, TRUE);
@@ -1614,10 +1614,10 @@ function install_check_requirements($install_state) {
     // error.
     if (!drupal_verify_install_file($default_settings_file, FILE_EXIST|FILE_READABLE)) {
       $requirements['default settings file exists'] = array(
-          'title'       => st('Default settings file'),
-          'value'       => st('The default settings file does not exist.'),
-          'severity'    => REQUIREMENT_ERROR,
-          'description' => st('The @drupal installer requires that the %default-file file not be modified in any way from the original download.', array('@drupal' => drupal_install_profile_distribution_name(), '%default-file' => $default_settings_file)),
+        'title'       => st('Default settings file'),
+        'value'       => st('The default settings file does not exist.'),
+        'severity'    => REQUIREMENT_ERROR,
+        'description' => st('The @drupal installer requires that the %default-file file not be modified in any way from the original download.', array('@drupal' => drupal_install_profile_distribution_name(), '%default-file' => $default_settings_file)),
       );
     }
     // Otherwise, if settings.php does not exist yet, we can try to copy
@@ -1667,38 +1667,38 @@ function install_check_requirements($install_state) {
     // If settings.php does not exist, throw an error.
     if (!$exists) {
       $requirements['settings file exists'] = array(
-          'title'       => st('Settings file'),
-          'value'       => st('The settings file does not exist.'),
-          'severity'    => REQUIREMENT_ERROR,
-          'description' => st('The @drupal installer requires that you create a settings file as part of the installation process. Copy the %default_file file to %file. More details about installing Drupal are available in <a href="@install_txt">INSTALL.txt</a>.', array('@drupal' => drupal_install_profile_distribution_name(), '%file' => $file, '%default_file' => $default_settings_file, '@install_txt' => base_path() . 'INSTALL.txt')),
+        'title'       => st('Settings file'),
+        'value'       => st('The settings file does not exist.'),
+        'severity'    => REQUIREMENT_ERROR,
+        'description' => st('The @drupal installer requires that you create a settings file as part of the installation process. Copy the %default_file file to %file. More details about installing Drupal are available in <a href="@install_txt">INSTALL.txt</a>.', array('@drupal' => drupal_install_profile_distribution_name(), '%file' => $file, '%default_file' => $default_settings_file, '@install_txt' => base_path() . 'INSTALL.txt')),
       );
     }
     else {
       $requirements['settings file exists'] = array(
-          'title'       => st('Settings file'),
-          'value'       => st('The %file file exists.', array('%file' => $file)),
+        'title'       => st('Settings file'),
+        'value'       => st('The %file file exists.', array('%file' => $file)),
       );
       // If settings.php is not writable, throw an error.
       if (!$writable) {
         $requirements['settings file writable'] = array(
-            'title'       => st('Settings file'),
-            'value'       => st('The settings file is not writable.'),
-            'severity'    => REQUIREMENT_ERROR,
-            'description' => st('The @drupal installer requires write permissions to %file during the installation process. If you are unsure how to grant file permissions, consult the <a href="@handbook_url">online handbook</a>.', array('@drupal' => drupal_install_profile_distribution_name(), '%file' => $file, '@handbook_url' => 'http://drupal.org/server-permissions')),
+          'title'       => st('Settings file'),
+          'value'       => st('The settings file is not writable.'),
+          'severity'    => REQUIREMENT_ERROR,
+          'description' => st('The @drupal installer requires write permissions to %file during the installation process. If you are unsure how to grant file permissions, consult the <a href="@handbook_url">online handbook</a>.', array('@drupal' => drupal_install_profile_distribution_name(), '%file' => $file, '@handbook_url' => 'http://drupal.org/server-permissions')),
         );
       }
       else {
         $requirements['settings file'] = array(
-            'title'       => st('Settings file'),
-            'value'       => st('The settings file is writable.'),
+          'title'       => st('Settings file'),
+          'value'       => st('The settings file is writable.'),
         );
       }
       if (!empty($settings_file_ownership_error)) {
         $requirements['settings file ownership'] = array(
-            'title'       => st('Settings file'),
-            'value'       => st('The settings file is owned by the web server.'),
-            'severity'    => REQUIREMENT_ERROR,
-            'description' => st('The @drupal installer failed to create a settings file with proper file ownership. Log on to your web server, remove the existing %file file, and create a new one by copying the %default_file file to %file. More details about installing Drupal are available in <a href="@install_txt">INSTALL.txt</a>. If you have problems with the file permissions on your server, consult the <a href="@handbook_url">online handbook</a>.', array('@drupal' => drupal_install_profile_distribution_name(), '%file' => $file, '%default_file' => $default_settings_file, '@install_txt' => base_path() . 'INSTALL.txt', '@handbook_url' => 'http://drupal.org/server-permissions')),
+          'title'       => st('Settings file'),
+          'value'       => st('The settings file is owned by the web server.'),
+          'severity'    => REQUIREMENT_ERROR,
+          'description' => st('The @drupal installer failed to create a settings file with proper file ownership. Log on to your web server, remove the existing %file file, and create a new one by copying the %default_file file to %file. More details about installing Drupal are available in <a href="@install_txt">INSTALL.txt</a>. If you have problems with the file permissions on your server, consult the <a href="@handbook_url">online handbook</a>.', array('@drupal' => drupal_install_profile_distribution_name(), '%file' => $file, '%default_file' => $default_settings_file, '@install_txt' => base_path() . 'INSTALL.txt', '@handbook_url' => 'http://drupal.org/server-permissions')),
         );
       }
     }
@@ -1721,107 +1721,107 @@ function _install_configure_form($form, &$form_state, &$install_state) {
   include_once DRUPAL_ROOT . '/includes/locale.inc';
 
   $form['site_information'] = array(
-      '#type' => 'fieldset',
-      '#title' => st('Site information'),
-      '#collapsible' => FALSE,
+    '#type' => 'fieldset',
+    '#title' => st('Site information'),
+    '#collapsible' => FALSE,
   );
   $form['site_information']['site_name'] = array(
-      '#type' => 'textfield',
-      '#title' => st('Site name'),
-      '#required' => TRUE,
-      '#weight' => -20,
+    '#type' => 'textfield',
+    '#title' => st('Site name'),
+    '#required' => TRUE,
+    '#weight' => -20,
   );
   $form['site_information']['site_mail'] = array(
-      '#type' => 'textfield',
-      '#title' => st('Site e-mail address'),
-      '#default_value' => ini_get('sendmail_from'),
-      '#description' => st("Automated e-mails, such as registration information, will be sent from this address. Use an address ending in your site's domain to help prevent these e-mails from being flagged as spam."),
-      '#required' => TRUE,
-      '#weight' => -15,
+    '#type' => 'textfield',
+    '#title' => st('Site e-mail address'),
+    '#default_value' => ini_get('sendmail_from'),
+    '#description' => st("Automated e-mails, such as registration information, will be sent from this address. Use an address ending in your site's domain to help prevent these e-mails from being flagged as spam."),
+    '#required' => TRUE,
+    '#weight' => -15,
   );
   $form['admin_account'] = array(
-      '#type' => 'fieldset',
-      '#title' => st('Site maintenance account'),
-      '#collapsible' => FALSE,
+    '#type' => 'fieldset',
+    '#title' => st('Site maintenance account'),
+    '#collapsible' => FALSE,
   );
 
   $form['admin_account']['account']['#tree'] = TRUE;
   $form['admin_account']['account']['name'] = array('#type' => 'textfield',
-      '#title' => st('Username'),
-      '#maxlength' => USERNAME_MAX_LENGTH,
-      '#description' => st('Spaces are allowed; punctuation is not allowed except for periods, hyphens, and underscores.'),
-      '#required' => TRUE,
-      '#weight' => -10,
-      '#attributes' => array('class' => array('username')),
+    '#title' => st('Username'),
+    '#maxlength' => USERNAME_MAX_LENGTH,
+    '#description' => st('Spaces are allowed; punctuation is not allowed except for periods, hyphens, and underscores.'),
+    '#required' => TRUE,
+    '#weight' => -10,
+    '#attributes' => array('class' => array('username')),
   );
 
   $form['admin_account']['account']['mail'] = array('#type' => 'textfield',
-      '#title' => st('E-mail address'),
-      '#maxlength' => EMAIL_MAX_LENGTH,
-      '#required' => TRUE,
-      '#weight' => -5,
+    '#title' => st('E-mail address'),
+    '#maxlength' => EMAIL_MAX_LENGTH,
+    '#required' => TRUE,
+    '#weight' => -5,
   );
   $form['admin_account']['account']['pass'] = array(
-      '#type' => 'password_confirm',
-      '#required' => TRUE,
-      '#size' => 25,
-      '#weight' => 0,
+    '#type' => 'password_confirm',
+    '#required' => TRUE,
+    '#size' => 25,
+    '#weight' => 0,
   );
 
   $form['server_settings'] = array(
-      '#type' => 'fieldset',
-      '#title' => st('Server settings'),
-      '#collapsible' => FALSE,
+    '#type' => 'fieldset',
+    '#title' => st('Server settings'),
+    '#collapsible' => FALSE,
   );
 
   $countries = country_get_list();
   $form['server_settings']['site_default_country'] = array(
-      '#type' => 'select',
-      '#title' => st('Default country'),
-      '#empty_value' => '',
-      '#default_value' => variable_get('site_default_country', NULL),
-      '#options' => $countries,
-      '#description' => st('Select the default country for the site.'),
-      '#weight' => 0,
+    '#type' => 'select',
+    '#title' => st('Default country'),
+    '#empty_value' => '',
+    '#default_value' => variable_get('site_default_country', NULL),
+    '#options' => $countries,
+    '#description' => st('Select the default country for the site.'),
+    '#weight' => 0,
   );
 
   $form['server_settings']['date_default_timezone'] = array(
-      '#type' => 'select',
-      '#title' => st('Default time zone'),
-      '#default_value' => date_default_timezone_get(),
-      '#options' => system_time_zones(),
-      '#description' => st('By default, dates in this site will be displayed in the chosen time zone.'),
-      '#weight' => 5,
-      '#attributes' => array('class' => array('timezone-detect')),
+    '#type' => 'select',
+    '#title' => st('Default time zone'),
+    '#default_value' => date_default_timezone_get(),
+    '#options' => system_time_zones(),
+    '#description' => st('By default, dates in this site will be displayed in the chosen time zone.'),
+    '#weight' => 5,
+    '#attributes' => array('class' => array('timezone-detect')),
   );
 
   $form['server_settings']['clean_url'] = array(
-      '#type' => 'hidden',
-      '#default_value' => 0,
-      '#attributes' => array('id' => 'edit-clean-url', 'class' => array('install')),
+    '#type' => 'hidden',
+    '#default_value' => 0,
+    '#attributes' => array('id' => 'edit-clean-url', 'class' => array('install')),
   );
 
   $form['update_notifications'] = array(
-      '#type' => 'fieldset',
-      '#title' => st('Update notifications'),
-      '#collapsible' => FALSE,
+    '#type' => 'fieldset',
+    '#title' => st('Update notifications'),
+    '#collapsible' => FALSE,
   );
   $form['update_notifications']['update_status_module'] = array(
-      '#type' => 'checkboxes',
-      '#options' => array(
-          1 => st('Check for updates automatically'),
-          2 => st('Receive e-mail notifications'),
-      ),
-      '#default_value' => array(1, 2),
-      '#description' => st('The system will notify you when updates and important security releases are available for installed components. Anonymous information about your site is sent to <a href="@drupal">Drupal.org</a>.', array('@drupal' => 'http://drupal.org')),
-      '#weight' => 15,
+    '#type' => 'checkboxes',
+    '#options' => array(
+      1 => st('Check for updates automatically'),
+      2 => st('Receive e-mail notifications'),
+    ),
+    '#default_value' => array(1, 2),
+    '#description' => st('The system will notify you when updates and important security releases are available for installed components. Anonymous information about your site is sent to <a href="@drupal">Drupal.org</a>.', array('@drupal' => 'http://drupal.org')),
+    '#weight' => 15,
   );
 
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => st('Save and continue'),
-      '#weight' => 15,
+    '#type' => 'submit',
+    '#value' => st('Save and continue'),
+    '#weight' => 15,
   );
 
   return $form;

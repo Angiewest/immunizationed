@@ -226,8 +226,8 @@ abstract class DatabaseSchema implements QueryPlaceholderInterface {
    */
   protected function getPrefixInfo($table = 'default', $add_prefix = TRUE) {
     $info = array(
-        'schema' => $this->defaultSchema,
-        'prefix' => $this->connection->tablePrefix($table),
+      'schema' => $this->defaultSchema,
+      'prefix' => $this->connection->tablePrefix($table),
     );
     if ($add_prefix) {
       $table = $info['prefix'] . $table;
@@ -387,7 +387,7 @@ abstract class DatabaseSchema implements QueryPlaceholderInterface {
    *   If the specified table doesn't exist.
    * @throws DatabaseSchemaObjectExistsException
    *   If a table with the specified new name already exists.
-  */
+   */
   abstract public function renameTable($table, $new_name);
 
   /**
@@ -399,7 +399,7 @@ abstract class DatabaseSchema implements QueryPlaceholderInterface {
    * @return
    *   TRUE if the table was successfully dropped, FALSE if there was no table
    *   by that name to begin with.
-  */
+   */
   abstract public function dropTable($table);
 
   /**
@@ -427,7 +427,7 @@ abstract class DatabaseSchema implements QueryPlaceholderInterface {
    *   If the specified table doesn't exist.
    * @throws DatabaseSchemaObjectExistsException
    *   If the specified table already has a field by that name.
-  */
+   */
   abstract public function addField($table, $field, $spec, $keys_new = array());
 
   /**
@@ -441,7 +441,7 @@ abstract class DatabaseSchema implements QueryPlaceholderInterface {
    * @return
    *   TRUE if the field was successfully dropped, FALSE if there was no field
    *   by that name to begin with.
-  */
+   */
   abstract public function dropField($table, $field);
 
   /**
@@ -456,7 +456,7 @@ abstract class DatabaseSchema implements QueryPlaceholderInterface {
    *
    * @throws DatabaseSchemaObjectDoesNotExistException
    *   If the specified table or field doesn't exist.
-  */
+   */
   abstract public function fieldSetDefault($table, $field, $default);
 
   /**
@@ -469,7 +469,7 @@ abstract class DatabaseSchema implements QueryPlaceholderInterface {
    *
    * @throws DatabaseSchemaObjectDoesNotExistException
    *   If the specified table or field doesn't exist.
-  */
+   */
   abstract public function fieldSetNoDefault($table, $field);
 
   /**
@@ -482,7 +482,7 @@ abstract class DatabaseSchema implements QueryPlaceholderInterface {
    *
    * @return
    *   TRUE if the given index exists, otherwise FALSE.
-  */
+   */
   abstract public function indexExists($table, $name);
 
   /**
@@ -497,7 +497,7 @@ abstract class DatabaseSchema implements QueryPlaceholderInterface {
    *   If the specified table doesn't exist.
    * @throws DatabaseSchemaObjectExistsException
    *   If the specified table already has a primary key.
-  */
+   */
   abstract public function addPrimaryKey($table, $fields);
 
   /**
@@ -509,7 +509,7 @@ abstract class DatabaseSchema implements QueryPlaceholderInterface {
    * @return
    *   TRUE if the primary key was successfully dropped, FALSE if there was no
    *   primary key on this table to begin with.
-  */
+   */
   abstract public function dropPrimaryKey($table);
 
   /**
@@ -526,7 +526,7 @@ abstract class DatabaseSchema implements QueryPlaceholderInterface {
    *   If the specified table doesn't exist.
    * @throws DatabaseSchemaObjectExistsException
    *   If the specified table already has a key by that name.
-  */
+   */
   abstract public function addUniqueKey($table, $name, $fields);
 
   /**
@@ -540,7 +540,7 @@ abstract class DatabaseSchema implements QueryPlaceholderInterface {
    * @return
    *   TRUE if the key was successfully dropped, FALSE if there was no key by
    *   that name to begin with.
-  */
+   */
   abstract public function dropUniqueKey($table, $name);
 
   /**
@@ -557,7 +557,7 @@ abstract class DatabaseSchema implements QueryPlaceholderInterface {
    *   If the specified table doesn't exist.
    * @throws DatabaseSchemaObjectExistsException
    *   If the specified table already has an index by that name.
-  */
+   */
   abstract public function addIndex($table, $name, $fields);
 
   /**
@@ -571,7 +571,7 @@ abstract class DatabaseSchema implements QueryPlaceholderInterface {
    * @return
    *   TRUE if the index was successfully dropped, FALSE if there was no index
    *   by that name to begin with.
-  */
+   */
   abstract public function dropIndex($table, $name);
 
   /**
@@ -638,7 +638,7 @@ abstract class DatabaseSchema implements QueryPlaceholderInterface {
    *   If the specified table or source field doesn't exist.
    * @throws DatabaseSchemaObjectExistsException
    *   If the specified destination field already exists.
-  */
+   */
   abstract public function changeField($table, $field, $field_new, $spec, $keys_new = array());
 
   /**
@@ -651,7 +651,7 @@ abstract class DatabaseSchema implements QueryPlaceholderInterface {
    *
    * @throws DatabaseSchemaObjectExistsException
    *   If the specified table already exists.
-  */
+   */
   public function createTable($name, $table) {
     if ($this->tableExists($name)) {
       throw new DatabaseSchemaObjectExistsException(t('Table %name already exists.', array('%name' => $name)));

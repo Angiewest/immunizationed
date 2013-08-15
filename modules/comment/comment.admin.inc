@@ -34,9 +34,9 @@ function comment_admin($type = 'new') {
 function comment_admin_overview($form, &$form_state, $arg) {
   // Build an 'Update options' form.
   $form['options'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Update options'),
-      '#attributes' => array('class' => array('container-inline')),
+    '#type' => 'fieldset',
+    '#title' => t('Update options'),
+    '#attributes' => array('class' => array('container-inline')),
   );
 
   if ($arg == 'approval') {
@@ -48,25 +48,25 @@ function comment_admin_overview($form, &$form_state, $arg) {
   $options['delete'] = t('Delete the selected comments');
 
   $form['options']['operation'] = array(
-      '#type' => 'select',
-      '#title' => t('Operation'),
-      '#title_display' => 'invisible',
-      '#options' => $options,
-      '#default_value' => 'publish',
+    '#type' => 'select',
+    '#title' => t('Operation'),
+    '#title_display' => 'invisible',
+    '#options' => $options,
+    '#default_value' => 'publish',
   );
   $form['options']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Update'),
+    '#type' => 'submit',
+    '#value' => t('Update'),
   );
 
   // Load the comments that need to be displayed.
   $status = ($arg == 'approval') ? COMMENT_NOT_PUBLISHED : COMMENT_PUBLISHED;
   $header = array(
-      'subject' => array('data' => t('Subject'), 'field' => 'subject'),
-      'author' => array('data' => t('Author'), 'field' => 'name'),
-      'posted_in' => array('data' => t('Posted in'), 'field' => 'node_title'),
-      'changed' => array('data' => t('Updated'), 'field' => 'c.changed', 'sort' => 'desc'),
-      'operations' => array('data' => t('Operations')),
+    'subject' => array('data' => t('Subject'), 'field' => 'subject'),
+    'author' => array('data' => t('Author'), 'field' => 'name'),
+    'posted_in' => array('data' => t('Posted in'), 'field' => 'node_title'),
+    'changed' => array('data' => t('Updated'), 'field' => 'c.changed', 'sort' => 'desc'),
+    'operations' => array('data' => t('Operations')),
   );
 
   $query = db_select('comment', 'c')->extend('PagerDefault')->extend('TableSort');
@@ -74,11 +74,11 @@ function comment_admin_overview($form, &$form_state, $arg) {
   $query->addField('n', 'title', 'node_title');
   $query->addTag('node_access');
   $result = $query
-  ->fields('c', array('cid', 'subject', 'name', 'changed'))
-  ->condition('c.status', $status)
-  ->limit(50)
-  ->orderByHeader($header)
-  ->execute();
+    ->fields('c', array('cid', 'subject', 'name', 'changed'))
+    ->condition('c.status', $status)
+    ->limit(50)
+    ->orderByHeader($header)
+    ->execute();
 
   $cids = array();
 
@@ -100,39 +100,39 @@ function comment_admin_overview($form, &$form_state, $arg) {
     $comment->node_title = array_shift($node_titles);
     $comment_body = field_get_items('comment', $comment, 'comment_body');
     $options[$comment->cid] = array(
-        'subject' => array(
-            'data' => array(
-                '#type' => 'link',
-                '#title' => $comment->subject,
-                '#href' => 'comment/' . $comment->cid,
-                '#options' => array('attributes' => array('title' => truncate_utf8($comment_body[0]['value'], 128)), 'fragment' => 'comment-' . $comment->cid),
-            ),
+      'subject' => array(
+        'data' => array(
+          '#type' => 'link',
+          '#title' => $comment->subject,
+          '#href' => 'comment/' . $comment->cid,
+          '#options' => array('attributes' => array('title' => truncate_utf8($comment_body[0]['value'], 128)), 'fragment' => 'comment-' . $comment->cid),
         ),
-        'author' => theme('username', array('account' => $comment)),
-        'posted_in' => array(
-            'data' => array(
-                '#type' => 'link',
-                '#title' => $comment->node_title,
-                '#href' => 'node/' . $comment->nid,
-            ),
+      ),
+      'author' => theme('username', array('account' => $comment)),
+      'posted_in' => array(
+        'data' => array(
+          '#type' => 'link',
+          '#title' => $comment->node_title,
+          '#href' => 'node/' . $comment->nid,
         ),
-        'changed' => format_date($comment->changed, 'short'),
-        'operations' => array(
-            'data' => array(
-                '#type' => 'link',
-                '#title' => t('edit'),
-                '#href' => 'comment/' . $comment->cid . '/edit',
-                '#options' => array('query' => $destination),
-            ),
+      ),
+      'changed' => format_date($comment->changed, 'short'),
+      'operations' => array(
+        'data' => array(
+          '#type' => 'link',
+          '#title' => t('edit'),
+          '#href' => 'comment/' . $comment->cid . '/edit',
+          '#options' => array('query' => $destination),
         ),
+      ),
     );
   }
 
   $form['comments'] = array(
-      '#type' => 'tableselect',
-      '#header' => $header,
-      '#options' => $options,
-      '#empty' => t('No comments available.'),
+    '#type' => 'tableselect',
+    '#header' => $header,
+    '#options' => $options,
+    '#empty' => t('No comments available.'),
   );
 
   $form['pager'] = array('#theme' => 'pager');
@@ -196,9 +196,9 @@ function comment_multiple_delete_confirm($form, &$form_state) {
   $edit = $form_state['input'];
 
   $form['comments'] = array(
-      '#prefix' => '<ul>',
-      '#suffix' => '</ul>',
-      '#tree' => TRUE,
+    '#prefix' => '<ul>',
+    '#suffix' => '</ul>',
+    '#tree' => TRUE,
   );
   // array_filter() returns only elements with actual values.
   $comment_counter = 0;
@@ -218,9 +218,9 @@ function comment_multiple_delete_confirm($form, &$form_state) {
   }
   else {
     return confirm_form($form,
-        t('Are you sure you want to delete these comments and all their children?'),
-        'admin/content/comment', t('This action cannot be undone.'),
-        t('Delete comments'), t('Cancel'));
+                        t('Are you sure you want to delete these comments and all their children?'),
+                        'admin/content/comment', t('This action cannot be undone.'),
+                        t('Delete comments'), t('Cancel'));
   }
 }
 
@@ -259,13 +259,13 @@ function comment_confirm_delete($form, &$form_state, $comment) {
   // Always provide entity id in the same form key as in the entity edit form.
   $form['cid'] = array('#type' => 'value', '#value' => $comment->cid);
   return confirm_form(
-      $form,
-      t('Are you sure you want to delete the comment %title?', array('%title' => $comment->subject)),
-      'node/' . $comment->nid,
-      t('Any replies to this comment will be lost. This action cannot be undone.'),
-      t('Delete'),
-      t('Cancel'),
-      'comment_confirm_delete');
+    $form,
+    t('Are you sure you want to delete the comment %title?', array('%title' => $comment->subject)),
+    'node/' . $comment->nid,
+    t('Any replies to this comment will be lost. This action cannot be undone.'),
+    t('Delete'),
+    t('Cancel'),
+    'comment_confirm_delete');
 }
 
 /**

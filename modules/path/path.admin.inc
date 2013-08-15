@@ -32,10 +32,10 @@ function path_admin_overview($keys = NULL) {
     $query->condition('alias', '%' . preg_replace('!\*+!', '%', $keys) . '%', 'LIKE');
   }
   $result = $query
-  ->fields('url_alias')
-  ->orderByHeader($header)
-  ->limit(50)
-  ->execute();
+    ->fields('url_alias')
+    ->orderByHeader($header)
+    ->limit(50)
+    ->execute();
 
   $rows = array();
   $destination = drupal_get_destination();
@@ -49,21 +49,21 @@ function path_admin_overview($keys = NULL) {
 
     $operations = array();
     $operations['edit'] = array(
-        'title' => t('edit'),
-        'href' => "admin/config/search/path/edit/$data->pid",
-        'query' => $destination,
+      'title' => t('edit'),
+      'href' => "admin/config/search/path/edit/$data->pid",
+      'query' => $destination,
     );
     $operations['delete'] = array(
-        'title' => t('delete'),
-        'href' => "admin/config/search/path/delete/$data->pid",
-        'query' => $destination,
+      'title' => t('delete'),
+      'href' => "admin/config/search/path/delete/$data->pid",
+      'query' => $destination,
     );
     $row['data']['operations'] = array(
-        'data' => array(
-            '#theme' => 'links',
-            '#links' => $operations,
-            '#attributes' => array('class' => array('links', 'inline', 'nowrap')),
-        ),
+      'data' => array(
+        '#theme' => 'links',
+        '#links' => $operations,
+        '#attributes' => array('class' => array('links', 'inline', 'nowrap')),
+      ),
     );
 
     // If the system path maps to a different URL alias, highlight this table
@@ -76,10 +76,10 @@ function path_admin_overview($keys = NULL) {
   }
 
   $build['path_table'] = array(
-      '#theme' => 'table',
-      '#header' => $header,
-      '#rows' => $rows,
-      '#empty' => t('No URL aliases available. <a href="@link">Add URL alias</a>.', array('@link' => url('admin/config/search/path/add'))),
+    '#theme' => 'table',
+    '#header' => $header,
+    '#rows' => $rows,
+    '#empty' => t('No URL aliases available. <a href="@link">Add URL alias</a>.', array('@link' => url('admin/config/search/path/add'))),
   );
   $build['path_pager'] = array('#theme' => 'pager');
 
@@ -122,46 +122,46 @@ function path_admin_edit($path = array()) {
  */
 function path_admin_form($form, &$form_state, $path = array('source' => '', 'alias' => '', 'language' => LANGUAGE_NONE, 'pid' => NULL)) {
   $form['source'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Existing system path'),
-      '#default_value' => $path['source'],
-      '#maxlength' => 255,
-      '#size' => 45,
-      '#description' => t('Specify the existing path you wish to alias. For example: node/28, forum/1, taxonomy/term/1.'),
-      '#field_prefix' => url(NULL, array('absolute' => TRUE)) . (variable_get('clean_url', 0) ? '' : '?q='),
-      '#required' => TRUE,
+    '#type' => 'textfield',
+    '#title' => t('Existing system path'),
+    '#default_value' => $path['source'],
+    '#maxlength' => 255,
+    '#size' => 45,
+    '#description' => t('Specify the existing path you wish to alias. For example: node/28, forum/1, taxonomy/term/1.'),
+    '#field_prefix' => url(NULL, array('absolute' => TRUE)) . (variable_get('clean_url', 0) ? '' : '?q='),
+    '#required' => TRUE,
   );
   $form['alias'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Path alias'),
-      '#default_value' => $path['alias'],
-      '#maxlength' => 255,
-      '#size' => 45,
-      '#description' => t('Specify an alternative path by which this data can be accessed. For example, type "about" when writing an about page. Use a relative path and don\'t add a trailing slash or the URL alias won\'t work.'),
-      '#field_prefix' => url(NULL, array('absolute' => TRUE)) . (variable_get('clean_url', 0) ? '' : '?q='),
-      '#required' => TRUE,
+    '#type' => 'textfield',
+    '#title' => t('Path alias'),
+    '#default_value' => $path['alias'],
+    '#maxlength' => 255,
+    '#size' => 45,
+    '#description' => t('Specify an alternative path by which this data can be accessed. For example, type "about" when writing an about page. Use a relative path and don\'t add a trailing slash or the URL alias won\'t work.'),
+    '#field_prefix' => url(NULL, array('absolute' => TRUE)) . (variable_get('clean_url', 0) ? '' : '?q='),
+    '#required' => TRUE,
   );
 
   // This will be a hidden value unless locale module is enabled.
   $form['language'] = array(
-      '#type' => 'value',
-      '#value' => $path['language']
+    '#type' => 'value',
+    '#value' => $path['language']
   );
 
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Save'),
+    '#type' => 'submit',
+    '#value' => t('Save'),
   );
   if ($path['pid']) {
     $form['pid'] = array(
-        '#type' => 'hidden',
-        '#value' => $path['pid'],
+      '#type' => 'hidden',
+      '#value' => $path['pid'],
     );
     $form['actions']['delete'] = array(
-        '#type' => 'submit',
-        '#value' => t('Delete'),
-        '#submit' => array('path_admin_form_delete_submit'),
+      '#type' => 'submit',
+      '#value' => t('Delete'),
+      '#submit' => array('path_admin_form_delete_submit'),
     );
   }
 
@@ -201,8 +201,8 @@ function path_admin_form_validate($form, &$form_state) {
       ':pid' => $pid,
       ':alias' => $alias,
       ':language' => $language,
-  ))
-  ->fetchField();
+    ))
+    ->fetchField();
 
   if ($has_alias) {
     form_set_error('alias', t('The alias %alias is already in use in this language.', array('%alias' => $alias)));
@@ -240,10 +240,10 @@ function path_admin_delete_confirm($form, &$form_state, $path) {
   if (user_access('administer url aliases')) {
     $form_state['path'] = $path;
     return confirm_form(
-        $form,
-        t('Are you sure you want to delete path alias %title?',
-            array('%title' => $path['alias'])),
-        'admin/config/search/path'
+      $form,
+      t('Are you sure you want to delete path alias %title?',
+      array('%title' => $path['alias'])),
+      'admin/config/search/path'
     );
   }
   return array();
@@ -269,27 +269,27 @@ function path_admin_delete_confirm_submit($form, &$form_state) {
 function path_admin_filter_form($form, &$form_state, $keys = '') {
   $form['#attributes'] = array('class' => array('search-form'));
   $form['basic'] = array('#type' => 'fieldset',
-      '#title' => t('Filter aliases'),
-      '#attributes' => array('class' => array('container-inline')),
+    '#title' => t('Filter aliases'),
+    '#attributes' => array('class' => array('container-inline')),
   );
   $form['basic']['filter'] = array(
-      '#type' => 'textfield',
-      '#title' => 'Path alias',
-      '#title_display' => 'invisible',
-      '#default_value' => $keys,
-      '#maxlength' => 128,
-      '#size' => 25,
+    '#type' => 'textfield',
+    '#title' => 'Path alias',
+    '#title_display' => 'invisible',
+    '#default_value' => $keys,
+    '#maxlength' => 128,
+    '#size' => 25,
   );
   $form['basic']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Filter'),
-      '#submit' => array('path_admin_filter_form_submit_filter'),
-  );
+    '#type' => 'submit',
+    '#value' => t('Filter'),
+    '#submit' => array('path_admin_filter_form_submit_filter'),
+    );
   if ($keys) {
     $form['basic']['reset'] = array(
-        '#type' => 'submit',
-        '#value' => t('Reset'),
-        '#submit' => array('path_admin_filter_form_submit_reset'),
+      '#type' => 'submit',
+      '#value' => t('Reset'),
+      '#submit' => array('path_admin_filter_form_submit_reset'),
     );
   }
   return $form;

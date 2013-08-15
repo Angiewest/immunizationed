@@ -274,12 +274,12 @@ function hook_node_access_records($node) {
     // blindly here, then all users could view an unpublished node.
     if ($node->status) {
       $grants[] = array(
-          'realm' => 'example',
-          'gid' => 1,
-          'grant_view' => 1,
-          'grant_update' => 0,
-          'grant_delete' => 0,
-          'priority' => 0,
+        'realm' => 'example',
+        'gid' => 1,
+        'grant_view' => 1,
+        'grant_update' => 0,
+        'grant_delete' => 0,
+        'priority' => 0,
       );
     }
     // For the example_author array, the GID is equivalent to a UID, which
@@ -287,12 +287,12 @@ function hook_node_access_records($node) {
     // Note that an author can always view his or her nodes, even if they
     // have status unpublished.
     $grants[] = array(
-        'realm' => 'example_author',
-        'gid' => $node->uid,
-        'grant_view' => 1,
-        'grant_update' => 1,
-        'grant_delete' => 1,
-        'priority' => 0,
+      'realm' => 'example_author',
+      'gid' => $node->uid,
+      'grant_view' => 1,
+      'grant_update' => 1,
+      'grant_delete' => 1,
+      'priority' => 0,
     );
 
     return $grants;
@@ -418,40 +418,40 @@ function hook_node_grants_alter(&$grants, $account, $op) {
  */
 function hook_node_operations() {
   $operations = array(
-      'publish' => array(
-          'label' => t('Publish selected content'),
-          'callback' => 'node_mass_update',
-          'callback arguments' => array('updates' => array('status' => NODE_PUBLISHED)),
-      ),
-      'unpublish' => array(
-          'label' => t('Unpublish selected content'),
-          'callback' => 'node_mass_update',
-          'callback arguments' => array('updates' => array('status' => NODE_NOT_PUBLISHED)),
-      ),
-      'promote' => array(
-          'label' => t('Promote selected content to front page'),
-          'callback' => 'node_mass_update',
-          'callback arguments' => array('updates' => array('status' => NODE_PUBLISHED, 'promote' => NODE_PROMOTED)),
-      ),
-      'demote' => array(
-          'label' => t('Demote selected content from front page'),
-          'callback' => 'node_mass_update',
-          'callback arguments' => array('updates' => array('promote' => NODE_NOT_PROMOTED)),
-      ),
-      'sticky' => array(
-          'label' => t('Make selected content sticky'),
-          'callback' => 'node_mass_update',
-          'callback arguments' => array('updates' => array('status' => NODE_PUBLISHED, 'sticky' => NODE_STICKY)),
-      ),
-      'unsticky' => array(
-          'label' => t('Make selected content not sticky'),
-          'callback' => 'node_mass_update',
-          'callback arguments' => array('updates' => array('sticky' => NODE_NOT_STICKY)),
-      ),
-      'delete' => array(
-          'label' => t('Delete selected content'),
-          'callback' => NULL,
-      ),
+    'publish' => array(
+      'label' => t('Publish selected content'),
+      'callback' => 'node_mass_update',
+      'callback arguments' => array('updates' => array('status' => NODE_PUBLISHED)),
+    ),
+    'unpublish' => array(
+      'label' => t('Unpublish selected content'),
+      'callback' => 'node_mass_update',
+      'callback arguments' => array('updates' => array('status' => NODE_NOT_PUBLISHED)),
+    ),
+    'promote' => array(
+      'label' => t('Promote selected content to front page'),
+      'callback' => 'node_mass_update',
+      'callback arguments' => array('updates' => array('status' => NODE_PUBLISHED, 'promote' => NODE_PROMOTED)),
+    ),
+    'demote' => array(
+      'label' => t('Demote selected content from front page'),
+      'callback' => 'node_mass_update',
+      'callback arguments' => array('updates' => array('promote' => NODE_NOT_PROMOTED)),
+    ),
+    'sticky' => array(
+      'label' => t('Make selected content sticky'),
+      'callback' => 'node_mass_update',
+      'callback arguments' => array('updates' => array('status' => NODE_PUBLISHED, 'sticky' => NODE_STICKY)),
+    ),
+    'unsticky' => array(
+      'label' => t('Make selected content not sticky'),
+      'callback' => 'node_mass_update',
+      'callback arguments' => array('updates' => array('sticky' => NODE_NOT_STICKY)),
+    ),
+    'delete' => array(
+      'label' => t('Delete selected content'),
+      'callback' => NULL,
+    ),
   );
   return $operations;
 }
@@ -471,8 +471,8 @@ function hook_node_operations() {
  */
 function hook_node_delete($node) {
   db_delete('mytable')
-  ->condition('nid', $node->nid)
-  ->execute();
+    ->condition('nid', $node->nid)
+    ->execute();
 }
 
 /**
@@ -489,8 +489,8 @@ function hook_node_delete($node) {
  */
 function hook_node_revision_delete($node) {
   db_delete('mytable')
-  ->condition('vid', $node->vid)
-  ->execute();
+    ->condition('vid', $node->vid)
+    ->execute();
 }
 
 /**
@@ -516,11 +516,11 @@ function hook_node_revision_delete($node) {
  */
 function hook_node_insert($node) {
   db_insert('mytable')
-  ->fields(array(
-  'nid' => $node->nid,
-  'extra' => $node->extra,
-  ))
-  ->execute();
+    ->fields(array(
+      'nid' => $node->nid,
+      'extra' => $node->extra,
+    ))
+    ->execute();
 }
 
 /**
@@ -713,9 +713,9 @@ function hook_node_presave($node) {
  */
 function hook_node_update($node) {
   db_update('mytable')
-  ->fields(array('extra' => $node->extra))
-  ->condition('nid', $node->nid)
-  ->execute();
+    ->fields(array('extra' => $node->extra))
+    ->condition('nid', $node->nid)
+    ->execute();
 }
 
 /**
@@ -830,9 +830,9 @@ function hook_node_submit($node, $form, &$form_state) {
  */
 function hook_node_view($node, $view_mode, $langcode) {
   $node->content['my_additional_field'] = array(
-      '#markup' => $additional_field,
-      '#weight' => 10,
-      '#theme' => 'mymodule_my_additional_field',
+    '#markup' => $additional_field,
+    '#weight' => 10,
+    '#theme' => 'mymodule_my_additional_field',
   );
 }
 
@@ -913,11 +913,11 @@ function hook_node_view_alter(&$build) {
  */
 function hook_node_info() {
   return array(
-      'blog' => array(
-          'name' => t('Blog entry'),
-          'base' => 'blog',
-          'description' => t('Use for multi-user blogs. Every user gets a personal blog.'),
-      )
+    'blog' => array(
+      'name' => t('Blog entry'),
+      'base' => 'blog',
+      'description' => t('Use for multi-user blogs. Every user gets a personal blog.'),
+    )
   );
 }
 
@@ -933,7 +933,7 @@ function hook_node_info() {
  *
  * All scoring mechanisms are provided as options to site administrators, and
  * may be tweaked based on individual sites or disabled altogether if they do
-   * not make sense. Individual scoring mechanisms, if enabled, are assigned a
+ * not make sense. Individual scoring mechanisms, if enabled, are assigned a
  * weight from 1 to 10. The weight represents the factor of magnification of
  * the ranking mechanism, with higher-weighted ranking mechanisms having more
  * influence. In order for the weight system to work, each scoring mechanism
@@ -968,17 +968,17 @@ function hook_ranking() {
   // If voting is disabled, we can avoid returning the array, no hard feelings.
   if (variable_get('vote_node_enabled', TRUE)) {
     return array(
-        'vote_average' => array(
-            'title' => t('Average vote'),
-            // Note that we use i.sid, the search index's search item id, rather than
-            // n.nid.
-            'join' => 'LEFT JOIN {vote_node_data} vote_node_data ON vote_node_data.nid = i.sid',
-            // The highest possible score should be 1, and the lowest possible score,
-            // always 0, should be 0.
-            'score' => 'vote_node_data.average / CAST(%f AS DECIMAL)',
-            // Pass in the highest possible voting score as a decimal argument.
-            'arguments' => array(variable_get('vote_score_max', 5)),
-        ),
+      'vote_average' => array(
+        'title' => t('Average vote'),
+        // Note that we use i.sid, the search index's search item id, rather than
+        // n.nid.
+        'join' => 'LEFT JOIN {vote_node_data} vote_node_data ON vote_node_data.nid = i.sid',
+        // The highest possible score should be 1, and the lowest possible score,
+        // always 0, should be 0.
+        'score' => 'vote_node_data.average / CAST(%f AS DECIMAL)',
+        // Pass in the highest possible voting score as a decimal argument.
+        'arguments' => array(variable_get('vote_score_max', 5)),
+      ),
     );
   }
 }
@@ -1044,8 +1044,8 @@ function hook_node_type_delete($info) {
  */
 function hook_delete($node) {
   db_delete('mytable')
-  ->condition('nid', $node->nid)
-  ->execute();
+    ->condition('nid', $node->nid)
+    ->execute();
 }
 
 /**
@@ -1108,28 +1108,28 @@ function hook_form($node, &$form_state) {
   $type = node_type_get_type($node);
 
   $form['title'] = array(
-      '#type' => 'textfield',
-      '#title' => check_plain($type->title_label),
-      '#default_value' => !empty($node->title) ? $node->title : '',
-      '#required' => TRUE, '#weight' => -5
+    '#type' => 'textfield',
+    '#title' => check_plain($type->title_label),
+    '#default_value' => !empty($node->title) ? $node->title : '',
+    '#required' => TRUE, '#weight' => -5
   );
 
   $form['field1'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Custom field'),
-      '#default_value' => $node->field1,
-      '#maxlength' => 127,
+    '#type' => 'textfield',
+    '#title' => t('Custom field'),
+    '#default_value' => $node->field1,
+    '#maxlength' => 127,
   );
   $form['selectbox'] = array(
-      '#type' => 'select',
-      '#title' => t('Select box'),
-      '#default_value' => $node->selectbox,
-      '#options' => array(
-          1 => 'Option A',
-          2 => 'Option B',
-          3 => 'Option C',
-      ),
-      '#description' => t('Choose an option.'),
+    '#type' => 'select',
+    '#title' => t('Select box'),
+    '#default_value' => $node->selectbox,
+    '#options' => array(
+      1 => 'Option A',
+      2 => 'Option B',
+      3 => 'Option C',
+    ),
+    '#description' => t('Choose an option.'),
   );
 
   return $form;
@@ -1152,11 +1152,11 @@ function hook_form($node, &$form_state) {
  */
 function hook_insert($node) {
   db_insert('mytable')
-  ->fields(array(
-  'nid' => $node->nid,
-  'extra' => $node->extra,
-  ))
-  ->execute();
+    ->fields(array(
+      'nid' => $node->nid,
+      'extra' => $node->extra,
+    ))
+    ->execute();
 }
 
 /**
@@ -1210,9 +1210,9 @@ function hook_load($nodes) {
  */
 function hook_update($node) {
   db_update('mytable')
-  ->fields(array('extra' => $node->extra))
-  ->condition('nid', $node->nid)
-  ->execute();
+    ->fields(array('extra' => $node->extra))
+    ->condition('nid', $node->nid)
+    ->execute();
 }
 
 /**
@@ -1286,8 +1286,8 @@ function hook_view($node, $view_mode) {
   }
 
   $node->content['myfield'] = array(
-      '#markup' => theme('mymodule_myfield', $node->myfield),
-      '#weight' => 1,
+    '#markup' => theme('mymodule_myfield', $node->myfield),
+    '#weight' => 1,
   );
 
   return $node;

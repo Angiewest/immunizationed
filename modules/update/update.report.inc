@@ -124,14 +124,14 @@ function theme_update_report($variables) {
           // Apply an extra class if we're displaying both a recommended
           // version and anything else for an extra visual hint.
           if ($project['recommended'] !== $project['latest_version']
-          || !empty($project['also'])
-          || ($project['install_type'] == 'dev'
-              && isset($project['dev_version'])
-              && $project['latest_version'] !== $project['dev_version']
-              && $project['recommended'] !== $project['dev_version'])
+              || !empty($project['also'])
+              || ($project['install_type'] == 'dev'
+                && isset($project['dev_version'])
+                && $project['latest_version'] !== $project['dev_version']
+                && $project['recommended'] !== $project['dev_version'])
               || (isset($project['security updates'][0])
-                  && $project['recommended'] !== $project['security updates'][0])
-          ) {
+                && $project['recommended'] !== $project['security updates'][0])
+              ) {
             $version_class[] = 'version-recommended-strong';
           }
           $versions_inner .= theme('update_version', array('version' => $project['releases'][$project['recommended']], 'tag' => t('Recommended version:'), 'class' => $version_class));
@@ -228,17 +228,17 @@ function theme_update_report($variables) {
     }
     $row_key = isset($project['title']) ? drupal_strtolower($project['title']) : drupal_strtolower($project['name']);
     $rows[$project['project_type']][$row_key] = array(
-        'class' => array($class),
-        'data' => array($row),
+      'class' => array($class),
+      'data' => array($row),
     );
   }
 
   $project_types = array(
-      'core' => t('Drupal core'),
-      'module' => t('Modules'),
-      'theme' => t('Themes'),
-      'module-disabled' => t('Disabled modules'),
-      'theme-disabled' => t('Disabled themes'),
+    'core' => t('Drupal core'),
+    'module' => t('Modules'),
+    'theme' => t('Themes'),
+    'module-disabled' => t('Disabled modules'),
+    'theme-disabled' => t('Disabled themes'),
   );
   foreach ($project_types as $type_name => $type_label) {
     if (!empty($rows[$type_name])) {
@@ -312,12 +312,12 @@ function theme_update_version($variables) {
   $output .= '<td class="version-links">';
   $links = array();
   $links['update-download'] = array(
-      'title' => t('Download'),
-      'href' => $version['download_link'],
+    'title' => t('Download'),
+    'href' => $version['download_link'],
   );
   $links['update-release-notes'] = array(
-      'title' => t('Release notes'),
-      'href' => $version['release_link'],
+    'title' => t('Release notes'),
+    'href' => $version['release_link'],
   );
   $output .= theme('links__update_version', array('links' => $links));
   $output .= '</td>';

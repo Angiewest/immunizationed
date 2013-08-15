@@ -11,9 +11,9 @@ class BlockTestCase extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Block functionality',
-        'description' => 'Add, edit and delete custom block. Configure and move a module-defined block.',
-        'group' => 'Block',
+      'name' => 'Block functionality',
+      'description' => 'Add, edit and delete custom block. Configure and move a module-defined block.',
+      'group' => 'Block',
     );
   }
 
@@ -24,9 +24,9 @@ class BlockTestCase extends DrupalWebTestCase {
     // text format.
     $full_html_format = filter_format_load('full_html');
     $this->admin_user = $this->drupalCreateUser(array(
-        'administer blocks',
-        filter_permission_name($full_html_format),
-        'access administration pages',
+      'administer blocks',
+      filter_permission_name($full_html_format),
+      'access administration pages',
     ));
     $this->drupalLogin($this->admin_user);
 
@@ -193,7 +193,7 @@ class BlockTestCase extends DrupalWebTestCase {
   }
 
   /**
-   * Test block visibility when using "pages" restriction but leaving
+   * Test block visibility when using "pages" restriction but leaving 
    * "pages" textarea empty
    */
   function testBlockVisibilityListedEmpty() {
@@ -300,8 +300,8 @@ class BlockTestCase extends DrupalWebTestCase {
     $this->drupalPost('admin/structure/block/manage/' . $block['module'] . '/' . $block['delta'] . '/configure', array('title' => $block['title']), t('Save block'));
     $this->assertText(t('The block configuration has been saved.'), 'Block title set.');
     $bid = db_query("SELECT bid FROM {block} WHERE module = :module AND delta = :delta", array(
-        ':module' => $block['module'],
-        ':delta' => $block['delta'],
+      ':module' => $block['module'],
+      ':delta' => $block['delta'],
     ))->fetchField();
 
     // Check to see if the block was created by checking that it's in the database.
@@ -350,8 +350,8 @@ class BlockTestCase extends DrupalWebTestCase {
 
     // Confirm that the custom block was found at the proper region.
     $xpath = $this->buildXPathQuery('//div[@class=:region-class]//div[@id=:block-id]/*', array(
-        ':region-class' => 'region region-' . str_replace('_', '-', $region),
-        ':block-id' => 'block-' . $block['module'] . '-' . $block['delta'],
+      ':region-class' => 'region region-' . str_replace('_', '-', $region),
+      ':block-id' => 'block-' . $block['module'] . '-' . $block['delta'],
     ));
     $this->assertFieldByXPath($xpath, NULL, format_string('Custom block found in %region_name region.', array('%region_name' => $region)));
   }
@@ -383,9 +383,9 @@ class BlockTestCase extends DrupalWebTestCase {
 class NonDefaultBlockAdmin extends DrupalWebTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Non default theme admin',
-        'description' => 'Check the administer page for non default theme.',
-        'group' => 'Block',
+      'name' => 'Non default theme admin',
+      'description' => 'Check the administer page for non default theme.',
+      'group' => 'Block',
     );
   }
 
@@ -406,9 +406,9 @@ class NonDefaultBlockAdmin extends DrupalWebTestCase {
 class NewDefaultThemeBlocks extends DrupalWebTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'New default theme blocks',
-        'description' => 'Checks that the new default theme gets blocks.',
-        'group' => 'Block',
+      'name' => 'New default theme blocks',
+      'description' => 'Checks that the new default theme gets blocks.',
+      'group' => 'Block',
     );
   }
 
@@ -456,9 +456,9 @@ class NewDefaultThemeBlocks extends DrupalWebTestCase {
 class BlockAdminThemeTestCase extends DrupalWebTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Admin theme block admin accessibility',
-        'description' => "Check whether the block administer page for a disabled theme accessible if and only if it's the admin theme.",
-        'group' => 'Block',
+      'name' => 'Admin theme block admin accessibility',
+      'description' => "Check whether the block administer page for a disabled theme accessible if and only if it's the admin theme.",
+      'group' => 'Block',
     );
   }
 
@@ -492,9 +492,9 @@ class BlockCacheTestCase extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Block caching',
-        'description' => 'Test block caching.',
-        'group' => 'Block',
+      'name' => 'Block caching',
+      'description' => 'Test block caching.',
+      'group' => 'Block',
     );
   }
 
@@ -661,9 +661,9 @@ class BlockCacheTestCase extends DrupalWebTestCase {
    */
   private function setCacheMode($cache_mode) {
     db_update('block')
-    ->fields(array('cache' => $cache_mode))
-    ->condition('module', 'block_test')
-    ->execute();
+      ->fields(array('cache' => $cache_mode))
+      ->condition('module', 'block_test')
+      ->execute();
 
     $current_mode = db_query("SELECT cache FROM {block} WHERE module = 'block_test'")->fetchField();
     if ($current_mode != $cache_mode) {
@@ -679,9 +679,9 @@ class BlockHTMLIdTestCase extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Block HTML id',
-        'description' => 'Test block HTML id validity.',
-        'group' => 'Block',
+      'name' => 'Block HTML id',
+      'description' => 'Test block HTML id validity.',
+      'group' => 'Block',
     );
   }
 
@@ -717,9 +717,9 @@ class BlockHTMLIdTestCase extends DrupalWebTestCase {
 class BlockTemplateSuggestionsUnitTest extends DrupalUnitTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Block template suggestions',
-        'description' => 'Test the template_preprocess_block() function.',
-        'group' => 'Block',
+      'name' => 'Block template suggestions',
+      'description' => 'Test the template_preprocess_block() function.',
+      'group' => 'Block',
     );
   }
 
@@ -758,9 +758,9 @@ class BlockTemplateSuggestionsUnitTest extends DrupalUnitTestCase {
 class BlockHiddenRegionTestCase extends DrupalWebTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Blocks not in hidden region',
-        'description' => 'Checks that a newly enabled theme does not inherit blocks to its hidden regions.',
-        'group' => 'Block',
+      'name' => 'Blocks not in hidden region',
+      'description' => 'Checks that a newly enabled theme does not inherit blocks to its hidden regions.',
+      'group' => 'Block',
     );
   }
 
@@ -798,9 +798,9 @@ class BlockHiddenRegionTestCase extends DrupalWebTestCase {
 class BlockInvalidRegionTestCase extends DrupalWebTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Blocks in invalid regions',
-        'description' => 'Checks that an active block assigned to a non-existing region triggers the warning message and is disabled.',
-        'group' => 'Block',
+      'name' => 'Blocks in invalid regions',
+      'description' => 'Checks that an active block assigned to a non-existing region triggers the warning message and is disabled.',
+      'group' => 'Block',
     );
   }
 
@@ -817,17 +817,17 @@ class BlockInvalidRegionTestCase extends DrupalWebTestCase {
   function testBlockInInvalidRegion() {
     // Enable a test block in the default theme and place it in an invalid region.
     db_merge('block')
-    ->key(array(
-    'module' => 'block_test',
-    'delta' => 'test_html_id',
-    'theme' => variable_get('theme_default', 'stark'),
-    ))
-    ->fields(array(
-    'status' => 1,
-    'region' => 'invalid_region',
-    'cache' => DRUPAL_NO_CACHE,
-    ))
-    ->execute();
+      ->key(array(
+        'module' => 'block_test',
+        'delta' => 'test_html_id',
+        'theme' => variable_get('theme_default', 'stark'),
+      ))
+      ->fields(array(
+        'status' => 1,
+        'region' => 'invalid_region',
+        'cache' => DRUPAL_NO_CACHE,
+      ))
+      ->execute();
 
     $warning_message = t('The block %info was assigned to the invalid region %region and has been disabled.', array('%info' => t('Test block html id'), '%region' => 'invalid_region'));
 
@@ -841,16 +841,16 @@ class BlockInvalidRegionTestCase extends DrupalWebTestCase {
 
     // Place disabled test block in the invalid region of the default theme.
     db_merge('block')
-    ->key(array(
-    'module' => 'block_test',
-    'delta' => 'test_html_id',
-    'theme' => variable_get('theme_default', 'stark'),
-    ))
-    ->fields(array(
-    'region' => 'invalid_region',
-    'cache' => DRUPAL_NO_CACHE,
-    ))
-    ->execute();
+      ->key(array(
+        'module' => 'block_test',
+        'delta' => 'test_html_id',
+        'theme' => variable_get('theme_default', 'stark'),
+      ))
+      ->fields(array(
+        'region' => 'invalid_region',
+        'cache' => DRUPAL_NO_CACHE,
+      ))
+      ->execute();
 
     // Clear the cache to check if the warning message is not triggered.
     $this->drupalPost('admin/config/development/performance', array(), 'Clear all caches');

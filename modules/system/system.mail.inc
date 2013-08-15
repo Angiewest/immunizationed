@@ -75,11 +75,11 @@ class DefaultMailSystem implements MailSystemInterface {
         // is used to set the Return-Path. There is no space between -f and
         // the value of the return path.
         $mail_result = @mail(
-            $message['to'],
-            $mail_subject,
-            $mail_body,
-            $mail_headers,
-            '-f' . $message['Return-Path']
+          $message['to'],
+          $mail_subject,
+          $mail_body,
+          $mail_headers,
+          '-f' . $message['Return-Path']
         );
       }
       else {
@@ -87,27 +87,27 @@ class DefaultMailSystem implements MailSystemInterface {
         // allowed if safe_mode is enabled. Passing any value throws a PHP
         // warning and makes mail() return FALSE.
         $mail_result = @mail(
-            $message['to'],
-            $mail_subject,
-            $mail_body,
-            $mail_headers
+          $message['to'],
+          $mail_subject,
+          $mail_body,
+          $mail_headers
         );
       }
-    }
-    else {
+     }
+     else {
       // On Windows, PHP will use the value of sendmail_from for the
       // Return-Path header.
       $old_from = ini_get('sendmail_from');
       ini_set('sendmail_from', $message['Return-Path']);
       $mail_result = @mail(
-          $message['to'],
-          $mail_subject,
-          $mail_body,
-          $mail_headers
-      );
+         $message['to'],
+         $mail_subject,
+         $mail_body,
+         $mail_headers
+       );
       ini_set('sendmail_from', $old_from);
-    }
-    return $mail_result;
+     }
+     return $mail_result;
   }
 }
 

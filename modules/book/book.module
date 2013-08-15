@@ -37,28 +37,28 @@ function book_help($path, $arg) {
  */
 function book_theme() {
   return array(
-      'book_navigation' => array(
-          'variables' => array('book_link' => NULL),
-          'template' => 'book-navigation',
-      ),
-      'book_export_html' => array(
-          'variables' => array('title' => NULL, 'contents' => NULL, 'depth' => NULL),
-          'template' => 'book-export-html',
-      ),
-      'book_admin_table' => array(
-          'render element' => 'form',
-      ),
-      'book_title_link' => array(
-          'variables' => array('link' => NULL),
-      ),
-      'book_all_books_block' => array(
-          'render element' => 'book_menus',
-          'template' => 'book-all-books-block',
-      ),
-      'book_node_export_html' => array(
-          'variables' => array('node' => NULL, 'children' => NULL),
-          'template' => 'book-node-export-html',
-      ),
+    'book_navigation' => array(
+      'variables' => array('book_link' => NULL),
+      'template' => 'book-navigation',
+    ),
+    'book_export_html' => array(
+      'variables' => array('title' => NULL, 'contents' => NULL, 'depth' => NULL),
+      'template' => 'book-export-html',
+    ),
+    'book_admin_table' => array(
+      'render element' => 'form',
+    ),
+    'book_title_link' => array(
+      'variables' => array('link' => NULL),
+    ),
+    'book_all_books_block' => array(
+      'render element' => 'book_menus',
+      'template' => 'book-all-books-block',
+    ),
+    'book_node_export_html' => array(
+      'variables' => array('node' => NULL, 'children' => NULL),
+      'template' => 'book-node-export-html',
+    ),
   );
 }
 
@@ -67,19 +67,19 @@ function book_theme() {
  */
 function book_permission() {
   return array(
-      'administer book outlines' => array(
-          'title' => t('Administer book outlines'),
-      ),
-      'create new books' => array(
-          'title' => t('Create new books'),
-      ),
-      'add content to books' => array(
-          'title' => t('Add content and child pages to books'),
-      ),
-      'access printer-friendly version' => array(
-          'title' => t('View printer-friendly books'),
-          'description' => t('View a book page and all of its sub-pages as a single document for ease of printing. Can be performance heavy.'),
-      ),
+    'administer book outlines' => array(
+      'title' => t('Administer book outlines'),
+    ),
+    'create new books' => array(
+      'title' => t('Create new books'),
+    ),
+    'add content to books' => array(
+      'title' => t('Add content and child pages to books'),
+    ),
+    'access printer-friendly version' => array(
+      'title' => t('View printer-friendly books'),
+      'description' => t('View a book page and all of its sub-pages as a single document for ease of printing. Can be performance heavy.'),
+    ),
   );
 }
 
@@ -99,17 +99,17 @@ function book_node_view_link($node, $view_mode) {
       $child_type = variable_get('book_child_type', 'book');
       if ((user_access('add content to books') || user_access('administer book outlines')) && node_access('create', $child_type) && $node->status == 1 && $node->book['depth'] < MENU_MAX_DEPTH) {
         $links['book_add_child'] = array(
-            'title' => t('Add child page'),
-            'href' => 'node/add/' . str_replace('_', '-', $child_type),
-            'query' => array('parent' => $node->book['mlid']),
+          'title' => t('Add child page'),
+          'href' => 'node/add/' . str_replace('_', '-', $child_type),
+          'query' => array('parent' => $node->book['mlid']),
         );
       }
 
       if (user_access('access printer-friendly version')) {
         $links['book_printer'] = array(
-            'title' => t('Printer-friendly version'),
-            'href' => 'book/export/html/' . $node->nid,
-            'attributes' => array('title' => t('Show a printer-friendly version of this book page and its sub-pages.'))
+          'title' => t('Printer-friendly version'),
+          'href' => 'book/export/html/' . $node->nid,
+          'attributes' => array('title' => t('Show a printer-friendly version of this book page and its sub-pages.'))
         );
       }
     }
@@ -117,9 +117,9 @@ function book_node_view_link($node, $view_mode) {
 
   if (!empty($links)) {
     $node->content['links']['book'] = array(
-        '#theme' => 'links__node__book',
-        '#links' => $links,
-        '#attributes' => array('class' => array('links', 'inline')),
+      '#theme' => 'links__node__book',
+      '#links' => $links,
+      '#attributes' => array('class' => array('links', 'inline')),
     );
   }
 }
@@ -129,66 +129,66 @@ function book_node_view_link($node, $view_mode) {
  */
 function book_menu() {
   $items['admin/content/book'] = array(
-      'title' => 'Books',
-      'description' => "Manage your site's book outlines.",
-      'page callback' => 'book_admin_overview',
-      'access arguments' => array('administer book outlines'),
-      'type' => MENU_LOCAL_TASK,
-      'file' => 'book.admin.inc',
+    'title' => 'Books',
+    'description' => "Manage your site's book outlines.",
+    'page callback' => 'book_admin_overview',
+    'access arguments' => array('administer book outlines'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'book.admin.inc',
   );
   $items['admin/content/book/list'] = array(
-      'title' => 'List',
-      'type' => MENU_DEFAULT_LOCAL_TASK,
+    'title' => 'List',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
   );
   $items['admin/content/book/settings'] = array(
-      'title' => 'Settings',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('book_admin_settings'),
-      'access arguments' => array('administer site configuration'),
-      'type' => MENU_LOCAL_TASK,
-      'weight' => 8,
-      'file' => 'book.admin.inc',
+    'title' => 'Settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('book_admin_settings'),
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 8,
+    'file' => 'book.admin.inc',
   );
   $items['admin/content/book/%node'] = array(
-      'title' => 'Re-order book pages and change titles',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('book_admin_edit', 3),
-      'access callback' => '_book_outline_access',
-      'access arguments' => array(3),
-      'type' => MENU_CALLBACK,
-      'file' => 'book.admin.inc',
+    'title' => 'Re-order book pages and change titles',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('book_admin_edit', 3),
+    'access callback' => '_book_outline_access',
+    'access arguments' => array(3),
+    'type' => MENU_CALLBACK,
+    'file' => 'book.admin.inc',
   );
   $items['book'] = array(
-      'title' => 'Books',
-      'page callback' => 'book_render',
-      'access arguments' => array('access content'),
-      'type' => MENU_SUGGESTED_ITEM,
-      'file' => 'book.pages.inc',
+    'title' => 'Books',
+    'page callback' => 'book_render',
+    'access arguments' => array('access content'),
+    'type' => MENU_SUGGESTED_ITEM,
+    'file' => 'book.pages.inc',
   );
   $items['book/export/%/%'] = array(
-      'page callback' => 'book_export',
-      'page arguments' => array(2, 3),
-      'access arguments' => array('access printer-friendly version'),
-      'type' => MENU_CALLBACK,
-      'file' => 'book.pages.inc',
+    'page callback' => 'book_export',
+    'page arguments' => array(2, 3),
+    'access arguments' => array('access printer-friendly version'),
+    'type' => MENU_CALLBACK,
+    'file' => 'book.pages.inc',
   );
   $items['node/%node/outline'] = array(
-      'title' => 'Outline',
-      'page callback' => 'book_outline',
-      'page arguments' => array(1),
-      'access callback' => '_book_outline_access',
-      'access arguments' => array(1),
-      'type' => MENU_LOCAL_TASK,
-      'weight' => 2,
-      'file' => 'book.pages.inc',
+    'title' => 'Outline',
+    'page callback' => 'book_outline',
+    'page arguments' => array(1),
+    'access callback' => '_book_outline_access',
+    'access arguments' => array(1),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 2,
+    'file' => 'book.pages.inc',
   );
   $items['node/%node/outline/remove'] = array(
-      'title' => 'Remove from outline',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('book_remove_form', 1),
-      'access callback' => '_book_outline_remove_access',
-      'access arguments' => array(1),
-      'file' => 'book.pages.inc',
+    'title' => 'Remove from outline',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('book_remove_form', 1),
+    'access callback' => '_book_outline_remove_access',
+    'access arguments' => array(1),
+    'file' => 'book.pages.inc',
   );
 
   return $items;
@@ -235,8 +235,8 @@ function _book_node_is_removable($node) {
 function book_admin_paths() {
   if (variable_get('node_admin_theme')) {
     $paths = array(
-        'node/*/outline' => TRUE,
-        'node/*/outline/remove' => TRUE,
+      'node/*/outline' => TRUE,
+      'node/*/outline/remove' => TRUE,
     );
     return $paths;
   }
@@ -248,10 +248,10 @@ function book_admin_paths() {
 function book_entity_info_alter(&$info) {
   // Add the 'Print' view mode for nodes.
   $info['node']['view modes'] += array(
-      'print' => array(
-          'label' => t('Print'),
-          'custom settings' => FALSE,
-      ),
+    'print' => array(
+      'label' => t('Print'),
+      'custom settings' => FALSE,
+    ),
   );
 }
 
@@ -305,7 +305,7 @@ function book_block_view($delta = '') {
   }
   elseif ($current_bid) {
     // Only display this block when the user is browsing a book.
-    $select = db_select('node', 'n')
+  $select = db_select('node', 'n')
     ->fields('n', array('title'))
     ->condition('n.nid', $node->book['bid'])
     ->addTag('node_access');
@@ -329,16 +329,16 @@ function book_block_view($delta = '') {
 function book_block_configure($delta = '') {
   $block = array();
   $options = array(
-      'all pages' => t('Show block on all pages'),
-      'book pages' => t('Show block only on book pages'),
+    'all pages' => t('Show block on all pages'),
+    'book pages' => t('Show block only on book pages'),
   );
   $form['book_block_mode'] = array(
-      '#type' => 'radios',
-      '#title' => t('Book navigation block display'),
-      '#options' => $options,
-      '#default_value' => variable_get('book_block_mode', 'all pages'),
-      '#description' => t("If <em>Show block on all pages</em> is selected, the block will contain the automatically generated menus for all of the site's books. If <em>Show block only on book pages</em> is selected, the block will contain only the one menu corresponding to the current page's book. In this case, if the current page is not in a book, no block will be displayed. The <em>Page specific visibility settings</em> or other visibility settings can be used in addition to selectively display this block."),
-  );
+    '#type' => 'radios',
+    '#title' => t('Book navigation block display'),
+    '#options' => $options,
+    '#default_value' => variable_get('book_block_mode', 'all pages'),
+    '#description' => t("If <em>Show block on all pages</em> is selected, the block will contain the automatically generated menus for all of the site's books. If <em>Show block only on book pages</em> is selected, the block will contain only the one menu corresponding to the current page's book. In this case, if the current page is not in a book, no block will be displayed. The <em>Page specific visibility settings</em> or other visibility settings can be used in addition to selectively display this block."),
+    );
 
   return $form;
 }
@@ -432,10 +432,10 @@ function book_form_node_form_alter(&$form, &$form_state, $form_id) {
     // JavaScript is disabled, add a submit button to do that. book.css hides
     // this button when JavaScript is enabled.
     $form['book']['pick-book'] = array(
-        '#type' => 'submit',
-        '#value' => t('Change book (update list of parents)'),
-        '#submit' => array('book_pick_book_nojs_submit'),
-        '#weight' => 20,
+      '#type' => 'submit',
+      '#value' => t('Change book (update list of parents)'),
+      '#submit' => array('book_pick_book_nojs_submit'),
+      '#weight' => 20,
     );
   }
 }
@@ -476,10 +476,10 @@ function _book_parent_select($book_link) {
   }
   // Offer a message or a drop-down to choose a different parent page.
   $form = array(
-      '#type' => 'hidden',
-      '#value' => -1,
-      '#prefix' => '<div id="edit-book-plid-wrapper">',
-      '#suffix' => '</div>',
+    '#type' => 'hidden',
+    '#value' => -1,
+    '#prefix' => '<div id="edit-book-plid-wrapper">',
+    '#suffix' => '</div>',
   );
 
   if ($book_link['nid'] === $book_link['bid']) {
@@ -496,14 +496,14 @@ function _book_parent_select($book_link) {
   }
   else {
     $form = array(
-        '#type' => 'select',
-        '#title' => t('Parent item'),
-        '#default_value' => $book_link['plid'],
-        '#description' => t('The parent page in the book. The maximum depth for a book and all child pages is !maxdepth. Some pages in the selected book may not be available as parents if selecting them would exceed this limit.', array('!maxdepth' => MENU_MAX_DEPTH)),
-        '#options' => book_toc($book_link['bid'], $book_link['parent_depth_limit'], array($book_link['mlid'])),
-        '#attributes' => array('class' => array('book-title-select')),
-        '#prefix' => '<div id="edit-book-plid-wrapper">',
-        '#suffix' => '</div>',
+      '#type' => 'select',
+      '#title' => t('Parent item'),
+      '#default_value' => $book_link['plid'],
+      '#description' => t('The parent page in the book. The maximum depth for a book and all child pages is !maxdepth. Some pages in the selected book may not be available as parents if selecting them would exceed this limit.', array('!maxdepth' => MENU_MAX_DEPTH)),
+      '#options' => book_toc($book_link['bid'], $book_link['parent_depth_limit'], array($book_link['mlid'])),
+      '#attributes' => array('class' => array('book-title-select')),
+      '#prefix' => '<div id="edit-book-plid-wrapper">',
+      '#suffix' => '</div>',
     );
   }
 
@@ -524,24 +524,24 @@ function _book_add_form_elements(&$form, &$form_state, $node) {
   }
 
   $form['book'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Book outline'),
-      '#weight' => 10,
-      '#collapsible' => TRUE,
-      '#collapsed' => TRUE,
-      '#group' => 'additional_settings',
-      '#attributes' => array(
-          'class' => array('book-outline-form'),
-      ),
-      '#attached' => array(
-          'js' => array(drupal_get_path('module', 'book') . '/book.js'),
-      ),
-      '#tree' => TRUE,
+    '#type' => 'fieldset',
+    '#title' => t('Book outline'),
+    '#weight' => 10,
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+    '#group' => 'additional_settings',
+    '#attributes' => array(
+      'class' => array('book-outline-form'),
+    ),
+    '#attached' => array(
+      'js' => array(drupal_get_path('module', 'book') . '/book.js'),
+    ),
+    '#tree' => TRUE,
   );
   foreach (array('menu_name', 'mlid', 'nid', 'router_path', 'has_children', 'options', 'module', 'original_bid', 'parent_depth_limit') as $key) {
     $form['book'][$key] = array(
-        '#type' => 'value',
-        '#value' => $node->book[$key],
+      '#type' => 'value',
+      '#value' => $node->book[$key],
     );
   }
 
@@ -549,12 +549,12 @@ function _book_add_form_elements(&$form, &$form_state, $node) {
 
   // @see _book_admin_table_tree(). The weight may be larger than 15.
   $form['book']['weight'] = array(
-      '#type' => 'weight',
-      '#title' => t('Weight'),
-      '#default_value' => $node->book['weight'],
-      '#delta' => max(15, abs($node->book['weight'])),
-      '#weight' => 5,
-      '#description' => t('Pages at a given level are ordered first by weight and then by title.'),
+    '#type' => 'weight',
+    '#title' => t('Weight'),
+    '#default_value' => $node->book['weight'],
+    '#delta' => max(15, abs($node->book['weight'])),
+    '#weight' => 5,
+    '#description' => t('Pages at a given level are ordered first by weight and then by title.'),
   );
   $options = array();
   $nid = isset($node->nid) ? $node->nid : 'new';
@@ -580,20 +580,20 @@ function _book_add_form_elements(&$form, &$form_state, $node) {
 
   // Add a drop-down to select the destination book.
   $form['book']['bid'] = array(
-      '#type' => 'select',
-      '#title' => t('Book'),
-      '#default_value' => $node->book['bid'],
-      '#options' => $options,
-      '#access' => (bool) $options,
-      '#description' => t('Your page will be a part of the selected book.'),
-      '#weight' => -5,
-      '#attributes' => array('class' => array('book-title-select')),
-      '#ajax' => array(
-          'callback' => 'book_form_update',
-          'wrapper' => 'edit-book-plid-wrapper',
-          'effect' => 'fade',
-          'speed' => 'fast',
-      ),
+    '#type' => 'select',
+    '#title' => t('Book'),
+    '#default_value' => $node->book['bid'],
+    '#options' => $options,
+    '#access' => (bool) $options,
+    '#description' => t('Your page will be a part of the selected book.'),
+    '#weight' => -5,
+    '#attributes' => array('class' => array('book-title-select')),
+    '#ajax' => array(
+      'callback' => 'book_form_update',
+      'wrapper' => 'edit-book-plid-wrapper',
+      'effect' => 'fade',
+      'speed' => 'fast',
+    ),
   );
 }
 
@@ -641,12 +641,12 @@ function _book_update_outline($node) {
     // Check in case the parent is not is this book; the book takes precedence.
     if (!empty($node->book['plid'])) {
       $parent = db_query("SELECT * FROM {book} WHERE mlid = :mlid", array(
-          ':mlid' => $node->book['plid'],
+        ':mlid' => $node->book['plid'],
       ))->fetchAssoc();
     }
     if (empty($node->book['plid']) || !$parent || $parent['bid'] != $node->book['bid']) {
       $node->book['plid'] = db_query("SELECT mlid FROM {book} WHERE nid = :nid", array(
-          ':nid' => $node->book['bid'],
+        ':nid' => $node->book['bid'],
       ))->fetchField();
       $node->book['parent_mismatch'] = TRUE; // Likely when JS is disabled.
     }
@@ -656,19 +656,19 @@ function _book_update_outline($node) {
     if ($new) {
       // Insert new.
       db_insert('book')
-      ->fields(array(
-      'nid' => $node->nid,
-      'mlid' => $node->book['mlid'],
-      'bid' => $node->book['bid'],
-      ))
-      ->execute();
+        ->fields(array(
+          'nid' => $node->nid,
+          'mlid' => $node->book['mlid'],
+          'bid' => $node->book['bid'],
+        ))
+        ->execute();
       // Reset the cache of stored books.
       drupal_static_reset('book_get_books');
     }
     else {
       if ($node->book['bid'] != db_query("SELECT bid FROM {book} WHERE nid = :nid", array(
           ':nid' => $node->nid,
-      ))->fetchField()) {
+        ))->fetchField()) {
         // Update the bid for this page and all children.
         book_update_bid($node->book);
         // Reset the cache of stored books.
@@ -699,9 +699,9 @@ function book_update_bid($book_link) {
 
   if ($mlids) {
     db_update('book')
-    ->fields(array('bid' => $book_link['bid']))
-    ->condition('mlid', $mlids, 'IN')
-    ->execute();
+      ->fields(array('bid' => $book_link['bid']))
+      ->condition('mlid', $mlids, 'IN')
+      ->execute();
   }
 }
 
@@ -885,8 +885,8 @@ function book_node_view($node, $view_mode) {
   if ($view_mode == 'full') {
     if (!empty($node->book['bid']) && empty($node->in_preview)) {
       $node->content['book_navigation'] = array(
-          '#markup' => theme('book_navigation', array('book_link' => $node->book)),
-          '#weight' => 100,
+        '#markup' => theme('book_navigation', array('book_link' => $node->book)),
+        '#weight' => 100,
       );
     }
   }
@@ -966,7 +966,7 @@ function book_node_delete($node) {
     if ($node->nid == $node->book['bid']) {
       // Handle deletion of a top-level post.
       $result = db_query("SELECT b.nid FROM {menu_links} ml INNER JOIN {book} b on b.mlid = ml.mlid WHERE ml.plid = :plid", array(
-          ':plid' => $node->book['mlid']
+        ':plid' => $node->book['mlid']
       ));
       foreach ($result as $child) {
         $child_node = node_load($child->nid);
@@ -976,8 +976,8 @@ function book_node_delete($node) {
     }
     menu_link_delete($node->book['mlid']);
     db_delete('book')
-    ->condition('mlid', $node->book['mlid'])
-    ->execute();
+      ->condition('mlid', $node->book['mlid'])
+      ->execute();
     drupal_static_reset('book_get_books');
   }
 }
@@ -1039,8 +1039,8 @@ function book_form_node_delete_confirm_alter(&$form, $form_state) {
 
   if (isset($node->book) && $node->book['has_children']) {
     $form['book_warning'] = array(
-        '#markup' => '<p>' . t('%title is part of a book outline, and has associated child pages. If you proceed with deletion, the child pages will be relocated automatically.', array('%title' => $node->title)) . '</p>',
-        '#weight' => -10,
+      '#markup' => '<p>' . t('%title is part of a book outline, and has associated child pages. If you proceed with deletion, the child pages will be relocated automatically.', array('%title' => $node->title)) . '</p>',
+      '#weight' => -10,
     );
   }
 }
@@ -1356,7 +1356,7 @@ function book_node_type_update($type) {
 function book_link_load($mlid) {
   if ($item = db_query("SELECT * FROM {menu_links} ml INNER JOIN {book} b ON b.mlid = ml.mlid LEFT JOIN {menu_router} m ON m.path = ml.router_path WHERE ml.mlid = :mlid", array(
       ':mlid' => $mlid,
-  ))->fetchAssoc()) {
+    ))->fetchAssoc()) {
     _menu_link_translate($item);
     return $item;
   }
@@ -1375,7 +1375,7 @@ function book_link_load($mlid) {
  *   A fully loaded menu link.
  *
  * @return
- *   An subtree of menu links in an array, in the order they should be rendered.
+ *   A subtree of menu links in an array, in the order they should be rendered.
  */
 function book_menu_subtree_data($link) {
   $tree = &drupal_static(__FUNCTION__, array());

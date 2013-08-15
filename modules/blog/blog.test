@@ -12,9 +12,9 @@ class BlogTestCase extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Blog functionality',
-        'description' => 'Create, view, edit, delete, and change blog entries and verify its consistency in the database.',
-        'group' => 'Blog',
+      'name' => 'Blog functionality',
+      'description' => 'Create, view, edit, delete, and change blog entries and verify its consistency in the database.',
+      'group' => 'Blog',
     );
   }
 
@@ -146,9 +146,9 @@ class BlogTestCase extends DrupalWebTestCase {
     $this->assertResponse(200);
     $this->assertTitle($node->title . ' | Drupal', t('Blog node was displayed'));
     $breadcrumb = array(
-        l(t('Home'), NULL),
-        l(t('Blogs'), 'blog'),
-        l(t("!name's blog", array('!name' => format_username($node_user))), 'blog/' . $node_user->uid),
+      l(t('Home'), NULL),
+      l(t('Blogs'), 'blog'),
+      l(t("!name's blog", array('!name' => format_username($node_user))), 'blog/' . $node_user->uid),
     );
     $this->assertRaw(theme('breadcrumb', array('breadcrumb' => $breadcrumb)), t('Breadcrumbs were displayed'));
 

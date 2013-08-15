@@ -23,10 +23,10 @@ function field_sql_storage_help($path, $arg) {
  */
 function field_sql_storage_field_storage_info() {
   return array(
-      'field_sql_storage' => array(
-          'label' => t('Default SQL storage'),
-          'description' => t('Stores fields in the local SQL database, using per-field tables.'),
-      ),
+    'field_sql_storage' => array(
+      'label' => t('Default SQL storage'),
+      'description' => t('Stores fields in the local SQL database, using per-field tables.'),
+    ),
   );
 }
 
@@ -108,65 +108,65 @@ function _field_sql_storage_indexname($name, $index) {
 function _field_sql_storage_schema($field) {
   $deleted = $field['deleted'] ? 'deleted ' : '';
   $current = array(
-      'description' => "Data storage for {$deleted}field {$field['id']} ({$field['field_name']})",
-      'fields' => array(
-          'entity_type' => array(
-              'type' => 'varchar',
-              'length' => 128,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => 'The entity type this data is attached to',
-          ),
-          'bundle' => array(
-              'type' => 'varchar',
-              'length' => 128,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => 'The field instance bundle to which this row belongs, used when deleting a field instance',
-          ),
-          'deleted' => array(
-              'type' => 'int',
-              'size' => 'tiny',
-              'not null' => TRUE,
-              'default' => 0,
-              'description' => 'A boolean indicating whether this data item has been deleted'
-          ),
-          'entity_id' => array(
-              'type' => 'int',
-              'unsigned' => TRUE,
-              'not null' => TRUE,
-              'description' => 'The entity id this data is attached to',
-          ),
-          'revision_id' => array(
-              'type' => 'int',
-              'unsigned' => TRUE,
-              'not null' => FALSE,
-              'description' => 'The entity revision id this data is attached to, or NULL if the entity type is not versioned',
-          ),
-          // @todo Consider storing language as integer.
-          'language' => array(
-              'type' => 'varchar',
-              'length' => 32,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => 'The language for this data item.',
-          ),
-          'delta' => array(
-              'type' => 'int',
-              'unsigned' => TRUE,
-              'not null' => TRUE,
-              'description' => 'The sequence number for this data item, used for multi-value fields',
-          ),
+    'description' => "Data storage for {$deleted}field {$field['id']} ({$field['field_name']})",
+    'fields' => array(
+      'entity_type' => array(
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The entity type this data is attached to',
       ),
-      'primary key' => array('entity_type', 'entity_id', 'deleted', 'delta', 'language'),
-      'indexes' => array(
-          'entity_type' => array('entity_type'),
-          'bundle' => array('bundle'),
-          'deleted' => array('deleted'),
-          'entity_id' => array('entity_id'),
-          'revision_id' => array('revision_id'),
-          'language' => array('language'),
+      'bundle' => array(
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The field instance bundle to which this row belongs, used when deleting a field instance',
       ),
+      'deleted' => array(
+        'type' => 'int',
+        'size' => 'tiny',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'A boolean indicating whether this data item has been deleted'
+      ),
+      'entity_id' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'The entity id this data is attached to',
+      ),
+      'revision_id' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'description' => 'The entity revision id this data is attached to, or NULL if the entity type is not versioned',
+      ),
+      // @todo Consider storing language as integer.
+      'language' => array(
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The language for this data item.',
+      ),
+      'delta' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'The sequence number for this data item, used for multi-value fields',
+      ),
+    ),
+    'primary key' => array('entity_type', 'entity_id', 'deleted', 'delta', 'language'),
+    'indexes' => array(
+      'entity_type' => array('entity_type'),
+      'bundle' => array('bundle'),
+      'deleted' => array('deleted'),
+      'entity_id' => array('entity_id'),
+      'revision_id' => array('revision_id'),
+      'language' => array('language'),
+    ),
   );
 
   $field += array('columns' => array(), 'indexes' => array(), 'foreign keys' => array());
@@ -188,7 +188,7 @@ function _field_sql_storage_schema($field) {
   foreach ($field['foreign keys'] as $specifier => $specification) {
     $real_name = _field_sql_storage_indexname($field['field_name'], $specifier);
     $current['foreign keys'][$real_name]['table'] = $specification['table'];
-    foreach ($specification['columns'] as $column => $referenced) {
+    foreach ($specification['columns'] as $column_name => $referenced) {
       $sql_storage_column = _field_sql_storage_columnname($field['field_name'], $column_name);
       $current['foreign keys'][$real_name]['columns'][$sql_storage_column] = $referenced;
     }
@@ -202,8 +202,8 @@ function _field_sql_storage_schema($field) {
   $revision['fields']['revision_id']['description'] = 'The entity revision id this data is attached to';
 
   return array(
-      _field_sql_storage_tablename($field) => $current,
-      _field_sql_storage_revision_tablename($field) => $revision,
+    _field_sql_storage_tablename($field) => $current,
+    _field_sql_storage_revision_tablename($field) => $revision,
   );
 }
 
@@ -308,8 +308,8 @@ function field_sql_storage_field_storage_delete_field($field) {
   $table = _field_sql_storage_tablename($field);
   $revision_table = _field_sql_storage_revision_tablename($field);
   db_update($table)
-  ->fields(array('deleted' => 1))
-  ->execute();
+    ->fields(array('deleted' => 1))
+    ->execute();
 
   // Move the table to a unique name while the table contents are being deleted.
   $field['deleted'] = 1;
@@ -336,11 +336,11 @@ function field_sql_storage_field_storage_load($entity_type, $entities, $age, $fi
     $table = $load_current ? _field_sql_storage_tablename($field) : _field_sql_storage_revision_tablename($field);
 
     $query = db_select($table, 't')
-    ->fields('t')
-    ->condition('entity_type', $entity_type)
-    ->condition($load_current ? 'entity_id' : 'revision_id', $ids, 'IN')
-    ->condition('language', field_available_languages($entity_type, $field), 'IN')
-    ->orderBy('delta');
+      ->fields('t')
+      ->condition('entity_type', $entity_type)
+      ->condition($load_current ? 'entity_id' : 'revision_id', $ids, 'IN')
+      ->condition('language', field_available_languages($entity_type, $field), 'IN')
+      ->orderBy('delta');
 
     if (empty($options['deleted'])) {
       $query->condition('deleted', 0);
@@ -396,16 +396,16 @@ function field_sql_storage_field_storage_write($entity_type, $entity, $op, $fiel
       $languages = !empty($entity->$field_name) ? $field_languages : $all_languages;
       if ($languages) {
         db_delete($table_name)
-        ->condition('entity_type', $entity_type)
-        ->condition('entity_id', $id)
-        ->condition('language', $languages, 'IN')
-        ->execute();
+          ->condition('entity_type', $entity_type)
+          ->condition('entity_id', $id)
+          ->condition('language', $languages, 'IN')
+          ->execute();
         db_delete($revision_name)
-        ->condition('entity_type', $entity_type)
-        ->condition('entity_id', $id)
-        ->condition('revision_id', $vid)
-        ->condition('language', $languages, 'IN')
-        ->execute();
+          ->condition('entity_type', $entity_type)
+          ->condition('entity_id', $id)
+          ->condition('revision_id', $vid)
+          ->condition('language', $languages, 'IN')
+          ->execute();
       }
     }
 
@@ -425,12 +425,12 @@ function field_sql_storage_field_storage_write($entity_type, $entity, $op, $fiel
         // We now know we have someting to insert.
         $do_insert = TRUE;
         $record = array(
-            'entity_type' => $entity_type,
-            'entity_id' => $id,
-            'revision_id' => $vid,
-            'bundle' => $bundle,
-            'delta' => $delta,
-            'language' => $langcode,
+          'entity_type' => $entity_type,
+          'entity_id' => $id,
+          'revision_id' => $vid,
+          'bundle' => $bundle,
+          'delta' => $delta,
+          'language' => $langcode,
         );
         foreach ($field['columns'] as $column => $attributes) {
           $record[_field_sql_storage_columnname($field_name, $column)] = isset($item[$column]) ? $item[$column] : NULL;
@@ -482,13 +482,13 @@ function field_sql_storage_field_storage_purge($entity_type, $entity, $field, $i
   $table_name = _field_sql_storage_tablename($field);
   $revision_name = _field_sql_storage_revision_tablename($field);
   db_delete($table_name)
-  ->condition('entity_type', $entity_type)
-  ->condition('entity_id', $id)
-  ->execute();
+    ->condition('entity_type', $entity_type)
+    ->condition('entity_id', $id)
+    ->execute();
   db_delete($revision_name)
-  ->condition('entity_type', $entity_type)
-  ->condition('entity_id', $id)
-  ->execute();
+    ->condition('entity_type', $entity_type)
+    ->condition('entity_id', $id)
+    ->execute();
 }
 
 /**
@@ -666,10 +666,10 @@ function field_sql_storage_field_storage_delete_revision($entity_type, $entity, 
       $field = field_info_field_by_id($field_id);
       $revision_name = _field_sql_storage_revision_tablename($field);
       db_delete($revision_name)
-      ->condition('entity_type', $entity_type)
-      ->condition('entity_id', $id)
-      ->condition('revision_id', $vid)
-      ->execute();
+        ->condition('entity_type', $entity_type)
+        ->condition('entity_id', $id)
+        ->condition('revision_id', $vid)
+        ->execute();
     }
   }
 }
@@ -684,15 +684,15 @@ function field_sql_storage_field_storage_delete_instance($instance) {
   $table_name = _field_sql_storage_tablename($field);
   $revision_name = _field_sql_storage_revision_tablename($field);
   db_update($table_name)
-  ->fields(array('deleted' => 1))
-  ->condition('entity_type', $instance['entity_type'])
-  ->condition('bundle', $instance['bundle'])
-  ->execute();
+    ->fields(array('deleted' => 1))
+    ->condition('entity_type', $instance['entity_type'])
+    ->condition('bundle', $instance['bundle'])
+    ->execute();
   db_update($revision_name)
-  ->fields(array('deleted' => 1))
-  ->condition('entity_type', $instance['entity_type'])
-  ->condition('bundle', $instance['bundle'])
-  ->execute();
+    ->fields(array('deleted' => 1))
+    ->condition('entity_type', $instance['entity_type'])
+    ->condition('bundle', $instance['bundle'])
+    ->execute();
 }
 
 /**
@@ -707,15 +707,15 @@ function field_sql_storage_field_attach_rename_bundle($entity_type, $bundle_old,
       $table_name = _field_sql_storage_tablename($field);
       $revision_name = _field_sql_storage_revision_tablename($field);
       db_update($table_name)
-      ->fields(array('bundle' => $bundle_new))
-      ->condition('entity_type', $entity_type)
-      ->condition('bundle', $bundle_old)
-      ->execute();
+        ->fields(array('bundle' => $bundle_new))
+        ->condition('entity_type', $entity_type)
+        ->condition('bundle', $bundle_old)
+        ->execute();
       db_update($revision_name)
-      ->fields(array('bundle' => $bundle_new))
-      ->condition('entity_type', $entity_type)
-      ->condition('bundle', $bundle_old)
-      ->execute();
+        ->fields(array('bundle' => $bundle_new))
+        ->condition('entity_type', $entity_type)
+        ->condition('bundle', $bundle_old)
+        ->execute();
     }
   }
 }
@@ -739,20 +739,20 @@ function field_sql_storage_field_storage_purge_field($field) {
 function field_sql_storage_field_storage_details($field) {
   $details = array();
   if (!empty($field['columns'])) {
-    // Add field columns.
+     // Add field columns.
     foreach ($field['columns'] as $column_name => $attributes) {
       $real_name = _field_sql_storage_columnname($field['field_name'], $column_name);
       $columns[$column_name] = $real_name;
     }
     return array(
-        'sql' => array(
-            FIELD_LOAD_CURRENT => array(
-                _field_sql_storage_tablename($field) => $columns,
-            ),
-            FIELD_LOAD_REVISION => array(
-                _field_sql_storage_revision_tablename($field) => $columns,
-            ),
+      'sql' => array(
+        FIELD_LOAD_CURRENT => array(
+          _field_sql_storage_tablename($field) => $columns,
         ),
+        FIELD_LOAD_REVISION => array(
+          _field_sql_storage_revision_tablename($field) => $columns,
+        ),
+      ),
     );
   }
 }

@@ -99,10 +99,10 @@ function _field_info_collate_fields($reset = FALSE) {
   }
 
   return array(
-      'fields' => $fields,
-      'field_ids' => $field_ids,
-      'instances' => $cache->getInstances(),
-      'extra_fields' => $extra_fields,
+    'fields' => $fields,
+    'field_ids' => $field_ids,
+    'instances' => $cache->getInstances(),
+    'extra_fields' => $extra_fields,
   );
 }
 
@@ -159,10 +159,10 @@ function _field_info_collate_types($reset = FALSE) {
     }
     else {
       $info = array(
-          'field types' => array(),
-          'widget types' => array(),
-          'formatter types' => array(),
-          'storage types' => array(),
+        'field types' => array(),
+        'widget types' => array(),
+        'formatter types' => array(),
+        'storage types' => array(),
       );
 
       // Populate field types.
@@ -171,8 +171,8 @@ function _field_info_collate_types($reset = FALSE) {
         foreach ($field_types as $name => $field_info) {
           // Provide defaults.
           $field_info += array(
-              'settings' => array(),
-              'instance_settings' => array(),
+            'settings' => array(),
+            'instance_settings' => array(),
           );
           $info['field types'][$name] = $field_info;
           $info['field types'][$name]['module'] = $module;
@@ -186,7 +186,7 @@ function _field_info_collate_types($reset = FALSE) {
         foreach ($widget_types as $name => $widget_info) {
           // Provide defaults.
           $widget_info += array(
-              'settings' => array(),
+            'settings' => array(),
           );
           $info['widget types'][$name] = $widget_info;
           $info['widget types'][$name]['module'] = $module;
@@ -201,7 +201,7 @@ function _field_info_collate_types($reset = FALSE) {
         foreach ($formatter_types as $name => $formatter_info) {
           // Provide defaults.
           $formatter_info += array(
-              'settings' => array(),
+            'settings' => array(),
           );
           $info['formatter types'][$name] = $formatter_info;
           $info['formatter types'][$name]['module'] = $module;
@@ -215,7 +215,7 @@ function _field_info_collate_types($reset = FALSE) {
         foreach ($storage_types as $name => $storage_info) {
           // Provide defaults.
           $storage_info += array(
-              'settings' => array(),
+            'settings' => array(),
           );
           $info['storage types'][$name] = $storage_info;
           $info['storage types'][$name]['module'] = $module;
@@ -449,6 +449,17 @@ function field_info_bundles($entity_type = NULL) {
  *   - type: The field type.
  *   - bundles: The bundles in which the field appears, as an array with entity
  *     types as keys and the array of bundle names as values.
+ * Example:
+ * @code
+ * array(
+ *   'body' => array(
+ *     'bundles' => array(
+ *       'node' => array('page', 'article'),
+ *     ),
+ *     'type' => 'text_with_summary',
+ *   ),
+ * );
+ * @endcode
  */
 function field_info_field_map() {
   $cache = _field_info_field_cache();

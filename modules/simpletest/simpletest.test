@@ -19,9 +19,9 @@ class SimpleTestFunctionalTest extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'SimpleTest functionality',
-        'description' => "Test SimpleTest's web interface: check that the intended tests were run and ensure that test reports display the intended results. Also test SimpleTest's internal browser and API's both explicitly and implicitly.",
-        'group' => 'SimpleTest'
+      'name' => 'SimpleTest functionality',
+      'description' => "Test SimpleTest's web interface: check that the intended tests were run and ensure that test reports display the intended results. Also test SimpleTest's internal browser and API's both explicitly and implicitly.",
+      'group' => 'SimpleTest'
     );
   }
 
@@ -68,8 +68,8 @@ class SimpleTestFunctionalTest extends DrupalWebTestCase {
       // Test the maximum redirection option.
       $this->drupalLogout();
       $edit = array(
-          'name' => $user->name,
-          'pass' => $user->pass_raw
+        'name' => $user->name,
+        'pass' => $user->pass_raw
       );
       variable_set('simpletest_maximum_redirects', 1);
       $this->drupalPost('user?destination=user/logout', $edit, t('Log in'));
@@ -241,10 +241,10 @@ class SimpleTestFunctionalTest extends DrupalWebTestCase {
     $found = FALSE;
     foreach ($this->childTestResults['assertions'] as $assertion) {
       if ((strpos($assertion['message'], $message) !== FALSE) &&
-      $assertion['type'] == $type &&
-      $assertion['status'] == $status &&
-      $assertion['file'] == $file &&
-      $assertion['function'] == $function) {
+          $assertion['type'] == $type &&
+          $assertion['status'] == $status &&
+          $assertion['file'] == $file &&
+          $assertion['function'] == $function) {
         $found = TRUE;
         break;
       }
@@ -324,9 +324,9 @@ class SimpleTestFunctionalTest extends DrupalWebTestCase {
 class SimpleTestBrowserTestCase extends DrupalWebTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'SimpleTest browser',
-        'description' => 'Test the internal browser of the testing framework.',
-        'group' => 'SimpleTest',
+      'name' => 'SimpleTest browser',
+      'description' => 'Test the internal browser of the testing framework.',
+      'group' => 'SimpleTest',
     );
   }
 
@@ -388,9 +388,9 @@ class SimpleTestMailCaptureTestCase extends DrupalWebTestCase {
    */
   public static function getInfo() {
     return array(
-        'name' => 'SimpleTest e-mail capturing',
-        'description' => 'Test the SimpleTest e-mail capturing logic, the assertMail assertion and the drupalGetMails function.',
-        'group' => 'SimpleTest',
+      'name' => 'SimpleTest e-mail capturing',
+      'description' => 'Test the SimpleTest e-mail capturing logic, the assertMail assertion and the drupalGetMails function.',
+      'group' => 'SimpleTest',
     );
   }
 
@@ -402,11 +402,11 @@ class SimpleTestMailCaptureTestCase extends DrupalWebTestCase {
     $subject = $this->randomString(64);
     $body = $this->randomString(128);
     $message = array(
-        'id' => 'drupal_mail_test',
-        'headers' => array('Content-type'=> 'text/html'),
-        'subject' => $subject,
-        'to' => 'foobar@example.com',
-        'body' => $body,
+      'id' => 'drupal_mail_test',
+      'headers' => array('Content-type'=> 'text/html'),
+      'subject' => $subject,
+      'to' => 'foobar@example.com',
+      'body' => $body,
     );
 
     // Before we send the e-mail, drupalGetMails should return an empty array.
@@ -429,11 +429,11 @@ class SimpleTestMailCaptureTestCase extends DrupalWebTestCase {
     // Send additional e-mails so more than one e-mail is captured.
     for ($index = 0; $index < 5; $index++) {
       $message = array(
-          'id' => 'drupal_mail_test_' . $index,
-          'headers' => array('Content-type'=> 'text/html'),
-          'subject' => $this->randomString(64),
-          'to' => $this->randomName(32) . '@example.com',
-          'body' => $this->randomString(512),
+        'id' => 'drupal_mail_test_' . $index,
+        'headers' => array('Content-type'=> 'text/html'),
+        'subject' => $this->randomString(64),
+        'to' => $this->randomName(32) . '@example.com',
+        'body' => $this->randomString(512),
       );
       drupal_mail_system('drupal_mail_test', $index)->mail($message);
     }
@@ -464,9 +464,9 @@ class SimpleTestMailCaptureTestCase extends DrupalWebTestCase {
 class SimpleTestFolderTestCase extends DrupalWebTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Testing SimpleTest setUp',
-        'description' => "This test will check SimpleTest's treatment of hook_install during setUp.  Image module is used for test.",
-        'group' => 'SimpleTest',
+      'name' => 'Testing SimpleTest setUp',
+      'description' => "This test will check SimpleTest's treatment of hook_install during setUp.  Image module is used for test.",
+      'group' => 'SimpleTest',
     );
   }
 
@@ -486,10 +486,10 @@ class SimpleTestFolderTestCase extends DrupalWebTestCase {
 class SimpleTestMissingDependentModuleUnitTest extends DrupalUnitTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Testing dependent module test',
-        'description' => 'This test should not load since it requires a module that is not found.',
-        'group' => 'SimpleTest',
-        'dependencies' => array('simpletest_missing_module'),
+      'name' => 'Testing dependent module test',
+      'description' => 'This test should not load since it requires a module that is not found.',
+      'group' => 'SimpleTest',
+      'dependencies' => array('simpletest_missing_module'),
     );
   }
 
@@ -513,9 +513,9 @@ class SimpleTestMissingDependentModuleUnitTest extends DrupalUnitTestCase {
 class SimpleTestBrokenSetUp extends DrupalWebTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Broken SimpleTest method',
-        'description' => 'Tests a test case that does not call parent::setUp().',
-        'group' => 'SimpleTest'
+      'name' => 'Broken SimpleTest method',
+      'description' => 'Tests a test case that does not call parent::setUp().',
+      'group' => 'SimpleTest'
     );
   }
 
@@ -588,9 +588,9 @@ class SimpleTestInstallationProfileModuleTestsTestCase extends DrupalWebTestCase
 
   public static function getInfo() {
     return array(
-        'name' => 'Installation profile module tests',
-        'description' => 'Verifies that tests bundled with installation profile modules are found.',
-        'group' => 'SimpleTest',
+      'name' => 'Installation profile module tests',
+      'description' => 'Verifies that tests bundled with installation profile modules are found.',
+      'group' => 'SimpleTest',
     );
   }
 
@@ -608,7 +608,7 @@ class SimpleTestInstallationProfileModuleTestsTestCase extends DrupalWebTestCase
     $this->drupalGet('admin/config/development/testing');
     $this->assertText('Installation profile module tests helper');
     $edit = array(
-        'DrupalSystemListingCompatibleTestCase' => TRUE,
+      'DrupalSystemListingCompatibleTestCase' => TRUE,
     );
     $this->drupalPost(NULL, $edit, t('Run tests'));
     $this->assertText('DrupalSystemListingCompatibleTestCase test executed.');
@@ -634,9 +634,9 @@ class SimpleTestOtherInstallationProfileModuleTestsTestCase extends DrupalWebTes
 
   public static function getInfo() {
     return array(
-        'name' => 'Other Installation profiles',
-        'description' => 'Verifies that tests in other installation profiles are not found.',
-        'group' => 'SimpleTest',
+      'name' => 'Other Installation profiles',
+      'description' => 'Verifies that tests in other installation profiles are not found.',
+      'group' => 'SimpleTest',
     );
   }
 
@@ -678,9 +678,9 @@ class SimpleTestDiscoveryTestCase extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Discovery of test classes',
-        'description' => 'Verifies that tests classes are discovered and can be autoloaded (class_exists).',
-        'group' => 'SimpleTest',
+      'name' => 'Discovery of test classes',
+      'description' => 'Verifies that tests classes are discovered and can be autoloaded (class_exists).',
+      'group' => 'SimpleTest',
     );
   }
 
@@ -702,8 +702,8 @@ class SimpleTestDiscoveryTestCase extends DrupalWebTestCase {
     // TODO: What if we have cached values? Do we need to force a cache refresh?
     $classes_all = simpletest_test_get_all();
     foreach (array(
-        'Drupal\\simpletest\\Tests\\PSR0WebTest',
-        'Drupal\\psr_0_test\\Tests\\ExampleTest',
+      'Drupal\\simpletest\\Tests\\PSR0WebTest',
+      'Drupal\\psr_0_test\\Tests\\ExampleTest',
     ) as $class) {
       $this->assert(!empty($classes_all['SimpleTest'][$class]), t('Class @class must be discovered by simpletest_test_get_all().', array('@class' => $class)));
     }
@@ -733,8 +733,8 @@ class SimpleTestDiscoveryTestCase extends DrupalWebTestCase {
 
     // Test each test individually.
     foreach (array(
-        'Drupal\\psr_0_test\\Tests\\ExampleTest',
-        'Drupal\\psr_0_test\\Tests\\Nested\\NestedExampleTest',
+      'Drupal\\psr_0_test\\Tests\\ExampleTest',
+      'Drupal\\psr_0_test\\Tests\\Nested\\NestedExampleTest',
     ) as $class) {
       $this->drupalGet('admin/config/development/testing');
       $edit = array($class => TRUE);

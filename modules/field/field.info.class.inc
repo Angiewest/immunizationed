@@ -2,8 +2,8 @@
 
 /*
  * @file
-* Definition of the FieldInfo class.
-*/
+ * Definition of the FieldInfo class.
+ */
 
 /**
  * Provides field and instance definitions for the current runtime environment.
@@ -22,10 +22,10 @@
  *
  * The getFields() and getInstances() methods, which return all existing field
  * and instance definitions, are kept mainly for backwards compatibility, and
-* should be avoided when possible, since they load and persist in memory a
-* potentially large array of information. In many cases, the lightweight
-* getFieldMap() method should be preferred.
-*/
+ * should be avoided when possible, since they load and persist in memory a
+ * potentially large array of information. In many cases, the lightweight
+ * getFieldMap() method should be preferred.
+ */
 class FieldInfo {
 
   /**
@@ -46,14 +46,14 @@ class FieldInfo {
    * Mapping of field names to the ID of the corresponding non-deleted field.
    *
    * @var array
-  */
+   */
   protected $fieldIdsByName = array();
 
   /**
    * Whether $fieldsById contains all field definitions or a subset.
    *
    * @var bool
-  */
+   */
   protected $loadedAllFields = FALSE;
 
   /**
@@ -67,14 +67,14 @@ class FieldInfo {
    * Instance definitions by bundle.
    *
    * @var array
-  */
+   */
   protected $bundleInstances = array();
 
   /**
    * Whether $bundleInstances contains all instances definitions or a subset.
    *
    * @var bool
-  */
+   */
   protected $loadedAllInstances = FALSE;
 
   /**
@@ -88,12 +88,12 @@ class FieldInfo {
    * Extra fields by bundle.
    *
    * @var array
-  */
+   */
   protected $bundleExtraFields = array();
 
   /**
    * Clears the "static" and persistent caches.
-  */
+   */
   public function flush() {
     $this->fieldMap = NULL;
 
@@ -413,8 +413,8 @@ class FieldInfo {
     // The persistent cache additionally contains the definitions of the fields
     // involved in the bundle.
     $cache = array(
-        'instances' => $instances,
-        'fields' => array()
+      'instances' => $instances,
+      'fields' => array()
     );
     foreach ($instances as $instance) {
       $cache['fields'][] = $this->fieldsById[$instance['field_id']];
@@ -533,10 +533,10 @@ class FieldInfo {
       if ($view_mode == 'default' || !empty($view_mode_settings[$view_mode]['custom_settings'])) {
         if (!isset($instance['display'][$view_mode])) {
           $instance['display'][$view_mode] = array(
-              'type' => 'hidden',
-              'label' => 'above',
-              'settings' => array(),
-              'weight' => 0,
+            'type' => 'hidden',
+            'label' => 'above',
+            'settings' => array(),
+            'weight' => 0,
           );
         }
       }
@@ -561,9 +561,9 @@ class FieldInfo {
 
     // Fill in default values.
     $widget += array(
-        'type' => $field_type_info['default_widget'],
-        'settings' => array(),
-        'weight' => 0,
+      'type' => $field_type_info['default_widget'],
+      'settings' => array(),
+      'weight' => 0,
     );
 
     $widget_type_info = field_info_widget_types($widget['type']);
@@ -595,10 +595,10 @@ class FieldInfo {
 
     // Fill in default values.
     $display += array(
-        'label' => 'above',
-        'type' => $field_type_info['default_formatter'],
-        'settings' => array(),
-        'weight' => 0,
+      'label' => 'above',
+      'type' => $field_type_info['default_formatter'],
+      'settings' => array(),
+      'weight' => 0,
     );
     if ($display['type'] != 'hidden') {
       $formatter_type_info = field_info_formatter_types($display['type']);
@@ -654,8 +654,8 @@ class FieldInfo {
         }
         else {
           $field_data['display'][$view_mode] = array(
-              'weight' => $field_data['weight'],
-              'visible' => TRUE,
+            'weight' => $field_data['weight'],
+            'visible' => TRUE,
           );
         }
       }

@@ -14,20 +14,12 @@
 interface DrupalEntityControllerInterface {
 
   /**
-   * Constructor.
-   *
-   * @param $entityType
-   *   The entity type for which the instance is created.
-   */
-  public function __construct($entityType);
-
-  /**
    * Resets the internal, static entity cache.
    *
    * @param $ids
    *   (optional) If specified, the cache is reset for the entities with the
    *   given ids only.
-  */
+   */
   public function resetCache(array $ids = NULL);
 
   /**
@@ -41,7 +33,7 @@ interface DrupalEntityControllerInterface {
    * @return
    *   An array of entity objects indexed by their ids. When no results are
    *   found, an empty array is returned.
-  */
+   */
   public function load($ids = array(), $conditions = array());
 }
 
@@ -119,6 +111,9 @@ class DrupalDefaultEntityController implements DrupalEntityControllerInterface {
 
   /**
    * Constructor: sets basic variables.
+   *
+   * @param $entityType
+   *   The entity type for which the instance is created.
    */
   public function __construct($entityType) {
     $this->entityType = $entityType;
@@ -193,8 +188,8 @@ class DrupalDefaultEntityController implements DrupalEntityControllerInterface {
       // Build the query.
       $query = $this->buildQuery($ids, $conditions, $revision_id);
       $queried_entities = $query
-      ->execute()
-      ->fetchAllAssoc($this->idKey);
+        ->execute()
+        ->fetchAllAssoc($this->idKey);
     }
 
     // Pass all entities loaded from the database through $this->attachLoad(),
@@ -456,7 +451,7 @@ class EntityFieldQuery {
    * @var array
    *
    * @see EntityFieldQuery::fieldCondition()
-  */
+   */
   public $fieldConditions = array();
 
   /**
@@ -471,7 +466,7 @@ class EntityFieldQuery {
    *
    * @see EntityFieldQuery::fieldLanguageCondition()
    * @see EntityFieldQuery::fieldDeltaCondition()
-  */
+   */
   public $fieldMetaConditions = array();
 
   /**
@@ -480,14 +475,14 @@ class EntityFieldQuery {
    * @var array
    *
    * @see EntityFieldQuery::propertyCondition()
-  */
+   */
   public $propertyConditions = array();
 
   /**
    * List of order clauses.
    *
    * @var array
-  */
+   */
   public $order = array();
 
   /**
@@ -496,7 +491,7 @@ class EntityFieldQuery {
    * @var array
    *
    * @see EntityFieldQuery::range()
-  */
+   */
   public $range = array();
 
   /**
@@ -505,7 +500,7 @@ class EntityFieldQuery {
    * @var array
    *
    * @see EntityFieldQuery::pager()
-  */
+   */
   public $pager = array();
 
   /**
@@ -515,7 +510,7 @@ class EntityFieldQuery {
    * EntityFieldQuery::RETURN_ALL to return everything.
    *
    * @see EntityFieldQuery::deleted()
-  */
+   */
   public $deleted = FALSE;
 
   /**
@@ -534,7 +529,7 @@ class EntityFieldQuery {
    * TRUE if this is a count query, FALSE if it isn't.
    *
    * @var boolean
-  */
+   */
   public $count = FALSE;
 
   /**
@@ -561,7 +556,7 @@ class EntityFieldQuery {
    * @var array
    *
    * @see EntityFieldQuery::addMetaData()
-  */
+   */
   public $metaData = array();
 
   /**
@@ -570,7 +565,7 @@ class EntityFieldQuery {
    * @var array
    *
    * @see EntityFieldQuery::execute().
-  */
+   */
   public $orderedResults = array();
 
   /**
@@ -579,7 +574,7 @@ class EntityFieldQuery {
    * @var string
    *
    * @see EntityFieldQuery::execute().
-  */
+   */
   public $executeCallback = '';
 
   /**
@@ -626,8 +621,8 @@ class EntityFieldQuery {
       $operator = '<>';
     }
     $this->entityConditions[$name] = array(
-        'value' => $value,
-        'operator' => $operator,
+      'value' => $value,
+      'operator' => $operator,
     );
     return $this;
   }
@@ -776,12 +771,12 @@ class EntityFieldQuery {
     $this->fields[$index] = $field;
     if (isset($column)) {
       $conditions[$index] = array(
-          'field' => $field,
-          'column' => $column,
-          'value' => $value,
-          'operator' => $operator,
-          'delta_group' => $delta_group,
-          'language_group' => $language_group,
+        'field' => $field,
+        'column' => $column,
+        'value' => $value,
+        'operator' => $operator,
+        'delta_group' => $delta_group,
+        'language_group' => $language_group,
       );
     }
     return $this;
@@ -824,9 +819,9 @@ class EntityFieldQuery {
       $operator = '<>';
     }
     $this->propertyConditions[] = array(
-        'column' => $column,
-        'value' => $value,
-        'operator' => $operator,
+      'column' => $column,
+      'value' => $value,
+      'operator' => $operator,
     );
     return $this;
   }
@@ -850,9 +845,9 @@ class EntityFieldQuery {
    */
   public function entityOrderBy($name, $direction = 'ASC') {
     $this->order[] = array(
-        'type' => 'entity',
-        'specifier' => $name,
-        'direction' => $direction,
+      'type' => 'entity',
+      'specifier' => $name,
+      'direction' => $direction,
     );
     return $this;
   }
@@ -888,13 +883,13 @@ class EntityFieldQuery {
     $index = count($this->fields);
     $this->fields[$index] = $field;
     $this->order[] = array(
-        'type' => 'field',
-        'specifier' => array(
-            'field' => $field,
-            'index' => $index,
-            'column' => $column,
-        ),
-        'direction' => $direction,
+      'type' => 'field',
+      'specifier' => array(
+        'field' => $field,
+        'index' => $index,
+        'column' => $column,
+      ),
+      'direction' => $direction,
     );
     return $this;
   }
@@ -919,9 +914,9 @@ class EntityFieldQuery {
    */
   public function propertyOrderBy($column, $direction = 'ASC') {
     $this->order[] = array(
-        'type' => 'property',
-        'specifier' => $column,
-        'direction' => $direction,
+      'type' => 'property',
+      'specifier' => $column,
+      'direction' => $direction,
     );
     return $this;
   }
@@ -951,8 +946,8 @@ class EntityFieldQuery {
    */
   public function range($start = NULL, $length = NULL) {
     $this->range = array(
-        'start' => $start,
-        'length' => $length,
+      'start' => $start,
+      'length' => $length,
     );
     return $this;
   }
@@ -979,8 +974,8 @@ class EntityFieldQuery {
     }
 
     $this->pager = array(
-        'limit' => $limit,
-        'element' => $element,
+      'limit' => $limit,
+      'element' => $element,
     );
     return $this;
   }

@@ -28,10 +28,10 @@ function contextual_help($path, $arg) {
  */
 function contextual_permission() {
   return array(
-      'access contextual links' => array(
-          'title' => t('Use contextual links'),
-          'description' => t('Use contextual links to perform actions related to elements on a page.'),
-      ),
+    'access contextual links' => array(
+      'title' => t('Use contextual links'),
+      'description' => t('Use contextual links to perform actions related to elements on a page.'),
+    ),
   );
 }
 
@@ -41,15 +41,15 @@ function contextual_permission() {
 function contextual_library() {
   $path = drupal_get_path('module', 'contextual');
   $libraries['contextual-links'] = array(
-      'title' => 'Contextual links',
-      'website' => 'http://drupal.org/node/473268',
-      'version' => '1.0',
-      'js' => array(
-          $path . '/contextual.js' => array(),
-      ),
-      'css' => array(
-          $path . '/contextual.css' => array(),
-      ),
+    'title' => 'Contextual links',
+    'website' => 'http://drupal.org/node/473268',
+    'version' => '1.0',
+    'js' => array(
+      $path . '/contextual.js' => array(),
+    ),
+    'css' => array(
+      $path . '/contextual.css' => array(),
+    ),
   );
   return $libraries;
 }
@@ -59,19 +59,19 @@ function contextual_library() {
  */
 function contextual_element_info() {
   $types['contextual_links'] = array(
-      '#pre_render' => array('contextual_pre_render_links'),
-      '#theme' => 'links__contextual',
-      '#links' => array(),
-      '#prefix' => '<div class="contextual-links-wrapper">',
-      '#suffix' => '</div>',
-      '#attributes' => array(
-          'class' => array('contextual-links'),
+    '#pre_render' => array('contextual_pre_render_links'),
+    '#theme' => 'links__contextual',
+    '#links' => array(),
+    '#prefix' => '<div class="contextual-links-wrapper">',
+    '#suffix' => '</div>',
+    '#attributes' => array(
+      'class' => array('contextual-links'),
+    ),
+    '#attached' => array(
+      'library' => array(
+        array('contextual', 'contextual-links'),
       ),
-      '#attached' => array(
-          'library' => array(
-              array('contextual', 'contextual-links'),
-          ),
-      ),
+    ),
   );
   return $types;
 }
@@ -104,9 +104,9 @@ function contextual_preprocess(&$variables, $hook) {
   if (isset($element) && is_array($element) && !empty($element['#contextual_links'])) {
     // Initialize the template variable as a renderable array.
     $variables['title_suffix']['contextual_links'] = array(
-        '#type' => 'contextual_links',
-        '#contextual_links' => $element['#contextual_links'],
-        '#element' => $element,
+      '#type' => 'contextual_links',
+      '#contextual_links' => $element['#contextual_links'],
+      '#element' => $element,
     );
     // Mark this element as potentially having contextual links attached to it.
     $variables['classes_array'][] = 'contextual-links-region';
@@ -146,8 +146,8 @@ function contextual_pre_render_links($element) {
   foreach ($items as $class => $item) {
     $class = drupal_html_class($class);
     $links[$class] = array(
-        'title' => $item['title'],
-        'href' => $item['href'],
+      'title' => $item['title'],
+      'href' => $item['href'],
     );
     // @todo theme_links() should *really* use the same parameters as l().
     $item['localized_options'] += array('query' => array());

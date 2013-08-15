@@ -14,7 +14,7 @@ abstract class UpgradePathTestCase extends DrupalWebTestCase {
 
   /**
    * Flag that indicates whether the child site has been upgraded.
-  */
+   */
   var $upgradedSite = FALSE;
 
   /**
@@ -24,12 +24,12 @@ abstract class UpgradePathTestCase extends DrupalWebTestCase {
 
   /**
    * Array of modules loaded when the test starts.
-  */
+   */
   var $loadedModules = array();
 
   /**
    * Flag to indicate whether zlib is installed or not.
-  */
+   */
   var $zlibInstalled = TRUE;
 
   /**
@@ -168,14 +168,14 @@ abstract class UpgradePathTestCase extends DrupalWebTestCase {
    */
   protected function variable_set($name, $value) {
     db_delete('variable')
-    ->condition('name', $name)
-    ->execute();
+      ->condition('name', $name)
+      ->execute();
     db_insert('variable')
-    ->fields(array(
-    'name' => $name,
-    'value' => serialize($value),
-    ))
-    ->execute();
+      ->fields(array(
+        'name' => $name,
+        'value' => serialize($value),
+      ))
+      ->execute();
 
     try {
       cache_clear_all('variables', 'cache');
@@ -183,8 +183,7 @@ abstract class UpgradePathTestCase extends DrupalWebTestCase {
     }
     // Since cache_bootstrap won't exist in a Drupal 6 site, ignore the
     // exception if the above fails.
-    catch (Exception $e) {
-    }
+    catch (Exception $e) {}
   }
 
   /**
@@ -257,7 +256,7 @@ abstract class UpgradePathTestCase extends DrupalWebTestCase {
     // Check if there still are pending updates.
     $this->drupalGet($update_url, array('external' => TRUE));
     $this->drupalPost(NULL, array(), t('Continue'));
-    if (!$this->assertText(t('No pending updates.'), t('No pending updates at the end of the update process.'))) {
+    if (!$this->assertText(t('No pending updates.'), 'No pending updates at the end of the update process.')) {
       return FALSE;
     }
 
@@ -299,9 +298,9 @@ abstract class UpgradePathTestCase extends DrupalWebTestCase {
     $modules = array_merge($required_modules, $modules);
 
     db_delete('system')
-    ->condition('type', 'module')
-    ->condition('name', $modules, 'NOT IN')
-    ->execute();
+      ->condition('type', 'module')
+      ->condition('name', $modules, 'NOT IN')
+      ->execute();
   }
 
 }
@@ -338,16 +337,16 @@ abstract class UpdatePathTestCase extends UpgradePathTestCase {
 class BasicUpgradePath extends UpgradePathTestCase {
   public static function getInfo() {
     return array(
-        'name'  => 'Basic upgrade path',
-        'description'  => 'Basic upgrade path tests.',
-        'group' => 'Upgrade path',
+      'name'  => 'Basic upgrade path',
+      'description'  => 'Basic upgrade path tests.',
+      'group' => 'Upgrade path',
     );
   }
 
   public function setUp() {
     // Path to the database dump files.
     $this->databaseDumpFiles = array(
-        drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-6.bare.database.php',
+      drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-6.bare.database.php',
     );
     parent::setUp();
   }
@@ -359,14 +358,14 @@ class BasicUpgradePath extends UpgradePathTestCase {
     // Destroy a table that the upgrade process needs.
     db_drop_table('access');
     // Assert that the upgrade fails.
-    $this->assertFalse($this->performUpgrade(FALSE) && $this->pendingUpdates, t('A failed upgrade should return messages.'));
+    $this->assertFalse($this->performUpgrade(FALSE) && $this->pendingUpdates, 'A failed upgrade should return messages.');
   }
 
   /**
    * Test a successful upgrade.
    */
   public function testBasicUpgrade() {
-    $this->assertTrue($this->performUpgrade(), t('The upgrade was completed successfully.'));
+    $this->assertTrue($this->performUpgrade(), 'The upgrade was completed successfully.');
 
     // Hit the frontpage.
     $this->drupalGet('');
@@ -375,27 +374,27 @@ class BasicUpgradePath extends UpgradePathTestCase {
     // Verify that we are still logged in.
     $this->drupalGet('user');
     $this->clickLink(t('Edit'));
-    $this->assertEqual($this->getUrl(), url('user/1/edit', array('absolute' => TRUE)), t('We are still logged in as admin at the end of the upgrade.'));
+    $this->assertEqual($this->getUrl(), url('user/1/edit', array('absolute' => TRUE)), 'We are still logged in as admin at the end of the upgrade.');
 
     // Logout and verify that we can login back in with our initial password.
     $this->drupalLogout();
     $this->drupalLogin((object) array(
-        'uid' => 1,
-        'name' => 'admin',
-        'pass_raw' => 'admin',
+      'uid' => 1,
+      'name' => 'admin',
+      'pass_raw' => 'admin',
     ));
 
     // The previous login should've triggered a password rehash, so login one
     // more time to make sure the new hash is readable.
     $this->drupalLogout();
     $this->drupalLogin((object) array(
-        'uid' => 1,
-        'name' => 'admin',
-        'pass_raw' => 'admin',
+      'uid' => 1,
+      'name' => 'admin',
+      'pass_raw' => 'admin',
     ));
 
     // Test that the site name is correctly displayed.
-    $this->assertText('Drupal 6', t('The site name is correctly displayed.'));
+    $this->assertText('Drupal 6', 'The site name is correctly displayed.');
 
     // Verify that the main admin sections are available.
     $this->drupalGet('admin');
@@ -409,11 +408,11 @@ class BasicUpgradePath extends UpgradePathTestCase {
 
     // Confirm that no {menu_links} entry exists for user/autocomplete.
     $result = db_query('SELECT COUNT(*) FROM {menu_links} WHERE link_path = :user_autocomplete', array(':user_autocomplete' => 'user/autocomplete'))->fetchField();
-    $this->assertFalse($result, t('No {menu_links} entry exists for user/autocomplete'));
+    $this->assertFalse($result, 'No {menu_links} entry exists for user/autocomplete');
 
     // Test that the environment after the upgrade is in a consistent status.
     $update_d6 = variable_get('update_d6', FALSE);
-    $this->assertFalse($update_d6, t('The D6 upgrade flag variable has been correctly disabled.'));
+    $this->assertFalse($update_d6, 'The D6 upgrade flag variable has been correctly disabled.');
   }
 }
 
@@ -429,16 +428,16 @@ class BasicUpgradePath extends UpgradePathTestCase {
 class BasicStandardUpdatePath extends UpdatePathTestCase {
   public static function getInfo() {
     return array(
-        'name'  => 'Basic standard + all profile update path',
-        'description'  => 'Basic update path tests for a standard profile install with all enabled modules.',
-        'group' => 'Upgrade path',
+      'name'  => 'Basic standard + all profile update path',
+      'description'  => 'Basic update path tests for a standard profile install with all enabled modules.',
+      'group' => 'Upgrade path',
     );
   }
 
   public function setUp() {
     // Path to the database dump files.
     $this->databaseDumpFiles = array(
-        drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-7.bare.standard_all.database.php.gz',
+      drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-7.bare.standard_all.database.php.gz',
     );
     parent::setUp();
   }
@@ -447,7 +446,7 @@ class BasicStandardUpdatePath extends UpdatePathTestCase {
    * Tests a successful point release update.
    */
   public function testBasicStandardUpdate() {
-    $this->assertTrue($this->performUpgrade(), t('The upgrade was completed successfully.'));
+    $this->assertTrue($this->performUpgrade(), 'The upgrade was completed successfully.');
 
     // Hit the frontpage.
     $this->drupalGet('');
@@ -456,27 +455,27 @@ class BasicStandardUpdatePath extends UpdatePathTestCase {
     // Verify that we are still logged in.
     $this->drupalGet('user');
     $this->clickLink(t('Edit'));
-    $this->assertEqual($this->getUrl(), url('user/1/edit', array('absolute' => TRUE)), t('We are still logged in as admin at the end of the upgrade.'));
+    $this->assertEqual($this->getUrl(), url('user/1/edit', array('absolute' => TRUE)), 'We are still logged in as admin at the end of the upgrade.');
 
     // Logout and verify that we can login back in with our initial password.
     $this->drupalLogout();
     $this->drupalLogin((object) array(
-        'uid' => 1,
-        'name' => 'admin',
-        'pass_raw' => 'admin',
+      'uid' => 1,
+      'name' => 'admin',
+      'pass_raw' => 'admin',
     ));
 
     // The previous login should've triggered a password rehash, so login one
     // more time to make sure the new hash is readable.
     $this->drupalLogout();
     $this->drupalLogin((object) array(
-        'uid' => 1,
-        'name' => 'admin',
-        'pass_raw' => 'admin',
+      'uid' => 1,
+      'name' => 'admin',
+      'pass_raw' => 'admin',
     ));
 
     // Test that the site name is correctly displayed.
-    $this->assertText('Drupal', t('The site name is correctly displayed.'));
+    $this->assertText('Drupal', 'The site name is correctly displayed.');
 
     // Verify that the main admin sections are available.
     $this->drupalGet('admin');
@@ -490,7 +489,7 @@ class BasicStandardUpdatePath extends UpdatePathTestCase {
 
     // Confirm that no {menu_links} entry exists for user/autocomplete.
     $result = db_query('SELECT COUNT(*) FROM {menu_links} WHERE link_path = :user_autocomplete', array(':user_autocomplete' => 'user/autocomplete'))->fetchField();
-    $this->assertFalse($result, t('No {menu_links} entry exists for user/autocomplete'));
+    $this->assertFalse($result, 'No {menu_links} entry exists for user/autocomplete');
   }
 }
 
@@ -505,16 +504,16 @@ class BasicStandardUpdatePath extends UpdatePathTestCase {
 class BasicMinimalUpdatePath extends UpdatePathTestCase {
   public static function getInfo() {
     return array(
-        'name'  => 'Basic minimal profile update path',
-        'description'  => 'Basic update path tests for a minimal profile install.',
-        'group' => 'Upgrade path',
+      'name'  => 'Basic minimal profile update path',
+      'description'  => 'Basic update path tests for a minimal profile install.',
+      'group' => 'Upgrade path',
     );
   }
 
   public function setUp() {
     // Path to the database dump files.
     $this->databaseDumpFiles = array(
-        drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-7.bare.minimal.database.php.gz',
+      drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-7.bare.minimal.database.php.gz',
     );
     parent::setUp();
   }
@@ -523,7 +522,7 @@ class BasicMinimalUpdatePath extends UpdatePathTestCase {
    * Tests a successful point release update.
    */
   public function testBasicMinimalUpdate() {
-    $this->assertTrue($this->performUpgrade(), t('The upgrade was completed successfully.'));
+    $this->assertTrue($this->performUpgrade(), 'The upgrade was completed successfully.');
 
     // Hit the frontpage.
     $this->drupalGet('');
@@ -532,27 +531,27 @@ class BasicMinimalUpdatePath extends UpdatePathTestCase {
     // Verify that we are still logged in.
     $this->drupalGet('user');
     $this->clickLink(t('Edit'));
-    $this->assertEqual($this->getUrl(), url('user/1/edit', array('absolute' => TRUE)), t('We are still logged in as admin at the end of the upgrade.'));
+    $this->assertEqual($this->getUrl(), url('user/1/edit', array('absolute' => TRUE)), 'We are still logged in as admin at the end of the upgrade.');
 
     // Logout and verify that we can login back in with our initial password.
     $this->drupalLogout();
     $this->drupalLogin((object) array(
-        'uid' => 1,
-        'name' => 'admin',
-        'pass_raw' => 'admin',
+      'uid' => 1,
+      'name' => 'admin',
+      'pass_raw' => 'admin',
     ));
 
     // The previous login should've triggered a password rehash, so login one
     // more time to make sure the new hash is readable.
     $this->drupalLogout();
     $this->drupalLogin((object) array(
-        'uid' => 1,
-        'name' => 'admin',
-        'pass_raw' => 'admin',
+      'uid' => 1,
+      'name' => 'admin',
+      'pass_raw' => 'admin',
     ));
 
     // Test that the site name is correctly displayed.
-    $this->assertText('Drupal', t('The site name is correctly displayed.'));
+    $this->assertText('Drupal', 'The site name is correctly displayed.');
 
     // Verify that the main admin sections are available.
     $this->drupalGet('admin');
@@ -566,7 +565,7 @@ class BasicMinimalUpdatePath extends UpdatePathTestCase {
 
     // Confirm that no {menu_links} entry exists for user/autocomplete.
     $result = db_query('SELECT COUNT(*) FROM {menu_links} WHERE link_path = :user_autocomplete', array(':user_autocomplete' => 'user/autocomplete'))->fetchField();
-    $this->assertFalse($result, t('No {menu_links} entry exists for user/autocomplete'));
+    $this->assertFalse($result, 'No {menu_links} entry exists for user/autocomplete');
 
     // Confirm that a date format that just differs in the case can be added.
     $admin_date_format = 'j M y';
@@ -596,16 +595,16 @@ class BasicMinimalUpdatePath extends UpdatePathTestCase {
 class FilledStandardUpdatePath extends UpdatePathTestCase {
   public static function getInfo() {
     return array(
-        'name'  => 'Basic standard + all profile update path, populated database',
-        'description'  => 'Basic update path tests for a standard profile install with all enabled modules and a populated database.',
-        'group' => 'Upgrade path',
+      'name'  => 'Basic standard + all profile update path, populated database',
+      'description'  => 'Basic update path tests for a standard profile install with all enabled modules and a populated database.',
+      'group' => 'Upgrade path',
     );
   }
 
   public function setUp() {
     // Path to the database dump files.
     $this->databaseDumpFiles = array(
-        drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-7.filled.standard_all.database.php.gz',
+      drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-7.filled.standard_all.database.php.gz',
     );
     parent::setUp();
   }
@@ -614,7 +613,7 @@ class FilledStandardUpdatePath extends UpdatePathTestCase {
    * Tests a successful point release update.
    */
   public function testFilledStandardUpdate() {
-    $this->assertTrue($this->performUpgrade(), t('The upgrade was completed successfully.'));
+    $this->assertTrue($this->performUpgrade(), 'The upgrade was completed successfully.');
 
     // Hit the frontpage.
     $this->drupalGet('');
@@ -623,27 +622,27 @@ class FilledStandardUpdatePath extends UpdatePathTestCase {
     // Verify that we are still logged in.
     $this->drupalGet('user');
     $this->clickLink(t('Edit'));
-    $this->assertEqual($this->getUrl(), url('user/1/edit', array('absolute' => TRUE)), t('We are still logged in as admin at the end of the upgrade.'));
+    $this->assertEqual($this->getUrl(), url('user/1/edit', array('absolute' => TRUE)), 'We are still logged in as admin at the end of the upgrade.');
 
     // Logout and verify that we can login back in with our initial password.
     $this->drupalLogout();
     $this->drupalLogin((object) array(
-        'uid' => 1,
-        'name' => 'admin',
-        'pass_raw' => 'admin',
+      'uid' => 1,
+      'name' => 'admin',
+      'pass_raw' => 'admin',
     ));
 
     // The previous login should've triggered a password rehash, so login one
     // more time to make sure the new hash is readable.
     $this->drupalLogout();
     $this->drupalLogin((object) array(
-        'uid' => 1,
-        'name' => 'admin',
-        'pass_raw' => 'admin',
+      'uid' => 1,
+      'name' => 'admin',
+      'pass_raw' => 'admin',
     ));
 
     // Test that the site name is correctly displayed.
-    $this->assertText('Drupal', t('The site name is correctly displayed.'));
+    $this->assertText('Drupal', 'The site name is correctly displayed.');
 
     // Verify that the main admin sections are available.
     $this->drupalGet('admin');
@@ -657,7 +656,7 @@ class FilledStandardUpdatePath extends UpdatePathTestCase {
 
     // Confirm that no {menu_links} entry exists for user/autocomplete.
     $result = db_query('SELECT COUNT(*) FROM {menu_links} WHERE link_path = :user_autocomplete', array(':user_autocomplete' => 'user/autocomplete'))->fetchField();
-    $this->assertFalse($result, t('No {menu_links} entry exists for user/autocomplete'));
+    $this->assertFalse($result, 'No {menu_links} entry exists for user/autocomplete');
   }
 }
 
@@ -672,16 +671,16 @@ class FilledStandardUpdatePath extends UpdatePathTestCase {
 class FilledMinimalUpdatePath extends UpdatePathTestCase {
   public static function getInfo() {
     return array(
-        'name'  => 'Basic minimal profile update path, populated database',
-        'description'  => 'Basic update path tests for a minimal profile install with a populated database.',
-        'group' => 'Upgrade path',
+      'name'  => 'Basic minimal profile update path, populated database',
+      'description'  => 'Basic update path tests for a minimal profile install with a populated database.',
+      'group' => 'Upgrade path',
     );
   }
 
   public function setUp() {
     // Path to the database dump files.
     $this->databaseDumpFiles = array(
-        drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-7.filled.minimal.database.php.gz',
+      drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-7.filled.minimal.database.php.gz',
     );
     parent::setUp();
   }
@@ -690,7 +689,7 @@ class FilledMinimalUpdatePath extends UpdatePathTestCase {
    * Tests a successful point release update.
    */
   public function testFilledStandardUpdate() {
-    $this->assertTrue($this->performUpgrade(), t('The upgrade was completed successfully.'));
+    $this->assertTrue($this->performUpgrade(), 'The upgrade was completed successfully.');
 
     // Hit the frontpage.
     $this->drupalGet('');
@@ -699,27 +698,27 @@ class FilledMinimalUpdatePath extends UpdatePathTestCase {
     // Verify that we are still logged in.
     $this->drupalGet('user');
     $this->clickLink(t('Edit'));
-    $this->assertEqual($this->getUrl(), url('user/1/edit', array('absolute' => TRUE)), t('We are still logged in as admin at the end of the upgrade.'));
+    $this->assertEqual($this->getUrl(), url('user/1/edit', array('absolute' => TRUE)), 'We are still logged in as admin at the end of the upgrade.');
 
     // Logout and verify that we can login back in with our initial password.
     $this->drupalLogout();
     $this->drupalLogin((object) array(
-        'uid' => 1,
-        'name' => 'admin',
-        'pass_raw' => 'admin',
+      'uid' => 1,
+      'name' => 'admin',
+      'pass_raw' => 'admin',
     ));
 
     // The previous login should've triggered a password rehash, so login one
     // more time to make sure the new hash is readable.
     $this->drupalLogout();
     $this->drupalLogin((object) array(
-        'uid' => 1,
-        'name' => 'admin',
-        'pass_raw' => 'admin',
+      'uid' => 1,
+      'name' => 'admin',
+      'pass_raw' => 'admin',
     ));
 
     // Test that the site name is correctly displayed.
-    $this->assertText('Drupal', t('The site name is correctly displayed.'));
+    $this->assertText('Drupal', 'The site name is correctly displayed.');
 
     // Verify that the main admin sections are available.
     $this->drupalGet('admin');
@@ -733,6 +732,6 @@ class FilledMinimalUpdatePath extends UpdatePathTestCase {
 
     // Confirm that no {menu_links} entry exists for user/autocomplete.
     $result = db_query('SELECT COUNT(*) FROM {menu_links} WHERE link_path = :user_autocomplete', array(':user_autocomplete' => 'user/autocomplete'))->fetchField();
-    $this->assertFalse($result, t('No {menu_links} entry exists for user/autocomplete'));
+    $this->assertFalse($result, 'No {menu_links} entry exists for user/autocomplete');
   }
 }

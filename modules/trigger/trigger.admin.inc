@@ -58,16 +58,16 @@ function trigger_unassign($form, $form_state, $module, $hook = NULL, $aid = NULL
   }
 
   $form['hook'] = array(
-      '#type' => 'value',
-      '#value' => $hook,
+    '#type' => 'value',
+    '#value' => $hook,
   );
   $form['module'] = array(
-      '#type' => 'value',
-      '#value' => $module,
+    '#type' => 'value',
+    '#value' => $module,
   );
   $form['aid'] = array(
-      '#type' => 'value',
-      '#value' => $aid,
+    '#type' => 'value',
+    '#value' => $aid,
   );
 
   $action = actions_function_lookup($aid);
@@ -76,10 +76,10 @@ function trigger_unassign($form, $form_state, $module, $hook = NULL, $aid = NULL
   $destination = 'admin/structure/trigger/' . $module;
 
   return confirm_form($form,
-      t('Are you sure you want to unassign the action %title?', array('%title' => $actions[$action]['label'])),
-      $destination,
-      t('You can assign it again later if you wish.'),
-      t('Unassign'), t('Cancel')
+    t('Are you sure you want to unassign the action %title?', array('%title' => $actions[$action]['label'])),
+    $destination,
+    t('You can assign it again later if you wish.'),
+    t('Unassign'), t('Cancel')
   );
 }
 
@@ -90,9 +90,9 @@ function trigger_unassign_submit($form, &$form_state) {
   if ($form_state['values']['confirm'] == 1) {
     $aid = actions_function_lookup($form_state['values']['aid']);
     db_delete('trigger_assignments')
-    ->condition('hook', $form_state['values']['hook'])
-    ->condition('aid', $aid)
-    ->execute();
+      ->condition('hook', $form_state['values']['hook'])
+      ->condition('aid', $aid)
+      ->execute();
     drupal_static_reset('trigger_get_assigned_actions');
     $actions = actions_get_all_actions();
     watchdog('actions', 'Action %action has been unassigned.',  array('%action' => $actions[$aid]['label']));
@@ -120,12 +120,12 @@ function trigger_unassign_submit($form, &$form_state) {
  */
 function trigger_assign_form($form, $form_state, $module, $hook, $label) {
   $form['module'] = array(
-      '#type' => 'hidden',
-      '#value' => $module,
+    '#type' => 'hidden',
+    '#value' => $module,
   );
   $form['hook'] = array(
-      '#type' => 'hidden',
-      '#value' => $hook,
+    '#type' => 'hidden',
+    '#value' => $hook,
   );
   // All of these forms use the same validate and submit functions.
   $form['#validate'][] = 'trigger_assign_form_validate';
@@ -146,11 +146,11 @@ function trigger_assign_form($form, $form_state, $module, $hook, $label) {
   }
 
   $form[$hook] = array(
-      '#type' => 'fieldset',
-      // !description is correct, since these labels are passed through t() in
-      // hook_trigger_info().
-      '#title' => t('Trigger: !description', array('!description' => $label)),
-      '#theme' => 'trigger_display',
+    '#type' => 'fieldset',
+    // !description is correct, since these labels are passed through t() in
+    // hook_trigger_info().
+    '#title' => t('Trigger: !description', array('!description' => $label)),
+    '#theme' => 'trigger_display',
   );
 
   // Retrieve actions that are already assigned to this hook combination.
@@ -163,40 +163,40 @@ function trigger_assign_form($form, $form_state, $module, $hook, $label) {
     $hash = drupal_hash_base64($aid, TRUE);
     if (actions_function_lookup($hash)) {
       $form[$hook]['assigned']['#value'][$aid] = array(
-          'label' => $info['label'],
-          'link' => l(t('unassign'), "admin/structure/trigger/unassign/$module/$hook/$hash"),
+        'label' => $info['label'],
+        'link' => l(t('unassign'), "admin/structure/trigger/unassign/$module/$hook/$hash"),
       );
     }
     else {
       // Link to system_actions_remove_orphans() to do the clean up.
       $form[$hook]['assigned']['#value'][$aid] = array(
-          'label' => $info['label'],
-          'link' => l(t('Remove orphaned actions'), "admin/config/system/actions/orphan"),
+        'label' => $info['label'],
+        'link' => l(t('Remove orphaned actions'), "admin/config/system/actions/orphan"),
       );
     }
   }
 
   $form[$hook]['parent'] = array(
-      '#type' => 'container',
-      '#attributes' => array('class' => array('container-inline')),
+    '#type' => 'container',
+    '#attributes' => array('class' => array('container-inline')),
   );
   // List possible actions that may be assigned.
   if (count($options) != 0) {
     $form[$hook]['parent']['aid'] = array(
-        '#type' => 'select',
-        '#title' => t('List of trigger actions when !description', array('!description' => $label)),
-        '#title_display' => 'invisible',
-        '#options' => $options,
-        '#empty_option' => t('Choose an action'),
+      '#type' => 'select',
+      '#title' => t('List of trigger actions when !description', array('!description' => $label)),
+      '#title_display' => 'invisible',
+      '#options' => $options,
+      '#empty_option' => t('Choose an action'),
     );
     $form[$hook]['parent']['submit'] = array(
-        '#type' => 'submit',
-        '#value' => t('Assign')
+      '#type' => 'submit',
+      '#value' => t('Assign')
     );
   }
   else {
     $form[$hook]['none'] = array(
-        '#markup' => t('No actions available for this trigger. <a href="@link">Add action</a>.', array('@link' => url('admin/config/system/actions/manage')))
+      '#markup' => t('No actions available for this trigger. <a href="@link">Add action</a>.', array('@link' => url('admin/config/system/actions/manage')))
     );
   }
   return $form;
@@ -214,8 +214,8 @@ function trigger_assign_form_validate($form, $form_state) {
   if (!empty($form_values['aid'])) {
     $aid = actions_function_lookup($form_values['aid']);
     $aid_exists = db_query("SELECT aid FROM {trigger_assignments} WHERE hook = :hook AND aid = :aid", array(
-        ':hook' => $form_values['hook'],
-        ':aid' => $aid,
+      ':hook' => $form_values['hook'],
+      ':aid' => $aid,
     ))->fetchField();
     if ($aid_exists) {
       form_set_error($form_values['hook'], t('The action you chose is already assigned to that trigger.'));
@@ -235,12 +235,12 @@ function trigger_assign_form_submit($form, &$form_state) {
 
     // Insert the new action.
     db_insert('trigger_assignments')
-    ->fields(array(
-    'hook' => $form_state['values']['hook'],
-    'aid' => $aid,
-    'weight' => $weight + 1,
-    ))
-    ->execute();
+      ->fields(array(
+        'hook' => $form_state['values']['hook'],
+        'aid' => $aid,
+        'weight' => $weight + 1,
+      ))
+      ->execute();
 
     // If we are not configuring an action for a "presave" hook and this action
     // changes an object property, then we need to save the object, so the
@@ -259,17 +259,17 @@ function trigger_assign_form_submit($form, &$form_state) {
 
       if ($save_action_assigned) {
         db_delete('trigger_assignments')
-        ->condition('hook', $form_state['values']['hook'])
-        ->condition('aid', $save_action)
-        ->execute();
+          ->condition('hook', $form_state['values']['hook'])
+          ->condition('aid', $save_action)
+          ->execute();
       }
       db_insert('trigger_assignments')
-      ->fields(array(
-      'hook' => $form_state['values']['hook'],
-      'aid' => $save_action,
-      'weight' => $weight + 2,
-      ))
-      ->execute();
+        ->fields(array(
+          'hook' => $form_state['values']['hook'],
+          'aid' => $save_action,
+          'weight' => $weight + 2,
+        ))
+        ->execute();
 
       // If no save action existed before, inform the user about it.
       if (!$save_action_assigned) {
@@ -303,8 +303,8 @@ function theme_trigger_display($variables) {
     $rows = array();
     foreach ($element['assigned']['#value'] as $aid => $info) {
       $rows[] = array(
-          check_plain($info['label']),
-          $info['link']
+        check_plain($info['label']),
+        $info['link']
       );
     }
   }

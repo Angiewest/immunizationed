@@ -32,75 +32,82 @@ function image_schema() {
   $schema['cache_image']['description'] = 'Cache table used to store information about image manipulations that are in-progress.';
 
   $schema['image_styles'] = array(
-      'description' => 'Stores configuration options for image styles.',
-      'fields' => array(
-          'isid' => array(
-              'description' => 'The primary identifier for an image style.',
-              'type' => 'serial',
-              'unsigned' => TRUE,
-              'not null' => TRUE,
-          ),
-          'name' => array(
-              'description' => 'The style name.',
-              'type' => 'varchar',
-              'length' => 255,
-              'not null' => TRUE,
-          ),
+    'description' => 'Stores configuration options for image styles.',
+    'fields' => array(
+      'isid' => array(
+        'description' => 'The primary identifier for an image style.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
       ),
-      'primary key' => array('isid'),
-      'unique keys' => array(
-          'name' => array('name'),
+      'name' => array(
+        'description' => 'The style machine name.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
       ),
+      'label' => array(
+        'description' => 'The style administrative name.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+    ),
+    'primary key' => array('isid'),
+    'unique keys' => array(
+      'name' => array('name'),
+    ),
   );
 
   $schema['image_effects'] = array(
-      'description' => 'Stores configuration options for image effects.',
-      'fields' => array(
-          'ieid' => array(
-              'description' => 'The primary identifier for an image effect.',
-              'type' => 'serial',
-              'unsigned' => TRUE,
-              'not null' => TRUE,
-          ),
-          'isid' => array(
-              'description' => 'The {image_styles}.isid for an image style.',
-              'type' => 'int',
-              'unsigned' => TRUE,
-              'not null' => TRUE,
-              'default' => 0,
-          ),
-          'weight' => array(
-              'description' => 'The weight of the effect in the style.',
-              'type' => 'int',
-              'unsigned' => FALSE,
-              'not null' => TRUE,
-              'default' => 0,
-          ),
-          'name' => array(
-              'description' => 'The unique name of the effect to be executed.',
-              'type' => 'varchar',
-              'length' => 255,
-              'not null' => TRUE,
-          ),
-          'data' => array(
-              'description' => 'The configuration data for the effect.',
-              'type' => 'blob',
-              'not null' => TRUE,
-              'size' => 'big',
-              'serialize' => TRUE,
-          ),
+    'description' => 'Stores configuration options for image effects.',
+    'fields' => array(
+      'ieid' => array(
+        'description' => 'The primary identifier for an image effect.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
       ),
-      'primary key' => array('ieid'),
-      'indexes' => array(
-          'isid' => array('isid'),
-          'weight' => array('weight'),
+      'isid' => array(
+        'description' => 'The {image_styles}.isid for an image style.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
       ),
-      'foreign keys' => array(
-          'image_style' => array(
-              'table' => 'image_styles',
-              'columns' => array('isid' => 'isid'),
-          ),
+      'weight' => array(
+        'description' => 'The weight of the effect in the style.',
+        'type' => 'int',
+        'unsigned' => FALSE,
+        'not null' => TRUE,
+        'default' => 0,
       ),
+      'name' => array(
+        'description' => 'The unique name of the effect to be executed.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'data' => array(
+        'description' => 'The configuration data for the effect.',
+        'type' => 'blob',
+        'not null' => TRUE,
+        'size' => 'big',
+        'serialize' => TRUE,
+      ),
+    ),
+    'primary key' => array('ieid'),
+    'indexes' => array(
+      'isid' => array('isid'),
+      'weight' => array('weight'),
+    ),
+    'foreign keys' => array(
+      'image_style' => array(
+        'table' => 'image_styles',
+        'columns' => array('isid' => 'isid'),
+      ),
+    ),
   );
 
   return $schema;
@@ -111,45 +118,45 @@ function image_schema() {
  */
 function image_field_schema($field) {
   return array(
-      'columns' => array(
-          'fid' => array(
-              'description' => 'The {file_managed}.fid being referenced in this field.',
-              'type' => 'int',
-              'not null' => FALSE,
-              'unsigned' => TRUE,
-          ),
-          'alt' => array(
-              'description' => "Alternative image text, for the image's 'alt' attribute.",
-              'type' => 'varchar',
-              'length' => 512,
-              'not null' => FALSE,
-          ),
-          'title' => array(
-              'description' => "Image title text, for the image's 'title' attribute.",
-              'type' => 'varchar',
-              'length' => 1024,
-              'not null' => FALSE,
-          ),
-          'width' => array(
-              'description' => 'The width of the image in pixels.',
-              'type' => 'int',
-              'unsigned' => TRUE,
-          ),
-          'height' => array(
-              'description' => 'The height of the image in pixels.',
-              'type' => 'int',
-              'unsigned' => TRUE,
-          ),
+    'columns' => array(
+      'fid' => array(
+        'description' => 'The {file_managed}.fid being referenced in this field.',
+        'type' => 'int',
+        'not null' => FALSE,
+        'unsigned' => TRUE,
       ),
-      'indexes' => array(
-          'fid' => array('fid'),
+      'alt' => array(
+        'description' => "Alternative image text, for the image's 'alt' attribute.",
+        'type' => 'varchar',
+        'length' => 512,
+        'not null' => FALSE,
       ),
-      'foreign keys' => array(
-          'fid' => array(
-              'table' => 'file_managed',
-              'columns' => array('fid' => 'fid'),
-          ),
+      'title' => array(
+        'description' => "Image title text, for the image's 'title' attribute.",
+        'type' => 'varchar',
+        'length' => 1024,
+        'not null' => FALSE,
       ),
+      'width' => array(
+        'description' => 'The width of the image in pixels.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+      ),
+      'height' => array(
+        'description' => 'The height of the image in pixels.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+      ),
+    ),
+    'indexes' => array(
+      'fid' => array('fid'),
+    ),
+    'foreign keys' => array(
+      'fid' => array(
+        'table' => 'file_managed',
+        'columns' => array('fid' => 'fid'),
+      ),
+    ),
   );
 }
 
@@ -158,9 +165,9 @@ function image_field_schema($field) {
  */
 function image_update_dependencies() {
   $dependencies['image'][7002] = array(
-      // Image update 7002 uses field API functions, so must run after
-      // Field API has been enabled.
-      'system' => 7020,
+    // Image update 7002 uses field API functions, so must run after
+    // Field API has been enabled.
+    'system' => 7020,
   );
   return $dependencies;
 }
@@ -176,75 +183,75 @@ function image_update_7000() {
     $schema['cache_image']['description'] = 'Cache table used to store information about image manipulations that are in-progress.';
 
     $schema['image_styles'] = array(
-        'description' => 'Stores configuration options for image styles.',
-        'fields' => array(
-            'isid' => array(
-                'description' => 'The primary identifier for an image style.',
-                'type' => 'serial',
-                'unsigned' => TRUE,
-                'not null' => TRUE,
-            ),
-            'name' => array(
-                'description' => 'The style name.',
-                'type' => 'varchar',
-                'length' => 255,
-                'not null' => TRUE,
-            ),
+      'description' => 'Stores configuration options for image styles.',
+      'fields' => array(
+        'isid' => array(
+          'description' => 'The primary identifier for an image style.',
+          'type' => 'serial',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
         ),
-        'primary key' => array('isid'),
-        'unique keys' => array(
-            'name' => array('name'),
+        'name' => array(
+          'description' => 'The style name.',
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => TRUE,
         ),
+      ),
+      'primary key' => array('isid'),
+      'unique keys' => array(
+        'name' => array('name'),
+      ),
     );
 
     $schema['image_effects'] = array(
-        'description' => 'Stores configuration options for image effects.',
-        'fields' => array(
-            'ieid' => array(
-                'description' => 'The primary identifier for an image effect.',
-                'type' => 'serial',
-                'unsigned' => TRUE,
-                'not null' => TRUE,
-            ),
-            'isid' => array(
-                'description' => 'The {image_styles}.isid for an image style.',
-                'type' => 'int',
-                'unsigned' => TRUE,
-                'not null' => TRUE,
-                'default' => 0,
-            ),
-            'weight' => array(
-                'description' => 'The weight of the effect in the style.',
-                'type' => 'int',
-                'unsigned' => FALSE,
-                'not null' => TRUE,
-                'default' => 0,
-            ),
-            'name' => array(
-                'description' => 'The unique name of the effect to be executed.',
-                'type' => 'varchar',
-                'length' => 255,
-                'not null' => TRUE,
-            ),
-            'data' => array(
-                'description' => 'The configuration data for the effect.',
-                'type' => 'blob',
-                'not null' => TRUE,
-                'size' => 'big',
-                'serialize' => TRUE,
-            ),
+      'description' => 'Stores configuration options for image effects.',
+      'fields' => array(
+        'ieid' => array(
+          'description' => 'The primary identifier for an image effect.',
+          'type' => 'serial',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
         ),
-        'primary key' => array('ieid'),
-        'indexes' => array(
-            'isid' => array('isid'),
-            'weight' => array('weight'),
+        'isid' => array(
+          'description' => 'The {image_styles}.isid for an image style.',
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'default' => 0,
         ),
-        'foreign keys' => array(
-            'image_style' => array(
-                'table' => 'image_styles',
-                'columns' => array('isid' => 'isid'),
-            ),
+        'weight' => array(
+          'description' => 'The weight of the effect in the style.',
+          'type' => 'int',
+          'unsigned' => FALSE,
+          'not null' => TRUE,
+          'default' => 0,
         ),
+        'name' => array(
+          'description' => 'The unique name of the effect to be executed.',
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => TRUE,
+        ),
+        'data' => array(
+          'description' => 'The configuration data for the effect.',
+          'type' => 'blob',
+          'not null' => TRUE,
+          'size' => 'big',
+          'serialize' => TRUE,
+        ),
+      ),
+      'primary key' => array('ieid'),
+      'indexes' => array(
+        'isid' => array('isid'),
+        'weight' => array('weight'),
+      ),
+      'foreign keys' => array(
+        'image_style' => array(
+          'table' => 'image_styles',
+          'columns' => array('isid' => 'isid'),
+        ),
+      ),
     );
 
     db_create_table('cache_image', $schema['cache_image']);
@@ -280,8 +287,8 @@ function image_update_7001() {
  */
 function _image_update_7002_add_columns($table, $field_name) {
   $spec = array(
-      'type' => 'int',
-      'unsigned' => TRUE,
+    'type' => 'int',
+    'unsigned' => TRUE,
   );
 
   $spec['description'] = 'The width of the image in pixels.';
@@ -317,9 +324,9 @@ function _image_update_7002_populate_dimensions($table, $field_name, &$last_fid)
   }
 
   $result = $query->fields('file_managed', array('fid', 'uri'))
-  ->orderBy('file_managed.fid')
-  ->range(0, $images_per_pass)
-  ->execute();
+    ->orderBy('file_managed.fid')
+    ->range(0, $images_per_pass)
+    ->execute();
 
   $count = 0;
   foreach ($result as $file) {
@@ -328,12 +335,12 @@ function _image_update_7002_populate_dimensions($table, $field_name, &$last_fid)
 
     if (is_array($info)) {
       db_update($table)
-      ->fields(array(
-      $field_name . '_width' => $info['width'],
-      $field_name . '_height' => $info['height'],
-      ))
-      ->condition($field_name . '_fid', $file['fid'])
-      ->execute();
+        ->fields(array(
+          $field_name . '_width' => $info['width'],
+          $field_name . '_height' => $info['height'],
+        ))
+        ->condition($field_name . '_fid', $file['fid'])
+        ->execute();
     }
   }
 
@@ -350,22 +357,22 @@ function image_update_7002(array &$sandbox) {
   if (empty($sandbox)) {
     // Setup the sandbox.
     $sandbox = array(
-        'tables' => array(),
-        'total' => 0,
-        'processed' => 0,
-        'last_fid' => NULL,
+      'tables' => array(),
+      'total' => 0,
+      'processed' => 0,
+      'last_fid' => NULL,
     );
 
     $fields = _update_7000_field_read_fields(array(
-        'module' => 'image',
-        'storage_type' => 'field_sql_storage',
-        'deleted' => 0,
+      'module' => 'image',
+      'storage_type' => 'field_sql_storage',
+      'deleted' => 0,
     ));
 
     foreach ($fields as $field) {
       $tables = array(
-          _field_sql_storage_tablename($field),
-          _field_sql_storage_revision_tablename($field),
+        _field_sql_storage_tablename($field),
+        _field_sql_storage_revision_tablename($field),
       );
       foreach ($tables as $table) {
         // Add the width and height columns to the table.
@@ -418,26 +425,26 @@ function image_update_7003() {
  */
 function image_update_7004() {
   $alt_spec = array(
-      'type' => 'varchar',
-      'length' => 512,
-      'not null' => FALSE,
+    'type' => 'varchar',
+    'length' => 512,
+    'not null' => FALSE,
   );
 
   $title_spec = array(
-      'type' => 'varchar',
-      'length' => 1024,
-      'not null' => FALSE,
+    'type' => 'varchar',
+    'length' => 1024,
+    'not null' => FALSE,
   );
 
   $fields = _update_7000_field_read_fields(array(
-      'module' => 'image',
-      'storage_type' => 'field_sql_storage',
+    'module' => 'image',
+    'storage_type' => 'field_sql_storage',
   ));
 
   foreach ($fields as $field_name => $field) {
     $tables = array(
-        _field_sql_storage_tablename($field),
-        _field_sql_storage_revision_tablename($field),
+      _field_sql_storage_tablename($field),
+      _field_sql_storage_revision_tablename($field),
     );
     $alt_column = $field['field_name'] . '_alt';
     $title_column = $field['field_name'] . '_title';
@@ -445,6 +452,30 @@ function image_update_7004() {
       db_change_field($table, $alt_column, $alt_column, $alt_spec);
       db_change_field($table, $title_column, $title_column, $title_spec);
     }
+  }
+}
+
+/**
+ * Add a column to the 'image_style' table to store administrative labels.
+ */
+function image_update_7005() {
+  $field = array(
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'default' => '',
+    'description' => 'The style administrative name.',
+  );
+  db_add_field('image_styles', 'label', $field);
+
+  // Do a direct query here, rather than calling image_styles(),
+  // in case Image module is disabled.
+  $styles = db_query('SELECT name FROM {image_styles}')->fetchCol();
+  foreach ($styles as $style) {
+    db_update('image_styles')
+      ->fields(array('label' => $style))
+      ->condition('name', $style)
+      ->execute();
   }
 }
 
@@ -465,7 +496,7 @@ function image_requirements($phase) {
     if (function_exists('imagegd2')) {
       $info = gd_info();
       $requirements['image_gd'] = array(
-          'value' => $info['GD Version'],
+        'value' => $info['GD Version'],
       );
 
       // Check for filter and rotate support.
@@ -479,9 +510,9 @@ function image_requirements($phase) {
     }
     else {
       $requirements['image_gd'] = array(
-          'value' => t('Not installed'),
-          'severity' => REQUIREMENT_ERROR,
-          'description' => t('The GD library for PHP is missing or outdated. Check the <a href="@url">PHP image documentation</a> for information on how to correct this.', array('@url' => 'http://www.php.net/manual/book.image.php')),
+        'value' => t('Not installed'),
+        'severity' => REQUIREMENT_ERROR,
+        'description' => t('The GD library for PHP is missing or outdated. Check the <a href="@url">PHP image documentation</a> for information on how to correct this.', array('@url' => 'http://www.php.net/manual/book.image.php')),
       );
     }
     $requirements['image_gd']['title'] = t('GD library rotate and desaturate effects');

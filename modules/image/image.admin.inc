@@ -13,10 +13,10 @@ function image_style_list() {
 
   $styles = image_styles();
   $page['image_style_list'] = array(
-      '#markup' => theme('image_style_list', array('styles' => $styles)),
-      '#attached' => array(
-          'css' => array(drupal_get_path('module', 'image') . '/image.admin.css' => array()),
-      ),
+    '#markup' => theme('image_style_list', array('styles' => $styles)),
+    '#attached' => array(
+      'css' => array(drupal_get_path('module', 'image') . '/image.admin.css' => array()),
+    ),
   );
 
   return $page;
@@ -32,10 +32,9 @@ function image_style_list() {
  *   An image style array.
  * @ingroup forms
  * @see image_style_form_submit()
- * @see image_style_name_validate()
  */
 function image_style_form($form, &$form_state, $style) {
-  $title = t('Edit %name style', array('%name' => $style['name']));
+  $title = t('Edit %name style', array('%name' => $style['label']));
   drupal_set_title($title, PASS_THROUGH);
 
   // Adjust this form for styles that must be overridden to edit.
@@ -51,67 +50,71 @@ function image_style_form($form, &$form_state, $style) {
 
   // Show the thumbnail preview.
   $form['preview'] = array(
-      '#type' => 'item',
-      '#title' => t('Preview'),
-      '#markup' => theme('image_style_preview', array('style' => $style)),
+    '#type' => 'item',
+    '#title' => t('Preview'),
+    '#markup' => theme('image_style_preview', array('style' => $style)),
+  );
+
+  // Show the Image Style label.
+  $form['label'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Image style name'),
+    '#default_value' => $style['label'],
+    '#disabled' => !$editable,
+    '#required' => TRUE,
   );
 
   // Allow the name of the style to be changed, unless this style is
   // provided by a module's hook_default_image_styles().
-  if ($style['storage'] & IMAGE_STORAGE_MODULE) {
-    $form['name'] = array(
-        '#type' => 'item',
-        '#title' => t('Image style name'),
-        '#markup' => $style['name'],
-        '#description' => t('This image style is being provided by %module module and may not be renamed.', array('%module' => $style['module'])),
-    );
-  }
-  else {
-    $form['name'] = array(
-        '#type' => 'textfield',
-        '#size' => '64',
-        '#title' => t('Image style name'),
-        '#default_value' => $style['name'],
-        '#description' => t('The name is used in URLs for generated images. Use only lowercase alphanumeric characters, underscores (_), and hyphens (-).'),
-        '#element_validate' => array('image_style_name_validate'),
-        '#required' => TRUE,
-    );
-  }
+  $form['name'] = array(
+    '#type' => 'machine_name',
+    '#size' => '64',
+    '#default_value' => $style['name'],
+    '#disabled' => !$editable,
+    '#description' => t('The name is used in URLs for generated images. Use only lowercase alphanumeric characters, underscores (_), and hyphens (-).'),
+    '#required' => TRUE,
+    '#machine_name' => array(
+      'exists' => 'image_style_load',
+      'source' => array('label'),
+      'replace_pattern' => '[^0-9a-z_\-]',
+      'error' => t('Please only use lowercase alphanumeric characters, underscores (_), and hyphens (-) for style names.'),
+    ),
+  );
 
   // Build the list of existing image effects for this image style.
   $form['effects'] = array(
-      '#theme' => 'image_style_effects',
+    '#theme' => 'image_style_effects',
   );
   foreach ($style['effects'] as $key => $effect) {
     $form['effects'][$key]['#weight'] = isset($form_state['input']['effects']) ? $form_state['input']['effects'][$key]['weight'] : NULL;
     $form['effects'][$key]['label'] = array(
-        '#markup' => $effect['label'],
+      '#markup' => $effect['label'],
     );
     $form['effects'][$key]['summary'] = array(
-        '#markup' => isset($effect['summary theme']) ? theme($effect['summary theme'], array('data' => $effect['data'])) : '',
+      '#markup' => isset($effect['summary theme']) ? theme($effect['summary theme'], array('data' => $effect['data'])) : '',
     );
     $form['effects'][$key]['weight'] = array(
-        '#type' => 'weight',
-        '#title' => t('Weight for @title', array('@title' => $effect['label'])),
-        '#title_display' => 'invisible',
-        '#default_value' => $effect['weight'],
-        '#access' => $editable,
+      '#type' => 'weight',
+      '#title' => t('Weight for @title', array('@title' => $effect['label'])),
+      '#title_display' => 'invisible',
+      '#default_value' => $effect['weight'],
+      '#access' => $editable,
     );
 
     // Only attempt to display these fields for editable styles as the 'ieid'
     // key is not set for styles defined in code.
     if ($editable) {
       $form['effects'][$key]['configure'] = array(
-          '#type' => 'link',
-          '#title' => t('edit'),
-          '#href' => 'admin/config/media/image-styles/edit/' . $style['name'] . '/effects/' . $effect['ieid'],
-          '#access' => $editable && isset($effect['form callback']),
+        '#type' => 'link',
+        '#title' => t('edit'),
+        '#href' => 'admin/config/media/image-styles/edit/' . $style['name'] . '/effects/' . $effect['ieid'],
+        '#access' => $editable && isset($effect['form callback']),
       );
       $form['effects'][$key]['remove'] = array(
-          '#type' => 'link',
-          '#title' => t('delete'),
-          '#href' => 'admin/config/media/image-styles/edit/' . $style['name'] . '/effects/' . $effect['ieid'] . '/delete',
-          '#access' => $editable,
+        '#type' => 'link',
+        '#title' => t('delete'),
+        '#href' => 'admin/config/media/image-styles/edit/' . $style['name'] . '/effects/' . $effect['ieid'] . '/delete',
+        '#access' => $editable,
       );
     }
   }
@@ -122,43 +125,43 @@ function image_style_form($form, &$form_state, $style) {
     $new_effect_options[$effect] = check_plain($definition['label']);
   }
   $form['effects']['new'] = array(
-      '#tree' => FALSE,
-      '#weight' => isset($form_state['input']['weight']) ? $form_state['input']['weight'] : NULL,
-      '#access' => $editable,
+    '#tree' => FALSE,
+    '#weight' => isset($form_state['input']['weight']) ? $form_state['input']['weight'] : NULL,
+    '#access' => $editable,
   );
   $form['effects']['new']['new'] = array(
-      '#type' => 'select',
-      '#title' => t('Effect'),
-      '#title_display' => 'invisible',
-      '#options' => $new_effect_options,
-      '#empty_option' => t('Select a new effect'),
+    '#type' => 'select',
+    '#title' => t('Effect'),
+    '#title_display' => 'invisible',
+    '#options' => $new_effect_options,
+    '#empty_option' => t('Select a new effect'),
   );
   $form['effects']['new']['weight'] = array(
-      '#type' => 'weight',
-      '#title' => t('Weight for new effect'),
-      '#title_display' => 'invisible',
-      '#default_value' => count($form['effects']) - 1,
+    '#type' => 'weight',
+    '#title' => t('Weight for new effect'),
+    '#title_display' => 'invisible',
+    '#default_value' => count($form['effects']) - 1,
   );
   $form['effects']['new']['add'] = array(
-      '#type' => 'submit',
-      '#value' => t('Add'),
-      '#validate' => array('image_style_form_add_validate'),
-      '#submit' => array('image_style_form_submit', 'image_style_form_add_submit'),
+    '#type' => 'submit',
+    '#value' => t('Add'),
+    '#validate' => array('image_style_form_add_validate'),
+    '#submit' => array('image_style_form_submit', 'image_style_form_add_submit'),
   );
 
   // Show the Override or Submit button for this style.
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['override'] = array(
-      '#type' => 'submit',
-      '#value' => t('Override defaults'),
-      '#validate' => array(),
-      '#submit' => array('image_style_form_override_submit'),
-      '#access' => !$editable,
+    '#type' => 'submit',
+    '#value' => t('Override defaults'),
+    '#validate' => array(),
+    '#submit' => array('image_style_form_override_submit'),
+    '#access' => !$editable,
   );
   $form['actions']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Update style'),
-      '#access' => $editable,
+    '#type' => 'submit',
+    '#value' => t('Update style'),
+    '#access' => $editable,
   );
 
   return $form;
@@ -199,7 +202,7 @@ function image_style_form_add_submit($form, &$form_state) {
  * Submit handler for overriding a module-defined style.
  */
 function image_style_form_override_submit($form, &$form_state) {
-  drupal_set_message(t('The %style style has been overridden, allowing you to change its settings.', array('%style' => $form_state['image_style']['name'])));
+  drupal_set_message(t('The %style style has been overridden, allowing you to change its settings.', array('%style' => $form_state['image_style']['label'])));
   image_default_style_save($form_state['image_style']);
 }
 
@@ -207,11 +210,10 @@ function image_style_form_override_submit($form, &$form_state) {
  * Submit handler for saving an image style.
  */
 function image_style_form_submit($form, &$form_state) {
-  // Update the image style name if it has changed.
+  // Update the image style.
   $style = $form_state['image_style'];
-  if (isset($form_state['values']['name']) && $style['name'] != $form_state['values']['name']) {
-    $style['name'] = $form_state['values']['name'];
-  }
+  $style['name'] = $form_state['values']['name'];
+  $style['label'] = $form_state['values']['label'];
 
   // Update image effect weights.
   if (!empty($form_state['values']['effects'])) {
@@ -236,22 +238,30 @@ function image_style_form_submit($form, &$form_state) {
  *
  * @ingroup forms
  * @see image_style_add_form_submit()
- * @see image_style_name_validate()
  */
 function image_style_add_form($form, &$form_state) {
+  $form['label'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Style name'),
+    '#default_value' => '',
+    '#required' => TRUE,
+  );
   $form['name'] = array(
-      '#type' => 'textfield',
-      '#size' => '64',
-      '#title' => t('Style name'),
-      '#default_value' => '',
-      '#description' => t('The name is used in URLs for generated images. Use only lowercase alphanumeric characters, underscores (_), and hyphens (-).'),
-      '#element_validate' => array('image_style_name_validate'),
-      '#required' => TRUE,
+    '#type' => 'machine_name',
+    '#description' => t('The name is used in URLs for generated images. Use only lowercase alphanumeric characters, underscores (_), and hyphens (-).'),
+    '#size' => '64',
+    '#required' => TRUE,
+    '#machine_name' => array(
+      'exists' => 'image_style_load',
+      'source' => array('label'),
+      'replace_pattern' => '[^0-9a-z_\-]',
+      'error' => t('Please only use lowercase alphanumeric characters, underscores (_), and hyphens (-) for style names.'),
+    ),
   );
 
   $form['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Create new style'),
+    '#type' => 'submit',
+    '#value' => t('Create new style'),
   );
 
   return $form;
@@ -261,14 +271,22 @@ function image_style_add_form($form, &$form_state) {
  * Submit handler for adding a new image style.
  */
 function image_style_add_form_submit($form, &$form_state) {
-  $style = array('name' => $form_state['values']['name']);
+  $style = array(
+    'name' => $form_state['values']['name'],
+    'label' => $form_state['values']['label'],
+  );
   $style = image_style_save($style);
-  drupal_set_message(t('Style %name was created.', array('%name' => $style['name'])));
+  drupal_set_message(t('Style %name was created.', array('%name' => $style['label'])));
   $form_state['redirect'] = 'admin/config/media/image-styles/edit/' . $style['name'];
 }
 
 /**
  * Element validate function to ensure unique, URL safe style names.
+ *
+ * This function is no longer used in Drupal core since image style names are
+ * now validated using #machine_name functionality. It is kept for backwards
+ * compatibility (since non-core modules may be using it) and will be removed
+ * in Drupal 8.
  */
 function image_style_name_validate($element, $form_state) {
   // Check for duplicates.
@@ -295,20 +313,20 @@ function image_style_name_validate($element, $form_state) {
 function image_style_delete_form($form, &$form_state, $style) {
   $form_state['image_style'] = $style;
 
-  $replacement_styles = array_diff_key(image_style_options(), array($style['name'] => ''));
+  $replacement_styles = array_diff_key(image_style_options(TRUE, PASS_THROUGH), array($style['name'] => ''));
   $form['replacement'] = array(
-      '#title' => t('Replacement style'),
-      '#type' => 'select',
-      '#options' => $replacement_styles,
-      '#empty_option' => t('No replacement, just delete'),
+    '#title' => t('Replacement style'),
+    '#type' => 'select',
+    '#options' => $replacement_styles,
+    '#empty_option' => t('No replacement, just delete'),
   );
 
   return confirm_form(
-      $form,
-      t('Optionally select a style before deleting %style', array('%style' => $style['name'])),
-      'admin/config/media/image-styles',
-      t('If this style is in use on the site, you may select another style to replace it. All images that have been generated for this style will be permanently deleted.'),
-      t('Delete'),  t('Cancel')
+    $form,
+    t('Optionally select a style before deleting %style', array('%style' => $style['label'])),
+    'admin/config/media/image-styles',
+    t('If this style is in use on the site, you may select another style to replace it. All images that have been generated for this style will be permanently deleted.'),
+    t('Delete'),  t('Cancel')
   );
 }
 
@@ -319,7 +337,7 @@ function image_style_delete_form_submit($form, &$form_state) {
   $style = $form_state['image_style'];
 
   image_style_delete($style, $form_state['values']['replacement']);
-  drupal_set_message(t('Style %name was deleted.', array('%name' => $style['name'])));
+  drupal_set_message(t('Style %name was deleted.', array('%name' => $style['label'])));
   $form_state['redirect'] = 'admin/config/media/image-styles';
 }
 
@@ -330,11 +348,11 @@ function image_style_revert_form($form, &$form_state, $style) {
   $form_state['image_style'] = $style;
 
   return confirm_form(
-      $form,
-      t('Revert the %style style?', array('%style' => $style['name'])),
-      'admin/config/media/image-styles',
-      t('Reverting this style will delete the customized settings and restore the defaults provided by the @module module.', array('@module' => $style['module'])),
-      t('Revert'),  t('Cancel')
+    $form,
+    t('Revert the %style style?', array('%style' => $style['label'])),
+    'admin/config/media/image-styles',
+    t('Reverting this style will delete the customized settings and restore the defaults provided by the @module module.', array('@module' => $style['module'])),
+    t('Revert'),  t('Cancel')
   );
 }
 
@@ -342,7 +360,7 @@ function image_style_revert_form($form, &$form_state, $style) {
  * Submit handler to convert an overridden style to its default.
  */
 function image_style_revert_form_submit($form, &$form_state) {
-  drupal_set_message(t('The %style style has been reverted to its defaults.', array('%style' => $form_state['image_style']['name'])));
+  drupal_set_message(t('The %style style has been reverted to its defaults.', array('%style' => $form_state['image_style']['label'])));
   image_default_style_revert($form_state['image_style']);
   $form_state['redirect'] = 'admin/config/media/image-styles';
 }
@@ -395,19 +413,19 @@ function image_effect_form($form, &$form_state, $style, $effect) {
 
   // Check the URL for a weight, then the image effect, otherwise use default.
   $form['weight'] = array(
-      '#type' => 'hidden',
-      '#value' => isset($_GET['weight']) ? intval($_GET['weight']) : (isset($effect['weight']) ? $effect['weight'] : count($style['effects'])),
+    '#type' => 'hidden',
+    '#value' => isset($_GET['weight']) ? intval($_GET['weight']) : (isset($effect['weight']) ? $effect['weight'] : count($style['effects'])),
   );
 
   $form['actions'] = array('#tree' => FALSE, '#type' => 'actions');
   $form['actions']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => isset($effect['ieid']) ? t('Update effect') : t('Add effect'),
+    '#type' => 'submit',
+    '#value' => isset($effect['ieid']) ? t('Update effect') : t('Add effect'),
   );
   $form['actions']['cancel'] = array(
-      '#type' => 'link',
-      '#title' => t('Cancel'),
-      '#href' => 'admin/config/media/image-styles/edit/' . $style['name'],
+    '#type' => 'link',
+    '#title' => t('Cancel'),
+    '#href' => 'admin/config/media/image-styles/edit/' . $style['name'],
   );
 
   return $form;
@@ -439,7 +457,7 @@ function image_effect_delete_form($form, &$form_state, $style, $effect) {
   $form_state['image_style'] = $style;
   $form_state['image_effect'] = $effect;
 
-  $question = t('Are you sure you want to delete the @effect effect from the %style style?', array('%style' => $style['name'], '@effect' => $effect['label']));
+  $question = t('Are you sure you want to delete the @effect effect from the %style style?', array('%style' => $style['label'], '@effect' => $effect['label']));
   return confirm_form($form, $question, 'admin/config/media/image-styles/edit/' . $style['name'], '', t('Delete'));
 }
 
@@ -506,24 +524,24 @@ function image_effect_scale_validate($element, &$form_state) {
  */
 function image_resize_form($data) {
   $form['width'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Width'),
-      '#default_value' => isset($data['width']) ? $data['width'] : '',
-      '#field_suffix' => ' ' . t('pixels'),
-      '#required' => TRUE,
-      '#size' => 10,
-      '#element_validate' => array('image_effect_integer_validate'),
-      '#allow_negative' => FALSE,
+    '#type' => 'textfield',
+    '#title' => t('Width'),
+    '#default_value' => isset($data['width']) ? $data['width'] : '',
+    '#field_suffix' => ' ' . t('pixels'),
+    '#required' => TRUE,
+    '#size' => 10,
+    '#element_validate' => array('image_effect_integer_validate'),
+    '#allow_negative' => FALSE,
   );
   $form['height'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Height'),
-      '#default_value' => isset($data['height']) ? $data['height'] : '',
-      '#field_suffix' => ' ' . t('pixels'),
-      '#required' => TRUE,
-      '#size' => 10,
-      '#element_validate' => array('image_effect_integer_validate'),
-      '#allow_negative' => FALSE,
+    '#type' => 'textfield',
+    '#title' => t('Height'),
+    '#default_value' => isset($data['height']) ? $data['height'] : '',
+    '#field_suffix' => ' ' . t('pixels'),
+    '#required' => TRUE,
+    '#size' => 10,
+    '#element_validate' => array('image_effect_integer_validate'),
+    '#allow_negative' => FALSE,
   );
   return $form;
 }
@@ -544,10 +562,10 @@ function image_scale_form($data) {
   $form['width']['#required'] = FALSE;
   $form['height']['#required'] = FALSE;
   $form['upscale'] = array(
-      '#type' => 'checkbox',
-      '#default_value' => (isset($data['upscale'])) ? $data['upscale'] : 0,
-      '#title' => t('Allow Upscaling'),
-      '#description' => t('Let scale make images larger than their original size'),
+    '#type' => 'checkbox',
+    '#default_value' => (isset($data['upscale'])) ? $data['upscale'] : 0,
+    '#title' => t('Allow Upscaling'),
+    '#description' => t('Let scale make images larger than their original size'),
   );
   return $form;
 }
@@ -564,29 +582,29 @@ function image_scale_form($data) {
  */
 function image_crop_form($data) {
   $data += array(
-      'width' => '',
-      'height' => '',
-      'anchor' => 'center-center',
+    'width' => '',
+    'height' => '',
+    'anchor' => 'center-center',
   );
 
   $form = image_resize_form($data);
   $form['anchor'] = array(
-      '#type' => 'radios',
-      '#title' => t('Anchor'),
-      '#options' => array(
-          'left-top'      => t('Top') . ' ' . t('Left'),
-          'center-top'    => t('Top') . ' ' . t('Center'),
-          'right-top'     => t('Top') . ' ' . t('Right'),
-          'left-center'   => t('Center') . ' ' . t('Left'),
-          'center-center' => t('Center'),
-          'right-center'  => t('Center') . ' ' . t('Right'),
-          'left-bottom'   => t('Bottom') . ' ' . t('Left'),
-          'center-bottom' => t('Bottom') . ' ' . t('Center'),
-          'right-bottom'  => t('Bottom') . ' ' . t('Right'),
-      ),
-      '#theme' => 'image_anchor',
-      '#default_value' => $data['anchor'],
-      '#description' => t('The part of the image that will be retained during the crop.'),
+    '#type' => 'radios',
+    '#title' => t('Anchor'),
+    '#options' => array(
+      'left-top'      => t('Top') . ' ' . t('Left'),
+      'center-top'    => t('Top') . ' ' . t('Center'),
+      'right-top'     => t('Top') . ' ' . t('Right'),
+      'left-center'   => t('Center') . ' ' . t('Left'),
+      'center-center' => t('Center'),
+      'right-center'  => t('Center') . ' ' . t('Right'),
+      'left-bottom'   => t('Bottom') . ' ' . t('Left'),
+      'center-bottom' => t('Bottom') . ' ' . t('Center'),
+      'right-bottom'  => t('Bottom') . ' ' . t('Right'),
+    ),
+    '#theme' => 'image_anchor',
+    '#default_value' => $data['anchor'],
+    '#description' => t('The part of the image that will be retained during the crop.'),
   );
 
   return $form;
@@ -604,31 +622,31 @@ function image_crop_form($data) {
  */
 function image_rotate_form($data) {
   $form['degrees'] = array(
-      '#type' => 'textfield',
-      '#default_value' => (isset($data['degrees'])) ? $data['degrees'] : 0,
-      '#title' => t('Rotation angle'),
-      '#description' => t('The number of degrees the image should be rotated. Positive numbers are clockwise, negative are counter-clockwise.'),
-      '#field_suffix' => '&deg;',
-      '#required' => TRUE,
-      '#size' => 6,
-      '#maxlength' => 4,
-      '#element_validate' => array('image_effect_integer_validate'),
-      '#allow_negative' => TRUE,
+    '#type' => 'textfield',
+    '#default_value' => (isset($data['degrees'])) ? $data['degrees'] : 0,
+    '#title' => t('Rotation angle'),
+    '#description' => t('The number of degrees the image should be rotated. Positive numbers are clockwise, negative are counter-clockwise.'),
+    '#field_suffix' => '&deg;',
+    '#required' => TRUE,
+    '#size' => 6,
+    '#maxlength' => 4,
+    '#element_validate' => array('image_effect_integer_validate'),
+    '#allow_negative' => TRUE,
   );
   $form['bgcolor'] = array(
-      '#type' => 'textfield',
-      '#default_value' => (isset($data['bgcolor'])) ? $data['bgcolor'] : '#FFFFFF',
-      '#title' => t('Background color'),
-      '#description' => t('The background color to use for exposed areas of the image. Use web-style hex colors (#FFFFFF for white, #000000 for black). Leave blank for transparency on image types that support it.'),
-      '#size' => 7,
-      '#maxlength' => 7,
-      '#element_validate' => array('image_effect_color_validate'),
+    '#type' => 'textfield',
+    '#default_value' => (isset($data['bgcolor'])) ? $data['bgcolor'] : '#FFFFFF',
+    '#title' => t('Background color'),
+    '#description' => t('The background color to use for exposed areas of the image. Use web-style hex colors (#FFFFFF for white, #000000 for black). Leave blank for transparency on image types that support it.'),
+    '#size' => 7,
+    '#maxlength' => 7,
+    '#element_validate' => array('image_effect_color_validate'),
   );
   $form['random'] = array(
-      '#type' => 'checkbox',
-      '#default_value' => (isset($data['random'])) ? $data['random'] : 0,
-      '#title' => t('Randomize'),
-      '#description' => t('Randomize the rotation angle for each image. The angle specified above is used as a maximum.'),
+    '#type' => 'checkbox',
+    '#default_value' => (isset($data['random'])) ? $data['random'] : 0,
+    '#title' => t('Randomize'),
+    '#description' => t('Randomize the rotation angle for each image. The angle specified above is used as a maximum.'),
   );
   return $form;
 }
@@ -650,11 +668,11 @@ function theme_image_style_list($variables) {
   $rows = array();
   foreach ($styles as $style) {
     $row = array();
-    $row[] = l($style['name'], 'admin/config/media/image-styles/edit/' . $style['name']);
+    $row[] = l($style['label'], 'admin/config/media/image-styles/edit/' . $style['name']);
     $link_attributes = array(
-        'attributes' => array(
-            'class' => array('image-style-link'),
-        ),
+      'attributes' => array(
+        'class' => array('image-style-link'),
+      ),
     );
     if ($style['storage'] == IMAGE_STORAGE_NORMAL) {
       $row[] = t('Custom');
@@ -676,8 +694,8 @@ function theme_image_style_list($variables) {
 
   if (empty($rows)) {
     $rows[] = array(array(
-        'colspan' => 4,
-        'data' => t('There are currently no styles. <a href="!url">Add a new one</a>.', array('!url' => url('admin/config/media/image-styles/add'))),
+      'colspan' => 4,
+      'data' => t('There are currently no styles. <a href="!url">Add a new one</a>.', array('!url' => url('admin/config/media/image-styles/add'))),
     ));
   }
 
@@ -717,22 +735,22 @@ function theme_image_style_effects($variables) {
 
     if (!isset($form[$key]['#access']) || $form[$key]['#access']) {
       $rows[] = array(
-          'data' => $row,
-          'class' => !empty($form[$key]['weight']['#access']) || $key == 'new' ? array('draggable') : array(),
+        'data' => $row,
+        'class' => !empty($form[$key]['weight']['#access']) || $key == 'new' ? array('draggable') : array(),
       );
     }
   }
 
   $header = array(
-      t('Effect'),
-      t('Weight'),
-      array('data' => t('Operations'), 'colspan' => 2),
+    t('Effect'),
+    t('Weight'),
+    array('data' => t('Operations'), 'colspan' => 2),
   );
 
   if (count($rows) == 1 && $form['new']['#access']) {
     array_unshift($rows, array(array(
-    'data' => t('There are currently no effects in this style. Add one by selecting an option below.'),
-    'colspan' => 4,
+      'data' => t('There are currently no effects in this style. Add one by selecting an option below.'),
+      'colspan' => 4,
     )));
   }
 
@@ -805,7 +823,7 @@ function theme_image_style_preview($variables) {
   // Build the preview of the image style.
   $preview_url = file_create_url($preview_file) . '?cache_bypass=' . REQUEST_TIME;
   $output .= '<div class="preview-image-wrapper">';
-  $output .= check_plain($style['name']) . ' (' . l(t('view actual size'), file_create_url($preview_file) . '?' . time()) . ')';
+  $output .= check_plain($style['label']) . ' (' . l(t('view actual size'), file_create_url($preview_file) . '?' . time()) . ')';
   $output .= '<div class="preview-image modified-image" style="' . $preview_attributes['style'] . '">';
   $output .= '<a href="' . file_create_url($preview_file) . '?' . time() . '">' . theme('image', array('path' => $preview_url, 'alt' => t('Sample modified image'), 'title' => '', 'attributes' => $preview_attributes)) . '</a>';
   $output .= '<div class="height" style="height: ' . $preview_height . 'px"><span>' . $preview_image['height'] . 'px</span></div>';

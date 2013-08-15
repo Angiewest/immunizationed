@@ -5,7 +5,7 @@
  */
 function module_test_permission() {
   return array(
-      'module_test perm' => t('example perm for module_test module'),
+    'module_test perm' => t('example perm for module_test module'),
   );
 }
 
@@ -59,7 +59,7 @@ function module_test_system_info_alter(&$info, $file, $type) {
  */
 function module_test_hook_info() {
   $hooks['test_hook'] = array(
-      'group' => 'file',
+    'group' => 'file',
   );
   return $hooks;
 }
@@ -69,14 +69,14 @@ function module_test_hook_info() {
  */
 function module_test_menu() {
   $items['module-test/hook-dynamic-loading-invoke'] = array(
-      'title' => 'Test hook dynamic loading (invoke)',
-      'page callback' => 'module_test_hook_dynamic_loading_invoke',
-      'access arguments' => array('access content'),
+    'title' => 'Test hook dynamic loading (invoke)',
+    'page callback' => 'module_test_hook_dynamic_loading_invoke',
+    'access arguments' => array('access content'),
   );
   $items['module-test/hook-dynamic-loading-invoke-all'] = array(
-      'title' => 'Test hook dynamic loading (invoke_all)',
-      'page callback' => 'module_test_hook_dynamic_loading_invoke_all',
-      'access arguments' => array('access content'),
+    'title' => 'Test hook dynamic loading (invoke_all)',
+    'page callback' => 'module_test_hook_dynamic_loading_invoke_all',
+    'access arguments' => array('access content'),
   );
   return $items;
 }

@@ -45,31 +45,31 @@
  */
 function hook_rdf_mapping() {
   return array(
-      array(
-          'type' => 'node',
-          'bundle' => 'blog',
-          'mapping' => array(
-              'rdftype' => array('sioct:Weblog'),
-              'title' => array(
-                  'predicates' => array('dc:title'),
-              ),
-              'created' => array(
-                  'predicates' => array('dc:date', 'dc:created'),
-                  'datatype' => 'xsd:dateTime',
-                  'callback' => 'date_iso8601',
-              ),
-              'body' => array(
-                  'predicates' => array('content:encoded'),
-              ),
-              'uid' => array(
-                  'predicates' => array('sioc:has_creator'),
-                  'type' => 'rel',
-              ),
-              'name' => array(
-                  'predicates' => array('foaf:name'),
-              ),
-          ),
+    array(
+      'type' => 'node',
+      'bundle' => 'blog',
+      'mapping' => array(
+        'rdftype' => array('sioct:Weblog'),
+        'title' => array(
+          'predicates' => array('dc:title'),
+        ),
+        'created' => array(
+          'predicates' => array('dc:date', 'dc:created'),
+          'datatype' => 'xsd:dateTime',
+          'callback' => 'date_iso8601',
+        ),
+        'body' => array(
+          'predicates' => array('content:encoded'),
+        ),
+        'uid' => array(
+          'predicates' => array('sioc:has_creator'),
+          'type' => 'rel',
+        ),
+        'name' => array(
+          'predicates' => array('foaf:name'),
+        ),
       ),
+    ),
   );
 }
 
@@ -89,15 +89,15 @@ function hook_rdf_mapping() {
  */
 function hook_rdf_namespaces() {
   return array(
-      'content'  => 'http://purl.org/rss/1.0/modules/content/',
-      'dc'       => 'http://purl.org/dc/terms/',
-      'foaf'     => 'http://xmlns.com/foaf/0.1/',
-      'og'       => 'http://ogp.me/ns#',
-      'rdfs'     => 'http://www.w3.org/2000/01/rdf-schema#',
-      'sioc'     => 'http://rdfs.org/sioc/ns#',
-      'sioct'    => 'http://rdfs.org/sioc/types#',
-      'skos'     => 'http://www.w3.org/2004/02/skos/core#',
-      'xsd'      => 'http://www.w3.org/2001/XMLSchema#',
+    'content'  => 'http://purl.org/rss/1.0/modules/content/',
+    'dc'       => 'http://purl.org/dc/terms/',
+    'foaf'     => 'http://xmlns.com/foaf/0.1/',
+    'og'       => 'http://ogp.me/ns#',
+    'rdfs'     => 'http://www.w3.org/2000/01/rdf-schema#',
+    'sioc'     => 'http://rdfs.org/sioc/ns#',
+    'sioct'    => 'http://rdfs.org/sioc/types#',
+    'skos'     => 'http://www.w3.org/2004/02/skos/core#',
+    'xsd'      => 'http://www.w3.org/2001/XMLSchema#',
   );
 }
 

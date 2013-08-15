@@ -8,9 +8,9 @@
 class OptionsWidgetsTestCase extends FieldTestCase {
   public static function getInfo() {
     return array(
-        'name'  => 'Options widgets',
-        'description'  => "Test the Options widgets.",
-        'group' => 'Field types'
+      'name'  => 'Options widgets',
+      'description'  => "Test the Options widgets.",
+      'group' => 'Field types'
     );
   }
 
@@ -19,37 +19,37 @@ class OptionsWidgetsTestCase extends FieldTestCase {
 
     // Field with cardinality 1.
     $this->card_1 = array(
-        'field_name' => 'card_1',
-        'type' => 'list_integer',
-        'cardinality' => 1,
-        'settings' => array(
-            // Make sure that 0 works as an option.
-            'allowed_values' => array(0 => 'Zero', 1 => 'One', 2 => 'Some <script>dangerous</script> & unescaped <strong>markup</strong>'),
-        ),
+      'field_name' => 'card_1',
+      'type' => 'list_integer',
+      'cardinality' => 1,
+      'settings' => array(
+        // Make sure that 0 works as an option.
+        'allowed_values' => array(0 => 'Zero', 1 => 'One', 2 => 'Some <script>dangerous</script> & unescaped <strong>markup</strong>'),
+      ),
     );
     $this->card_1 = field_create_field($this->card_1);
 
     // Field with cardinality 2.
     $this->card_2 = array(
-        'field_name' => 'card_2',
-        'type' => 'list_integer',
-        'cardinality' => 2,
-        'settings' => array(
-            // Make sure that 0 works as an option.
-            'allowed_values' => array(0 => 'Zero', 1 => 'One', 2 => 'Some <script>dangerous</script> & unescaped <strong>markup</strong>'),
-        ),
+      'field_name' => 'card_2',
+      'type' => 'list_integer',
+      'cardinality' => 2,
+      'settings' => array(
+        // Make sure that 0 works as an option.
+        'allowed_values' => array(0 => 'Zero', 1 => 'One', 2 => 'Some <script>dangerous</script> & unescaped <strong>markup</strong>'),
+      ),
     );
     $this->card_2 = field_create_field($this->card_2);
 
     // Boolean field.
     $this->bool = array(
-        'field_name' => 'bool',
-        'type' => 'list_boolean',
-        'cardinality' => 1,
-        'settings' => array(
-            // Make sure that 0 works as a 'on' value'.
-            'allowed_values' => array(1 => 'Zero', 0 => 'Some <script>dangerous</script> & unescaped <strong>markup</strong>'),
-        ),
+      'field_name' => 'bool',
+      'type' => 'list_boolean',
+      'cardinality' => 1,
+      'settings' => array(
+        // Make sure that 0 works as a 'on' value'.
+        'allowed_values' => array(1 => 'Zero', 0 => 'Some <script>dangerous</script> & unescaped <strong>markup</strong>'),
+      ),
     );
     $this->bool = field_create_field($this->bool);
 
@@ -64,12 +64,12 @@ class OptionsWidgetsTestCase extends FieldTestCase {
   function testRadioButtons() {
     // Create an instance of the 'single value' field.
     $instance = array(
-        'field_name' => $this->card_1['field_name'],
-        'entity_type' => 'test_entity',
-        'bundle' => 'test_bundle',
-        'widget' => array(
-            'type' => 'options_buttons',
-        ),
+      'field_name' => $this->card_1['field_name'],
+      'entity_type' => 'test_entity',
+      'bundle' => 'test_bundle',
+      'widget' => array(
+        'type' => 'options_buttons',
+      ),
     );
     $instance = field_create_instance($instance);
     $langcode = LANGUAGE_NONE;
@@ -85,7 +85,7 @@ class OptionsWidgetsTestCase extends FieldTestCase {
     $this->assertNoFieldChecked("edit-card-1-$langcode-0");
     $this->assertNoFieldChecked("edit-card-1-$langcode-1");
     $this->assertNoFieldChecked("edit-card-1-$langcode-2");
-    $this->assertRaw('Some dangerous &amp; unescaped <strong>markup</strong>', t('Option text was properly filtered.'));
+    $this->assertRaw('Some dangerous &amp; unescaped <strong>markup</strong>', 'Option text was properly filtered.');
 
     // Select first option.
     $edit = array("card_1[$langcode]" => 0);
@@ -118,12 +118,12 @@ class OptionsWidgetsTestCase extends FieldTestCase {
   function testCheckBoxes() {
     // Create an instance of the 'multiple values' field.
     $instance = array(
-        'field_name' => $this->card_2['field_name'],
-        'entity_type' => 'test_entity',
-        'bundle' => 'test_bundle',
-        'widget' => array(
-            'type' => 'options_buttons',
-        ),
+      'field_name' => $this->card_2['field_name'],
+      'entity_type' => 'test_entity',
+      'bundle' => 'test_bundle',
+      'widget' => array(
+        'type' => 'options_buttons',
+      ),
     );
     $instance = field_create_instance($instance);
     $langcode = LANGUAGE_NONE;
@@ -139,13 +139,13 @@ class OptionsWidgetsTestCase extends FieldTestCase {
     $this->assertNoFieldChecked("edit-card-2-$langcode-0");
     $this->assertNoFieldChecked("edit-card-2-$langcode-1");
     $this->assertNoFieldChecked("edit-card-2-$langcode-2");
-    $this->assertRaw('Some dangerous &amp; unescaped <strong>markup</strong>', t('Option text was properly filtered.'));
+    $this->assertRaw('Some dangerous &amp; unescaped <strong>markup</strong>', 'Option text was properly filtered.');
 
     // Submit form: select first and third options.
     $edit = array(
-        "card_2[$langcode][0]" => TRUE,
-        "card_2[$langcode][1]" => FALSE,
-        "card_2[$langcode][2]" => TRUE,
+      "card_2[$langcode][0]" => TRUE,
+      "card_2[$langcode][1]" => FALSE,
+      "card_2[$langcode][2]" => TRUE,
     );
     $this->drupalPost(NULL, $edit, t('Save'));
     $this->assertFieldValues($entity_init, 'card_2', $langcode, array(0, 2));
@@ -158,9 +158,9 @@ class OptionsWidgetsTestCase extends FieldTestCase {
 
     // Submit form: select only first option.
     $edit = array(
-        "card_2[$langcode][0]" => TRUE,
-        "card_2[$langcode][1]" => FALSE,
-        "card_2[$langcode][2]" => FALSE,
+      "card_2[$langcode][0]" => TRUE,
+      "card_2[$langcode][1]" => FALSE,
+      "card_2[$langcode][2]" => FALSE,
     );
     $this->drupalPost(NULL, $edit, t('Save'));
     $this->assertFieldValues($entity_init, 'card_2', $langcode, array(0));
@@ -173,18 +173,18 @@ class OptionsWidgetsTestCase extends FieldTestCase {
 
     // Submit form: select the three options while the field accepts only 2.
     $edit = array(
-        "card_2[$langcode][0]" => TRUE,
-        "card_2[$langcode][1]" => TRUE,
-        "card_2[$langcode][2]" => TRUE,
+      "card_2[$langcode][0]" => TRUE,
+      "card_2[$langcode][1]" => TRUE,
+      "card_2[$langcode][2]" => TRUE,
     );
     $this->drupalPost(NULL, $edit, t('Save'));
-    $this->assertText('this field cannot hold more than 2 values', t('Validation error was displayed.'));
+    $this->assertText('this field cannot hold more than 2 values', 'Validation error was displayed.');
 
     // Submit form: uncheck all options.
     $edit = array(
-        "card_2[$langcode][0]" => FALSE,
-        "card_2[$langcode][1]" => FALSE,
-        "card_2[$langcode][2]" => FALSE,
+      "card_2[$langcode][0]" => FALSE,
+      "card_2[$langcode][1]" => FALSE,
+      "card_2[$langcode][2]" => FALSE,
     );
     $this->drupalPost(NULL, $edit, t('Save'));
     // Check that the value was saved.
@@ -205,13 +205,13 @@ class OptionsWidgetsTestCase extends FieldTestCase {
   function testSelectListSingle() {
     // Create an instance of the 'single value' field.
     $instance = array(
-        'field_name' => $this->card_1['field_name'],
-        'entity_type' => 'test_entity',
-        'bundle' => 'test_bundle',
-        'required' => TRUE,
-        'widget' => array(
-            'type' => 'options_select',
-        ),
+      'field_name' => $this->card_1['field_name'],
+      'entity_type' => 'test_entity',
+      'bundle' => 'test_bundle',
+      'required' => TRUE,
+      'widget' => array(
+        'type' => 'options_select',
+      ),
     );
     $instance = field_create_instance($instance);
     $langcode = LANGUAGE_NONE;
@@ -225,19 +225,19 @@ class OptionsWidgetsTestCase extends FieldTestCase {
     // Display form.
     $this->drupalGet('test-entity/manage/' . $entity->ftid . '/edit');
     // A required field without any value has a "none" option.
-    $this->assertTrue($this->xpath('//select[@id=:id]//option[@value="_none" and text()=:label]', array(':id' => 'edit-card-1-' . $langcode, ':label' => t('- Select a value -'))), t('A required select list has a "Select a value" choice.'));
+    $this->assertTrue($this->xpath('//select[@id=:id]//option[@value="_none" and text()=:label]', array(':id' => 'edit-card-1-' . $langcode, ':label' => t('- Select a value -'))), 'A required select list has a "Select a value" choice.');
 
     // With no field data, nothing is selected.
     $this->assertNoOptionSelected("edit-card-1-$langcode", '_none');
     $this->assertNoOptionSelected("edit-card-1-$langcode", 0);
     $this->assertNoOptionSelected("edit-card-1-$langcode", 1);
     $this->assertNoOptionSelected("edit-card-1-$langcode", 2);
-    $this->assertRaw('Some dangerous &amp; unescaped markup', t('Option text was properly filtered.'));
+    $this->assertRaw('Some dangerous &amp; unescaped markup', 'Option text was properly filtered.');
 
     // Submit form: select invalid 'none' option.
     $edit = array("card_1[$langcode]" => '_none');
     $this->drupalPost(NULL, $edit, t('Save'));
-    $this->assertRaw(t('!title field is required.', array('!title' => $instance['field_name'])), t('Cannot save a required field when selecting "none" from the select list.'));
+    $this->assertRaw(t('!title field is required.', array('!title' => $instance['field_name'])), 'Cannot save a required field when selecting "none" from the select list.');
 
     // Submit form: select first option.
     $edit = array("card_1[$langcode]" => 0);
@@ -247,7 +247,7 @@ class OptionsWidgetsTestCase extends FieldTestCase {
     // Display form: check that the right options are selected.
     $this->drupalGet('test-entity/manage/' . $entity->ftid . '/edit');
     // A required field with a value has no 'none' option.
-    $this->assertFalse($this->xpath('//select[@id=:id]//option[@value="_none"]', array(':id' => 'edit-card-1-' . $langcode)), t('A required select list with an actual value has no "none" choice.'));
+    $this->assertFalse($this->xpath('//select[@id=:id]//option[@value="_none"]', array(':id' => 'edit-card-1-' . $langcode)), 'A required select list with an actual value has no "none" choice.');
     $this->assertOptionSelected("edit-card-1-$langcode", 0);
     $this->assertNoOptionSelected("edit-card-1-$langcode", 1);
     $this->assertNoOptionSelected("edit-card-1-$langcode", 2);
@@ -259,7 +259,7 @@ class OptionsWidgetsTestCase extends FieldTestCase {
     // Display form.
     $this->drupalGet('test-entity/manage/' . $entity->ftid . '/edit');
     // A non-required field has a 'none' option.
-    $this->assertTrue($this->xpath('//select[@id=:id]//option[@value="_none" and text()=:label]', array(':id' => 'edit-card-1-' . $langcode, ':label' => t('- None -'))), t('A non-required select list has a "None" choice.'));
+    $this->assertTrue($this->xpath('//select[@id=:id]//option[@value="_none" and text()=:label]', array(':id' => 'edit-card-1-' . $langcode, ':label' => t('- None -'))), 'A non-required select list has a "None" choice.');
     // Submit form: Unselect the option.
     $edit = array("card_1[$langcode]" => '_none');
     $this->drupalPost('test-entity/manage/' . $entity->ftid . '/edit', $edit, t('Save'));
@@ -276,8 +276,8 @@ class OptionsWidgetsTestCase extends FieldTestCase {
     $this->assertNoOptionSelected("edit-card-1-$langcode", 0);
     $this->assertNoOptionSelected("edit-card-1-$langcode", 1);
     $this->assertNoOptionSelected("edit-card-1-$langcode", 2);
-    $this->assertRaw('Some dangerous &amp; unescaped markup', t('Option text was properly filtered.'));
-    $this->assertRaw('Group 1', t('Option groups are displayed.'));
+    $this->assertRaw('Some dangerous &amp; unescaped markup', 'Option text was properly filtered.');
+    $this->assertRaw('Group 1', 'Option groups are displayed.');
 
     // Submit form: select first option.
     $edit = array("card_1[$langcode]" => 0);
@@ -302,12 +302,12 @@ class OptionsWidgetsTestCase extends FieldTestCase {
   function testSelectListMultiple() {
     // Create an instance of the 'multiple values' field.
     $instance = array(
-        'field_name' => $this->card_2['field_name'],
-        'entity_type' => 'test_entity',
-        'bundle' => 'test_bundle',
-        'widget' => array(
-            'type' => 'options_select',
-        ),
+      'field_name' => $this->card_2['field_name'],
+      'entity_type' => 'test_entity',
+      'bundle' => 'test_bundle',
+      'widget' => array(
+        'type' => 'options_select',
+      ),
     );
     $instance = field_create_instance($instance);
     $langcode = LANGUAGE_NONE;
@@ -323,7 +323,7 @@ class OptionsWidgetsTestCase extends FieldTestCase {
     $this->assertNoOptionSelected("edit-card-2-$langcode", 0);
     $this->assertNoOptionSelected("edit-card-2-$langcode", 1);
     $this->assertNoOptionSelected("edit-card-2-$langcode", 2);
-    $this->assertRaw('Some dangerous &amp; unescaped markup', t('Option text was properly filtered.'));
+    $this->assertRaw('Some dangerous &amp; unescaped markup', 'Option text was properly filtered.');
 
     // Submit form: select first and third options.
     $edit = array("card_2[$langcode][]" => array(0 => 0, 2 => 2));
@@ -350,7 +350,7 @@ class OptionsWidgetsTestCase extends FieldTestCase {
     // Submit form: select the three options while the field accepts only 2.
     $edit = array("card_2[$langcode][]" => array(0 => 0, 1 => 1, 2 => 2));
     $this->drupalPost(NULL, $edit, t('Save'));
-    $this->assertText('this field cannot hold more than 2 values', t('Validation error was displayed.'));
+    $this->assertText('this field cannot hold more than 2 values', 'Validation error was displayed.');
 
     // Submit form: uncheck all options.
     $edit = array("card_2[$langcode][]" => array());
@@ -374,7 +374,7 @@ class OptionsWidgetsTestCase extends FieldTestCase {
     $instance['required'] = TRUE;
     field_update_instance($instance);
     $this->drupalGet('test-entity/manage/' . $entity->ftid . '/edit');
-    $this->assertFalse($this->xpath('//select[@id=:id]//option[@value=""]', array(':id' => 'edit-card-2-' . $langcode)), t('A required select list does not have an empty key.'));
+    $this->assertFalse($this->xpath('//select[@id=:id]//option[@value=""]', array(':id' => 'edit-card-2-' . $langcode)), 'A required select list does not have an empty key.');
 
     // We do not have to test that a required select list with one option is
     // auto-selected because the browser does it for us.
@@ -393,8 +393,8 @@ class OptionsWidgetsTestCase extends FieldTestCase {
     $this->assertNoOptionSelected("edit-card-2-$langcode", 0);
     $this->assertNoOptionSelected("edit-card-2-$langcode", 1);
     $this->assertNoOptionSelected("edit-card-2-$langcode", 2);
-    $this->assertRaw('Some dangerous &amp; unescaped markup', t('Option text was properly filtered.'));
-    $this->assertRaw('Group 1', t('Option groups are displayed.'));
+    $this->assertRaw('Some dangerous &amp; unescaped markup', 'Option text was properly filtered.');
+    $this->assertRaw('Group 1', 'Option groups are displayed.');
 
     // Submit form: select first option.
     $edit = array("card_2[$langcode][]" => array(0 => 0));
@@ -419,12 +419,12 @@ class OptionsWidgetsTestCase extends FieldTestCase {
   function testOnOffCheckbox() {
     // Create an instance of the 'boolean' field.
     $instance = array(
-        'field_name' => $this->bool['field_name'],
-        'entity_type' => 'test_entity',
-        'bundle' => 'test_bundle',
-        'widget' => array(
-            'type' => 'options_onoff',
-        ),
+      'field_name' => $this->bool['field_name'],
+      'entity_type' => 'test_entity',
+      'bundle' => 'test_bundle',
+      'widget' => array(
+        'type' => 'options_onoff',
+      ),
     );
     $instance = field_create_instance($instance);
     $langcode = LANGUAGE_NONE;
@@ -438,7 +438,7 @@ class OptionsWidgetsTestCase extends FieldTestCase {
     // Display form: with no field data, option is unchecked.
     $this->drupalGet('test-entity/manage/' . $entity->ftid . '/edit');
     $this->assertNoFieldChecked("edit-bool-$langcode");
-    $this->assertRaw('Some dangerous &amp; unescaped <strong>markup</strong>', t('Option text was properly filtered.'));
+    $this->assertRaw('Some dangerous &amp; unescaped <strong>markup</strong>', 'Option text was properly filtered.');
 
     // Submit form: check the option.
     $edit = array("bool[$langcode]" => TRUE);
@@ -467,10 +467,10 @@ class OptionsWidgetsTestCase extends FieldTestCase {
     $fieldUpdate['settings']['allowed_values'] = array(0 => 0, 1 => 'MyOnValue');
     field_update_field($fieldUpdate);
     $instance = array(
-        'field_name' => $this->bool['field_name'],
-        'entity_type' => 'node',
-        'bundle' => 'page',
-        'widget' => array(
+      'field_name' => $this->bool['field_name'],
+      'entity_type' => 'node',
+      'bundle' => 'page',
+      'widget' => array(
             'type' => 'options_onoff',
             'module' => 'options',
         ),
@@ -482,14 +482,14 @@ class OptionsWidgetsTestCase extends FieldTestCase {
     $this->drupalGet($fieldEditUrl);
 
     $this->assertText(
-        'Use field label instead of the "On value" as label ',
-        t('Display setting checkbox available.')
+      'Use field label instead of the "On value" as label ',
+      'Display setting checkbox available.'
     );
 
     $this->assertFieldByXPath(
-        '*//label[@for="edit-' . $this->bool['field_name'] . '-und" and text()="MyOnValue "]',
-        TRUE,
-        t('Default case shows "On value"')
+      '*//label[@for="edit-' . $this->bool['field_name'] . '-und" and text()="MyOnValue "]',
+      TRUE,
+      'Default case shows "On value"'
     );
 
     // Enable setting
@@ -501,17 +501,17 @@ class OptionsWidgetsTestCase extends FieldTestCase {
     // is stored and has the expected effect
     $this->drupalGet($fieldEditUrl);
     $this->assertText(
-        'Use field label instead of the "On value" as label ',
-        t('Display setting checkbox is available')
+      'Use field label instead of the "On value" as label ',
+      'Display setting checkbox is available'
     );
     $this->assertFieldChecked(
-        'edit-instance-widget-settings-display-label',
-        t('Display settings checkbox checked')
+      'edit-instance-widget-settings-display-label',
+      'Display settings checkbox checked'
     );
     $this->assertFieldByXPath(
-        '*//label[@for="edit-' . $this->bool['field_name'] . '-und" and text()="' . $this->bool['field_name'] . ' "]',
-        TRUE,
-        t('Display label changes label of the checkbox')
+      '*//label[@for="edit-' . $this->bool['field_name'] . '-und" and text()="' . $this->bool['field_name'] . ' "]',
+      TRUE,
+      'Display label changes label of the checkbox'
     );
   }
 }
@@ -522,9 +522,9 @@ class OptionsWidgetsTestCase extends FieldTestCase {
 class OptionsSelectDynamicValuesTestCase extends ListDynamicValuesTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Options select dynamic values',
-        'description' => 'Test an options select on a list field with a dynamic allowed values function.',
-        'group' => 'Field types',
+      'name' => 'Options select dynamic values',
+      'description' => 'Test an options select on a list field with a dynamic allowed values function.',
+      'group' => 'Field types',
     );
   }
 

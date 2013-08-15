@@ -29,7 +29,7 @@ interface ArchiverInterface {
    *
    * @return ArchiverInterface
    *   The called object.
-  */
+   */
   public function add($file_path);
 
   /**
@@ -40,7 +40,7 @@ interface ArchiverInterface {
    *
    * @return ArchiverInterface
    *   The called object.
-  */
+   */
   public function remove($path);
 
   /**
@@ -55,7 +55,7 @@ interface ArchiverInterface {
    *
    * @return ArchiverInterface
    *   The called object.
-  */
+   */
   public function extract($path, array $files = array());
 
   /**
@@ -63,6 +63,6 @@ interface ArchiverInterface {
    *
    * @return
    *   An array of file names relative to the root of the archive.
-  */
+   */
   public function listContents();
 }

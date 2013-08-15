@@ -124,27 +124,27 @@ function aggregator_feed_items_load($type, $data = NULL) {
     case 'source':
       $query = db_select('aggregator_item', 'i');
       $query
-      ->fields('i')
-      ->condition('i.fid', $data->fid);
+        ->fields('i')
+        ->condition('i.fid', $data->fid);
       break;
     case 'category':
       $query = db_select('aggregator_category_item', 'c');
       $query->leftJoin('aggregator_item', 'i', 'c.iid = i.iid');
       $query->leftJoin('aggregator_feed', 'f', 'i.fid = f.fid');
       $query
-      ->fields('i')
-      ->condition('cid', $data['cid']);
+        ->fields('i')
+        ->condition('cid', $data['cid']);
       $query->addField('f', 'title', 'ftitle');
       $query->addField('f', 'link', 'flink');
       break;
   }
 
   $result = $query
-  ->extend('PagerDefault')
-  ->limit(20)
-  ->orderBy('i.timestamp', 'DESC')
-  ->orderBy('i.iid', 'DESC')
-  ->execute();
+    ->extend('PagerDefault')
+    ->limit(20)
+    ->orderBy('i.timestamp', 'DESC')
+    ->orderBy('i.iid', 'DESC')
+    ->execute();
 
   foreach ($result as $item) {
     $item->categories = db_query('SELECT c.title, c.cid FROM {aggregator_category_item} ci LEFT JOIN {aggregator_category} c ON ci.cid = c.cid WHERE ci.iid = :iid ORDER BY c.title', array(':iid' => $item->iid))->fetchAll();
@@ -206,13 +206,13 @@ function aggregator_categorize_items($items, $feed_source = '') {
   $form['#submit'][] = 'aggregator_categorize_items_submit';
   $form['#theme'] = 'aggregator_categorize_items';
   $form['feed_source'] = array(
-      '#value' => $feed_source,
+    '#value' => $feed_source,
   );
   $categories = array();
   $done = FALSE;
   $form['items'] = array();
   $form['categories'] = array(
-      '#tree' => TRUE,
+    '#tree' => TRUE,
   );
   foreach ($items as $item) {
     $form['items'][$item->iid] = array('#markup' => theme('aggregator_item', array('item' => $item)));
@@ -229,11 +229,11 @@ function aggregator_categorize_items($items, $feed_source = '') {
     }
     $done = TRUE;
     $form['categories'][$item->iid] = array(
-        '#type' => variable_get('aggregator_category_selector', 'checkboxes'),
-        '#default_value' => $selected,
-        '#options' => $categories,
-        '#size' => 10,
-        '#multiple' => TRUE
+      '#type' => variable_get('aggregator_category_selector', 'checkboxes'),
+      '#default_value' => $selected,
+      '#options' => $categories,
+      '#size' => 10,
+      '#multiple' => TRUE
     );
   }
   $form['actions'] = array('#type' => 'actions');
@@ -249,16 +249,16 @@ function aggregator_categorize_items_submit($form, &$form_state) {
   if (!empty($form_state['values']['categories'])) {
     foreach ($form_state['values']['categories'] as $iid => $selection) {
       db_delete('aggregator_category_item')
-      ->condition('iid', $iid)
-      ->execute();
+        ->condition('iid', $iid)
+        ->execute();
       $insert = db_insert('aggregator_category_item')->fields(array('iid', 'cid'));
       $has_values = FALSE;
       foreach ($selection as $cid) {
         if ($cid && $iid) {
           $has_values = TRUE;
           $insert->values(array(
-              'iid' => $iid,
-              'cid' => $cid,
+            'iid' => $iid,
+            'cid' => $cid,
           ));
         }
       }
@@ -287,8 +287,8 @@ function theme_aggregator_categorize_items($variables) {
   if (!empty($form['items'])) {
     foreach (element_children($form['items']) as $key) {
       $rows[] = array(
-          drupal_render($form['items'][$key]),
-          array('data' => drupal_render($form['categories'][$key]), 'class' => array('categorize-item')),
+        drupal_render($form['items'][$key]),
+        array('data' => drupal_render($form['categories'][$key]), 'class' => array('categorize-item')),
       );
     }
   }

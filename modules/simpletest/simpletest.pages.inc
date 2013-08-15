@@ -10,47 +10,47 @@
  */
 function simpletest_test_form($form) {
   $form['tests'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Tests'),
-      '#description' => t('Select the test(s) or test group(s) you would like to run, and click <em>Run tests</em>.'),
+    '#type' => 'fieldset',
+    '#title' => t('Tests'),
+    '#description' => t('Select the test(s) or test group(s) you would like to run, and click <em>Run tests</em>.'),
   );
 
   $form['tests']['table'] = array(
-      '#theme' => 'simpletest_test_table',
+    '#theme' => 'simpletest_test_table',
   );
 
   // Generate the list of tests arranged by group.
   $groups = simpletest_test_get_all();
   foreach ($groups as $group => $tests) {
     $form['tests']['table'][$group] = array(
-        '#collapsed' => TRUE,
+      '#collapsed' => TRUE,
     );
 
     foreach ($tests as $class => $info) {
       $form['tests']['table'][$group][$class] = array(
-          '#type' => 'checkbox',
-          '#title' => $info['name'],
-          '#description' => $info['description'],
+        '#type' => 'checkbox',
+        '#title' => $info['name'],
+        '#description' => $info['description'],
       );
     }
   }
 
   // Operation buttons.
   $form['tests']['op'] = array(
-      '#type' => 'submit',
-      '#value' => t('Run tests'),
+    '#type' => 'submit',
+    '#value' => t('Run tests'),
   );
   $form['clean'] = array(
-      '#type' => 'fieldset',
-      '#collapsible' => FALSE,
-      '#collapsed' => FALSE,
-      '#title' => t('Clean test environment'),
-      '#description' => t('Remove tables with the prefix "simpletest" and temporary directories that are left over from tests that crashed. This is intended for developers when creating tests.'),
+    '#type' => 'fieldset',
+    '#collapsible' => FALSE,
+    '#collapsed' => FALSE,
+    '#title' => t('Clean test environment'),
+    '#description' => t('Remove tables with the prefix "simpletest" and temporary directories that are left over from tests that crashed. This is intended for developers when creating tests.'),
   );
   $form['clean']['op'] = array(
-      '#type' => 'submit',
-      '#value' => t('Clean environment'),
-      '#submit' => array('simpletest_clean_environment'),
+    '#type' => 'submit',
+    '#value' => t('Clean environment'),
+    '#submit' => array('simpletest_clean_environment'),
   );
 
   return $form;
@@ -74,17 +74,17 @@ function theme_simpletest_test_table($variables) {
 
   // Create header for test selection table.
   $header = array(
-      array('class' => array('select-all')),
-      array('data' => t('Test'), 'class' => array('simpletest_test')),
-      array('data' => t('Description'), 'class' => array('simpletest_description')),
+    array('class' => array('select-all')),
+    array('data' => t('Test'), 'class' => array('simpletest_test')),
+    array('data' => t('Description'), 'class' => array('simpletest_description')),
   );
 
   // Define the images used to expand/collapse the test groups.
   $js = array(
-      'images' => array(
-          theme('image', array('path' => 'misc/menu-collapsed.png', 'width' => 7, 'height' => 7, 'alt' => t('Expand'), 'title' => t('Expand'))) . ' <a href="#" class="simpletest-collapse">(' . t('Expand') . ')</a>',
-          theme('image', array('path' => 'misc/menu-expanded.png', 'width' => 7, 'height' => 7, 'alt' => t('Collapse'), 'title' => t('Collapse'))) . ' <a href="#" class="simpletest-collapse">(' . t('Collapse') . ')</a>',
-      ),
+    'images' => array(
+      theme('image', array('path' => 'misc/menu-collapsed.png', 'width' => 7, 'height' => 7, 'alt' => t('Expand'), 'title' => t('Expand'))) . ' <a href="#" class="simpletest-collapse">(' . t('Expand') . ')</a>',
+      theme('image', array('path' => 'misc/menu-expanded.png', 'width' => 7, 'height' => 7, 'alt' => t('Collapse'), 'title' => t('Collapse'))) . ' <a href="#" class="simpletest-collapse">(' . t('Collapse') . ')</a>',
+    ),
   );
 
   // Cycle through each test group and create a row.
@@ -107,24 +107,24 @@ function theme_simpletest_test_table($variables) {
 
     // Expand/collapse image and group title.
     $row[] = array(
-        'data' => '<div class="simpletest-image" id="simpletest-test-group-' . $test_class . '"></div>' .
+      'data' => '<div class="simpletest-image" id="simpletest-test-group-' . $test_class . '"></div>' .
         '<label for="' . $test_class . '-select-all" class="simpletest-group-label">' . $key . '</label>',
-        'class' => array('simpletest-group-label'),
+      'class' => array('simpletest-group-label'),
     );
 
     $row[] = array(
-        'data' => '&nbsp;',
-        'class' => array('simpletest-group-description'),
+      'data' => '&nbsp;',
+      'class' => array('simpletest-group-description'),
     );
 
     $rows[] = array('data' => $row, 'class' => array('simpletest-group'));
 
     // Add individual tests to group.
     $current_js = array(
-        'testClass' => $test_class . '-test',
-        'testNames' => array(),
-        'imageDirection' => $image_index,
-        'clickActive' => FALSE,
+      'testClass' => $test_class . '-test',
+      'testNames' => array(),
+      'imageDirection' => $image_index,
+      'clickActive' => FALSE,
     );
 
     // Sorting $element by children's #title attribute instead of by class name.
@@ -148,16 +148,16 @@ function theme_simpletest_test_table($variables) {
       $test['#name'] = $test_name;
 
       $row[] = array(
-          'data' => drupal_render($test),
-          'class' => array('simpletest-test-select'),
+        'data' => drupal_render($test),
+        'class' => array('simpletest-test-select'),
       );
       $row[] = array(
-          'data' => '<label for="' . $test['#id'] . '">' . $title . '</label>',
-          'class' => array('simpletest-test-label'),
+        'data' => '<label for="' . $test['#id'] . '">' . $title . '</label>',
+        'class' => array('simpletest-test-label'),
       );
       $row[] = array(
-          'data' => '<div class="description">' . $description . '</div>',
-          'class' => array('simpletest-test-description'),
+        'data' => '<div class="description">' . $description . '</div>',
+        'class' => array('simpletest-test-description'),
       );
 
       $rows[] = array('data' => $row, 'class' => array($test_class . '-test', ($collapsed ? 'js-hide' : '')));
@@ -217,21 +217,21 @@ function simpletest_result_form($form, &$form_state, $test_id) {
 
   // Keep track of which test cases passed or failed.
   $filter = array(
-      'pass' => array(),
-      'fail' => array(),
+    'pass' => array(),
+    'fail' => array(),
   );
 
   // Summary result fieldset.
   $form['result'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Results'),
+    '#type' => 'fieldset',
+    '#title' => t('Results'),
   );
   $form['result']['summary'] = $summary = array(
-      '#theme' => 'simpletest_result_summary',
-      '#pass' => 0,
-      '#fail' => 0,
-      '#exception' => 0,
-      '#debug' => 0,
+    '#theme' => 'simpletest_result_summary',
+    '#pass' => 0,
+    '#fail' => 0,
+    '#exception' => 0,
+    '#debug' => 0,
   );
 
   simpletest_classloader_register();
@@ -243,10 +243,10 @@ function simpletest_result_form($form, &$form_state, $test_id) {
     // Create group fieldset with summary information.
     $info = call_user_func(array($group, 'getInfo'));
     $form['result']['results'][$group] = array(
-        '#type' => 'fieldset',
-        '#title' => $info['name'],
-        '#description' => $info['description'],
-        '#collapsible' => TRUE,
+      '#type' => 'fieldset',
+      '#title' => $info['name'],
+      '#description' => $info['description'],
+      '#collapsible' => TRUE,
     );
     $form['result']['results'][$group]['summary'] = $summary;
     $group_summary = &$form['result']['results'][$group]['summary'];
@@ -272,9 +272,9 @@ function simpletest_result_form($form, &$form_state, $test_id) {
       $form['result']['summary']['#' . $assertion->status]++;
     }
     $form['result']['results'][$group]['table'] = array(
-        '#theme' => 'table',
-        '#header' => $header,
-        '#rows' => $rows,
+      '#theme' => 'table',
+      '#header' => $header,
+      '#rows' => $rows,
     );
 
     // Set summary information.
@@ -291,42 +291,42 @@ function simpletest_result_form($form, &$form_state, $test_id) {
   // Actions.
   $form['#action'] = url('admin/config/development/testing/results/re-run');
   $form['action'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Actions'),
-      '#attributes' => array('class' => array('container-inline')),
-      '#weight' => -11,
+    '#type' => 'fieldset',
+    '#title' => t('Actions'),
+    '#attributes' => array('class' => array('container-inline')),
+    '#weight' => -11,
   );
 
   $form['action']['filter'] = array(
-      '#type' => 'select',
-      '#title' => 'Filter',
-      '#options' => array(
-          'all' => t('All (@count)', array('@count' => count($filter['pass']) + count($filter['fail']))),
-          'pass' => t('Pass (@count)', array('@count' => count($filter['pass']))),
-          'fail' => t('Fail (@count)', array('@count' => count($filter['fail']))),
-      ),
+    '#type' => 'select',
+    '#title' => 'Filter',
+    '#options' => array(
+      'all' => t('All (@count)', array('@count' => count($filter['pass']) + count($filter['fail']))),
+      'pass' => t('Pass (@count)', array('@count' => count($filter['pass']))),
+      'fail' => t('Fail (@count)', array('@count' => count($filter['fail']))),
+    ),
   );
   $form['action']['filter']['#default_value'] = ($filter['fail'] ? 'fail' : 'all');
 
   // Categorized test classes for to be used with selected filter value.
   $form['action']['filter_pass'] = array(
-      '#type' => 'hidden',
-      '#default_value' => implode(',', $filter['pass']),
+    '#type' => 'hidden',
+    '#default_value' => implode(',', $filter['pass']),
   );
   $form['action']['filter_fail'] = array(
-      '#type' => 'hidden',
-      '#default_value' => implode(',', $filter['fail']),
+    '#type' => 'hidden',
+    '#default_value' => implode(',', $filter['fail']),
   );
 
   $form['action']['op'] = array(
-      '#type' => 'submit',
-      '#value' => t('Run tests'),
+    '#type' => 'submit',
+    '#value' => t('Run tests'),
   );
 
   $form['action']['return'] = array(
-      '#type' => 'link',
-      '#title' => t('Return to list'),
-      '#href' => 'admin/config/development/testing',
+    '#type' => 'link',
+    '#title' => t('Return to list'),
+    '#href' => 'admin/config/development/testing',
   );
 
   if (is_numeric($test_id)) {
@@ -389,11 +389,11 @@ function theme_simpletest_result_summary($variables) {
  */
 function simpletest_result_get($test_id) {
   $results = db_select('simpletest')
-  ->fields('simpletest')
-  ->condition('test_id', $test_id)
-  ->orderBy('test_class')
-  ->orderBy('message_id')
-  ->execute();
+    ->fields('simpletest')
+    ->condition('test_id', $test_id)
+    ->orderBy('test_class')
+    ->orderBy('message_id')
+    ->execute();
 
   $test_results = array();
   foreach ($results as $result) {
@@ -417,10 +417,10 @@ function simpletest_result_status_image($status) {
 
   if (!isset($map)) {
     $map = array(
-        'pass' => theme('image', array('path' => 'misc/watchdog-ok.png', 'width' => 18, 'height' => 18, 'alt' => t('Pass'))),
-        'fail' => theme('image', array('path' => 'misc/watchdog-error.png', 'width' => 18, 'height' => 18, 'alt' => t('Fail'))),
-        'exception' => theme('image', array('path' => 'misc/watchdog-warning.png', 'width' => 18, 'height' => 18, 'alt' => t('Exception'))),
-        'debug' => theme('image', array('path' => 'misc/watchdog-warning.png', 'width' => 18, 'height' => 18, 'alt' => t('Debug'))),
+      'pass' => theme('image', array('path' => 'misc/watchdog-ok.png', 'width' => 18, 'height' => 18, 'alt' => t('Pass'))),
+      'fail' => theme('image', array('path' => 'misc/watchdog-error.png', 'width' => 18, 'height' => 18, 'alt' => t('Fail'))),
+      'exception' => theme('image', array('path' => 'misc/watchdog-warning.png', 'width' => 18, 'height' => 18, 'alt' => t('Exception'))),
+      'debug' => theme('image', array('path' => 'misc/watchdog-warning.png', 'width' => 18, 'height' => 18, 'alt' => t('Debug'))),
     );
   }
   if (isset($map[$status])) {
@@ -437,55 +437,55 @@ function simpletest_result_status_image($status) {
  */
 function simpletest_settings_form($form, &$form_state) {
   $form['general'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('General'),
+    '#type' => 'fieldset',
+    '#title' => t('General'),
   );
   $form['general']['simpletest_clear_results'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Clear results after each complete test suite run'),
-      '#description' => t('By default SimpleTest will clear the results after they have been viewed on the results page, but in some cases it may be useful to leave the results in the database. The results can then be viewed at <em>admin/config/development/testing/[test_id]</em>. The test ID can be found in the database, simpletest table, or kept track of when viewing the results the first time. Additionally, some modules may provide more analysis or features that require this setting to be disabled.'),
-      '#default_value' => variable_get('simpletest_clear_results', TRUE),
+    '#type' => 'checkbox',
+    '#title' => t('Clear results after each complete test suite run'),
+    '#description' => t('By default SimpleTest will clear the results after they have been viewed on the results page, but in some cases it may be useful to leave the results in the database. The results can then be viewed at <em>admin/config/development/testing/[test_id]</em>. The test ID can be found in the database, simpletest table, or kept track of when viewing the results the first time. Additionally, some modules may provide more analysis or features that require this setting to be disabled.'),
+    '#default_value' => variable_get('simpletest_clear_results', TRUE),
   );
   $form['general']['simpletest_verbose'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Provide verbose information when running tests'),
-      '#description' => t('The verbose data will be printed along with the standard assertions and is useful for debugging. The verbose data will be erased between each test suite run. The verbose data output is very detailed and should only be used when debugging.'),
-      '#default_value' => variable_get('simpletest_verbose', TRUE),
+    '#type' => 'checkbox',
+    '#title' => t('Provide verbose information when running tests'),
+    '#description' => t('The verbose data will be printed along with the standard assertions and is useful for debugging. The verbose data will be erased between each test suite run. The verbose data output is very detailed and should only be used when debugging.'),
+    '#default_value' => variable_get('simpletest_verbose', TRUE),
   );
 
   $form['httpauth'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('HTTP authentication'),
-      '#description' => t('HTTP auth settings to be used by the SimpleTest browser during testing. Useful when the site requires basic HTTP authentication.'),
-      '#collapsible' => TRUE,
-      '#collapsed' => TRUE,
+    '#type' => 'fieldset',
+    '#title' => t('HTTP authentication'),
+    '#description' => t('HTTP auth settings to be used by the SimpleTest browser during testing. Useful when the site requires basic HTTP authentication.'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
   );
   $form['httpauth']['simpletest_httpauth_method'] = array(
-      '#type' => 'select',
-      '#title' => t('Method'),
-      '#options' => array(
-          CURLAUTH_BASIC => t('Basic'),
-          CURLAUTH_DIGEST => t('Digest'),
-          CURLAUTH_GSSNEGOTIATE => t('GSS negotiate'),
-          CURLAUTH_NTLM => t('NTLM'),
-          CURLAUTH_ANY => t('Any'),
-          CURLAUTH_ANYSAFE => t('Any safe'),
-      ),
-      '#default_value' => variable_get('simpletest_httpauth_method', CURLAUTH_BASIC),
+    '#type' => 'select',
+    '#title' => t('Method'),
+    '#options' => array(
+      CURLAUTH_BASIC => t('Basic'),
+      CURLAUTH_DIGEST => t('Digest'),
+      CURLAUTH_GSSNEGOTIATE => t('GSS negotiate'),
+      CURLAUTH_NTLM => t('NTLM'),
+      CURLAUTH_ANY => t('Any'),
+      CURLAUTH_ANYSAFE => t('Any safe'),
+    ),
+    '#default_value' => variable_get('simpletest_httpauth_method', CURLAUTH_BASIC),
   );
   $username = variable_get('simpletest_httpauth_username');
   $password = variable_get('simpletest_httpauth_password');
   $form['httpauth']['simpletest_httpauth_username'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Username'),
-      '#default_value' => $username,
+    '#type' => 'textfield',
+    '#title' => t('Username'),
+    '#default_value' => $username,
   );
   if ($username && $password) {
     $form['httpauth']['simpletest_httpauth_username']['#description'] = t('Leave this blank to delete both the existing username and password.');
   }
   $form['httpauth']['simpletest_httpauth_password'] = array(
-      '#type' => 'password',
-      '#title' => t('Password'),
+    '#type' => 'password',
+    '#title' => t('Password'),
   );
   if ($password) {
     $form['httpauth']['simpletest_httpauth_password']['#description'] = t('To change the password, enter the new password here.');

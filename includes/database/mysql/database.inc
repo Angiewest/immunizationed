@@ -39,13 +39,13 @@ class DatabaseConnection_mysql extends DatabaseConnection {
     $dsn .= ';dbname=' . $connection_options['database'];
     // Allow PDO options to be overridden.
     $connection_options += array(
-        'pdo' => array(),
+      'pdo' => array(),
     );
     $connection_options['pdo'] += array(
-        // So we don't have to mess around with cursors and unbuffered queries by default.
-        PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
-        // Because MySQL's prepared statements skip the query cache, because it's dumb.
-        PDO::ATTR_EMULATE_PREPARES => TRUE,
+      // So we don't have to mess around with cursors and unbuffered queries by default.
+      PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
+      // Because MySQL's prepared statements skip the query cache, because it's dumb.
+      PDO::ATTR_EMULATE_PREPARES => TRUE,
     );
 
     parent::__construct($dsn, $connection_options['username'], $connection_options['password'], $connection_options['pdo']);
@@ -69,10 +69,10 @@ class DatabaseConnection_mysql extends DatabaseConnection {
     // changed the meaning of TRADITIONAL we need to spell out the modes one by
     // one.
     $connection_options += array(
-        'init_commands' => array(),
+      'init_commands' => array(),
     );
     $connection_options['init_commands'] += array(
-        'sql_mode' => "SET sql_mode = 'ANSI,STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER'",
+      'sql_mode' => "SET sql_mode = 'ANSI,STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER'",
     );
     // Set connection options.
     $this->exec(implode('; ', $connection_options['init_commands']));

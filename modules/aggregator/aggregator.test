@@ -64,14 +64,14 @@ class AggregatorTestCase extends DrupalWebTestCase {
     $feed_name = $this->randomName(10);
     if (!$feed_url) {
       $feed_url = url('rss.xml', array(
-          'query' => array('feed' => $feed_name),
-          'absolute' => TRUE,
+        'query' => array('feed' => $feed_name),
+        'absolute' => TRUE,
       ));
     }
     $edit = array(
-        'title' => $feed_name,
-        'url' => $feed_url,
-        'refresh' => '900',
+      'title' => $feed_name,
+      'url' => $feed_url,
+      'refresh' => '900',
     );
     return $edit;
   }
@@ -312,9 +312,9 @@ EOF;
 class AggregatorConfigurationTestCase extends AggregatorTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Aggregator configuration',
-        'description' => 'Test aggregator settings page.',
-        'group' => 'Aggregator',
+      'name' => 'Aggregator configuration',
+      'description' => 'Test aggregator settings page.',
+      'group' => 'Aggregator',
     );
   }
 
@@ -323,11 +323,11 @@ class AggregatorConfigurationTestCase extends AggregatorTestCase {
    */
   function testSettingsPage() {
     $edit = array(
-        'aggregator_allowed_html_tags' => '<a>',
-        'aggregator_summary_items' => 10,
-        'aggregator_clear' => 3600,
-        'aggregator_category_selector' => 'select',
-        'aggregator_teaser_length' => 200,
+      'aggregator_allowed_html_tags' => '<a>',
+      'aggregator_summary_items' => 10,
+      'aggregator_clear' => 3600,
+      'aggregator_category_selector' => 'select',
+      'aggregator_teaser_length' => 200,
     );
     $this->drupalPost('admin/config/services/aggregator/settings', $edit, t('Save configuration'));
     $this->assertText(t('The configuration options have been saved.'));
@@ -344,9 +344,9 @@ class AggregatorConfigurationTestCase extends AggregatorTestCase {
 class AddFeedTestCase extends AggregatorTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Add feed functionality',
-        'description' => 'Add feed test.',
-        'group' => 'Aggregator'
+      'name' => 'Add feed functionality',
+      'description' => 'Add feed test.',
+      'group' => 'Aggregator'
     );
   }
 
@@ -407,9 +407,9 @@ class AddFeedTestCase extends AggregatorTestCase {
 class CategorizeFeedTestCase extends AggregatorTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Categorize feed functionality',
-        'description' => 'Categorize feed test.',
-        'group' => 'Aggregator'
+      'name' => 'Categorize feed functionality',
+      'description' => 'Categorize feed test.',
+      'group' => 'Aggregator'
     );
   }
 
@@ -453,9 +453,9 @@ class CategorizeFeedTestCase extends AggregatorTestCase {
 class UpdateFeedTestCase extends AggregatorTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Update feed functionality',
-        'description' => 'Update feed test.',
-        'group' => 'Aggregator'
+      'name' => 'Update feed functionality',
+      'description' => 'Update feed test.',
+      'group' => 'Aggregator'
     );
   }
 
@@ -498,9 +498,9 @@ class UpdateFeedTestCase extends AggregatorTestCase {
 class RemoveFeedTestCase extends AggregatorTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Remove feed functionality',
-        'description' => 'Remove feed test.',
-        'group' => 'Aggregator'
+      'name' => 'Remove feed functionality',
+      'description' => 'Remove feed test.',
+      'group' => 'Aggregator'
     );
   }
 
@@ -529,9 +529,9 @@ class RemoveFeedTestCase extends AggregatorTestCase {
 class UpdateFeedItemTestCase extends AggregatorTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Update feed item functionality',
-        'description' => 'Update feed items from a feed.',
-        'group' => 'Aggregator'
+      'name' => 'Update feed item functionality',
+      'description' => 'Update feed items from a feed.',
+      'group' => 'Aggregator'
     );
   }
 
@@ -553,8 +553,8 @@ class UpdateFeedItemTestCase extends AggregatorTestCase {
 
     // Test updating feed items without valid timestamp information.
     $edit = array(
-        'title' => "Feed without publish timestamp",
-        'url' => $this->getRSS091Sample(),
+      'title' => "Feed without publish timestamp",
+      'url' => $this->getRSS091Sample(),
     );
 
     $this->drupalGet($edit['url']);
@@ -571,14 +571,14 @@ class UpdateFeedItemTestCase extends AggregatorTestCase {
     // Sleep for 3 second.
     sleep(3);
     db_update('aggregator_feed')
-    ->condition('fid', $feed->fid)
-    ->fields(array(
-    'checked' => 0,
-    'hash' => '',
-    'etag' => '',
-    'modified' => 0,
-    ))
-    ->execute();
+      ->condition('fid', $feed->fid)
+      ->fields(array(
+        'checked' => 0,
+        'hash' => '',
+        'etag' => '',
+        'modified' => 0,
+      ))
+      ->execute();
     aggregator_refresh($feed);
 
     $after = db_query('SELECT timestamp FROM {aggregator_item} WHERE fid = :fid', array(':fid' => $feed->fid))->fetchField();
@@ -589,9 +589,9 @@ class UpdateFeedItemTestCase extends AggregatorTestCase {
 class RemoveFeedItemTestCase extends AggregatorTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Remove feed item functionality',
-        'description' => 'Remove feed items from a feed.',
-        'group' => 'Aggregator'
+      'name' => 'Remove feed item functionality',
+      'description' => 'Remove feed items from a feed.',
+      'group' => 'Aggregator'
     );
   }
 
@@ -630,9 +630,9 @@ class RemoveFeedItemTestCase extends AggregatorTestCase {
 class CategorizeFeedItemTestCase extends AggregatorTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Categorize feed item functionality',
-        'description' => 'Test feed item categorization.',
-        'group' => 'Aggregator'
+      'name' => 'Categorize feed item functionality',
+      'description' => 'Test feed item categorization.',
+      'group' => 'Aggregator'
     );
   }
 
@@ -659,11 +659,11 @@ class CategorizeFeedItemTestCase extends AggregatorTestCase {
 
     $feed = $this->createFeed();
     db_insert('aggregator_category_feed')
-    ->fields(array(
-    'cid' => $category->cid,
-    'fid' => $feed->fid,
-    ))
-    ->execute();
+      ->fields(array(
+        'cid' => $category->cid,
+        'fid' => $feed->fid,
+      ))
+      ->execute();
     $this->updateFeedItems($feed, $this->getDefaultFeedItemCount());
     $this->getFeedCategories($feed);
     $this->assertTrue(!empty($feed->categories), 'The category found in the feed.');
@@ -672,10 +672,10 @@ class CategorizeFeedItemTestCase extends AggregatorTestCase {
     if (!empty($feed->categories) && !empty($feed->items)) {
       foreach ($feed->categories as $category) {
         $categorized_count = db_select('aggregator_category_item')
-        ->condition('iid', $feed->items, 'IN')
-        ->countQuery()
-        ->execute()
-        ->fetchField();
+          ->condition('iid', $feed->items, 'IN')
+          ->countQuery()
+          ->execute()
+          ->fetchField();
 
         $this->assertEqual($feed->item_count, $categorized_count, 'Total items in feed equal to the total categorized feed items in database');
       }
@@ -692,9 +692,9 @@ class CategorizeFeedItemTestCase extends AggregatorTestCase {
 class ImportOPMLTestCase extends AggregatorTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Import feeds from OPML functionality',
-        'description' => 'Test OPML import.',
-        'group' => 'Aggregator',
+      'name' => 'Import feeds from OPML functionality',
+      'description' => 'Test OPML import.',
+      'group' => 'Aggregator',
     );
   }
 
@@ -706,11 +706,11 @@ class ImportOPMLTestCase extends AggregatorTestCase {
 
     $category = $this->randomName(10);
     $cid = db_insert('aggregator_category')
-    ->fields(array(
+      ->fields(array(
         'title' => $category,
         'description' => '',
-    ))
-    ->execute();
+      ))
+      ->execute();
 
     $this->drupalGet('admin/config/services/aggregator/add/opml');
     $this->assertText('A single OPML document may contain a collection of many feeds.', 'Found OPML help text.');
@@ -732,8 +732,8 @@ class ImportOPMLTestCase extends AggregatorTestCase {
 
     $path = $this->getEmptyOpml();
     $edit = array(
-        'files[upload]' => $path,
-        'remote' => file_create_url($path),
+      'files[upload]' => $path,
+      'remote' => file_create_url($path),
     );
     $this->drupalPost('admin/config/services/aggregator/add/opml', $edit, t('Import'));
     $this->assertRaw(t('You must <em>either</em> upload a file or enter a URL.'), 'Error if both fields are filled.');
@@ -769,20 +769,20 @@ class ImportOPMLTestCase extends AggregatorTestCase {
 
     $category = $this->randomName(10);
     db_insert('aggregator_category')
-    ->fields(array(
-    'cid' => 1,
-    'title' => $category,
-    'description' => '',
-    ))
-    ->execute();
+      ->fields(array(
+        'cid' => 1,
+        'title' => $category,
+        'description' => '',
+      ))
+      ->execute();
 
     $feeds[0] = $this->getFeedEditArray();
     $feeds[1] = $this->getFeedEditArray();
     $feeds[2] = $this->getFeedEditArray();
     $edit = array(
-        'files[upload]' => $this->getValidOpml($feeds),
-        'refresh'       => '900',
-        'category[1]'   => $category,
+      'files[upload]' => $this->getValidOpml($feeds),
+      'refresh'       => '900',
+      'category[1]'   => $category,
     );
     $this->drupalPost('admin/config/services/aggregator/add/opml', $edit, t('Import'));
     $this->assertRaw(t('A feed with the URL %url already exists.', array('%url' => $feeds[0]['url'])), 'Verifying that a duplicate URL was identified');
@@ -822,9 +822,9 @@ class ImportOPMLTestCase extends AggregatorTestCase {
 class AggregatorCronTestCase extends AggregatorTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Update on cron functionality',
-        'description' => 'Update feeds on cron.',
-        'group' => 'Aggregator'
+      'name' => 'Update on cron functionality',
+      'description' => 'Update feeds on cron.',
+      'group' => 'Aggregator'
     );
   }
 
@@ -847,19 +847,19 @@ class AggregatorCronTestCase extends AggregatorTestCase {
     // Test feed locking when queued for update.
     $this->removeFeedItems($feed);
     db_update('aggregator_feed')
-    ->condition('fid', $feed->fid)
-    ->fields(array(
-    'queued' => REQUEST_TIME,
-    ))
-    ->execute();
+      ->condition('fid', $feed->fid)
+      ->fields(array(
+        'queued' => REQUEST_TIME,
+      ))
+      ->execute();
     $this->drupalGet($base_url . '/cron.php', array('external' => TRUE, 'query' => array('cron_key' => $key)));
     $this->assertEqual(0, db_query('SELECT COUNT(*) FROM {aggregator_item} WHERE fid = :fid', array(':fid' => $feed->fid))->fetchField(), 'Expected number of items in database.');
     db_update('aggregator_feed')
-    ->condition('fid', $feed->fid)
-    ->fields(array(
-    'queued' => 0,
-    ))
-    ->execute();
+      ->condition('fid', $feed->fid)
+      ->fields(array(
+        'queued' => 0,
+      ))
+      ->execute();
     $this->drupalGet($base_url . '/cron.php', array('external' => TRUE, 'query' => array('cron_key' => $key)));
     $this->assertEqual(5, db_query('SELECT COUNT(*) FROM {aggregator_item} WHERE fid = :fid', array(':fid' => $feed->fid))->fetchField(), 'Expected number of items in database.');
   }
@@ -871,9 +871,9 @@ class AggregatorCronTestCase extends AggregatorTestCase {
 class AggregatorRenderingTestCase extends AggregatorTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Checks display of aggregator items',
-        'description' => 'Checks display of aggregator items on the page.',
-        'group' => 'Aggregator'
+      'name' => 'Checks display of aggregator items',
+      'description' => 'Checks display of aggregator items on the page.',
+      'group' => 'Aggregator'
     );
   }
 
@@ -891,18 +891,18 @@ class AggregatorRenderingTestCase extends AggregatorTestCase {
     // Place block on page (@see block.test:moveBlockToRegion())
     // Need admin user to be able to access block admin.
     $this->admin_user = $this->drupalCreateUser(array(
-        'administer blocks',
-        'access administration pages',
-        'administer news feeds',
-        'access news feeds',
+      'administer blocks',
+      'access administration pages',
+      'administer news feeds',
+      'access news feeds',
     ));
     $this->drupalLogin($this->admin_user);
 
     // Prepare to use the block admin form.
     $block = array(
-        'module' => 'aggregator',
-        'delta' => 'feed-' . $feed->fid,
-        'title' => $feed->title,
+      'module' => 'aggregator',
+      'delta' => 'feed-' . $feed->fid,
+      'title' => $feed->title,
     );
     $region = 'footer';
     $edit = array();
@@ -967,9 +967,9 @@ class AggregatorRenderingTestCase extends AggregatorTestCase {
 class FeedParserTestCase extends AggregatorTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Feed parser functionality',
-        'description' => 'Test the built-in feed parser with valid feed samples.',
-        'group' => 'Aggregator',
+      'name' => 'Feed parser functionality',
+      'description' => 'Test the built-in feed parser with valid feed samples.',
+      'group' => 'Aggregator',
     );
   }
 

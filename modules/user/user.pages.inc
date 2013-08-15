@@ -31,20 +31,21 @@ function user_pass() {
   global $user;
 
   $form['name'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Username or e-mail address'),
-      '#size' => 60,
-      '#maxlength' => max(USERNAME_MAX_LENGTH, EMAIL_MAX_LENGTH),
-      '#required' => TRUE,
+    '#type' => 'textfield',
+    '#title' => t('Username or e-mail address'),
+    '#size' => 60,
+    '#maxlength' => max(USERNAME_MAX_LENGTH, EMAIL_MAX_LENGTH),
+    '#required' => TRUE,
+    '#default_value' => isset($_GET['name']) ? $_GET['name'] : '',
   );
   // Allow logged in users to request this also.
   if ($user->uid > 0) {
     $form['name']['#type'] = 'value';
     $form['name']['#value'] = $user->mail;
     $form['mail'] = array(
-        '#prefix' => '<p>',
-        '#markup' =>  t('Password reset instructions will be mailed to %email. You must log out to use the password reset link in the e-mail.', array('%email' => $user->mail)),
-        '#suffix' => '</p>',
+      '#prefix' => '<p>',
+      '#markup' =>  t('Password reset instructions will be mailed to %email. You must log out to use the password reset link in the e-mail.', array('%email' => $user->mail)),
+      '#suffix' => '</p>',
     );
   }
   $form['actions'] = array('#type' => 'actions');
@@ -104,7 +105,7 @@ function user_pass_reset($form, &$form_state, $uid, $timestamp, $hashed_pass, $a
       $reset_link_account = user_load($uid);
       if (!empty($reset_link_account)) {
         drupal_set_message(t('Another user (%other_user) is already logged into the site on this computer, but you tried to use a one-time link for user %resetting_user. Please <a href="!logout">logout</a> and try using the link again.',
-        array('%other_user' => $user->name, '%resetting_user' => $reset_link_account->name, '!logout' => url('user/logout'))));
+          array('%other_user' => $user->name, '%resetting_user' => $reset_link_account->name, '!logout' => url('user/logout'))));
       } else {
         // Invalid one-time link specifies an unknown user.
         drupal_set_message(t('The one-time login link you clicked is invalid.'));
@@ -269,15 +270,15 @@ function user_profile_form($form, &$form_state, $account, $category = 'account')
 
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Save'),
+    '#type' => 'submit',
+    '#value' => t('Save'),
   );
   if ($category == 'account') {
     $form['actions']['cancel'] = array(
-        '#type' => 'submit',
-        '#value' => t('Cancel account'),
-        '#submit' => array('user_edit_cancel_submit'),
-        '#access' => $account->uid > 1 && (($account->uid == $user->uid && user_access('cancel account')) || user_access('administer users')),
+      '#type' => 'submit',
+      '#value' => t('Cancel account'),
+      '#submit' => array('user_edit_cancel_submit'),
+      '#access' => $account->uid > 1 && (($account->uid == $user->uid && user_access('cancel account')) || user_access('administer users')),
     );
   }
 
@@ -358,9 +359,9 @@ function user_cancel_confirm_form($form, &$form_state, $account) {
   $admin_access = user_access('administer users');
   $can_select_method = $admin_access || user_access('select account cancellation method');
   $form['user_cancel_method'] = array(
-      '#type' => 'item',
-      '#title' => ($account->uid == $user->uid ? t('When cancelling your account') : t('When cancelling the account')),
-      '#access' => $can_select_method,
+    '#type' => 'item',
+    '#title' => ($account->uid == $user->uid ? t('When cancelling your account') : t('When cancelling the account')),
+    '#access' => $can_select_method,
   );
   $form['user_cancel_method'] += user_cancel_methods();
 
@@ -369,20 +370,20 @@ function user_cancel_confirm_form($form, &$form_state, $account) {
   // account.
   $override_access = $admin_access && ($account->uid != $user->uid);
   $form['user_cancel_confirm'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Require e-mail confirmation to cancel account.'),
-      '#default_value' => ($override_access ? FALSE : TRUE),
-      '#access' => $override_access,
-      '#description' => t('When enabled, the user must confirm the account cancellation via e-mail.'),
+    '#type' => 'checkbox',
+    '#title' => t('Require e-mail confirmation to cancel account.'),
+    '#default_value' => ($override_access ? FALSE : TRUE),
+    '#access' => $override_access,
+    '#description' => t('When enabled, the user must confirm the account cancellation via e-mail.'),
   );
   // Also allow to send account canceled notification mail, if enabled.
   $default_notify = variable_get('user_mail_status_canceled_notify', FALSE);
   $form['user_cancel_notify'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Notify user when account is canceled.'),
-      '#default_value' => ($override_access ? FALSE : $default_notify),
-      '#access' => $override_access && $default_notify,
-      '#description' => t('When enabled, the user will receive an e-mail notification after the account has been cancelled.'),
+    '#type' => 'checkbox',
+    '#title' => t('Notify user when account is canceled.'),
+    '#default_value' => ($override_access ? FALSE : $default_notify),
+    '#access' => $override_access && $default_notify,
+    '#description' => t('When enabled, the user will receive an e-mail notification after the account has been cancelled.'),
   );
 
   // Prepare confirmation form page title and description.
@@ -413,10 +414,10 @@ function user_cancel_confirm_form($form, &$form_state, $account) {
   // Always provide entity id in the same form key as in the entity edit form.
   $form['uid'] = array('#type' => 'value', '#value' => $account->uid);
   return confirm_form($form,
-      $question,
-      'user/' . $account->uid,
-      $description . ' ' . t('This action cannot be undone.'),
-      t('Cancel account'), t('Cancel'));
+    $question,
+    'user/' . $account->uid,
+    $description . ' ' . t('This action cannot be undone.'),
+    t('Cancel account'), t('Cancel'));
 }
 
 /**
@@ -441,8 +442,8 @@ function user_cancel_confirm_form_submit($form, &$form_state) {
     // Store cancelling method and whether to notify the user in $account for
     // user_cancel_confirm().
     $edit = array(
-        'user_cancel_method' => $form_state['values']['user_cancel_method'],
-        'user_cancel_notify' => $form_state['values']['user_cancel_notify'],
+      'user_cancel_method' => $form_state['values']['user_cancel_method'],
+      'user_cancel_notify' => $form_state['values']['user_cancel_notify'],
     );
     $account = user_save($account, $edit);
     _user_mail_notify('cancel_confirm', $account);
@@ -468,23 +469,23 @@ function user_cancel_confirm_form_submit($form, &$form_state) {
  */
 function user_cancel_methods() {
   $methods = array(
-      'user_cancel_block' => array(
-          'title' => t('Disable the account and keep its content.'),
-          'description' => t('Your account will be blocked and you will no longer be able to log in. All of your content will remain attributed to your user name.'),
-      ),
-      'user_cancel_block_unpublish' => array(
-          'title' => t('Disable the account and unpublish its content.'),
-          'description' => t('Your account will be blocked and you will no longer be able to log in. All of your content will be hidden from everyone but administrators.'),
-      ),
-      'user_cancel_reassign' => array(
-          'title' => t('Delete the account and make its content belong to the %anonymous-name user.', array('%anonymous-name' => variable_get('anonymous', t('Anonymous')))),
-          'description' => t('Your account will be removed and all account information deleted. All of your content will be assigned to the %anonymous-name user.', array('%anonymous-name' => variable_get('anonymous', t('Anonymous')))),
-      ),
-      'user_cancel_delete' => array(
-          'title' => t('Delete the account and its content.'),
-          'description' => t('Your account will be removed and all account information deleted. All of your content will also be deleted.'),
-          'access' => user_access('administer users'),
-      ),
+    'user_cancel_block' => array(
+      'title' => t('Disable the account and keep its content.'),
+      'description' => t('Your account will be blocked and you will no longer be able to log in. All of your content will remain attributed to your user name.'),
+    ),
+    'user_cancel_block_unpublish' => array(
+      'title' => t('Disable the account and unpublish its content.'),
+      'description' => t('Your account will be blocked and you will no longer be able to log in. All of your content will be hidden from everyone but administrators.'),
+    ),
+    'user_cancel_reassign' => array(
+      'title' => t('Delete the account and make its content belong to the %anonymous-name user.', array('%anonymous-name' => variable_get('anonymous', t('Anonymous')))),
+      'description' => t('Your account will be removed and all account information deleted. All of your content will be assigned to the %anonymous-name user.', array('%anonymous-name' => variable_get('anonymous', t('Anonymous')))),
+    ),
+    'user_cancel_delete' => array(
+      'title' => t('Delete the account and its content.'),
+      'description' => t('Your account will be removed and all account information deleted. All of your content will also be deleted.'),
+      'access' => user_access('administer users'),
+    ),
   );
   // Allow modules to customize account cancellation methods.
   drupal_alter('user_cancel_methods', $methods);
@@ -493,12 +494,12 @@ function user_cancel_methods() {
   $default_method = variable_get('user_cancel_method', 'user_cancel_block');
   foreach ($methods as $name => $method) {
     $form[$name] = array(
-        '#type' => 'radio',
-        '#title' => $method['title'],
-        '#description' => (isset($method['description']) ? $method['description'] : NULL),
-        '#return_value' => $name,
-        '#default_value' => $default_method,
-        '#parents' => array('user_cancel_method'),
+      '#type' => 'radio',
+      '#title' => $method['title'],
+      '#description' => (isset($method['description']) ? $method['description'] : NULL),
+      '#return_value' => $name,
+      '#default_value' => $default_method,
+      '#parents' => array('user_cancel_method'),
     );
   }
   return $form;
@@ -520,7 +521,7 @@ function user_cancel_confirm($account, $timestamp = 0, $hashed_pass = '') {
     // Validate expiration and hashed password/login.
     if ($timestamp <= $current && $current - $timestamp < $timeout && $account->uid && $timestamp >= $account->login && $hashed_pass == user_pass_rehash($account->pass, $timestamp, $account->login)) {
       $edit = array(
-          'user_cancel_notify' => isset($account->data['user_cancel_notify']) ? $account->data['user_cancel_notify'] : variable_get('user_mail_status_canceled_notify', FALSE),
+        'user_cancel_notify' => isset($account->data['user_cancel_notify']) ? $account->data['user_cancel_notify'] : variable_get('user_mail_status_canceled_notify', FALSE),
       );
       user_cancel($edit, $account->uid, $account->data['user_cancel_method']);
       // Since user_cancel() is not invoked via Form API, batch processing needs

@@ -22,19 +22,19 @@ function poll_page() {
   $select->join('poll_choice', 'c', 'c.nid = n.nid');
   $select->addExpression('SUM(c.chvotes)', 'votes');
   $select = $select->fields('n', array('nid', 'title', 'created'))
-  ->fields('p', array('active'))
-  ->condition('n.status', 1)
-  ->orderBy('n.created', 'DESC')
-  ->groupBy('n.nid')
-  ->groupBy('n.title')
-  ->groupBy('p.active')
-  ->groupBy('n.created')
-  ->extend('PagerDefault')
-  ->limit($polls_per_page)
-  ->addTag('node_access');
+    ->fields('p', array('active'))
+    ->condition('n.status', 1)
+    ->orderBy('n.created', 'DESC')
+    ->groupBy('n.nid')
+    ->groupBy('n.title')
+    ->groupBy('p.active')
+    ->groupBy('n.created')
+    ->extend('PagerDefault')
+    ->limit($polls_per_page)
+    ->addTag('node_access');
   $select->setCountQuery($count_select);
   $queried_nodes = $select->execute()
-  ->fetchAllAssoc('nid');
+    ->fetchAllAssoc('nid');
 
   $output = '<ul>';
   foreach ($queried_nodes as $node) {
@@ -60,28 +60,28 @@ function poll_votes($node) {
   $select->join('poll_choice', 'pc', 'pv.chid = pc.chid');
   $select->join('users', 'u', 'pv.uid = u.uid');
   $queried_votes = $select
-  ->addTag('translatable')
-  ->fields('pv', array('chid', 'uid', 'hostname', 'timestamp', 'nid'))
-  ->fields('pc', array('chtext'))
-  ->fields('u', array('name'))
-  ->condition('pv.nid', $node->nid)
-  ->limit($votes_per_page)
-  ->orderByHeader($header)
-  ->execute();
+    ->addTag('translatable')
+    ->fields('pv', array('chid', 'uid', 'hostname', 'timestamp', 'nid'))
+    ->fields('pc', array('chtext'))
+    ->fields('u', array('name'))
+    ->condition('pv.nid', $node->nid)
+    ->limit($votes_per_page)
+    ->orderByHeader($header)
+    ->execute();
 
   $rows = array();
   foreach ($queried_votes as $vote) {
     $rows[] = array(
-        $vote->name ? theme('username', array('account' => $vote)) : check_plain($vote->hostname),
-        check_plain($vote->chtext),
-        format_date($vote->timestamp),
+      $vote->name ? theme('username', array('account' => $vote)) : check_plain($vote->hostname),
+      check_plain($vote->chtext),
+      format_date($vote->timestamp),
     );
   }
   $build['poll_votes_table'] = array(
-      '#theme' => 'table',
-      '#header' => $header,
-      '#rows' => $rows,
-      '#prefix' => t('This table lists all the recorded votes for this poll. If anonymous users are allowed to vote, they will be identified by the IP address of the computer they used when they voted.'),
+    '#theme' => 'table',
+    '#header' => $header,
+    '#rows' => $rows,
+    '#prefix' => t('This table lists all the recorded votes for this poll. If anonymous users are allowed to vote, they will be identified by the IP address of the computer they used when they voted.'),
   );
   $build['poll_votes_pager'] = array('#theme' => 'pager');
   return $build;

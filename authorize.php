@@ -32,12 +32,12 @@ define('DRUPAL_ROOT', getcwd());
  * such as hook_init() and hook_exit() invokes, css/js preprocessing and
  * translation, and solves some theming issues. The flag is checked in other
  * places in Drupal code (not just authorize.php).
-*/
+ */
 define('MAINTENANCE_MODE', 'update');
 
 /**
  * Renders a 403 access denied page for authorize.php.
-*/
+ */
 function authorize_access_denied_page() {
   drupal_add_http_header('Status', '403 Forbidden');
   watchdog('access denied', 'authorize.php', NULL, WATCHDOG_WARNING);
@@ -141,8 +141,8 @@ if (authorize_access_allowed()) {
     }
     else {
       $links = array_merge($links, array(
-          l(t('Administration pages'), 'admin'),
-          l(t('Front page'), '<front>'),
+        l(t('Administration pages'), 'admin'),
+        l(t('Front page'), '<front>'),
       ));
     }
 

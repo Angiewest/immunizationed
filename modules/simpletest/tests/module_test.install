@@ -10,16 +10,16 @@
  */
 function module_test_schema() {
   $schema['module_test'] = array(
-      'description' => 'Dummy table to test the behavior of hook_schema() during module installation.',
-      'fields' => array(
-          'data' => array(
-              'type' => 'varchar',
-              'length' => 255,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => 'An example data column for the module.',
-          ),
+    'description' => 'Dummy table to test the behavior of hook_schema() during module installation.',
+    'fields' => array(
+      'data' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'An example data column for the module.',
       ),
+    ),
   );
   return $schema;
 }

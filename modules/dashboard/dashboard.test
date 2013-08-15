@@ -11,9 +11,9 @@
 class DashboardBlocksTestCase extends DrupalWebTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Dashboard blocks',
-        'description' => 'Test blocks as used by the dashboard.',
-        'group' => 'Dashboard',
+      'name' => 'Dashboard blocks',
+      'description' => 'Test blocks as used by the dashboard.',
+      'group' => 'Dashboard',
     );
   }
 

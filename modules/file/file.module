@@ -37,17 +37,17 @@ function file_menu() {
   $items = array();
 
   $items['file/ajax'] = array(
-      'page callback' => 'file_ajax_upload',
-      'delivery callback' => 'ajax_deliver',
-      'access arguments' => array('access content'),
-      'theme callback' => 'ajax_base_page_theme',
-      'type' => MENU_CALLBACK,
+    'page callback' => 'file_ajax_upload',
+    'delivery callback' => 'ajax_deliver',
+    'access arguments' => array('access content'),
+    'theme callback' => 'ajax_base_page_theme',
+    'type' => MENU_CALLBACK,
   );
   $items['file/progress'] = array(
-      'page callback' => 'file_ajax_progress',
-      'access arguments' => array('access content'),
-      'theme callback' => 'ajax_base_page_theme',
-      'type' => MENU_CALLBACK,
+    'page callback' => 'file_ajax_progress',
+    'access arguments' => array('access content'),
+    'theme callback' => 'ajax_base_page_theme',
+    'type' => MENU_CALLBACK,
   );
 
   return $items;
@@ -61,23 +61,23 @@ function file_menu() {
 function file_element_info() {
   $file_path = drupal_get_path('module', 'file');
   $types['managed_file'] = array(
-      '#input' => TRUE,
-      '#process' => array('file_managed_file_process'),
-      '#value_callback' => 'file_managed_file_value',
-      '#element_validate' => array('file_managed_file_validate'),
-      '#pre_render' => array('file_managed_file_pre_render'),
-      '#theme' => 'file_managed_file',
-      '#theme_wrappers' => array('form_element'),
-      '#progress_indicator' => 'throbber',
-      '#progress_message' => NULL,
-      '#upload_validators' => array(),
-      '#upload_location' => NULL,
-      '#size' => 22,
-      '#extended' => FALSE,
-      '#attached' => array(
-          'css' => array($file_path . '/file.css'),
-          'js' => array($file_path . '/file.js'),
-      ),
+    '#input' => TRUE,
+    '#process' => array('file_managed_file_process'),
+    '#value_callback' => 'file_managed_file_value',
+    '#element_validate' => array('file_managed_file_validate'),
+    '#pre_render' => array('file_managed_file_pre_render'),
+    '#theme' => 'file_managed_file',
+    '#theme_wrappers' => array('form_element'),
+    '#progress_indicator' => 'throbber',
+    '#progress_message' => NULL,
+    '#upload_validators' => array(),
+    '#upload_location' => NULL,
+    '#size' => 22,
+    '#extended' => FALSE,
+    '#attached' => array(
+      'css' => array($file_path . '/file.css'),
+      'js' => array($file_path . '/file.js'),
+    ),
   );
   return $types;
 }
@@ -87,30 +87,30 @@ function file_element_info() {
  */
 function file_theme() {
   return array(
-      // file.module.
-      'file_link' => array(
-          'variables' => array('file' => NULL, 'icon_directory' => NULL),
-      ),
-      'file_icon' => array(
-          'variables' => array('file' => NULL, 'icon_directory' => NULL),
-      ),
-      'file_managed_file' => array(
-          'render element' => 'element',
-      ),
+    // file.module.
+    'file_link' => array(
+      'variables' => array('file' => NULL, 'icon_directory' => NULL),
+    ),
+    'file_icon' => array(
+      'variables' => array('file' => NULL, 'icon_directory' => NULL),
+    ),
+    'file_managed_file' => array(
+      'render element' => 'element',
+    ),
 
-      // file.field.inc.
-      'file_widget' => array(
-          'render element' => 'element',
-      ),
-      'file_widget_multiple' => array(
-          'render element' => 'element',
-      ),
-      'file_formatter_table' => array(
-          'variables' => array('items' => NULL),
-      ),
-      'file_upload_help' => array(
-          'variables' => array('description' => NULL, 'upload_validators' => NULL),
-      ),
+    // file.field.inc.
+    'file_widget' => array(
+      'render element' => 'element',
+    ),
+    'file_widget_multiple' => array(
+      'render element' => 'element',
+    ),
+    'file_formatter_table' => array(
+      'variables' => array('items' => NULL),
+    ),
+    'file_upload_help' => array(
+      'variables' => array('description' => NULL, 'upload_validators' => NULL),
+    ),
   );
 }
 
@@ -148,7 +148,7 @@ function file_file_download($uri, $field_type = 'file') {
   // an image preview on a node/add form) in which case, allow download by the
   // file's owner.
   if (empty($references) && ($file->status == FILE_STATUS_PERMANENT || $file->uid != $user->uid)) {
-    return;
+      return;
   }
 
   // Default to allow access.
@@ -297,8 +297,8 @@ function file_ajax_upload() {
  */
 function file_ajax_progress($key) {
   $progress = array(
-      'message' => t('Starting upload...'),
-      'percentage' => -1,
+    'message' => t('Starting upload...'),
+    'percentage' => -1,
   );
 
   $implementation = file_progress_implementation();
@@ -366,25 +366,25 @@ function file_managed_file_process($element, &$form_state, $form) {
   $element['#tree'] = TRUE;
 
   $ajax_settings = array(
-      'path' => 'file/ajax/' . implode('/', $element['#array_parents']) . '/' . $form['form_build_id']['#value'],
-      'wrapper' => $element['#id'] . '-ajax-wrapper',
-      'effect' => 'fade',
-      'progress' => array(
-          'type' => $element['#progress_indicator'],
-          'message' => $element['#progress_message'],
-      ),
+    'path' => 'file/ajax/' . implode('/', $element['#array_parents']) . '/' . $form['form_build_id']['#value'],
+    'wrapper' => $element['#id'] . '-ajax-wrapper',
+    'effect' => 'fade',
+    'progress' => array(
+      'type' => $element['#progress_indicator'],
+      'message' => $element['#progress_message'],
+    ),
   );
 
   // Set up the buttons first since we need to check if they were clicked.
   $element['upload_button'] = array(
-      '#name' => implode('_', $element['#parents']) . '_upload_button',
-      '#type' => 'submit',
-      '#value' => t('Upload'),
-      '#validate' => array(),
-      '#submit' => array('file_managed_file_submit'),
-      '#limit_validation_errors' => array($element['#parents']),
-      '#ajax' => $ajax_settings,
-      '#weight' => -5,
+    '#name' => implode('_', $element['#parents']) . '_upload_button',
+    '#type' => 'submit',
+    '#value' => t('Upload'),
+    '#validate' => array(),
+    '#submit' => array('file_managed_file_submit'),
+    '#limit_validation_errors' => array($element['#parents']),
+    '#ajax' => $ajax_settings,
+    '#weight' => -5,
   );
 
   // Force the progress indicator for the remove button to be either 'none' or
@@ -393,19 +393,19 @@ function file_managed_file_process($element, &$form_state, $form) {
   $ajax_settings['progress']['message'] = NULL;
   $ajax_settings['effect'] = 'none';
   $element['remove_button'] = array(
-      '#name' => implode('_', $element['#parents']) . '_remove_button',
-      '#type' => 'submit',
-      '#value' => t('Remove'),
-      '#validate' => array(),
-      '#submit' => array('file_managed_file_submit'),
-      '#limit_validation_errors' => array($element['#parents']),
-      '#ajax' => $ajax_settings,
-      '#weight' => -5,
+    '#name' => implode('_', $element['#parents']) . '_remove_button',
+    '#type' => 'submit',
+    '#value' => t('Remove'),
+    '#validate' => array(),
+    '#submit' => array('file_managed_file_submit'),
+    '#limit_validation_errors' => array($element['#parents']),
+    '#ajax' => $ajax_settings,
+    '#weight' => -5,
   );
 
   $element['fid'] = array(
-      '#type' => 'hidden',
-      '#value' => $fid,
+    '#type' => 'hidden',
+    '#value' => $fid,
   );
 
   // Add progress bar support to the upload if possible.
@@ -414,22 +414,22 @@ function file_managed_file_process($element, &$form_state, $form) {
 
     if ($implementation == 'uploadprogress') {
       $element['UPLOAD_IDENTIFIER'] = array(
-          '#type' => 'hidden',
-          '#value' => $upload_progress_key,
-          '#attributes' => array('class' => array('file-progress')),
-          // Uploadprogress extension requires this field to be at the top of the
-          // form.
-          '#weight' => -20,
+        '#type' => 'hidden',
+        '#value' => $upload_progress_key,
+        '#attributes' => array('class' => array('file-progress')),
+        // Uploadprogress extension requires this field to be at the top of the
+        // form.
+        '#weight' => -20,
       );
     }
     elseif ($implementation == 'apc') {
       $element['APC_UPLOAD_PROGRESS'] = array(
-          '#type' => 'hidden',
-          '#value' => $upload_progress_key,
-          '#attributes' => array('class' => array('file-progress')),
-          // Uploadprogress extension requires this field to be at the top of the
-          // form.
-          '#weight' => -20,
+        '#type' => 'hidden',
+        '#value' => $upload_progress_key,
+        '#attributes' => array('class' => array('file-progress')),
+        // Uploadprogress extension requires this field to be at the top of the
+        // form.
+        '#weight' => -20,
       );
     }
 
@@ -439,20 +439,20 @@ function file_managed_file_process($element, &$form_state, $form) {
 
   // The file upload field itself.
   $element['upload'] = array(
-      '#name' => 'files[' . implode('_', $element['#parents']) . ']',
-      '#type' => 'file',
-      '#title' => t('Choose a file'),
-      '#title_display' => 'invisible',
-      '#size' => $element['#size'],
-      '#theme_wrappers' => array(),
-      '#weight' => -10,
+    '#name' => 'files[' . implode('_', $element['#parents']) . ']',
+    '#type' => 'file',
+    '#title' => t('Choose a file'),
+    '#title_display' => 'invisible',
+    '#size' => $element['#size'],
+    '#theme_wrappers' => array(),
+    '#weight' => -10,
   );
 
   if ($fid && $element['#file']) {
     $element['filename'] = array(
-        '#type' => 'markup',
-        '#markup' => theme('file_link', array('file' => $element['#file'])) . ' ',
-        '#weight' => -10,
+      '#type' => 'markup',
+      '#markup' => theme('file_link', array('file' => $element['#file'])) . ' ',
+      '#weight' => -10,
     );
   }
 
@@ -460,10 +460,10 @@ function file_managed_file_process($element, &$form_state, $form) {
   if (isset($element['#upload_validators']['file_validate_extensions'][0])) {
     $extension_list = implode(',', array_filter(explode(' ', $element['#upload_validators']['file_validate_extensions'][0])));
     $element['upload']['#attached']['js'] = array(
-        array(
-            'type' => 'setting',
-            'data' => array('file' => array('elements' => array('#' . $element['#id'] . '-upload' => $extension_list)))
-        )
+      array(
+        'type' => 'setting',
+        'data' => array('file' => array('elements' => array('#' . $element['#id'] . '-upload' => $extension_list)))
+      )
     );
   }
 
@@ -730,9 +730,9 @@ function theme_file_link($variables) {
   // Set options as per anchor format described at
   // http://microformats.org/wiki/file-format-examples
   $options = array(
-      'attributes' => array(
-          'type' => $file->filemime . '; length=' . $file->filesize,
-      ),
+    'attributes' => array(
+      'type' => $file->filemime . '; length=' . $file->filesize,
+    ),
   );
 
   // Use the description as the link text if available.
@@ -869,7 +869,7 @@ function file_icon_map($file) {
     case 'application/x-kword-crypt':
       return 'x-office-document';
 
-      // Spreadsheet document types.
+    // Spreadsheet document types.
     case 'application/vnd.ms-excel':
     case 'application/vnd.ms-excel.sheet.macroEnabled.12':
     case 'application/vnd.oasis.opendocument.spreadsheet':
@@ -885,7 +885,7 @@ function file_icon_map($file) {
     case 'application/x-kspread-crypt':
       return 'x-office-spreadsheet';
 
-      // Presentation document types.
+    // Presentation document types.
     case 'application/vnd.ms-powerpoint':
     case 'application/vnd.ms-powerpoint.presentation.macroEnabled.12':
     case 'application/vnd.oasis.opendocument.presentation':
@@ -897,7 +897,7 @@ function file_icon_map($file) {
     case 'application/x-kpresenter':
       return 'x-office-presentation';
 
-      // Compressed archive types.
+    // Compressed archive types.
     case 'application/zip':
     case 'application/x-zip':
     case 'application/stuffit':
@@ -924,7 +924,7 @@ function file_icon_map($file) {
     case 'application/x-tgz':
       return 'package-x-generic';
 
-      // Script file types.
+    // Script file types.
     case 'application/ecmascript':
     case 'application/javascript':
     case 'application/mathematica':
@@ -950,11 +950,11 @@ function file_icon_map($file) {
     case 'text/x-tcl':
       return 'text-x-script';
 
-      // HTML aliases.
+    // HTML aliases.
     case 'application/xhtml+xml':
       return 'text-html';
 
-      // Executable types.
+    // Executable types.
     case 'application/x-macbinary':
     case 'application/x-ms-dos-executable':
     case 'application/x-pef-executable':
@@ -999,8 +999,8 @@ function file_get_file_references($file, $field = NULL, $age = FIELD_LOAD_REVISI
       // Get each time this file is used within a field.
       $query = new EntityFieldQuery();
       $query
-      ->fieldCondition($file_field, 'fid', $file->fid)
-      ->age($age);
+        ->fieldCondition($file_field, 'fid', $file->fid)
+        ->age($age);
       $references[$field_name] = $query->execute();
     }
   }

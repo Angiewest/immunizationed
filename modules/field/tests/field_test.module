@@ -22,14 +22,14 @@ require_once DRUPAL_ROOT . '/modules/field/tests/field_test.storage.inc';
  */
 function field_test_permission() {
   $perms = array(
-      'access field_test content' => array(
-          'title' => t('Access field_test content'),
-          'description' => t('View published field_test content.'),
-      ),
-      'administer field_test content' => array(
-          'title' => t('Administer field_test content'),
-          'description' => t('Manage field_test content'),
-      ),
+    'access field_test content' => array(
+      'title' => t('Access field_test content'),
+      'description' => t('View published field_test content.'),
+    ),
+    'administer field_test content' => array(
+      'title' => t('Administer field_test content'),
+      'description' => t('Manage field_test content'),
+    ),
   );
   return $perms;
 }
@@ -44,27 +44,27 @@ function field_test_menu() {
   foreach ($bundles as $bundle_name => $bundle_info) {
     $bundle_url_str = str_replace('_', '-', $bundle_name);
     $items['test-entity/add/' . $bundle_url_str] = array(
-        'title' => t('Add %bundle test_entity', array('%bundle' => $bundle_info['label'])),
-        'page callback' => 'field_test_entity_add',
-        'page arguments' => array(2),
-        'access arguments' => array('administer field_test content'),
-        'type' => MENU_NORMAL_ITEM,
-    );
-  }
-  $items['test-entity/manage/%field_test_entity_test/edit'] = array(
-      'title' => 'Edit test entity',
-      'page callback' => 'field_test_entity_edit',
+      'title' => t('Add %bundle test_entity', array('%bundle' => $bundle_info['label'])),
+      'page callback' => 'field_test_entity_add',
       'page arguments' => array(2),
       'access arguments' => array('administer field_test content'),
       'type' => MENU_NORMAL_ITEM,
+    );
+  }
+  $items['test-entity/manage/%field_test_entity_test/edit'] = array(
+    'title' => 'Edit test entity',
+    'page callback' => 'field_test_entity_edit',
+    'page arguments' => array(2),
+    'access arguments' => array('administer field_test content'),
+    'type' => MENU_NORMAL_ITEM,
   );
 
   $items['test-entity/nested/%field_test_entity_test/%field_test_entity_test'] = array(
-      'title' => 'Nested entity form',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('field_test_entity_nested_form', 2, 3),
-      'access arguments' => array('administer field_test content'),
-      'type' => MENU_NORMAL_ITEM,
+    'title' => 'Nested entity form',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('field_test_entity_nested_form', 2, 3),
+    'access arguments' => array('administer field_test content'),
+    'type' => MENU_NORMAL_ITEM,
   );
 
   return $items;
@@ -197,17 +197,14 @@ function field_test_entity_query_alter(&$query) {
 function field_test_dummy_field_storage_query(EntityFieldQuery $query) {
   // Return dummy values that will be checked by the test.
   return array(
-      'user' => array(
-          1 => entity_create_stub_entity('user', array(1, NULL, NULL)),
-      ),
+    'user' => array(
+      1 => entity_create_stub_entity('user', array(1, NULL, NULL)),
+    ),
   );
 }
 
 /**
- * Entity label callback.
- *
- * @param $entity
- *   The entity object.
+ * Implements callback_entity_info_label().
  *
  * @return
  *   The label of the entity prefixed with "label callback".

@@ -10,38 +10,40 @@
  */
 function field_test_field_info() {
   return array(
-      'test_field' => array(
-          'label' => t('Test field'),
-          'description' => t('Dummy field type used for tests.'),
-          'settings' => array(
-              'test_field_setting' => 'dummy test string',
-              'changeable' => 'a changeable field setting',
-              'unchangeable' => 'an unchangeable field setting',
-          ),
-          'instance_settings' => array(
-              'test_instance_setting' => 'dummy test string',
-              'test_hook_field_load' => FALSE,
-          ),
-          'default_widget' => 'test_field_widget',
-          'default_formatter' => 'field_test_default',
+    'test_field' => array(
+      'label' => t('Test field'),
+      'description' => t('Dummy field type used for tests.'),
+      'settings' => array(
+        'test_field_setting' => 'dummy test string',
+        'changeable' => 'a changeable field setting',
+        'unchangeable' => 'an unchangeable field setting',
       ),
-      'shape' => array(
-          'label' => t('Shape'),
-          'description' => t('Another dummy field type.'),
-          'settings' => array(),
-          'instance_settings' => array(),
-          'default_widget' => 'test_field_widget',
-          'default_formatter' => 'field_test_default',
+      'instance_settings' => array(
+        'test_instance_setting' => 'dummy test string',
+        'test_hook_field_load' => FALSE,
       ),
-      'hidden_test_field' => array(
-          'no_ui' => TRUE,
-          'label' => t('Hidden from UI test field'),
-          'description' => t('Dummy hidden field type used for tests.'),
-          'settings' => array(),
-          'instance_settings' => array(),
-          'default_widget' => 'test_field_widget',
-          'default_formatter' => 'field_test_default',
+      'default_widget' => 'test_field_widget',
+      'default_formatter' => 'field_test_default',
+    ),
+    'shape' => array(
+      'label' => t('Shape'),
+      'description' => t('Another dummy field type.'),
+      'settings' => array(
+        'foreign_key_name' => 'shape',
       ),
+      'instance_settings' => array(),
+      'default_widget' => 'test_field_widget',
+      'default_formatter' => 'field_test_default',
+    ),
+    'hidden_test_field' => array(
+      'no_ui' => TRUE,
+      'label' => t('Hidden from UI test field'),
+      'description' => t('Dummy hidden field type used for tests.'),
+      'settings' => array(),
+      'instance_settings' => array(),
+      'default_widget' => 'test_field_widget',
+      'default_formatter' => 'field_test_default',
+    ),
   );
 }
 
@@ -112,8 +114,8 @@ function field_test_field_validate($entity_type, $entity, $field, $instance, $la
   foreach ($items as $delta => $item) {
     if ($item['value'] == -1) {
       $errors[$field['field_name']][$langcode][$delta][] = array(
-          'error' => 'field_test_invalid',
-          'message' => t('%name does not accept the value -1.', array('%name' => $instance['label'])),
+        'error' => 'field_test_invalid',
+        'message' => t('%name does not accept the value -1.', array('%name' => $instance['label'])),
       );
     }
   }
@@ -133,11 +135,11 @@ function field_test_field_settings_form($field, $instance, $has_data) {
   $settings = $field['settings'];
 
   $form['test_field_setting'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Field test field setting'),
-      '#default_value' => $settings['test_field_setting'],
-      '#required' => FALSE,
-      '#description' => t('A dummy form element to simulate field setting.'),
+    '#type' => 'textfield',
+    '#title' => t('Field test field setting'),
+    '#default_value' => $settings['test_field_setting'],
+    '#required' => FALSE,
+    '#description' => t('A dummy form element to simulate field setting.'),
   );
 
   return $form;
@@ -150,11 +152,11 @@ function field_test_field_instance_settings_form($field, $instance) {
   $settings = $instance['settings'];
 
   $form['test_instance_setting'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Field test field instance setting'),
-      '#default_value' => $settings['test_instance_setting'],
-      '#required' => FALSE,
-      '#description' => t('A dummy form element to simulate field instance setting.'),
+    '#type' => 'textfield',
+    '#title' => t('Field test field instance setting'),
+    '#default_value' => $settings['test_instance_setting'],
+    '#required' => FALSE,
+    '#description' => t('A dummy form element to simulate field instance setting.'),
   );
 
   return $form;
@@ -165,19 +167,19 @@ function field_test_field_instance_settings_form($field, $instance) {
  */
 function field_test_field_widget_info() {
   return array(
-      'test_field_widget' => array(
-          'label' => t('Test field'),
-          'field types' => array('test_field', 'hidden_test_field'),
-          'settings' => array('test_widget_setting' => 'dummy test string'),
+    'test_field_widget' => array(
+      'label' => t('Test field'),
+      'field types' => array('test_field', 'hidden_test_field'),
+      'settings' => array('test_widget_setting' => 'dummy test string'),
+    ),
+    'test_field_widget_multiple' => array(
+      'label' => t('Test field 1'),
+      'field types' => array('test_field'),
+      'settings' => array('test_widget_setting_multiple' => 'dummy test string'),
+      'behaviors' => array(
+        'multiple values' => FIELD_BEHAVIOR_CUSTOM,
       ),
-      'test_field_widget_multiple' => array(
-          'label' => t('Test field 1'),
-          'field types' => array('test_field'),
-          'settings' => array('test_widget_setting_multiple' => 'dummy test string'),
-          'behaviors' => array(
-              'multiple values' => FIELD_BEHAVIOR_CUSTOM,
-          ),
-      ),
+    ),
   );
 }
 
@@ -188,8 +190,8 @@ function field_test_field_widget_form(&$form, &$form_state, $field, $instance, $
   switch ($instance['widget']['type']) {
     case 'test_field_widget':
       $element += array(
-      '#type' => 'textfield',
-      '#default_value' => isset($items[$delta]['value']) ? $items[$delta]['value'] : '',
+        '#type' => 'textfield',
+        '#default_value' => isset($items[$delta]['value']) ? $items[$delta]['value'] : '',
       );
       return array('value' => $element);
 
@@ -199,9 +201,9 @@ function field_test_field_widget_form(&$form, &$form_state, $field, $instance, $
         $values[] = $value['value'];
       }
       $element += array(
-          '#type' => 'textfield',
-          '#default_value' => implode(', ', $values),
-          '#element_validate' => array('field_test_widget_multiple_validate'),
+        '#type' => 'textfield',
+        '#default_value' => implode(', ', $values),
+        '#element_validate' => array('field_test_widget_multiple_validate'),
       );
       return $element;
   }
@@ -245,11 +247,11 @@ function field_test_field_widget_settings_form($field, $instance) {
   $settings = $widget['settings'];
 
   $form['test_widget_setting'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Field test field widget setting'),
-      '#default_value' => $settings['test_widget_setting'],
-      '#required' => FALSE,
-      '#description' => t('A dummy form element to simulate field widget setting.'),
+    '#type' => 'textfield',
+    '#title' => t('Field test field widget setting'),
+    '#default_value' => $settings['test_widget_setting'],
+    '#required' => FALSE,
+    '#description' => t('A dummy form element to simulate field widget setting.'),
   );
 
   return $form;
@@ -260,29 +262,29 @@ function field_test_field_widget_settings_form($field, $instance) {
  */
 function field_test_field_formatter_info() {
   return array(
-      'field_test_default' => array(
-          'label' => t('Default'),
-          'description' => t('Default formatter'),
-          'field types' => array('test_field'),
-          'settings' => array(
-              'test_formatter_setting' => 'dummy test string',
-          ),
+    'field_test_default' => array(
+      'label' => t('Default'),
+      'description' => t('Default formatter'),
+      'field types' => array('test_field'),
+      'settings' => array(
+        'test_formatter_setting' => 'dummy test string',
       ),
-      'field_test_multiple' => array(
-          'label' => t('Multiple'),
-          'description' => t('Multiple formatter'),
-          'field types' => array('test_field'),
-          'settings' => array(
-              'test_formatter_setting_multiple' => 'dummy test string',
-          ),
+    ),
+    'field_test_multiple' => array(
+      'label' => t('Multiple'),
+      'description' => t('Multiple formatter'),
+      'field types' => array('test_field'),
+      'settings' => array(
+        'test_formatter_setting_multiple' => 'dummy test string',
       ),
-      'field_test_with_prepare_view' => array(
-          'label' => t('Tests hook_field_formatter_prepare_view()'),
-          'field types' => array('test_field'),
-          'settings' => array(
-              'test_formatter_setting_additional' => 'dummy test string',
-          ),
+    ),
+    'field_test_with_prepare_view' => array(
+      'label' => t('Tests hook_field_formatter_prepare_view()'),
+      'field types' => array('test_field'),
+      'settings' => array(
+        'test_formatter_setting_additional' => 'dummy test string',
       ),
+    ),
   );
 }
 
@@ -297,20 +299,20 @@ function field_test_field_formatter_settings_form($field, $instance, $view_mode,
 
   // The name of the setting depends on the formatter type.
   $map = array(
-      'field_test_default' => 'test_formatter_setting',
-      'field_test_multiple' => 'test_formatter_setting_multiple',
-      'field_test_with_prepare_view' => 'test_formatter_setting_additional',
+    'field_test_default' => 'test_formatter_setting',
+    'field_test_multiple' => 'test_formatter_setting_multiple',
+    'field_test_with_prepare_view' => 'test_formatter_setting_additional',
   );
 
   if (isset($map[$display['type']])) {
     $name = $map[$display['type']];
 
     $element[$name] = array(
-        '#title' => t('Setting'),
-        '#type' => 'textfield',
-        '#size' => 20,
-        '#default_value' => $settings[$name],
-        '#required' => TRUE,
+      '#title' => t('Setting'),
+      '#type' => 'textfield',
+      '#size' => 20,
+      '#default_value' => $settings[$name],
+      '#required' => TRUE,
     );
   }
 
@@ -328,9 +330,9 @@ function field_test_field_formatter_settings_summary($field, $instance, $view_mo
 
   // The name of the setting depends on the formatter type.
   $map = array(
-      'field_test_default' => 'test_formatter_setting',
-      'field_test_multiple' => 'test_formatter_setting_multiple',
-      'field_test_with_prepare_view' => 'test_formatter_setting_additional',
+    'field_test_default' => 'test_formatter_setting',
+    'field_test_multiple' => 'test_formatter_setting_multiple',
+    'field_test_with_prepare_view' => 'test_formatter_setting_additional',
   );
 
   if (isset($map[$display['type']])) {

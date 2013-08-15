@@ -16,19 +16,19 @@ function php_enable() {
   // subsequent clean installs.
   if (!$format_exists) {
     $php_format = array(
-        'format' => 'php_code',
-        'name' => 'PHP code',
-        // 'Plain text' format is installed with a weight of 10 by default. Use a
-        // higher weight here to ensure that this format will not be the default
-        // format for anyone.
-        'weight' => 11,
-        'filters' => array(
-            // Enable the PHP evaluator filter.
-            'php_code' => array(
-                'weight' => 0,
-                'status' => 1,
-            ),
+      'format' => 'php_code',
+      'name' => 'PHP code',
+      // 'Plain text' format is installed with a weight of 10 by default. Use a
+      // higher weight here to ensure that this format will not be the default
+      // format for anyone.
+      'weight' => 11,
+      'filters' => array(
+        // Enable the PHP evaluator filter.
+        'php_code' => array(
+          'weight' => 0,
+          'status' => 1,
         ),
+      ),
     );
     $php_format = (object) $php_format;
     filter_format_save($php_format);

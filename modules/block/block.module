@@ -12,37 +12,37 @@ define('BLOCK_REGION_NONE', -1);
 
 /**
  * Users cannot control whether or not they see this block.
-*/
+ */
 define('BLOCK_CUSTOM_FIXED', 0);
 
 /**
  *  Shows this block by default, but lets individual users hide it.
-*/
+ */
 define('BLOCK_CUSTOM_ENABLED', 1);
 
 /**
  * Hides this block by default but lets individual users show it.
-*/
+ */
 define('BLOCK_CUSTOM_DISABLED', 2);
 
 /**
  * Shows this block on every page except the listed pages.
-*/
+ */
 define('BLOCK_VISIBILITY_NOTLISTED', 0);
 
 /**
  * Shows this block on only the listed pages.
-*/
+ */
 define('BLOCK_VISIBILITY_LISTED', 1);
 
 /**
  * Shows this block if the associated PHP code returns TRUE.
-*/
+ */
 define('BLOCK_VISIBILITY_PHP', 2);
 
 /**
  * Implements hook_help().
-*/
+ */
 function block_help($path, $arg) {
   switch ($path) {
     case 'admin/help#block':
@@ -76,15 +76,15 @@ function block_help($path, $arg) {
  */
 function block_theme() {
   return array(
-      'block' => array(
-          'render element' => 'elements',
-          'template' => 'block',
-      ),
-      'block_admin_display_form' => array(
-          'template' => 'block-admin-display-form',
-          'file' => 'block.admin.inc',
-          'render element' => 'form',
-      ),
+    'block' => array(
+      'render element' => 'elements',
+      'template' => 'block',
+    ),
+    'block_admin_display_form' => array(
+      'template' => 'block-admin-display-form',
+      'file' => 'block.admin.inc',
+      'render element' => 'form',
+    ),
   );
 }
 
@@ -93,9 +93,9 @@ function block_theme() {
  */
 function block_permission() {
   return array(
-      'administer blocks' => array(
-          'title' => t('Administer blocks'),
-      ),
+    'administer blocks' => array(
+      'title' => t('Administer blocks'),
+    ),
   );
 }
 
@@ -105,72 +105,72 @@ function block_permission() {
 function block_menu() {
   $default_theme = variable_get('theme_default', 'bartik');
   $items['admin/structure/block'] = array(
-      'title' => 'Blocks',
-      'description' => 'Configure what block content appears in your site\'s sidebars and other regions.',
-      'page callback' => 'block_admin_display',
-      'page arguments' => array($default_theme),
-      'access arguments' => array('administer blocks'),
-      'file' => 'block.admin.inc',
+    'title' => 'Blocks',
+    'description' => 'Configure what block content appears in your site\'s sidebars and other regions.',
+    'page callback' => 'block_admin_display',
+    'page arguments' => array($default_theme),
+    'access arguments' => array('administer blocks'),
+    'file' => 'block.admin.inc',
   );
   $items['admin/structure/block/manage/%/%'] = array(
-      'title' => 'Configure block',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('block_admin_configure', 4, 5),
-      'access arguments' => array('administer blocks'),
-      'file' => 'block.admin.inc',
+    'title' => 'Configure block',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('block_admin_configure', 4, 5),
+    'access arguments' => array('administer blocks'),
+    'file' => 'block.admin.inc',
   );
   $items['admin/structure/block/manage/%/%/configure'] = array(
-      'title' => 'Configure block',
-      'type' => MENU_DEFAULT_LOCAL_TASK,
-      'context' => MENU_CONTEXT_INLINE,
+    'title' => 'Configure block',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'context' => MENU_CONTEXT_INLINE,
   );
   $items['admin/structure/block/manage/%/%/delete'] = array(
-      'title' => 'Delete block',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('block_custom_block_delete', 4, 5),
-      'access arguments' => array('administer blocks'),
-      'type' => MENU_LOCAL_TASK,
-      'context' => MENU_CONTEXT_NONE,
-      'file' => 'block.admin.inc',
+    'title' => 'Delete block',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('block_custom_block_delete', 4, 5),
+    'access arguments' => array('administer blocks'),
+    'type' => MENU_LOCAL_TASK,
+    'context' => MENU_CONTEXT_NONE,
+    'file' => 'block.admin.inc',
   );
   $items['admin/structure/block/add'] = array(
-      'title' => 'Add block',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('block_add_block_form'),
-      'access arguments' => array('administer blocks'),
-      'type' => MENU_LOCAL_ACTION,
-      'file' => 'block.admin.inc',
+    'title' => 'Add block',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('block_add_block_form'),
+    'access arguments' => array('administer blocks'),
+    'type' => MENU_LOCAL_ACTION,
+    'file' => 'block.admin.inc',
   );
   foreach (list_themes() as $key => $theme) {
     $items['admin/structure/block/list/' . $key] = array(
-        'title' => check_plain($theme->info['name']),
-        'page arguments' => array($key),
-        'type' => $key == $default_theme ? MENU_DEFAULT_LOCAL_TASK : MENU_LOCAL_TASK,
-        'weight' => $key == $default_theme ? -10 : 0,
-        'access callback' => '_block_themes_access',
-        'access arguments' => array($theme),
-        'file' => 'block.admin.inc',
+      'title' => check_plain($theme->info['name']),
+      'page arguments' => array($key),
+      'type' => $key == $default_theme ? MENU_DEFAULT_LOCAL_TASK : MENU_LOCAL_TASK,
+      'weight' => $key == $default_theme ? -10 : 0,
+      'access callback' => '_block_themes_access',
+      'access arguments' => array($theme),
+      'file' => 'block.admin.inc',
     );
     if ($key != $default_theme) {
       $items['admin/structure/block/list/' . $key . '/add'] = array(
-          'title' => 'Add block',
-          'page callback' => 'drupal_get_form',
-          'page arguments' => array('block_add_block_form'),
-          'access arguments' => array('administer blocks'),
-          'type' => MENU_LOCAL_ACTION,
-          'file' => 'block.admin.inc',
+        'title' => 'Add block',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('block_add_block_form'),
+        'access arguments' => array('administer blocks'),
+        'type' => MENU_LOCAL_ACTION,
+        'file' => 'block.admin.inc',
       );
     }
     $items['admin/structure/block/demo/' . $key] = array(
-        'title' => check_plain($theme->info['name']),
-        'page callback' => 'block_admin_demo',
-        'page arguments' => array($key),
-        'type' => MENU_CALLBACK,
-        'access callback' => '_block_themes_access',
-        'access arguments' => array($theme),
-        'theme callback' => '_block_custom_theme',
-        'theme arguments' => array($key),
-        'file' => 'block.admin.inc',
+      'title' => check_plain($theme->info['name']),
+      'page callback' => 'block_admin_demo',
+      'page arguments' => array($key),
+      'type' => MENU_CALLBACK,
+      'access callback' => '_block_themes_access',
+      'access arguments' => array($theme),
+      'theme callback' => '_block_custom_theme',
+      'theme arguments' => array($key),
+      'file' => 'block.admin.inc',
     );
   }
   return $items;
@@ -287,18 +287,18 @@ function block_page_build(&$page) {
       foreach ($visible_regions as $region) {
         $description = '<div class="block-region">' . $all_regions[$region] . '</div>';
         $page[$region]['block_description'] = array(
-            '#markup' => $description,
-            '#weight' => 15,
+          '#markup' => $description,
+          '#weight' => 15,
         );
       }
       $page['page_top']['backlink'] = array(
-          '#type' => 'link',
-          '#title' => t('Exit block region demonstration'),
-          '#href' => 'admin/structure/block' . (variable_get('theme_default', 'bartik') == $theme ? '' : '/list/' . $theme),
-          // Add the "overlay-restore" class to indicate this link should restore
-          // the context in which the region demonstration page was opened.
-          '#options' => array('attributes' => array('class' => array('block-demo-backlink', 'overlay-restore'))),
-          '#weight' => -10,
+        '#type' => 'link',
+        '#title' => t('Exit block region demonstration'),
+        '#href' => 'admin/structure/block' . (variable_get('theme_default', 'bartik') == $theme ? '' : '/list/' . $theme),
+        // Add the "overlay-restore" class to indicate this link should restore
+        // the context in which the region demonstration page was opened.
+        '#options' => array('attributes' => array('class' => array('block-demo-backlink', 'overlay-restore'))),
+        '#weight' => -10,
       );
     }
   }
@@ -347,8 +347,8 @@ function _block_get_renderable_array($list = array()) {
     }
 
     $build[$key] += array(
-        '#block' => $block,
-        '#weight' => ++$weight,
+      '#block' => $block,
+      '#weight' => ++$weight,
     );
     $build[$key]['#theme_wrappers'][] ='block';
   }
@@ -389,8 +389,8 @@ function _block_rehash($theme = NULL) {
     foreach ($module_blocks as $delta => $block) {
       // Compile a condition to retrieve this block from the database.
       $condition = db_and()
-      ->condition('module', $module)
-      ->condition('delta', $delta);
+        ->condition('module', $module)
+        ->condition('delta', $delta);
       $or->condition($condition);
       // Add identifiers.
       $block['module'] = $module;
@@ -402,10 +402,10 @@ function _block_rehash($theme = NULL) {
   // Save the blocks defined in code for alter context.
   $code_blocks = $current_blocks;
   $database_blocks = db_select('block', 'b')
-  ->fields('b')
-  ->condition($or)
-  ->condition('theme', $theme)
-  ->execute();
+    ->fields('b')
+    ->condition($or)
+    ->condition('theme', $theme)
+    ->execute();
   foreach ($database_blocks as $block) {
     // Preserve info which is not in the database.
     $block->info = $current_blocks[$block->module][$block->delta]['info'];
@@ -465,9 +465,9 @@ function _block_rehash($theme = NULL) {
     // Remove disabled that are no longer defined by the code from the
     // database.
     db_delete('block')
-    ->condition('bid', $bids, 'NOT IN')
-    ->condition('theme', $theme)
-    ->execute();
+      ->condition('bid', $bids, 'NOT IN')
+      ->condition('theme', $theme)
+      ->execute();
   }
   return $blocks;
 }
@@ -502,28 +502,28 @@ function block_custom_block_get($bid) {
  */
 function block_custom_block_form($edit = array()) {
   $edit += array(
-      'info' => '',
-      'body' => '',
+    'info' => '',
+    'body' => '',
   );
   $form['info'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Block description'),
-      '#default_value' => $edit['info'],
-      '#maxlength' => 64,
-      '#description' => t('A brief description of your block. Used on the <a href="@overview">Blocks administration page</a>.', array('@overview' => url('admin/structure/block'))),
-      '#required' => TRUE,
-      '#weight' => -18,
+    '#type' => 'textfield',
+    '#title' => t('Block description'),
+    '#default_value' => $edit['info'],
+    '#maxlength' => 64,
+    '#description' => t('A brief description of your block. Used on the <a href="@overview">Blocks administration page</a>.', array('@overview' => url('admin/structure/block'))),
+    '#required' => TRUE,
+    '#weight' => -18,
   );
   $form['body_field']['#weight'] = -17;
   $form['body_field']['body'] = array(
-      '#type' => 'text_format',
-      '#title' => t('Block body'),
-      '#default_value' => $edit['body'],
-      '#format' => isset($edit['format']) ? $edit['format'] : NULL,
-      '#rows' => 15,
-      '#description' => t('The content of the block as shown to the user.'),
-      '#required' => TRUE,
-      '#weight' => -17,
+    '#type' => 'text_format',
+    '#title' => t('Block body'),
+    '#default_value' => $edit['body'],
+    '#format' => isset($edit['format']) ? $edit['format'] : NULL,
+    '#rows' => 15,
+    '#description' => t('The content of the block as shown to the user.'),
+    '#required' => TRUE,
+    '#weight' => -17,
   );
 
   return $form;
@@ -546,13 +546,13 @@ function block_custom_block_form($edit = array()) {
  */
 function block_custom_block_save($edit, $delta) {
   db_update('block_custom')
-  ->fields(array(
-  'body' => $edit['body']['value'],
-  'info' => $edit['info'],
-  'format' => $edit['body']['format'],
-  ))
-  ->condition('bid', $delta)
-  ->execute();
+    ->fields(array(
+      'body' => $edit['body']['value'],
+      'info' => $edit['info'],
+      'format' => $edit['body']['format'],
+    ))
+    ->condition('bid', $delta)
+    ->execute();
   return TRUE;
 }
 
@@ -570,21 +570,21 @@ function block_form_user_profile_form_alter(&$form, &$form_state) {
       $data = module_invoke($block->module, 'block_info');
       if ($data[$block->delta]['info']) {
         $blocks[$block->module][$block->delta] = array(
-            '#type' => 'checkbox',
-            '#title' => check_plain($data[$block->delta]['info']),
-            '#default_value' => isset($account->data['block'][$block->module][$block->delta]) ? $account->data['block'][$block->module][$block->delta] : ($block->custom == 1),
+          '#type' => 'checkbox',
+          '#title' => check_plain($data[$block->delta]['info']),
+          '#default_value' => isset($account->data['block'][$block->module][$block->delta]) ? $account->data['block'][$block->module][$block->delta] : ($block->custom == 1),
         );
       }
     }
     // Only display the fieldset if there are any personalizable blocks.
     if ($blocks) {
       $form['block'] = array(
-          '#type' => 'fieldset',
-          '#title' => t('Personalize blocks'),
-          '#description' => t('Blocks consist of content or information that complements the main content of the page. Enable or disable optional blocks using the checkboxes below.'),
-          '#weight' => 3,
-          '#collapsible' => TRUE,
-          '#tree' => TRUE,
+        '#type' => 'fieldset',
+        '#title' => t('Personalize blocks'),
+        '#description' => t('Blocks consist of content or information that complements the main content of the page. Enable or disable optional blocks using the checkboxes below.'),
+        '#weight' => 3,
+        '#collapsible' => TRUE,
+        '#tree' => TRUE,
       );
       $form['block'] += $blocks;
     }
@@ -716,15 +716,15 @@ function _block_load_blocks() {
 
   $query = db_select('block', 'b');
   $result = $query
-  ->fields('b')
-  ->condition('b.theme', $theme_key)
-  ->condition('b.status', 1)
-  ->orderBy('b.region')
-  ->orderBy('b.weight')
-  ->orderBy('b.module')
-  ->addTag('block_load')
-  ->addTag('translatable')
-  ->execute();
+    ->fields('b')
+    ->condition('b.theme', $theme_key)
+    ->condition('b.status', 1)
+    ->orderBy('b.region')
+    ->orderBy('b.weight')
+    ->orderBy('b.module')
+    ->addTag('block_load')
+    ->addTag('translatable')
+    ->execute();
 
   $block_info = $result->fetchAllAssoc('bid');
   // Allow modules to modify the block list.
@@ -840,15 +840,42 @@ function _block_render_blocks($region_blocks) {
   // preserve the submission of forms in blocks, by fetching from cache only
   // if the request method is 'GET' (or 'HEAD').
   $cacheable = !count(module_implements('node_grants')) && ($_SERVER['REQUEST_METHOD'] == 'GET' || $_SERVER['REQUEST_METHOD'] == 'HEAD');
+
+  // Proceed to loop over all blocks in order to compute their respective cache
+  // identifiers; this allows us to do one single cache_get_multiple() call
+  // instead of doing one cache_get() call per block.
+  $cached_blocks = array();
+  $cids = array();
+
+  if ($cacheable) {
+    foreach ($region_blocks as $key => $block) {
+      if (!isset($block->content)) {
+        if (($cid = _block_get_cache_id($block))) {
+          $cids[$key] = $cid;
+        }
+      }
+    }
+
+    if ($cids) {
+      // We cannot pass $cids in directly because cache_get_multiple() will
+      // modify it, and we need to use it later on in this function.
+      $cid_values = array_values($cids);
+      $cached_blocks = cache_get_multiple($cid_values, 'cache_block');
+    }
+  }
+
   foreach ($region_blocks as $key => $block) {
     // Render the block content if it has not been created already.
     if (!isset($block->content)) {
       // Erase the block from the static array - we'll put it back if it has
       // content.
       unset($region_blocks[$key]);
-      // Try fetching the block from cache.
-      if ($cacheable && ($cid = _block_get_cache_id($block)) && ($cache = cache_get($cid, 'cache_block'))) {
-        $array = $cache->data;
+
+      $cid = empty($cids[$key]) ? NULL : $cids[$key];
+
+      // Try fetching the block from the previously loaded cache entries.
+      if (isset($cached_blocks[$cid])) {
+        $array = $cached_blocks[$cid]->data;
       }
       else {
         $array = module_invoke($block->module, 'block_view', $block->delta);
@@ -991,8 +1018,8 @@ function template_preprocess_block(&$variables) {
  */
 function block_user_role_delete($role) {
   db_delete('block_role')
-  ->condition('rid', $role->rid)
-  ->execute();
+    ->condition('rid', $role->rid)
+    ->execute();
 }
 
 /**
@@ -1000,13 +1027,13 @@ function block_user_role_delete($role) {
  */
 function block_menu_delete($menu) {
   db_delete('block')
-  ->condition('module', 'menu')
-  ->condition('delta', $menu['menu_name'])
-  ->execute();
+    ->condition('module', 'menu')
+    ->condition('delta', $menu['menu_name'])
+    ->execute();
   db_delete('block_role')
-  ->condition('module', 'menu')
-  ->condition('delta', $menu['menu_name'])
-  ->execute();
+    ->condition('module', 'menu')
+    ->condition('delta', $menu['menu_name'])
+    ->execute();
 }
 
 /**
@@ -1015,12 +1042,12 @@ function block_menu_delete($menu) {
 function block_form_system_performance_settings_alter(&$form, &$form_state) {
   $disabled = count(module_implements('node_grants'));
   $form['caching']['block_cache'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Cache blocks'),
-      '#default_value' => variable_get('block_cache', FALSE),
-      '#disabled' => $disabled,
-      '#description' => $disabled ? t('Block caching is inactive because you have enabled modules defining content access restrictions.') : NULL,
-      '#weight' => -1,
+    '#type' => 'checkbox',
+    '#title' => t('Cache blocks'),
+    '#default_value' => variable_get('block_cache', FALSE),
+    '#disabled' => $disabled,
+    '#description' => $disabled ? t('Block caching is inactive because you have enabled modules defining content access restrictions.') : NULL,
+    '#weight' => -1,
   );
 }
 
@@ -1029,9 +1056,9 @@ function block_form_system_performance_settings_alter(&$form, &$form_state) {
  */
 function block_admin_paths() {
   $paths = array(
-      // Exclude the block demonstration page from admin (overlay) treatment.
-      // This allows us to present this page in its true form, full page.
-      'admin/structure/block/demo/*' => FALSE,
+    // Exclude the block demonstration page from admin (overlay) treatment.
+    // This allows us to present this page in its true form, full page.
+    'admin/structure/block/demo/*' => FALSE,
   );
   return $paths;
 }
@@ -1043,9 +1070,9 @@ function block_admin_paths() {
  */
 function block_modules_uninstalled($modules) {
   db_delete('block')
-  ->condition('module', $modules, 'IN')
-  ->execute();
+    ->condition('module', $modules, 'IN')
+    ->execute();
   db_delete('block_role')
-  ->condition('module', $modules, 'IN')
-  ->execute();
+    ->condition('module', $modules, 'IN')
+    ->execute();
 }

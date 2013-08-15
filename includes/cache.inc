@@ -137,18 +137,20 @@ function cache_set($cid, $data, $bin = 'cache', $expire = CACHE_PERMANENT) {
 /**
  * Expires data from the cache.
  *
- * If called without arguments, expirable entries will be cleared from the
- * cache_page and cache_block bins.
+ * If called with the arguments $cid and $bin set to NULL or omitted, then
+ * expirable entries will be cleared from the cache_page and cache_block bins,
+ * and the $wildcard argument is ignored.
  *
  * @param $cid
- *   If set, the cache ID to delete. Otherwise, all cache entries that can
- *   expire are deleted.
+ *   If set, the cache ID or an array of cache IDs. Otherwise, all cache entries
+ *   that can expire are deleted. The $wildcard argument will be ignored if set
+ *   to NULL.
  * @param $bin
  *   If set, the cache bin to delete from. Mandatory argument if $cid is set.
  * @param $wildcard
- *   If TRUE, cache IDs starting with $cid are deleted in addition to the
- *   exact cache ID specified by $cid. If $wildcard is TRUE and $cid is '*',
- *   the entire cache bin is emptied.
+ *   If TRUE, the $cid argument must contain a string value and cache IDs
+ *   starting with $cid are deleted in addition to the exact cache ID specified
+ *   by $cid. If $wildcard is TRUE and $cid is '*', the entire cache is emptied.
  */
 function cache_clear_all($cid = NULL, $bin = NULL, $wildcard = FALSE) {
   if (!isset($cid) && !isset($bin)) {
@@ -217,13 +219,6 @@ function cache_is_empty($bin) {
  * @see DrupalDatabaseCache
  */
 interface DrupalCacheInterface {
-  /**
-   * Constructs a new cache interface.
-   *
-   * @param $bin
-   *   The cache bin for which the object is created.
-   */
-  function __construct($bin);
 
   /**
    * Returns data from the persistent cache.
@@ -236,7 +231,7 @@ interface DrupalCacheInterface {
    *
    * @return
    *   The cache or FALSE on failure.
-  */
+   */
   function get($cid);
 
   /**
@@ -249,8 +244,8 @@ interface DrupalCacheInterface {
    *
    * @return
    *   An array of the items successfully returned from cache indexed by cid.
-  */
-  function getMultiple(&$cids);
+   */
+   function getMultiple(&$cids);
 
   /**
    * Stores data in the persistent cache.
@@ -269,7 +264,7 @@ interface DrupalCacheInterface {
    *     general cache wipe.
    *   - A Unix timestamp: Indicates that the item should be kept at least until
    *     the given time, after which it behaves like CACHE_TEMPORARY.
-  */
+   */
   function set($cid, $data, $expire = CACHE_PERMANENT);
 
 
@@ -280,13 +275,15 @@ interface DrupalCacheInterface {
    * cache_page and cache_block bins.
    *
    * @param $cid
-   *   If set, the cache ID to delete. Otherwise, all cache entries that can
-   *   expire are deleted.
+   *   If set, the cache ID or an array of cache IDs. Otherwise, all cache
+   *   entries that can expire are deleted. The $wildcard argument will be
+   *   ignored if set to NULL.
    * @param $wildcard
-   *   If set to TRUE, the $cid is treated as a substring
-   *   to match rather than a complete ID. The match is a right hand
-   *   match. If '*' is given as $cid, the bin $bin will be emptied.
-  */
+   *   If TRUE, the $cid argument must contain a string value and cache IDs
+   *   starting with $cid are deleted in addition to the exact cache ID
+   *   specified by $cid. If $wildcard is TRUE and $cid is '*', the entire
+   *   cache is emptied.
+   */
   function clear($cid = NULL, $wildcard = FALSE);
 
   /**
@@ -297,7 +294,7 @@ interface DrupalCacheInterface {
    *
    * @return
    *   TRUE if the cache bin specified is empty.
-  */
+   */
   function isEmpty();
 }
 
@@ -311,7 +308,10 @@ class DrupalDatabaseCache implements DrupalCacheInterface {
   protected $bin;
 
   /**
-   * Constructs a new DrupalDatabaseCache object.
+   * Constructs a DrupalDatabaseCache object.
+   *
+   * @param $bin
+   *   The cache bin for which the object is created.
    */
   function __construct($bin) {
     $this->bin = $bin;
@@ -395,9 +395,9 @@ class DrupalDatabaseCache implements DrupalCacheInterface {
       variable_set('cache_flush_' . $this->bin, 0);
       // Time to flush old cache data
       db_delete($this->bin)
-      ->condition('expire', CACHE_PERMANENT, '<>')
-      ->condition('expire', $cache_flush, '<=')
-      ->execute();
+        ->condition('expire', CACHE_PERMANENT, '<>')
+        ->condition('expire', $cache_flush, '<=')
+        ->execute();
     }
   }
 
@@ -442,9 +442,9 @@ class DrupalDatabaseCache implements DrupalCacheInterface {
    */
   function set($cid, $data, $expire = CACHE_PERMANENT) {
     $fields = array(
-        'serialized' => 0,
-        'created' => REQUEST_TIME,
-        'expire' => $expire,
+      'serialized' => 0,
+      'created' => REQUEST_TIME,
+      'expire' => $expire,
     );
     if (!is_string($data)) {
       $fields['data'] = serialize($data);
@@ -457,9 +457,9 @@ class DrupalDatabaseCache implements DrupalCacheInterface {
 
     try {
       db_merge($this->bin)
-      ->key(array('cid' => $cid))
-      ->fields($fields)
-      ->execute();
+        ->key(array('cid' => $cid))
+        ->fields($fields)
+        ->execute();
     }
     catch (Exception $e) {
       // The database may not be available, so we'll ignore cache_set requests.
@@ -488,44 +488,53 @@ class DrupalDatabaseCache implements DrupalCacheInterface {
           // Clear the cache for everyone, cache_lifetime seconds have
           // passed since the first request to clear the cache.
           db_delete($this->bin)
-          ->condition('expire', CACHE_PERMANENT, '<>')
-          ->condition('expire', REQUEST_TIME, '<')
-          ->execute();
+            ->condition('expire', CACHE_PERMANENT, '<>')
+            ->condition('expire', REQUEST_TIME, '<')
+            ->execute();
           variable_set('cache_flush_' . $this->bin, 0);
         }
       }
       else {
         // No minimum cache lifetime, flush all temporary cache entries now.
         db_delete($this->bin)
-        ->condition('expire', CACHE_PERMANENT, '<>')
-        ->condition('expire', REQUEST_TIME, '<')
-        ->execute();
+          ->condition('expire', CACHE_PERMANENT, '<>')
+          ->condition('expire', REQUEST_TIME, '<')
+          ->execute();
       }
     }
     else {
       if ($wildcard) {
         if ($cid == '*') {
-          db_truncate($this->bin)->execute();
+          // Check if $this->bin is a cache table before truncating. Other
+          // cache_clear_all() operations throw a PDO error in this situation,
+          // so we don't need to verify them first. This ensures that non-cache
+          // tables cannot be truncated accidentally.
+          if ($this->isValidBin()) {
+            db_truncate($this->bin)->execute();
+          }
+          else {
+            throw new Exception(t('Invalid or missing cache bin specified: %bin', array('%bin' => $this->bin)));
+          }
         }
         else {
           db_delete($this->bin)
-          ->condition('cid', db_like($cid) . '%', 'LIKE')
-          ->execute();
+            ->condition('cid', db_like($cid) . '%', 'LIKE')
+            ->execute();
         }
       }
       elseif (is_array($cid)) {
         // Delete in chunks when a large array is passed.
         do {
           db_delete($this->bin)
-          ->condition('cid', array_splice($cid, 0, 1000), 'IN')
-          ->execute();
+            ->condition('cid', array_splice($cid, 0, 1000), 'IN')
+            ->execute();
         }
         while (count($cid));
       }
       else {
         db_delete($this->bin)
-        ->condition('cid', $cid)
-        ->execute();
+          ->condition('cid', $cid)
+          ->execute();
       }
     }
   }
@@ -538,8 +547,29 @@ class DrupalDatabaseCache implements DrupalCacheInterface {
     $query = db_select($this->bin);
     $query->addExpression('1');
     $result = $query->range(0, 1)
-    ->execute()
-    ->fetchField();
+      ->execute()
+      ->fetchField();
     return empty($result);
+  }
+
+  /**
+   * Checks if $this->bin represents a valid cache table.
+   *
+   * This check is required to ensure that non-cache tables are not truncated
+   * accidentally when calling cache_clear_all().
+   *
+   * @return boolean
+   */
+  function isValidBin() {
+    if ($this->bin == 'cache' || substr($this->bin, 0, 6) == 'cache_') {
+      // Skip schema check for bins with standard table names.
+      return TRUE;
+    }
+    // These fields are required for any cache table.
+    $fields = array('cid', 'data', 'expire', 'created', 'serialized');
+    // Load the table schema.
+    $schema = drupal_get_schema($this->bin);
+    // Confirm that all fields are present.
+    return isset($schema['fields']) && !array_diff($fields, array_keys($schema['fields']));
   }
 }

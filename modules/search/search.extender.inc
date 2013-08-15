@@ -54,7 +54,7 @@ class SearchQuery extends SelectQueryExtender {
    * Indicates whether the first pass query requires complex conditions (LIKE).
    *
    * @var boolean.
-  */
+   */
   protected $simple = TRUE;
 
   /**
@@ -91,7 +91,7 @@ class SearchQuery extends SelectQueryExtender {
    * score is between 0 and 1.
    *
    * @var float
-  */
+   */
   protected $normalize;
 
   /**
@@ -112,14 +112,14 @@ class SearchQuery extends SelectQueryExtender {
    * Stores arguments for score expressions.
    *
    * @var array
-  */
+   */
   protected $scoresArguments = array();
 
   /**
    * Total value of all the multipliers.
    *
    * @var array
-  */
+   */
   protected $multiply = array();
 
   /**
@@ -129,7 +129,7 @@ class SearchQuery extends SelectQueryExtender {
    * avoid Denial-of-Service attacks. Expressions beyond the limit are ignored.
    *
    * @var boolean
-  */
+   */
   protected $expressionsIgnored = FALSE;
 
   /**
@@ -206,57 +206,56 @@ class SearchQuery extends SelectQueryExtender {
       }
       $phrase = FALSE;
       // Strip off phrase quotes.
-      if ($match[2]{
-        0} == '"') {
-          $match[2] = substr($match[2], 1, -1);
-          $phrase = TRUE;
-          $this->simple = FALSE;
+      if ($match[2]{0} == '"') {
+        $match[2] = substr($match[2], 1, -1);
+        $phrase = TRUE;
+        $this->simple = FALSE;
+      }
+      // Simplify keyword according to indexing rules and external
+      // preprocessors. Use same process as during search indexing, so it
+      // will match search index.
+      $words = search_simplify($match[2]);
+      // Re-explode in case simplification added more words, except when
+      // matching a phrase.
+      $words = $phrase ? array($words) : preg_split('/ /', $words, -1, PREG_SPLIT_NO_EMPTY);
+      // Negative matches.
+      if ($match[1] == '-') {
+        $this->keys['negative'] = array_merge($this->keys['negative'], $words);
+      }
+      // OR operator: instead of a single keyword, we store an array of all
+      // OR'd keywords.
+      elseif ($match[2] == 'OR' && count($this->keys['positive'])) {
+        $last = array_pop($this->keys['positive']);
+        // Starting a new OR?
+        if (!is_array($last)) {
+          $last = array($last);
         }
-        // Simplify keyword according to indexing rules and external
-        // preprocessors. Use same process as during search indexing, so it
-        // will match search index.
-        $words = search_simplify($match[2]);
-        // Re-explode in case simplification added more words, except when
-        // matching a phrase.
-        $words = $phrase ? array($words) : preg_split('/ /', $words, -1, PREG_SPLIT_NO_EMPTY);
-        // Negative matches.
-        if ($match[1] == '-') {
-          $this->keys['negative'] = array_merge($this->keys['negative'], $words);
-        }
-        // OR operator: instead of a single keyword, we store an array of all
-        // OR'd keywords.
-        elseif ($match[2] == 'OR' && count($this->keys['positive'])) {
-          $last = array_pop($this->keys['positive']);
-          // Starting a new OR?
-          if (!is_array($last)) {
-            $last = array($last);
-          }
-          $this->keys['positive'][] = $last;
-          $or = TRUE;
-          $or_count++;
-          continue;
-        }
-        // AND operator: implied, so just ignore it.
-        elseif ($match[2] == 'AND' || $match[2] == 'and') {
-          $warning = $match[2];
-          continue;
-        }
+        $this->keys['positive'][] = $last;
+        $or = TRUE;
+        $or_count++;
+        continue;
+      }
+      // AND operator: implied, so just ignore it.
+      elseif ($match[2] == 'AND' || $match[2] == 'and') {
+        $warning = $match[2];
+        continue;
+      }
 
-        // Plain keyword.
-        else {
-          if ($match[2] == 'or') {
-            $warning = $match[2];
-          }
-          if ($or) {
-            // Add to last element (which is an array).
-            $this->keys['positive'][count($this->keys['positive']) - 1] = array_merge($this->keys['positive'][count($this->keys['positive']) - 1], $words);
-          }
-          else {
-            $this->keys['positive'] = array_merge($this->keys['positive'], $words);
-            $and_count++;
-          }
+      // Plain keyword.
+      else {
+        if ($match[2] == 'or') {
+          $warning = $match[2];
         }
-        $or = FALSE;
+        if ($or) {
+          // Add to last element (which is an array).
+          $this->keys['positive'][count($this->keys['positive']) - 1] = array_merge($this->keys['positive'][count($this->keys['positive']) - 1], $words);
+        }
+        else {
+          $this->keys['positive'] = array_merge($this->keys['positive'], $words);
+          $and_count++;
+        }
+      }
+      $or = FALSE;
     }
 
     // Convert keywords into SQL statements.
@@ -361,10 +360,10 @@ class SearchQuery extends SelectQueryExtender {
     // Build query for keyword normalization.
     $this->join('search_total', 't', 'i.word = t.word');
     $this
-    ->condition('i.type', $this->type)
-    ->groupBy('i.type')
-    ->groupBy('i.sid')
-    ->having('COUNT(*) >= :matches', array(':matches' => $this->matches));
+      ->condition('i.type', $this->type)
+      ->groupBy('i.type')
+      ->groupBy('i.sid')
+      ->having('COUNT(*) >= :matches', array(':matches' => $this->matches));
 
     // Clone the query object to do the firstPass query;
     $first = clone $this->query;
@@ -378,10 +377,10 @@ class SearchQuery extends SelectQueryExtender {
     // Calculate maximum keyword relevance, to normalize it.
     $first->addExpression('SUM(i.score * t.count)', 'calculated_score');
     $this->normalize = $first
-    ->range(0, 1)
-    ->orderBy('calculated_score', 'DESC')
-    ->execute()
-    ->fetchField();
+      ->range(0, 1)
+      ->orderBy('calculated_score', 'DESC')
+      ->execute()
+      ->fetchField();
 
     if ($this->normalize) {
       return TRUE;
@@ -469,9 +468,9 @@ class SearchQuery extends SelectQueryExtender {
 
     // Add tag and useful metadata.
     $this
-    ->addTag('search_' . $this->type)
-    ->addMetaData('normalize', $this->normalize)
-    ->fields('i', array('type', 'sid'));
+      ->addTag('search_' . $this->type)
+      ->addMetaData('normalize', $this->normalize)
+      ->fields('i', array('type', 'sid'));
 
     return $this->query->execute();
   }

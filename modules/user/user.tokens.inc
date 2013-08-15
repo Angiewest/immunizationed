@@ -10,51 +10,51 @@
  */
 function user_token_info() {
   $types['user'] = array(
-      'name' => t('Users'),
-      'description' => t('Tokens related to individual user accounts.'),
-      'needs-data' => 'user',
+    'name' => t('Users'),
+    'description' => t('Tokens related to individual user accounts.'),
+    'needs-data' => 'user',
   );
   $types['current-user'] = array(
-      'name' => t('Current user'),
-      'description' => t('Tokens related to the currently logged in user.'),
-      'type' => 'user',
+    'name' => t('Current user'),
+    'description' => t('Tokens related to the currently logged in user.'),
+    'type' => 'user',
   );
 
   $user['uid'] = array(
-      'name' => t('User ID'),
-      'description' => t("The unique ID of the user account."),
+    'name' => t('User ID'),
+    'description' => t("The unique ID of the user account."),
   );
   $user['name'] = array(
-      'name' => t("Name"),
-      'description' => t("The login name of the user account."),
+    'name' => t("Name"),
+    'description' => t("The login name of the user account."),
   );
   $user['mail'] = array(
-      'name' => t("Email"),
-      'description' => t("The email address of the user account."),
+    'name' => t("Email"),
+    'description' => t("The email address of the user account."),
   );
   $user['url'] = array(
-      'name' => t("URL"),
-      'description' => t("The URL of the account profile page."),
+    'name' => t("URL"),
+    'description' => t("The URL of the account profile page."),
   );
   $user['edit-url'] = array(
-      'name' => t("Edit URL"),
-      'description' => t("The URL of the account edit page."),
+    'name' => t("Edit URL"),
+    'description' => t("The URL of the account edit page."),
   );
 
   $user['last-login'] = array(
-      'name' => t("Last login"),
-      'description' => t("The date the user last logged in to the site."),
-      'type' => 'date',
+    'name' => t("Last login"),
+    'description' => t("The date the user last logged in to the site."),
+    'type' => 'date',
   );
   $user['created'] = array(
-      'name' => t("Created"),
-      'description' => t("The date the user account was created."),
-      'type' => 'date',
+    'name' => t("Created"),
+    'description' => t("The date the user account was created."),
+    'type' => 'date',
   );
 
   return array(
-      'types' => $types,
-      'tokens' => array('user' => $user),
+    'types' => $types,
+    'tokens' => array('user' => $user),
   );
 }
 
@@ -101,7 +101,7 @@ function user_tokens($type, $tokens, array $data = array(), array $options = arr
           $replacements[$original] = !empty($account->uid) ? url("user/$account->uid/edit", $url_options) : t('not yet assigned');
           break;
 
-          // These tokens are default variations on the chained tokens handled below.
+        // These tokens are default variations on the chained tokens handled below.
         case 'last-login':
           $replacements[$original] = !empty($account->login) ? format_date($account->login, 'medium', '', NULL, $language_code) : t('never');
           break;

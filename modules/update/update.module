@@ -20,62 +20,62 @@ define('UPDATE_DEFAULT_URL', 'http://updates.drupal.org/release-history');
 
 /**
  * Project is missing security update(s).
-*/
+ */
 define('UPDATE_NOT_SECURE', 1);
 
 /**
  * Current release has been unpublished and is no longer available.
-*/
+ */
 define('UPDATE_REVOKED', 2);
 
 /**
  * Current release is no longer supported by the project maintainer.
-*/
+ */
 define('UPDATE_NOT_SUPPORTED', 3);
 
 /**
  * Project has a new release available, but it is not a security release.
-*/
+ */
 define('UPDATE_NOT_CURRENT', 4);
 
 /**
  * Project is up to date.
-*/
+ */
 define('UPDATE_CURRENT', 5);
 
 /**
  * Project's status cannot be checked.
-*/
+ */
 define('UPDATE_NOT_CHECKED', -1);
 
 /**
  * No available update data was found for project.
-*/
+ */
 define('UPDATE_UNKNOWN', -2);
 
 /**
  * There was a failure fetching available update data for this project.
-*/
+ */
 define('UPDATE_NOT_FETCHED', -3);
 
 /**
  * We need to (re)fetch available update data for this project.
-*/
+ */
 define('UPDATE_FETCH_PENDING', -4);
 
 /**
  * Maximum number of attempts to fetch available update data from a given host.
-*/
+ */
 define('UPDATE_MAX_FETCH_ATTEMPTS', 2);
 
 /**
  * Maximum number of seconds to try fetching available update data at a time.
-*/
+ */
 define('UPDATE_MAX_FETCH_TIME', 5);
 
 /**
  * Implements hook_help().
-*/
+ */
 function update_help($path, $arg) {
   switch ($path) {
     case 'admin/reports/updates':
@@ -124,8 +124,8 @@ function update_init() {
       case 'admin/update/ready':
         return;
 
-        // If we are on the appearance or modules list, display a detailed report
-        // of the update status.
+      // If we are on the appearance or modules list, display a detailed report
+      // of the update status.
       case 'admin/appearance':
       case 'admin/modules':
         $verbose = TRUE;
@@ -150,8 +150,8 @@ function update_init() {
       // update missing, print an error message about it.
       else {
         if (isset($status[$type])
-        && isset($status[$type]['reason'])
-        && $status[$type]['reason'] === UPDATE_NOT_SECURE) {
+            && isset($status[$type]['reason'])
+            && $status[$type]['reason'] === UPDATE_NOT_SECURE) {
           drupal_set_message($status[$type]['description'], 'error', FALSE);
         }
       }
@@ -166,33 +166,33 @@ function update_menu() {
   $items = array();
 
   $items['admin/reports/updates'] = array(
-      'title' => 'Available updates',
-      'description' => 'Get a status report about available updates for your installed modules and themes.',
-      'page callback' => 'update_status',
-      'access arguments' => array('administer site configuration'),
-      'weight' => -50,
-      'file' => 'update.report.inc',
+    'title' => 'Available updates',
+    'description' => 'Get a status report about available updates for your installed modules and themes.',
+    'page callback' => 'update_status',
+    'access arguments' => array('administer site configuration'),
+    'weight' => -50,
+    'file' => 'update.report.inc',
   );
   $items['admin/reports/updates/list'] = array(
-      'title' => 'List',
-      'access arguments' => array('administer site configuration'),
-      'type' => MENU_DEFAULT_LOCAL_TASK,
+    'title' => 'List',
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_DEFAULT_LOCAL_TASK,
   );
   $items['admin/reports/updates/settings'] = array(
-      'title' => 'Settings',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('update_settings'),
-      'access arguments' => array('administer site configuration'),
-      'file' => 'update.settings.inc',
-      'type' => MENU_LOCAL_TASK,
-      'weight' => 50,
+    'title' => 'Settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('update_settings'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'update.settings.inc',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 50,
   );
   $items['admin/reports/updates/check'] = array(
-      'title' => 'Manual update check',
-      'page callback' => 'update_manual_status',
-      'access arguments' => array('administer site configuration'),
-      'type' => MENU_CALLBACK,
-      'file' => 'update.fetch.inc',
+    'title' => 'Manual update check',
+    'page callback' => 'update_manual_status',
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_CALLBACK,
+    'file' => 'update.fetch.inc',
   );
 
   // We want action links for updating projects at a few different locations:
@@ -202,29 +202,29 @@ function update_menu() {
   // indicating what context we're entering the action from, so that can
   // customize the appearance as needed.
   $paths = array(
-      'report' => 'admin/reports/updates',
-      'module' => 'admin/modules',
-      'theme' => 'admin/appearance',
+    'report' => 'admin/reports/updates',
+    'module' => 'admin/modules',
+    'theme' => 'admin/appearance',
   );
   foreach ($paths as $context => $path) {
     $items[$path . '/install'] = array(
-        'page callback' => 'drupal_get_form',
-        'page arguments' => array('update_manager_install_form', $context),
-        'access callback' => 'update_manager_access',
-        'access arguments' => array(),
-        'weight' => 25,
-        'type' => MENU_LOCAL_ACTION,
-        'file' => 'update.manager.inc',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('update_manager_install_form', $context),
+      'access callback' => 'update_manager_access',
+      'access arguments' => array(),
+      'weight' => 25,
+      'type' => MENU_LOCAL_ACTION,
+      'file' => 'update.manager.inc',
     );
     $items[$path . '/update'] = array(
-        'page callback' => 'drupal_get_form',
-        'page arguments' => array('update_manager_update_form', $context),
-        'access callback' => 'update_manager_access',
-        'access arguments' => array(),
-        'weight' => 10,
-        'title' => 'Update',
-        'type' => MENU_LOCAL_TASK,
-        'file' => 'update.manager.inc',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('update_manager_update_form', $context),
+      'access callback' => 'update_manager_access',
+      'access arguments' => array(),
+      'weight' => 10,
+      'title' => 'Update',
+      'type' => MENU_LOCAL_TASK,
+      'file' => 'update.manager.inc',
     );
   }
   // Customize the titles of the action links depending on where they appear.
@@ -236,13 +236,13 @@ function update_menu() {
   // Menu callback used for the confirmation page after all the releases
   // have been downloaded, asking you to backup before installing updates.
   $items['admin/update/ready'] = array(
-      'title' => 'Ready to update',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('update_manager_update_ready_form'),
-      'access callback' => 'update_manager_access',
-      'access arguments' => array(),
-      'type' => MENU_CALLBACK,
-      'file' => 'update.manager.inc',
+    'title' => 'Ready to update',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('update_manager_update_ready_form'),
+    'access callback' => 'update_manager_access',
+    'access arguments' => array(),
+    'type' => MENU_CALLBACK,
+    'file' => 'update.manager.inc',
   );
 
   return $items;
@@ -269,22 +269,22 @@ function update_manager_access() {
  */
 function update_theme() {
   return array(
-      'update_manager_update_form' => array(
-          'render element' => 'form',
-          'file' => 'update.manager.inc',
-      ),
-      'update_last_check' => array(
-          'variables' => array('last' => NULL),
-      ),
-      'update_report' => array(
-          'variables' => array('data' => NULL),
-      ),
-      'update_version' => array(
-          'variables' => array('version' => NULL, 'tag' => NULL, 'class' => array()),
-      ),
-      'update_status_label' => array(
-          'variables' => array('status' => NULL),
-      ),
+    'update_manager_update_form' => array(
+      'render element' => 'form',
+      'file' => 'update.manager.inc',
+    ),
+    'update_last_check' => array(
+      'variables' => array('last' => NULL),
+    ),
+    'update_report' => array(
+      'variables' => array('data' => NULL),
+    ),
+    'update_version' => array(
+      'variables' => array('version' => NULL, 'tag' => NULL, 'class' => array()),
+    ),
+    'update_status_label' => array(
+      'variables' => array('status' => NULL),
+    ),
   );
 }
 
@@ -365,8 +365,8 @@ function update_cache_clear_submit($form, &$form_state) {
 function _update_no_data() {
   $destination = drupal_get_destination();
   return t('No update information available. <a href="@run_cron">Run cron</a> or <a href="@check_manually">check manually</a>.', array(
-      '@run_cron' => url('admin/reports/status/run-cron', array('query' => $destination)),
-      '@check_manually' => url('admin/reports/updates/check', array('query' => $destination)),
+    '@run_cron' => url('admin/reports/status/run-cron', array('query' => $destination)),
+    '@check_manually' => url('admin/reports/updates/check', array('query' => $destination)),
   ));
 }
 
@@ -681,14 +681,14 @@ function update_verify_update_archive($project, $archive_file, $directory) {
 
   // Make sure this isn't a tarball of Drupal core.
   if (
-  file_exists("$directory/$project/index.php")
-  && file_exists("$directory/$project/update.php")
-  && file_exists("$directory/$project/includes/bootstrap.inc")
-  && file_exists("$directory/$project/modules/node/node.module")
-  && file_exists("$directory/$project/modules/system/system.module")
+    file_exists("$directory/$project/index.php")
+    && file_exists("$directory/$project/update.php")
+    && file_exists("$directory/$project/includes/bootstrap.inc")
+    && file_exists("$directory/$project/modules/node/node.module")
+    && file_exists("$directory/$project/modules/system/system.module")
   ) {
     return array(
-        'no-core' => t('Automatic updating of Drupal core is not supported. See the <a href="@upgrade-guide">upgrade guide</a> for information on how to update Drupal core manually.', array('@upgrade-guide' => 'http://drupal.org/upgrade')),
+      'no-core' => t('Automatic updating of Drupal core is not supported. See the <a href="@upgrade-guide">upgrade guide</a> for information on how to update Drupal core manually.', array('@upgrade-guide' => 'http://drupal.org/upgrade')),
     );
   }
 
@@ -719,10 +719,10 @@ function update_verify_update_archive($project, $archive_file, $directory) {
   }
   elseif (!$compatible_project) {
     $errors[] = format_plural(
-        count($incompatible),
-        '%archive_file contains a version of %names that is not compatible with Drupal !version.',
-        '%archive_file contains versions of modules or themes that are not compatible with Drupal !version: %names',
-        array('!version' => DRUPAL_CORE_COMPATIBILITY, '%archive_file' => drupal_basename($archive_file), '%names' => implode(', ', $incompatible))
+      count($incompatible),
+      '%archive_file contains a version of %names that is not compatible with Drupal !version.',
+      '%archive_file contains versions of modules or themes that are not compatible with Drupal !version: %names',
+      array('!version' => DRUPAL_CORE_COMPATIBILITY, '%archive_file' => drupal_basename($archive_file), '%names' => implode(', ', $incompatible))
     );
   }
 
@@ -768,8 +768,8 @@ function update_verify_update_archive($project, $archive_file, $directory) {
  */
 function _update_cache_set($cid, $data, $expire) {
   $fields = array(
-      'created' => REQUEST_TIME,
-      'expire' => $expire,
+    'created' => REQUEST_TIME,
+    'expire' => $expire,
   );
   if (!is_string($data)) {
     $fields['data'] = serialize($data);
@@ -780,9 +780,9 @@ function _update_cache_set($cid, $data, $expire) {
     $fields['serialized'] = 0;
   }
   db_merge('cache_update')
-  ->key(array('cid' => $cid))
-  ->fields($fields)
-  ->execute();
+    ->key(array('cid' => $cid))
+    ->fields($fields)
+    ->execute();
 }
 
 /**
@@ -818,9 +818,9 @@ function _update_cache_get($cid) {
 function _update_get_cache_multiple($cid_prefix) {
   $data = array();
   $result = db_select('cache_update')
-  ->fields('cache_update', array('cid', 'data', 'created', 'expire', 'serialized'))
-  ->condition('cache_update.cid', $cid_prefix . '::%', 'LIKE')
-  ->execute();
+    ->fields('cache_update', array('cid', 'data', 'created', 'expire', 'serialized'))
+    ->condition('cache_update.cid', $cid_prefix . '::%', 'LIKE')
+    ->execute();
   foreach ($result as $cache) {
     if ($cache) {
       if ($cache->serialized) {
@@ -846,10 +846,10 @@ function _update_get_cache_multiple($cid_prefix) {
 function _update_cache_clear($cid = NULL, $wildcard = FALSE) {
   if (empty($cid)) {
     db_delete('cache_update')
-    // Clear everything except fetch task information because these are used
-    // to ensure that the fetch task queue items are not added multiple times.
-    ->condition('cid', 'fetch_task::%', 'NOT LIKE')
-    ->execute();
+      // Clear everything except fetch task information because these are used
+      // to ensure that the fetch task queue items are not added multiple times.
+      ->condition('cid', 'fetch_task::%', 'NOT LIKE')
+      ->execute();
   }
   else {
     $query = db_delete('cache_update');
@@ -955,8 +955,8 @@ function update_clear_update_disk_cache() {
   // List of update module cache directories. Do not create the directories if
   // they do not exist.
   $directories = array(
-      _update_manager_cache_directory(FALSE),
-      _update_manager_extract_directory(FALSE),
+    _update_manager_cache_directory(FALSE),
+    _update_manager_extract_directory(FALSE),
   );
 
   // Search for files and directories in base folder only without recursion.

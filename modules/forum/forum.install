@@ -11,9 +11,9 @@
 function forum_install() {
   // Set the weight of the forum.module to 1 so it is loaded after the taxonomy.module.
   db_update('system')
-  ->fields(array('weight' => 1))
-  ->condition('name', 'forum')
-  ->execute();
+    ->fields(array('weight' => 1))
+    ->condition('name', 'forum')
+    ->execute();
   // Forum topics are published by default, but do not have any other default
   // options set (for example, they are not promoted to the front page).
   variable_set('node_options_forum', array('status'));
@@ -31,12 +31,12 @@ function forum_enable() {
   $vocabulary = taxonomy_vocabulary_load(variable_get('forum_nav_vocabulary', 0));
   if (!$vocabulary) {
     $edit = array(
-        'name' => t('Forums'),
-        'machine_name' => 'forums',
-        'description' => t('Forum navigation vocabulary'),
-        'hierarchy' => 1,
-        'module' => 'forum',
-        'weight' => -10,
+      'name' => t('Forums'),
+      'machine_name' => 'forums',
+      'description' => t('Forum navigation vocabulary'),
+      'hierarchy' => 1,
+      'module' => 'forum',
+      'weight' => -10,
     );
     $vocabulary = (object) $edit;
     taxonomy_vocabulary_save($vocabulary);
@@ -46,49 +46,49 @@ function forum_enable() {
   // Create the 'taxonomy_forums' field if it doesn't already exist.
   if (!field_info_field('taxonomy_forums')) {
     $field = array(
-        'field_name' => 'taxonomy_forums',
-        'type' => 'taxonomy_term_reference',
-        'settings' => array(
-            'allowed_values' => array(
-                array(
-                    'vocabulary' => $vocabulary->machine_name,
-                    'parent' => 0,
-                ),
-            ),
+      'field_name' => 'taxonomy_forums',
+      'type' => 'taxonomy_term_reference',
+      'settings' => array(
+        'allowed_values' => array(
+          array(
+            'vocabulary' => $vocabulary->machine_name,
+            'parent' => 0,
+          ),
         ),
+      ),
     );
     field_create_field($field);
 
     // Create a default forum so forum posts can be created.
     $edit = array(
-        'name' => t('General discussion'),
-        'description' => '',
-        'parent' => array(0),
-        'vid' => $vocabulary->vid,
+      'name' => t('General discussion'),
+      'description' => '',
+      'parent' => array(0),
+      'vid' => $vocabulary->vid,
     );
     $term = (object) $edit;
     taxonomy_term_save($term);
 
     // Create the instance on the bundle.
     $instance = array(
-        'field_name' => 'taxonomy_forums',
-        'entity_type' => 'node',
-        'label' => $vocabulary->name,
-        'bundle' => 'forum',
-        'required' => TRUE,
-        'widget' => array(
-            'type' => 'options_select',
+      'field_name' => 'taxonomy_forums',
+      'entity_type' => 'node',
+      'label' => $vocabulary->name,
+      'bundle' => 'forum',
+      'required' => TRUE,
+      'widget' => array(
+        'type' => 'options_select',
+      ),
+      'display' => array(
+        'default' => array(
+          'type' => 'taxonomy_term_reference_link',
+         'weight' => 10,
         ),
-        'display' => array(
-            'default' => array(
-                'type' => 'taxonomy_term_reference_link',
-                'weight' => 10,
-            ),
-            'teaser' => array(
-                'type' => 'taxonomy_term_reference_link',
-                'weight' => 10,
-            ),
+        'teaser' => array(
+          'type' => 'taxonomy_term_reference_link',
+         'weight' => 10,
         ),
+      ),
     );
     field_create_instance($instance);
   }
@@ -125,115 +125,115 @@ function forum_uninstall() {
  */
 function forum_schema() {
   $schema['forum'] = array(
-      'description' => 'Stores the relationship of nodes to forum terms.',
-      'fields' => array(
-          'nid' => array(
-              'type' => 'int',
-              'unsigned' => TRUE,
-              'not null' => TRUE,
-              'default' => 0,
-              'description' => 'The {node}.nid of the node.',
-          ),
-          'vid' => array(
-              'type' => 'int',
-              'unsigned' => TRUE,
-              'not null' => TRUE,
-              'default' => 0,
-              'description' => 'Primary Key: The {node}.vid of the node.',
-          ),
-          'tid' => array(
-              'type' => 'int',
-              'unsigned' => TRUE,
-              'not null' => TRUE,
-              'default' => 0,
-              'description' => 'The {taxonomy_term_data}.tid of the forum term assigned to the node.',
-          ),
+    'description' => 'Stores the relationship of nodes to forum terms.',
+    'fields' => array(
+      'nid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The {node}.nid of the node.',
       ),
-      'indexes' => array(
-          'forum_topic' => array('nid', 'tid'),
-          'tid' => array('tid'),
+      'vid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Primary Key: The {node}.vid of the node.',
       ),
-      'primary key' => array('vid'),
-      'foreign keys' => array(
-          'forum_node' => array(
-              'table' => 'node',
-              'columns' => array(
-                  'nid' => 'nid',
-                  'vid' => 'vid',
-              ),
-          ),
+      'tid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The {taxonomy_term_data}.tid of the forum term assigned to the node.',
       ),
+    ),
+    'indexes' => array(
+      'forum_topic' => array('nid', 'tid'),
+      'tid' => array('tid'),
+    ),
+    'primary key' => array('vid'),
+    'foreign keys' => array(
+      'forum_node' => array(
+        'table' => 'node',
+        'columns' => array(
+          'nid' => 'nid',
+          'vid' => 'vid',
+        ),
+      ),
+    ),
   );
 
   $schema['forum_index'] = array(
-      'description' => 'Maintains denormalized information about node/term relationships.',
-      'fields' => array(
-          'nid' => array(
-              'description' => 'The {node}.nid this record tracks.',
-              'type' => 'int',
-              'unsigned' => TRUE,
-              'not null' => TRUE,
-              'default' => 0,
-          ),
-          'title' => array(
-              'description' => 'The title of this node, always treated as non-markup plain text.',
-              'type' => 'varchar',
-              'length' => 255,
-              'not null' => TRUE,
-              'default' => '',
-          ),
-          'tid' => array(
-              'description' => 'The term ID.',
-              'type' => 'int',
-              'unsigned' => TRUE,
-              'not null' => TRUE,
-              'default' => 0,
-          ),
-          'sticky' => array(
-              'description' => 'Boolean indicating whether the node is sticky.',
-              'type' => 'int',
-              'not null' => FALSE,
-              'default' => 0,
-              'size' => 'tiny',
-          ),
-          'created' => array(
-              'description' => 'The Unix timestamp when the node was created.',
-              'type' => 'int',
-              'unsigned' => TRUE,
-              'not null' => TRUE,
-              'default'=> 0,
-          ),
-          'last_comment_timestamp' => array(
-              'type' => 'int',
-              'not null' => TRUE,
-              'default' => 0,
-              'description' => 'The Unix timestamp of the last comment that was posted within this node, from {comment}.timestamp.',
-          ),
-          'comment_count' => array(
-              'type' => 'int',
-              'unsigned' => TRUE,
-              'not null' => TRUE,
-              'default' => 0,
-              'description' => 'The total number of comments on this node.',
-          ),
+    'description' => 'Maintains denormalized information about node/term relationships.',
+    'fields' => array(
+      'nid' => array(
+        'description' => 'The {node}.nid this record tracks.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
       ),
-      'indexes' => array(
-          'forum_topics' => array('nid', 'tid', 'sticky', 'last_comment_timestamp'),
-          'created' => array('created'),
-          'last_comment_timestamp' => array('last_comment_timestamp'),
+      'title' => array(
+        'description' => 'The title of this node, always treated as non-markup plain text.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
       ),
-      'foreign keys' => array(
-          'tracked_node' => array(
-              'table' => 'node',
-              'columns' => array('nid' => 'nid'),
-          ),
-          'term' => array(
-              'table' => 'taxonomy_term_data',
-              'columns' => array(
-                  'tid' => 'tid',
-              ),
-          ),
+      'tid' => array(
+         'description' => 'The term ID.',
+         'type' => 'int',
+         'unsigned' => TRUE,
+         'not null' => TRUE,
+         'default' => 0,
       ),
+      'sticky' => array(
+        'description' => 'Boolean indicating whether the node is sticky.',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+        'size' => 'tiny',
+      ),
+      'created' => array(
+        'description' => 'The Unix timestamp when the node was created.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default'=> 0,
+      ),
+      'last_comment_timestamp' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The Unix timestamp of the last comment that was posted within this node, from {comment}.timestamp.',
+      ),
+      'comment_count' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The total number of comments on this node.',
+      ),
+    ),
+    'indexes' => array(
+      'forum_topics' => array('nid', 'tid', 'sticky', 'last_comment_timestamp'),
+      'created' => array('created'),
+      'last_comment_timestamp' => array('last_comment_timestamp'),
+    ),
+    'foreign keys' => array(
+      'tracked_node' => array(
+        'table' => 'node',
+        'columns' => array('nid' => 'nid'),
+      ),
+      'term' => array(
+        'table' => 'taxonomy_term_data',
+        'columns' => array(
+          'tid' => 'tid',
+        ),
+      ),
+    ),
   );
 
 
@@ -245,12 +245,12 @@ function forum_schema() {
  */
 function forum_update_dependencies() {
   $dependencies['forum'][7003] = array(
-      // Forum update 7003 uses field API update functions, so must run after
-      // Field API has been enabled.
-      'system' => 7020,
-      // Forum update 7003 relies on updated taxonomy module schema. Ensure it
-      // runs after all taxonomy updates.
-      'taxonomy' => 7010,
+    // Forum update 7003 uses field API update functions, so must run after
+    // Field API has been enabled.
+    'system' => 7020,
+    // Forum update 7003 relies on updated taxonomy module schema. Ensure it
+    // runs after all taxonomy updates.
+    'taxonomy' => 7010,
   );
   return $dependencies;
 }
@@ -268,72 +268,72 @@ function forum_update_7000() {
  */
 function forum_update_7001() {
   $forum_index = array(
-      'description' => 'Maintains denormalized information about node/term relationships.',
-      'fields' => array(
-          'nid' => array(
-              'description' => 'The {node}.nid this record tracks.',
-              'type' => 'int',
-              'unsigned' => TRUE,
-              'not null' => TRUE,
-              'default' => 0,
-          ),
-          'title' => array(
-              'description' => 'The title of this node, always treated as non-markup plain text.',
-              'type' => 'varchar',
-              'length' => 255,
-              'not null' => TRUE,
-              'default' => '',
-          ),
-          'tid' => array(
-              'description' => 'The term ID.',
-              'type' => 'int',
-              'unsigned' => TRUE,
-              'not null' => TRUE,
-              'default' => 0,
-          ),
-          'sticky' => array(
-              'description' => 'Boolean indicating whether the node is sticky.',
-              'type' => 'int',
-              'not null' => FALSE,
-              'default' => 0,
-              'size' => 'tiny',
-          ),
-          'created' => array(
-              'description' => 'The Unix timestamp when the node was created.',
-              'type' => 'int',
-              'unsigned' => TRUE,
-              'not null' => TRUE,
-              'default'=> 0,
-          ),
-          'last_comment_timestamp' => array(
-              'type' => 'int',
-              'not null' => TRUE,
-              'default' => 0,
-              'description' => 'The Unix timestamp of the last comment that was posted within this node, from {comment}.timestamp.',
-          ),
-          'comment_count' => array(
-              'type' => 'int',
-              'unsigned' => TRUE,
-              'not null' => TRUE,
-              'default' => 0,
-              'description' => 'The total number of comments on this node.',
-          ),
+    'description' => 'Maintains denormalized information about node/term relationships.',
+    'fields' => array(
+      'nid' => array(
+        'description' => 'The {node}.nid this record tracks.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
       ),
-      'indexes' => array(
-          'forum_topics' => array('tid', 'sticky', 'last_comment_timestamp'),
+      'title' => array(
+        'description' => 'The title of this node, always treated as non-markup plain text.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
       ),
-      'foreign keys' => array(
-          'tracked_node' => array(
-              'table' => 'node',
-              'columns' => array('nid' => 'nid'),
-          ),
-          'term' => array(
-              'table' => 'taxonomy_term_data',
-              'columns' => array(
-                  'tid' => 'tid',
-              ),
-          ),
+      'tid' => array(
+         'description' => 'The term ID.',
+         'type' => 'int',
+         'unsigned' => TRUE,
+         'not null' => TRUE,
+         'default' => 0,
       ),
+      'sticky' => array(
+        'description' => 'Boolean indicating whether the node is sticky.',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+        'size' => 'tiny',
+      ),
+      'created' => array(
+        'description' => 'The Unix timestamp when the node was created.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default'=> 0,
+      ),
+      'last_comment_timestamp' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The Unix timestamp of the last comment that was posted within this node, from {comment}.timestamp.',
+      ),
+      'comment_count' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The total number of comments on this node.',
+      ),
+    ),
+    'indexes' => array(
+      'forum_topics' => array('tid', 'sticky', 'last_comment_timestamp'),
+    ),
+    'foreign keys' => array(
+      'tracked_node' => array(
+        'table' => 'node',
+        'columns' => array('nid' => 'nid'),
+      ),
+      'term' => array(
+        'table' => 'taxonomy_term_data',
+        'columns' => array(
+          'tid' => 'tid',
+        ),
+      ),
+    ),
   );
   db_create_table('forum_index', $forum_index);
 
@@ -341,14 +341,14 @@ function forum_update_7001() {
   $forum_alias = $select->join('forum', 'f', 'n.vid = f.vid');
   $ncs_alias = $select->join('node_comment_statistics', 'ncs', 'n.nid = ncs.nid');
   $select
-  ->fields('n', array('nid', 'title', 'sticky', 'created'))
-  ->fields($forum_alias, array('tid'))
-  ->fields($ncs_alias, array('last_comment_timestamp', 'comment_count'));
+    ->fields('n', array('nid', 'title', 'sticky', 'created'))
+    ->fields($forum_alias, array('tid'))
+    ->fields($ncs_alias, array('last_comment_timestamp', 'comment_count'));
 
   db_insert('forum_index')
-  ->fields(array('nid', 'title', 'sticky', 'created', 'tid', 'last_comment_timestamp', 'comment_count'))
-  ->from($select)
-  ->execute();
+    ->fields(array('nid', 'title', 'sticky', 'created', 'tid', 'last_comment_timestamp', 'comment_count'))
+    ->from($select)
+    ->execute();
 }
 
 /**
@@ -382,10 +382,10 @@ function forum_update_7003() {
   // Calculate the old field name.
   $vid = variable_get('forum_nav_vocabulary', 0);
   $vocabulary_machine_name = db_select('taxonomy_vocabulary', 'tv')
-  ->fields('tv', array('machine_name'))
-  ->condition('vid', $vid)
-  ->execute()
-  ->fetchField();
+    ->fields('tv', array('machine_name'))
+    ->condition('vid', $vid)
+    ->execute()
+    ->fetchField();
   $old_field_name = 'taxonomy_' . $vocabulary_machine_name;
 
   // Read the old fields.
@@ -393,29 +393,29 @@ function forum_update_7003() {
   foreach ($old_fields as $old_field) {
     if ($old_field['storage']['type'] != 'field_sql_storage') {
       $messages[] = t('Cannot rename field %id (%old_field_name) to %new_field_name because it does not use the field_sql_storage storage type.', array(
-          '%id' => $old_field['id'],
-          '%old_field_name' => $old_field_name,
-          '%new_field_name' => $new_field_name,
+        '%id' => $old_field['id'],
+        '%old_field_name' => $old_field_name,
+        '%new_field_name' => $new_field_name,
       ));
       continue;
     }
 
     // Update {field_config}.
     db_update('field_config')
-    ->fields(array('field_name' => $new_field_name))
-    ->condition('id', $old_field['id'])
-    ->execute();
+      ->fields(array('field_name' => $new_field_name))
+      ->condition('id', $old_field['id'])
+      ->execute();
 
     // Update {field_config_instance}.
     db_update('field_config_instance')
-    ->fields(array('field_name' => $new_field_name))
-    ->condition('field_id', $old_field['id'])
-    ->execute();
+      ->fields(array('field_name' => $new_field_name))
+      ->condition('field_id', $old_field['id'])
+      ->execute();
 
     // The tables that need updating in the form 'old_name' => 'new_name'.
     $tables = array(
-        'field_data_' . $old_field_name => 'field_data_' . $new_field_name,
-        'field_revision_' . $old_field_name => 'field_revision_' . $new_field_name,
+      'field_data_' . $old_field_name => 'field_data_' . $new_field_name,
+      'field_revision_' . $old_field_name => 'field_revision_' . $new_field_name,
     );
     foreach ($tables as $old_table => $new_table) {
       $old_column_name = $old_field_name . '_tid';
@@ -424,9 +424,9 @@ function forum_update_7003() {
       // Rename the column.
       db_drop_index($old_table, $old_column_name);
       db_change_field($old_table, $old_column_name, $new_column_name, array(
-      'type' => 'int',
-      'unsigned' => TRUE,
-      'not null' => FALSE,
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
       ));
       db_drop_index($old_table, $new_column_name);
       db_add_index($old_table, $new_column_name, array($new_column_name));
@@ -446,12 +446,12 @@ function forum_update_7003() {
  */
 function forum_update_7011() {
   $select = db_select('node', 'n')
-  ->fields('n', array('nid'))
-  ->condition('status', 0 );
+    ->fields('n', array('nid'))
+    ->condition('status', 0 );
 
   db_delete('forum_index')
-  ->condition('nid', $select, 'IN')
-  ->execute();
+    ->condition('nid', $select, 'IN')
+    ->execute();
 }
 
 /**

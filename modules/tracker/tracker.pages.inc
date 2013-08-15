@@ -31,13 +31,13 @@ function tracker_page($account = NULL, $set_title = FALSE) {
   // This array acts as a placeholder for the data selected later
   // while keeping the correct order.
   $nodes = $query
-  ->addTag('node_access')
-  ->fields('t', array('nid', 'changed'))
-  ->condition('t.published', 1)
-  ->orderBy('t.changed', 'DESC')
-  ->limit(25)
-  ->execute()
-  ->fetchAllAssoc('nid');
+    ->addTag('node_access')
+    ->fields('t', array('nid', 'changed'))
+    ->condition('t.published', 1)
+    ->orderBy('t.changed', 'DESC')
+    ->limit(25)
+    ->execute()
+    ->fetchAllAssoc('nid');
 
   $rows = array();
   if (!empty($nodes)) {
@@ -62,11 +62,11 @@ function tracker_page($account = NULL, $set_title = FALSE) {
       }
 
       $row = array(
-          'type' => check_plain(node_type_get_name($node->type)),
-          'title' => array('data' => l($node->title, 'node/' . $node->nid) . ' ' . theme('mark', array('type' => node_mark($node->nid, $node->changed)))),
-          'author' => array('data' => theme('username', array('account' => $node))),
-          'replies' => array('class' => array('replies'), 'data' => $comments),
-          'last updated' => array('data' => t('!time ago', array('!time' => format_interval(REQUEST_TIME - $node->last_activity)))),
+        'type' => check_plain(node_type_get_name($node->type)),
+        'title' => array('data' => l($node->title, 'node/' . $node->nid) . ' ' . theme('mark', array('type' => node_mark($node->nid, $node->changed)))),
+        'author' => array('data' => theme('username', array('account' => $node))),
+        'replies' => array('class' => array('replies'), 'data' => $comments),
+        'last updated' => array('data' => t('!time ago', array('!time' => format_interval(REQUEST_TIME - $node->last_activity)))),
       );
 
       // Adds extra RDFa markup to the $row array if the RDF module is enabled.
@@ -110,18 +110,18 @@ function tracker_page($account = NULL, $set_title = FALSE) {
   }
 
   $page['tracker'] = array(
-      '#rows' => $rows,
-      '#header' => array(t('Type'), t('Title'), t('Author'), t('Replies'), t('Last updated')),
-      '#theme' => 'table',
-      '#empty' => t('No content available.'),
-      '#attached' => array(
-          'css' => array(drupal_get_path('module', 'tracker') . '/tracker.css' => array()),
-      ),
+    '#rows' => $rows,
+    '#header' => array(t('Type'), t('Title'), t('Author'), t('Replies'), t('Last updated')),
+    '#theme' => 'table',
+    '#empty' => t('No content available.'),
+    '#attached' => array(
+      'css' => array(drupal_get_path('module', 'tracker') . '/tracker.css' => array()),
+    ),
   );
   $page['pager'] = array(
-      '#theme' => 'pager',
-      '#quantity' => 25,
-      '#weight' => 10,
+    '#theme' => 'pager',
+    '#quantity' => 25,
+    '#weight' => 10,
   );
   $page['#sorted'] = TRUE;
 

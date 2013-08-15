@@ -225,14 +225,14 @@ abstract class DatabaseConnection extends PDO {
    * Index of what driver-specific class to use for various operations.
    *
    * @var array
-  */
+   */
   protected $driverClasses = array();
 
   /**
    * The name of the Statement class for this connection.
    *
    * @var string
-  */
+   */
   protected $statementClass = 'DatabaseStatementBase';
 
   /**
@@ -269,7 +269,7 @@ abstract class DatabaseConnection extends PDO {
    * The schema object for this connection.
    *
    * @var object
-  */
+   */
   protected $schema = NULL;
 
   /**
@@ -283,14 +283,14 @@ abstract class DatabaseConnection extends PDO {
    * List of search values for use in prefixTables().
    *
    * @var array
-  */
+   */
   protected $prefixSearch = array();
 
   /**
    * List of replacement values for use in prefixTables().
    *
    * @var array
-  */
+   */
   protected $prefixReplace = array();
 
   function __construct($dsn, $username, $password, $driver_options = array()) {
@@ -372,10 +372,10 @@ abstract class DatabaseConnection extends PDO {
    */
   protected function defaultOptions() {
     return array(
-        'target' => 'default',
-        'fetch' => PDO::FETCH_OBJ,
-        'return' => Database::RETURN_STATEMENT,
-        'throw_exception' => TRUE,
+      'target' => 'default',
+      'fetch' => PDO::FETCH_OBJ,
+      'return' => Database::RETURN_STATEMENT,
+      'throw_exception' => TRUE,
     );
   }
 
@@ -1182,7 +1182,7 @@ abstract class DatabaseConnection extends PDO {
    *
    * @return
    *   A table name.
-  */
+   */
   protected function generateTemporaryTableName() {
     return "db_temporary_" . $this->temporaryNameIndex++;
   }
@@ -1197,7 +1197,7 @@ abstract class DatabaseConnection extends PDO {
    * injection attacks.
    *
    * Note that if you need to know how many results were returned, you should do
-     * a SELECT COUNT(*) on the temporary table afterwards.
+   * a SELECT COUNT(*) on the temporary table afterwards.
    *
    * @param $query
    *   A string containing a normal SELECT SQL query.
@@ -1219,12 +1219,12 @@ abstract class DatabaseConnection extends PDO {
    * instance, there could be two MySQL drivers, mysql and mysql_mock. This
    * function would return different values for each, but both would return
    * "mysql" for databaseType().
-  */
+   */
   abstract public function driver();
 
   /**
    * Returns the version of the database server.
-  */
+   */
   public function version() {
     return $this->getAttribute(PDO::ATTR_SERVER_VERSION);
   }
@@ -1273,7 +1273,7 @@ abstract class DatabaseConnection extends PDO {
    *   The extra handling directives for the specified operator, or NULL.
    *
    * @see DatabaseCondition::compile()
-  */
+   */
   abstract public function mapConditionOperator($operator);
 
   /**
@@ -1287,7 +1287,7 @@ abstract class DatabaseConnection extends PDO {
    * @throws DatabaseTransactionExplicitCommitNotAllowedException
    *
    * @see DatabaseTransaction
-  */
+   */
   public function commit() {
     throw new DatabaseTransactionExplicitCommitNotAllowedException();
   }
@@ -1356,7 +1356,7 @@ abstract class Database {
    * A processed copy of the database connection information from settings.php.
    *
    * @var array
-  */
+   */
   static protected $databaseInfo = NULL;
 
   /**
@@ -1370,7 +1370,7 @@ abstract class Database {
    * The key of the currently active database connection.
    *
    * @var string
-  */
+   */
   static protected $activeKey = 'default';
 
   /**
@@ -1401,7 +1401,7 @@ abstract class Database {
    *   cases it may be desirable to access it directly.
    *
    * @see DatabaseLog
-  */
+   */
   final public static function startLog($logging_key, $key = 'default') {
     if (empty(self::$logs[$key])) {
       self::$logs[$key] = new DatabaseLog($key);
@@ -1530,13 +1530,13 @@ abstract class Database {
         if (!isset($database_info[$index][$target]['prefix'])) {
           // Default to an empty prefix.
           $database_info[$index][$target]['prefix'] = array(
-              'default' => '',
+            'default' => '',
           );
         }
         elseif (!is_array($database_info[$index][$target]['prefix'])) {
           // Transform the flat form into an array form.
           $database_info[$index][$target]['prefix'] = array(
-              'default' => $database_info[$index][$target]['prefix'],
+            'default' => $database_info[$index][$target]['prefix'],
           );
         }
       }
@@ -1971,7 +1971,7 @@ interface DatabaseStatementInterface extends Traversable {
    *
    * @return
    *   The query string, in its form with placeholders.
-  */
+   */
   public function getQueryString();
 
   /**
@@ -1980,7 +1980,7 @@ interface DatabaseStatementInterface extends Traversable {
    * @return
    *   The number of rows affected by the last DELETE, INSERT, or UPDATE
    *   statement executed.
-  */
+   */
   public function rowCount();
 
   /**
@@ -1999,7 +1999,7 @@ interface DatabaseStatementInterface extends Traversable {
    * @param $a2
    *   If $mode is PDO::FETCH_CLASS, the optional arguments to pass to the
    *   constructor.
-  */
+   */
   // public function setFetchMode($mode, $a1 = NULL, $a2 = array());
 
   /**
@@ -2018,7 +2018,7 @@ interface DatabaseStatementInterface extends Traversable {
    *
    * @return
    *   A result, formatted according to $mode.
-  */
+   */
   // public function fetch($mode = NULL, $cursor_orientation = NULL, $cursor_offset = NULL);
 
   /**
@@ -2029,7 +2029,7 @@ interface DatabaseStatementInterface extends Traversable {
    *
    * @return
    *   A single field from the next record, or FALSE if there is no next record.
-  */
+   */
   public function fetchField($index = 0);
 
   /**
@@ -2037,7 +2037,7 @@ interface DatabaseStatementInterface extends Traversable {
    *
    * The object will be of the class specified by DatabaseStatementInterface::setFetchMode()
    * or stdClass if not specified.
-  */
+   */
   // public function fetchObject();
 
   /**
@@ -2049,7 +2049,7 @@ interface DatabaseStatementInterface extends Traversable {
    *
    * @return
    *   An associative array, or FALSE if there is no next row.
-  */
+   */
   public function fetchAssoc();
 
   /**
@@ -2064,7 +2064,7 @@ interface DatabaseStatementInterface extends Traversable {
    *
    * @return
    *   An array of results.
-  */
+   */
   // function fetchAll($mode = NULL, $column_index = NULL, array $constructor_arguments);
 
   /**
@@ -2077,7 +2077,7 @@ interface DatabaseStatementInterface extends Traversable {
    *
    * @return
    *   An indexed array, or an empty array if there is no result set.
-  */
+   */
   public function fetchCol($index = 0);
 
   /**
@@ -2097,7 +2097,7 @@ interface DatabaseStatementInterface extends Traversable {
    *
    * @return
    *   An associative array, or an empty array if there is no result set.
-  */
+   */
   public function fetchAllKeyed($key_index = 0, $value_index = 1);
 
   /**
@@ -2116,7 +2116,7 @@ interface DatabaseStatementInterface extends Traversable {
    *
    * @return
    *   An associative array, or an empty array if there is no result set.
-  */
+   */
   public function fetchAllAssoc($key, $fetch = NULL);
 }
 

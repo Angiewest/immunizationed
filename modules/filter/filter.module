@@ -43,27 +43,27 @@ function filter_help($path, $arg) {
  */
 function filter_theme() {
   return array(
-      'filter_admin_overview' => array(
-          'render element' => 'form',
-          'file' => 'filter.admin.inc',
-      ),
-      'filter_admin_format_filter_order' => array(
-          'render element' => 'element',
-          'file' => 'filter.admin.inc',
-      ),
-      'filter_tips' => array(
-          'variables' => array('tips' => NULL, 'long' => FALSE),
-          'file' => 'filter.pages.inc',
-      ),
-      'text_format_wrapper' => array(
-          'render element' => 'element',
-      ),
-      'filter_tips_more_info' => array(
-          'variables' => array(),
-      ),
-      'filter_guidelines' => array(
-          'variables' => array('format' => NULL),
-      ),
+    'filter_admin_overview' => array(
+      'render element' => 'form',
+      'file' => 'filter.admin.inc',
+    ),
+    'filter_admin_format_filter_order' => array(
+      'render element' => 'element',
+      'file' => 'filter.admin.inc',
+    ),
+    'filter_tips' => array(
+      'variables' => array('tips' => NULL, 'long' => FALSE),
+      'file' => 'filter.pages.inc',
+    ),
+    'text_format_wrapper' => array(
+      'render element' => 'element',
+    ),
+    'filter_tips_more_info' => array(
+      'variables' => array(),
+    ),
+    'filter_guidelines' => array(
+      'variables' => array('format' => NULL),
+    ),
   );
 }
 
@@ -75,9 +75,9 @@ function filter_theme() {
  */
 function filter_element_info() {
   $type['text_format'] = array(
-      '#process' => array('filter_process_format'),
-      '#base_type' => 'textarea',
-      '#theme_wrappers' => array('text_format_wrapper'),
+    '#process' => array('filter_process_format'),
+    '#base_type' => 'textarea',
+    '#theme_wrappers' => array('text_format_wrapper'),
   );
   return $type;
 }
@@ -87,47 +87,47 @@ function filter_element_info() {
  */
 function filter_menu() {
   $items['filter/tips'] = array(
-      'title' => 'Compose tips',
-      'page callback' => 'filter_tips_long',
-      'access callback' => TRUE,
-      'type' => MENU_SUGGESTED_ITEM,
-      'file' => 'filter.pages.inc',
+    'title' => 'Compose tips',
+    'page callback' => 'filter_tips_long',
+    'access callback' => TRUE,
+    'type' => MENU_SUGGESTED_ITEM,
+    'file' => 'filter.pages.inc',
   );
   $items['admin/config/content/formats'] = array(
-      'title' => 'Text formats',
-      'description' => 'Configure how content input by users is filtered, including allowed HTML tags. Also allows enabling of module-provided filters.',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('filter_admin_overview'),
-      'access arguments' => array('administer filters'),
-      'file' => 'filter.admin.inc',
+    'title' => 'Text formats',
+    'description' => 'Configure how content input by users is filtered, including allowed HTML tags. Also allows enabling of module-provided filters.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('filter_admin_overview'),
+    'access arguments' => array('administer filters'),
+    'file' => 'filter.admin.inc',
   );
   $items['admin/config/content/formats/list'] = array(
-      'title' => 'List',
-      'type' => MENU_DEFAULT_LOCAL_TASK,
+    'title' => 'List',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
   );
   $items['admin/config/content/formats/add'] = array(
-      'title' => 'Add text format',
-      'page callback' => 'filter_admin_format_page',
-      'access arguments' => array('administer filters'),
-      'type' => MENU_LOCAL_ACTION,
-      'weight' => 1,
-      'file' => 'filter.admin.inc',
+    'title' => 'Add text format',
+    'page callback' => 'filter_admin_format_page',
+    'access arguments' => array('administer filters'),
+    'type' => MENU_LOCAL_ACTION,
+    'weight' => 1,
+    'file' => 'filter.admin.inc',
   );
   $items['admin/config/content/formats/%filter_format'] = array(
-      'title callback' => 'filter_admin_format_title',
-      'title arguments' => array(4),
-      'page callback' => 'filter_admin_format_page',
-      'page arguments' => array(4),
-      'access arguments' => array('administer filters'),
-      'file' => 'filter.admin.inc',
+    'title callback' => 'filter_admin_format_title',
+    'title arguments' => array(4),
+    'page callback' => 'filter_admin_format_page',
+    'page arguments' => array(4),
+    'access arguments' => array('administer filters'),
+    'file' => 'filter.admin.inc',
   );
   $items['admin/config/content/formats/%filter_format/disable'] = array(
-      'title' => 'Disable text format',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('filter_admin_disable', 4),
-      'access callback' => '_filter_disable_format_access',
-      'access arguments' => array(4),
-      'file' => 'filter.admin.inc',
+    'title' => 'Disable text format',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('filter_admin_disable', 4),
+    'access callback' => '_filter_disable_format_access',
+    'access arguments' => array(4),
+    'file' => 'filter.admin.inc',
   );
   return $items;
 }
@@ -207,14 +207,14 @@ function filter_format_save($format) {
 
   // Insert or update the text format.
   $return = db_merge('filter_format')
-  ->key(array('format' => $format->format))
-  ->fields(array(
+    ->key(array('format' => $format->format))
+    ->fields(array(
       'name' => $format->name,
       'cache' => (int) $format->cache,
       'status' => (int) $format->status,
       'weight' => (int) $format->weight,
-  ))
-  ->execute();
+    ))
+    ->execute();
 
   // Programmatic saves may not contain any filters.
   if (!isset($format->filters)) {
@@ -249,12 +249,12 @@ function filter_format_save($format) {
     $fields['settings'] = serialize($format->filters[$name]['settings']);
 
     db_merge('filter')
-    ->key(array(
-    'format' => $format->format,
-    'name' => $name,
-    ))
-    ->fields($fields)
-    ->execute();
+      ->key(array(
+        'format' => $format->format,
+        'name' => $name,
+      ))
+      ->fields($fields)
+      ->execute();
   }
 
   if ($return == SAVED_NEW) {
@@ -290,9 +290,9 @@ function filter_format_save($format) {
  */
 function filter_format_disable($format) {
   db_update('filter_format')
-  ->fields(array('status' => 0))
-  ->condition('format', $format->format)
-  ->execute();
+    ->fields(array('status' => 0))
+    ->condition('format', $format->format)
+    ->execute();
 
   // Allow modules to react on text format deletion.
   module_invoke_all('filter_format_disable', $format);
@@ -339,8 +339,8 @@ function filter_admin_format_title($format) {
  */
 function filter_permission() {
   $perms['administer filters'] = array(
-      'title' => t('Administer text formats and filters'),
-      'restrict access' => TRUE,
+    'title' => t('Administer text formats and filters'),
+    'restrict access' => TRUE,
   );
 
   // Generate permissions for each text format. Warn the administrator that any
@@ -352,8 +352,8 @@ function filter_permission() {
       // viewing this will have access to that page.
       $format_name_replacement = user_access('administer filters') ? l($format->name, 'admin/config/content/formats/' . $format->format) : drupal_placeholder($format->name);
       $perms[$permission] = array(
-          'title' => t("Use the !text_format text format", array('!text_format' => $format_name_replacement,)),
-          'description' => drupal_placeholder(t('Warning: This permission may have security implications depending on how the text format is configured.')),
+        'title' => t("Use the !text_format text format", array('!text_format' => $format_name_replacement,)),
+        'description' => drupal_placeholder(t('Warning: This permission may have security implications depending on how the text format is configured.')),
       );
     }
   }
@@ -420,12 +420,12 @@ function filter_formats($account = NULL) {
     }
     else {
       $formats['all'] = db_select('filter_format', 'ff')
-      ->addTag('translatable')
-      ->fields('ff')
-      ->condition('status', 1)
-      ->orderBy('weight')
-      ->execute()
-      ->fetchAllAssoc('format');
+        ->addTag('translatable')
+        ->fields('ff')
+        ->condition('status', 1)
+        ->orderBy('weight')
+        ->execute()
+        ->fetchAllAssoc('format');
 
       cache_set("filter_formats:{$language->language}", $formats['all']);
     }
@@ -601,8 +601,8 @@ function filter_get_filters() {
         foreach (array_keys($info) as $name) {
           $info[$name]['module'] = $module;
           $info[$name] += array(
-              'description' => '',
-              'weight' => 0,
+            'description' => '',
+            'weight' => 0,
           );
         }
         $filters = array_merge($filters, $info);
@@ -845,23 +845,23 @@ function filter_process_format($element) {
   // Ensure that children appear as subkeys of this element.
   $element['#tree'] = TRUE;
   $blacklist = array(
-      // Make form_builder() regenerate child properties.
-      '#parents',
-      '#id',
-      '#name',
-      // Do not copy this #process function to prevent form_builder() from
-      // recursing infinitely.
-      '#process',
-      // Description is handled by theme_text_format_wrapper().
-      '#description',
-      // Ensure proper ordering of children.
-      '#weight',
-      // Properties already processed for the parent element.
-      '#prefix',
-      '#suffix',
-      '#attached',
-      '#processed',
-      '#theme_wrappers',
+    // Make form_builder() regenerate child properties.
+    '#parents',
+    '#id',
+    '#name',
+    // Do not copy this #process function to prevent form_builder() from
+    // recursing infinitely.
+    '#process',
+    // Description is handled by theme_text_format_wrapper().
+    '#description',
+    // Ensure proper ordering of children.
+    '#weight',
+    // Properties already processed for the parent element.
+    '#prefix',
+    '#suffix',
+    '#attached',
+    '#processed',
+    '#theme_wrappers',
   );
   // Move this element into sub-element 'value'.
   unset($element['value']);
@@ -881,23 +881,23 @@ function filter_process_format($element) {
 
   // Setup child container for the text format widget.
   $element['format'] = array(
-      '#type' => 'fieldset',
-      '#attributes' => array('class' => array('filter-wrapper')),
+    '#type' => 'fieldset',
+    '#attributes' => array('class' => array('filter-wrapper')),
   );
 
   // Prepare text format guidelines.
   $element['format']['guidelines'] = array(
-      '#type' => 'container',
-      '#attributes' => array('class' => array('filter-guidelines')),
-      '#weight' => 20,
+    '#type' => 'container',
+    '#attributes' => array('class' => array('filter-guidelines')),
+    '#weight' => 20,
   );
   // Get a list of formats that the current user has access to.
   $formats = filter_formats($user);
   foreach ($formats as $format) {
     $options[$format->format] = $format->name;
     $element['format']['guidelines'][$format->format] = array(
-        '#theme' => 'filter_guidelines',
-        '#format' => $format,
+      '#theme' => 'filter_guidelines',
+      '#format' => $format,
     );
   }
 
@@ -907,21 +907,21 @@ function filter_process_format($element) {
   }
 
   $element['format']['format'] = array(
-      '#type' => 'select',
-      '#title' => t('Text format'),
-      '#options' => $options,
-      '#default_value' => $element['#format'],
-      '#access' => count($formats) > 1,
-      '#weight' => 10,
-      '#attributes' => array('class' => array('filter-list')),
-      '#parents' => array_merge($element['#parents'], array('format')),
+    '#type' => 'select',
+    '#title' => t('Text format'),
+    '#options' => $options,
+    '#default_value' => $element['#format'],
+    '#access' => count($formats) > 1,
+    '#weight' => 10,
+    '#attributes' => array('class' => array('filter-list')),
+    '#parents' => array_merge($element['#parents'], array('format')),
   );
 
   $element['format']['help'] = array(
-      '#type' => 'container',
-      '#theme' => 'filter_tips_more_info',
-      '#attributes' => array('class' => array('filter-help')),
-      '#weight' => 0,
+    '#type' => 'container',
+    '#theme' => 'filter_tips_more_info',
+    '#attributes' => array('class' => array('filter-help')),
+    '#weight' => 0,
   );
 
   $all_formats = filter_formats();
@@ -1216,75 +1216,76 @@ function theme_filter_guidelines($variables) {
  */
 function filter_filter_info() {
   $filters['filter_html'] = array(
-      'title' => t('Limit allowed HTML tags'),
-      'process callback' => '_filter_html',
-      'settings callback' => '_filter_html_settings',
-      'default settings' => array(
-          'allowed_html' => '<a> <em> <strong> <cite> <blockquote> <code> <ul> <ol> <li> <dl> <dt> <dd>',
-          'filter_html_help' => 1,
-          'filter_html_nofollow' => 0,
-      ),
-      'tips callback' => '_filter_html_tips',
-      'weight' => -10,
+    'title' => t('Limit allowed HTML tags'),
+    'process callback' => '_filter_html',
+    'settings callback' => '_filter_html_settings',
+    'default settings' => array(
+      'allowed_html' => '<a> <em> <strong> <cite> <blockquote> <code> <ul> <ol> <li> <dl> <dt> <dd>',
+      'filter_html_help' => 1,
+      'filter_html_nofollow' => 0,
+    ),
+    'tips callback' => '_filter_html_tips',
+    'weight' => -10,
   );
   $filters['filter_autop'] = array(
-      'title' => t('Convert line breaks into HTML (i.e. <code>&lt;br&gt;</code> and <code>&lt;p&gt;</code>)'),
-      'process callback' => '_filter_autop',
-      'tips callback' => '_filter_autop_tips',
+    'title' => t('Convert line breaks into HTML (i.e. <code>&lt;br&gt;</code> and <code>&lt;p&gt;</code>)'),
+    'process callback' => '_filter_autop',
+    'tips callback' => '_filter_autop_tips',
   );
   $filters['filter_url'] = array(
-      'title' => t('Convert URLs into links'),
-      'process callback' => '_filter_url',
-      'settings callback' => '_filter_url_settings',
-      'default settings' => array(
-          'filter_url_length' => 72,
-      ),
-      'tips callback' => '_filter_url_tips',
+    'title' => t('Convert URLs into links'),
+    'process callback' => '_filter_url',
+    'settings callback' => '_filter_url_settings',
+    'default settings' => array(
+      'filter_url_length' => 72,
+    ),
+    'tips callback' => '_filter_url_tips',
   );
   $filters['filter_htmlcorrector'] = array(
-      'title' =>  t('Correct faulty and chopped off HTML'),
-      'process callback' => '_filter_htmlcorrector',
-      'weight' => 10,
+    'title' =>  t('Correct faulty and chopped off HTML'),
+    'process callback' => '_filter_htmlcorrector',
+    'weight' => 10,
   );
   $filters['filter_html_escape'] = array(
-      'title' => t('Display any HTML as plain text'),
-      'process callback' => '_filter_html_escape',
-      'tips callback' => '_filter_html_escape_tips',
-      'weight' => -10,
+    'title' => t('Display any HTML as plain text'),
+    'process callback' => '_filter_html_escape',
+    'tips callback' => '_filter_html_escape_tips',
+    'weight' => -10,
   );
   return $filters;
 }
 
 /**
- * Filter settings callback for the HTML content filter.
+ * Implements callback_filter_settings().
  *
- * See hook_filter_FILTER_settings() for documentation of parameters and return
- * value.
+ * Filter settings callback for the HTML content filter.
  */
 function _filter_html_settings($form, &$form_state, $filter, $format, $defaults) {
   $filter->settings += $defaults;
 
   $settings['allowed_html'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Allowed HTML tags'),
-      '#default_value' => $filter->settings['allowed_html'],
-      '#maxlength' => 1024,
-      '#description' => t('A list of HTML tags that can be used. JavaScript event attributes, JavaScript URLs, and CSS are always stripped.'),
+    '#type' => 'textfield',
+    '#title' => t('Allowed HTML tags'),
+    '#default_value' => $filter->settings['allowed_html'],
+    '#maxlength' => 1024,
+    '#description' => t('A list of HTML tags that can be used. JavaScript event attributes, JavaScript URLs, and CSS are always stripped.'),
   );
   $settings['filter_html_help'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Display basic HTML help in long filter tips'),
-      '#default_value' => $filter->settings['filter_html_help'],
+    '#type' => 'checkbox',
+    '#title' => t('Display basic HTML help in long filter tips'),
+    '#default_value' => $filter->settings['filter_html_help'],
   );
   $settings['filter_html_nofollow'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Add rel="nofollow" to all links'),
-      '#default_value' => $filter->settings['filter_html_nofollow'],
+    '#type' => 'checkbox',
+    '#title' => t('Add rel="nofollow" to all links'),
+    '#default_value' => $filter->settings['filter_html_nofollow'],
   );
   return $settings;
 }
 
 /**
+ * Implements callback_filter_process().
+ *
  * Provides filtering of input into accepted HTML.
  */
 function _filter_html($text, $filter) {
@@ -1304,7 +1305,9 @@ function _filter_html($text, $filter) {
 }
 
 /**
- * Filter tips callback: Provides help for the HTML filter.
+ * Implements callback_filter_tips().
+ *
+ * Provides help for the HTML filter.
  *
  * @see filter_filter_info()
  */
@@ -1327,55 +1330,55 @@ function _filter_html_tips($filter, $format, $long = FALSE) {
   $output .= '<p>' . t('This site allows HTML content. While learning all of HTML may feel intimidating, learning how to use a very small number of the most basic HTML "tags" is very easy. This table provides examples for each tag that is enabled on this site.') . '</p>';
   $output .= '<p>' . t('For more information see W3C\'s <a href="@html-specifications">HTML Specifications</a> or use your favorite search engine to find other sites that explain HTML.', array('@html-specifications' => 'http://www.w3.org/TR/html/')) . '</p>';
   $tips = array(
-      'a' => array(t('Anchors are used to make links to other pages.'), '<a href="' . $base_url . '">' . check_plain(variable_get('site_name', 'Drupal')) . '</a>'),
-      'br' => array(t('By default line break tags are automatically added, so use this tag to add additional ones. Use of this tag is different because it is not used with an open/close pair like all the others. Use the extra " /" inside the tag to maintain XHTML 1.0 compatibility'), t('Text with <br />line break')),
-      'p' => array(t('By default paragraph tags are automatically added, so use this tag to add additional ones.'), '<p>' . t('Paragraph one.') . '</p> <p>' . t('Paragraph two.') . '</p>'),
-      'strong' => array(t('Strong', array(), array('context' => 'Font weight')), '<strong>' . t('Strong', array(), array('context' => 'Font weight')) . '</strong>'),
-      'em' => array(t('Emphasized'), '<em>' . t('Emphasized') . '</em>'),
-      'cite' => array(t('Cited'), '<cite>' . t('Cited') . '</cite>'),
-      'code' => array(t('Coded text used to show programming source code'), '<code>' . t('Coded') . '</code>'),
-      'b' => array(t('Bolded'), '<b>' . t('Bolded') . '</b>'),
-      'u' => array(t('Underlined'), '<u>' . t('Underlined') . '</u>'),
-      'i' => array(t('Italicized'), '<i>' . t('Italicized') . '</i>'),
-      'sup' => array(t('Superscripted'), t('<sup>Super</sup>scripted')),
-      'sub' => array(t('Subscripted'), t('<sub>Sub</sub>scripted')),
-      'pre' => array(t('Preformatted'), '<pre>' . t('Preformatted') . '</pre>'),
-      'abbr' => array(t('Abbreviation'), t('<abbr title="Abbreviation">Abbrev.</abbr>')),
-      'acronym' => array(t('Acronym'), t('<acronym title="Three-Letter Acronym">TLA</acronym>')),
-      'blockquote' => array(t('Block quoted'), '<blockquote>' . t('Block quoted') . '</blockquote>'),
-      'q' => array(t('Quoted inline'), '<q>' . t('Quoted inline') . '</q>'),
-      // Assumes and describes tr, td, th.
-      'table' => array(t('Table'), '<table> <tr><th>' . t('Table header') . '</th></tr> <tr><td>' . t('Table cell') . '</td></tr> </table>'),
-      'tr' => NULL, 'td' => NULL, 'th' => NULL,
-      'del' => array(t('Deleted'), '<del>' . t('Deleted') . '</del>'),
-      'ins' => array(t('Inserted'), '<ins>' . t('Inserted') . '</ins>'),
-      // Assumes and describes li.
-      'ol' => array(t('Ordered list - use the &lt;li&gt; to begin each list item'), '<ol> <li>' . t('First item') . '</li> <li>' . t('Second item') . '</li> </ol>'),
-      'ul' => array(t('Unordered list - use the &lt;li&gt; to begin each list item'), '<ul> <li>' . t('First item') . '</li> <li>' . t('Second item') . '</li> </ul>'),
-      'li' => NULL,
-      // Assumes and describes dt and dd.
-      'dl' => array(t('Definition lists are similar to other HTML lists. &lt;dl&gt; begins the definition list, &lt;dt&gt; begins the definition term and &lt;dd&gt; begins the definition description.'), '<dl> <dt>' . t('First term') . '</dt> <dd>' . t('First definition') . '</dd> <dt>' . t('Second term') . '</dt> <dd>' . t('Second definition') . '</dd> </dl>'),
-      'dt' => NULL, 'dd' => NULL,
-      'h1' => array(t('Heading'), '<h1>' . t('Title') . '</h1>'),
-      'h2' => array(t('Heading'), '<h2>' . t('Subtitle') . '</h2>'),
-      'h3' => array(t('Heading'), '<h3>' . t('Subtitle three') . '</h3>'),
-      'h4' => array(t('Heading'), '<h4>' . t('Subtitle four') . '</h4>'),
-      'h5' => array(t('Heading'), '<h5>' . t('Subtitle five') . '</h5>'),
-      'h6' => array(t('Heading'), '<h6>' . t('Subtitle six') . '</h6>')
+    'a' => array(t('Anchors are used to make links to other pages.'), '<a href="' . $base_url . '">' . check_plain(variable_get('site_name', 'Drupal')) . '</a>'),
+    'br' => array(t('By default line break tags are automatically added, so use this tag to add additional ones. Use of this tag is different because it is not used with an open/close pair like all the others. Use the extra " /" inside the tag to maintain XHTML 1.0 compatibility'), t('Text with <br />line break')),
+    'p' => array(t('By default paragraph tags are automatically added, so use this tag to add additional ones.'), '<p>' . t('Paragraph one.') . '</p> <p>' . t('Paragraph two.') . '</p>'),
+    'strong' => array(t('Strong', array(), array('context' => 'Font weight')), '<strong>' . t('Strong', array(), array('context' => 'Font weight')) . '</strong>'),
+    'em' => array(t('Emphasized'), '<em>' . t('Emphasized') . '</em>'),
+    'cite' => array(t('Cited'), '<cite>' . t('Cited') . '</cite>'),
+    'code' => array(t('Coded text used to show programming source code'), '<code>' . t('Coded') . '</code>'),
+    'b' => array(t('Bolded'), '<b>' . t('Bolded') . '</b>'),
+    'u' => array(t('Underlined'), '<u>' . t('Underlined') . '</u>'),
+    'i' => array(t('Italicized'), '<i>' . t('Italicized') . '</i>'),
+    'sup' => array(t('Superscripted'), t('<sup>Super</sup>scripted')),
+    'sub' => array(t('Subscripted'), t('<sub>Sub</sub>scripted')),
+    'pre' => array(t('Preformatted'), '<pre>' . t('Preformatted') . '</pre>'),
+    'abbr' => array(t('Abbreviation'), t('<abbr title="Abbreviation">Abbrev.</abbr>')),
+    'acronym' => array(t('Acronym'), t('<acronym title="Three-Letter Acronym">TLA</acronym>')),
+    'blockquote' => array(t('Block quoted'), '<blockquote>' . t('Block quoted') . '</blockquote>'),
+    'q' => array(t('Quoted inline'), '<q>' . t('Quoted inline') . '</q>'),
+    // Assumes and describes tr, td, th.
+    'table' => array(t('Table'), '<table> <tr><th>' . t('Table header') . '</th></tr> <tr><td>' . t('Table cell') . '</td></tr> </table>'),
+    'tr' => NULL, 'td' => NULL, 'th' => NULL,
+    'del' => array(t('Deleted'), '<del>' . t('Deleted') . '</del>'),
+    'ins' => array(t('Inserted'), '<ins>' . t('Inserted') . '</ins>'),
+     // Assumes and describes li.
+    'ol' => array(t('Ordered list - use the &lt;li&gt; to begin each list item'), '<ol> <li>' . t('First item') . '</li> <li>' . t('Second item') . '</li> </ol>'),
+    'ul' => array(t('Unordered list - use the &lt;li&gt; to begin each list item'), '<ul> <li>' . t('First item') . '</li> <li>' . t('Second item') . '</li> </ul>'),
+    'li' => NULL,
+    // Assumes and describes dt and dd.
+    'dl' => array(t('Definition lists are similar to other HTML lists. &lt;dl&gt; begins the definition list, &lt;dt&gt; begins the definition term and &lt;dd&gt; begins the definition description.'), '<dl> <dt>' . t('First term') . '</dt> <dd>' . t('First definition') . '</dd> <dt>' . t('Second term') . '</dt> <dd>' . t('Second definition') . '</dd> </dl>'),
+    'dt' => NULL, 'dd' => NULL,
+    'h1' => array(t('Heading'), '<h1>' . t('Title') . '</h1>'),
+    'h2' => array(t('Heading'), '<h2>' . t('Subtitle') . '</h2>'),
+    'h3' => array(t('Heading'), '<h3>' . t('Subtitle three') . '</h3>'),
+    'h4' => array(t('Heading'), '<h4>' . t('Subtitle four') . '</h4>'),
+    'h5' => array(t('Heading'), '<h5>' . t('Subtitle five') . '</h5>'),
+    'h6' => array(t('Heading'), '<h6>' . t('Subtitle six') . '</h6>')
   );
   $header = array(t('Tag Description'), t('You Type'), t('You Get'));
   preg_match_all('/<([a-z0-9]+)[^a-z0-9]/i', $allowed_html, $out);
   foreach ($out[1] as $tag) {
     if (!empty($tips[$tag])) {
       $rows[] = array(
-          array('data' => $tips[$tag][0], 'class' => array('description')),
-          array('data' => '<code>' . check_plain($tips[$tag][1]) . '</code>', 'class' => array('type')),
-          array('data' => $tips[$tag][1], 'class' => array('get'))
+        array('data' => $tips[$tag][0], 'class' => array('description')),
+        array('data' => '<code>' . check_plain($tips[$tag][1]) . '</code>', 'class' => array('type')),
+        array('data' => $tips[$tag][1], 'class' => array('get'))
       );
     }
     else {
       $rows[] = array(
-          array('data' => t('No help provided for tag %tag.', array('%tag' => $tag)), 'class' => array('description'), 'colspan' => 3),
+        array('data' => t('No help provided for tag %tag.', array('%tag' => $tag)), 'class' => array('description'), 'colspan' => 3),
       );
     }
   }
@@ -1385,18 +1388,18 @@ function _filter_html_tips($filter, $format, $long = FALSE) {
   $output .= '<p>' . t('If you do encounter problems, try using HTML character entities. A common example looks like &amp;amp; for an ampersand &amp; character. For a full list of entities see HTML\'s <a href="@html-entities">entities</a> page. Some of the available characters include:', array('@html-entities' => 'http://www.w3.org/TR/html4/sgml/entities.html')) . '</p>';
 
   $entities = array(
-      array(t('Ampersand'), '&amp;'),
-      array(t('Greater than'), '&gt;'),
-      array(t('Less than'), '&lt;'),
-      array(t('Quotation mark'), '&quot;'),
+    array(t('Ampersand'), '&amp;'),
+    array(t('Greater than'), '&gt;'),
+    array(t('Less than'), '&lt;'),
+    array(t('Quotation mark'), '&quot;'),
   );
   $header = array(t('Character Description'), t('You Type'), t('You Get'));
   unset($rows);
   foreach ($entities as $entity) {
     $rows[] = array(
-        array('data' => $entity[0], 'class' => array('description')),
-        array('data' => '<code>' . check_plain($entity[1]) . '</code>', 'class' => array('type')),
-        array('data' => $entity[1], 'class' => array('get'))
+      array('data' => $entity[0], 'class' => array('description')),
+      array('data' => '<code>' . check_plain($entity[1]) . '</code>', 'class' => array('type')),
+      array('data' => $entity[1], 'class' => array('get'))
     );
   }
   $output .= theme('table', array('header' => $header, 'rows' => $rows));
@@ -1404,7 +1407,9 @@ function _filter_html_tips($filter, $format, $long = FALSE) {
 }
 
 /**
- * Filter URL settings callback: Provides settings for the URL filter.
+ * Implements callback_filter_settings().
+ *
+ * Provides settings for the URL filter.
  *
  * @see filter_filter_info()
  */
@@ -1412,19 +1417,21 @@ function _filter_url_settings($form, &$form_state, $filter, $format, $defaults) 
   $filter->settings += $defaults;
 
   $settings['filter_url_length'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Maximum link text length'),
-      '#default_value' => $filter->settings['filter_url_length'],
-      '#size' => 5,
-      '#maxlength' => 4,
-      '#field_suffix' => t('characters'),
-      '#description' => t('URLs longer than this number of characters will be truncated to prevent long strings that break formatting. The link itself will be retained; just the text portion of the link will be truncated.'),
-      '#element_validate' => array('element_validate_integer_positive'),
+    '#type' => 'textfield',
+    '#title' => t('Maximum link text length'),
+    '#default_value' => $filter->settings['filter_url_length'],
+    '#size' => 5,
+    '#maxlength' => 4,
+    '#field_suffix' => t('characters'),
+    '#description' => t('URLs longer than this number of characters will be truncated to prevent long strings that break formatting. The link itself will be retained; just the text portion of the link will be truncated.'),
+    '#element_validate' => array('element_validate_integer_positive'),
   );
   return $settings;
 }
 
 /**
+ * Implements callback_filter_process().
+ *
  * Converts text into hyperlinks automatically.
  *
  * This filter identifies and makes clickable three types of "links".
@@ -1454,7 +1461,7 @@ function _filter_url($text, $filter) {
   // we cannot cleanly differ between protocols here without hard-coding MAILTO,
   // so '//' is optional for all protocols.
   // @see filter_xss_bad_protocol()
-  $protocols = variable_get('filter_allowed_protocols', array('http', 'https', 'ftp', 'news', 'nntp', 'telnet', 'mailto', 'irc', 'ssh', 'sftp', 'webcal', 'rtsp'));
+  $protocols = variable_get('filter_allowed_protocols', array('ftp', 'http', 'https', 'irc', 'mailto', 'news', 'nntp', 'rtsp', 'sftp', 'ssh', 'tel', 'telnet', 'webcal'));
   $protocols = implode(':(?://)?|', $protocols) . ':(?://)?';
 
   // Prepare domain name pattern.
@@ -1650,7 +1657,9 @@ function _filter_url_trim($text, $length = NULL) {
 }
 
 /**
- * Filter tips callback: Provides help for the URL filter.
+ * Implements callback_filter_tips().
+ *
+ * Provides help for the URL filter.
  *
  * @see filter_filter_info()
  */
@@ -1659,6 +1668,8 @@ function _filter_url_tips($filter, $format, $long = FALSE) {
 }
 
 /**
+ * Implements callback_filter_process().
+ *
  * Scans the input and makes sure that HTML tags are properly closed.
  */
 function _filter_htmlcorrector($text) {
@@ -1666,6 +1677,8 @@ function _filter_htmlcorrector($text) {
 }
 
 /**
+ * Implements callback_filter_process().
+ *
  * Converts line breaks into <p> and <br> in an intelligent fashion.
  *
  * Based on: http://photomatt.net/scripts/autop
@@ -1733,7 +1746,9 @@ function _filter_autop($text) {
 }
 
 /**
- * Filter tips callback: Provides help for the auto-paragraph filter.
+ * Implements callback_filter_tips().
+ *
+ * Provides help for the auto-paragraph filter.
  *
  * @see filter_filter_info()
  */
@@ -1747,6 +1762,8 @@ function _filter_autop_tips($filter, $format, $long = FALSE) {
 }
 
 /**
+ * Implements callback_filter_process().
+ *
  * Escapes all HTML tags, so they will be visible instead of being effective.
  */
 function _filter_html_escape($text) {
@@ -1754,7 +1771,9 @@ function _filter_html_escape($text) {
 }
 
 /**
- * Filter tips callback: Provides help for the HTML escaping filter.
+ * Implements callback_filter_tips().
+ *
+ * Provides help for the HTML escaping filter.
  *
  * @see filter_filter_info()
  */

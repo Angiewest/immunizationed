@@ -16,9 +16,9 @@ class DrupalSystemListingCompatibleTestCase extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Installation profile module tests helper',
-        'description' => 'Verifies that tests in installation profile modules are found and may use another profile for running tests.',
-        'group' => 'Installation profile',
+      'name' => 'Installation profile module tests helper',
+      'description' => 'Verifies that tests in installation profile modules are found and may use another profile for running tests.',
+      'group' => 'Installation profile',
     );
   }
 

@@ -30,29 +30,29 @@ function locale_languages_overview_form() {
       $enabled[] = $langcode;
     }
     $form['weight'][$langcode] = array(
-        '#type' => 'weight',
-        '#title' => t('Weight for @title', array('@title' => $language->name)),
-        '#title_display' => 'invisible',
-        '#default_value' => $language->weight,
-        '#attributes' => array('class' => array('language-order-weight')),
+      '#type' => 'weight',
+      '#title' => t('Weight for @title', array('@title' => $language->name)),
+      '#title_display' => 'invisible',
+      '#default_value' => $language->weight,
+      '#attributes' => array('class' => array('language-order-weight')),
     );
     $form['name'][$langcode] = array('#markup' => check_plain($language->name));
     $form['native'][$langcode] = array('#markup' => check_plain($language->native));
     $form['direction'][$langcode] = array('#markup' => ($language->direction == LANGUAGE_RTL ? t('Right to left') : t('Left to right')));
   }
   $form['enabled'] = array(
-      '#type' => 'checkboxes',
-      '#title' => t('Enabled languages'),
-      '#title_display' => 'invisible',
-      '#options' => $options,
-      '#default_value' => $enabled,
+    '#type' => 'checkboxes',
+    '#title' => t('Enabled languages'),
+    '#title_display' => 'invisible',
+    '#options' => $options,
+    '#default_value' => $enabled,
   );
   $form['site_default'] = array(
-      '#type' => 'radios',
-      '#title' => t('Default language'),
-      '#title_display' => 'invisible',
-      '#options' => $options,
-      '#default_value' => language_default('language'),
+    '#type' => 'radios',
+    '#title' => t('Default language'),
+    '#title_display' => 'invisible',
+    '#options' => $options,
+    '#default_value' => language_default('language'),
   );
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array('#type' => 'submit', '#value' => t('Save configuration'));
@@ -91,17 +91,17 @@ function theme_locale_languages_overview_form($variables) {
       $form['site_default'][$key]['#title'] = t('Set !title as default', array('!title' => $title));
       $form['site_default'][$key]['#title_display'] = 'invisible';
       $rows[] = array(
-          'data' => array(
-              '<strong>' . $title . '</strong>',
-              drupal_render($form['native'][$key]),
-              check_plain($key),
-              drupal_render($form['direction'][$key]),
-              array('data' => drupal_render($form['enabled'][$key]), 'align' => 'center'),
-              drupal_render($form['site_default'][$key]),
-              drupal_render($form['weight'][$key]),
-              l(t('edit'), 'admin/config/regional/language/edit/' . $key) . (($key != 'en' && $key != $default->language) ? ' ' . l(t('delete'), 'admin/config/regional/language/delete/' . $key) : '')
-          ),
-          'class' => array('draggable'),
+        'data' => array(
+          '<strong>' . $title . '</strong>',
+          drupal_render($form['native'][$key]),
+          check_plain($key),
+          drupal_render($form['direction'][$key]),
+          array('data' => drupal_render($form['enabled'][$key]), 'align' => 'center'),
+          drupal_render($form['site_default'][$key]),
+          drupal_render($form['weight'][$key]),
+          l(t('edit'), 'admin/config/regional/language/edit/' . $key) . (($key != 'en' && $key != $default->language) ? ' ' . l(t('delete'), 'admin/config/regional/language/delete/' . $key) : '')
+        ),
+        'class' => array('draggable'),
       );
     }
   }
@@ -151,14 +151,14 @@ function locale_languages_overview_form_submit($form, &$form_state) {
     $language->weight = $form_state['values']['weight'][$langcode];
 
     db_update('languages')
-    ->fields(array(
-    'enabled' => $language->enabled,
-    'weight' => $language->weight,
-    'prefix' => $language->prefix,
-    'domain' => $language->domain,
-    ))
-    ->condition('language', $langcode)
-    ->execute();
+      ->fields(array(
+        'enabled' => $language->enabled,
+        'weight' => $language->weight,
+        'prefix' => $language->prefix,
+        'domain' => $language->domain,
+      ))
+      ->condition('language', $langcode)
+      ->execute();
 
     $languages[$langcode] = $language;
   }
@@ -190,14 +190,14 @@ function locale_languages_add_screen() {
 function locale_languages_predefined_form($form) {
   $predefined = _locale_prepare_predefined_list();
   $form['language list'] = array('#type' => 'fieldset',
-      '#title' => t('Predefined language'),
-      '#collapsible' => TRUE,
+    '#title' => t('Predefined language'),
+    '#collapsible' => TRUE,
   );
   $form['language list']['langcode'] = array('#type' => 'select',
-      '#title' => t('Language name'),
-      '#default_value' => key($predefined),
-      '#options' => $predefined,
-      '#description' => t('Use the <em>Custom language</em> section below if your desired language does not appear in this list.'),
+    '#title' => t('Language name'),
+    '#default_value' => key($predefined),
+    '#options' => $predefined,
+    '#description' => t('Use the <em>Custom language</em> section below if your desired language does not appear in this list.'),
   );
   $form['language list']['actions'] = array('#type' => 'actions');
   $form['language list']['actions']['submit'] = array('#type' => 'submit', '#value' => t('Add language'));
@@ -209,15 +209,15 @@ function locale_languages_predefined_form($form) {
  */
 function locale_languages_custom_form($form) {
   $form['custom language'] = array('#type' => 'fieldset',
-      '#title' => t('Custom language'),
-      '#collapsible' => TRUE,
-      '#collapsed' => TRUE,
+    '#title' => t('Custom language'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
   );
   _locale_languages_common_controls($form['custom language']);
   $form['custom language']['actions'] = array('#type' => 'actions');
   $form['custom language']['actions']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Add custom language')
+    '#type' => 'submit',
+    '#value' => t('Add custom language')
   );
   // Reuse the validation and submit functions of the predefined language setup form.
   $form['#submit'][] = 'locale_languages_predefined_form_submit';
@@ -236,8 +236,8 @@ function locale_languages_edit_form($form, &$form_state, $langcode) {
     _locale_languages_common_controls($form, $language);
     $form['actions'] = array('#type' => 'actions');
     $form['actions']['submit'] = array(
-        '#type' => 'submit',
-        '#value' => t('Save language')
+      '#type' => 'submit',
+      '#value' => t('Save language')
     );
     $form['#submit'][] = 'locale_languages_edit_form_submit';
     $form['#validate'][] = 'locale_languages_edit_form_validate';
@@ -263,57 +263,57 @@ function _locale_languages_common_controls(&$form, $language = NULL) {
   }
   if (isset($language->language)) {
     $form['langcode_view'] = array(
-        '#type' => 'item',
-        '#title' => t('Language code'),
-        '#markup' => $language->language
+      '#type' => 'item',
+      '#title' => t('Language code'),
+      '#markup' => $language->language
     );
     $form['langcode'] = array(
-        '#type' => 'value',
-        '#value' => $language->language
+      '#type' => 'value',
+      '#value' => $language->language
     );
   }
   else {
     $form['langcode'] = array('#type' => 'textfield',
-        '#title' => t('Language code'),
-        '#maxlength' => 12,
-        '#required' => TRUE,
-        '#default_value' => @$language->language,
-        '#disabled' => (isset($language->language)),
-        '#description' => t('<a href="@rfc4646">RFC 4646</a> compliant language identifier. Language codes typically use a country code, and optionally, a script or regional variant name. <em>Examples: "en", "en-US" and "zh-Hant".</em>', array('@rfc4646' => 'http://www.ietf.org/rfc/rfc4646.txt')),
+      '#title' => t('Language code'),
+      '#maxlength' => 12,
+      '#required' => TRUE,
+      '#default_value' => @$language->language,
+      '#disabled' => (isset($language->language)),
+      '#description' => t('<a href="@rfc4646">RFC 4646</a> compliant language identifier. Language codes typically use a country code, and optionally, a script or regional variant name. <em>Examples: "en", "en-US" and "zh-Hant".</em>', array('@rfc4646' => 'http://www.ietf.org/rfc/rfc4646.txt')),
     );
   }
   $form['name'] = array('#type' => 'textfield',
-      '#title' => t('Language name in English'),
-      '#maxlength' => 64,
-      '#default_value' => @$language->name,
-      '#required' => TRUE,
-      '#description' => t('Name of the language in English. Will be available for translation in all languages.'),
+    '#title' => t('Language name in English'),
+    '#maxlength' => 64,
+    '#default_value' => @$language->name,
+    '#required' => TRUE,
+    '#description' => t('Name of the language in English. Will be available for translation in all languages.'),
   );
   $form['native'] = array('#type' => 'textfield',
-      '#title' => t('Native language name'),
-      '#maxlength' => 64,
-      '#default_value' => @$language->native,
-      '#required' => TRUE,
-      '#description' => t('Name of the language in the language being added.'),
+    '#title' => t('Native language name'),
+    '#maxlength' => 64,
+    '#default_value' => @$language->native,
+    '#required' => TRUE,
+    '#description' => t('Name of the language in the language being added.'),
   );
   $form['prefix'] = array('#type' => 'textfield',
-      '#title' => t('Path prefix language code'),
-      '#maxlength' => 64,
-      '#default_value' => @$language->prefix,
-      '#description' => t('Language code or other custom text to use as a path prefix for URL language detection, if your <em>Detection and selection</em> settings use URL path prefixes. For the default language, this value may be left blank. <strong>Modifying this value may break existing URLs. Use with caution in a production environment.</strong> Example: Specifying "deutsch" as the path prefix code for German results in URLs like "example.com/deutsch/contact".')
+    '#title' => t('Path prefix language code'),
+    '#maxlength' => 64,
+    '#default_value' => @$language->prefix,
+    '#description' => t('Language code or other custom text to use as a path prefix for URL language detection, if your <em>Detection and selection</em> settings use URL path prefixes. For the default language, this value may be left blank. <strong>Modifying this value may break existing URLs. Use with caution in a production environment.</strong> Example: Specifying "deutsch" as the path prefix code for German results in URLs like "example.com/deutsch/contact".')
   );
   $form['domain'] = array('#type' => 'textfield',
-      '#title' => t('Language domain'),
-      '#maxlength' => 128,
-      '#default_value' => @$language->domain,
-      '#description' => t('The domain name to use for this language if URL domains are used for <em>Detection and selection</em>. Leave blank for the default language. <strong>Changing this value may break existing URLs.</strong> Example: Specifying "de.example.com" as language domain for German will result in an URL like "http://de.example.com/contact".'),
+    '#title' => t('Language domain'),
+    '#maxlength' => 128,
+    '#default_value' => @$language->domain,
+    '#description' => t('The domain name to use for this language if URL domains are used for <em>Detection and selection</em>. Leave blank for the default language. <strong>Changing this value may break existing URLs.</strong> Example: Specifying "de.example.com" as language domain for German will result in an URL like "http://de.example.com/contact".'),
   );
   $form['direction'] = array('#type' => 'radios',
-      '#title' => t('Direction'),
-      '#required' => TRUE,
-      '#description' => t('Direction that text in this language is presented.'),
-      '#default_value' => @$language->direction,
-      '#options' => array(LANGUAGE_LTR => t('Left to right'), LANGUAGE_RTL => t('Right to left'))
+    '#title' => t('Direction'),
+    '#required' => TRUE,
+    '#description' => t('Direction that text in this language is presented.'),
+    '#default_value' => @$language->direction,
+    '#options' => array(LANGUAGE_LTR => t('Left to right'), LANGUAGE_RTL => t('Right to left'))
   );
   return $form;
 }
@@ -403,15 +403,15 @@ function locale_languages_edit_form_validate($form, &$form_state) {
  */
 function locale_languages_edit_form_submit($form, &$form_state) {
   db_update('languages')
-  ->fields(array(
-  'name' => $form_state['values']['name'],
-  'native' => $form_state['values']['native'],
-  'domain' => $form_state['values']['domain'],
-  'prefix' => $form_state['values']['prefix'],
-  'direction' => $form_state['values']['direction'],
-  ))
-  ->condition('language',  $form_state['values']['langcode'])
-  ->execute();
+    ->fields(array(
+      'name' => $form_state['values']['name'],
+      'native' => $form_state['values']['native'],
+      'domain' => $form_state['values']['domain'],
+      'prefix' => $form_state['values']['prefix'],
+      'direction' => $form_state['values']['direction'],
+    ))
+    ->condition('language',  $form_state['values']['langcode'])
+    ->execute();
   $default = language_default();
   if ($default->language == $form_state['values']['langcode']) {
     $properties = array('name', 'native', 'direction', 'enabled', 'plurals', 'formula', 'domain', 'prefix', 'weight');
@@ -463,19 +463,19 @@ function locale_languages_delete_form_submit($form, &$form_state) {
   if (isset($languages[$form_state['values']['langcode']])) {
     // Remove translations first.
     db_delete('locales_target')
-    ->condition('language', $form_state['values']['langcode'])
-    ->execute();
+      ->condition('language', $form_state['values']['langcode'])
+      ->execute();
     cache_clear_all('locale:' . $form_state['values']['langcode'], 'cache');
     // With no translations, this removes existing JavaScript translations file.
     _locale_rebuild_js($form_state['values']['langcode']);
     // Remove the language.
     db_delete('languages')
-    ->condition('language', $form_state['values']['langcode'])
-    ->execute();
+      ->condition('language', $form_state['values']['langcode'])
+      ->execute();
     db_update('node')
-    ->fields(array('language' => ''))
-    ->condition('language', $form_state['values']['langcode'])
-    ->execute();
+      ->fields(array('language' => ''))
+      ->condition('language', $form_state['values']['langcode'])
+      ->execute();
     if ($languages[$form_state['values']['langcode']]->enabled) {
       variable_set('language_count', variable_get('language_count', 1) - 1);
     }
@@ -499,11 +499,11 @@ function locale_languages_configure_form() {
   include_once DRUPAL_ROOT . '/includes/language.inc';
 
   $form = array(
-      '#submit' => array('locale_languages_configure_form_submit'),
-      '#theme' => 'locale_languages_configure_form',
-      '#language_types' => language_types_configurable(FALSE),
-      '#language_types_info' => language_types_info(),
-      '#language_providers' => language_negotiation_info(),
+    '#submit' => array('locale_languages_configure_form_submit'),
+    '#theme' => 'locale_languages_configure_form',
+    '#language_types' => language_types_configurable(FALSE),
+    '#language_types_info' => language_types_info(),
+    '#language_providers' => language_negotiation_info(),
   );
 
   foreach ($form['#language_types'] as $type) {
@@ -512,8 +512,8 @@ function locale_languages_configure_form() {
 
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Save settings'),
+    '#type' => 'submit',
+    '#value' => t('Save settings'),
   );
 
   return $form;
@@ -526,13 +526,13 @@ function _locale_languages_configure_form_language_table(&$form, $type) {
   $info = $form['#language_types_info'][$type];
 
   $table_form = array(
-      '#title' => t('@type language detection', array('@type' => $info['name'])),
-      '#tree' => TRUE,
-      '#description' => $info['description'],
-      '#language_providers' => array(),
-      '#show_operations' => FALSE,
-      'weight' => array('#tree' => TRUE),
-      'enabled' => array('#tree' => TRUE),
+    '#title' => t('@type language detection', array('@type' => $info['name'])),
+    '#tree' => TRUE,
+    '#description' => $info['description'],
+    '#language_providers' => array(),
+    '#show_operations' => FALSE,
+    'weight' => array('#tree' => TRUE),
+    'enabled' => array('#tree' => TRUE),
   );
 
   $language_providers = $form['#language_providers'];
@@ -567,20 +567,20 @@ function _locale_languages_configure_form_language_table(&$form, $type) {
       $table_form['#language_providers'][$id] = $provider;
 
       $table_form['weight'][$id] = array(
-          '#type' => 'weight',
-          '#title' => t('Weight for @title', array('@title' => $provider['name'])),
-          '#title_display' => 'invisible',
-          '#default_value' => $weight,
-          '#attributes' => array('class' => array("language-provider-weight-$type")),
+        '#type' => 'weight',
+        '#title' => t('Weight for @title', array('@title' => $provider['name'])),
+        '#title_display' => 'invisible',
+        '#default_value' => $weight,
+        '#attributes' => array('class' => array("language-provider-weight-$type")),
       );
 
       $table_form['title'][$id] = array('#markup' => check_plain($provider['name']));
 
       $table_form['enabled'][$id] = array(
-          '#type' => 'checkbox',
-          '#title' => t('@title language provider', array('@title' => $provider['name'])),
-          '#title_display' => 'invisible',
-          '#default_value' => $enabled,
+        '#type' => 'checkbox',
+        '#title' => t('@title language provider', array('@title' => $provider['name'])),
+        '#title_display' => 'invisible',
+        '#default_value' => $enabled,
       );
       if ($id === LANGUAGE_NEGOTIATION_DEFAULT) {
         $table_form['enabled'][$id]['#default_value'] = TRUE;
@@ -625,13 +625,13 @@ function theme_locale_languages_configure_form($variables) {
       // Do not take form control structures.
       if (is_array($element) && element_child($id)) {
         $row = array(
-            'data' => array(
-                '<strong>' . drupal_render($form[$type]['title'][$id]) . '</strong>',
-                drupal_render($form[$type]['description'][$id]),
-                drupal_render($form[$type]['enabled'][$id]),
-                drupal_render($form[$type]['weight'][$id]),
-            ),
-            'class' => array('draggable'),
+          'data' => array(
+            '<strong>' . drupal_render($form[$type]['title'][$id]) . '</strong>',
+            drupal_render($form[$type]['description'][$id]),
+            drupal_render($form[$type]['enabled'][$id]),
+            drupal_render($form[$type]['weight'][$id]),
+          ),
+          'class' => array('draggable'),
         );
         if ($form[$type]['#show_operations']) {
           $row['data'][] = drupal_render($form[$type]['operation'][$id]);
@@ -641,10 +641,10 @@ function theme_locale_languages_configure_form($variables) {
     }
 
     $header = array(
-        array('data' => t('Detection method')),
-        array('data' => t('Description')),
-        array('data' => t('Enabled')),
-        array('data' => t('Weight')),
+      array('data' => t('Detection method')),
+      array('data' => t('Description')),
+      array('data' => t('Enabled')),
+      array('data' => t('Weight')),
     );
 
     // If there is at least one operation enabled show the operation column.
@@ -653,9 +653,9 @@ function theme_locale_languages_configure_form($variables) {
     }
 
     $variables = array(
-        'header' => $header,
-        'rows' => $rows,
-        'attributes' => array('id' => "language-negotiation-providers-$type"),
+      'header' => $header,
+      'rows' => $rows,
+      'attributes' => array('id' => "language-negotiation-providers-$type"),
     );
     $table  = theme('table', $variables);
     $table .= drupal_render_children($form[$type]);
@@ -706,14 +706,14 @@ function locale_languages_configure_form_submit($form, &$form_state) {
  */
 function locale_language_providers_url_form($form, &$form_state) {
   $form['locale_language_negotiation_url_part'] = array(
-      '#title' => t('Part of the URL that determines language'),
-      '#type' => 'radios',
-      '#options' => array(
-          LOCALE_LANGUAGE_NEGOTIATION_URL_PREFIX => t('Path prefix'),
-          LOCALE_LANGUAGE_NEGOTIATION_URL_DOMAIN => t('Domain'),
-      ),
-      '#default_value' => variable_get('locale_language_negotiation_url_part', LOCALE_LANGUAGE_NEGOTIATION_URL_PREFIX),
-      '#description' => t('<em>Path prefix</em>: URLs like http://example.com/de/contact set language to German (de). <em>Domain</em>: URLs like http://de.example.com/contact set the language to German. <strong>Warning: Changing this setting may break incoming URLs. Use with caution on a production site.</strong>'),
+    '#title' => t('Part of the URL that determines language'),
+    '#type' => 'radios',
+    '#options' => array(
+      LOCALE_LANGUAGE_NEGOTIATION_URL_PREFIX => t('Path prefix'),
+      LOCALE_LANGUAGE_NEGOTIATION_URL_DOMAIN => t('Domain'),
+    ),
+    '#default_value' => variable_get('locale_language_negotiation_url_part', LOCALE_LANGUAGE_NEGOTIATION_URL_PREFIX),
+    '#description' => t('<em>Path prefix</em>: URLs like http://example.com/de/contact set language to German (de). <em>Domain</em>: URLs like http://de.example.com/contact set the language to German. <strong>Warning: Changing this setting may break incoming URLs. Use with caution on a production site.</strong>'),
   );
 
   $form_state['redirect'] = 'admin/config/regional/language/configure';
@@ -726,10 +726,10 @@ function locale_language_providers_url_form($form, &$form_state) {
  */
 function locale_language_providers_session_form($form, &$form_state) {
   $form['locale_language_negotiation_session_param'] = array(
-      '#title' => t('Request/session parameter'),
-      '#type' => 'textfield',
-      '#default_value' => variable_get('locale_language_negotiation_session_param', 'language'),
-      '#description' => t('Name of the request/session parameter used to determine the desired language.'),
+    '#title' => t('Request/session parameter'),
+    '#type' => 'textfield',
+    '#default_value' => variable_get('locale_language_negotiation_session_param', 'language'),
+    '#description' => t('Name of the request/session parameter used to determine the desired language.'),
   );
 
   $form_state['redirect'] = 'admin/config/regional/language/configure';
@@ -812,24 +812,24 @@ function locale_translation_filters() {
   unset($languages['en']);
 
   $filters['string'] = array(
-      'title' => t('String contains'),
-      'description' => t('Leave blank to show all strings. The search is case sensitive.'),
+    'title' => t('String contains'),
+    'description' => t('Leave blank to show all strings. The search is case sensitive.'),
   );
 
   $filters['language'] = array(
-      'title' => t('Language'),
-      'options' => array_merge(array('all' => t('All languages'), 'en' => t('English (provided by Drupal)')), $languages),
+    'title' => t('Language'),
+    'options' => array_merge(array('all' => t('All languages'), 'en' => t('English (provided by Drupal)')), $languages),
   );
 
   $filters['translation'] = array(
-      'title' => t('Search in'),
-      'options' => array('all' => t('Both translated and untranslated strings'), 'translated' => t('Only translated strings'), 'untranslated' => t('Only untranslated strings')),
+    'title' => t('Search in'),
+    'options' => array('all' => t('Both translated and untranslated strings'), 'translated' => t('Only translated strings'), 'untranslated' => t('Only untranslated strings')),
   );
 
   $groups = module_invoke_all('locale', 'groups');
   $filters['group'] = array(
-      'title' => t('Limit search to'),
-      'options' => array_merge(array('all' => t('All text groups')), $groups),
+    'title' => t('Limit search to'),
+    'options' => array_merge(array('all' => t('All text groups')), $groups),
   );
 
   return $filters;
@@ -844,28 +844,28 @@ function locale_translation_filter_form() {
   $filters = locale_translation_filters();
 
   $form['filters'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Filter translatable strings'),
-      '#collapsible' => TRUE,
-      '#collapsed' => FALSE,
+    '#type' => 'fieldset',
+    '#title' => t('Filter translatable strings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
   );
   foreach ($filters as $key => $filter) {
     // Special case for 'string' filter.
     if ($key == 'string') {
       $form['filters']['status']['string'] = array(
-          '#type' => 'textfield',
-          '#title' => $filter['title'],
-          '#description' => $filter['description'],
+        '#type' => 'textfield',
+        '#title' => $filter['title'],
+        '#description' => $filter['description'],
       );
     }
     else {
       $form['filters']['status'][$key] = array(
-          '#title' => $filter['title'],
-          '#type' => 'select',
-          '#empty_value' => 'all',
-          '#empty_option' => $filter['options']['all'],
-          '#size' => 0,
-          '#options' => $filter['options'],
+        '#title' => $filter['title'],
+        '#type' => 'select',
+        '#empty_value' => 'all',
+        '#empty_option' => $filter['options']['all'],
+        '#size' => 0,
+        '#options' => $filter['options'],
       );
     }
     if (!empty($_SESSION['locale_translation_filter'][$key])) {
@@ -874,17 +874,17 @@ function locale_translation_filter_form() {
   }
 
   $form['filters']['actions'] = array(
-      '#type' => 'actions',
-      '#attributes' => array('class' => array('container-inline')),
+    '#type' => 'actions',
+    '#attributes' => array('class' => array('container-inline')),
   );
   $form['filters']['actions']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Filter'),
+    '#type' => 'submit',
+    '#value' => t('Filter'),
   );
   if (!empty($_SESSION['locale_translation_filter'])) {
     $form['filters']['actions']['reset'] = array(
-        '#type' => 'submit',
-        '#value' => t('Reset')
+      '#type' => 'submit',
+      '#value' => t('Reset')
     );
   }
 
@@ -937,39 +937,39 @@ function locale_translate_import_form($form) {
   }
   else {
     $languages = array(
-        t('Already added languages') => $names,
-        t('Languages not yet added') => _locale_prepare_predefined_list()
+      t('Already added languages') => $names,
+      t('Languages not yet added') => _locale_prepare_predefined_list()
     );
     $default = key($names);
   }
 
   $form['import'] = array('#type' => 'fieldset',
-      '#title' => t('Import translation'),
+    '#title' => t('Import translation'),
   );
   $form['import']['file'] = array('#type' => 'file',
-      '#title' => t('Language file'),
-      '#size' => 50,
-      '#description' => t('A Gettext Portable Object (<em>.po</em>) file.'),
+    '#title' => t('Language file'),
+    '#size' => 50,
+    '#description' => t('A Gettext Portable Object (<em>.po</em>) file.'),
   );
   $form['import']['langcode'] = array('#type' => 'select',
-      '#title' => t('Import into'),
-      '#options' => $languages,
-      '#default_value' => $default,
-      '#description' => t('Choose the language you want to add strings into. If you choose a language which is not yet set up, it will be added.'),
+    '#title' => t('Import into'),
+    '#options' => $languages,
+    '#default_value' => $default,
+    '#description' => t('Choose the language you want to add strings into. If you choose a language which is not yet set up, it will be added.'),
   );
   $form['import']['group'] = array('#type' => 'radios',
-      '#title' => t('Text group'),
-      '#default_value' => 'default',
-      '#options' => module_invoke_all('locale', 'groups'),
-      '#description' => t('Imported translations will be added to this text group.'),
+    '#title' => t('Text group'),
+    '#default_value' => 'default',
+    '#options' => module_invoke_all('locale', 'groups'),
+    '#description' => t('Imported translations will be added to this text group.'),
   );
   $form['import']['mode'] = array('#type' => 'radios',
-      '#title' => t('Mode'),
-      '#default_value' => LOCALE_IMPORT_KEEP,
-      '#options' => array(
-          LOCALE_IMPORT_OVERWRITE => t('Strings in the uploaded file replace existing ones, new ones are added. The plural format is updated.'),
-          LOCALE_IMPORT_KEEP => t('Existing strings and the plural format are kept, only new strings are added.')
-      ),
+    '#title' => t('Mode'),
+    '#default_value' => LOCALE_IMPORT_KEEP,
+    '#options' => array(
+      LOCALE_IMPORT_OVERWRITE => t('Strings in the uploaded file replace existing ones, new ones are added. The plural format is updated.'),
+      LOCALE_IMPORT_KEEP => t('Existing strings and the plural format are kept, only new strings are added.')
+    ),
   );
   $form['import']['submit'] = array('#type' => 'submit', '#value' => t('Import'));
 
@@ -1039,17 +1039,17 @@ function locale_translate_export_screen() {
  */
 function locale_translate_export_po_form($form, &$form_state, $names) {
   $form['export_title'] = array('#type' => 'item',
-      '#title' => t('Export translation'),
+    '#title' => t('Export translation'),
   );
   $form['langcode'] = array('#type' => 'select',
-      '#title' => t('Language name'),
-      '#options' => $names,
-      '#description' => t('Select the language to export in Gettext Portable Object (<em>.po</em>) format.'),
+    '#title' => t('Language name'),
+    '#options' => $names,
+    '#description' => t('Select the language to export in Gettext Portable Object (<em>.po</em>) format.'),
   );
   $form['group'] = array('#type' => 'radios',
-      '#title' => t('Text group'),
-      '#default_value' => 'default',
-      '#options' => module_invoke_all('locale', 'groups'),
+    '#title' => t('Text group'),
+    '#default_value' => 'default',
+    '#options' => module_invoke_all('locale', 'groups'),
   );
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array('#type' => 'submit', '#value' => t('Export'));
@@ -1062,13 +1062,13 @@ function locale_translate_export_po_form($form, &$form_state, $names) {
 function locale_translate_export_pot_form() {
   // Complete template export of the strings
   $form['export_title'] = array('#type' => 'item',
-      '#title' => t('Export template'),
-      '#description' => t('Generate a Gettext Portable Object Template (<em>.pot</em>) file with all strings from the Drupal locale database.'),
+    '#title' => t('Export template'),
+    '#description' => t('Generate a Gettext Portable Object Template (<em>.pot</em>) file with all strings from the Drupal locale database.'),
   );
   $form['group'] = array('#type' => 'radios',
-      '#title' => t('Text group'),
-      '#default_value' => 'default',
-      '#options' => module_invoke_all('locale', 'groups'),
+    '#title' => t('Text group'),
+    '#default_value' => 'default',
+    '#options' => module_invoke_all('locale', 'groups'),
   );
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array('#type' => 'submit', '#value' => t('Export'));
@@ -1115,28 +1115,28 @@ function locale_translate_edit_form($form, &$form_state, $lid) {
 
   // Add original text to the top and some values for form altering.
   $form['original'] = array(
-      '#type'  => 'item',
-      '#title' => t('Original text'),
-      '#markup' => check_plain(wordwrap($source->source, 0)),
+    '#type'  => 'item',
+    '#title' => t('Original text'),
+    '#markup' => check_plain(wordwrap($source->source, 0)),
   );
   if (!empty($source->context)) {
     $form['context'] = array(
-        '#type' => 'item',
-        '#title' => t('Context'),
-        '#markup' => check_plain($source->context),
+      '#type' => 'item',
+      '#title' => t('Context'),
+      '#markup' => check_plain($source->context),
     );
   }
   $form['lid'] = array(
-      '#type'  => 'value',
-      '#value' => $lid
+    '#type'  => 'value',
+    '#value' => $lid
   );
   $form['textgroup'] = array(
-      '#type'  => 'value',
-      '#value' => $source->textgroup,
+    '#type'  => 'value',
+    '#value' => $source->textgroup,
   );
   $form['location'] = array(
-      '#type'  => 'value',
-      '#value' => $source->location
+    '#type'  => 'value',
+    '#value' => $source->location
   );
 
   // Include default form controls with empty values for all languages.
@@ -1151,10 +1151,10 @@ function locale_translate_edit_form($form, &$form_state, $lid) {
   $rows = min(ceil(str_word_count($source->source) / 12), 10);
   foreach ($languages as $langcode => $language) {
     $form['translations'][$langcode] = array(
-        '#type' => 'textarea',
-        '#title' => t($language->name),
-        '#rows' => $rows,
-        '#default_value' => '',
+      '#type' => 'textarea',
+      '#title' => t($language->name),
+      '#rows' => $rows,
+      '#default_value' => '',
     );
   }
 
@@ -1196,29 +1196,29 @@ function locale_translate_edit_form_submit($form, &$form_state) {
       // Only update or insert if we have a value to use.
       if (!empty($translation)) {
         db_update('locales_target')
-        ->fields(array(
-        'translation' => $value,
-        ))
-        ->condition('lid', $lid)
-        ->condition('language', $key)
-        ->execute();
+          ->fields(array(
+            'translation' => $value,
+          ))
+          ->condition('lid', $lid)
+          ->condition('language', $key)
+          ->execute();
       }
       else {
         db_insert('locales_target')
-        ->fields(array(
-        'lid' => $lid,
-        'translation' => $value,
-        'language' => $key,
-        ))
-        ->execute();
+          ->fields(array(
+            'lid' => $lid,
+            'translation' => $value,
+            'language' => $key,
+          ))
+          ->execute();
       }
     }
     elseif (!empty($translation)) {
       // Empty translation entered: remove existing entry from database.
       db_delete('locales_target')
-      ->condition('lid', $lid)
-      ->condition('language', $key)
-      ->execute();
+        ->condition('lid', $lid)
+        ->condition('language', $key)
+        ->execute();
     }
 
     // Force JavaScript translation file recreation for this language.
@@ -1260,11 +1260,11 @@ function locale_translate_delete_form($form, &$form_state, $source) {
  */
 function locale_translate_delete_form_submit($form, &$form_state) {
   db_delete('locales_source')
-  ->condition('lid', $form_state['values']['lid'])
-  ->execute();
+    ->condition('lid', $form_state['values']['lid'])
+    ->execute();
   db_delete('locales_target')
-  ->condition('lid', $form_state['values']['lid'])
-  ->execute();
+    ->condition('lid', $form_state['values']['lid'])
+    ->execute();
   // Force JavaScript translation file recreation for all languages.
   _locale_invalidate_js();
   cache_clear_all('locale:', 'cache', TRUE);
@@ -1287,8 +1287,8 @@ function locale_translate_delete_form_submit($form, &$form_state) {
 function theme_locale_date_format_form($variables) {
   $form = $variables['form'];
   $header = array(
-      t('Date type'),
-      t('Format'),
+    t('Date type'),
+    t('Format'),
   );
 
   foreach (element_children($form['date_formats']) as $key) {
@@ -1311,8 +1311,8 @@ function theme_locale_date_format_form($variables) {
  */
 function locale_date_format_language_overview_page() {
   $header = array(
-      t('Language'),
-      array('data' => t('Operations'), 'colspan' => '2'),
+    t('Language'),
+    array('data' => t('Operations'), 'colspan' => '2'),
   );
 
   // Get list of languages.
@@ -1338,14 +1338,14 @@ function locale_date_format_form($form, &$form_state, $langcode) {
 
   // Display the current language name.
   $form['language'] = array(
-      '#type' => 'item',
-      '#title' => t('Language'),
-      '#markup' => check_plain($language_name),
-      '#weight' => -10,
+    '#type' => 'item',
+    '#title' => t('Language'),
+    '#markup' => check_plain($language_name),
+    '#weight' => -10,
   );
   $form['langcode'] = array(
-      '#type' => 'value',
-      '#value' => $langcode,
+    '#type' => 'value',
+    '#value' => $langcode,
   );
 
   // Get list of date format types.
@@ -1374,18 +1374,18 @@ function locale_date_format_form($form, &$form_state, $langcode) {
 
     // Show date format select list.
     $form['date_formats']['date_format_' . $type] = array(
-        '#type' => 'select',
-        '#title' => check_plain($type_info['title']),
-        '#attributes' => array('class' => array('date-format')),
-        '#default_value' => (isset($choices[$default]) ? $default : 'custom'),
-        '#options' => $choices,
+      '#type' => 'select',
+      '#title' => check_plain($type_info['title']),
+      '#attributes' => array('class' => array('date-format')),
+      '#default_value' => (isset($choices[$default]) ? $default : 'custom'),
+      '#options' => $choices,
     );
   }
 
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Save configuration'),
+    '#type' => 'submit',
+    '#value' => t('Save configuration'),
   );
 
   return $form;
@@ -1421,10 +1421,10 @@ function locale_date_format_reset_form($form, &$form_state, $langcode) {
   $form['langcode'] = array('#type' => 'value', '#value' => $langcode);
   $languages = language_list();
   return confirm_form($form,
-      t('Are you sure you want to reset the date formats for %language to the global defaults?', array('%language' => $languages[$langcode]->name)),
-      'admin/config/regional/date-time/locale',
-      t('Resetting will remove all localized date formats for this language. This action cannot be undone.'),
-      t('Reset'), t('Cancel'));
+    t('Are you sure you want to reset the date formats for %language to the global defaults?', array('%language' => $languages[$langcode]->name)),
+    'admin/config/regional/date-time/locale',
+    t('Resetting will remove all localized date formats for this language. This action cannot be undone.'),
+    t('Reset'), t('Cancel'));
 }
 
 /**
@@ -1432,7 +1432,7 @@ function locale_date_format_reset_form($form, &$form_state, $langcode) {
  */
 function locale_date_format_reset_form_submit($form, &$form_state) {
   db_delete('date_format_locale')
-  ->condition('language', $form_state['values']['langcode'])
-  ->execute();
+    ->condition('language', $form_state['values']['langcode'])
+    ->execute();
   $form_state['redirect'] = 'admin/config/regional/date-time/locale';
 }

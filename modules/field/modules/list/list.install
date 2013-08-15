@@ -12,36 +12,36 @@ function list_field_schema($field) {
   switch ($field['type']) {
     case 'list_text':
       $columns = array(
-      'value' => array(
-      'type' => 'varchar',
-      'length' => 255,
-      'not null' => FALSE,
-      ),
+        'value' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+        ),
       );
       break;
     case 'list_float':
       $columns = array(
-      'value' => array(
-      'type' => 'float',
-      'not null' => FALSE,
-      ),
+        'value' => array(
+          'type' => 'float',
+          'not null' => FALSE,
+        ),
       );
       break;
     case 'list_integer':
     case 'list_boolean':
       $columns = array(
-      'value' => array(
-      'type' => 'int',
-      'not null' => FALSE,
-      ),
+        'value' => array(
+          'type' => 'int',
+          'not null' => FALSE,
+        ),
       );
       break;
   }
   return array(
-      'columns' => $columns,
-      'indexes' => array(
-          'value' => array('value'),
-      ),
+    'columns' => $columns,
+    'indexes' => array(
+      'value' => array('value'),
+    ),
   );
 }
 
@@ -81,9 +81,9 @@ function list_update_7001() {
     // Save the new data.
     if ($update) {
       $query = db_update('field_config')
-      ->condition('id', $field['id'])
-      ->fields($update)
-      ->execute();
+        ->condition('id', $field['id'])
+        ->fields($update)
+        ->execute();
     }
   }
 }

@@ -12,10 +12,10 @@ function file_module_test_menu() {
   $items = array();
 
   $items['file/test'] = array(
-      'title' => 'Managed file test',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('file_module_test_form'),
-      'access arguments' => array('access content'),
+    'title' => 'Managed file test',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('file_module_test_form'),
+    'access arguments' => array('access content'),
   );
 
   return $items;
@@ -31,25 +31,25 @@ function file_module_test_form($form, &$form_state, $tree = TRUE, $extended = FA
   $form['#tree'] = (bool) $tree;
 
   $form['nested']['file'] = array(
-      '#type' => 'managed_file',
-      '#title' => t('Managed file'),
-      '#upload_location' => 'public://test',
-      '#progress_message' => t('Please wait...'),
-      '#extended' => (bool) $extended,
-      '#size' => 13,
+    '#type' => 'managed_file',
+    '#title' => t('Managed file'),
+    '#upload_location' => 'public://test',
+    '#progress_message' => t('Please wait...'),
+    '#extended' => (bool) $extended,
+    '#size' => 13,
   );
   if ($default_fid) {
     $form['nested']['file']['#default_value'] = $extended ? array('fid' => $default_fid) : $default_fid;
   }
 
   $form['textfield'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Type a value and ensure it stays'),
+    '#type' => 'textfield',
+    '#title' => t('Type a value and ensure it stays'),
   );
 
   $form['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Save'),
+    '#type' => 'submit',
+    '#value' => t('Save'),
   );
 
   return $form;

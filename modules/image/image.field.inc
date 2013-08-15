@@ -10,26 +10,26 @@
  */
 function image_field_info() {
   return array(
-      'image' => array(
-          'label' => t('Image'),
-          'description' => t('This field stores the ID of an image file as an integer value.'),
-          'settings' => array(
-              'uri_scheme' => variable_get('file_default_scheme', 'public'),
-              'default_image' => 0,
-          ),
-          'instance_settings' => array(
-              'file_extensions' => 'png gif jpg jpeg',
-              'file_directory' => '',
-              'max_filesize' => '',
-              'alt_field' => 0,
-              'title_field' => 0,
-              'max_resolution' => '',
-              'min_resolution' => '',
-              'default_image' => 0,
-          ),
-          'default_widget' => 'image_image',
-          'default_formatter' => 'image',
+    'image' => array(
+      'label' => t('Image'),
+      'description' => t('This field stores the ID of an image file as an integer value.'),
+      'settings' => array(
+        'uri_scheme' => variable_get('file_default_scheme', 'public'),
+        'default_image' => 0,
       ),
+      'instance_settings' => array(
+        'file_extensions' => 'png gif jpg jpeg',
+        'file_directory' => '',
+        'max_filesize' => '',
+        'alt_field' => 0,
+        'title_field' => 0,
+        'max_resolution' => '',
+        'min_resolution' => '',
+        'default_image' => 0,
+      ),
+      'default_widget' => 'image_image',
+      'default_formatter' => 'image',
+    ),
   );
 }
 
@@ -45,22 +45,22 @@ function image_field_settings_form($field, $instance) {
     $scheme_options[$scheme] = $stream_wrapper['name'];
   }
   $form['uri_scheme'] = array(
-      '#type' => 'radios',
-      '#title' => t('Upload destination'),
-      '#options' => $scheme_options,
-      '#default_value' => $settings['uri_scheme'],
-      '#description' => t('Select where the final files should be stored. Private file storage has significantly more overhead than public files, but allows restricted access to files within this field.'),
+    '#type' => 'radios',
+    '#title' => t('Upload destination'),
+    '#options' => $scheme_options,
+    '#default_value' => $settings['uri_scheme'],
+    '#description' => t('Select where the final files should be stored. Private file storage has significantly more overhead than public files, but allows restricted access to files within this field.'),
   );
 
   // When the user sets the scheme on the UI, even for the first time, it's
   // updating a field because fields are created on the "Manage fields"
   // page. So image_field_update_field() can handle this change.
   $form['default_image'] = array(
-      '#title' => t('Default image'),
-      '#type' => 'managed_file',
-      '#description' => t('If no image is uploaded, this image will be shown on display.'),
-      '#default_value' => $field['settings']['default_image'],
-      '#upload_location' => $settings['uri_scheme'] . '://default_images/',
+    '#title' => t('Default image'),
+    '#type' => 'managed_file',
+    '#description' => t('If no image is uploaded, this image will be shown on display.'),
+    '#default_value' => $field['settings']['default_image'],
+    '#upload_location' => $settings['uri_scheme'] . '://default_images/',
   );
 
   return $form;
@@ -78,60 +78,60 @@ function image_field_instance_settings_form($field, $instance) {
   // Add maximum and minimum resolution settings.
   $max_resolution = explode('x', $settings['max_resolution']) + array('', '');
   $form['max_resolution'] = array(
-      '#type' => 'item',
-      '#title' => t('Maximum image resolution'),
-      '#element_validate' => array('_image_field_resolution_validate'),
-      '#weight' => 4.1,
-      '#field_prefix' => '<div class="container-inline">',
-      '#field_suffix' => '</div>',
-      '#description' => t('The maximum allowed image size expressed as WIDTHxHEIGHT (e.g. 640x480). Leave blank for no restriction. If a larger image is uploaded, it will be resized to reflect the given width and height. Resizing images on upload will cause the loss of <a href="http://en.wikipedia.org/wiki/Exchangeable_image_file_format">EXIF data</a> in the image.'),
+    '#type' => 'item',
+    '#title' => t('Maximum image resolution'),
+    '#element_validate' => array('_image_field_resolution_validate'),
+    '#weight' => 4.1,
+    '#field_prefix' => '<div class="container-inline">',
+    '#field_suffix' => '</div>',
+    '#description' => t('The maximum allowed image size expressed as WIDTHxHEIGHT (e.g. 640x480). Leave blank for no restriction. If a larger image is uploaded, it will be resized to reflect the given width and height. Resizing images on upload will cause the loss of <a href="http://en.wikipedia.org/wiki/Exchangeable_image_file_format">EXIF data</a> in the image.'),
   );
   $form['max_resolution']['x'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Maximum width'),
-      '#title_display' => 'invisible',
-      '#default_value' => $max_resolution[0],
-      '#size' => 5,
-      '#maxlength' => 5,
-      '#field_suffix' => ' x ',
+    '#type' => 'textfield',
+    '#title' => t('Maximum width'),
+    '#title_display' => 'invisible',
+    '#default_value' => $max_resolution[0],
+    '#size' => 5,
+    '#maxlength' => 5,
+    '#field_suffix' => ' x ',
   );
   $form['max_resolution']['y'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Maximum height'),
-      '#title_display' => 'invisible',
-      '#default_value' => $max_resolution[1],
-      '#size' => 5,
-      '#maxlength' => 5,
-      '#field_suffix' => ' ' . t('pixels'),
+    '#type' => 'textfield',
+    '#title' => t('Maximum height'),
+    '#title_display' => 'invisible',
+    '#default_value' => $max_resolution[1],
+    '#size' => 5,
+    '#maxlength' => 5,
+    '#field_suffix' => ' ' . t('pixels'),
   );
 
   $min_resolution = explode('x', $settings['min_resolution']) + array('', '');
   $form['min_resolution'] = array(
-      '#type' => 'item',
-      '#title' => t('Minimum image resolution'),
-      '#element_validate' => array('_image_field_resolution_validate'),
-      '#weight' => 4.2,
-      '#field_prefix' => '<div class="container-inline">',
-      '#field_suffix' => '</div>',
-      '#description' => t('The minimum allowed image size expressed as WIDTHxHEIGHT (e.g. 640x480). Leave blank for no restriction. If a smaller image is uploaded, it will be rejected.'),
+    '#type' => 'item',
+    '#title' => t('Minimum image resolution'),
+    '#element_validate' => array('_image_field_resolution_validate'),
+    '#weight' => 4.2,
+    '#field_prefix' => '<div class="container-inline">',
+    '#field_suffix' => '</div>',
+    '#description' => t('The minimum allowed image size expressed as WIDTHxHEIGHT (e.g. 640x480). Leave blank for no restriction. If a smaller image is uploaded, it will be rejected.'),
   );
   $form['min_resolution']['x'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Minimum width'),
-      '#title_display' => 'invisible',
-      '#default_value' => $min_resolution[0],
-      '#size' => 5,
-      '#maxlength' => 5,
-      '#field_suffix' => ' x ',
+    '#type' => 'textfield',
+    '#title' => t('Minimum width'),
+    '#title_display' => 'invisible',
+    '#default_value' => $min_resolution[0],
+    '#size' => 5,
+    '#maxlength' => 5,
+    '#field_suffix' => ' x ',
   );
   $form['min_resolution']['y'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Minimum height'),
-      '#title_display' => 'invisible',
-      '#default_value' => $min_resolution[1],
-      '#size' => 5,
-      '#maxlength' => 5,
-      '#field_suffix' => ' ' . t('pixels'),
+    '#type' => 'textfield',
+    '#title' => t('Minimum height'),
+    '#title_display' => 'invisible',
+    '#default_value' => $min_resolution[1],
+    '#size' => 5,
+    '#maxlength' => 5,
+    '#field_suffix' => ' ' . t('pixels'),
   );
 
   // Remove the description option.
@@ -139,27 +139,27 @@ function image_field_instance_settings_form($field, $instance) {
 
   // Add title and alt configuration options.
   $form['alt_field'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Enable <em>Alt</em> field'),
-      '#default_value' => $settings['alt_field'],
-      '#description' => t('The alt attribute may be used by search engines, screen readers, and when the image cannot be loaded.'),
-      '#weight' => 10,
+    '#type' => 'checkbox',
+    '#title' => t('Enable <em>Alt</em> field'),
+    '#default_value' => $settings['alt_field'],
+    '#description' => t('The alt attribute may be used by search engines, screen readers, and when the image cannot be loaded.'),
+    '#weight' => 10,
   );
   $form['title_field'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Enable <em>Title</em> field'),
-      '#default_value' => $settings['title_field'],
-      '#description' => t('The title attribute is used as a tooltip when the mouse hovers over the image.'),
-      '#weight' => 11,
+    '#type' => 'checkbox',
+    '#title' => t('Enable <em>Title</em> field'),
+    '#default_value' => $settings['title_field'],
+    '#description' => t('The title attribute is used as a tooltip when the mouse hovers over the image.'),
+    '#weight' => 11,
   );
 
   // Add the default image to the instance.
   $form['default_image'] = array(
-      '#title' => t('Default image'),
-      '#type' => 'managed_file',
-      '#description' => t("If no image is uploaded, this image will be shown on display and will override the field's default image."),
-      '#default_value' => $settings['default_image'],
-      '#upload_location' => $field['settings']['uri_scheme'] . '://default_images/',
+    '#title' => t('Default image'),
+    '#type' => 'managed_file',
+    '#description' => t("If no image is uploaded, this image will be shown on display and will override the field's default image."),
+    '#default_value' => $settings['default_image'],
+    '#upload_location' => $field['settings']['uri_scheme'] . '://default_images/',
   );
 
   return $form;
@@ -215,9 +215,9 @@ function image_field_prepare_view($entity_type, $entities, $field, $instances, $
       // Add the default image if one is found.
       if ($fid && ($file = file_load($fid))) {
         $items[$id][0] = (array) $file + array(
-            'is_default' => TRUE,
-            'alt' => '',
-            'title' => '',
+          'is_default' => TRUE,
+          'alt' => '',
+          'title' => '',
         );
       }
     }
@@ -283,18 +283,18 @@ function image_field_is_empty($item, $field) {
  */
 function image_field_widget_info() {
   return array(
-      'image_image' => array(
-          'label' => t('Image'),
-          'field types' => array('image'),
-          'settings' => array(
-              'progress_indicator' => 'throbber',
-              'preview_image_style' => 'thumbnail',
-          ),
-          'behaviors' => array(
-              'multiple values' => FIELD_BEHAVIOR_CUSTOM,
-              'default value' => FIELD_BEHAVIOR_NONE,
-          ),
+    'image_image' => array(
+      'label' => t('Image'),
+      'field types' => array('image'),
+      'settings' => array(
+        'progress_indicator' => 'throbber',
+        'preview_image_style' => 'thumbnail',
       ),
+      'behaviors' => array(
+        'multiple values' => FIELD_BEHAVIOR_CUSTOM,
+        'default value' => FIELD_BEHAVIOR_NONE,
+      ),
+    ),
   );
 }
 
@@ -309,13 +309,13 @@ function image_field_widget_settings_form($field, $instance) {
   $form = file_field_widget_settings_form($field, $instance);
 
   $form['preview_image_style'] = array(
-      '#title' => t('Preview image style'),
-      '#type' => 'select',
-      '#options' => image_style_options(FALSE),
-      '#empty_option' => '<' . t('no preview') . '>',
-      '#default_value' => $settings['preview_image_style'],
-      '#description' => t('The preview image will be shown while editing the content.'),
-      '#weight' => 15,
+    '#title' => t('Preview image style'),
+    '#type' => 'select',
+    '#options' => image_style_options(FALSE, PASS_THROUGH),
+    '#empty_option' => '<' . t('no preview') . '>',
+    '#default_value' => $settings['preview_image_style'],
+    '#description' => t('The preview image will be shown while editing the content.'),
+    '#weight' => 15,
   );
 
   return $form;
@@ -380,8 +380,8 @@ function image_field_widget_process($element, &$form_state, $form) {
   // Add the image preview.
   if ($element['#file'] && $widget_settings['preview_image_style']) {
     $variables = array(
-        'style_name' => $widget_settings['preview_image_style'],
-        'path' => $element['#file']->uri,
+      'style_name' => $widget_settings['preview_image_style'],
+      'path' => $element['#file']->uri,
     );
 
     // Determine image dimensions.
@@ -402,41 +402,41 @@ function image_field_widget_process($element, &$form_state, $form) {
     }
 
     $element['preview'] = array(
-        '#type' => 'markup',
-        '#markup' => theme('image_style', $variables),
+      '#type' => 'markup',
+      '#markup' => theme('image_style', $variables),
     );
 
     // Store the dimensions in the form so the file doesn't have to be accessed
     // again. This is important for remote files.
     $element['width'] = array(
-        '#type' => 'hidden',
-        '#value' => $variables['width'],
+      '#type' => 'hidden',
+      '#value' => $variables['width'],
     );
     $element['height'] = array(
-        '#type' => 'hidden',
-        '#value' => $variables['height'],
+      '#type' => 'hidden',
+      '#value' => $variables['height'],
     );
   }
 
   // Add the additional alt and title fields.
   $element['alt'] = array(
-      '#title' => t('Alternate text'),
-      '#type' => 'textfield',
-      '#default_value' => isset($item['alt']) ? $item['alt'] : '',
-      '#description' => t('This text will be used by screen readers, search engines, or when the image cannot be loaded.'),
-      // @see http://www.gawds.org/show.php?contentid=28
-      '#maxlength' => 512,
-      '#weight' => -2,
-      '#access' => (bool) $item['fid'] && $settings['alt_field'],
+    '#title' => t('Alternate text'),
+    '#type' => 'textfield',
+    '#default_value' => isset($item['alt']) ? $item['alt'] : '',
+    '#description' => t('This text will be used by screen readers, search engines, or when the image cannot be loaded.'),
+    // @see http://www.gawds.org/show.php?contentid=28
+    '#maxlength' => 512,
+    '#weight' => -2,
+    '#access' => (bool) $item['fid'] && $settings['alt_field'],
   );
   $element['title'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Title'),
-      '#default_value' => isset($item['title']) ? $item['title'] : '',
-      '#description' => t('The title is used as a tool tip when the user hovers the mouse over the image.'),
-      '#maxlength' => 1024,
-      '#weight' => -1,
-      '#access' => (bool) $item['fid'] && $settings['title_field'],
+    '#type' => 'textfield',
+    '#title' => t('Title'),
+    '#default_value' => isset($item['title']) ? $item['title'] : '',
+    '#description' => t('The title is used as a tool tip when the user hovers the mouse over the image.'),
+    '#maxlength' => 1024,
+    '#weight' => -1,
+    '#access' => (bool) $item['fid'] && $settings['title_field'],
   );
 
   return $element;
@@ -478,11 +478,11 @@ function theme_image_widget($variables) {
  */
 function image_field_formatter_info() {
   $formatters = array(
-      'image' => array(
-          'label' => t('Image'),
-          'field types' => array('image'),
-          'settings' => array('image_style' => '', 'image_link' => ''),
-      ),
+    'image' => array(
+      'label' => t('Image'),
+      'field types' => array('image'),
+      'settings' => array('image_style' => '', 'image_link' => ''),
+    ),
   );
 
   return $formatters;
@@ -495,25 +495,25 @@ function image_field_formatter_settings_form($field, $instance, $view_mode, $for
   $display = $instance['display'][$view_mode];
   $settings = $display['settings'];
 
-  $image_styles = image_style_options(FALSE);
+  $image_styles = image_style_options(FALSE, PASS_THROUGH);
   $element['image_style'] = array(
-      '#title' => t('Image style'),
-      '#type' => 'select',
-      '#default_value' => $settings['image_style'],
-      '#empty_option' => t('None (original image)'),
-      '#options' => $image_styles,
+    '#title' => t('Image style'),
+    '#type' => 'select',
+    '#default_value' => $settings['image_style'],
+    '#empty_option' => t('None (original image)'),
+    '#options' => $image_styles,
   );
 
   $link_types = array(
-      'content' => t('Content'),
-      'file' => t('File'),
+    'content' => t('Content'),
+    'file' => t('File'),
   );
   $element['image_link'] = array(
-      '#title' => t('Link image to'),
-      '#type' => 'select',
-      '#default_value' => $settings['image_link'],
-      '#empty_option' => t('Nothing'),
-      '#options' => $link_types,
+    '#title' => t('Link image to'),
+    '#type' => 'select',
+    '#default_value' => $settings['image_link'],
+    '#empty_option' => t('Nothing'),
+    '#options' => $link_types,
   );
 
   return $element;
@@ -528,7 +528,7 @@ function image_field_formatter_settings_summary($field, $instance, $view_mode) {
 
   $summary = array();
 
-  $image_styles = image_style_options(FALSE);
+  $image_styles = image_style_options(FALSE, PASS_THROUGH);
   // Unset possible 'No defined styles' option.
   unset($image_styles['']);
   // Styles could be lost because of enabled/disabled modules that defines
@@ -541,8 +541,8 @@ function image_field_formatter_settings_summary($field, $instance, $view_mode) {
   }
 
   $link_types = array(
-      'content' => t('Linked to content'),
-      'file' => t('Linked to file'),
+    'content' => t('Linked to content'),
+    'file' => t('Linked to file'),
   );
   // Display this setting only if image is linked.
   if (isset($link_types[$settings['image_link']])) {
@@ -569,15 +569,15 @@ function image_field_formatter_view($entity_type, $entity, $field, $instance, $l
   foreach ($items as $delta => $item) {
     if (isset($link_file)) {
       $uri = array(
-          'path' => file_create_url($item['uri']),
-          'options' => array(),
+        'path' => file_create_url($item['uri']),
+        'options' => array(),
       );
     }
     $element[$delta] = array(
-        '#theme' => 'image_formatter',
-        '#item' => $item,
-        '#image_style' => $display['settings']['image_style'],
-        '#path' => isset($uri) ? $uri : '',
+      '#theme' => 'image_formatter',
+      '#item' => $item,
+      '#image_style' => $display['settings']['image_style'],
+      '#path' => isset($uri) ? $uri : '',
     );
   }
 
@@ -599,7 +599,7 @@ function image_field_formatter_view($entity_type, $entity, $field, $instance, $l
 function theme_image_formatter($variables) {
   $item = $variables['item'];
   $image = array(
-      'path' => $item['uri'],
+    'path' => $item['uri'],
   );
 
   if (array_key_exists('alt', $item)) {

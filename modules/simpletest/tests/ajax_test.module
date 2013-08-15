@@ -10,23 +10,23 @@
  */
 function ajax_test_menu() {
   $items['ajax-test/render'] = array(
-      'title' => 'ajax_render',
-      'page callback' => 'ajax_test_render',
-      'delivery callback' => 'ajax_deliver',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
+    'title' => 'ajax_render',
+    'page callback' => 'ajax_test_render',
+    'delivery callback' => 'ajax_deliver',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
   );
   $items['ajax-test/render-error'] = array(
-      'title' => 'ajax_render_error',
-      'page callback' => 'ajax_test_error',
-      'delivery callback' => 'ajax_deliver',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
+    'title' => 'ajax_render_error',
+    'page callback' => 'ajax_test_error',
+    'delivery callback' => 'ajax_deliver',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
   );
   $items['ajax-test/link'] = array(
-      'title' => 'AJAX Link',
-      'page callback' => 'ajax_test_link',
-      'access callback' => TRUE,
+    'title' => 'AJAX Link',
+    'page callback' => 'ajax_test_link',
+    'access callback' => TRUE,
   );
   return $items;
 }
@@ -67,12 +67,12 @@ function ajax_test_error() {
  */
 function ajax_test_link() {
   $build['link'] = array(
-      '#type' => 'link',
-      '#title' => 'Show help',
-      '#href' => 'filter/tips',
-      '#ajax' => array(
-          'wrapper' => 'block-system-main',
-      ),
+    '#type' => 'link',
+    '#title' => 'Show help',
+    '#href' => 'filter/tips',
+    '#ajax' => array(
+      'wrapper' => 'block-system-main',
+    ),
   );
   return $build;
 }

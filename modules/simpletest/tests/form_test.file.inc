@@ -14,17 +14,17 @@ function form_test_load_include_menu($form, &$form_state) {
   // the file specified in hook_menu().
   $ajax_wrapper_id = drupal_html_id('form-test-load-include-menu-ajax-wrapper');
   $form['ajax_wrapper'] = array(
-      '#markup' => '<div id="' . $ajax_wrapper_id . '"></div>',
+    '#markup' => '<div id="' . $ajax_wrapper_id . '"></div>',
   );
   $form['button'] = array(
-      '#type' => 'submit',
-      '#value' => t('Save'),
-      '#submit' => array('form_test_load_include_submit'),
-      '#ajax' => array(
-          'wrapper' => $ajax_wrapper_id,
-          'method' => 'append',
-          'callback' => 'form_test_load_include_menu_ajax',
-      ),
+    '#type' => 'submit',
+    '#value' => t('Save'),
+    '#submit' => array('form_test_load_include_submit'),
+    '#ajax' => array(
+      'wrapper' => $ajax_wrapper_id,
+      'method' => 'append',
+      'callback' => 'form_test_load_include_menu_ajax',
+    ),
   );
   return $form;
 }

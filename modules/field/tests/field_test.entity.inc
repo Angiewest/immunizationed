@@ -17,112 +17,112 @@ function field_test_entity_info() {
 
   $bundles = variable_get('field_test_bundles', array('test_bundle' => array('label' => 'Test Bundle')));
   $test_entity_modes = array(
-      'full' => array(
-          'label' => t('Full object'),
-          'custom settings' => TRUE,
-      ),
-      'teaser' => array(
-          'label' => t('Teaser'),
-          'custom settings' => TRUE,
-      ),
+    'full' => array(
+      'label' => t('Full object'),
+      'custom settings' => TRUE,
+    ),
+    'teaser' => array(
+      'label' => t('Teaser'),
+      'custom settings' => TRUE,
+    ),
   );
 
   return array(
-      'test_entity' => array(
-          'label' => t('Test Entity'),
-          'fieldable' => TRUE,
-          'field cache' => FALSE,
-          'base table' => 'test_entity',
-          'revision table' => 'test_entity_revision',
-          'entity keys' => array(
-              'id' => 'ftid',
-              'revision' => 'ftvid',
-              'bundle' => 'fttype',
-          ),
-          'bundles' => $bundles,
-          'view modes' => $test_entity_modes,
+    'test_entity' => array(
+      'label' => t('Test Entity'),
+      'fieldable' => TRUE,
+      'field cache' => FALSE,
+      'base table' => 'test_entity',
+      'revision table' => 'test_entity_revision',
+      'entity keys' => array(
+        'id' => 'ftid',
+        'revision' => 'ftvid',
+        'bundle' => 'fttype',
       ),
-      // This entity type doesn't get form handling for now...
-      'test_cacheable_entity' => array(
-          'label' => t('Test Entity, cacheable'),
-          'fieldable' => TRUE,
-          'field cache' => TRUE,
-          'entity keys' => array(
-              'id' => 'ftid',
-              'revision' => 'ftvid',
-              'bundle' => 'fttype',
-          ),
-          'bundles' => $bundles,
-          'view modes' => $test_entity_modes,
+      'bundles' => $bundles,
+      'view modes' => $test_entity_modes,
+    ),
+    // This entity type doesn't get form handling for now...
+    'test_cacheable_entity' => array(
+      'label' => t('Test Entity, cacheable'),
+      'fieldable' => TRUE,
+      'field cache' => TRUE,
+      'entity keys' => array(
+        'id' => 'ftid',
+        'revision' => 'ftvid',
+        'bundle' => 'fttype',
       ),
-      'test_entity_bundle_key' => array(
-          'label' => t('Test Entity with a bundle key.'),
-          'base table' => 'test_entity_bundle_key',
-          'fieldable' => TRUE,
-          'field cache' => FALSE,
-          'entity keys' => array(
-              'id' => 'ftid',
-              'bundle' => 'fttype',
-          ),
-          'bundles' => array('bundle1' => array('label' => 'Bundle1'), 'bundle2' => array('label' => 'Bundle2')) + $bundles,
-          'view modes' => $test_entity_modes,
+      'bundles' => $bundles,
+      'view modes' => $test_entity_modes,
+    ),
+    'test_entity_bundle_key' => array(
+      'label' => t('Test Entity with a bundle key.'),
+      'base table' => 'test_entity_bundle_key',
+      'fieldable' => TRUE,
+      'field cache' => FALSE,
+      'entity keys' => array(
+        'id' => 'ftid',
+        'bundle' => 'fttype',
       ),
-      // In this case, the bundle key is not stored in the database.
-      'test_entity_bundle' => array(
-          'label' => t('Test Entity with a specified bundle.'),
-          'base table' => 'test_entity_bundle',
-          'fieldable' => TRUE,
-          'controller class' => 'TestEntityBundleController',
-          'field cache' => FALSE,
-          'entity keys' => array(
-              'id' => 'ftid',
-              'bundle' => 'fttype',
-          ),
-          'bundles' => array('test_entity_2' => array('label' => 'Test entity 2')) + $bundles,
-          'view modes' => $test_entity_modes,
+      'bundles' => array('bundle1' => array('label' => 'Bundle1'), 'bundle2' => array('label' => 'Bundle2')) + $bundles,
+      'view modes' => $test_entity_modes,
+    ),
+    // In this case, the bundle key is not stored in the database.
+    'test_entity_bundle' => array(
+      'label' => t('Test Entity with a specified bundle.'),
+      'base table' => 'test_entity_bundle',
+      'fieldable' => TRUE,
+      'controller class' => 'TestEntityBundleController',
+      'field cache' => FALSE,
+      'entity keys' => array(
+        'id' => 'ftid',
+        'bundle' => 'fttype',
       ),
-      // @see EntityPropertiesTestCase::testEntityLabel()
-      'test_entity_no_label' => array(
-          'label' => t('Test entity without label'),
-          'fieldable' => TRUE,
-          'field cache' => FALSE,
-          'base table' => 'test_entity',
-          'entity keys' => array(
-              'id' => 'ftid',
-              'revision' => 'ftvid',
-              'bundle' => 'fttype',
-          ),
-          'bundles' => $bundles,
-          'view modes' => $test_entity_modes,
+      'bundles' => array('test_entity_2' => array('label' => 'Test entity 2')) + $bundles,
+      'view modes' => $test_entity_modes,
+    ),
+    // @see EntityPropertiesTestCase::testEntityLabel()
+    'test_entity_no_label' => array(
+      'label' => t('Test entity without label'),
+      'fieldable' => TRUE,
+      'field cache' => FALSE,
+      'base table' => 'test_entity',
+      'entity keys' => array(
+        'id' => 'ftid',
+        'revision' => 'ftvid',
+        'bundle' => 'fttype',
       ),
-      'test_entity_label' => array(
-          'label' => t('Test entity label'),
-          'fieldable' => TRUE,
-          'field cache' => FALSE,
-          'base table' => 'test_entity',
-          'entity keys' => array(
-              'id' => 'ftid',
-              'revision' => 'ftvid',
-              'bundle' => 'fttype',
-              'label' => 'ftlabel',
-          ),
-          'bundles' => $bundles,
-          'view modes' => $test_entity_modes,
+      'bundles' => $bundles,
+      'view modes' => $test_entity_modes,
+    ),
+    'test_entity_label' => array(
+      'label' => t('Test entity label'),
+      'fieldable' => TRUE,
+      'field cache' => FALSE,
+      'base table' => 'test_entity',
+      'entity keys' => array(
+        'id' => 'ftid',
+        'revision' => 'ftvid',
+        'bundle' => 'fttype',
+        'label' => 'ftlabel',
       ),
-      'test_entity_label_callback' => array(
-          'label' => t('Test entity label callback'),
-          'fieldable' => TRUE,
-          'field cache' => FALSE,
-          'base table' => 'test_entity',
-          'label callback' => 'field_test_entity_label_callback',
-          'entity keys' => array(
-              'id' => 'ftid',
-              'revision' => 'ftvid',
-              'bundle' => 'fttype',
-          ),
-          'bundles' => $bundles,
-          'view modes' => $test_entity_modes,
+      'bundles' => $bundles,
+      'view modes' => $test_entity_modes,
+    ),
+    'test_entity_label_callback' => array(
+      'label' => t('Test entity label callback'),
+      'fieldable' => TRUE,
+      'field cache' => FALSE,
+      'base table' => 'test_entity',
+      'label callback' => 'field_test_entity_label_callback',
+      'entity keys' => array(
+        'id' => 'ftid',
+        'revision' => 'ftvid',
+        'bundle' => 'fttype',
       ),
+      'bundles' => $bundles,
+      'view modes' => $test_entity_modes,
+    ),
   );
 }
 
@@ -244,7 +244,7 @@ function field_test_create_stub_entity($id = 1, $vid = 1, $bundle = 'test_bundle
 function field_test_entity_test_load($ftid, $ftvid = NULL) {
   // Load basic strucure.
   $query = db_select('test_entity', 'fte', array())
-  ->condition('fte.ftid', $ftid);
+    ->condition('fte.ftid', $ftid);
 
   if ($ftvid) {
     $query->join('test_entity_revision', 'fter', 'fte.ftid = fter.ftid');
@@ -310,9 +310,9 @@ function field_test_entity_save(&$entity) {
   }
   if ($update_entity) {
     db_update('test_entity')
-    ->fields(array('ftvid' => $entity->ftvid))
-    ->condition('ftid', $entity->ftid)
-    ->execute();
+      ->fields(array('ftvid' => $entity->ftvid))
+      ->condition('ftid', $entity->ftid)
+      ->execute();
   }
 
   // Save fields.
@@ -354,8 +354,8 @@ function field_test_entity_form($form, &$form_state, $entity, $add = FALSE) {
 
   foreach (array('ftid', 'ftvid', 'fttype') as $key) {
     $form[$key] = array(
-        '#type' => 'value',
-        '#value' => isset($entity->$key) ? $entity->$key : NULL,
+      '#type' => 'value',
+      '#value' => isset($entity->$key) ? $entity->$key : NULL,
     );
   }
 
@@ -364,17 +364,17 @@ function field_test_entity_form($form, &$form_state, $entity, $add = FALSE) {
 
   if (!$add) {
     $form['revision'] = array(
-        '#access' => user_access('administer field_test content'),
-        '#type' => 'checkbox',
-        '#title' => t('Create new revision'),
-        '#default_value' => FALSE,
-        '#weight' => 100,
+      '#access' => user_access('administer field_test content'),
+      '#type' => 'checkbox',
+      '#title' => t('Create new revision'),
+      '#default_value' => FALSE,
+      '#weight' => 100,
     );
   }
   $form['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Save'),
-      '#weight' => 101,
+    '#type' => 'submit',
+    '#value' => t('Save'),
+    '#weight' => 101,
   );
 
   return $form;
@@ -424,32 +424,32 @@ function field_test_entity_nested_form($form, &$form_state, $entity_1, $entity_2
   // First entity.
   foreach (array('ftid', 'ftvid', 'fttype') as $key) {
     $form[$key] = array(
-        '#type' => 'value',
-        '#value' => $entity_1->$key,
+      '#type' => 'value',
+      '#value' => $entity_1->$key,
     );
   }
   field_attach_form('test_entity', $entity_1, $form, $form_state);
 
   // Second entity.
   $form['entity_2'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Second entity'),
-      '#tree' => TRUE,
-      '#parents' => array('entity_2'),
-      '#weight' => 50,
+    '#type' => 'fieldset',
+    '#title' => t('Second entity'),
+    '#tree' => TRUE,
+    '#parents' => array('entity_2'),
+    '#weight' => 50,
   );
   foreach (array('ftid', 'ftvid', 'fttype') as $key) {
     $form['entity_2'][$key] = array(
-        '#type' => 'value',
-        '#value' => $entity_2->$key,
+      '#type' => 'value',
+      '#value' => $entity_2->$key,
     );
   }
   field_attach_form('test_entity', $entity_2, $form['entity_2'], $form_state);
 
   $form['save'] = array(
-      '#type' => 'submit',
-      '#value' => t('Save'),
-      '#weight' => 100,
+    '#type' => 'submit',
+    '#value' => t('Save'),
+    '#weight' => 100,
   );
 
   return $form;

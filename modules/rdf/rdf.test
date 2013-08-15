@@ -8,9 +8,9 @@
 class RdfMappingHookTestCase extends DrupalWebTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'RDF mapping hook',
-        'description' => 'Test hook_rdf_mapping().',
-        'group' => 'RDF',
+      'name' => 'RDF mapping hook',
+      'description' => 'Test hook_rdf_mapping().',
+      'group' => 'RDF',
     );
   }
 
@@ -27,9 +27,9 @@ class RdfMappingHookTestCase extends DrupalWebTestCase {
     $this->assertIdentical($mapping['rdftype'], array('sioc:Post'), 'Mapping for rdftype is sioc:Post.');
     $this->assertIdentical($mapping['title'], array('predicates' => array('dc:title')), 'Mapping for title is dc:title.');
     $this->assertIdentical($mapping['created'], array(
-        'predicates' => array('dc:created'),
-        'datatype' => 'xsd:dateTime',
-        'callback' => 'date_iso8601',
+      'predicates' => array('dc:created'),
+      'datatype' => 'xsd:dateTime',
+      'callback' => 'date_iso8601',
     ), t('Mapping for created is dc:created with datatype xsd:dateTime and callback date_iso8601.'));
     $this->assertIdentical($mapping['uid'], array('predicates' => array('sioc:has_creator', 'dc:creator'), 'type' => 'rel'), 'Mapping for uid is sioc:has_creator and dc:creator, and type is rel.');
 
@@ -44,9 +44,9 @@ class RdfMappingHookTestCase extends DrupalWebTestCase {
 class RdfRdfaMarkupTestCase extends DrupalWebTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'RDFa markup',
-        'description' => 'Test RDFa markup generation.',
-        'group' => 'RDF',
+      'name' => 'RDFa markup',
+      'description' => 'Test RDFa markup generation.',
+      'group' => 'RDF',
     );
   }
 
@@ -60,7 +60,7 @@ class RdfRdfaMarkupTestCase extends DrupalWebTestCase {
   function testDrupalRdfaAttributes() {
     // Same value as the one in the HTML tag (no callback function).
     $expected_attributes = array(
-        'property' => array('dc:title'),
+      'property' => array('dc:title'),
     );
     $mapping = rdf_mapping_load('test_entity', 'test_bundle');
     $attributes = rdf_rdfa_attributes($mapping['title']);
@@ -72,9 +72,9 @@ class RdfRdfaMarkupTestCase extends DrupalWebTestCase {
     $date = 1252750327;
     $isoDate = date('c', $date);
     $expected_attributes = array(
-        'datatype' => 'xsd:dateTime',
-        'property' => array('dc:created'),
-        'content' => $isoDate,
+      'datatype' => 'xsd:dateTime',
+      'property' => array('dc:created'),
+      'content' => $isoDate,
     );
     $mapping = rdf_mapping_load('test_entity', 'test_bundle');
     $attributes = rdf_rdfa_attributes($mapping['created'], $date);
@@ -84,8 +84,8 @@ class RdfRdfaMarkupTestCase extends DrupalWebTestCase {
 
     // Same value as the one in the HTML tag with datatype.
     $expected_attributes = array(
-        'datatype' => 'foo:bar1type',
-        'property' => array('foo:bar1'),
+      'datatype' => 'foo:bar1type',
+      'property' => array('foo:bar1'),
     );
     $mapping = rdf_mapping_load('test_entity', 'test_bundle');
     $attributes = rdf_rdfa_attributes($mapping['foobar1']);
@@ -95,7 +95,7 @@ class RdfRdfaMarkupTestCase extends DrupalWebTestCase {
 
     // ObjectProperty mapping (rel).
     $expected_attributes = array(
-        'rel' => array('sioc:has_creator', 'dc:creator'),
+      'rel' => array('sioc:has_creator', 'dc:creator'),
     );
     $mapping = rdf_mapping_load('test_entity', 'test_bundle');
     $attributes = rdf_rdfa_attributes($mapping['foobar_objproperty1']);
@@ -105,7 +105,7 @@ class RdfRdfaMarkupTestCase extends DrupalWebTestCase {
 
     // Inverse ObjectProperty mapping (rev).
     $expected_attributes = array(
-        'rev' => array('sioc:reply_of'),
+      'rev' => array('sioc:reply_of'),
     );
     $mapping = rdf_mapping_load('test_entity', 'test_bundle');
     $attributes = rdf_rdfa_attributes($mapping['foobar_objproperty2']);
@@ -128,19 +128,19 @@ class RdfRdfaMarkupTestCase extends DrupalWebTestCase {
 
     $field_name = 'file_test';
     $field = array(
-        'field_name' => $field_name,
-        'type' => 'file',
+      'field_name' => $field_name,
+      'type' => 'file',
     );
     field_create_field($field);
     $instance = array(
-        'field_name' => $field_name,
-        'entity_type' => 'node',
-        'bundle' => $bundle_name,
-        'display' => array(
-            'teaser' => array(
-                'type' => 'file_default',
-            ),
+      'field_name' => $field_name,
+      'entity_type' => 'node',
+      'bundle' => $bundle_name,
+      'display' => array(
+        'teaser' => array(
+          'type' => 'file_default',
         ),
+      ),
     );
     field_create_instance($instance);
 
@@ -161,7 +161,7 @@ class RdfRdfaMarkupTestCase extends DrupalWebTestCase {
     // Create an array for drupalPost with the field names as the keys and
     // the URIs for the test files as the values.
     $edit = array("files[" . $field_name . "_" . $langcode . "_0]" => drupal_realpath($file->uri),
-        "files[" . $image_field . "_" . $langcode . "_0]" => drupal_realpath($image->uri));
+                  "files[" . $image_field . "_" . $langcode . "_0]" => drupal_realpath($image->uri));
 
     // Create node and save, then edit node to upload files.
     $node = $this->drupalCreateNode(array('type' => 'article', 'promote' => 1));
@@ -177,12 +177,12 @@ class RdfRdfaMarkupTestCase extends DrupalWebTestCase {
     // We only check to make sure that the resource attribute contains '.txt'
     // instead of the full file name because the filename is altered on upload.
     $file_rel = $this->xpath('//div[contains(@about, :node-uri)]//div[contains(@rel, "rdfs:seeAlso") and contains(@resource, ".txt")]', array(
-        ':node-uri' => 'node/' . $nid,
+      ':node-uri' => 'node/' . $nid,
     ));
     $this->assertTrue(!empty($file_rel), "Attribute 'rel' set on file field. Attribute 'resource' is also set.");
     $image_rel = $this->xpath('//div[contains(@about, :node-uri)]//div[contains(@rel, "rdfs:seeAlso") and contains(@resource, :image)]//img[contains(@typeof, "foaf:Image")]', array(
-        ':node-uri' => 'node/' . $nid,
-        ':image' => $image_filename,
+      ':node-uri' => 'node/' . $nid,
+      ':image' => $image_filename,
     ));
 
     $this->assertTrue(!empty($image_rel), "Attribute 'rel' set on image field. Attribute 'resource' is also set.");
@@ -196,13 +196,13 @@ class RdfRdfaMarkupTestCase extends DrupalWebTestCase {
     // Ensures the RDFa markup for the relationship between the node and its
     // tags is correct.
     $term_rdfa_meta = $this->xpath('//div[@about=:node-url and contains(@typeof, "sioc:Item") and contains(@typeof, "foaf:Document")]//ul[@class="links"]/li[@rel="dc:subject"]/a[@typeof="skos:Concept" and @datatype="" and text()=:term-name]', array(
-        ':node-url' => url('node/' . $node->nid),
-        ':term-name' => $tag1,
+      ':node-url' => url('node/' . $node->nid),
+      ':term-name' => $tag1,
     ));
     $this->assertTrue(!empty($term_rdfa_meta), 'Property dc:subject is present for the tag1 field item.');
     $term_rdfa_meta = $this->xpath('//div[@about=:node-url and contains(@typeof, "sioc:Item") and contains(@typeof, "foaf:Document")]//ul[@class="links"]/li[@rel="dc:subject"]/a[@typeof="skos:Concept" and @datatype="" and text()=:term-name]', array(
-        ':node-url' => url('node/' . $node->nid),
-        ':term-name' => $tag2,
+      ':node-url' => url('node/' . $node->nid),
+      ':term-name' => $tag2,
     ));
     $this->assertTrue(!empty($term_rdfa_meta), 'Property dc:subject is present for the tag2 field item.');
   }
@@ -211,9 +211,9 @@ class RdfRdfaMarkupTestCase extends DrupalWebTestCase {
 class RdfCrudTestCase extends DrupalWebTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'RDF mapping CRUD functions',
-        'description' => 'Test the RDF mapping CRUD functions.',
-        'group' => 'RDF',
+      'name' => 'RDF mapping CRUD functions',
+      'description' => 'Test the RDF mapping CRUD functions.',
+      'group' => 'RDF',
     );
   }
 
@@ -231,18 +231,18 @@ class RdfCrudTestCase extends DrupalWebTestCase {
 
     // Verify saving a mapping.
     $mapping = array(
-        'type' => 'crud_test_entity',
-        'bundle' => 'crud_test_bundle',
-        'mapping' => array(
-            'rdftype' => array('sioc:Post'),
-            'title' => array(
-                'predicates' => array('dc:title'),
-            ),
-            'uid' => array(
-                'predicates' => array('sioc:has_creator', 'dc:creator'),
-                'type' => 'rel',
-            ),
+      'type' => 'crud_test_entity',
+      'bundle' => 'crud_test_bundle',
+      'mapping' => array(
+        'rdftype' => array('sioc:Post'),
+        'title' => array(
+          'predicates' => array('dc:title'),
         ),
+        'uid' => array(
+          'predicates' => array('sioc:has_creator', 'dc:creator'),
+          'type' => 'rel',
+        ),
+      ),
     );
     $this->assertTrue(rdf_mapping_save($mapping) === SAVED_NEW, 'Mapping was saved.');
 
@@ -257,7 +257,7 @@ class RdfCrudTestCase extends DrupalWebTestCase {
 
     // Verify updating of mapping.
     $mapping['mapping']['title'] = array(
-        'predicates' => array('dc2:bar2'),
+      'predicates' => array('dc2:bar2'),
     );
     $this->assertTrue(rdf_mapping_save($mapping) === SAVED_UPDATED, 'Mapping was updated.');
 
@@ -279,9 +279,9 @@ class RdfCrudTestCase extends DrupalWebTestCase {
 class RdfMappingDefinitionTestCase extends TaxonomyWebTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'RDF mapping definition functionality',
-        'description' => 'Test the different types of RDF mappings and ensure the proper RDFa markup in included in nodes and user profile pages.',
-        'group' => 'RDF',
+      'name' => 'RDF mapping definition functionality',
+      'description' => 'Test the different types of RDF mappings and ensure the proper RDFa markup in included in nodes and user profile pages.',
+      'group' => 'RDF',
     );
   }
 
@@ -361,19 +361,19 @@ class RdfMappingDefinitionTestCase extends TaxonomyWebTestCase {
     $person_uri = url('user/' . $user2->uid, array('fragment' => 'me'));
 
     $user2_profile_about = $this->xpath('//div[@class="profile" and @typeof="sioc:UserAccount" and @about=:account-uri]', array(
-        ':account-uri' => $account_uri,
+      ':account-uri' => $account_uri,
     ));
     $this->assertTrue(!empty($user2_profile_about), 'RDFa markup found on user profile page');
 
     $user_account_holder = $this->xpath('//meta[contains(@typeof, "foaf:Person") and @about=:person-uri and @resource=:account-uri and contains(@rel, "foaf:account")]', array(
-        ':person-uri' => $person_uri,
-        ':account-uri' => $account_uri,
+      ':person-uri' => $person_uri,
+      ':account-uri' => $account_uri,
     ));
     $this->assertTrue(!empty($user_account_holder), 'URI created for account holder and username set on sioc:UserAccount.');
 
     $user_username = $this->xpath('//meta[@about=:account-uri and contains(@property, "foaf:name") and @content=:username]', array(
-        ':account-uri' => $account_uri,
-        ':username' => $username,
+      ':account-uri' => $account_uri,
+      ':username' => $username,
     ));
     $this->assertTrue(!empty($user_username), 'foaf:name set on username.');
 
@@ -385,7 +385,7 @@ class RdfMappingDefinitionTestCase extends TaxonomyWebTestCase {
     // Ensures the default bundle mapping for user is used on the Authored By
     // information on the node.
     $author_about = $this->xpath('//a[@typeof="sioc:UserAccount" and @about=:account-uri and @property="foaf:name" and @datatype="" and contains(@xml:lang, "")]', array(
-        ':account-uri' => $account_uri,
+      ':account-uri' => $account_uri,
     ));
     $this->assertTrue(!empty($author_about), 'RDFa markup found on author information on post. xml:lang on username is set to empty string.');
   }
@@ -402,8 +402,8 @@ class RdfMappingDefinitionTestCase extends TaxonomyWebTestCase {
     $term_url = url('taxonomy/term/' . $term->tid);
     $term_name = $term->name;
     $term_rdfa_meta = $this->xpath('//meta[@typeof="skos:Concept" and @about=:term-url and contains(@property, "rdfs:label") and contains(@property, "skos:prefLabel") and @content=:term-name]', array(
-        ':term-url' => $term_url,
-        ':term-name' => $term_name,
+      ':term-url' => $term_url,
+      ':term-name' => $term_name,
     ));
     $this->assertTrue(!empty($term_rdfa_meta), 'RDFa markup found on term page.');
   }
@@ -413,9 +413,9 @@ class RdfCommentAttributesTestCase extends CommentHelperCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'RDF comment mapping',
-        'description' => 'Tests the RDFa markup of comments.',
-        'group' => 'RDF',
+      'name' => 'RDF comment mapping',
+      'description' => 'Tests the RDFa markup of comments.',
+      'group' => 'RDF',
     );
   }
 
@@ -427,9 +427,9 @@ class RdfCommentAttributesTestCase extends CommentHelperCase {
 
     // Enables anonymous user comments.
     user_role_change_permissions(DRUPAL_ANONYMOUS_RID, array(
-    'access comments' => TRUE,
-    'post comments' => TRUE,
-    'skip comment approval' => TRUE,
+      'access comments' => TRUE,
+      'post comments' => TRUE,
+      'skip comment approval' => TRUE,
     ));
     // Allows anonymous to leave their contact information.
     $this->setCommentAnonymous(COMMENT_ANONYMOUS_MAY_CONTACT);
@@ -575,9 +575,9 @@ class RdfCommentAttributesTestCase extends CommentHelperCase {
 class RdfTrackerAttributesTestCase extends DrupalWebTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'RDF tracker page mapping',
-        'description' => 'Test the mapping for the tracker page and ensure the proper RDFa markup in included.',
-        'group' => 'RDF',
+      'name' => 'RDF tracker page mapping',
+      'description' => 'Test the mapping for the tracker page and ensure the proper RDFa markup in included.',
+      'group' => 'RDF',
     );
   }
 
@@ -585,10 +585,10 @@ class RdfTrackerAttributesTestCase extends DrupalWebTestCase {
     parent::setUp('rdf', 'rdf_test', 'tracker');
     // Enable anonymous posting of content.
     user_role_change_permissions(DRUPAL_ANONYMOUS_RID, array(
-    'create article content' => TRUE,
-    'access comments' => TRUE,
-    'post comments' => TRUE,
-    'skip comment approval' => TRUE,
+      'create article content' => TRUE,
+      'access comments' => TRUE,
+      'post comments' => TRUE,
+      'skip comment approval' => TRUE,
     ));
   }
 
@@ -662,8 +662,8 @@ class RdfTrackerAttributesTestCase extends DrupalWebTestCase {
     // Tests that the appropriate RDFa markup to annotate the latest activity
     // date has been added to the tracker output after a comment is posted.
     $comment = array(
-        'subject' => $this->randomName(),
-        'comment_body[' . LANGUAGE_NONE . '][0][value]' => $this->randomName(),
+      'subject' => $this->randomName(),
+      'comment_body[' . LANGUAGE_NONE . '][0][value]' => $this->randomName(),
     );
     $this->drupalPost('comment/reply/' . $node->nid, $comment, t('Save'));
     $this->drupalGet('tracker');
@@ -690,9 +690,9 @@ class RdfTrackerAttributesTestCase extends DrupalWebTestCase {
 class RdfGetRdfNamespacesTestCase extends DrupalWebTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'RDF namespaces',
-        'description' => 'Test hook_rdf_namespaces() and ensure only "safe" namespaces are returned.',
-        'group' => 'RDF',
+      'name' => 'RDF namespaces',
+      'description' => 'Test hook_rdf_namespaces() and ensure only "safe" namespaces are returned.',
+      'group' => 'RDF',
     );
   }
 

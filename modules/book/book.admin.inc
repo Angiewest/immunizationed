@@ -36,19 +36,19 @@ function book_admin_overview() {
 function book_admin_settings() {
   $types = node_type_get_names();
   $form['book_allowed_types'] = array(
-      '#type' => 'checkboxes',
-      '#title' => t('Content types allowed in book outlines'),
-      '#default_value' => variable_get('book_allowed_types', array('book')),
-      '#options' => $types,
-      '#description' => t('Users with the %outline-perm permission can add all content types.', array('%outline-perm' => t('Administer book outlines'))),
-      '#required' => TRUE,
+    '#type' => 'checkboxes',
+    '#title' => t('Content types allowed in book outlines'),
+    '#default_value' => variable_get('book_allowed_types', array('book')),
+    '#options' => $types,
+    '#description' => t('Users with the %outline-perm permission can add all content types.', array('%outline-perm' => t('Administer book outlines'))),
+    '#required' => TRUE,
   );
   $form['book_child_type'] = array(
-      '#type' => 'radios',
-      '#title' => t('Content type for child pages'),
-      '#default_value' => variable_get('book_child_type', 'book'),
-      '#options' => $types,
-      '#required' => TRUE,
+    '#type' => 'radios',
+    '#title' => t('Content type for child pages'),
+    '#default_value' => variable_get('book_child_type', 'book'),
+    '#options' => $types,
+    '#required' => TRUE,
   );
   $form['array_filter'] = array('#type' => 'value', '#value' => TRUE);
   $form['#validate'][] = 'book_admin_settings_validate';
@@ -85,8 +85,8 @@ function book_admin_edit($form, $form_state, $node) {
   $form['#node'] = $node;
   _book_admin_table($node, $form);
   $form['save'] = array(
-      '#type' => 'submit',
-      '#value' => t('Save book pages'),
+    '#type' => 'submit',
+    '#value' => t('Save book pages'),
   );
 
   return $form;
@@ -162,8 +162,8 @@ function book_admin_edit_submit($form, &$form_state) {
  */
 function _book_admin_table($node, &$form) {
   $form['table'] = array(
-      '#theme' => 'book_admin_table',
-      '#tree' => TRUE,
+    '#theme' => 'book_admin_table',
+    '#tree' => TRUE,
   );
 
   $tree = book_menu_subtree_data($node->book);
@@ -173,12 +173,12 @@ function _book_admin_table($node, &$form) {
     // Store the hash value as a hidden form element so that we can detect
     // if another user changed the book hierarchy.
     $form['tree_hash'] = array(
-        '#type' => 'hidden',
-        '#default_value' => $hash,
+      '#type' => 'hidden',
+      '#default_value' => $hash,
     );
     $form['tree_current_hash'] = array(
-        '#type' => 'value',
-        '#value' => $hash,
+      '#type' => 'value',
+      '#value' => $hash,
     );
     _book_admin_table_tree($tree['below'], $form['table']);
   }
@@ -205,31 +205,31 @@ function _book_admin_table_tree($tree, &$form) {
 
   foreach ($tree as $data) {
     $form['book-admin-' . $data['link']['nid']] = array(
-        '#item' => $data['link'],
-        'nid' => array('#type' => 'value', '#value' => $data['link']['nid']),
-        'depth' => array('#type' => 'value', '#value' => $data['link']['depth']),
-        'href' => array('#type' => 'value', '#value' => $data['link']['href']),
-        'title' => array(
-            '#type' => 'textfield',
-            '#default_value' => $data['link']['link_title'],
-            '#maxlength' => 255,
-            '#size' => 40,
-        ),
-        'weight' => array(
-            '#type' => 'weight',
-            '#default_value' => $data['link']['weight'],
-            '#delta' => max($delta, abs($data['link']['weight'])),
-            '#title' => t('Weight for @title', array('@title' => $data['link']['title'])),
-            '#title_display' => 'invisible',
-        ),
-        'plid' => array(
-            '#type' => 'hidden',
-            '#default_value' => $data['link']['plid'],
-        ),
-        'mlid' => array(
-            '#type' => 'hidden',
-            '#default_value' => $data['link']['mlid'],
-        ),
+      '#item' => $data['link'],
+      'nid' => array('#type' => 'value', '#value' => $data['link']['nid']),
+      'depth' => array('#type' => 'value', '#value' => $data['link']['depth']),
+      'href' => array('#type' => 'value', '#value' => $data['link']['href']),
+      'title' => array(
+        '#type' => 'textfield',
+        '#default_value' => $data['link']['link_title'],
+        '#maxlength' => 255,
+        '#size' => 40,
+      ),
+      'weight' => array(
+        '#type' => 'weight',
+        '#default_value' => $data['link']['weight'],
+        '#delta' => max($delta, abs($data['link']['weight'])),
+        '#title' => t('Weight for @title', array('@title' => $data['link']['title'])),
+        '#title_display' => 'invisible',
+      ),
+      'plid' => array(
+        '#type' => 'hidden',
+        '#default_value' => $data['link']['plid'],
+      ),
+      'mlid' => array(
+        '#type' => 'hidden',
+        '#default_value' => $data['link']['mlid'],
+      ),
     );
     if ($data['below']) {
       _book_admin_table_tree($data['below'], $form);
@@ -270,12 +270,12 @@ function theme_book_admin_table($variables) {
     $form[$key]['weight']['#attributes']['class'] = array('book-weight');
 
     $data = array(
-        theme('indentation', array('size' => $form[$key]['depth']['#value'] - 2)) . drupal_render($form[$key]['title']),
-        drupal_render($form[$key]['weight']),
-        drupal_render($form[$key]['plid']) . drupal_render($form[$key]['mlid']),
-        l(t('view'), $href),
-        $access ? l(t('edit'), 'node/' . $nid . '/edit', array('query' => $destination)) : '&nbsp;',
-        $access ? l(t('delete'), 'node/' . $nid . '/delete', array('query' => $destination) )  : '&nbsp;',
+      theme('indentation', array('size' => $form[$key]['depth']['#value'] - 2)) . drupal_render($form[$key]['title']),
+      drupal_render($form[$key]['weight']),
+      drupal_render($form[$key]['plid']) . drupal_render($form[$key]['mlid']),
+      l(t('view'), $href),
+      $access ? l(t('edit'), 'node/' . $nid . '/edit', array('query' => $destination)) : '&nbsp;',
+      $access ? l(t('delete'), 'node/' . $nid . '/delete', array('query' => $destination) )  : '&nbsp;',
     );
     $row = array('data' => $data);
     if (isset($form[$key]['#attributes'])) {

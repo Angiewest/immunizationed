@@ -81,13 +81,13 @@ function hook_language_switch_links_alter(array &$links, $type, $path) {
  */
 function hook_language_types_info() {
   return array(
-      'custom_language_type' => array(
-          'name' => t('Custom language'),
-          'description' => t('A custom language type.'),
-      ),
-      'fixed_custom_language_type' => array(
-          'fixed' => array('custom_language_provider'),
-      ),
+    'custom_language_type' => array(
+      'name' => t('Custom language'),
+      'description' => t('A custom language type.'),
+    ),
+    'fixed_custom_language_type' => array(
+      'fixed' => array('custom_language_provider'),
+    ),
   );
 }
 
@@ -139,19 +139,19 @@ function hook_language_types_info_alter(array &$language_types) {
  */
 function hook_language_negotiation_info() {
   return array(
-      'custom_language_provider' => array(
-          'callbacks' => array(
-              'language' => 'custom_language_provider_callback',
-              'switcher' => 'custom_language_switcher_callback',
-              'url_rewrite' => 'custom_language_url_rewrite_callback',
-          ),
-          'file' => drupal_get_path('module', 'custom') . '/custom.module',
-          'weight' => -4,
-          'types' => array('custom_language_type'),
-          'name' => t('Custom language negotiation provider'),
-          'description' => t('This is a custom language negotiation provider.'),
-          'cache' => 0,
+    'custom_language_provider' => array(
+      'callbacks' => array(
+        'language' => 'custom_language_provider_callback',
+        'switcher' => 'custom_language_switcher_callback',
+        'url_rewrite' => 'custom_language_url_rewrite_callback',
       ),
+      'file' => drupal_get_path('module', 'custom') . '/custom.module',
+      'weight' => -4,
+      'types' => array('custom_language_type'),
+      'name' => t('Custom language negotiation provider'),
+      'description' => t('This is a custom language negotiation provider.'),
+      'cache' => 0,
+    ),
   );
 }
 

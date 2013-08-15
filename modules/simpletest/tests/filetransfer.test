@@ -9,9 +9,9 @@ class FileTranferTest extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'FileTransfer unit tests',
-        'description' => 'Test that the jail is respected and that protocols using recursive file move operations work.',
-        'group' => 'System'
+      'name' => 'FileTransfer unit tests',
+      'description' => 'Test that the jail is respected and that protocols using recursive file move operations work.',
+      'group' => 'System'
     );
   }
 
@@ -22,14 +22,14 @@ class FileTranferTest extends DrupalWebTestCase {
 
   function _getFakeModuleFiles() {
     $files = array(
-        'fake.module',
-        'fake.info',
-        'theme' => array(
-            'fake.tpl.php'
-        ),
-        'inc' => array(
-            'fake.inc'
-        )
+      'fake.module',
+      'fake.info',
+      'theme' => array(
+        'fake.tpl.php'
+      ),
+      'inc' => array(
+        'fake.inc'
+      )
     );
     return $files;
   }

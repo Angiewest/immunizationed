@@ -75,18 +75,18 @@ define('RDF_DEFAULT_BUNDLE', '');
 
 /**
  * Implements hook_rdf_namespaces().
-*/
+ */
 function rdf_rdf_namespaces() {
   return array(
-      'content'  => 'http://purl.org/rss/1.0/modules/content/',
-      'dc'       => 'http://purl.org/dc/terms/',
-      'foaf'     => 'http://xmlns.com/foaf/0.1/',
-      'og'       => 'http://ogp.me/ns#',
-      'rdfs'     => 'http://www.w3.org/2000/01/rdf-schema#',
-      'sioc'     => 'http://rdfs.org/sioc/ns#',
-      'sioct'    => 'http://rdfs.org/sioc/types#',
-      'skos'     => 'http://www.w3.org/2004/02/skos/core#',
-      'xsd'      => 'http://www.w3.org/2001/XMLSchema#',
+    'content'  => 'http://purl.org/rss/1.0/modules/content/',
+    'dc'       => 'http://purl.org/dc/terms/',
+    'foaf'     => 'http://xmlns.com/foaf/0.1/',
+    'og'       => 'http://ogp.me/ns#',
+    'rdfs'     => 'http://www.w3.org/2000/01/rdf-schema#',
+    'sioc'     => 'http://rdfs.org/sioc/ns#',
+    'sioct'    => 'http://rdfs.org/sioc/types#',
+    'skos'     => 'http://www.w3.org/2004/02/skos/core#',
+    'xsd'      => 'http://www.w3.org/2001/XMLSchema#',
   );
 }
 
@@ -191,11 +191,11 @@ function _rdf_get_default_mapping($type) {
  */
 function _rdf_mapping_load($type, $bundle) {
   $mapping = db_select('rdf_mapping')
-  ->fields(NULL, array('mapping'))
-  ->condition('type', $type)
-  ->condition('bundle', $bundle)
-  ->execute()
-  ->fetchField();
+    ->fields(NULL, array('mapping'))
+    ->condition('type', $type)
+    ->condition('bundle', $bundle)
+    ->execute()
+    ->fetchField();
 
   if (!$mapping) {
     return array();
@@ -229,14 +229,14 @@ function rdf_mapping_save($mapping) {
   $mapping['mapping'] += _rdf_get_default_mapping($mapping['type']);
 
   $status = db_merge('rdf_mapping')
-  ->key(array(
+    ->key(array(
       'type' => $mapping['type'],
       'bundle' => $mapping['bundle'],
-  ))
-  ->fields(array(
+    ))
+    ->fields(array(
       'mapping' => serialize($mapping['mapping']),
-  ))
-  ->execute();
+    ))
+    ->execute();
 
   entity_info_cache_clear();
 
@@ -256,9 +256,9 @@ function rdf_mapping_save($mapping) {
  */
 function rdf_mapping_delete($type, $bundle) {
   $num_rows = db_delete('rdf_mapping')
-  ->condition('type', $type)
-  ->condition('bundle', $bundle)
-  ->execute();
+    ->condition('type', $type)
+    ->condition('bundle', $bundle)
+    ->execute();
 
   return (bool) ($num_rows > 0);
 }
@@ -299,8 +299,8 @@ function rdf_rdfa_attributes($mapping, $data = NULL) {
       $attributes[$type] = $mapping['predicates'];
       break;
 
-      // The mapping expresses the relationship between a resource and some
-      // literal text.
+    // The mapping expresses the relationship between a resource and some
+    // literal text.
     case 'property':
       $attributes['property'] = $mapping['predicates'];
       // Convert $data to a specific format as per the callback function.
@@ -415,12 +415,12 @@ function rdf_comment_load($comments) {
  */
 function rdf_theme() {
   return array(
-      'rdf_template_variable_wrapper' => array(
-          'variables' => array('content' => NULL, 'attributes' => array(), 'context' => array(), 'inline' => TRUE),
-      ),
-      'rdf_metadata' => array(
-          'variables' => array('metadata' => array()),
-      ),
+    'rdf_template_variable_wrapper' => array(
+      'variables' => array('content' => NULL, 'attributes' => array(), 'context' => array(), 'inline' => TRUE),
+    ),
+    'rdf_metadata' => array(
+      'variables' => array('metadata' => array()),
+    ),
   );
 }
 
@@ -441,9 +441,9 @@ function rdf_process(&$variables, $hook) {
   if (!empty($variables['rdf_template_variable_attributes_array'])) {
     foreach ($variables['rdf_template_variable_attributes_array'] as $variable_name => $attributes) {
       $context = array(
-          'hook' => $hook,
-          'variable_name' => $variable_name,
-          'variables' => $variables,
+        'hook' => $hook,
+        'variable_name' => $variable_name,
+        'variables' => $variables,
       );
       $variables[$variable_name] = theme('rdf_template_variable_wrapper', array('content' => $variables[$variable_name], 'attributes' => $attributes, 'context' => $context));
     }
@@ -482,11 +482,11 @@ function rdf_preprocess_node(&$variables) {
   // added in the <head> tag of the HTML page.
   if ($variables['page']) {
     $element = array(
-        '#tag' => 'meta',
-        '#attributes' => array(
-            'content' => $variables['title'],
-            'about' => $variables['node_url'],
-        ),
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'content' => $variables['title'],
+        'about' => $variables['node_url'],
+      ),
     );
     if (!empty($variables['node']->rdf_mapping['title']['predicates'])) {
       $element['#attributes']['property'] = $variables['node']->rdf_mapping['title']['predicates'];
@@ -530,13 +530,13 @@ function rdf_preprocess_node(&$variables) {
     // page.
     if ($variables['page'] && user_access('access comments')) {
       $element = array(
-          '#tag' => 'meta',
-          '#attributes' => array(
-              'about' => $variables['node_url'],
-              'property' => $variables['node']->rdf_mapping['comment_count']['predicates'],
-              'content' => $variables['node']->comment_count,
-              'datatype' => $variables['node']->rdf_mapping['comment_count']['datatype'],
-          ),
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'about' => $variables['node_url'],
+          'property' => $variables['node']->rdf_mapping['comment_count']['predicates'],
+          'content' => $variables['node']->comment_count,
+          'datatype' => $variables['node']->rdf_mapping['comment_count']['datatype'],
+        ),
       );
       drupal_add_html_head($element, 'rdf_node_comment_count');
     }
@@ -587,22 +587,22 @@ function rdf_preprocess_user_profile(&$variables) {
   // Adds the relationship between the sioc:UserAccount and the foaf:Person who
   // holds the account.
   $account_holder_meta = array(
-      '#tag' => 'meta',
-      '#attributes' => array(
-          'about' => url($uri['path'], array_merge($uri['options'], array('fragment' => 'me'))),
-          'typeof' => array('foaf:Person'),
-          'rel' => array('foaf:account'),
-          'resource' => url($uri['path'], $uri['options']),
-      ),
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'about' => url($uri['path'], array_merge($uri['options'], array('fragment' => 'me'))),
+      'typeof' => array('foaf:Person'),
+      'rel' => array('foaf:account'),
+      'resource' => url($uri['path'], $uri['options']),
+    ),
   );
   // Adds the markup for username.
   $username_meta = array(
-      '#tag' => 'meta',
-      '#attributes' => array(
-          'about' => url($uri['path'], $uri['options']),
-          'property' => $account->rdf_mapping['name']['predicates'],
-          'content' => $account->name,
-      )
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'about' => url($uri['path'], $uri['options']),
+      'property' => $account->rdf_mapping['name']['predicates'],
+      'content' => $account->name,
+    )
   );
   drupal_add_html_head($account_holder_meta, 'rdf_user_account_holder');
   drupal_add_html_head($username_meta, 'rdf_user_username');
@@ -732,12 +732,12 @@ function rdf_preprocess_taxonomy_term(&$variables) {
   $term_label_meta = array(
       '#tag' => 'meta',
       '#attributes' => array(
-          'about' => url('taxonomy/term/' . $term->tid),
-          'typeof' => $term->rdf_mapping['rdftype'],
-          'property' => $term->rdf_mapping['name']['predicates'],
-          'content' => $term->name,
+        'about' => url('taxonomy/term/' . $term->tid),
+        'typeof' => $term->rdf_mapping['rdftype'],
+        'property' => $term->rdf_mapping['name']['predicates'],
+        'content' => $term->name,
       ),
-  );
+    );
   drupal_add_html_head($term_label_meta, 'rdf_term_label');
 }
 

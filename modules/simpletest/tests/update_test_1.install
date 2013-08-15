@@ -18,18 +18,18 @@ function update_test_1_update_dependencies() {
   // (which have already run), so that they will not get in the way of other
   // tests.
   $dependencies['system'][7000] = array(
-      // Compare to update_test_2_update_dependencies(), where the same System
-      // module update function is forced to depend on an update function from a
-      // different module. This allows us to test that both dependencies are
-      // correctly recorded.
-      'update_test_1' => 7000,
+    // Compare to update_test_2_update_dependencies(), where the same System
+    // module update function is forced to depend on an update function from a
+    // different module. This allows us to test that both dependencies are
+    // correctly recorded.
+    'update_test_1' => 7000,
   );
   $dependencies['system'][7001] = array(
-      // Compare to update_test_2_update_dependencies(), where the same System
-      // module update function is forced to depend on a different update
-      // function within the same module. This allows us to test that only the
-      // dependency on the higher-numbered update function is recorded.
-      'update_test_1' => 7002,
+    // Compare to update_test_2_update_dependencies(), where the same System
+    // module update function is forced to depend on a different update
+    // function within the same module. This allows us to test that only the
+    // dependency on the higher-numbered update function is recorded.
+    'update_test_1' => 7002,
   );
   return $dependencies;
 }

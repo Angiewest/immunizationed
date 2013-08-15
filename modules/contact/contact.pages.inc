@@ -26,12 +26,12 @@ function contact_site_form($form, &$form_state) {
 
   // Get an array of the categories and the current default category.
   $categories = db_select('contact', 'c')
-  ->addTag('translatable')
-  ->fields('c', array('cid', 'category'))
-  ->orderBy('weight')
-  ->orderBy('category')
-  ->execute()
-  ->fetchAllKeyed();
+    ->addTag('translatable')
+    ->fields('c', array('cid', 'category'))
+    ->orderBy('weight')
+    ->orderBy('category')
+    ->execute()
+    ->fetchAllKeyed();
   $default_category = db_query("SELECT cid FROM {contact} WHERE selected = 1")->fetchField();
 
   // If there are no categories, do not display the form.
@@ -63,49 +63,49 @@ function contact_site_form($form, &$form_state) {
 
   $form['#attributes']['class'][] = 'contact-form';
   $form['name'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Your name'),
-      '#maxlength' => 255,
-      '#default_value' => $user->uid ? format_username($user) : '',
-      '#required' => TRUE,
+    '#type' => 'textfield',
+    '#title' => t('Your name'),
+    '#maxlength' => 255,
+    '#default_value' => $user->uid ? format_username($user) : '',
+    '#required' => TRUE,
   );
   $form['mail'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Your e-mail address'),
-      '#maxlength' => 255,
-      '#default_value' => $user->uid ? $user->mail : '',
-      '#required' => TRUE,
+    '#type' => 'textfield',
+    '#title' => t('Your e-mail address'),
+    '#maxlength' => 255,
+    '#default_value' => $user->uid ? $user->mail : '',
+    '#required' => TRUE,
   );
   $form['subject'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Subject'),
-      '#maxlength' => 255,
-      '#required' => TRUE,
+    '#type' => 'textfield',
+    '#title' => t('Subject'),
+    '#maxlength' => 255,
+    '#required' => TRUE,
   );
   $form['cid'] = array(
-      '#type' => 'select',
-      '#title' => t('Category'),
-      '#default_value' => $default_category,
-      '#options' => $categories,
-      '#required' => TRUE,
-      '#access' => count($categories) > 1,
+    '#type' => 'select',
+    '#title' => t('Category'),
+    '#default_value' => $default_category,
+    '#options' => $categories,
+    '#required' => TRUE,
+    '#access' => count($categories) > 1,
   );
   $form['message'] = array(
-      '#type' => 'textarea',
-      '#title' => t('Message'),
-      '#required' => TRUE,
+    '#type' => 'textarea',
+    '#title' => t('Message'),
+    '#required' => TRUE,
   );
   // We do not allow anonymous users to send themselves a copy
   // because it can be abused to spam people.
   $form['copy'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Send yourself a copy.'),
-      '#access' => $user->uid,
+    '#type' => 'checkbox',
+    '#title' => t('Send yourself a copy.'),
+    '#access' => $user->uid,
   );
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Send message'),
+    '#type' => 'submit',
+    '#value' => t('Send message'),
   );
 
   return $form;
@@ -201,51 +201,51 @@ function contact_personal_form($form, &$form_state, $recipient) {
 
   $form['#attributes']['class'][] = 'contact-form';
   $form['recipient'] = array(
-      '#type' => 'value',
-      '#value' => $recipient,
+    '#type' => 'value',
+    '#value' => $recipient,
   );
   $form['name'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Your name'),
-      '#maxlength' => 255,
-      '#default_value' => $user->uid ? format_username($user) : '',
-      '#required' => TRUE,
+    '#type' => 'textfield',
+    '#title' => t('Your name'),
+    '#maxlength' => 255,
+    '#default_value' => $user->uid ? format_username($user) : '',
+    '#required' => TRUE,
   );
   $form['mail'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Your e-mail address'),
-      '#maxlength' => 255,
-      '#default_value' => $user->uid ? $user->mail : '',
-      '#required' => TRUE,
+    '#type' => 'textfield',
+    '#title' => t('Your e-mail address'),
+    '#maxlength' => 255,
+    '#default_value' => $user->uid ? $user->mail : '',
+    '#required' => TRUE,
   );
   $form['to'] = array(
-      '#type' => 'item',
-      '#title' => t('To'),
-      '#markup' => theme('username', array('account' => $recipient)),
+    '#type' => 'item',
+    '#title' => t('To'),
+    '#markup' => theme('username', array('account' => $recipient)),
   );
   $form['subject'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Subject'),
-      '#maxlength' => 50,
-      '#required' => TRUE,
+    '#type' => 'textfield',
+    '#title' => t('Subject'),
+    '#maxlength' => 50,
+    '#required' => TRUE,
   );
   $form['message'] = array(
-      '#type' => 'textarea',
-      '#title' => t('Message'),
-      '#rows' => 15,
-      '#required' => TRUE,
+    '#type' => 'textarea',
+    '#title' => t('Message'),
+    '#rows' => 15,
+    '#required' => TRUE,
   );
   // We do not allow anonymous users to send themselves a copy
   // because it can be abused to spam people.
   $form['copy'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Send yourself a copy.'),
-      '#access' => $user->uid,
+    '#type' => 'checkbox',
+    '#title' => t('Send yourself a copy.'),
+    '#access' => $user->uid,
   );
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Send message'),
+    '#type' => 'submit',
+    '#value' => t('Send message'),
   );
   return $form;
 }

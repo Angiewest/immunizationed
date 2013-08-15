@@ -26,8 +26,8 @@
  */
 function batch_load($id) {
   $batch = db_query("SELECT batch FROM {batch} WHERE bid = :bid AND token = :token", array(
-      ':bid' => $id,
-      ':token' => drupal_get_token($id),
+    ':bid' => $id,
+    ':token' => drupal_get_token($id),
   ))->fetchField();
   if ($batch) {
     return unserialize($batch);
@@ -131,11 +131,11 @@ function _batch_progress_page_js() {
   $batch['url_options']['query']['id'] = $batch['id'];
 
   $js_setting = array(
-      'batch' => array(
-          'errorMessage' => $current_set['error_message'] . '<br />' . $batch['error_message'],
-          'initMessage' => $current_set['init_message'],
-          'uri' => url($batch['url'], $batch['url_options']),
-      ),
+    'batch' => array(
+      'errorMessage' => $current_set['error_message'] . '<br />' . $batch['error_message'],
+      'initMessage' => $current_set['init_message'],
+      'uri' => url($batch['url'], $batch['url_options']),
+    ),
   );
   drupal_add_js($js_setting, 'setting');
   drupal_add_library('system', 'drupal.batch');
@@ -216,11 +216,11 @@ function _batch_progress_page_nojs() {
 
   $url = url($batch['url'], $batch['url_options']);
   $element = array(
-      '#tag' => 'meta',
-      '#attributes' => array(
-          'http-equiv' => 'Refresh',
-          'content' => '0; URL=' . $url,
-      ),
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'http-equiv' => 'Refresh',
+      'content' => '0; URL=' . $url,
+    ),
   );
   drupal_add_html_head($element, 'batch_progress_meta_refresh');
 
@@ -276,10 +276,10 @@ function _batch_process() {
 
       // Build the 'context' array and execute the function call.
       $batch_context = array(
-          'sandbox'  => &$current_set['sandbox'],
-          'results'  => &$current_set['results'],
-          'finished' => &$finished,
-          'message'  => &$task_message,
+        'sandbox'  => &$current_set['sandbox'],
+        'results'  => &$current_set['results'],
+        'finished' => &$finished,
+        'message'  => &$task_message,
       );
       call_user_func_array($function, array_merge($args, array(&$batch_context)));
 
@@ -345,13 +345,13 @@ function _batch_process() {
     $percentage = _batch_api_percentage($total, $current);
     $elapsed    = isset($current_set['elapsed']) ? $current_set['elapsed'] : 0;
     $values     = array(
-        '@remaining'  => $remaining,
-        '@total'      => $total,
-        '@current'    => floor($current),
-        '@percentage' => $percentage,
-        '@elapsed'    => format_interval($elapsed / 1000),
-        // If possible, estimate remaining processing time.
-        '@estimate'   => ($current > 0) ? format_interval(($elapsed * ($total - $current) / $current) / 1000) : '-',
+      '@remaining'  => $remaining,
+      '@total'      => $total,
+      '@current'    => floor($current),
+      '@percentage' => $percentage,
+      '@elapsed'    => format_interval($elapsed / 1000),
+      // If possible, estimate remaining processing time.
+      '@estimate'   => ($current > 0) ? format_interval(($elapsed * ($total - $current) / $current) / 1000) : '-',
     );
     $message = strtr($progress_message, $values);
     if (!empty($message)) {
@@ -471,8 +471,8 @@ function _batch_finished() {
   // Clean up the batch table and unset the static $batch variable.
   if ($batch['progressive']) {
     db_delete('batch')
-    ->condition('bid', $batch['id'])
-    ->execute();
+      ->condition('bid', $batch['id'])
+      ->execute();
     foreach ($batch['sets'] as $batch_set) {
       if ($queue = _batch_queue($batch_set)) {
         $queue->deleteQueue();
@@ -532,8 +532,8 @@ function _batch_finished() {
 function _batch_shutdown() {
   if ($batch = batch_get()) {
     db_update('batch')
-    ->fields(array('batch' => serialize($batch)))
-    ->condition('bid', $batch['id'])
-    ->execute();
+      ->fields(array('batch' => serialize($batch)))
+      ->condition('bid', $batch['id'])
+      ->execute();
   }
 }

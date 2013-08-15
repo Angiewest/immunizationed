@@ -21,7 +21,7 @@ function taxonomy_term_page($term) {
 
   // Build breadcrumb based on the hierarchy of the term.
   $current = (object) array(
-      'tid' => $term->tid,
+    'tid' => $term->tid,
   );
   // @todo This overrides any other possible breadcrumb and is a pure hard-coded
   //   presumption. Make this behavior configurable per vocabulary or term.
@@ -47,24 +47,24 @@ function taxonomy_term_page($term) {
   // taxonomy_term_view() directly provides essentially the same thing, but
   // allows us to wrap the rendered term in our desired array structure.
   $build['term_heading'] = array(
-      '#prefix' => '<div class="term-listing-heading">',
-      '#suffix' => '</div>',
-      'term' => taxonomy_term_view($term, 'full'),
+    '#prefix' => '<div class="term-listing-heading">',
+    '#suffix' => '</div>',
+    'term' => taxonomy_term_view($term, 'full'),
   );
 
   if ($nids = taxonomy_select_nodes($term->tid, TRUE, variable_get('default_nodes_main', 10))) {
     $nodes = node_load_multiple($nids);
     $build += node_view_multiple($nodes);
     $build['pager'] = array(
-        '#theme' => 'pager',
-        '#weight' => 5,
+      '#theme' => 'pager',
+      '#weight' => 5,
     );
   }
   else {
     $build['no_content'] = array(
-        '#prefix' => '<p>',
-        '#markup' => t('There is currently no content classified with this term.'),
-        '#suffix' => '</p>',
+      '#prefix' => '<p>',
+      '#markup' => t('There is currently no content classified with this term.'),
+      '#suffix' => '</p>',
     );
   }
   return $build;
@@ -158,12 +158,12 @@ function taxonomy_autocomplete($field_name = '', $tags_typed = '') {
     }
     // Select rows that match by term name.
     $tags_return = $query
-    ->fields('t', array('tid', 'name'))
-    ->condition('t.vid', $vids)
-    ->condition('t.name', '%' . db_like($tag_last) . '%', 'LIKE')
-    ->range(0, 10)
-    ->execute()
-    ->fetchAllKeyed();
+      ->fields('t', array('tid', 'name'))
+      ->condition('t.vid', $vids)
+      ->condition('t.name', '%' . db_like($tag_last) . '%', 'LIKE')
+      ->range(0, 10)
+      ->execute()
+      ->fetchAllKeyed();
 
     $prefix = count($tags_typed) ? drupal_implode_tags($tags_typed) . ', ' : '';
 

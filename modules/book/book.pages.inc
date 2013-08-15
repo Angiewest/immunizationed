@@ -110,7 +110,7 @@ function book_export_html($nid) {
  * @return string
  *   A HTML-formatted string with the outline form for a single node.
  *
- * @see book_menu()
+  * @see book_menu()
  */
 function book_outline($node) {
   drupal_set_title($node->title);
@@ -149,17 +149,17 @@ function book_outline_form($form, &$form_state, $node) {
   $form['book']['#collapsible'] = FALSE;
 
   $form['update'] = array(
-      '#type' => 'submit',
-      '#value' => $node->book['original_bid'] ? t('Update book outline') : t('Add to book outline'),
-      '#weight' => 15,
+    '#type' => 'submit',
+    '#value' => $node->book['original_bid'] ? t('Update book outline') : t('Add to book outline'),
+    '#weight' => 15,
   );
 
   $form['remove'] = array(
-      '#type' => 'submit',
-      '#value' => t('Remove from book outline'),
-      '#access' => _book_node_is_removable($node),
-      '#weight' => 20,
-      '#submit' => array('book_remove_button_submit'),
+    '#type' => 'submit',
+    '#value' => t('Remove from book outline'),
+    '#access' => _book_node_is_removable($node),
+    '#weight' => 20,
+    '#submit' => array('book_remove_button_submit'),
   );
 
   return $form;
@@ -239,8 +239,8 @@ function book_remove_form_submit($form, &$form_state) {
   if (_book_node_is_removable($node)) {
     menu_link_delete($node->book['mlid']);
     db_delete('book')
-    ->condition('nid', $node->nid)
-    ->execute();
+      ->condition('nid', $node->nid)
+      ->execute();
     drupal_set_message(t('The post has been removed from the book.'));
   }
   $form_state['redirect'] = 'node/' . $node->nid;

@@ -11,18 +11,18 @@
 class FieldValidationException extends FieldException {
   var $errors;
 
-  /**
-   * Constructor for FieldValidationException.
-   *
-   * @param $errors
-   *   An array of field validation errors, keyed by field name and
-   *   delta that contains two keys:
-   *   - 'error': A machine-readable error code string, prefixed by
-   *     the field module name. A field widget may use this code to decide
-   *     how to report the error.
-   *   - 'message': A human-readable error message such as to be
-   *     passed to form_error() for the appropriate form element.
-   */
+ /**
+  * Constructor for FieldValidationException.
+  *
+  * @param $errors
+  *   An array of field validation errors, keyed by field name and
+  *   delta that contains two keys:
+  *   - 'error': A machine-readable error code string, prefixed by
+  *     the field module name. A field widget may use this code to decide
+  *     how to report the error.
+  *   - 'message': A human-readable error message such as to be
+  *     passed to form_error() for the appropriate form element.
+  */
   function __construct($errors) {
     $this->errors = $errors;
     parent::__construct(t('Field validation errors'));
@@ -61,12 +61,12 @@ define('FIELD_STORAGE_UPDATE', 'update');
  * Argument for an insert operation.
  *
  * This is used in hook_field_storage_write when inserting a new entity.
-*/
+ */
 define('FIELD_STORAGE_INSERT', 'insert');
 
 /**
  * @} End of "defgroup field_storage".
-*/
+ */
 
 /**
  * @defgroup field_attach Field Attach API
@@ -126,7 +126,7 @@ define('FIELD_STORAGE_INSERT', 'insert');
  *
  * See @link field Field API @endlink for information about the other parts of
  * the Field API.
-*/
+ */
 
 /**
  * Invoke a field hook.
@@ -177,13 +177,13 @@ define('FIELD_STORAGE_INSERT', 'insert');
  *  - 'language': A language code or an array of language codes keyed by field
  *    name. It will be used to narrow down to a single value the available
  *    languages to act on.
-*/
+ */
 function _field_invoke($op, $entity_type, $entity, &$a = NULL, &$b = NULL, $options = array()) {
   // Merge default options.
   $default_options = array(
-      'default' => FALSE,
-      'deleted' => FALSE,
-      'language' => NULL,
+    'default' => FALSE,
+    'deleted' => FALSE,
+    'language' => NULL,
   );
   $options += $default_options;
 
@@ -278,9 +278,9 @@ function _field_invoke($op, $entity_type, $entity, &$a = NULL, &$b = NULL, $opti
 function _field_invoke_multiple($op, $entity_type, $entities, &$a = NULL, &$b = NULL, $options = array()) {
   // Merge default options.
   $default_options = array(
-      'default' => FALSE,
-      'deleted' => FALSE,
-      'language' => NULL,
+    'default' => FALSE,
+    'deleted' => FALSE,
+    'language' => NULL,
   );
   $options += $default_options;
 
@@ -624,7 +624,7 @@ function field_attach_load($entity_type, $entities, $age = FIELD_LOAD_CURRENT, $
 
   // Merge default options.
   $default_options = array(
-      'deleted' => FALSE,
+    'deleted' => FALSE,
   );
   $options += $default_options;
 
@@ -1229,11 +1229,11 @@ function field_attach_view($entity_type, $entity, $view_mode, $langcode = NULL, 
 
   // Let other modules alter the renderable array.
   $context = array(
-      'entity_type' => $entity_type,
-      'entity' => $entity,
-      'view_mode' => $view_mode,
-      'display' => $view_mode,
-      'language' => $langcode,
+    'entity_type' => $entity_type,
+    'entity' => $entity,
+    'view_mode' => $view_mode,
+    'display' => $view_mode,
+    'language' => $langcode,
   );
   drupal_alter('field_attach_view', $output, $context);
 
@@ -1276,9 +1276,9 @@ function field_attach_preprocess($entity_type, $entity, $element, &$variables) {
 
   // Let other modules make changes to the $variables array.
   $context = array(
-      'entity_type' => $entity_type,
-      'entity' => $entity,
-      'element' => $element,
+    'entity_type' => $entity_type,
+    'entity' => $entity,
+    'element' => $element,
   );
   drupal_alter('field_attach_preprocess', $variables, $context);
 }
@@ -1314,10 +1314,10 @@ function field_attach_prepare_translation($entity_type, $entity, $langcode, $sou
   _field_invoke('prepare_translation', $entity_type, $entity, $source_entity, $source_langcode, $options);
   // Let other modules alter the entity translation.
   $context = array(
-      'entity_type' => $entity_type,
-      'langcode' => $langcode,
-      'source_entity' => $source_entity,
-      'source_langcode' => $source_langcode,
+    'entity_type' => $entity_type,
+    'langcode' => $langcode,
+    'source_entity' => $source_entity,
+    'source_langcode' => $source_langcode,
   );
   drupal_alter('field_attach_prepare_translation', $entity, $context);
 }
@@ -1353,10 +1353,10 @@ function field_attach_create_bundle($entity_type, $bundle) {
  */
 function field_attach_rename_bundle($entity_type, $bundle_old, $bundle_new) {
   db_update('field_config_instance')
-  ->fields(array('bundle' => $bundle_new))
-  ->condition('entity_type', $entity_type)
-  ->condition('bundle', $bundle_old)
-  ->execute();
+    ->fields(array('bundle' => $bundle_new))
+    ->condition('entity_type', $entity_type)
+    ->condition('bundle', $bundle_old)
+    ->execute();
 
   // Clear the cache.
   field_cache_clear();

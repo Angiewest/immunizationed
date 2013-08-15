@@ -17,27 +17,27 @@ function dashboard_disable() {
   $stashed_blocks = array();
 
   $result = db_select('block', 'b')
-  ->fields('b', array('module', 'delta', 'region'))
-  ->condition('b.region', dashboard_regions(), 'IN')
-  ->execute();
+    ->fields('b', array('module', 'delta', 'region'))
+    ->condition('b.region', dashboard_regions(), 'IN')
+    ->execute();
 
   foreach ($result as $block) {
     $stashed_blocks[] = array(
-        'module' => $block->module,
-        'delta' => $block->delta,
-        'region' => $block->region,
+      'module' => $block->module,
+      'delta' => $block->delta,
+      'region' => $block->region,
     );
   }
   variable_set('dashboard_stashed_blocks', $stashed_blocks);
 
   // Disable the dashboard blocks.
   db_update('block')
-  ->fields(array(
-  'status' => 0,
-  'region' => BLOCK_REGION_NONE,
-  ))
-  ->condition('region', dashboard_regions(), 'IN')
-  ->execute();
+    ->fields(array(
+      'status' => 0,
+      'region' => BLOCK_REGION_NONE,
+    ))
+    ->condition('region', dashboard_regions(), 'IN')
+    ->execute();
 }
 
 /**
@@ -57,15 +57,15 @@ function dashboard_enable() {
   }
   foreach ($stashed_blocks as $block) {
     db_update('block')
-    ->fields(array(
-    'status' => 1,
-    'region' => $block['region']
-    ))
-    ->condition('module', $block['module'])
-    ->condition('delta', $block['delta'])
-    ->condition('theme', $admin_theme)
-    ->condition('status', 0)
-    ->execute();
+      ->fields(array(
+        'status' => 1,
+        'region' => $block['region']
+      ))
+      ->condition('module', $block['module'])
+      ->condition('delta', $block['delta'])
+      ->condition('theme', $admin_theme)
+      ->condition('status', 0)
+      ->execute();
   }
   variable_del('dashboard_stashed_blocks');
 }

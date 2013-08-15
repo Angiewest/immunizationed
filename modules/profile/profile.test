@@ -63,11 +63,11 @@ class ProfileTestCase extends DrupalWebTestCase {
     $this->assertText($edit['explanation'], t('Checking explanation for field %title', array('%title' => $title)));
 
     return array(
-        'fid' => $fid,
-        'type' => $type,
-        'form_name' => $form_name,
-        'title' => $title,
-        'category' => $category,
+      'fid' => $fid,
+      'type' => $type,
+      'form_name' => $form_name,
+      'title' => $title,
+      'category' => $category,
     );
   }
 
@@ -110,11 +110,11 @@ class ProfileTestCase extends DrupalWebTestCase {
     $this->assertText($edit['explanation'], t('Checking explanation for field %title', array('%title' => $title)));
 
     return array(
-        'fid' => $fid,
-        'type' => $type,
-        'form_name' => $form_name,
-        'title' => $title,
-        'category' => $category,
+      'fid' => $fid,
+      'type' => $type,
+      'form_name' => $form_name,
+      'title' => $title,
+      'category' => $category,
     );
   }
 
@@ -135,7 +135,7 @@ class ProfileTestCase extends DrupalWebTestCase {
     }
 
     $edit = array(
-        $field['form_name'] => $value,
+      $field['form_name'] => $value,
     );
     $this->drupalPost('user/' . $this->normal_user->uid . '/edit/' . $field['category'], $edit, t('Save'));
 
@@ -167,9 +167,9 @@ class ProfileTestCase extends DrupalWebTestCase {
 class ProfileTestFields extends ProfileTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Test single fields',
-        'description' => 'Testing profile module with add/edit/delete textfield, textarea, list, checkbox, and url fields into profile page',
-        'group' => 'Profile'
+      'name' => 'Test single fields',
+      'description' => 'Testing profile module with add/edit/delete textfield, textarea, list, checkbox, and url fields into profile page',
+      'group' => 'Profile'
     );
   }
 
@@ -182,13 +182,13 @@ class ProfileTestFields extends ProfileTestCase {
 
     // Set test values for every field type.
     $field_types = array(
-        'textfield' => $this->randomName(),
-        'textarea' => $this->randomName(),
-        'list' => $this->randomName(),
-        'checkbox' => 1,
-        // An underscore is an invalid character in a domain name. The method randomName can
-        // return an underscore.
-        'url' => 'http://www.' . str_replace('_', '', $this->randomName(10)) . '.org',
+      'textfield' => $this->randomName(),
+      'textarea' => $this->randomName(),
+      'list' => $this->randomName(),
+      'checkbox' => 1,
+      // An underscore is an invalid character in a domain name. The method randomName can
+      // return an underscore.
+      'url' => 'http://www.' . str_replace('_', '', $this->randomName(10)) . '.org',
     );
 
     // For each field type, create a field, give it a value, update the field,
@@ -197,10 +197,10 @@ class ProfileTestFields extends ProfileTestCase {
       $field = $this->createProfileField($type);
       $this->setProfileField($field, $value);
       $edit = array(
-          'name' => $field['form_name'],
-          'title' => $this->randomName(),
-          'category' => $field['category'],
-          'explanation' => $this->randomName(),
+        'name' => $field['form_name'],
+        'title' => $this->randomName(),
+        'category' => $field['category'],
+        'explanation' => $this->randomName(),
       );
       $field = $this->updateProfileField($field['fid'], $field['type'], $edit);
       $this->deleteProfileField($field);
@@ -211,9 +211,9 @@ class ProfileTestFields extends ProfileTestCase {
 class ProfileTestSelect extends ProfileTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Test select field',
-        'description' => 'Testing profile module with add/edit/delete a select field',
-        'group' => 'Profile'
+      'name' => 'Test select field',
+      'description' => 'Testing profile module with add/edit/delete a select field',
+      'group' => 'Profile'
     );
   }
 
@@ -224,17 +224,17 @@ class ProfileTestSelect extends ProfileTestCase {
     $this->drupalLogin($this->admin_user);
 
     $edit = array(
-        'options' => implode("\n", range(1, 10)),
+      'options' => implode("\n", range(1, 10)),
     );
     $field = $this->createProfileField('selection', 'simpletest', $edit);
 
     $this->setProfileField($field, rand(1, 10));
 
     $edit = array(
-        'name' => $field['form_name'],
-        'title' => $this->randomName(),
-        'category' => $field['category'],
-        'explanation' => $this->randomName(),
+      'name' => $field['form_name'],
+      'title' => $this->randomName(),
+      'category' => $field['category'],
+      'explanation' => $this->randomName(),
     );
     $field = $this->updateProfileField($field['fid'], $field['type'], $edit);
     $this->deleteProfileField($field);
@@ -244,9 +244,9 @@ class ProfileTestSelect extends ProfileTestCase {
 class ProfileTestDate extends ProfileTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Test date field',
-        'description' => 'Testing profile module with add/edit/delete a date field',
-        'group' => 'Profile'
+      'name' => 'Test date field',
+      'description' => 'Testing profile module with add/edit/delete a date field',
+      'group' => 'Profile'
     );
   }
 
@@ -261,9 +261,9 @@ class ProfileTestDate extends ProfileTestCase {
 
     // Set date to January 09, 1983
     $edit = array(
-        $field['form_name'] . '[month]' => 1,
-        $field['form_name'] . '[day]' => 9,
-        $field['form_name'] . '[year]' => 1983,
+      $field['form_name'] . '[month]' => 1,
+      $field['form_name'] . '[day]' => 9,
+      $field['form_name'] . '[year]' => 1983,
     );
 
     $this->drupalPost('user/' . $this->normal_user->uid . '/edit/' . $field['category'], $edit, t('Save'));
@@ -275,10 +275,10 @@ class ProfileTestDate extends ProfileTestCase {
     $this->assertText('01/09/1983', t('Found date profile field.'));
 
     $edit = array(
-        'name' => $field['form_name'],
-        'title' => $this->randomName(),
-        'category' => $field['category'],
-        'explanation' => $this->randomName(),
+      'name' => $field['form_name'],
+      'title' => $this->randomName(),
+      'category' => $field['category'],
+      'explanation' => $this->randomName(),
     );
     $field = $this->updateProfileField($field['fid'], $field['type'], $edit);
     $this->deleteProfileField($field);
@@ -288,9 +288,9 @@ class ProfileTestDate extends ProfileTestCase {
 class ProfileTestWeights extends ProfileTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Test field weights',
-        'description' => 'Testing profile modules weigting of fields',
-        'group' => 'Profile'
+      'name' => 'Test field weights',
+      'description' => 'Testing profile modules weigting of fields',
+      'group' => 'Profile'
     );
   }
 
@@ -318,9 +318,9 @@ class ProfileTestWeights extends ProfileTestCase {
 class ProfileTestAutocomplete extends ProfileTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Autocompletion',
-        'description' => 'Test profile fields with autocompletion.',
-        'group' => 'Profile'
+      'name' => 'Autocompletion',
+      'description' => 'Test profile fields with autocompletion.',
+      'group' => 'Profile'
     );
   }
 
@@ -371,9 +371,9 @@ class ProfileTestAutocomplete extends ProfileTestCase {
 class ProfileBlockTestCase extends ProfileTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Block availability',
-        'description' => 'Check if the Author Information block is available.',
-        'group' => 'Profile',
+      'name' => 'Block availability',
+      'description' => 'Check if the Author Information block is available.',
+      'group' => 'Profile',
     );
   }
 
@@ -394,7 +394,7 @@ class ProfileBlockTestCase extends ProfileTestCase {
 
     // Create a node authored by the normal user.
     $this->node = $this->drupalCreateNode(array(
-        'uid' => $this->normal_user->uid,
+      'uid' => $this->normal_user->uid,
     ));
   }
 
@@ -407,7 +407,7 @@ class ProfileBlockTestCase extends ProfileTestCase {
 
     // Enable field 1.
     $this->drupalPost('admin/structure/block/manage/profile/author-information/configure', array(
-        'profile_block_author_fields[' . $this->field1['form_name'] . ']' => TRUE,
+      'profile_block_author_fields[' . $this->field1['form_name'] . ']' => TRUE,
     ), t('Save block'));
     $this->assertText(t('The block configuration has been saved.'), t('Block configuration set.'));
 
@@ -418,8 +418,8 @@ class ProfileBlockTestCase extends ProfileTestCase {
 
     // Enable only field 2.
     $this->drupalPost('admin/structure/block/manage/profile/author-information/configure', array(
-        'profile_block_author_fields[' . $this->field1['form_name'] . ']' => FALSE,
-        'profile_block_author_fields[' . $this->field2['form_name'] . ']' => TRUE,
+      'profile_block_author_fields[' . $this->field1['form_name'] . ']' => FALSE,
+      'profile_block_author_fields[' . $this->field2['form_name'] . ']' => TRUE,
     ), t('Save block'));
     $this->assertText(t('The block configuration has been saved.'), t('Block configuration set.'));
 
@@ -430,8 +430,8 @@ class ProfileBlockTestCase extends ProfileTestCase {
 
     // Enable both fields.
     $this->drupalPost('admin/structure/block/manage/profile/author-information/configure', array(
-        'profile_block_author_fields[' . $this->field1['form_name'] . ']' => TRUE,
-        'profile_block_author_fields[' . $this->field2['form_name'] . ']' => TRUE,
+      'profile_block_author_fields[' . $this->field1['form_name'] . ']' => TRUE,
+      'profile_block_author_fields[' . $this->field2['form_name'] . ']' => TRUE,
     ), t('Save block'));
     $this->assertText(t('The block configuration has been saved.'), t('Block configuration set.'));
 
@@ -442,7 +442,7 @@ class ProfileBlockTestCase extends ProfileTestCase {
 
     // Enable the link to the user profile.
     $this->drupalPost('admin/structure/block/manage/profile/author-information/configure', array(
-        'profile_block_author_fields[user_profile]' => TRUE,
+      'profile_block_author_fields[user_profile]' => TRUE,
     ), t('Save block'));
     $this->assertText(t('The block configuration has been saved.'), t('Block configuration set.'));
 
@@ -459,9 +459,9 @@ class ProfileBlockTestCase extends ProfileTestCase {
 class ProfileTestBrowsing extends ProfileTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Profile browsing',
-        'description' => 'Test profile browsing.',
-        'group' => 'Profile',
+      'name' => 'Profile browsing',
+      'description' => 'Test profile browsing.',
+      'group' => 'Profile',
     );
   }
 
@@ -487,9 +487,9 @@ class ProfileTestBrowsing extends ProfileTestCase {
 class ProfileCrudTestCase extends ProfileTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Profile CRUD tests',
-        'description' => 'Test profile integration with user create, read, update, delete.',
-        'group' => 'Profile',
+      'name' => 'Profile CRUD tests',
+      'description' => 'Test profile integration with user create, read, update, delete.',
+      'group' => 'Profile',
     );
   }
 
@@ -499,8 +499,8 @@ class ProfileCrudTestCase extends ProfileTestCase {
   public function testUserCRUD() {
     // @todo Add profile fields in addition to base user properties.
     $edit = array(
-        'name' => 'Test user',
-        'mail' => 'test@example.com',
+      'name' => 'Test user',
+      'mail' => 'test@example.com',
     );
 
     // Create.
@@ -521,10 +521,10 @@ class ProfileCrudTestCase extends ProfileTestCase {
   }
 }
 
-/**
- * TODO:
- * - Test field visibility
- * - Test required fields
- * - Test fields on registration form
- * - Test updating fields
- */
+  /**
+   * TODO:
+   * - Test field visibility
+   * - Test required fields
+   * - Test fields on registration form
+   * - Test updating fields
+   */

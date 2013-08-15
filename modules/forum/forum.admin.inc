@@ -46,29 +46,29 @@ function forum_form_main($type, $edit = array()) {
  */
 function forum_form_forum($form, &$form_state, $edit = array()) {
   $edit += array(
-      'name' => '',
-      'description' => '',
-      'tid' => NULL,
-      'weight' => 0,
+    'name' => '',
+    'description' => '',
+    'tid' => NULL,
+    'weight' => 0,
   );
   $form['name'] = array('#type' => 'textfield',
-      '#title' => t('Forum name'),
-      '#default_value' => $edit['name'],
-      '#maxlength' => 255,
-      '#description' => t('Short but meaningful name for this collection of threaded discussions.'),
-      '#required' => TRUE,
+    '#title' => t('Forum name'),
+    '#default_value' => $edit['name'],
+    '#maxlength' => 255,
+    '#description' => t('Short but meaningful name for this collection of threaded discussions.'),
+    '#required' => TRUE,
   );
   $form['description'] = array('#type' => 'textarea',
-      '#title' => t('Description'),
-      '#default_value' => $edit['description'],
-      '#description' => t('Description and guidelines for discussions within this forum.'),
+    '#title' => t('Description'),
+    '#default_value' => $edit['description'],
+    '#description' => t('Description and guidelines for discussions within this forum.'),
   );
   $form['parent']['#tree'] = TRUE;
   $form['parent'][0] = _forum_parent_select($edit['tid'], t('Parent'), 'forum');
   $form['weight'] = array('#type' => 'weight',
-      '#title' => t('Weight'),
-      '#default_value' => $edit['weight'],
-      '#description' => t('Forums are displayed in ascending order by weight (forums with equal weights are displayed alphabetically).'),
+    '#title' => t('Weight'),
+    '#default_value' => $edit['weight'],
+    '#description' => t('Forums are displayed in ascending order by weight (forums with equal weights are displayed alphabetically).'),
   );
 
   $form['vid'] = array('#type' => 'hidden', '#value' => variable_get('forum_nav_vocabulary', ''));
@@ -147,44 +147,44 @@ function theme_forum_form($variables) {
  */
 function forum_form_container($form, &$form_state, $edit = array()) {
   $edit += array(
-      'name' => '',
-      'description' => '',
-      'tid' => NULL,
-      'weight' => 0,
+    'name' => '',
+    'description' => '',
+    'tid' => NULL,
+    'weight' => 0,
   );
   // Handle a delete operation.
   $form['name'] = array(
-      '#title' => t('Container name'),
-      '#type' => 'textfield',
-      '#default_value' => $edit['name'],
-      '#maxlength' => 255,
-      '#description' => t('Short but meaningful name for this collection of related forums.'),
-      '#required' => TRUE
+    '#title' => t('Container name'),
+    '#type' => 'textfield',
+    '#default_value' => $edit['name'],
+    '#maxlength' => 255,
+    '#description' => t('Short but meaningful name for this collection of related forums.'),
+    '#required' => TRUE
   );
 
   $form['description'] = array(
-      '#type' => 'textarea',
-      '#title' => t('Description'),
-      '#default_value' => $edit['description'],
-      '#description' => t('Description and guidelines for forums within this container.')
+    '#type' => 'textarea',
+    '#title' => t('Description'),
+    '#default_value' => $edit['description'],
+    '#description' => t('Description and guidelines for forums within this container.')
   );
   $form['parent']['#tree'] = TRUE;
   $form['parent'][0] = _forum_parent_select($edit['tid'], t('Parent'), 'container');
   $form['weight'] = array(
-      '#type' => 'weight',
-      '#title' => t('Weight'),
-      '#default_value' => $edit['weight'],
-      '#description' => t('Containers are displayed in ascending order by weight (containers with equal weights are displayed alphabetically).')
+    '#type' => 'weight',
+    '#title' => t('Weight'),
+    '#default_value' => $edit['weight'],
+    '#description' => t('Containers are displayed in ascending order by weight (containers with equal weights are displayed alphabetically).')
   );
 
   $form['vid'] = array(
-      '#type' => 'hidden',
-      '#value' => variable_get('forum_nav_vocabulary', ''),
+    '#type' => 'hidden',
+    '#value' => variable_get('forum_nav_vocabulary', ''),
   );
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Save')
+    '#type' => 'submit',
+    '#value' => t('Save')
   );
   if ($edit['tid']) {
     $form['actions']['delete'] = array('#type' => 'submit', '#value' => t('Delete'));
@@ -236,24 +236,24 @@ function forum_confirm_delete_submit($form, &$form_state) {
 function forum_admin_settings($form) {
   $number = drupal_map_assoc(array(5, 10, 15, 20, 25, 30, 35, 40, 50, 60, 80, 100, 150, 200, 250, 300, 350, 400, 500));
   $form['forum_hot_topic'] = array('#type' => 'select',
-      '#title' => t('Hot topic threshold'),
-      '#default_value' => variable_get('forum_hot_topic', 15),
-      '#options' => $number,
-      '#description' => t('The number of replies a topic must have to be considered "hot".'),
+    '#title' => t('Hot topic threshold'),
+    '#default_value' => variable_get('forum_hot_topic', 15),
+    '#options' => $number,
+    '#description' => t('The number of replies a topic must have to be considered "hot".'),
   );
   $number = drupal_map_assoc(array(10, 25, 50, 75, 100));
   $form['forum_per_page'] = array('#type' => 'select',
-      '#title' => t('Topics per page'),
-      '#default_value' => variable_get('forum_per_page', 25),
-      '#options' => $number,
-      '#description' => t('Default number of forum topics displayed per page.'),
+    '#title' => t('Topics per page'),
+    '#default_value' => variable_get('forum_per_page', 25),
+    '#options' => $number,
+    '#description' => t('Default number of forum topics displayed per page.'),
   );
   $forder = array(1 => t('Date - newest first'), 2 => t('Date - oldest first'), 3 => t('Posts - most active first'), 4 => t('Posts - least active first'));
   $form['forum_order'] = array('#type' => 'radios',
-      '#title' => t('Default order'),
-      '#default_value' => variable_get('forum_order', 1),
-      '#options' => $forder,
-      '#description' => t('Default display order for topics.'),
+    '#title' => t('Default order'),
+    '#default_value' => variable_get('forum_order', 1),
+    '#options' => $forder,
+    '#description' => t('Default display order for topics.'),
   );
   return system_settings_form($form);
 }

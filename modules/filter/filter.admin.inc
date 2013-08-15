@@ -35,10 +35,10 @@ function filter_admin_overview($form) {
     $form['formats'][$id]['configure'] = array('#type' => 'link', '#title' => t('configure'), '#href' => 'admin/config/content/formats/' . $id);
     $form['formats'][$id]['disable'] = array('#type' => 'link', '#title' => t('disable'), '#href' => 'admin/config/content/formats/' . $id . '/disable', '#access' => !$form['formats'][$id]['#is_fallback']);
     $form['formats'][$id]['weight'] = array(
-        '#type' => 'weight',
-        '#title' => t('Weight for @title', array('@title' => $format->name)),
-        '#title_display' => 'invisible',
-        '#default_value' => $format->weight,
+      '#type' => 'weight',
+      '#title' => t('Weight for @title', array('@title' => $format->name)),
+      '#title_display' => 'invisible',
+      '#default_value' => $format->weight,
     );
   }
   $form['actions'] = array('#type' => 'actions');
@@ -54,9 +54,9 @@ function filter_admin_overview_submit($form, &$form_state) {
     if (is_array($data) && isset($data['weight'])) {
       // Only update if this is a form element with weight.
       db_update('filter_format')
-      ->fields(array('weight' => $data['weight']))
-      ->condition('format', $id)
-      ->execute();
+        ->fields(array('weight' => $data['weight']))
+        ->condition('format', $id)
+        ->execute();
     }
   }
   filter_formats_reset();
@@ -79,14 +79,14 @@ function theme_filter_admin_overview($variables) {
   foreach (element_children($form['formats']) as $id) {
     $form['formats'][$id]['weight']['#attributes']['class'] = array('text-format-order-weight');
     $rows[] = array(
-        'data' => array(
-            drupal_render($form['formats'][$id]['name']),
-            drupal_render($form['formats'][$id]['roles']),
-            drupal_render($form['formats'][$id]['weight']),
-            drupal_render($form['formats'][$id]['configure']),
-            drupal_render($form['formats'][$id]['disable']),
-        ),
-        'class' => array('draggable'),
+      'data' => array(
+        drupal_render($form['formats'][$id]['name']),
+        drupal_render($form['formats'][$id]['roles']),
+        drupal_render($form['formats'][$id]['weight']),
+        drupal_render($form['formats'][$id]['configure']),
+        drupal_render($form['formats'][$id]['disable']),
+      ),
+      'class' => array('draggable'),
     );
   }
   $header = array(t('Name'), t('Roles'), t('Weight'), array('data' => t('Operations'), 'colspan' => 2));
@@ -124,8 +124,8 @@ function filter_admin_format_page($format = NULL) {
   if (!isset($format->name)) {
     drupal_set_title(t('Add text format'));
     $format = (object) array(
-        'format' => NULL,
-        'name' => '',
+      'format' => NULL,
+      'name' => '',
     );
   }
   return drupal_get_form('filter_admin_format_form', $format);
@@ -160,28 +160,28 @@ function filter_admin_format_form($form, &$form_state, $format) {
   $form['#attached']['css'][] = drupal_get_path('module', 'filter') . '/filter.css';
 
   $form['name'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Name'),
-      '#default_value' => $format->name,
-      '#required' => TRUE,
+    '#type' => 'textfield',
+    '#title' => t('Name'),
+    '#default_value' => $format->name,
+    '#required' => TRUE,
   );
   $form['format'] = array(
-      '#type' => 'machine_name',
-      '#required' => TRUE,
-      '#default_value' => $format->format,
-      '#maxlength' => 255,
-      '#machine_name' => array(
-          'exists' => 'filter_format_exists',
-      ),
-      '#disabled' => !empty($format->format),
+    '#type' => 'machine_name',
+    '#required' => TRUE,
+    '#default_value' => $format->format,
+    '#maxlength' => 255,
+    '#machine_name' => array(
+      'exists' => 'filter_format_exists',
+    ),
+    '#disabled' => !empty($format->format),
   );
 
   // Add user role access selection.
   $form['roles'] = array(
-      '#type' => 'checkboxes',
-      '#title' => t('Roles'),
-      '#options' => array_map('check_plain', user_roles()),
-      '#disabled' => $is_fallback,
+    '#type' => 'checkboxes',
+    '#title' => t('Roles'),
+    '#options' => array_map('check_plain', user_roles()),
+    '#disabled' => $is_fallback,
   );
   if ($is_fallback) {
     $form['roles']['#description'] = t('All roles for this text format must be enabled and cannot be changed.');
@@ -219,50 +219,50 @@ function filter_admin_format_form($form, &$form_state, $format) {
 
   // Filter status.
   $form['filters']['status'] = array(
-      '#type' => 'item',
-      '#title' => t('Enabled filters'),
-      '#prefix' => '<div id="filters-status-wrapper">',
-      '#suffix' => '</div>',
+    '#type' => 'item',
+    '#title' => t('Enabled filters'),
+    '#prefix' => '<div id="filters-status-wrapper">',
+    '#suffix' => '</div>',
   );
   foreach ($filter_info as $name => $filter) {
     $form['filters']['status'][$name] = array(
-        '#type' => 'checkbox',
-        '#title' => $filter['title'],
-        '#default_value' => $filters[$name]->status,
-        '#parents' => array('filters', $name, 'status'),
-        '#description' => $filter['description'],
-        '#weight' => $filter['weight'],
+      '#type' => 'checkbox',
+      '#title' => $filter['title'],
+      '#default_value' => $filters[$name]->status,
+      '#parents' => array('filters', $name, 'status'),
+      '#description' => $filter['description'],
+      '#weight' => $filter['weight'],
     );
   }
 
   // Filter order (tabledrag).
   $form['filters']['order'] = array(
-      '#type' => 'item',
-      '#title' => t('Filter processing order'),
-      '#theme' => 'filter_admin_format_filter_order',
+    '#type' => 'item',
+    '#title' => t('Filter processing order'),
+    '#theme' => 'filter_admin_format_filter_order',
   );
   foreach ($filter_info as $name => $filter) {
     $form['filters']['order'][$name]['filter'] = array(
-        '#markup' => $filter['title'],
+      '#markup' => $filter['title'],
     );
     $form['filters']['order'][$name]['weight'] = array(
-        '#type' => 'weight',
-        '#title' => t('Weight for @title', array('@title' => $filter['title'])),
-        '#title_display' => 'invisible',
-        '#delta' => 50,
-        '#default_value' => $filters[$name]->weight,
-        '#parents' => array('filters', $name, 'weight'),
+      '#type' => 'weight',
+      '#title' => t('Weight for @title', array('@title' => $filter['title'])),
+      '#title_display' => 'invisible',
+      '#delta' => 50,
+      '#default_value' => $filters[$name]->weight,
+      '#parents' => array('filters', $name, 'weight'),
     );
     $form['filters']['order'][$name]['#weight'] = $filters[$name]->weight;
   }
 
   // Filter settings.
   $form['filter_settings_title'] = array(
-      '#type' => 'item',
-      '#title' => t('Filter settings'),
+    '#type' => 'item',
+    '#title' => t('Filter settings'),
   );
   $form['filter_settings'] = array(
-      '#type' => 'vertical_tabs',
+    '#type' => 'vertical_tabs',
   );
 
   foreach ($filter_info as $name => $filter) {
@@ -274,11 +274,11 @@ function filter_admin_format_form($form, &$form_state, $format) {
       $settings_form = $function($form, $form_state, $filters[$name], $format, $defaults, $filters);
       if (!empty($settings_form)) {
         $form['filters']['settings'][$name] = array(
-            '#type' => 'fieldset',
-            '#title' => $filter['title'],
-            '#parents' => array('filters', $name, 'settings'),
-            '#weight' => $filter['weight'],
-            '#group' => 'filter_settings',
+          '#type' => 'fieldset',
+          '#title' => $filter['title'],
+          '#parents' => array('filters', $name, 'settings'),
+          '#weight' => $filter['weight'],
+          '#group' => 'filter_settings',
         );
         $form['filters']['settings'][$name] += $settings_form;
       }
@@ -308,11 +308,11 @@ function theme_filter_admin_format_filter_order($variables) {
   foreach (element_children($element, TRUE) as $name) {
     $element[$name]['weight']['#attributes']['class'][] = 'filter-order-weight';
     $rows[] = array(
-        'data' => array(
-            drupal_render($element[$name]['filter']),
-            drupal_render($element[$name]['weight']),
-        ),
-        'class' => array('draggable'),
+      'data' => array(
+        drupal_render($element[$name]['filter']),
+        drupal_render($element[$name]['weight']),
+      ),
+      'class' => array('draggable'),
     );
   }
   $output = drupal_render_children($element);
@@ -389,10 +389,10 @@ function filter_admin_disable($form, &$form_state, $format) {
   $form['#format'] = $format;
 
   return confirm_form($form,
-      t('Are you sure you want to disable the text format %format?', array('%format' => $format->name)),
-      'admin/config/content/formats',
-      t('Disabled text formats are completely removed from the administrative interface, and any content stored with that format will not be displayed. This action cannot be undone.'),
-      t('Disable')
+    t('Are you sure you want to disable the text format %format?', array('%format' => $format->name)),
+    'admin/config/content/formats',
+    t('Disabled text formats are completely removed from the administrative interface, and any content stored with that format will not be displayed. This action cannot be undone.'),
+    t('Disable')
   );
 }
 

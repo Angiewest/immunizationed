@@ -41,35 +41,35 @@ function trigger_help($path, $arg) {
  */
 function trigger_menu() {
   $items['admin/structure/trigger'] = array(
-      'title' => 'Triggers',
-      'description' => 'Configure when to execute actions.',
-      'page callback' => 'trigger_assign',
-      'access arguments' => array('administer actions'),
-      'file' => 'trigger.admin.inc',
+    'title' => 'Triggers',
+    'description' => 'Configure when to execute actions.',
+    'page callback' => 'trigger_assign',
+    'access arguments' => array('administer actions'),
+    'file' => 'trigger.admin.inc',
   );
 
   $trigger_info = _trigger_tab_information();
   foreach ($trigger_info as $module => $module_name) {
     $items["admin/structure/trigger/$module"] = array(
-        'title' => $module_name,
-        'page callback' => 'trigger_assign',
-        'page arguments' => array($module),
-        'access arguments' => array('administer actions'),
-        'type' => MENU_LOCAL_TASK,
-        'file' => 'trigger.admin.inc',
+      'title' => $module_name,
+      'page callback' => 'trigger_assign',
+      'page arguments' => array($module),
+      'access arguments' => array('administer actions'),
+      'type' => MENU_LOCAL_TASK,
+      'file' => 'trigger.admin.inc',
     );
   }
 
   $items['admin/structure/trigger/unassign'] = array(
-      'title' => 'Unassign',
-      'description' => 'Unassign an action from a trigger.',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('trigger_unassign'),
-      // Only accessible if there are any actions that can be unassigned.
-      'access callback' => 'trigger_menu_unassign_access',
-      // Only output in the breadcrumb, not in menu trees.
-      'type' => MENU_VISIBLE_IN_BREADCRUMB,
-      'file' => 'trigger.admin.inc',
+    'title' => 'Unassign',
+    'description' => 'Unassign an action from a trigger.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('trigger_unassign'),
+    // Only accessible if there are any actions that can be unassigned.
+    'access callback' => 'trigger_menu_unassign_access',
+    // Only output in the breadcrumb, not in menu trees.
+    'type' => MENU_VISIBLE_IN_BREADCRUMB,
+    'file' => 'trigger.admin.inc',
   );
 
   return $items;
@@ -88,9 +88,9 @@ function trigger_menu_unassign_access() {
     return FALSE;
   }
   $count = db_select('trigger_assignments')
-  ->countQuery()
-  ->execute()
-  ->fetchField();
+    ->countQuery()
+    ->execute()
+    ->fetchField();
   return $count > 0;
 }
 
@@ -100,79 +100,79 @@ function trigger_menu_unassign_access() {
  * Defines all the triggers that this module implements triggers for.
  */
 function trigger_trigger_info() {
-  return array(
-      'node' => array(
-          'node_presave' => array(
-              'label' => t('When either saving new content or updating existing content'),
-          ),
-          'node_insert' => array(
-              'label' => t('After saving new content'),
-          ),
-          'node_update' => array(
-              'label' => t('After saving updated content'),
-          ),
-          'node_delete' => array(
-              'label' => t('After deleting content'),
-          ),
-          'node_view' => array(
-              'label' => t('When content is viewed by an authenticated user'),
-          ),
-      ),
-      'comment' => array(
-          'comment_presave' => array(
-              'label' => t('When either saving a new comment or updating an existing comment'),
-          ),
-          'comment_insert' => array(
-              'label' => t('After saving a new comment'),
-          ),
-          'comment_update' => array(
-              'label' => t('After saving an updated comment'),
-          ),
-          'comment_delete' => array(
-              'label' => t('After deleting a comment'),
-          ),
-          'comment_view' => array(
-              'label' => t('When a comment is being viewed by an authenticated user'),
-          ),
-      ),
-      'taxonomy' => array(
-          'taxonomy_term_insert' => array(
-              'label' => t('After saving a new term to the database'),
-          ),
-          'taxonomy_term_update' => array(
-              'label' => t('After saving an updated term to the database'),
-          ),
-          'taxonomy_term_delete' => array(
-              'label' => t('After deleting a term'),
-          ),
-      ),
-      'system' => array(
-          'cron' => array(
-              'label' => t('When cron runs'),
-          ),
-      ),
-      'user' => array(
-          'user_insert' => array(
-              'label' => t('After creating a new user account'),
-          ),
-          'user_update' => array(
-              'label' => t('After updating a user account'),
-          ),
-          'user_delete' => array(
-              'label' => t('After a user has been deleted'),
-          ),
-          'user_login' => array(
-              'label' => t('After a user has logged in'),
-          ),
-          'user_logout' => array(
-              'label' => t('After a user has logged out'),
-          ),
-          'user_view' => array(
-              'label' => t("When a user's profile is being viewed"),
-          ),
-      ),
-  );
-}
+   return array(
+     'node' => array(
+       'node_presave' => array(
+         'label' => t('When either saving new content or updating existing content'),
+       ),
+       'node_insert' => array(
+         'label' => t('After saving new content'),
+       ),
+       'node_update' => array(
+         'label' => t('After saving updated content'),
+       ),
+       'node_delete' => array(
+         'label' => t('After deleting content'),
+       ),
+       'node_view' => array(
+         'label' => t('When content is viewed by an authenticated user'),
+       ),
+     ),
+     'comment' => array(
+       'comment_presave' => array(
+         'label' => t('When either saving a new comment or updating an existing comment'),
+       ),
+       'comment_insert' => array(
+         'label' => t('After saving a new comment'),
+       ),
+       'comment_update' => array(
+         'label' => t('After saving an updated comment'),
+       ),
+       'comment_delete' => array(
+         'label' => t('After deleting a comment'),
+       ),
+       'comment_view' => array(
+         'label' => t('When a comment is being viewed by an authenticated user'),
+       ),
+     ),
+     'taxonomy' => array(
+       'taxonomy_term_insert' => array(
+         'label' => t('After saving a new term to the database'),
+       ),
+       'taxonomy_term_update' => array(
+         'label' => t('After saving an updated term to the database'),
+       ),
+       'taxonomy_term_delete' => array(
+         'label' => t('After deleting a term'),
+       ),
+     ),
+     'system' => array(
+       'cron' => array(
+         'label' => t('When cron runs'),
+       ),
+     ),
+     'user' => array(
+       'user_insert' => array(
+         'label' => t('After creating a new user account'),
+       ),
+       'user_update' => array(
+         'label' => t('After updating a user account'),
+       ),
+       'user_delete' => array(
+         'label' => t('After a user has been deleted'),
+       ),
+       'user_login' => array(
+         'label' => t('After a user has logged in'),
+       ),
+       'user_logout' => array(
+         'label' => t('After a user has logged out'),
+       ),
+       'user_view' => array(
+         'label' => t("When a user's profile is being viewed"),
+       ),
+     ),
+   );
+ }
 
 /**
  * Gets the action IDs of actions to be executed for a hook.
@@ -189,7 +189,7 @@ function trigger_get_assigned_actions($hook) {
   $actions = &drupal_static(__FUNCTION__, array());
   if (!isset($actions[$hook])) {
     $actions[$hook] = db_query("SELECT ta.aid, a.type, a.label FROM {trigger_assignments} ta LEFT JOIN {actions} a ON ta.aid = a.aid WHERE ta.hook = :hook ORDER BY ta.weight", array(
-        ':hook' => $hook,
+      ':hook' => $hook,
     ))->fetchAllAssoc('aid', PDO::FETCH_ASSOC);
   }
   return $actions[$hook];
@@ -200,10 +200,10 @@ function trigger_get_assigned_actions($hook) {
  */
 function trigger_theme() {
   return array(
-      'trigger_display' => array(
-          'render element' => 'element',
-          'file' => 'trigger.admin.inc',
-      ),
+    'trigger_display' => array(
+      'render element' => 'element',
+      'file' => 'trigger.admin.inc',
+    ),
   );
 }
 
@@ -281,8 +281,8 @@ function _trigger_node($node, $hook, $a3 = NULL, $a4 = NULL) {
   $recursion[$hook] = TRUE;
 
   $context = array(
-      'group' => 'node',
-      'hook' => $hook,
+    'group' => 'node',
+    'hook' => $hook,
   );
 
   // We need to get the expected object if the action's type is not 'node'.
@@ -364,7 +364,7 @@ function _trigger_normalize_comment_context($type, $comment) {
     case 'node':
       return node_load(is_array($comment) ? $comment['nid'] : $comment->nid);
 
-      // An action that works on users is being called in a comment context.
+    // An action that works on users is being called in a comment context.
     case 'user':
       return user_load(is_array($comment) ? $comment['uid'] : $comment->uid);
   }
@@ -418,8 +418,8 @@ function _trigger_comment($a1, $hook) {
   static $objects;
   $aids = trigger_get_assigned_actions($hook);
   $context = array(
-      'group' => 'comment',
-      'hook' => $hook,
+    'group' => 'comment',
+    'hook' => $hook,
   );
   // We need to get the expected object if the action's type is not 'comment'.
   // We keep the object in $objects so we can reuse it if we have multiple
@@ -447,8 +447,8 @@ function _trigger_comment($a1, $hook) {
 function trigger_cron() {
   $aids = trigger_get_assigned_actions('cron');
   $context = array(
-      'group' => 'cron',
-      'hook' => 'cron',
+    'group' => 'cron',
+    'hook' => 'cron',
   );
   // Cron does not act on any specific object.
   $object = NULL;
@@ -560,9 +560,9 @@ function _trigger_user($hook, &$edit, $account, $category = NULL) {
   static $objects;
   $aids = trigger_get_assigned_actions($hook);
   $context = array(
-      'group' => 'user',
-      'hook' => $hook,
-      'form_values' => &$edit,
+    'group' => 'user',
+    'hook' => $hook,
+    'form_values' => &$edit,
   );
   foreach ($aids as $aid => $info) {
     $type = $info['type'];
@@ -592,8 +592,8 @@ function _trigger_user($hook, &$edit, $account, $category = NULL) {
 function _trigger_taxonomy($hook, $array) {
   $aids = trigger_get_assigned_actions($hook);
   $context = array(
-      'group' => 'taxonomy',
-      'hook' => $hook
+    'group' => 'taxonomy',
+    'hook' => $hook
   );
   actions_do(array_keys($aids), (object) $array, $context);
 }
@@ -626,8 +626,8 @@ function trigger_taxonomy_term_delete($term) {
  */
 function trigger_actions_delete($aid) {
   db_delete('trigger_assignments')
-  ->condition('aid', $aid)
-  ->execute();
+    ->condition('aid', $aid)
+    ->execute();
   drupal_static_reset('trigger_get_assigned_actions');
 }
 

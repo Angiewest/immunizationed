@@ -10,22 +10,22 @@
  */
 function help_menu() {
   $items['admin/help'] = array(
-      'title' => 'Help',
-      'description' => 'Reference for usage, configuration, and modules.',
-      'page callback' => 'help_main',
-      'access arguments' => array('access administration pages'),
-      'weight' => 9,
-      'file' => 'help.admin.inc',
+    'title' => 'Help',
+    'description' => 'Reference for usage, configuration, and modules.',
+    'page callback' => 'help_main',
+    'access arguments' => array('access administration pages'),
+    'weight' => 9,
+    'file' => 'help.admin.inc',
   );
 
   foreach (module_implements('help', TRUE) as $module) {
     $items['admin/help/' . $module] = array(
-        'title' => $module,
-        'page callback' => 'help_page',
-        'page arguments' => array(2),
-        'access arguments' => array('access administration pages'),
-        'type' => MENU_VISIBLE_IN_BREADCRUMB,
-        'file' => 'help.admin.inc',
+      'title' => $module,
+      'page callback' => 'help_page',
+      'page arguments' => array(2),
+      'access arguments' => array('access administration pages'),
+      'type' => MENU_VISIBLE_IN_BREADCRUMB,
+      'file' => 'help.admin.inc',
     );
   }
 

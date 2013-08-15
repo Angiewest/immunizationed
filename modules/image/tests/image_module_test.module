@@ -16,9 +16,9 @@ function image_module_test_file_download($uri) {
  */
 function image_module_test_image_effect_info() {
   $effects = array(
-      'image_module_test_null' => array(
-          'effect callback' => 'image_module_test_null_effect',
-      ),
+    'image_module_test_null' => array(
+    'effect callback' => 'image_module_test_null_effect',
+    ),
   );
 
   return $effects;

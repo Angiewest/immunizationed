@@ -10,278 +10,278 @@
  */
 function user_schema() {
   $schema['authmap'] = array(
-      'description' => 'Stores distributed authentication mapping.',
-      'fields' => array(
-          'aid' => array(
-              'description' => 'Primary Key: Unique authmap ID.',
-              'type' => 'serial',
-              'unsigned' => TRUE,
-              'not null' => TRUE,
-          ),
-          'uid' => array(
-              'type' => 'int',
-              'not null' => TRUE,
-              'default' => 0,
-              'description' => "User's {users}.uid.",
-          ),
-          'authname' => array(
-              'type' => 'varchar',
-              'length' => 128,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => 'Unique authentication name.',
-          ),
-          'module' => array(
-              'type' => 'varchar',
-              'length' => 128,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => 'Module which is controlling the authentication.',
-          ),
+    'description' => 'Stores distributed authentication mapping.',
+    'fields' => array(
+      'aid' => array(
+        'description' => 'Primary Key: Unique authmap ID.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
       ),
-      'unique keys' => array(
-          'authname' => array('authname'),
+      'uid' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => "User's {users}.uid.",
       ),
-      'primary key' => array('aid'),
-      'foreign keys' => array(
-          'user' => array(
-              'table' => 'users',
-              'columns' => array('uid' => 'uid'),
-          ),
+      'authname' => array(
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Unique authentication name.',
       ),
+      'module' => array(
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Module which is controlling the authentication.',
+      ),
+    ),
+    'unique keys' => array(
+      'authname' => array('authname'),
+    ),
+    'primary key' => array('aid'),
+    'foreign keys' => array(
+      'user' => array(
+        'table' => 'users',
+        'columns' => array('uid' => 'uid'),
+      ),
+    ),
   );
 
   $schema['role_permission'] = array(
-      'description' => 'Stores the permissions assigned to user roles.',
-      'fields' => array(
-          'rid' => array(
-              'type' => 'int',
-              'unsigned' => TRUE,
-              'not null' => TRUE,
-              'description' => 'Foreign Key: {role}.rid.',
-          ),
-          'permission' => array(
-              'type' => 'varchar',
-              'length' => 128,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => 'A single permission granted to the role identified by rid.',
-          ),
-          'module' => array(
-              'type' => 'varchar',
-              'length' => 255,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => "The module declaring the permission.",
-          ),
+    'description' => 'Stores the permissions assigned to user roles.',
+    'fields' => array(
+      'rid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'Foreign Key: {role}.rid.',
       ),
-      'primary key' => array('rid', 'permission'),
-      'indexes' => array(
-          'permission' => array('permission'),
+      'permission' => array(
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'A single permission granted to the role identified by rid.',
       ),
-      'foreign keys' => array(
-          'role' => array(
-              'table' => 'roles',
-              'columns' => array('rid' => 'rid'),
-          ),
+      'module' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => "The module declaring the permission.",
       ),
+    ),
+    'primary key' => array('rid', 'permission'),
+    'indexes' => array(
+      'permission' => array('permission'),
+    ),
+    'foreign keys' => array(
+      'role' => array(
+        'table' => 'roles',
+        'columns' => array('rid' => 'rid'),
+      ),
+    ),
   );
 
   $schema['role'] = array(
-      'description' => 'Stores user roles.',
-      'fields' => array(
-          'rid' => array(
-              'type' => 'serial',
-              'unsigned' => TRUE,
-              'not null' => TRUE,
-              'description' => 'Primary Key: Unique role ID.',
-          ),
-          'name' => array(
-              'type' => 'varchar',
-              'length' => 64,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => 'Unique role name.',
-              'translatable' => TRUE,
-          ),
-          'weight' => array(
-              'type' => 'int',
-              'not null' => TRUE,
-              'default' => 0,
-              'description' => 'The weight of this role in listings and the user interface.',
-          ),
+    'description' => 'Stores user roles.',
+    'fields' => array(
+      'rid' => array(
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique role ID.',
       ),
-      'unique keys' => array(
-          'name' => array('name'),
+      'name' => array(
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Unique role name.',
+        'translatable' => TRUE,
       ),
-      'primary key' => array('rid'),
-      'indexes' => array(
-          'name_weight' => array('name', 'weight'),
+      'weight' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The weight of this role in listings and the user interface.',
       ),
+    ),
+    'unique keys' => array(
+      'name' => array('name'),
+    ),
+    'primary key' => array('rid'),
+    'indexes' => array(
+      'name_weight' => array('name', 'weight'),
+    ),
   );
 
   // The table name here is plural, despite Drupal table naming standards,
   // because "user" is a reserved word in many databases.
   $schema['users'] = array(
-      'description' => 'Stores user data.',
-      'fields' => array(
-          'uid' => array(
-              'type' => 'int',
-              'unsigned' => TRUE,
-              'not null' => TRUE,
-              'description' => 'Primary Key: Unique user ID.',
-              'default' => 0,
-          ),
-          'name' => array(
-              'type' => 'varchar',
-              'length' => 60,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => 'Unique user name.',
-          ),
-          'pass' => array(
-              'type' => 'varchar',
-              'length' => 128,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => "User's password (hashed).",
-          ),
-          'mail' => array(
-              'type' => 'varchar',
-              'length' => 254,
-              'not null' => FALSE,
-              'default' => '',
-              'description' => "User's e-mail address.",
-          ),
-          'theme' => array(
-          'type' => 'varchar',
-          'length' => 255,
-          'not null' => TRUE,
-          'default' => '',
-          'description' => "User's default theme.",
-          ),
-          'signature' => array(
-          'type' => 'varchar',
-          'length' => 255,
-          'not null' => TRUE,
-          'default' => '',
-          'description' => "User's signature.",
-          ),
-          'signature_format' => array(
-          'type' => 'varchar',
-          'length' => 255,
-          'not null' => FALSE,
-          'description' => 'The {filter_format}.format of the signature.',
-          ),
-          'created' => array(
-          'type' => 'int',
-          'not null' => TRUE,
-          'default' => 0,
-          'description' => 'Timestamp for when user was created.',
-          ),
-          'access' => array(
-          'type' => 'int',
-          'not null' => TRUE,
-          'default' => 0,
-          'description' => 'Timestamp for previous time user accessed the site.',
-          ),
-          'login' => array(
-          'type' => 'int',
-          'not null' => TRUE,
-          'default' => 0,
-          'description' => "Timestamp for user's last login.",
-          ),
-          'status' => array(
-          'type' => 'int',
-          'not null' => TRUE,
-          'default' => 0,
-          'size' => 'tiny',
-          'description' => 'Whether the user is active(1) or blocked(0).',
-          ),
-          'timezone' => array(
-          'type' => 'varchar',
-          'length' => 32,
-          'not null' => FALSE,
-          'description' => "User's time zone.",
-          ),
-          'language' => array(
-          'type' => 'varchar',
-          'length' => 12,
-          'not null' => TRUE,
-          'default' => '',
-          'description' => "User's default language.",
-          ),
-          'picture' => array(
-          'type' => 'int',
-          'not null' => TRUE,
-          'default' => 0,
-          'description' => "Foreign key: {file_managed}.fid of user's picture.",
-          ),
-          'init' => array(
-          'type' => 'varchar',
-          'length' => 254,
-          'not null' => FALSE,
-          'default' => '',
-          'description' => 'E-mail address used for initial account creation.',
-          ),
-          'data' => array(
-          'type' => 'blob',
-          'not null' => FALSE,
-          'size' => 'big',
-          'serialize' => TRUE,
-          'description' => 'A serialized array of name value pairs that are related to the user. Any form values posted during user edit are stored and are loaded into the $user object during user_load(). Use of this field is discouraged and it will likely disappear in a future version of Drupal.',
-          ),
+    'description' => 'Stores user data.',
+    'fields' => array(
+      'uid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique user ID.',
+        'default' => 0,
       ),
-      'indexes' => array(
+      'name' => array(
+        'type' => 'varchar',
+        'length' => 60,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Unique user name.',
+      ),
+      'pass' => array(
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => "User's password (hashed).",
+      ),
+      'mail' => array(
+        'type' => 'varchar',
+        'length' => 254,
+        'not null' => FALSE,
+        'default' => '',
+        'description' => "User's e-mail address.",
+      ),
+      'theme' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => "User's default theme.",
+      ),
+      'signature' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => "User's signature.",
+      ),
+      'signature_format' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'The {filter_format}.format of the signature.',
+      ),
+      'created' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Timestamp for when user was created.',
+      ),
+      'access' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Timestamp for previous time user accessed the site.',
+      ),
+      'login' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => "Timestamp for user's last login.",
+      ),
+      'status' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'tiny',
+        'description' => 'Whether the user is active(1) or blocked(0).',
+      ),
+      'timezone' => array(
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => FALSE,
+        'description' => "User's time zone.",
+      ),
+      'language' => array(
+        'type' => 'varchar',
+        'length' => 12,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => "User's default language.",
+      ),
+      'picture' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => "Foreign key: {file_managed}.fid of user's picture.",
+      ),
+      'init' => array(
+        'type' => 'varchar',
+        'length' => 254,
+        'not null' => FALSE,
+        'default' => '',
+        'description' => 'E-mail address used for initial account creation.',
+      ),
+      'data' => array(
+        'type' => 'blob',
+        'not null' => FALSE,
+        'size' => 'big',
+        'serialize' => TRUE,
+        'description' => 'A serialized array of name value pairs that are related to the user. Any form values posted during user edit are stored and are loaded into the $user object during user_load(). Use of this field is discouraged and it will likely disappear in a future version of Drupal.',
+      ),
+    ),
+    'indexes' => array(
       'access' => array('access'),
       'created' => array('created'),
       'mail' => array('mail'),
       'picture' => array('picture'),
-      ),
-      'unique keys' => array(
+    ),
+    'unique keys' => array(
       'name' => array('name'),
-      ),
-      'primary key' => array('uid'),
-      'foreign keys' => array(
+    ),
+    'primary key' => array('uid'),
+    'foreign keys' => array(
       'signature_format' => array(
-      'table' => 'filter_format',
-      'columns' => array('signature_format' => 'format'),
+        'table' => 'filter_format',
+        'columns' => array('signature_format' => 'format'),
       ),
-      ),
+    ),
   );
 
   $schema['users_roles'] = array(
-      'description' => 'Maps users to roles.',
-      'fields' => array(
-          'uid' => array(
-              'type' => 'int',
-              'unsigned' => TRUE,
-              'not null' => TRUE,
-              'default' => 0,
-              'description' => 'Primary Key: {users}.uid for user.',
-          ),
-          'rid' => array(
-              'type' => 'int',
-              'unsigned' => TRUE,
-              'not null' => TRUE,
-              'default' => 0,
-              'description' => 'Primary Key: {role}.rid for role.',
-          ),
+    'description' => 'Maps users to roles.',
+    'fields' => array(
+      'uid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Primary Key: {users}.uid for user.',
       ),
-      'primary key' => array('uid', 'rid'),
-      'indexes' => array(
-          'rid' => array('rid'),
+      'rid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Primary Key: {role}.rid for role.',
       ),
-      'foreign keys' => array(
-          'user' => array(
-              'table' => 'users',
-              'columns' => array('uid' => 'uid'),
-          ),
-          'role' => array(
-              'table' => 'roles',
-              'columns' => array('rid' => 'rid'),
-          ),
+    ),
+    'primary key' => array('uid', 'rid'),
+    'indexes' => array(
+      'rid' => array('rid'),
+    ),
+    'foreign keys' => array(
+      'user' => array(
+        'table' => 'users',
+        'columns' => array('uid' => 'uid'),
       ),
+      'role' => array(
+        'table' => 'roles',
+        'columns' => array('rid' => 'rid'),
+      ),
+    ),
   );
 
   return $schema;
@@ -293,49 +293,49 @@ function user_schema() {
 function user_install() {
   // Insert a row for the anonymous user.
   db_insert('users')
-  ->fields(array(
-  'uid' => 0,
-  'name' => '',
-  'mail' => '',
-  ))
-  ->execute();
+    ->fields(array(
+      'uid' => 0,
+      'name' => '',
+      'mail' => '',
+    ))
+    ->execute();
 
   // We need some placeholders here as name and mail are uniques and data is
   // presumed to be a serialized array. This will be changed by the settings
   // form in the installer.
   db_insert('users')
-  ->fields(array(
-  'uid' => 1,
-  'name' => 'placeholder-for-uid-1',
-  'mail' => 'placeholder-for-uid-1',
-  'created' => REQUEST_TIME,
-  'status' => 1,
-  'data' => NULL,
-  ))
-  ->execute();
+    ->fields(array(
+      'uid' => 1,
+      'name' => 'placeholder-for-uid-1',
+      'mail' => 'placeholder-for-uid-1',
+      'created' => REQUEST_TIME,
+      'status' => 1,
+      'data' => NULL,
+    ))
+    ->execute();
 
   // Built-in roles.
   $rid_anonymous = db_insert('role')
-  ->fields(array('name' => 'anonymous user', 'weight' => 0))
-  ->execute();
+    ->fields(array('name' => 'anonymous user', 'weight' => 0))
+    ->execute();
   $rid_authenticated = db_insert('role')
-  ->fields(array('name' => 'authenticated user', 'weight' => 1))
-  ->execute();
+    ->fields(array('name' => 'authenticated user', 'weight' => 1))
+    ->execute();
 
   // Sanity check to ensure the anonymous and authenticated role IDs are the
   // same as the drupal defined constants. In certain situations, this will
   // not be true.
   if ($rid_anonymous != DRUPAL_ANONYMOUS_RID) {
     db_update('role')
-    ->fields(array('rid' => DRUPAL_ANONYMOUS_RID))
-    ->condition('rid', $rid_anonymous)
-    ->execute();
+      ->fields(array('rid' => DRUPAL_ANONYMOUS_RID))
+      ->condition('rid', $rid_anonymous)
+      ->execute();
   }
   if ($rid_authenticated != DRUPAL_AUTHENTICATED_RID) {
     db_update('role')
-    ->fields(array('rid' => DRUPAL_AUTHENTICATED_RID))
-    ->condition('rid', $rid_authenticated)
-    ->execute();
+      ->fields(array('rid' => DRUPAL_AUTHENTICATED_RID))
+      ->condition('rid', $rid_authenticated)
+      ->execute();
   }
 }
 
@@ -346,28 +346,28 @@ function user_update_dependencies() {
   // user_update_7006() updates data in the {role_permission} table, so it must
   // run after system_update_7007(), which populates that table.
   $dependencies['user'][7006] = array(
-      'system' => 7007,
+    'system' => 7007,
   );
 
   // user_update_7010() needs to query the {filter_format} table to get a list
   // of existing text formats, so it must run after filter_update_7000(), which
   // creates that table.
   $dependencies['user'][7010] = array(
-      'filter' => 7000,
+    'filter' => 7000,
   );
 
   // user_update_7012() uses the file API, which relies on the {file_managed}
   // table, so it must run after system_update_7034(), which creates that
   // table.
   $dependencies['user'][7012] = array(
-      'system' => 7034,
+    'system' => 7034,
   );
 
   // user_update_7013() uses the file usage API, which relies on the
   // {file_usage} table, so it must run after system_update_7059(), which
   // creates that table.
   $dependencies['user'][7013] = array(
-      'system' => 7059,
+    'system' => 7059,
   );
 
   return $dependencies;
@@ -390,14 +390,14 @@ function _update_7000_user_role_grant_permissions($rid, array $permissions, $mod
   // Grant new permissions for the role.
   foreach ($permissions as $name) {
     db_merge('role_permission')
-    ->key(array(
-    'rid' => $rid,
-    'permission' => $name,
-    ))
-    ->fields(array(
-    'module' => $module,
-    ))
-    ->execute();
+      ->key(array(
+        'rid' => $rid,
+        'permission' => $name,
+      ))
+      ->fields(array(
+        'module' => $module,
+      ))
+      ->execute();
   }
 }
 
@@ -443,9 +443,9 @@ function user_update_7000(&$sandbox) {
         // Indicate an updated password.
         $new_hash  = 'U' . $new_hash;
         db_update('users')
-        ->fields(array('pass' => $new_hash))
-        ->condition('uid', $account->uid)
-        ->execute();
+          ->fields(array('pass' => $new_hash))
+          ->condition('uid', $account->uid)
+          ->execute();
       }
     }
     $sandbox['#finished'] = $sandbox['user_from']/$sandbox['user_count'];
@@ -517,16 +517,16 @@ function user_update_7002(&$sandbox) {
       }
       if ($timezone) {
         db_update('users')
-        ->fields(array('timezone' => $timezone))
-        ->condition('uid', $account->uid)
-        ->execute();
+          ->fields(array('timezone' => $timezone))
+          ->condition('uid', $account->uid)
+          ->execute();
       }
       else {
         $sandbox['user_not_migrated']++;
         db_update('users')
-        ->fields(array('timezone' => NULL))
-        ->condition('uid', $account->uid)
-        ->execute();
+          ->fields(array('timezone' => NULL))
+          ->condition('uid', $account->uid)
+          ->execute();
       }
       $sandbox['user_from']++;
     }
@@ -535,7 +535,7 @@ function user_update_7002(&$sandbox) {
     if ($sandbox['user_from'] == $sandbox['user_count']) {
       if ($sandbox['user_not_migrated'] > 0) {
         variable_set('empty_timezone_message', 1);
-        drupal_set_message('Some user time zones have been emptied and need to be set to the correct values. Use the new ' . l('time zone options', 'admin/config/regional/settings') . ' to choose whether to remind users at login to set the correct time zone.', 'warning');
+        drupal_set_message(format_string('Some user time zones have been emptied and need to be set to the correct values. Use the new <a href="@config-url">time zone options</a> to choose whether to remind users at login to set the correct time zone.', array('@config-url' => url('admin/config/regional/settings'))), 'warning');
       }
       return t('Migrated user time zones');
     }
@@ -573,18 +573,18 @@ function user_update_7003() {
  */
 function user_update_7005(&$sandbox) {
   $mail_field = array(
-      'type' => 'varchar',
-      'length' => 254,
-      'not null' => FALSE,
-      'default' => '',
-      'description' => "User's e-mail address.",
+    'type' => 'varchar',
+    'length' => 254,
+    'not null' => FALSE,
+    'default' => '',
+    'description' => "User's e-mail address.",
   );
   $init_field = array(
-      'type' => 'varchar',
-      'length' => 254,
-      'not null' => FALSE,
-      'default' => '',
-      'description' => 'E-mail address used for initial account creation.',
+    'type' => 'varchar',
+    'length' => 254,
+    'not null' => FALSE,
+    'default' => '',
+    'description' => 'E-mail address used for initial account creation.',
   );
   db_drop_index('users', 'mail');
   db_change_field('users', 'mail', 'mail', $mail_field, array('indexes' => array('mail' => array('mail'))));
@@ -596,11 +596,11 @@ function user_update_7005(&$sandbox) {
  */
 function user_update_7006(&$sandbox) {
   $module_field = array(
-      'type' => 'varchar',
-      'length' => 255,
-      'not null' => TRUE,
-      'default' => '',
-      'description' => "The module declaring the permission.",
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'default' => '',
+    'description' => "The module declaring the permission.",
   );
   // Check that the field hasn't been updated in an aborted run of this
   // update.
@@ -634,11 +634,11 @@ function user_update_7008() {
  */
 function user_update_7009() {
   $spec = array(
-      'type' => 'blob',
-      'not null' => FALSE,
-      'size' => 'big',
-      'serialize' => TRUE,
-      'description' => 'A serialized array of name value pairs that are related to the user. Any form values posted during user edit are stored and are loaded into the $user object during user_load(). Use of this field is discouraged and it will likely disappear in a future version of Drupal.',
+    'type' => 'blob',
+    'not null' => FALSE,
+    'size' => 'big',
+    'serialize' => TRUE,
+    'description' => 'A serialized array of name value pairs that are related to the user. Any form values posted during user edit are stored and are loaded into the $user object during user_load(). Use of this field is discouraged and it will likely disappear in a future version of Drupal.',
   );
   db_change_field('users', 'data', 'data', $spec);
 }
@@ -649,10 +649,10 @@ function user_update_7009() {
 function user_update_7010() {
   // Update the database column to allow NULL values.
   db_change_field('users', 'signature_format', 'signature_format', array(
-  'type' => 'int',
-  'unsigned' => TRUE,
-  'not null' => FALSE,
-  'description' => 'The {filter_format}.format of the signature.',
+    'type' => 'int',
+    'unsigned' => TRUE,
+    'not null' => FALSE,
+    'description' => 'The {filter_format}.format of the signature.',
   ));
 
   // Replace the signature format with NULL if the signature is empty and does
@@ -666,10 +666,10 @@ function user_update_7010() {
   // have a particular text format assumed for them the first time the
   // signature is edited.
   db_update('users')
-  ->fields(array('signature_format' => NULL))
-  ->condition('signature', '')
-  ->condition('signature_format', 0)
-  ->execute();
+    ->fields(array('signature_format' => NULL))
+    ->condition('signature', '')
+    ->condition('signature_format', 0)
+    ->execute();
 
   // There are a number of situations in which a Drupal 6 site could store
   // content with a nonexistent text format. This includes text formats that
@@ -686,10 +686,10 @@ function user_update_7010() {
   $existing_formats = db_query("SELECT format FROM {filter_format}")->fetchCol();
   $default_format = variable_get('filter_default_format', 1);
   db_update('users')
-  ->fields(array('signature_format' => $default_format))
-  ->isNotNull('signature_format')
-  ->condition('signature_format', $existing_formats, 'NOT IN')
-  ->execute();
+    ->fields(array('signature_format' => $default_format))
+    ->isNotNull('signature_format')
+    ->condition('signature_format', $existing_formats, 'NOT IN')
+    ->execute();
 }
 
 /**
@@ -709,10 +709,10 @@ function user_update_7011() {
 function user_update_7012(&$sandbox) {
 
   $picture_field = array(
-      'type' => 'int',
-      'not null' => TRUE,
-      'default' => 0,
-      'description' => "Foreign key: {file_managed}.fid of user's picture.",
+    'type' => 'int',
+    'not null' => TRUE,
+    'default' => 0,
+    'description' => "Foreign key: {file_managed}.fid of user's picture.",
   );
 
   if (!isset($sandbox['progress'])) {
@@ -754,9 +754,9 @@ function user_update_7012(&$sandbox) {
       }
 
       db_update('users')
-      ->fields(array('picture_fid' => $file->fid))
-      ->condition('uid', $user->uid)
-      ->execute();
+        ->fields(array('picture_fid' => $file->fid))
+        ->condition('uid', $user->uid)
+        ->execute();
     }
 
     // Update our progress information for the batch update.
@@ -811,9 +811,9 @@ function user_update_7013(&$sandbox) {
  */
 function user_update_7014() {
   db_update('role_permission')
-  ->fields(array('permission' => 'skip comment approval'))
-  ->condition('permission', 'post comments without approval')
-  ->execute();
+        ->fields(array('permission' => 'skip comment approval'))
+        ->condition('permission', 'post comments without approval')
+        ->execute();
 
   return t("Renamed the 'post comments without approval' permission to 'skip comment approval'.");
 }
@@ -823,10 +823,10 @@ function user_update_7014() {
  */
 function user_update_7015() {
   db_change_field('users', 'signature_format', 'signature_format', array(
-  'type' => 'varchar',
-  'length' => 255,
-  'not null' => FALSE,
-  'description' => 'The {filter_format}.format of the signature.',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => FALSE,
+    'description' => 'The {filter_format}.format of the signature.',
   ));
 }
 
@@ -845,10 +845,10 @@ function user_update_7015() {
 function user_update_7016() {
   // Add field default.
   db_change_field('users', 'uid', 'uid', array(
-  'type' => 'int',
-  'unsigned' => TRUE,
-  'not null' => TRUE,
-  'default' => 0,
+    'type' => 'int',
+    'unsigned' => TRUE,
+    'not null' => TRUE,
+    'default' => 0,
   ));
 }
 
@@ -867,22 +867,22 @@ function user_update_7017() {
   $message = '';
 
   $tokens = array(
-      '!site' => '[site:name]',
-      '!username' => '[user:name]',
-      '!mailto' => '[user:mail]',
-      '!login_uri' => '[site:login-url]',
-      '!uri_brief' => '[site:url-brief]',
-      '!edit_uri' => '[user:edit-url]',
-      '!login_url' => '[user:one-time-login-url]',
-      '!uri' => '[site:url]',
-      '!date' => '[date:medium]',
-      '!password' => '',
+    '!site' => '[site:name]',
+    '!username' => '[user:name]',
+    '!mailto' => '[user:mail]',
+    '!login_uri' => '[site:login-url]',
+    '!uri_brief' => '[site:url-brief]',
+    '!edit_uri' => '[user:edit-url]',
+    '!login_url' => '[user:one-time-login-url]',
+    '!uri' => '[site:url]',
+    '!date' => '[date:medium]',
+    '!password' => '',
   );
 
   $result = db_select('variable', 'v')
-  ->fields('v', array('name'))
-  ->condition('name', db_like('user_mail_') . '%', 'LIKE')
-  ->execute();
+    ->fields('v', array('name'))
+    ->condition('name', db_like('user_mail_') . '%', 'LIKE')
+    ->execute();
 
   foreach ($result as $row) {
     // Use variable_get() to get the unserialized value for free.

@@ -38,24 +38,24 @@
 function hook_options_list($field, $instance, $entity_type, $entity) {
   // Sample structure.
   $options = array(
-      0 => t('Zero'),
-      1 => t('One'),
-      2 => t('Two'),
-      3 => t('Three'),
+    0 => t('Zero'),
+    1 => t('One'),
+    2 => t('Two'),
+    3 => t('Three'),
   );
 
   // Sample structure with groups. Only one level of nesting is allowed. This
   // is only supported by the 'options_select' widget. Other widgets will
   // flatten the array.
   $options = array(
-      t('First group') => array(
-          0 => t('Zero'),
-      ),
-      t('Second group') => array(
-          1 => t('One'),
-          2 => t('Two'),
-      ),
-      3 => t('Three'),
+    t('First group') => array(
+      0 => t('Zero'),
+    ),
+    t('Second group') => array(
+      1 => t('One'),
+      2 => t('Two'),
+    ),
+    3 => t('Three'),
   );
 
   // In actual implementations, the array of options will most probably depend

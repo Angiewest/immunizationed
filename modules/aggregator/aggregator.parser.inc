@@ -10,8 +10,8 @@
  */
 function aggregator_aggregator_parse_info() {
   return array(
-      'title' => t('Default parser'),
-      'description' => t('Parses RSS, Atom and RDF feeds.'),
+    'title' => t('Default parser'),
+    'description' => t('Parses RSS, Atom and RDF feeds.'),
   );
 }
 

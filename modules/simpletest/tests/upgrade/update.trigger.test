@@ -10,17 +10,17 @@
 class TriggerUpdatePathTestCase extends UpdatePathTestCase {
   public static function getInfo() {
     return array(
-        'name'  => 'Trigger update path',
-        'description'  => 'Trigger update path tests.',
-        'group' => 'Upgrade path',
+      'name'  => 'Trigger update path',
+      'description'  => 'Trigger update path tests.',
+      'group' => 'Upgrade path',
     );
   }
 
   public function setUp() {
     // Use the filled upgrade path and our trigger data.
     $this->databaseDumpFiles = array(
-        drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-7.filled.standard_all.database.php.gz',
-        drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-7.trigger.database.php',
+      drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-7.filled.standard_all.database.php.gz',
+      drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-7.trigger.database.php',
     );
     parent::setUp();
 
@@ -32,6 +32,6 @@ class TriggerUpdatePathTestCase extends UpdatePathTestCase {
    * Tests that the upgrade is successful.
    */
   public function testFilledUpgrade() {
-    $this->assertTrue($this->performUpgrade(), t('The upgrade was completed successfully.'));
+    $this->assertTrue($this->performUpgrade(), 'The upgrade was completed successfully.');
   }
 }

@@ -31,38 +31,38 @@ function tracker_help($path, $arg) {
  */
 function tracker_menu() {
   $items['tracker'] = array(
-      'title' => 'Recent content',
-      'page callback' => 'tracker_page',
-      'access arguments' => array('access content'),
-      'weight' => 1,
-      'file' => 'tracker.pages.inc',
+    'title' => 'Recent content',
+    'page callback' => 'tracker_page',
+    'access arguments' => array('access content'),
+    'weight' => 1,
+    'file' => 'tracker.pages.inc',
   );
   $items['tracker/all'] = array(
-      'title' => 'All recent content',
-      'type' => MENU_DEFAULT_LOCAL_TASK,
+    'title' => 'All recent content',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
   );
   $items['tracker/%user_uid_optional'] = array(
-      'title' => 'My recent content',
-      'page callback' => 'tracker_page',
-      'access callback' => '_tracker_myrecent_access',
-      'access arguments' => array(1),
-      'page arguments' => array(1),
-      'type' => MENU_LOCAL_TASK,
-      'file' => 'tracker.pages.inc',
+    'title' => 'My recent content',
+    'page callback' => 'tracker_page',
+    'access callback' => '_tracker_myrecent_access',
+    'access arguments' => array(1),
+    'page arguments' => array(1),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'tracker.pages.inc',
   );
 
   $items['user/%user/track'] = array(
-      'title' => 'Track',
-      'page callback' => 'tracker_page',
-      'page arguments' => array(1, TRUE),
-      'access callback' => '_tracker_user_access',
-      'access arguments' => array(1),
-      'type' => MENU_LOCAL_TASK,
-      'file' => 'tracker.pages.inc',
+    'title' => 'Track',
+    'page callback' => 'tracker_page',
+    'page arguments' => array(1, TRUE),
+    'access callback' => '_tracker_user_access',
+    'access arguments' => array(1),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'tracker.pages.inc',
   );
   $items['user/%user/track/content'] = array(
-      'title' => 'Track content',
-      'type' => MENU_DEFAULT_LOCAL_TASK,
+    'title' => 'Track content',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
   );
 
   return $items;
@@ -91,47 +91,47 @@ function tracker_cron() {
 
       // Remove existing data for this node.
       db_delete('tracker_node')
-      ->condition('nid', $row->nid)
-      ->execute();
+        ->condition('nid', $row->nid)
+        ->execute();
       db_delete('tracker_user')
-      ->condition('nid', $row->nid)
-      ->execute();
+        ->condition('nid', $row->nid)
+        ->execute();
 
       // Insert the node-level data.
       db_insert('tracker_node')
-      ->fields(array(
-      'nid' => $row->nid,
-      'published' => $row->status,
-      'changed' => $changed,
-      ))
-      ->execute();
+        ->fields(array(
+          'nid' => $row->nid,
+          'published' => $row->status,
+          'changed' => $changed,
+        ))
+        ->execute();
 
       // Insert the user-level data for the node's author.
       db_insert('tracker_user')
-      ->fields(array(
-      'nid' => $row->nid,
-      'published' => $row->status,
-      'changed' => $changed,
-      'uid' => $row->uid,
-      ))
-      ->execute();
+        ->fields(array(
+          'nid' => $row->nid,
+          'published' => $row->status,
+          'changed' => $changed,
+          'uid' => $row->uid,
+        ))
+        ->execute();
 
       $query = db_select('comment', 'c', array('target' => 'slave'));
       // Force PostgreSQL to do an implicit cast by adding 0.
       $query->addExpression('0 + :changed', 'changed', array(':changed' => $changed));
       $query->addField('c', 'status', 'published');
       $query
-      ->distinct()
-      ->fields('c', array('uid', 'nid'))
-      ->condition('c.nid', $row->nid)
-      ->condition('c.uid', $row->uid, '<>')
-      ->condition('c.status', COMMENT_PUBLISHED);
+        ->distinct()
+        ->fields('c', array('uid', 'nid'))
+        ->condition('c.nid', $row->nid)
+        ->condition('c.uid', $row->uid, '<>')
+        ->condition('c.status', COMMENT_PUBLISHED);
 
       // Insert the user-level data for the commenters (except if a commenter
       // is the node's author).
       db_insert('tracker_user')
-      ->from($query)
-      ->execute();
+        ->from($query)
+        ->execute();
 
       // Note that we have indexed at least one node.
       $last_nid = $row->nid;
@@ -192,11 +192,11 @@ function tracker_node_update($node, $arg = 0) {
  */
 function tracker_node_delete($node, $arg = 0) {
   db_delete('tracker_node')
-  ->condition('nid', $node->nid)
-  ->execute();
+    ->condition('nid', $node->nid)
+    ->execute();
   db_delete('tracker_user')
-  ->condition('nid', $node->nid)
-  ->execute();
+    ->condition('nid', $node->nid)
+    ->execute();
 }
 
 /**
@@ -256,24 +256,24 @@ function _tracker_add($nid, $uid, $changed) {
 
   // Update the node-level data.
   db_merge('tracker_node')
-  ->key(array('nid' => $nid))
-  ->fields(array(
-  'changed' => $changed,
-  'published' => $node->status,
-  ))
-  ->execute();
+    ->key(array('nid' => $nid))
+    ->fields(array(
+      'changed' => $changed,
+      'published' => $node->status,
+    ))
+    ->execute();
 
   // Create or update the user-level data.
   db_merge('tracker_user')
-  ->key(array(
-  'nid' => $nid,
-  'uid' => $uid,
-  ))
-  ->fields(array(
-  'changed' => $changed,
-  'published' => $node->status,
-  ))
-  ->execute();
+    ->key(array(
+      'nid' => $nid,
+      'uid' => $uid,
+    ))
+    ->fields(array(
+      'changed' => $changed,
+      'published' => $node->status,
+    ))
+    ->execute();
 }
 
 /**
@@ -289,8 +289,8 @@ function _tracker_add($nid, $uid, $changed) {
 function _tracker_calculate_changed($nid) {
   $changed = db_query('SELECT changed FROM {node} WHERE nid = :nid', array(':nid' => $nid), array('target' => 'slave'))->fetchField();
   $latest_comment = db_query_range('SELECT cid, changed FROM {comment} WHERE nid = :nid AND status = :status ORDER BY changed DESC', 0, 1, array(
-      ':nid' => $nid,
-      ':status' => COMMENT_PUBLISHED,
+    ':nid' => $nid,
+    ':status' => COMMENT_PUBLISHED,
   ), array('target' => 'slave'))->fetchObject();
   if ($latest_comment && $latest_comment->changed > $changed) {
     $changed = $latest_comment->changed;
@@ -324,18 +324,18 @@ function _tracker_remove($nid, $uid = NULL, $changed = NULL) {
     if (!$keep_subscription) {
       // Check if the user has commented at least once on the given nid.
       $keep_subscription = db_query_range('SELECT COUNT(*) FROM {comment} WHERE nid = :nid AND uid = :uid AND status = :status', 0, 1, array(
-          ':nid' => $nid,
-          ':uid' => $uid,
-          ':status' => COMMENT_PUBLISHED,
+        ':nid' => $nid,
+        ':uid' => $uid,
+        ':status' => COMMENT_PUBLISHED,
       ))->fetchField();
     }
 
     // If we haven't found a reason to keep the user's subscription, delete it.
     if (!$keep_subscription) {
       db_delete('tracker_user')
-      ->condition('nid', $nid)
-      ->condition('uid', $uid)
-      ->execute();
+        ->condition('nid', $nid)
+        ->condition('uid', $uid)
+        ->execute();
     }
 
     // Now we need to update the (possibly) changed timestamps for other users
@@ -353,28 +353,28 @@ function _tracker_remove($nid, $uid = NULL, $changed = NULL) {
       // And then we push the out the new changed timestamp to our denormalized
       // tables.
       db_update('tracker_node')
-      ->fields(array(
-      'changed' => $changed,
-      'published' => $node->status,
-      ))
-      ->condition('nid', $nid)
-      ->execute();
+        ->fields(array(
+          'changed' => $changed,
+          'published' => $node->status,
+        ))
+        ->condition('nid', $nid)
+        ->execute();
       db_update('tracker_node')
-      ->fields(array(
-      'changed' => $changed,
-      'published' => $node->status,
-      ))
-      ->condition('nid', $nid)
-      ->execute();
+        ->fields(array(
+          'changed' => $changed,
+          'published' => $node->status,
+        ))
+        ->condition('nid', $nid)
+        ->execute();
     }
   }
   else {
     // If the node doesn't exist, remove everything.
     db_delete('tracker_node')
-    ->condition('nid', $nid)
-    ->execute();
+      ->condition('nid', $nid)
+      ->execute();
     db_delete('tracker_user')
-    ->condition('nid', $nid)
-    ->execute();
+      ->condition('nid', $nid)
+      ->execute();
   }
 }

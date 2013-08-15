@@ -94,7 +94,7 @@ class PollTestCase extends DrupalWebTestCase {
     $new_choices = array_values(array_slice($choices, $index, $max_new_choices));
 
     $edit = array(
-        'title' => $title,
+      'title' => $title,
     );
     foreach ($already_submitted_choices as $k => $text) {
       $edit['choice[chid:' . $k . '][chtext]'] = $text;
@@ -138,8 +138,8 @@ class PollTestCase extends DrupalWebTestCase {
         $weight++;
         // Directly assert the weight form element value for this choice.
         $this->assertFieldByName('choice[chid:' . $id . '][weight]', $weight, format_string('Found choice @id with weight @weight.', array(
-            '@id' => $id,
-            '@weight' => $weight,
+          '@id' => $id,
+          '@weight' => $weight,
         )));
         // Append to our (to be reversed) stack of labels.
         $expected[$weight] = $label;
@@ -149,8 +149,8 @@ class PollTestCase extends DrupalWebTestCase {
 
     // Verify DOM order of poll choices (i.e., #weight of form elements).
     $elements = $this->xpath('//input[starts-with(@name, :prefix) and contains(@name, :suffix)]', array(
-        ':prefix' => 'choice[chid:',
-        ':suffix' => '][chtext]',
+      ':prefix' => 'choice[chid:',
+      ':suffix' => '][chtext]',
     ));
     $expected_order = $expected;
     foreach ($elements as $element) {
@@ -161,14 +161,14 @@ class PollTestCase extends DrupalWebTestCase {
     // If requested, also verify DOM order in preview.
     if ($preview) {
       $elements = $this->xpath('//div[contains(@class, :teaser)]/descendant::div[@class=:text]', array(
-          ':teaser' => 'node-teaser',
-          ':text' => 'text',
+        ':teaser' => 'node-teaser',
+        ':text' => 'text',
       ));
       $expected_order = $expected;
       foreach ($elements as $element) {
         $next_label = array_shift($expected_order);
         $this->assertEqual((string) $element, $next_label, format_string('Found choice @label in preview.', array(
-            '@label' => $next_label,
+          '@label' => $next_label,
         )));
       }
     }
@@ -184,9 +184,9 @@ class PollTestCase extends DrupalWebTestCase {
 class PollCreateTestCase extends PollTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Poll create',
-        'description' => 'Adds "more choices", previews and creates a poll.',
-        'group' => 'Poll'
+      'name' => 'Poll create',
+      'description' => 'Adds "more choices", previews and creates a poll.',
+      'group' => 'Poll'
     );
   }
 
@@ -216,10 +216,10 @@ class PollCreateTestCase extends PollTestCase {
 
     $vote_count = '2000';
     $node->choice[] = array(
-        'chid' => '',
-        'chtext' => $new_option,
-        'chvotes' => (int) $vote_count,
-        'weight' => 1000,
+      'chid' => '',
+      'chtext' => $new_option,
+      'chvotes' => (int) $vote_count,
+      'weight' => 1000,
     );
 
     node_save($node);
@@ -290,9 +290,9 @@ class PollCreateTestCase extends PollTestCase {
 class PollVoteTestCase extends PollTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Poll vote',
-        'description' => 'Vote on a poll',
-        'group' => 'Poll'
+      'name' => 'Poll vote',
+      'description' => 'Vote on a poll',
+      'group' => 'Poll'
     );
   }
 
@@ -317,7 +317,7 @@ class PollVoteTestCase extends PollTestCase {
 
     // Record a vote for the first choice.
     $edit = array(
-        'choice' => '1',
+      'choice' => '1',
     );
     $this->drupalPost('node/' . $poll_nid, $edit, t('Vote'));
     $this->assertText('Your vote was recorded.', 'Your vote was recorded.');
@@ -353,7 +353,7 @@ class PollVoteTestCase extends PollTestCase {
 
     // Vote on a poll.
     $edit = array(
-        'choice' => '1',
+      'choice' => '1',
     );
     $this->drupalPost('node/' . $poll_nid, $edit, t('Vote'));
     $this->assertText('Your vote was recorded.', 'Your vote was recorded.');
@@ -366,9 +366,9 @@ class PollVoteTestCase extends PollTestCase {
 class PollBlockTestCase extends PollTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Block availability',
-        'description' => 'Check if the most recent poll block is available.',
-        'group' => 'Poll',
+      'name' => 'Block availability',
+      'description' => 'Check if the most recent poll block is available.',
+      'group' => 'Poll',
     );
   }
 
@@ -410,7 +410,7 @@ class PollBlockTestCase extends PollTestCase {
 
     // Verify we can vote via the block.
     $edit = array(
-        'choice' => '1',
+      'choice' => '1',
     );
     $this->drupalPost('user/' . $vote_user->uid, $edit, t('Vote'));
     $this->assertText('Your vote was recorded.', 'Your vote was recorded.');
@@ -437,9 +437,9 @@ class PollJSAddChoice extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Poll add choice',
-        'description' => 'Submits a POST request for an additional poll choice.',
-        'group' => 'Poll'
+      'name' => 'Poll add choice',
+      'description' => 'Submits a POST request for an additional poll choice.',
+      'group' => 'Poll'
     );
   }
 
@@ -455,9 +455,9 @@ class PollJSAddChoice extends DrupalWebTestCase {
     $this->drupalLogin($web_user);
     $this->drupalGet('node/add/poll');
     $edit = array(
-        "title" => $this->randomName(),
-        'choice[new:0][chtext]' => $this->randomName(),
-        'choice[new:1][chtext]' => $this->randomName(),
+      "title" => $this->randomName(),
+      'choice[new:0][chtext]' => $this->randomName(),
+      'choice[new:1][chtext]' => $this->randomName(),
     );
 
     // Press 'add choice' button through Ajax, and place the expected HTML result
@@ -474,9 +474,9 @@ class PollJSAddChoice extends DrupalWebTestCase {
 class PollVoteCheckHostname extends PollTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'User poll vote capability.',
-        'description' => 'Check that users and anonymous users from specified ip-address can only vote once.',
-        'group' => 'Poll'
+      'name' => 'User poll vote capability.',
+      'description' => 'Check that users and anonymous users from specified ip-address can only vote once.',
+      'group' => 'Poll'
     );
   }
 
@@ -489,9 +489,9 @@ class PollVoteCheckHostname extends PollTestCase {
 
     // Allow anonymous users to vote on polls.
     user_role_change_permissions(DRUPAL_ANONYMOUS_RID, array(
-    'access content' => TRUE,
-    'vote on polls' => TRUE,
-    'cancel own vote' => TRUE,
+      'access content' => TRUE,
+      'vote on polls' => TRUE,
+      'cancel own vote' => TRUE,
     ));
 
     // Enable page cache to verify that the result page is not saved in the
@@ -519,7 +519,7 @@ class PollVoteCheckHostname extends PollTestCase {
     $this->drupalLogin($this->web_user1);
 
     $edit = array(
-        'choice' => '1',
+      'choice' => '1',
     );
 
     // User1 vote on Poll.
@@ -573,11 +573,11 @@ class PollVoteCheckHostname extends PollTestCase {
 
     // Change host name for anonymous users.
     db_update('poll_vote')
-    ->fields(array(
-    'hostname' => '123.456.789.1',
-    ))
-    ->condition('hostname', '', '<>')
-    ->execute();
+      ->fields(array(
+        'hostname' => '123.456.789.1',
+      ))
+      ->condition('hostname', '', '<>')
+      ->execute();
 
     // Check to make sure Anonymous user can vote again with a new session after
     // a hostname change.
@@ -617,9 +617,9 @@ class PollVoteCheckHostname extends PollTestCase {
 class PollTokenReplaceTestCase extends PollTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Poll token replacement',
-        'description' => 'Generates text using placeholders for dummy content to check poll token replacement.',
-        'group' => 'Poll',
+      'name' => 'Poll token replacement',
+      'description' => 'Generates text using placeholders for dummy content to check poll token replacement.',
+      'group' => 'Poll',
     );
   }
 
@@ -643,7 +643,7 @@ class PollTokenReplaceTestCase extends PollTestCase {
     $vote_user1 = $this->drupalCreateUser(array('vote on polls', 'access content'));
     $this->drupalLogin($vote_user1);
     $edit = array(
-        'choice' => '1',
+      'choice' => '1',
     );
     $this->drupalPost('node/' . $poll_nid, $edit, t('Vote'));
     $this->drupalLogout();
@@ -651,7 +651,7 @@ class PollTokenReplaceTestCase extends PollTestCase {
     $vote_user2 = $this->drupalCreateUser(array('vote on polls', 'access content'));
     $this->drupalLogin($vote_user2);
     $edit = array(
-        'choice' => '1',
+      'choice' => '1',
     );
     $this->drupalPost('node/' . $poll_nid, $edit, t('Vote'));
     $this->drupalLogout();
@@ -659,7 +659,7 @@ class PollTokenReplaceTestCase extends PollTestCase {
     $vote_user3 = $this->drupalCreateUser(array('vote on polls', 'access content'));
     $this->drupalLogin($vote_user3);
     $edit = array(
-        'choice' => '2',
+      'choice' => '2',
     );
     $this->drupalPost('node/' . $poll_nid, $edit, t('Vote'));
     $this->drupalLogout();
@@ -667,7 +667,7 @@ class PollTokenReplaceTestCase extends PollTestCase {
     $vote_user4 = $this->drupalCreateUser(array('vote on polls', 'access content'));
     $this->drupalLogin($vote_user4);
     $edit = array(
-        'choice' => '3',
+      'choice' => '3',
     );
     $this->drupalPost('node/' . $poll_nid, $edit, t('Vote'));
     $this->drupalLogout();
@@ -703,9 +703,9 @@ class PollTokenReplaceTestCase extends PollTestCase {
 class PollExpirationTestCase extends PollTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Poll expiration',
-        'description' => 'Test the poll auto-expiration logic.',
-        'group' => 'Poll',
+      'name' => 'Poll expiration',
+      'description' => 'Test the poll auto-expiration logic.',
+      'group' => 'Poll',
     );
   }
 
@@ -751,9 +751,9 @@ class PollExpirationTestCase extends PollTestCase {
     // we forcibly change the expiration date in the database.
     $created = db_query('SELECT created FROM {node} WHERE nid = :nid', array(':nid' => $poll_nid))->fetchField();
     db_update('node')
-    ->fields(array('created' => $created - ($poll_expiration * 1.01)))
-    ->condition('nid', $poll_nid)
-    ->execute();
+      ->fields(array('created' => $created - ($poll_expiration * 1.01)))
+      ->condition('nid', $poll_nid)
+      ->execute();
 
     // Run cron and verify that the poll is now marked as "closed".
     drupal_cron_run();
@@ -766,9 +766,9 @@ class PollExpirationTestCase extends PollTestCase {
 class PollDeleteChoiceTestCase extends PollTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Poll choice deletion',
-        'description' => 'Test the poll choice deletion logic.',
-        'group' => 'Poll',
+      'name' => 'Poll choice deletion',
+      'description' => 'Test the poll choice deletion logic.',
+      'group' => 'Poll',
     );
   }
 
@@ -805,9 +805,9 @@ class PollDeleteChoiceTestCase extends PollTestCase {
 class PollTranslateTestCase extends PollTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Poll translation',
-        'description' => 'Test the poll translation logic.',
-        'group' => 'Poll',
+      'name' => 'Poll translation',
+      'description' => 'Test the poll translation logic.',
+      'group' => 'Poll',
     );
   }
 

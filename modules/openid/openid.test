@@ -44,9 +44,9 @@ class OpenIDFunctionalTestCase extends OpenIDWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'OpenID discovery and login',
-        'description' => "Adds an identity to a user's profile and uses it to log in.",
-        'group' => 'OpenID'
+      'name' => 'OpenID discovery and login',
+      'description' => "Adds an identity to a user's profile and uses it to log in.",
+      'group' => 'OpenID'
     );
   }
 
@@ -259,8 +259,8 @@ class OpenIDFunctionalTestCase extends OpenIDWebTestCase {
     $this->drupalLogin($admin_user);
     $this->drupalGet('admin/people');
     $edit = array(
-        'operation' => 'block',
-        'accounts[' . $this->web_user->uid . ']' => TRUE,
+      'operation' => 'block',
+      'accounts[' . $this->web_user->uid . ']' => TRUE,
     );
     $this->drupalPost('admin/people', $edit, t('Update'));
     $this->assertRaw('The update has been performed.', 'Account was blocked.');
@@ -367,14 +367,14 @@ class OpenIDFunctionalTestCase extends OpenIDWebTestCase {
     $association = new stdClass();
     $association->mac_key = variable_get('mac_key');
     $response = array(
-        'openid.op_endpoint' => url('openid-test/endpoint', array('absolute' => TRUE)),
-        'openid.claimed_id' => $identity,
-        'openid.identity' => $identity,
-        'openid.return_to' => url('openid/authenticate', array('absolute' => TRUE)),
-        'openid.response_nonce' => _openid_nonce(),
-        'openid.assoc_handle' => 'openid-test',
-        'openid.foo' => 123,
-        'openid.signed' => implode(',', $keys_to_sign),
+      'openid.op_endpoint' => url('openid-test/endpoint', array('absolute' => TRUE)),
+      'openid.claimed_id' => $identity,
+      'openid.identity' => $identity,
+      'openid.return_to' => url('openid/authenticate', array('absolute' => TRUE)),
+      'openid.response_nonce' => _openid_nonce(),
+      'openid.assoc_handle' => 'openid-test',
+      'openid.foo' => 123,
+      'openid.signed' => implode(',', $keys_to_sign),
     );
     $response['openid.sig'] = _openid_signature($association, $response, $keys_to_sign);
     variable_set('openid_test_response', $response);
@@ -385,9 +385,9 @@ class OpenIDFunctionalTestCase extends OpenIDWebTestCase {
 
     // Check that unsigned SREG fields are ignored.
     $response = array(
-        'openid.signed' => 'op_endpoint,claimed_id,identity,return_to,response_nonce,assoc_handle,sreg.nickname',
-        'openid.sreg.nickname' => 'john',
-        'openid.sreg.email' => 'john@example.com',
+      'openid.signed' => 'op_endpoint,claimed_id,identity,return_to,response_nonce,assoc_handle,sreg.nickname',
+      'openid.sreg.nickname' => 'john',
+      'openid.sreg.email' => 'john@example.com',
     );
     variable_set('openid_test_response', $response);
     $this->submitLoginForm($identity);
@@ -403,9 +403,9 @@ class OpenIDFunctionalTestCase extends OpenIDWebTestCase {
 class OpenIDRegistrationTestCase extends OpenIDWebTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'OpenID account registration',
-        'description' => 'Creates a user account using auto-registration.',
-        'group' => 'OpenID'
+      'name' => 'OpenID account registration',
+      'description' => 'Creates a user account using auto-registration.',
+      'group' => 'OpenID'
     );
   }
 
@@ -557,12 +557,12 @@ class OpenIDRegistrationTestCase extends OpenIDWebTestCase {
 
     // Tell openid_test.module to respond with these AX fields.
     variable_set('openid_test_response', array(
-    'openid.ns.ext123' => 'http://openid.net/srv/ax/1.0',
-    'openid.ext123.type.mail456' => 'http://axschema.org/contact/email',
-    'openid.ext123.value.mail456' => 'john@example.com',
-    'openid.ext123.type.name789' => 'http://schema.openid.net/namePerson/friendly',
-    'openid.ext123.count.name789' => '1',
-    'openid.ext123.value.name789.1' => 'john',
+      'openid.ns.ext123' => 'http://openid.net/srv/ax/1.0',
+      'openid.ext123.type.mail456' => 'http://axschema.org/contact/email',
+      'openid.ext123.value.mail456' => 'john@example.com',
+      'openid.ext123.type.name789' => 'http://schema.openid.net/namePerson/friendly',
+      'openid.ext123.count.name789' => '1',
+      'openid.ext123.value.name789.1' => 'john',
     ));
 
     // Use a User-supplied Identity that is the URL of an XRDS document.
@@ -583,9 +583,9 @@ class OpenIDInvalidIdentifierTransitionTestCase extends OpenIDFunctionalTestCase
 
   public static function getInfo() {
     return array(
-        'name' => 'OpenID account update',
-        'description' => 'Tries to correct OpenID identifiers attached to accounts if their identifiers were stripped.',
-        'group' => 'OpenID',
+      'name' => 'OpenID account update',
+      'description' => 'Tries to correct OpenID identifiers attached to accounts if their identifiers were stripped.',
+      'group' => 'OpenID',
     );
   }
 
@@ -613,9 +613,9 @@ class OpenIDInvalidIdentifierTransitionTestCase extends OpenIDFunctionalTestCase
     // identifier (including fragment) but with different email, so we can't
     // provide auto-update.
     variable_set('openid_test_response', array(
-    'openid.claimed_id' => $identity,
-    'openid.sreg.nickname' => $this->web_user->name,
-    'openid.sreg.email' => 'invalid-' . $this->web_user->mail));
+      'openid.claimed_id' => $identity,
+      'openid.sreg.nickname' => $this->web_user->name,
+      'openid.sreg.email' => 'invalid-' . $this->web_user->mail));
 
     $edit = array('openid_identifier' => $identity_stripped);
     $this->submitLoginForm($identity_stripped);
@@ -645,9 +645,9 @@ class OpenIDInvalidIdentifierTransitionTestCase extends OpenIDFunctionalTestCase
     // identifier (including fragment) but with different email, so we can't
     // provide auto-update.
     variable_set('openid_test_response', array(
-    'openid.claimed_id' => $identity,
-    'openid.sreg.nickname' => $this->web_user->name,
-    'openid.sreg.email' => $this->web_user->mail));
+      'openid.claimed_id' => $identity,
+      'openid.sreg.nickname' => $this->web_user->name,
+      'openid.sreg.email' => $this->web_user->mail));
 
     $this->submitLoginForm($identity_stripped);
 
@@ -665,9 +665,9 @@ class OpenIDInvalidIdentifierTransitionTestCase extends OpenIDFunctionalTestCase
 class OpenIDTestCase extends DrupalWebTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'OpenID helper functions',
-        'description' => 'Test OpenID helper functions.',
-        'group' => 'OpenID'
+      'name' => 'OpenID helper functions',
+      'description' => 'Test OpenID helper functions.',
+      'group' => 'OpenID'
     );
   }
 
@@ -711,10 +711,10 @@ class OpenIDTestCase extends DrupalWebTestCase {
     // is mentioned in the third argument for _openid_signature(). The last
     // entry should not be included, because it does not start with "openid.".
     $response = array(
-        'openid.foo' => 'abc1',
-        'openid.bar' => 'abc2',
-        'openid.baz' => 'abc3',
-        'foobar.foo' => 'abc4',
+      'openid.foo' => 'abc1',
+      'openid.bar' => 'abc2',
+      'openid.baz' => 'abc3',
+      'foobar.foo' => 'abc4',
     );
     $association = new stdClass();
     $association->mac_key = "1234567890abcdefghij\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\xF0\xF1\xF2\xF3\xF4\xF5\xF6\xF7\xF8\xF9";
@@ -775,14 +775,14 @@ class OpenIDTestCase extends DrupalWebTestCase {
    */
   function testOpenidExtractNamespace() {
     $response = array(
-        'openid.sreg.nickname' => 'john',
-        'openid.ns.ext1' => OPENID_NS_SREG,
-        'openid.ext1.nickname' => 'george',
-        'openid.ext1.email' => 'george@example.com',
-        'openid.ns.ext2' => 'http://example.com/ns/ext2',
-        'openid.ext2.foo' => '123',
-        'openid.ext2.bar' => '456',
-        'openid.signed' => 'sreg.nickname,ns.ext1,ext1.email,ext2.foo',
+      'openid.sreg.nickname' => 'john',
+      'openid.ns.ext1' => OPENID_NS_SREG,
+      'openid.ext1.nickname' => 'george',
+      'openid.ext1.email' => 'george@example.com',
+      'openid.ns.ext2' => 'http://example.com/ns/ext2',
+      'openid.ext2.foo' => '123',
+      'openid.ext2.bar' => '456',
+      'openid.signed' => 'sreg.nickname,ns.ext1,ext1.email,ext2.foo',
     );
 
     $values = openid_extract_namespace($response, 'http://example.com/ns/dummy', NULL, FALSE);

@@ -51,7 +51,7 @@ class DatabaseConnection_sqlite extends DatabaseConnection {
    * access it. However, it should not be manually set.
    *
    * @var boolean
-  */
+   */
   var $tableDropped = FALSE;
 
   public function __construct(array $connection_options = array()) {
@@ -65,11 +65,11 @@ class DatabaseConnection_sqlite extends DatabaseConnection {
 
     // Allow PDO options to be overridden.
     $connection_options += array(
-        'pdo' => array(),
+      'pdo' => array(),
     );
     $connection_options['pdo'] += array(
-        // Convert numeric values to strings when fetching.
-        PDO::ATTR_STRINGIFY_FETCHES => TRUE,
+      // Convert numeric values to strings when fetching.
+      PDO::ATTR_STRINGIFY_FETCHES => TRUE,
     );
     parent::__construct('sqlite:' . $connection_options['database'], '', '', $connection_options['pdo']);
 
@@ -265,8 +265,8 @@ class DatabaseConnection_sqlite extends DatabaseConnection {
   public function mapConditionOperator($operator) {
     // We don't want to override any of the defaults.
     static $specials = array(
-        'LIKE' => array('postfix' => " ESCAPE '\\'"),
-        'NOT LIKE' => array('postfix' => " ESCAPE '\\'"),
+      'LIKE' => array('postfix' => " ESCAPE '\\'"),
+      'NOT LIKE' => array('postfix' => " ESCAPE '\\'"),
     );
     return isset($specials[$operator]) ? $specials[$operator] : NULL;
   }
@@ -284,11 +284,11 @@ class DatabaseConnection_sqlite extends DatabaseConnection {
     // simple cases. If another transaction wants to write the same row, it will
     // wait until this transaction commits.
     $stmt = $this->query('UPDATE {sequences} SET value = GREATEST(value, :existing_id) + 1', array(
-        ':existing_id' => $existing_id,
+      ':existing_id' => $existing_id,
     ));
     if (!$stmt->rowCount()) {
       $this->query('INSERT INTO {sequences} (value) VALUES (:existing_id + 1)', array(
-          ':existing_id' => $existing_id,
+        ':existing_id' => $existing_id,
       ));
     }
     // The transaction gets committed when the transaction object gets destroyed

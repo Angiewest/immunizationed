@@ -73,7 +73,7 @@ interface SelectQueryInterface extends QueryConditionInterface, QueryAlterableIn
    *
    * @return
    *   A reference to the expression array structure.
-  */
+   */
   public function &getExpressions();
 
   /**
@@ -91,7 +91,7 @@ interface SelectQueryInterface extends QueryConditionInterface, QueryAlterableIn
    *
    * @return
    *   A reference to the expression array structure.
-  */
+   */
   public function &getOrderBy();
 
   /**
@@ -109,7 +109,7 @@ interface SelectQueryInterface extends QueryConditionInterface, QueryAlterableIn
    *
    * @return
    *   A reference to the group-by array structure.
-  */
+   */
   public function &getGroupBy();
 
   /**
@@ -127,7 +127,7 @@ interface SelectQueryInterface extends QueryConditionInterface, QueryAlterableIn
    *
    * @return
    *   A reference to the tables array structure.
-  */
+   */
   public function &getTables();
 
   /**
@@ -146,7 +146,7 @@ interface SelectQueryInterface extends QueryConditionInterface, QueryAlterableIn
    *
    * @return
    *   A reference to the union query array structure.
-  */
+   */
   public function &getUnion();
 
   /**
@@ -158,7 +158,7 @@ interface SelectQueryInterface extends QueryConditionInterface, QueryAlterableIn
    *
    * @return
    *   An associative array of all placeholder arguments for this query.
-  */
+   */
   public function getArguments(QueryPlaceholderInterface $queryPlaceholder = NULL);
 
   /* Query building operations */
@@ -170,7 +170,7 @@ interface SelectQueryInterface extends QueryConditionInterface, QueryAlterableIn
    *   TRUE to flag this query DISTINCT, FALSE to disable it.
    * @return SelectQueryInterface
    *   The called object.
-  */
+   */
   public function distinct($distinct = TRUE);
 
   /**
@@ -189,7 +189,7 @@ interface SelectQueryInterface extends QueryConditionInterface, QueryAlterableIn
    *   that is assigned in all cases.
    * @return
    *   The unique alias that was assigned for this field.
-  */
+   */
   public function addField($table_alias, $field, $alias = NULL);
 
   /**
@@ -212,7 +212,7 @@ interface SelectQueryInterface extends QueryConditionInterface, QueryAlterableIn
    *   without any aliases.
    * @return SelectQueryInterface
    *   The called object.
-  */
+   */
   public function fields($table_alias, array $fields = array());
 
   /**
@@ -233,7 +233,7 @@ interface SelectQueryInterface extends QueryConditionInterface, QueryAlterableIn
    *   Any placeholder arguments needed for this expression.
    * @return
    *   The unique alias that was assigned for this expression.
-  */
+   */
   public function addExpression($expression, $alias = NULL, $arguments = array());
 
   /**
@@ -258,7 +258,7 @@ interface SelectQueryInterface extends QueryConditionInterface, QueryAlterableIn
    *   An array of arguments to replace into the $condition of this join.
    * @return
    *   The unique alias that was assigned for this table.
-  */
+   */
   public function join($table, $alias = NULL, $condition = NULL, $arguments = array());
 
   /**
@@ -281,7 +281,7 @@ interface SelectQueryInterface extends QueryConditionInterface, QueryAlterableIn
    *   An array of arguments to replace into the $condition of this join.
    * @return
    *   The unique alias that was assigned for this table.
-  */
+   */
   public function innerJoin($table, $alias = NULL, $condition = NULL, $arguments = array());
 
   /**
@@ -304,7 +304,7 @@ interface SelectQueryInterface extends QueryConditionInterface, QueryAlterableIn
    *   An array of arguments to replace into the $condition of this join.
    * @return
    *   The unique alias that was assigned for this table.
-  */
+   */
   public function leftJoin($table, $alias = NULL, $condition = NULL, $arguments = array());
 
   /**
@@ -327,7 +327,7 @@ interface SelectQueryInterface extends QueryConditionInterface, QueryAlterableIn
    *   An array of arguments to replace into the $condition of this join.
    * @return
    *   The unique alias that was assigned for this table.
-  */
+   */
   public function rightJoin($table, $alias = NULL, $condition = NULL, $arguments = array());
 
   /**
@@ -358,7 +358,7 @@ interface SelectQueryInterface extends QueryConditionInterface, QueryAlterableIn
    *   An array of arguments to replace into the $condition of this join.
    * @return
    *   The unique alias that was assigned for this table.
-  */
+   */
   public function addJoin($type, $table, $alias = NULL, $condition = NULL, $arguments = array());
 
   /**
@@ -380,7 +380,7 @@ interface SelectQueryInterface extends QueryConditionInterface, QueryAlterableIn
    *   The direction to sort. Legal values are "ASC" and "DESC".
    * @return SelectQueryInterface
    *   The called object.
-  */
+   */
   public function orderBy($field, $direction = 'ASC');
 
   /**
@@ -402,7 +402,7 @@ interface SelectQueryInterface extends QueryConditionInterface, QueryAlterableIn
    *
    * @return SelectQueryInterface
    *   The called object
-  */
+   */
   public function orderRandom();
 
   /**
@@ -418,7 +418,7 @@ interface SelectQueryInterface extends QueryConditionInterface, QueryAlterableIn
    *   The number of records to return from the result set.
    * @return SelectQueryInterface
    *   The called object.
-  */
+   */
   public function range($start = NULL, $length = NULL);
 
   /**
@@ -434,7 +434,7 @@ interface SelectQueryInterface extends QueryConditionInterface, QueryAlterableIn
    * Note: All queries UNIONed together must have the same
    * field structure, in the same order. It is up to the
    * caller to ensure that they match properly. If they do
-     * not, an SQL syntax error will result.
+   * not, an SQL syntax error will result.
    *
    * @param $query
    *   The query to UNION to this query.
@@ -443,7 +443,7 @@ interface SelectQueryInterface extends QueryConditionInterface, QueryAlterableIn
    *   UNION.
    * @return SelectQueryInterface
    *   The called object.
-  */
+   */
   public function union(SelectQueryInterface $query, $type = '');
 
   /**
@@ -453,7 +453,7 @@ interface SelectQueryInterface extends QueryConditionInterface, QueryAlterableIn
    *   The field on which to group. This should be the field as aliased.
    * @return SelectQueryInterface
    *   The called object.
-  */
+   */
   public function groupBy($field);
 
   /**
@@ -461,7 +461,7 @@ interface SelectQueryInterface extends QueryConditionInterface, QueryAlterableIn
    *
    * @return SelectQueryInterface
    *   A new SelectQuery object with no fields or expressions besides COUNT(*).
-  */
+   */
   public function countQuery();
 
   /**
@@ -469,7 +469,7 @@ interface SelectQueryInterface extends QueryConditionInterface, QueryAlterableIn
    *
    * @return
    *   TRUE is this query has already been prepared, FALSE otherwise.
-  */
+   */
   public function isPrepared();
 
   /**
@@ -477,7 +477,7 @@ interface SelectQueryInterface extends QueryConditionInterface, QueryAlterableIn
    *
    * @return
    *   TRUE if the validation was successful, FALSE if not.
-  */
+   */
   public function preExecute(SelectQueryInterface $query = NULL);
 
   /**
@@ -500,7 +500,7 @@ interface SelectQueryInterface extends QueryConditionInterface, QueryAlterableIn
    *   = otherwise.
    * @return QueryConditionInterface
    *   The called object.
-  */
+   */
   public function havingCondition($field, $value = NULL, $operator = NULL);
 
   /**
@@ -509,7 +509,7 @@ interface SelectQueryInterface extends QueryConditionInterface, QueryAlterableIn
    * Select queries have dependent objects that must be deep-cloned.  The
    * connection object itself, however, should not be cloned as that would
    * duplicate the connection itself.
-  */
+   */
   public function __clone();
 
   /**
@@ -525,7 +525,7 @@ interface SelectQueryInterface extends QueryConditionInterface, QueryAlterableIn
    *
    * @return QueryConditionInterface
    *   The called object.
-  */
+   */
   public function forUpdate($set = TRUE);
 }
 
@@ -869,7 +869,7 @@ class SelectQuery extends Query implements SelectQueryInterface {
    * The expressions to SELECT as virtual fields.
    *
    * @var array
-  */
+   */
   protected $expressions = array();
 
   /**
@@ -891,7 +891,7 @@ class SelectQuery extends Query implements SelectQueryInterface {
    * a SelectQuery object, it is taken as a subquery.
    *
    * @var array
-  */
+   */
   protected $tables = array();
 
   /**
@@ -901,21 +901,21 @@ class SelectQuery extends Query implements SelectQueryInterface {
    * is the direction to order, either ASC or DESC.
    *
    * @var array
-  */
+   */
   protected $order = array();
 
   /**
    * The fields by which to group.
    *
    * @var array
-  */
+   */
   protected $group = array();
 
   /**
    * The conditional object for the WHERE clause.
    *
    * @var DatabaseCondition
-  */
+   */
   protected $where;
 
   /**
@@ -955,7 +955,7 @@ class SelectQuery extends Query implements SelectQueryInterface {
   /**
    * Indicates if preExecute() has already been called.
    * @var boolean
-  */
+   */
   protected $prepared = FALSE;
 
   /**
@@ -1289,9 +1289,9 @@ class SelectQuery extends Query implements SelectQueryInterface {
     $alias = $alias_candidate;
 
     $this->fields[$alias] = array(
-        'field' => $field,
-        'table' => $table_alias,
-        'alias' => $alias,
+      'field' => $field,
+      'table' => $table_alias,
+      'alias' => $alias,
     );
 
     return $alias;
@@ -1326,9 +1326,9 @@ class SelectQuery extends Query implements SelectQueryInterface {
     $alias = $alias_candidate;
 
     $this->expressions[$alias] = array(
-        'expression' => $expression,
-        'alias' => $alias,
-        'arguments' => $arguments,
+      'expression' => $expression,
+      'alias' => $alias,
+      'arguments' => $arguments,
     );
 
     return $alias;
@@ -1373,11 +1373,11 @@ class SelectQuery extends Query implements SelectQueryInterface {
     }
 
     $this->tables[$alias] = array(
-        'join type' => $type,
-        'table' => $table,
-        'alias' => $alias,
-        'condition' => $condition,
-        'arguments' => $arguments,
+      'join type' => $type,
+      'table' => $table,
+      'alias' => $alias,
+      'condition' => $condition,
+      'arguments' => $arguments,
     );
 
     return $alias;
@@ -1414,8 +1414,8 @@ class SelectQuery extends Query implements SelectQueryInterface {
     }
 
     $this->union[] = array(
-        'type' => $type,
-        'query' => $query,
+      'type' => $type,
+      'query' => $query,
     );
 
     return $this;

@@ -79,14 +79,14 @@ function update_install() {
 function update_uninstall() {
   // Clear any variables that might be in use
   $variables = array(
-      'update_check_frequency',
-      'update_fetch_url',
-      'update_last_check',
-      'update_last_email_notification',
-      'update_notification_threshold',
-      'update_notify_emails',
-      'update_max_fetch_attempts',
-      'update_max_fetch_time',
+    'update_check_frequency',
+    'update_fetch_url',
+    'update_last_check',
+    'update_last_email_notification',
+    'update_notification_threshold',
+    'update_notify_emails',
+    'update_max_fetch_attempts',
+    'update_max_fetch_time',
   );
   foreach ($variables as $variable) {
     variable_del($variable);

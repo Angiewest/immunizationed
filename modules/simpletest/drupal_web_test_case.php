@@ -50,17 +50,17 @@ abstract class DrupalTestCase {
    * @var Array
    */
   public $results = array(
-      '#pass' => 0,
-      '#fail' => 0,
-      '#exception' => 0,
-      '#debug' => 0,
+    '#pass' => 0,
+    '#fail' => 0,
+    '#exception' => 0,
+    '#debug' => 0,
   );
 
   /**
    * Assertions thrown in that test case.
    *
    * @var Array
-  */
+   */
   protected $assertions = array();
 
   /**
@@ -70,7 +70,7 @@ abstract class DrupalTestCase {
    * to see "drupalWebTestCase->drupalLogin()', we would like to see the test
    * that called it. So we need to skip the classes defining these helper
    * methods.
-  */
+   */
   protected $skipClasses = array(__CLASS__ => TRUE);
 
   /**
@@ -82,7 +82,7 @@ abstract class DrupalTestCase {
    * environment. We must ensure that setUp() has been run. Otherwise,
    * tearDown() will act on the parent Drupal site rather than the test
    * environment, destroying live data.
-  */
+   */
   protected $setup = FALSE;
 
   protected $setupDatabasePrefix = FALSE;
@@ -132,14 +132,14 @@ abstract class DrupalTestCase {
 
     // Creation assertion array that can be displayed while tests are running.
     $this->assertions[] = $assertion = array(
-        'test_id' => $this->testId,
-        'test_class' => get_class($this),
-        'status' => $status,
-        'message' => $message,
-        'message_group' => $group,
-        'function' => $caller['function'],
-        'line' => $caller['line'],
-        'file' => $caller['file'],
+      'test_id' => $this->testId,
+      'test_class' => get_class($this),
+      'status' => $status,
+      'message' => $message,
+      'message_group' => $group,
+      'function' => $caller['function'],
+      'line' => $caller['line'],
+      'file' => $caller['file'],
     );
 
     // Store assertion for display after the test has completed.
@@ -152,9 +152,9 @@ abstract class DrupalTestCase {
       $connection = Database::getConnection('default', 'default');
     }
     $connection
-    ->insert('simpletest')
-    ->fields($assertion)
-    ->execute();
+      ->insert('simpletest')
+      ->fields($assertion)
+      ->execute();
 
     // We do not use a ternary operator here to allow a breakpoint on
     // test failure.
@@ -189,25 +189,25 @@ abstract class DrupalTestCase {
     }
 
     $caller += array(
-        'function' => t('Unknown'),
-        'line' => 0,
-        'file' => t('Unknown'),
+      'function' => t('Unknown'),
+      'line' => 0,
+      'file' => t('Unknown'),
     );
 
     $assertion = array(
-        'test_id' => $test_id,
-        'test_class' => $test_class,
-        'status' => $status,
-        'message' => $message,
-        'message_group' => $group,
-        'function' => $caller['function'],
-        'line' => $caller['line'],
-        'file' => $caller['file'],
+      'test_id' => $test_id,
+      'test_class' => $test_class,
+      'status' => $status,
+      'message' => $message,
+      'message_group' => $group,
+      'function' => $caller['function'],
+      'line' => $caller['line'],
+      'file' => $caller['file'],
     );
 
     return db_insert('simpletest')
-    ->fields($assertion)
-    ->execute();
+      ->fields($assertion)
+      ->execute();
   }
 
   /**
@@ -222,8 +222,8 @@ abstract class DrupalTestCase {
    */
   public static function deleteAssert($message_id) {
     return (bool) db_delete('simpletest')
-    ->condition('message_id', $message_id)
-    ->execute();
+      ->condition('message_id', $message_id)
+      ->execute();
   }
 
   /**
@@ -238,9 +238,9 @@ abstract class DrupalTestCase {
     // The first element is the call. The second element is the caller.
     // We skip calls that occurred in one of the methods of our base classes
     // or in an assertion function.
-    while (($caller = $backtrace[1]) &&
-        ((isset($caller['class']) && isset($this->skipClasses[$caller['class']])) ||
-            substr($caller['function'], 0, 6) == 'assert')) {
+   while (($caller = $backtrace[1]) &&
+         ((isset($caller['class']) && isset($this->skipClasses[$caller['class']])) ||
+           substr($caller['function'], 0, 6) == 'assert')) {
       // We remove that call.
       array_shift($backtrace);
     }
@@ -493,9 +493,9 @@ abstract class DrupalTestCase {
         // that testing completed.
         $method_info = new ReflectionMethod($class, $method);
         $caller = array(
-            'file' => $method_info->getFileName(),
-            'line' => $method_info->getStartLine(),
-            'function' => $class . '->' . $method . '()',
+          'file' => $method_info->getFileName(),
+          'line' => $method_info->getStartLine(),
+          'function' => $class . '->' . $method . '()',
         );
         $completion_check_id = DrupalTestCase::insertAssert($this->testId, $class, FALSE, t('The test did not complete due to a fatal error.'), 'Completion check', $caller);
         $this->setUp();
@@ -530,15 +530,15 @@ abstract class DrupalTestCase {
   public function errorHandler($severity, $message, $file = NULL, $line = NULL) {
     if ($severity & error_reporting()) {
       $error_map = array(
-          E_STRICT => 'Run-time notice',
-          E_WARNING => 'Warning',
-          E_NOTICE => 'Notice',
-          E_CORE_ERROR => 'Core error',
-          E_CORE_WARNING => 'Core warning',
-          E_USER_ERROR => 'User error',
-          E_USER_WARNING => 'User warning',
-          E_USER_NOTICE => 'User notice',
-          E_RECOVERABLE_ERROR => 'Recoverable error',
+        E_STRICT => 'Run-time notice',
+        E_WARNING => 'Warning',
+        E_NOTICE => 'Notice',
+        E_CORE_ERROR => 'Core error',
+        E_CORE_WARNING => 'Core warning',
+        E_USER_ERROR => 'User error',
+        E_USER_WARNING => 'User warning',
+        E_USER_NOTICE => 'User notice',
+        E_RECOVERABLE_ERROR => 'Recoverable error',
       );
 
       $backtrace = debug_backtrace();
@@ -556,8 +556,8 @@ abstract class DrupalTestCase {
     $backtrace = $exception->getTrace();
     // Push on top of the backtrace the call that generated the exception.
     array_unshift($backtrace, array(
-    'line' => $exception->getLine(),
-    'file' => $exception->getFile(),
+      'line' => $exception->getLine(),
+      'file' => $exception->getFile(),
     ));
     require_once DRUPAL_ROOT . '/includes/errors.inc';
     // The exception message is run through check_plain() by _drupal_decode_exception().
@@ -718,7 +718,7 @@ class DrupalUnitTestCase extends DrupalTestCase {
     Database::renameConnection('default', 'simpletest_original_default');
     foreach ($connection_info as $target => $value) {
       $connection_info[$target]['prefix'] = array(
-          'default' => $value['prefix']['default'] . $this->databasePrefix,
+        'default' => $value['prefix']['default'] . $this->databasePrefix,
       );
     }
     Database::addConnectionInfo('default', 'default', $connection_info['default']);
@@ -838,7 +838,7 @@ class DrupalWebTestCase extends DrupalTestCase {
    * The original user, before it was changed to a clean uid = 1 for testing purposes.
    *
    * @var object
-  */
+   */
   protected $originalUser = NULL;
 
   /**
@@ -850,7 +850,7 @@ class DrupalWebTestCase extends DrupalTestCase {
 
   /**
    * HTTP authentication method
-  */
+   */
   protected $httpauth_method = CURLAUTH_BASIC;
 
   /**
@@ -916,19 +916,19 @@ class DrupalWebTestCase extends DrupalTestCase {
   protected function drupalCreateNode($settings = array()) {
     // Populate defaults array.
     $settings += array(
-        'body'      => array(LANGUAGE_NONE => array(array())),
-        'title'     => $this->randomName(8),
-        'comment'   => 2,
-        'changed'   => REQUEST_TIME,
-        'moderate'  => 0,
-        'promote'   => 0,
-        'revision'  => 1,
-        'log'       => '',
-        'status'    => 1,
-        'sticky'    => 0,
-        'type'      => 'page',
-        'revisions' => NULL,
-        'language'  => LANGUAGE_NONE,
+      'body'      => array(LANGUAGE_NONE => array(array())),
+      'title'     => $this->randomName(8),
+      'comment'   => 2,
+      'changed'   => REQUEST_TIME,
+      'moderate'  => 0,
+      'promote'   => 0,
+      'revision'  => 1,
+      'log'       => '',
+      'status'    => 1,
+      'sticky'    => 0,
+      'type'      => 'page',
+      'revisions' => NULL,
+      'language'  => LANGUAGE_NONE,
     );
 
     // Use the original node's created time for existing nodes.
@@ -950,8 +950,8 @@ class DrupalWebTestCase extends DrupalTestCase {
 
     // Merge body field value and format separately.
     $body = array(
-        'value' => $this->randomName(32),
-        'format' => filter_default_format(),
+      'value' => $this->randomName(32),
+      'format' => filter_default_format(),
     );
     $settings['body'][$settings['language']][0] += $body;
 
@@ -960,9 +960,9 @@ class DrupalWebTestCase extends DrupalTestCase {
 
     // Small hack to link revisions to our test user.
     db_update('node_revision')
-    ->fields(array('uid' => $node->uid))
-    ->condition('vid', $node->vid)
-    ->execute();
+      ->fields(array('uid' => $node->uid))
+      ->condition('vid', $node->vid)
+      ->execute();
     return $node;
   }
 
@@ -983,24 +983,24 @@ class DrupalWebTestCase extends DrupalTestCase {
 
     // Populate defaults array.
     $defaults = array(
-        'type' => $name,
-        'name' => $name,
-        'base' => 'node_content',
-        'description' => '',
-        'help' => '',
-        'title_label' => 'Title',
-        'body_label' => 'Body',
-        'has_title' => 1,
-        'has_body' => 1,
+      'type' => $name,
+      'name' => $name,
+      'base' => 'node_content',
+      'description' => '',
+      'help' => '',
+      'title_label' => 'Title',
+      'body_label' => 'Body',
+      'has_title' => 1,
+      'has_body' => 1,
     );
     // Imposed values for a custom type.
     $forced = array(
-        'orig_type' => '',
-        'old_type' => '',
-        'module' => 'node',
-        'custom' => 1,
-        'modified' => 1,
-        'locked' => 0,
+      'orig_type' => '',
+      'old_type' => '',
+      'module' => 'node',
+      'custom' => 1,
+      'modified' => 1,
+      'locked' => 0,
     );
     $type = $forced + $settings + $defaults;
     $type = (object) $type;
@@ -1229,8 +1229,8 @@ class DrupalWebTestCase extends DrupalTestCase {
     }
 
     $edit = array(
-        'name' => $account->name,
-        'pass' => $account->pass_raw
+      'name' => $account->name,
+      'pass' => $account->pass_raw
     );
     $this->drupalPost('user', $edit, t('Log in'));
 
@@ -1253,7 +1253,7 @@ class DrupalWebTestCase extends DrupalTestCase {
 
   /*
    * Logs a user out of the internal browser, then check the login page to confirm logout.
-  */
+   */
   protected function drupalLogout() {
     // Make a request to the logout page, and redirect to the user page, the
     // idea being if you were properly logged out you should be seeing a login
@@ -1289,9 +1289,9 @@ class DrupalWebTestCase extends DrupalTestCase {
     // All assertions as well as the SimpleTest batch operations are associated
     // with the testId, so the database prefix has to be associated with it.
     db_update('simpletest_test_id')
-    ->fields(array('last_prefix' => $this->databasePrefix))
-    ->condition('test_id', $this->testId)
-    ->execute();
+      ->fields(array('last_prefix' => $this->databasePrefix))
+      ->condition('test_id', $this->testId)
+      ->execute();
   }
 
   /**
@@ -1315,7 +1315,7 @@ class DrupalWebTestCase extends DrupalTestCase {
     Database::renameConnection('default', 'simpletest_original_default');
     foreach ($connection_info as $target => $value) {
       $connection_info[$target]['prefix'] = array(
-          'default' => $value['prefix']['default'] . $this->databasePrefix,
+        'default' => $value['prefix']['default'] . $this->databasePrefix,
       );
     }
     Database::addConnectionInfo('default', 'default', $connection_info['default']);
@@ -1328,7 +1328,7 @@ class DrupalWebTestCase extends DrupalTestCase {
    * Prepares the current environment for running the test.
    *
    * Backups various current environment variables and resets them, so they do
-     * not interfere with the Drupal site installation in which tests are executed
+   * not interfere with the Drupal site installation in which tests are executed
    * and can be restored in tearDown().
    *
    * Also sets up new resources for the testing environment, such as the public
@@ -1479,7 +1479,7 @@ class DrupalWebTestCase extends DrupalTestCase {
 
     // Run the profile tasks.
     $install_profile_module_exists = db_query("SELECT 1 FROM {system} WHERE type = 'module' AND name = :name", array(
-        ':name' => $this->profile,
+      ':name' => $this->profile,
     ))->fetchField();
     if ($install_profile_module_exists) {
       module_enable(array($this->profile), FALSE);
@@ -1532,8 +1532,8 @@ class DrupalWebTestCase extends DrupalTestCase {
     foreach (array('registry', 'registry_file') as $table) {
       // Find the records from the parent database.
       $source_query = $original_connection
-      ->select($table, array(), array('fetch' => PDO::FETCH_ASSOC))
-      ->fields($table);
+        ->select($table, array(), array('fetch' => PDO::FETCH_ASSOC))
+        ->fields($table);
 
       $dest_query = $test_connection->insert($table);
 
@@ -1694,14 +1694,14 @@ class DrupalWebTestCase extends DrupalTestCase {
       }
 
       $curl_options = array(
-          CURLOPT_COOKIEJAR => $this->cookieFile,
-          CURLOPT_URL => $base_url,
-          CURLOPT_FOLLOWLOCATION => FALSE,
-          CURLOPT_RETURNTRANSFER => TRUE,
-          CURLOPT_SSL_VERIFYPEER => FALSE, // Required to make the tests run on HTTPS.
-          CURLOPT_SSL_VERIFYHOST => FALSE, // Required to make the tests run on HTTPS.
-          CURLOPT_HEADERFUNCTION => array(&$this, 'curlHeaderCallback'),
-          CURLOPT_USERAGENT => $this->databasePrefix,
+        CURLOPT_COOKIEJAR => $this->cookieFile,
+        CURLOPT_URL => $base_url,
+        CURLOPT_FOLLOWLOCATION => FALSE,
+        CURLOPT_RETURNTRANSFER => TRUE,
+        CURLOPT_SSL_VERIFYPEER => FALSE, // Required to make the tests run on HTTPS.
+        CURLOPT_SSL_VERIFYHOST => FALSE, // Required to make the tests run on HTTPS.
+        CURLOPT_HEADERFUNCTION => array(&$this, 'curlHeaderCallback'),
+        CURLOPT_USERAGENT => $this->databasePrefix,
       );
       if (isset($this->httpauth_credentials)) {
         $curl_options[CURLOPT_HTTPAUTH] = $this->httpauth_method;
@@ -1792,10 +1792,10 @@ class DrupalWebTestCase extends DrupalTestCase {
 
     $this->drupalSetContent($content, isset($original_url) ? $original_url : curl_getinfo($this->curlHandle, CURLINFO_EFFECTIVE_URL));
     $message_vars = array(
-        '!method' => !empty($curl_options[CURLOPT_NOBODY]) ? 'HEAD' : (empty($curl_options[CURLOPT_POSTFIELDS]) ? 'GET' : 'POST'),
-        '@url' => isset($original_url) ? $original_url : $url,
-        '@status' => $status,
-        '!length' => format_size(strlen($this->drupalGetContent()))
+      '!method' => !empty($curl_options[CURLOPT_NOBODY]) ? 'HEAD' : (empty($curl_options[CURLOPT_POSTFIELDS]) ? 'GET' : 'POST'),
+      '@url' => isset($original_url) ? $original_url : $url,
+      '@status' => $status,
+      '!length' => format_size(strlen($this->drupalGetContent()))
     );
     $message = t('!method @url returned @status (!length).', $message_vars);
     $this->assertTrue($this->drupalGetContent() !== FALSE, $message, t('Browser'));
@@ -1915,8 +1915,8 @@ class DrupalWebTestCase extends DrupalTestCase {
       $out = $new;
     }
     $this->verbose('GET request to: ' . $path .
-        '<hr />Ending URL: ' . $this->getUrl() .
-        '<hr />' . $out);
+                   '<hr />Ending URL: ' . $this->getUrl() .
+                   '<hr />' . $out);
     return $out;
   }
 
@@ -2064,9 +2064,9 @@ class DrupalWebTestCase extends DrupalTestCase {
             $out = $new;
           }
           $this->verbose('POST request to: ' . $path .
-              '<hr />Ending URL: ' . $this->getUrl() .
-              '<hr />Fields: ' . highlight_string('<?php ' . var_export($post_array, TRUE), TRUE) .
-              '<hr />' . $out);
+                         '<hr />Ending URL: ' . $this->getUrl() .
+                         '<hr />Fields: ' . highlight_string('<?php ' . var_export($post_array, TRUE), TRUE) .
+                         '<hr />' . $out);
           return $out;
         }
       }
@@ -2184,7 +2184,7 @@ class DrupalWebTestCase extends DrupalTestCase {
       // ajax.js applies some defaults to the settings object, so do the same
       // for what's used by this function.
       $ajax_settings += array(
-          'method' => 'replaceWith',
+        'method' => 'replaceWith',
       );
       // DOM can load HTML soup. But, HTML soup can throw warnings, suppress
       // them.
@@ -2249,8 +2249,8 @@ class DrupalWebTestCase extends DrupalTestCase {
             }
             break;
 
-            // @todo Add suitable implementations for these commands in order to
-            //   have full test coverage of what ajax.js can do.
+          // @todo Add suitable implementations for these commands in order to
+          //   have full test coverage of what ajax.js can do.
           case 'remove':
             break;
           case 'changed':
@@ -2883,7 +2883,7 @@ class DrupalWebTestCase extends DrupalTestCase {
   protected function assertUrl($path, array $options = array(), $message = '', $group = 'Other') {
     if (!$message) {
       $message = t('Current URL is @url.', array(
-          '@url' => var_export(url($path, $options), TRUE),
+        '@url' => var_export(url($path, $options), TRUE),
       ));
     }
     $options['absolute'] = TRUE;
@@ -3118,8 +3118,8 @@ class DrupalWebTestCase extends DrupalTestCase {
     $actual = (string) current($this->xpath('//title'));
     if (!$message) {
       $message = t('Page title @actual is equal to @expected.', array(
-          '@actual' => var_export($actual, TRUE),
-          '@expected' => var_export($title, TRUE),
+        '@actual' => var_export($actual, TRUE),
+        '@expected' => var_export($title, TRUE),
       ));
     }
     return $this->assertEqual($actual, $title, $message, $group);
@@ -3141,8 +3141,8 @@ class DrupalWebTestCase extends DrupalTestCase {
     $actual = (string) current($this->xpath('//title'));
     if (!$message) {
       $message = t('Page title @actual is not equal to @unexpected.', array(
-          '@actual' => var_export($actual, TRUE),
-          '@unexpected' => var_export($title, TRUE),
+        '@actual' => var_export($actual, TRUE),
+        '@unexpected' => var_export($title, TRUE),
       ));
     }
     return $this->assertNotEqual($actual, $title, $message, $group);
@@ -3173,9 +3173,9 @@ class DrupalWebTestCase extends DrupalTestCase {
   protected function assertThemeOutput($callback, array $variables = array(), $expected, $message = '', $group = 'Other') {
     $output = theme($callback, $variables);
     $this->verbose('Variables:' . '<pre>' .  check_plain(var_export($variables, TRUE)) . '</pre>'
-        . '<hr />' . 'Result:' . '<pre>' .  check_plain(var_export($output, TRUE)) . '</pre>'
-        . '<hr />' . 'Expected:' . '<pre>' .  check_plain(var_export($expected, TRUE)) . '</pre>'
-        . '<hr />' . $output
+      . '<hr />' . 'Result:' . '<pre>' .  check_plain(var_export($output, TRUE)) . '</pre>'
+      . '<hr />' . 'Expected:' . '<pre>' .  check_plain(var_export($expected, TRUE)) . '</pre>'
+      . '<hr />' . $output
     );
     if (!$message) {
       $message = '%callback rendered correctly.';
@@ -3308,13 +3308,13 @@ class DrupalWebTestCase extends DrupalTestCase {
     if (!isset($message)) {
       if (!isset($value)) {
         $message = t('Found field with name @name', array(
-            '@name' => var_export($name, TRUE),
+          '@name' => var_export($name, TRUE),
         ));
       }
       else {
         $message = t('Found field with name @name and value @value', array(
-            '@name' => var_export($name, TRUE),
-            '@value' => var_export($value, TRUE),
+          '@name' => var_export($name, TRUE),
+          '@value' => var_export($value, TRUE),
         ));
       }
     }

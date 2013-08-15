@@ -12,36 +12,36 @@ function trigger_schema() {
   // The total index length (hook and aid) must be less than 333. Since the aid
   // field is 255 characters, the hook field can have a maximum length of 78.
   $schema['trigger_assignments'] = array(
-      'description' => 'Maps trigger to hook and operation assignments from trigger.module.',
-      'fields' => array(
-          'hook' => array(
-              'type' => 'varchar',
-              'length' => 78,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => 'Primary Key: The name of the internal Drupal hook; for example, node_insert.',
-          ),
-          'aid' => array(
-              'type' => 'varchar',
-              'length' => 255,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => "Primary Key: Action's {actions}.aid.",
-          ),
-          'weight' => array(
-              'type' => 'int',
-              'not null' => TRUE,
-              'default' => 0,
-              'description' => 'The weight of the trigger assignment in relation to other triggers.',
-          ),
+    'description' => 'Maps trigger to hook and operation assignments from trigger.module.',
+    'fields' => array(
+      'hook' => array(
+        'type' => 'varchar',
+        'length' => 78,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Primary Key: The name of the internal Drupal hook; for example, node_insert.',
       ),
-      'primary key' => array('hook', 'aid'),
-      'foreign keys' => array(
+      'aid' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => "Primary Key: Action's {actions}.aid.",
+      ),
+      'weight' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The weight of the trigger assignment in relation to other triggers.',
+      ),
+    ),
+    'primary key' => array('hook', 'aid'),
+    'foreign keys' => array(
       'action' => array(
-      'table' => 'actions',
-      'columns' => array('aid' => 'aid'),
+        'table' => 'actions',
+        'columns' => array('aid' => 'aid'),
       ),
-      ),
+    ),
   );
   return $schema;
 }
@@ -68,11 +68,11 @@ function trigger_update_7000() {
 
   foreach ($result as $record) {
     db_update('trigger_assignments')
-    ->fields(array('hook' => $record->hook . '_' . $record->op))
-    ->condition('hook', $record->hook)
-    ->condition('op', $record->op)
-    ->condition('aid', $record->aid)
-    ->execute();
+      ->fields(array('hook' => $record->hook . '_' . $record->op))
+      ->condition('hook', $record->hook)
+      ->condition('op', $record->op)
+      ->condition('aid', $record->aid)
+      ->execute();
   }
   db_drop_field('trigger_assignments', 'op');
 
@@ -104,10 +104,10 @@ function trigger_update_7002() {
   foreach($result as $record) {
     $new_hook = str_replace('nodeapi', 'node', $record->hook);
     db_update('trigger_assignments')
-    ->fields(array('hook' => $new_hook))
-    ->condition('hook', $record->hook)
-    ->condition('aid', $record->aid)
-    ->execute();
+      ->fields(array('hook' => $new_hook))
+      ->condition('hook', $record->hook)
+      ->condition('aid', $record->aid)
+      ->execute();
   }
 }
 

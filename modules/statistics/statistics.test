@@ -15,13 +15,13 @@ class StatisticsTestCase extends DrupalWebTestCase {
 
     // Create user.
     $this->blocking_user = $this->drupalCreateUser(array(
-        'access administration pages',
-        'access site reports',
-        'access statistics',
-        'block IP addresses',
-        'administer blocks',
-        'administer statistics',
-        'administer users',
+      'access administration pages',
+      'access site reports',
+      'access statistics',
+      'block IP addresses',
+      'administer blocks',
+      'administer statistics',
+      'administer users',
     ));
     $this->drupalLogin($this->blocking_user);
 
@@ -31,17 +31,17 @@ class StatisticsTestCase extends DrupalWebTestCase {
 
     // Insert dummy access by anonymous user into access log.
     db_insert('accesslog')
-    ->fields(array(
-    'title' => 'test',
-    'path' => 'node/1',
-    'url' => 'http://example.com',
-    'hostname' => '192.168.1.1',
-    'uid' => 0,
-    'sid' => 10,
-    'timer' => 10,
-    'timestamp' => REQUEST_TIME,
-    ))
-    ->execute();
+      ->fields(array(
+        'title' => 'test',
+        'path' => 'node/1',
+        'url' => 'http://example.com',
+        'hostname' => '192.168.1.1',
+        'uid' => 0,
+        'sid' => 10,
+        'timer' => 10,
+        'timestamp' => REQUEST_TIME,
+      ))
+      ->execute();
   }
 }
 
@@ -54,9 +54,9 @@ class StatisticsTestCase extends DrupalWebTestCase {
 class StatisticsLoggingTestCase extends DrupalWebTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Statistics logging tests',
-        'description' => 'Tests request logging for cached and uncached pages.',
-        'group' => 'Statistics'
+      'name' => 'Statistics logging tests',
+      'description' => 'Tests request logging for cached and uncached pages.',
+      'group' => 'Statistics'
     );
   }
 
@@ -86,8 +86,8 @@ class StatisticsLoggingTestCase extends DrupalWebTestCase {
   function testLogging() {
     $path = 'node/' . $this->node->nid;
     $expected = array(
-        'title' => $this->node->title,
-        'path' => $path,
+      'title' => $this->node->title,
+      'path' => $path,
     );
 
     // Verify logging of an uncached page.
@@ -121,8 +121,8 @@ class StatisticsLoggingTestCase extends DrupalWebTestCase {
     // Visit edit page to generate a title greater than 255.
     $path = 'node/' . $this->node->nid . '/edit';
     $expected = array(
-        'title' => truncate_utf8(t('Edit Basic page') . ' ' . $this->node->title, 255),
-        'path' => $path,
+      'title' => truncate_utf8(t('Edit Basic page') . ' ' . $this->node->title, 255),
+      'path' => $path,
     );
     $this->drupalGet($path);
     $log = db_query('SELECT * FROM {accesslog}')->fetchAll(PDO::FETCH_ASSOC);
@@ -152,9 +152,9 @@ class StatisticsLoggingTestCase extends DrupalWebTestCase {
 class StatisticsReportsTestCase extends StatisticsTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Statistics reports tests',
-        'description' => 'Tests display of statistics report pages and access logging.',
-        'group' => 'Statistics'
+      'name' => 'Statistics reports tests',
+      'description' => 'Tests display of statistics report pages and access logging.',
+      'group' => 'Statistics'
     );
   }
 
@@ -242,9 +242,9 @@ class StatisticsReportsTestCase extends StatisticsTestCase {
 class StatisticsBlockVisitorsTestCase extends StatisticsTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Top visitor blocking',
-        'description' => 'Tests blocking of IP addresses via the top visitors report.',
-        'group' => 'Statistics'
+      'name' => 'Top visitor blocking',
+      'description' => 'Tests blocking of IP addresses via the top visitors report.',
+      'group' => 'Statistics'
     );
   }
 
@@ -309,9 +309,9 @@ class StatisticsAdminTestCase extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Test statistics admin.',
-        'description' => 'Tests the statistics admin.',
-        'group' => 'Statistics'
+      'name' => 'Test statistics admin.',
+      'description' => 'Tests the statistics admin.',
+      'group' => 'Statistics'
     );
   }
 
@@ -363,19 +363,19 @@ class StatisticsAdminTestCase extends DrupalWebTestCase {
     $this->drupalGet('node/' . $this->test_node->nid);
 
     $result = db_select('node_counter', 'n')
-    ->fields('n', array('nid'))
-    ->condition('n.nid', $this->test_node->nid)
-    ->execute()
-    ->fetchAssoc();
+      ->fields('n', array('nid'))
+      ->condition('n.nid', $this->test_node->nid)
+      ->execute()
+      ->fetchAssoc();
     $this->assertEqual($result['nid'], $this->test_node->nid, 'Verifying that the node counter is incremented.');
 
     node_delete($this->test_node->nid);
 
     $result = db_select('node_counter', 'n')
-    ->fields('n', array('nid'))
-    ->condition('n.nid', $this->test_node->nid)
-    ->execute()
-    ->fetchAssoc();
+      ->fields('n', array('nid'))
+      ->condition('n.nid', $this->test_node->nid)
+      ->execute()
+      ->fetchAssoc();
     $this->assertFalse($result, 'Verifying that the node counter is deleted.');
   }
 
@@ -432,10 +432,10 @@ class StatisticsAdminTestCase extends DrupalWebTestCase {
     $this->assertNoText('node/' . $this->test_node->nid, 'No hit URL found.');
 
     $result = db_select('node_counter', 'nc')
-    ->fields('nc', array('daycount'))
-    ->condition('nid', $this->test_node->nid, '=')
-    ->execute()
-    ->fetchField();
+      ->fields('nc', array('daycount'))
+      ->condition('nid', $this->test_node->nid, '=')
+      ->execute()
+      ->fetchField();
     $this->assertFalse($result, 'Daycounter is zero.');
   }
 }
@@ -446,9 +446,9 @@ class StatisticsAdminTestCase extends DrupalWebTestCase {
 class StatisticsTokenReplaceTestCase extends StatisticsTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Statistics token replacement',
-        'description' => 'Generates text using placeholders for dummy content to check statistics token replacement.',
-        'group' => 'Statistics',
+      'name' => 'Statistics token replacement',
+      'description' => 'Generates text using placeholders for dummy content to check statistics token replacement.',
+      'group' => 'Statistics',
     );
   }
 

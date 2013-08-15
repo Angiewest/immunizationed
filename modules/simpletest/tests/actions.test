@@ -3,9 +3,9 @@
 class ActionsConfigurationTestCase extends DrupalWebTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Actions configuration',
-        'description' => 'Tests complex actions configuration by adding, editing, and deleting a complex action.',
-        'group' => 'Actions',
+      'name' => 'Actions configuration',
+      'description' => 'Tests complex actions configuration by adding, editing, and deleting a complex action.',
+      'group' => 'Actions',
     );
   }
 
@@ -69,9 +69,9 @@ class ActionsConfigurationTestCase extends DrupalWebTestCase {
 class ActionLoopTestCase extends DrupalWebTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Actions executing in a potentially infinite loop',
-        'description' => 'Tests actions executing in a loop, and makes sure they abort properly.',
-        'group' => 'Actions',
+      'name' => 'Actions executing in a potentially infinite loop',
+      'description' => 'Tests actions executing in a loop, and makes sure they abort properly.',
+      'group' => 'Actions',
     );
   }
 

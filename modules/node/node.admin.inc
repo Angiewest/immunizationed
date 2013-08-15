@@ -14,7 +14,7 @@
  */
 function node_configure_rebuild_confirm() {
   return confirm_form(array(), t('Are you sure you want to rebuild the permissions on site content?'),
-      'admin/reports/status', t('This action rebuilds all permissions on site content, and may be a lengthy process. This action cannot be undone.'), t('Rebuild permissions'), t('Cancel'));
+                  'admin/reports/status', t('This action rebuilds all permissions on site content, and may be a lengthy process. This action cannot be undone.'), t('Rebuild permissions'), t('Cancel'));
 }
 
 /**
@@ -32,40 +32,40 @@ function node_configure_rebuild_confirm_submit($form, &$form_state) {
  */
 function node_node_operations() {
   $operations = array(
-      'publish' => array(
-          'label' => t('Publish selected content'),
-          'callback' => 'node_mass_update',
-          'callback arguments' => array('updates' => array('status' => NODE_PUBLISHED)),
-      ),
-      'unpublish' => array(
-          'label' => t('Unpublish selected content'),
-          'callback' => 'node_mass_update',
-          'callback arguments' => array('updates' => array('status' => NODE_NOT_PUBLISHED)),
-      ),
-      'promote' => array(
-          'label' => t('Promote selected content to front page'),
-          'callback' => 'node_mass_update',
-          'callback arguments' => array('updates' => array('status' => NODE_PUBLISHED, 'promote' => NODE_PROMOTED)),
-      ),
-      'demote' => array(
-          'label' => t('Demote selected content from front page'),
-          'callback' => 'node_mass_update',
-          'callback arguments' => array('updates' => array('promote' => NODE_NOT_PROMOTED)),
-      ),
-      'sticky' => array(
-          'label' => t('Make selected content sticky'),
-          'callback' => 'node_mass_update',
-          'callback arguments' => array('updates' => array('status' => NODE_PUBLISHED, 'sticky' => NODE_STICKY)),
-      ),
-      'unsticky' => array(
-          'label' => t('Make selected content not sticky'),
-          'callback' => 'node_mass_update',
-          'callback arguments' => array('updates' => array('sticky' => NODE_NOT_STICKY)),
-      ),
-      'delete' => array(
-          'label' => t('Delete selected content'),
-          'callback' => NULL,
-      ),
+    'publish' => array(
+      'label' => t('Publish selected content'),
+      'callback' => 'node_mass_update',
+      'callback arguments' => array('updates' => array('status' => NODE_PUBLISHED)),
+    ),
+    'unpublish' => array(
+      'label' => t('Unpublish selected content'),
+      'callback' => 'node_mass_update',
+      'callback arguments' => array('updates' => array('status' => NODE_NOT_PUBLISHED)),
+    ),
+    'promote' => array(
+      'label' => t('Promote selected content to front page'),
+      'callback' => 'node_mass_update',
+      'callback arguments' => array('updates' => array('status' => NODE_PUBLISHED, 'promote' => NODE_PROMOTED)),
+    ),
+    'demote' => array(
+      'label' => t('Demote selected content from front page'),
+      'callback' => 'node_mass_update',
+      'callback arguments' => array('updates' => array('promote' => NODE_NOT_PROMOTED)),
+    ),
+    'sticky' => array(
+      'label' => t('Make selected content sticky'),
+      'callback' => 'node_mass_update',
+      'callback arguments' => array('updates' => array('status' => NODE_PUBLISHED, 'sticky' => NODE_STICKY)),
+    ),
+    'unsticky' => array(
+      'label' => t('Make selected content not sticky'),
+      'callback' => 'node_mass_update',
+      'callback arguments' => array('updates' => array('sticky' => NODE_NOT_STICKY)),
+    ),
+    'delete' => array(
+      'label' => t('Delete selected content'),
+      'callback' => NULL,
+    ),
   );
   return $operations;
 }
@@ -79,40 +79,40 @@ function node_node_operations() {
 function node_filters() {
   // Regular filters
   $filters['status'] = array(
-      'title' => t('status'),
-      'options' => array(
-          '[any]' => t('any'),
-          'status-1' => t('published'),
-          'status-0' => t('not published'),
-          'promote-1' => t('promoted'),
-          'promote-0' => t('not promoted'),
-          'sticky-1' => t('sticky'),
-          'sticky-0' => t('not sticky'),
-      ),
+    'title' => t('status'),
+    'options' => array(
+      '[any]' => t('any'),
+      'status-1' => t('published'),
+      'status-0' => t('not published'),
+      'promote-1' => t('promoted'),
+      'promote-0' => t('not promoted'),
+      'sticky-1' => t('sticky'),
+      'sticky-0' => t('not sticky'),
+    ),
   );
   // Include translation states if we have this module enabled
   if (module_exists('translation')) {
     $filters['status']['options'] += array(
-        'translate-0' => t('Up to date translation'),
-        'translate-1' => t('Outdated translation'),
+      'translate-0' => t('Up to date translation'),
+      'translate-1' => t('Outdated translation'),
     );
   }
 
   $filters['type'] = array(
-      'title' => t('type'),
-      'options' => array(
-          '[any]' => t('any'),
-      ) + node_type_get_names(),
+    'title' => t('type'),
+    'options' => array(
+      '[any]' => t('any'),
+    ) + node_type_get_names(),
   );
 
   // Language filter if there is a list of languages
   if ($languages = module_invoke('locale', 'language_list')) {
     $languages = array(LANGUAGE_NONE => t('Language neutral')) + $languages;
     $filters['language'] = array(
-        'title' => t('language'),
-        'options' => array(
-            '[any]' => t('any'),
-        ) + $languages,
+      'title' => t('language'),
+      'options' => array(
+        '[any]' => t('any'),
+      ) + $languages,
     );
   }
   return $filters;
@@ -159,9 +159,9 @@ function node_filter_form() {
 
   $i = 0;
   $form['filters'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Show only items where'),
-      '#theme' => 'exposed_filters__node',
+    '#type' => 'fieldset',
+    '#title' => t('Show only items where'),
+    '#theme' => 'exposed_filters__node',
   );
   foreach ($session as $filter) {
     list($type, $value) = $filter;
@@ -190,30 +190,30 @@ function node_filter_form() {
   }
 
   $form['filters']['status'] = array(
-      '#type' => 'container',
-      '#attributes' => array('class' => array('clearfix')),
-      '#prefix' => ($i ? '<div class="additional-filters">' . t('and where') . '</div>' : ''),
+    '#type' => 'container',
+    '#attributes' => array('class' => array('clearfix')),
+    '#prefix' => ($i ? '<div class="additional-filters">' . t('and where') . '</div>' : ''),
   );
   $form['filters']['status']['filters'] = array(
-      '#type' => 'container',
-      '#attributes' => array('class' => array('filters')),
+    '#type' => 'container',
+    '#attributes' => array('class' => array('filters')),
   );
   foreach ($filters as $key => $filter) {
     $form['filters']['status']['filters'][$key] = array(
-        '#type' => 'select',
-        '#options' => $filter['options'],
-        '#title' => $filter['title'],
-        '#default_value' => '[any]',
+      '#type' => 'select',
+      '#options' => $filter['options'],
+      '#title' => $filter['title'],
+      '#default_value' => '[any]',
     );
   }
 
   $form['filters']['status']['actions'] = array(
-      '#type' => 'actions',
-      '#attributes' => array('class' => array('container-inline')),
+    '#type' => 'actions',
+    '#attributes' => array('class' => array('container-inline')),
   );
   $form['filters']['status']['actions']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => count($session) ? t('Refine') : t('Filter'),
+    '#type' => 'submit',
+    '#value' => count($session) ? t('Refine') : t('Filter'),
   );
   if (count($session)) {
     $form['filters']['status']['actions']['undo'] = array('#type' => 'submit', '#value' => t('Undo'));
@@ -281,18 +281,18 @@ function node_mass_update($nodes, $updates) {
   // of nodes.
   if (count($nodes) > 10) {
     $batch = array(
-        'operations' => array(
-            array('_node_mass_update_batch_process', array($nodes, $updates))
-        ),
-        'finished' => '_node_mass_update_batch_finished',
-        'title' => t('Processing'),
-        // We use a single multi-pass operation, so the default
-        // 'Remaining x of y operations' message will be confusing here.
-        'progress_message' => '',
-        'error_message' => t('The update has encountered an error.'),
-        // The operations do not live in the .module file, so we need to
-        // tell the batch engine which file to load before calling them.
-        'file' => drupal_get_path('module', 'node') . '/node.admin.inc',
+      'operations' => array(
+        array('_node_mass_update_batch_process', array($nodes, $updates))
+      ),
+      'finished' => '_node_mass_update_batch_finished',
+      'title' => t('Processing'),
+      // We use a single multi-pass operation, so the default
+      // 'Remaining x of y operations' message will be confusing here.
+      'progress_message' => '',
+      'error_message' => t('The update has encountered an error.'),
+      // The operations do not live in the .module file, so we need to
+      // tell the batch engine which file to load before calling them.
+      'file' => drupal_get_path('module', 'node') . '/node.admin.inc',
     );
     batch_set($batch);
   }
@@ -430,27 +430,27 @@ function node_admin_nodes() {
 
   // Build the 'Update options' form.
   $form['options'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Update options'),
-      '#attributes' => array('class' => array('container-inline')),
-      '#access' => $admin_access,
+    '#type' => 'fieldset',
+    '#title' => t('Update options'),
+    '#attributes' => array('class' => array('container-inline')),
+    '#access' => $admin_access,
   );
   $options = array();
   foreach (module_invoke_all('node_operations') as $operation => $array) {
     $options[$operation] = $array['label'];
   }
   $form['options']['operation'] = array(
-      '#type' => 'select',
-      '#title' => t('Operation'),
-      '#title_display' => 'invisible',
-      '#options' => $options,
-      '#default_value' => 'approve',
+    '#type' => 'select',
+    '#title' => t('Operation'),
+    '#title_display' => 'invisible',
+    '#options' => $options,
+    '#default_value' => 'approve',
   );
   $form['options']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Update'),
-      '#validate' => array('node_admin_nodes_validate'),
-      '#submit' => array('node_admin_nodes_submit'),
+    '#type' => 'submit',
+    '#value' => t('Update'),
+    '#validate' => array('node_admin_nodes_validate'),
+    '#submit' => array('node_admin_nodes_submit'),
   );
 
   // Enable language column if translation module is enabled or if we have any
@@ -459,11 +459,11 @@ function node_admin_nodes() {
 
   // Build the sortable table header.
   $header = array(
-      'title' => array('data' => t('Title'), 'field' => 'n.title'),
-      'type' => array('data' => t('Type'), 'field' => 'n.type'),
-      'author' => t('Author'),
-      'status' => array('data' => t('Status'), 'field' => 'n.status'),
-      'changed' => array('data' => t('Updated'), 'field' => 'n.changed', 'sort' => 'desc')
+    'title' => array('data' => t('Title'), 'field' => 'n.title'),
+    'type' => array('data' => t('Type'), 'field' => 'n.type'),
+    'author' => t('Author'),
+    'status' => array('data' => t('Status'), 'field' => 'n.status'),
+    'changed' => array('data' => t('Updated'), 'field' => 'n.changed', 'sort' => 'desc')
   );
   if ($multilanguage) {
     $header['language'] = array('data' => t('Language'), 'field' => 'n.language');
@@ -479,8 +479,8 @@ function node_admin_nodes() {
     // have some unpublished nodes to view before adding the condition.
     if (user_access('view own unpublished content') && $own_unpublished = db_query('SELECT nid FROM {node} WHERE uid = :uid AND status = :status', array(':uid' => $GLOBALS['user']->uid, ':status' => 0))->fetchCol()) {
       $query->condition(db_or()
-          ->condition('n.status', 1)
-          ->condition('n.nid', $own_unpublished, 'IN')
+        ->condition('n.status', 1)
+        ->condition('n.nid', $own_unpublished, 'IN')
       );
     }
     else {
@@ -489,12 +489,12 @@ function node_admin_nodes() {
     }
   }
   $nids = $query
-  ->fields('n',array('nid'))
-  ->limit(50)
-  ->orderByHeader($header)
-  ->addTag('node_access')
-  ->execute()
-  ->fetchCol();
+    ->fields('n',array('nid'))
+    ->limit(50)
+    ->orderByHeader($header)
+    ->addTag('node_access')
+    ->execute()
+    ->fetchCol();
   $nodes = node_load_multiple($nids);
 
   // Prepare the list of nodes.
@@ -505,19 +505,19 @@ function node_admin_nodes() {
     $langcode = entity_language('node', $node);
     $l_options = $langcode != LANGUAGE_NONE && isset($languages[$langcode]) ? array('language' => $languages[$langcode]) : array();
     $options[$node->nid] = array(
-        'title' => array(
-            'data' => array(
-                '#type' => 'link',
-                '#title' => $node->title,
-                '#href' => 'node/' . $node->nid,
-                '#options' => $l_options,
-                '#suffix' => ' ' . theme('mark', array('type' => node_mark($node->nid, $node->changed))),
-            ),
+      'title' => array(
+        'data' => array(
+          '#type' => 'link',
+          '#title' => $node->title,
+          '#href' => 'node/' . $node->nid,
+          '#options' => $l_options,
+          '#suffix' => ' ' . theme('mark', array('type' => node_mark($node->nid, $node->changed))),
         ),
-        'type' => check_plain(node_type_get_name($node)),
-        'author' => theme('username', array('account' => $node)),
-        'status' => $node->status ? t('published') : t('not published'),
-        'changed' => format_date($node->changed, 'short'),
+      ),
+      'type' => check_plain(node_type_get_name($node)),
+      'author' => theme('username', array('account' => $node)),
+      'status' => $node->status ? t('published') : t('not published'),
+      'changed' => format_date($node->changed, 'short'),
     );
     if ($multilanguage) {
       if ($langcode == LANGUAGE_NONE || isset($languages[$langcode])) {
@@ -531,39 +531,39 @@ function node_admin_nodes() {
     $operations = array();
     if (node_access('update', $node)) {
       $operations['edit'] = array(
-          'title' => t('edit'),
-          'href' => 'node/' . $node->nid . '/edit',
-          'query' => $destination,
+        'title' => t('edit'),
+        'href' => 'node/' . $node->nid . '/edit',
+        'query' => $destination,
       );
     }
     if (node_access('delete', $node)) {
       $operations['delete'] = array(
-          'title' => t('delete'),
-          'href' => 'node/' . $node->nid . '/delete',
-          'query' => $destination,
+        'title' => t('delete'),
+        'href' => 'node/' . $node->nid . '/delete',
+        'query' => $destination,
       );
     }
     $options[$node->nid]['operations'] = array();
     if (count($operations) > 1) {
       // Render an unordered list of operations links.
       $options[$node->nid]['operations'] = array(
-          'data' => array(
-              '#theme' => 'links__node_operations',
-              '#links' => $operations,
-              '#attributes' => array('class' => array('links', 'inline')),
-          ),
+        'data' => array(
+          '#theme' => 'links__node_operations',
+          '#links' => $operations,
+          '#attributes' => array('class' => array('links', 'inline')),
+        ),
       );
     }
     elseif (!empty($operations)) {
       // Render the first and only operation as a link.
       $link = reset($operations);
       $options[$node->nid]['operations'] = array(
-          'data' => array(
-              '#type' => 'link',
-              '#title' => $link['title'],
-              '#href' => $link['href'],
-              '#options' => array('query' => $link['query']),
-          ),
+        'data' => array(
+          '#type' => 'link',
+          '#title' => $link['title'],
+          '#href' => $link['href'],
+          '#options' => array('query' => $link['query']),
+        ),
       );
     }
   }
@@ -572,19 +572,19 @@ function node_admin_nodes() {
   // operations.
   if ($admin_access) {
     $form['nodes'] = array(
-        '#type' => 'tableselect',
-        '#header' => $header,
-        '#options' => $options,
-        '#empty' => t('No content available.'),
+      '#type' => 'tableselect',
+      '#header' => $header,
+      '#options' => $options,
+      '#empty' => t('No content available.'),
     );
   }
   // Otherwise, use a simple table.
   else {
     $form['nodes'] = array(
-        '#theme' => 'table',
-        '#header' => $header,
-        '#rows' => $options,
-        '#empty' => t('No content available.'),
+      '#theme' => 'table',
+      '#header' => $header,
+      '#rows' => $options,
+      '#empty' => t('No content available.'),
     );
   }
 
@@ -665,21 +665,21 @@ function node_multiple_delete_confirm($form, &$form_state, $nodes) {
   foreach ($nodes as $nid => $value) {
     $title = db_query('SELECT title FROM {node} WHERE nid = :nid', array(':nid' => $nid))->fetchField();
     $form['nodes'][$nid] = array(
-        '#type' => 'hidden',
-        '#value' => $nid,
-        '#prefix' => '<li>',
-        '#suffix' => check_plain($title) . "</li>\n",
+      '#type' => 'hidden',
+      '#value' => $nid,
+      '#prefix' => '<li>',
+      '#suffix' => check_plain($title) . "</li>\n",
     );
   }
   $form['operation'] = array('#type' => 'hidden', '#value' => 'delete');
   $form['#submit'][] = 'node_multiple_delete_confirm_submit';
   $confirm_question = format_plural(count($nodes),
-      'Are you sure you want to delete this item?',
-      'Are you sure you want to delete these items?');
+                                  'Are you sure you want to delete this item?',
+                                  'Are you sure you want to delete these items?');
   return confirm_form($form,
-      $confirm_question,
-      'admin/content', t('This action cannot be undone.'),
-      t('Delete'), t('Cancel'));
+                    $confirm_question,
+                    'admin/content', t('This action cannot be undone.'),
+                    t('Delete'), t('Cancel'));
 }
 
 /**

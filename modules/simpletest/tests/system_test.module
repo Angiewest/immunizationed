@@ -5,105 +5,105 @@
  */
 function system_test_menu() {
   $items['system-test/sleep/%'] = array(
-      'page callback' => 'system_test_sleep',
-      'page arguments' => array(2),
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
+    'page callback' => 'system_test_sleep',
+    'page arguments' => array(2),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
   );
   $items['system-test/auth'] = array(
-      'page callback' => 'system_test_basic_auth_page',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
+    'page callback' => 'system_test_basic_auth_page',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
   );
   $items['system-test/authorize-init/%'] = array(
-      'page callback' => 'system_test_authorize_init_page',
-      'page arguments' => array(2),
-      'access arguments' => array('administer software updates'),
-      'type' => MENU_CALLBACK,
+    'page callback' => 'system_test_authorize_init_page',
+    'page arguments' => array(2),
+    'access arguments' => array('administer software updates'),
+    'type' => MENU_CALLBACK,
   );
   $items['system-test/redirect/%'] = array(
-      'title' => 'Redirect',
-      'page callback' => 'system_test_redirect',
-      'page arguments' => array(2),
-      'access arguments' => array('access content'),
-      'type' => MENU_CALLBACK,
+    'title' => 'Redirect',
+    'page callback' => 'system_test_redirect',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
   );
   $items['system-test/multiple-redirects/%'] = array(
-      'title' => 'Redirect',
-      'page callback' => 'system_test_multiple_redirects',
-      'page arguments' => array(2),
-      'access arguments' => array('access content'),
-      'type' => MENU_CALLBACK,
+    'title' => 'Redirect',
+    'page callback' => 'system_test_multiple_redirects',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
   );
   $items['system-test/set-header'] = array(
-      'page callback' => 'system_test_set_header',
-      'access arguments' => array('access content'),
-      'type' => MENU_CALLBACK,
+    'page callback' => 'system_test_set_header',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
   );
   $items['system-test/redirect-noscheme'] = array(
-      'page callback' => 'system_test_redirect_noscheme',
-      'access arguments' => array('access content'),
-      'type' => MENU_CALLBACK,
+    'page callback' => 'system_test_redirect_noscheme',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
   );
   $items['system-test/redirect-noparse'] = array(
-      'page callback' => 'system_test_redirect_noparse',
-      'access arguments' => array('access content'),
-      'type' => MENU_CALLBACK,
+    'page callback' => 'system_test_redirect_noparse',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
   );
   $items['system-test/redirect-invalid-scheme'] = array(
-      'page callback' => 'system_test_redirect_invalid_scheme',
-      'access arguments' => array('access content'),
-      'type' => MENU_CALLBACK,
+    'page callback' => 'system_test_redirect_invalid_scheme',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
   );
 
   $items['system-test/variable-get'] = array(
-      'title' => 'Variable Get',
-      'page callback' => 'variable_get',
-      'page arguments' => array('simpletest_bootstrap_variable_test', NULL),
-      'access arguments' => array('access content'),
-      'type' => MENU_CALLBACK,
+    'title' => 'Variable Get',
+    'page callback' => 'variable_get',
+    'page arguments' => array('simpletest_bootstrap_variable_test', NULL),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
   );
 
   $items['system-test/lock-acquire'] = array(
-      'title' => 'Lock acquire',
-      'page callback' => 'system_test_lock_acquire',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
+    'title' => 'Lock acquire',
+    'page callback' => 'system_test_lock_acquire',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
   );
 
   $items['system-test/lock-exit'] = array(
-      'title' => 'Lock acquire then exit',
-      'page callback' => 'system_test_lock_exit',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
+    'title' => 'Lock acquire then exit',
+    'page callback' => 'system_test_lock_exit',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
   );
 
   $items['system-test/main-content-handling'] = array(
-      'title' => 'Test main content handling',
-      'page callback' => 'system_test_main_content_fallback',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
+    'title' => 'Test main content handling',
+    'page callback' => 'system_test_main_content_fallback',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
   );
 
   $items['system-test/main-content-fallback'] = array(
-      'title' => 'Test main content fallback',
-      'page callback' => 'system_test_main_content_fallback',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
+    'title' => 'Test main content fallback',
+    'page callback' => 'system_test_main_content_fallback',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
   );
 
   $items['system-test/main-content-duplication'] = array(
-      'title' => 'Test main content duplication',
-      'page callback' => 'system_test_main_content_fallback',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
+    'title' => 'Test main content duplication',
+    'page callback' => 'system_test_main_content_fallback',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
   );
 
   $items['system-test/shutdown-functions'] = array(
-      'title' => 'Test main content duplication',
-      'page callback' => 'system_test_page_shutdown_functions',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
+    'title' => 'Test main content duplication',
+    'page callback' => 'system_test_page_shutdown_functions',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
   );
 
   return $items;
@@ -265,10 +265,10 @@ function system_test_system_info_alter(&$info, $file, $type) {
     $info['hidden'] = FALSE;
   }
   if (in_array($file->name, array(
-      'system_incompatible_module_version_dependencies_test',
-      'system_incompatible_core_version_dependencies_test',
-      'system_incompatible_module_version_test',
-      'system_incompatible_core_version_test',
+    'system_incompatible_module_version_dependencies_test',
+    'system_incompatible_core_version_dependencies_test',
+    'system_incompatible_module_version_test',
+    'system_incompatible_core_version_test',
   ))) {
     $info['hidden'] = FALSE;
   }
@@ -368,12 +368,12 @@ function _system_test_second_shutdown_function($arg1, $arg2) {
  */
 function system_test_filetransfer_info() {
   return array(
-      'system_test' => array(
-          'title' => t('System Test FileTransfer'),
-          'file' => 'system_test.module',  // Should be a .inc, but for test, ok.
-          'class' => 'SystemTestFileTransfer',
-          'weight' => -10,
-      ),
+    'system_test' => array(
+      'title' => t('System Test FileTransfer'),
+      'file' => 'system_test.module',  // Should be a .inc, but for test, ok.
+      'class' => 'SystemTestFileTransfer',
+      'weight' => -10,
+    ),
   );
 }
 
@@ -388,8 +388,8 @@ class SystemTestFileTransfer {
   public function getSettingsForm() {
     $form = array();
     $form['system_test_username'] = array(
-        '#type' => 'textfield',
-        '#title' => t('System Test Username'),
+      '#type' => 'textfield',
+      '#title' => t('System Test Username'),
     );
     return $form;
   }

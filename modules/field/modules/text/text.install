@@ -12,57 +12,57 @@ function text_field_schema($field) {
   switch ($field['type']) {
     case 'text':
       $columns = array(
-      'value' => array(
-      'type' => 'varchar',
-      'length' => $field['settings']['max_length'],
-      'not null' => FALSE,
-      ),
+        'value' => array(
+          'type' => 'varchar',
+          'length' => $field['settings']['max_length'],
+          'not null' => FALSE,
+        ),
       );
       break;
 
     case 'text_long':
       $columns = array(
-      'value' => array(
-      'type' => 'text',
-      'size' => 'big',
-      'not null' => FALSE,
-      ),
+        'value' => array(
+          'type' => 'text',
+          'size' => 'big',
+          'not null' => FALSE,
+        ),
       );
       break;
 
     case 'text_with_summary':
       $columns = array(
-      'value' => array(
-      'type' => 'text',
-      'size' => 'big',
-      'not null' => FALSE,
-      ),
-      'summary' => array(
-      'type' => 'text',
-      'size' => 'big',
-      'not null' => FALSE,
-      ),
+        'value' => array(
+          'type' => 'text',
+          'size' => 'big',
+          'not null' => FALSE,
+        ),
+        'summary' => array(
+          'type' => 'text',
+          'size' => 'big',
+          'not null' => FALSE,
+        ),
       );
       break;
   }
   $columns += array(
-      'format' => array(
-          'type' => 'varchar',
-          'length' => 255,
-          'not null' => FALSE,
-      ),
+    'format' => array(
+      'type' => 'varchar',
+      'length' => 255,
+      'not null' => FALSE,
+    ),
   );
   return array(
-      'columns' => $columns,
-      'indexes' => array(
-          'format' => array('format'),
+    'columns' => $columns,
+    'indexes' => array(
+      'format' => array('format'),
+    ),
+    'foreign keys' => array(
+      'format' => array(
+        'table' => 'filter_format',
+        'columns' => array('format' => 'format'),
       ),
-      'foreign keys' => array(
-          'format' => array(
-              'table' => 'filter_format',
-              'columns' => array('format' => 'format'),
-          ),
-      ),
+    ),
   );
 }
 
@@ -71,13 +71,13 @@ function text_field_schema($field) {
  */
 function text_update_7000() {
   $spec = array(
-      'type' => 'varchar',
-      'length' => 255,
-      'not null' => FALSE,
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => FALSE,
   );
   $fields = _update_7000_field_read_fields(array(
-      'module' => 'text',
-      'storage_type' => 'field_sql_storage',
+    'module' => 'text',
+    'storage_type' => 'field_sql_storage',
   ));
   foreach ($fields as $field) {
     if ($field['deleted']) {

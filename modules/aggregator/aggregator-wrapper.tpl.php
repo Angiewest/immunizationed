@@ -15,6 +15,6 @@
  */
 ?>
 <div id="aggregator">
-	<?php print $content; ?>
-	<?php print $pager; ?>
+  <?php print $content; ?>
+  <?php print $pager; ?>
 </div>

@@ -30,22 +30,22 @@ function update_authorize_run_update($filetransfer, $projects) {
   $operations = array();
   foreach ($projects as $project => $project_info) {
     $operations[] = array(
-        'update_authorize_batch_copy_project',
-        array(
-            $project_info['project'],
-            $project_info['updater_name'],
-            $project_info['local_url'],
-            $filetransfer,
-        ),
+      'update_authorize_batch_copy_project',
+      array(
+        $project_info['project'],
+        $project_info['updater_name'],
+        $project_info['local_url'],
+        $filetransfer,
+      ),
     );
   }
 
   $batch = array(
-      'title' => t('Installing updates'),
-      'init_message' => t('Preparing to update your site'),
-      'operations' => $operations,
-      'finished' => 'update_authorize_update_batch_finished',
-      'file' => drupal_get_path('module', 'update') . '/update.authorize.inc',
+    'title' => t('Installing updates'),
+    'init_message' => t('Preparing to update your site'),
+    'operations' => $operations,
+    'finished' => 'update_authorize_update_batch_finished',
+    'file' => drupal_get_path('module', 'update') . '/update.authorize.inc',
   );
 
   batch_set($batch);
@@ -72,23 +72,23 @@ function update_authorize_run_update($filetransfer, $projects) {
  */
 function update_authorize_run_install($filetransfer, $project, $updater_name, $local_url) {
   $operations[] = array(
-      'update_authorize_batch_copy_project',
-      array(
-          $project,
-          $updater_name,
-          $local_url,
-          $filetransfer,
-      ),
+    'update_authorize_batch_copy_project',
+    array(
+      $project,
+      $updater_name,
+      $local_url,
+      $filetransfer,
+    ),
   );
 
   // @todo Instantiate our Updater to set the human-readable title?
   $batch = array(
-      'title' => t('Installing %project', array('%project' => $project)),
-      'init_message' => t('Preparing to install'),
-      'operations' => $operations,
-      // @todo Use a different finished callback for different messages?
-      'finished' => 'update_authorize_install_batch_finished',
-      'file' => drupal_get_path('module', 'update') . '/update.authorize.inc',
+    'title' => t('Installing %project', array('%project' => $project)),
+    'init_message' => t('Preparing to install'),
+    'operations' => $operations,
+    // @todo Use a different finished callback for different messages?
+    'finished' => 'update_authorize_install_batch_finished',
+    'file' => drupal_get_path('module', 'update') . '/update.authorize.inc',
   );
   batch_set($batch);
 
@@ -195,27 +195,27 @@ function update_authorize_update_batch_finished($success, $results) {
     if ($offline && isset($_SESSION['maintenance_mode']) && $_SESSION['maintenance_mode'] == FALSE) {
       variable_set('maintenance_mode', FALSE);
       $page_message = array(
-          'message' => t('Update was completed successfully. Your site has been taken out of maintenance mode.'),
-          'type' => 'status',
+        'message' => t('Update was completed successfully. Your site has been taken out of maintenance mode.'),
+        'type' => 'status',
       );
     }
     else {
       $page_message = array(
-          'message' => t('Update was completed successfully.'),
-          'type' => 'status',
+        'message' => t('Update was completed successfully.'),
+        'type' => 'status',
       );
     }
   }
   elseif (!$offline) {
     $page_message = array(
-        'message' => t('Update failed! See the log below for more information.'),
-        'type' => 'error',
+      'message' => t('Update failed! See the log below for more information.'),
+      'type' => 'error',
     );
   }
   else {
     $page_message = array(
-        'message' => t('Update failed! See the log below for more information. Your site is still in maintenance mode.'),
-        'type' => 'error',
+      'message' => t('Update failed! See the log below for more information. Your site is still in maintenance mode.'),
+      'type' => 'error',
     );
   }
   // Since we're doing an update of existing code, always add a task for
@@ -258,27 +258,27 @@ function update_authorize_install_batch_finished($success, $results) {
     if ($offline && isset($_SESSION['maintenance_mode']) && $_SESSION['maintenance_mode'] == FALSE) {
       variable_set('maintenance_mode', FALSE);
       $page_message = array(
-          'message' => t('Installation was completed successfully. Your site has been taken out of maintenance mode.'),
-          'type' => 'status',
+        'message' => t('Installation was completed successfully. Your site has been taken out of maintenance mode.'),
+        'type' => 'status',
       );
     }
     else {
       $page_message = array(
-          'message' => t('Installation was completed successfully.'),
-          'type' => 'status',
+        'message' => t('Installation was completed successfully.'),
+        'type' => 'status',
       );
     }
   }
   elseif (!$success && !$offline) {
     $page_message = array(
-        'message' => t('Installation failed! See the log below for more information.'),
-        'type' => 'error',
+      'message' => t('Installation failed! See the log below for more information.'),
+      'type' => 'error',
     );
   }
   else {
     $page_message = array(
-        'message' => t('Installation failed! See the log below for more information. Your site is still in maintenance mode.'),
-        'type' => 'error',
+      'message' => t('Installation failed! See the log below for more information. Your site is still in maintenance mode.'),
+      'type' => 'error',
     );
   }
 
@@ -325,9 +325,9 @@ function _update_batch_create_message(&$project_results, $message, $success = TR
 function _update_authorize_clear_update_status() {
   $query = db_delete('cache_update');
   $query->condition(
-      db_or()
-      ->condition('cid', 'update_project_%', 'LIKE')
-      ->condition('cid', 'available_releases::%', 'LIKE')
+    db_or()
+    ->condition('cid', 'update_project_%', 'LIKE')
+    ->condition('cid', 'available_releases::%', 'LIKE')
   );
   $query->execute();
 }

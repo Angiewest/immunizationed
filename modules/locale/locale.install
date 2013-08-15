@@ -14,16 +14,16 @@ function locale_install() {
   // and that LIKE produces a case-sensitive comparison.
 
   db_insert('languages')
-  ->fields(array(
-  'language' => 'en',
-  'name' => 'English',
-  'native' => 'English',
-  'direction' => 0,
-  'enabled' => 1,
-  'weight' => 0,
-  'javascript' => '',
-  ))
-  ->execute();
+    ->fields(array(
+      'language' => 'en',
+      'name' => 'English',
+      'native' => 'English',
+      'direction' => 0,
+      'enabled' => 1,
+      'weight' => 0,
+      'javascript' => '',
+    ))
+    ->execute();
 }
 
 /**
@@ -45,10 +45,10 @@ function locale_update_7000() {
   }
 
   db_change_field('locales_source', 'location', 'location', array(
-  'type' => 'text',
-  'not null' => FALSE,
-  'size' => 'big',
-  'description' => 'Drupal path in case of online discovered translations or file path in case of imported strings.',
+    'type' => 'text',
+    'not null' => FALSE,
+    'size' => 'big',
+    'description' => 'Drupal path in case of online discovered translations or file path in case of imported strings.',
   ));
 }
 
@@ -66,7 +66,7 @@ function locale_update_7001() {
       $negotiation = array();
       break;
 
-      // LANGUAGE_NEGOTIATION_PATH_DEFAULT.
+    // LANGUAGE_NEGOTIATION_PATH_DEFAULT.
     case 1:
       $negotiation = array(LOCALE_LANGUAGE_NEGOTIATION_URL);
       // In Drupal 6 path prefixes are shown for the default language only when
@@ -78,17 +78,17 @@ function locale_update_7001() {
       $default->prefix = '';
       variable_set('language_default', $default);
       db_update('languages')
-      ->fields(array('prefix' => $default->prefix))
-      ->condition('language', $default->language)
-      ->execute();
+        ->fields(array('prefix' => $default->prefix))
+        ->condition('language', $default->language)
+        ->execute();
       break;
 
-      // LANGUAGE_NEGOTIATION_PATH.
+    // LANGUAGE_NEGOTIATION_PATH.
     case 2:
       $negotiation = array(LOCALE_LANGUAGE_NEGOTIATION_URL, LOCALE_LANGUAGE_NEGOTIATION_USER, LOCALE_LANGUAGE_NEGOTIATION_BROWSER);
       break;
 
-      // LANGUAGE_NEGOTIATION_DOMAIN.
+    // LANGUAGE_NEGOTIATION_DOMAIN.
     case 3:
       variable_set('locale_language_negotiation_url_part', LOCALE_LANGUAGE_NEGOTIATION_URL_DOMAIN);
       $negotiation = array(LOCALE_LANGUAGE_NEGOTIATION_URL);
@@ -155,8 +155,8 @@ function locale_update_7004() {
     // Find all rows in {locales_target} that are translations of the same
     // string (incl. context).
     $result_target = db_query("SELECT t.lid, t.language, t.plural, t.translation FROM {locales_source} s JOIN {locales_target} t ON s.lid = t.lid WHERE s.source = :source AND s.context = :context AND s.textgroup = 'default' ORDER BY lid", array(
-        ':source' => $source->source,
-        ':context' => $source->context,
+      ':source' => $source->source,
+      ':context' => $source->context,
     ));
 
     $translations = array();
@@ -167,15 +167,15 @@ function locale_update_7004() {
         if ($target->lid != $source->lid) {
           // Move translation to the master lid.
           db_query('UPDATE {locales_target} SET lid = :new_lid WHERE lid = :old_lid', array(
-          ':new_lid' => $source->lid,
-          ':old_lid' => $target->lid));
+            ':new_lid' => $source->lid,
+            ':old_lid' => $target->lid));
         }
       }
       elseif ($translations[$target->language] == $target->translation) {
         // Delete duplicate translation.
         db_query('DELETE FROM {locales_target} WHERE lid = :lid AND language = :language', array(
-        ':lid' => $target->lid,
-        ':language' => $target->language));
+          ':lid' => $target->lid,
+          ':language' => $target->language));
       }
       else {
         // The same string is translated into several different strings in one
@@ -188,11 +188,11 @@ function locale_update_7004() {
     // Delete rows in {locales_source} that are no longer referenced from
     // {locales_target}.
     db_delete('locales_source')
-    ->condition('source', $source->source)
-    ->condition('context', $source->context)
-    ->condition('textgroup', 'default')
-    ->condition('lid', $keep_lids, 'NOT IN')
-    ->execute();
+      ->condition('source', $source->source)
+      ->condition('context', $source->context)
+      ->condition('textgroup', 'default')
+      ->condition('lid', $keep_lids, 'NOT IN')
+      ->execute();
   }
 
   if ($conflict) {
@@ -206,11 +206,11 @@ function locale_update_7004() {
  */
 function locale_update_7005() {
   db_change_field('languages', 'formula', 'formula', array(
-  'type' => 'varchar',
-  'length' => 255,
-  'not null' => TRUE,
-  'default' => '',
-  'description' => 'Plural formula in PHP code to evaluate to get plural indexes.',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'default' => '',
+    'description' => 'Plural formula in PHP code to evaluate to get plural indexes.',
   ));
 }
 
@@ -273,183 +273,183 @@ function locale_uninstall() {
  */
 function locale_schema() {
   $schema['languages'] = array(
-      'description' => 'List of all available languages in the system.',
-      'fields' => array(
-          'language' => array(
-              'type' => 'varchar',
-              'length' => 12,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => "Language code, e.g. 'de' or 'en-US'.",
-          ),
-          'name' => array(
-              'type' => 'varchar',
-              'length' => 64,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => 'Language name in English.',
-          ),
-          'native' => array(
-              'type' => 'varchar',
-              'length' => 64,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => 'Native language name.',
-          ),
-          'direction' => array(
-              'type' => 'int',
-              'not null' => TRUE,
-              'default' => 0,
-              'description' => 'Direction of language (Left-to-Right = 0, Right-to-Left = 1).',
-          ),
-          'enabled' => array(
-              'type' => 'int',
-              'not null' => TRUE,
-              'default' => 0,
-              'description' => 'Enabled flag (1 = Enabled, 0 = Disabled).',
-          ),
-          'plurals' => array(
-              'type' => 'int',
-              'not null' => TRUE,
-              'default' => 0,
-              'description' => 'Number of plural indexes in this language.',
-          ),
-          'formula' => array(
-              'type' => 'varchar',
-              'length' => 255,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => 'Plural formula in PHP code to evaluate to get plural indexes.',
-          ),
-          'domain' => array(
-              'type' => 'varchar',
-              'length' => 128,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => 'Domain to use for this language.',
-          ),
-          'prefix' => array(
-              'type' => 'varchar',
-              'length' => 128,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => 'Path prefix to use for this language.',
-          ),
-          'weight' => array(
-              'type' => 'int',
-              'not null' => TRUE,
-              'default' => 0,
-              'description' => 'Weight, used in lists of languages.',
-          ),
-          'javascript' => array(
-              'type' => 'varchar',
-              'length' => 64,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => 'Location of JavaScript translation file.',
-          ),
+    'description' => 'List of all available languages in the system.',
+    'fields' => array(
+      'language' => array(
+        'type' => 'varchar',
+        'length' => 12,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => "Language code, e.g. 'de' or 'en-US'.",
       ),
-      'primary key' => array('language'),
-      'indexes' => array(
-          'list' => array('weight', 'name'),
+      'name' => array(
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Language name in English.',
       ),
+      'native' => array(
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Native language name.',
+      ),
+      'direction' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Direction of language (Left-to-Right = 0, Right-to-Left = 1).',
+      ),
+      'enabled' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Enabled flag (1 = Enabled, 0 = Disabled).',
+      ),
+      'plurals' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Number of plural indexes in this language.',
+      ),
+      'formula' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Plural formula in PHP code to evaluate to get plural indexes.',
+      ),
+      'domain' => array(
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Domain to use for this language.',
+      ),
+      'prefix' => array(
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Path prefix to use for this language.',
+      ),
+      'weight' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Weight, used in lists of languages.',
+      ),
+      'javascript' => array(
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Location of JavaScript translation file.',
+      ),
+    ),
+    'primary key' => array('language'),
+    'indexes' => array(
+      'list' => array('weight', 'name'),
+    ),
   );
 
   $schema['locales_source'] = array(
-      'description' => 'List of English source strings.',
-      'fields' => array(
-          'lid' => array(
-              'type' => 'serial',
-              'not null' => TRUE,
-              'description' => 'Unique identifier of this string.',
-          ),
-          'location' => array(
-              'type' => 'text',
-              'not null' => FALSE,
-              'size' => 'big',
-              'description' => 'Drupal path in case of online discovered translations or file path in case of imported strings.',
-          ),
-          'textgroup' => array(
-              'type' => 'varchar',
-              'length' => 255,
-              'not null' => TRUE,
-              'default' => 'default',
-              'description' => 'A module defined group of translations, see hook_locale().',
-          ),
-          'source' => array(
-              'type' => 'text',
-              'mysql_type' => 'blob',
-              'not null' => TRUE,
-              'description' => 'The original string in English.',
-          ),
-          'context' => array(
-              'type' => 'varchar',
-              'length' => 255,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => 'The context this string applies to.',
-          ),
-          'version' => array(
-              'type' => 'varchar',
-              'length' => 20,
-              'not null' => TRUE,
-              'default' => 'none',
-              'description' => 'Version of Drupal, where the string was last used (for locales optimization).',
-          ),
+    'description' => 'List of English source strings.',
+    'fields' => array(
+      'lid' => array(
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Unique identifier of this string.',
       ),
-      'primary key' => array('lid'),
-      'indexes' => array(
-          'source_context' => array(array('source', 30), 'context'),
+      'location' => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'size' => 'big',
+        'description' => 'Drupal path in case of online discovered translations or file path in case of imported strings.',
       ),
+      'textgroup' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => 'default',
+        'description' => 'A module defined group of translations, see hook_locale().',
+      ),
+      'source' => array(
+        'type' => 'text',
+        'mysql_type' => 'blob',
+        'not null' => TRUE,
+        'description' => 'The original string in English.',
+      ),
+      'context' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The context this string applies to.',
+      ),
+      'version' => array(
+        'type' => 'varchar',
+        'length' => 20,
+        'not null' => TRUE,
+        'default' => 'none',
+        'description' => 'Version of Drupal, where the string was last used (for locales optimization).',
+      ),
+    ),
+    'primary key' => array('lid'),
+    'indexes' => array(
+      'source_context' => array(array('source', 30), 'context'),
+    ),
   );
 
   $schema['locales_target'] = array(
-      'description' => 'Stores translated versions of strings.',
-      'fields' => array(
-          'lid' => array(
-              'type' => 'int',
-              'not null' => TRUE,
-              'default' => 0,
-              'description' => 'Source string ID. References {locales_source}.lid.',
-          ),
-          'translation' => array(
-              'type' => 'text',
-              'mysql_type' => 'blob',
-              'not null' => TRUE,
-              'description' => 'Translation string value in this language.',
-          ),
-          'language' => array(
-              'type' => 'varchar',
-              'length' => 12,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => 'Language code. References {languages}.language.',
-          ),
-          'plid' => array(
-              'type' => 'int',
-              'not null' => TRUE, // This should be NULL for no referenced string, not zero.
-              'default' => 0,
-              'description' => 'Parent lid (lid of the previous string in the plural chain) in case of plural strings. References {locales_source}.lid.',
-          ),
-          'plural' => array(
-              'type' => 'int',
-              'not null' => TRUE,
-              'default' => 0,
-              'description' => 'Plural index number in case of plural strings.',
-          ),
+    'description' => 'Stores translated versions of strings.',
+    'fields' => array(
+      'lid' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Source string ID. References {locales_source}.lid.',
       ),
-      'primary key' => array('language', 'lid', 'plural'),
-      'foreign keys' => array(
-          'locales_source' => array(
-              'table' => 'locales_source',
-              'columns' => array('lid' => 'lid'),
-          ),
+      'translation' => array(
+        'type' => 'text',
+        'mysql_type' => 'blob',
+        'not null' => TRUE,
+        'description' => 'Translation string value in this language.',
       ),
-      'indexes' => array(
-          'lid'      => array('lid'),
-          'plid'     => array('plid'),
-          'plural'   => array('plural'),
+      'language' => array(
+        'type' => 'varchar',
+        'length' => 12,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Language code. References {languages}.language.',
       ),
+      'plid' => array(
+        'type' => 'int',
+        'not null' => TRUE, // This should be NULL for no referenced string, not zero.
+        'default' => 0,
+        'description' => 'Parent lid (lid of the previous string in the plural chain) in case of plural strings. References {locales_source}.lid.',
+      ),
+      'plural' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Plural index number in case of plural strings.',
+      ),
+    ),
+    'primary key' => array('language', 'lid', 'plural'),
+    'foreign keys' => array(
+      'locales_source' => array(
+        'table' => 'locales_source',
+        'columns' => array('lid' => 'lid'),
+      ),
+    ),
+    'indexes' => array(
+      'lid'      => array('lid'),
+      'plid'     => array('plid'),
+      'plural'   => array('plural'),
+    ),
   );
 
   return $schema;

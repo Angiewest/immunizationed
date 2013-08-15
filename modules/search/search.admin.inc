@@ -10,7 +10,7 @@
  */
 function search_reindex_confirm() {
   return confirm_form(array(), t('Are you sure you want to re-index the site?'),
-      'admin/config/search/settings', t('The search index is not cleared but systematically updated to reflect the new settings. Searching will continue to work but new content won\'t be indexed until all existing content has been re-indexed. This action cannot be undone.'), t('Re-index site'), t('Cancel'));
+                  'admin/config/search/settings', t('The search index is not cleared but systematically updated to reflect the new settings. Searching will continue to work but new content won\'t be indexed until all existing content has been re-indexed. This action cannot be undone.'), t('Re-index site'), t('Cancel'));
 }
 
 /**
@@ -71,59 +71,59 @@ function search_admin_settings($form) {
 
   // Indexing throttle:
   $form['indexing_throttle'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Indexing throttle')
+    '#type' => 'fieldset',
+    '#title' => t('Indexing throttle')
   );
   $form['indexing_throttle']['search_cron_limit'] = array(
-      '#type' => 'select',
-      '#title' => t('Number of items to index per cron run'),
-      '#default_value' => variable_get('search_cron_limit', 100),
-      '#options' => $items,
-      '#description' => t('The maximum number of items indexed in each pass of a <a href="@cron">cron maintenance task</a>. If necessary, reduce the number of items to prevent timeouts and memory errors while indexing.', array('@cron' => url('admin/reports/status')))
+    '#type' => 'select',
+    '#title' => t('Number of items to index per cron run'),
+    '#default_value' => variable_get('search_cron_limit', 100),
+    '#options' => $items,
+    '#description' => t('The maximum number of items indexed in each pass of a <a href="@cron">cron maintenance task</a>. If necessary, reduce the number of items to prevent timeouts and memory errors while indexing.', array('@cron' => url('admin/reports/status')))
   );
   // Indexing settings:
   $form['indexing_settings'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Indexing settings')
+    '#type' => 'fieldset',
+    '#title' => t('Indexing settings')
   );
   $form['indexing_settings']['info'] = array(
-      '#markup' => t('<p><em>Changing the settings below will cause the site index to be rebuilt. The search index is not cleared but systematically updated to reflect the new settings. Searching will continue to work but new content won\'t be indexed until all existing content has been re-indexed.</em></p><p><em>The default settings should be appropriate for the majority of sites.</em></p>')
+    '#markup' => t('<p><em>Changing the settings below will cause the site index to be rebuilt. The search index is not cleared but systematically updated to reflect the new settings. Searching will continue to work but new content won\'t be indexed until all existing content has been re-indexed.</em></p><p><em>The default settings should be appropriate for the majority of sites.</em></p>')
   );
   $form['indexing_settings']['minimum_word_size'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Minimum word length to index'),
-      '#default_value' => variable_get('minimum_word_size', 3),
-      '#size' => 5,
-      '#maxlength' => 3,
-      '#description' => t('The number of characters a word has to be to be indexed. A lower setting means better search result ranking, but also a larger database. Each search query must contain at least one keyword that is this size (or longer).'),
-      '#element_validate' => array('element_validate_integer_positive'),
+    '#type' => 'textfield',
+    '#title' => t('Minimum word length to index'),
+    '#default_value' => variable_get('minimum_word_size', 3),
+    '#size' => 5,
+    '#maxlength' => 3,
+    '#description' => t('The number of characters a word has to be to be indexed. A lower setting means better search result ranking, but also a larger database. Each search query must contain at least one keyword that is this size (or longer).'),
+    '#element_validate' => array('element_validate_integer_positive'),
   );
   $form['indexing_settings']['overlap_cjk'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Simple CJK handling'),
-      '#default_value' => variable_get('overlap_cjk', TRUE),
-      '#description' => t('Whether to apply a simple Chinese/Japanese/Korean tokenizer based on overlapping sequences. Turn this off if you want to use an external preprocessor for this instead. Does not affect other languages.')
+    '#type' => 'checkbox',
+    '#title' => t('Simple CJK handling'),
+    '#default_value' => variable_get('overlap_cjk', TRUE),
+    '#description' => t('Whether to apply a simple Chinese/Japanese/Korean tokenizer based on overlapping sequences. Turn this off if you want to use an external preprocessor for this instead. Does not affect other languages.')
   );
 
   $form['active'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Active search modules')
+    '#type' => 'fieldset',
+    '#title' => t('Active search modules')
   );
   $module_options = _search_get_module_names();
   $form['active']['search_active_modules'] = array(
-      '#type' => 'checkboxes',
-      '#title' => t('Active modules'),
-      '#title_display' => 'invisible',
-      '#default_value' => variable_get('search_active_modules', array('node', 'user')),
-      '#options' => $module_options,
-      '#description' => t('Choose which search modules are active from the available modules.')
+    '#type' => 'checkboxes',
+    '#title' => t('Active modules'),
+    '#title_display' => 'invisible',
+    '#default_value' => variable_get('search_active_modules', array('node', 'user')),
+    '#options' => $module_options,
+    '#description' => t('Choose which search modules are active from the available modules.')
   );
   $form['active']['search_default_module'] = array(
-      '#title' => t('Default search module'),
-      '#type' => 'radios',
-      '#default_value' => variable_get('search_default_module', 'node'),
-      '#options' => $module_options,
-      '#description' => t('Choose which search module is the default.')
+    '#title' => t('Default search module'),
+    '#type' => 'radios',
+    '#default_value' => variable_get('search_default_module', 'node'),
+    '#options' => $module_options,
+    '#description' => t('Choose which search module is the default.')
   );
   $form['#validate'][] = 'search_admin_settings_validate';
   $form['#submit'][] = 'search_admin_settings_submit';
@@ -159,7 +159,7 @@ function search_admin_settings_validate($form, &$form_state) {
 function search_admin_settings_submit($form, &$form_state) {
   // If these settings change, the index needs to be rebuilt.
   if ((variable_get('minimum_word_size', 3) != $form_state['values']['minimum_word_size']) ||
-  (variable_get('overlap_cjk', TRUE) != $form_state['values']['overlap_cjk'])) {
+      (variable_get('overlap_cjk', TRUE) != $form_state['values']['overlap_cjk'])) {
     drupal_set_message(t('The index will be rebuilt.'));
     search_reindex();
   }

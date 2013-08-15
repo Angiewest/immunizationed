@@ -68,7 +68,7 @@ function hook_openid_response($response, $account) {
  */
 function hook_openid_discovery_method_info() {
   return array(
-      'new_discovery_idea' => '_my_discovery_method',
+    'new_discovery_idea' => '_my_discovery_method',
   );
 }
 
@@ -99,7 +99,7 @@ function hook_openid_discovery_method_info_alter(&$methods) {
  */
 function hook_openid_normalization_method_info() {
   return array(
-      'new_normalization_idea' => '_my_normalization_method',
+    'new_normalization_idea' => '_my_normalization_method',
   );
 }
 

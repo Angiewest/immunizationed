@@ -10,44 +10,44 @@
  */
 function contact_category_list() {
   $header = array(
-      t('Category'),
-      t('Recipients'),
-      t('Selected'),
-      array('data' => t('Operations'), 'colspan' => 2),
+    t('Category'),
+    t('Recipients'),
+    t('Selected'),
+    array('data' => t('Operations'), 'colspan' => 2),
   );
   $rows = array();
 
   // Get all the contact categories from the database.
   $categories = db_select('contact', 'c')
-  ->addTag('translatable')
-  ->fields('c', array('cid', 'category', 'recipients', 'selected'))
-  ->orderBy('weight')
-  ->orderBy('category')
-  ->execute()
-  ->fetchAll();
+    ->addTag('translatable')
+    ->fields('c', array('cid', 'category', 'recipients', 'selected'))
+    ->orderBy('weight')
+    ->orderBy('category')
+    ->execute()
+    ->fetchAll();
 
   // Loop through the categories and add them to the table.
   foreach ($categories as $category) {
     $rows[] = array(
-        check_plain($category->category),
-        check_plain($category->recipients),
-        ($category->selected ? t('Yes') : t('No')),
-        l(t('Edit'), 'admin/structure/contact/edit/' . $category->cid),
-        l(t('Delete'), 'admin/structure/contact/delete/' . $category->cid),
+      check_plain($category->category),
+      check_plain($category->recipients),
+      ($category->selected ? t('Yes') : t('No')),
+      l(t('Edit'), 'admin/structure/contact/edit/' . $category->cid),
+      l(t('Delete'), 'admin/structure/contact/delete/' . $category->cid),
     );
   }
 
   if (!$rows) {
     $rows[] = array(array(
-        'data' => t('No categories available.'),
-        'colspan' => 5,
+      'data' => t('No categories available.'),
+      'colspan' => 5,
     ));
   }
 
   $build['category_table'] = array(
-      '#theme' => 'table',
-      '#header' => $header,
-      '#rows' => $rows,
+    '#theme' => 'table',
+    '#header' => $header,
+    '#rows' => $rows,
   );
   return $build;
 }
@@ -73,59 +73,59 @@ function contact_category_list() {
 function contact_category_edit_form($form, &$form_state, array $category = array()) {
   // If this is a new category, add the default values.
   $category += array(
-      'category' => '',
-      'recipients' => '',
-      'reply' => '',
-      'weight' => 0,
-      'selected' => 0,
-      'cid' => NULL,
+    'category' => '',
+    'recipients' => '',
+    'reply' => '',
+    'weight' => 0,
+    'selected' => 0,
+    'cid' => NULL,
   );
 
   $form['category'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Category'),
-      '#maxlength' => 255,
-      '#default_value' => $category['category'],
-      '#description' => t("Example: 'website feedback' or 'product information'."),
-      '#required' => TRUE,
+    '#type' => 'textfield',
+    '#title' => t('Category'),
+    '#maxlength' => 255,
+    '#default_value' => $category['category'],
+    '#description' => t("Example: 'website feedback' or 'product information'."),
+    '#required' => TRUE,
   );
   $form['recipients'] = array(
-      '#type' => 'textarea',
-      '#title' => t('Recipients'),
-      '#default_value' => $category['recipients'],
-      '#description' => t("Example: 'webmaster@example.com' or 'sales@example.com,support@example.com' . To specify multiple recipients, separate each e-mail address with a comma."),
-      '#required' => TRUE,
+    '#type' => 'textarea',
+    '#title' => t('Recipients'),
+    '#default_value' => $category['recipients'],
+    '#description' => t("Example: 'webmaster@example.com' or 'sales@example.com,support@example.com' . To specify multiple recipients, separate each e-mail address with a comma."),
+    '#required' => TRUE,
   );
   $form['reply'] = array(
-      '#type' => 'textarea',
-      '#title' => t('Auto-reply'),
-      '#default_value' => $category['reply'],
-      '#description' => t('Optional auto-reply. Leave empty if you do not want to send the user an auto-reply message.'),
+    '#type' => 'textarea',
+    '#title' => t('Auto-reply'),
+    '#default_value' => $category['reply'],
+    '#description' => t('Optional auto-reply. Leave empty if you do not want to send the user an auto-reply message.'),
   );
   $form['weight'] = array(
-      '#type' => 'weight',
-      '#title' => t('Weight'),
-      '#default_value' => $category['weight'],
-      '#description' => t('When listing categories, those with lighter (smaller) weights get listed before categories with heavier (larger) weights. Categories with equal weights are sorted alphabetically.'),
+    '#type' => 'weight',
+    '#title' => t('Weight'),
+    '#default_value' => $category['weight'],
+    '#description' => t('When listing categories, those with lighter (smaller) weights get listed before categories with heavier (larger) weights. Categories with equal weights are sorted alphabetically.'),
   );
   $form['selected'] = array(
-      '#type' => 'select',
-      '#title' => t('Selected'),
-      '#options' => array(
-          0 => t('No'),
-          1 => t('Yes'),
-      ),
-      '#default_value' => $category['selected'],
-      '#description' => t('Set this to <em>Yes</em> if you would like this category to be selected by default.'),
+    '#type' => 'select',
+    '#title' => t('Selected'),
+    '#options' => array(
+      0 => t('No'),
+      1 => t('Yes'),
+    ),
+    '#default_value' => $category['selected'],
+    '#description' => t('Set this to <em>Yes</em> if you would like this category to be selected by default.'),
   );
   $form['cid'] = array(
-      '#type' => 'value',
-      '#value' => $category['cid'],
+    '#type' => 'value',
+    '#value' => $category['cid'],
   );
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Save'),
+    '#type' => 'submit',
+    '#value' => t('Save'),
   );
 
   return $form;
@@ -169,8 +169,8 @@ function contact_category_edit_form_submit($form, &$form_state) {
   if ($form_state['values']['selected']) {
     // Unselect all other contact categories.
     db_update('contact')
-    ->fields(array('selected' => '0'))
-    ->execute();
+      ->fields(array('selected' => '0'))
+      ->execute();
   }
 
   if (empty($form_state['values']['cid'])) {
@@ -197,17 +197,17 @@ function contact_category_edit_form_submit($form, &$form_state) {
  */
 function contact_category_delete_form($form, &$form_state, array $contact) {
   $form['contact'] = array(
-      '#type' => 'value',
-      '#value' => $contact,
+    '#type' => 'value',
+    '#value' => $contact,
   );
 
   return confirm_form(
-      $form,
-      t('Are you sure you want to delete %category?', array('%category' => $contact['category'])),
-      'admin/structure/contact',
-      t('This action cannot be undone.'),
-      t('Delete'),
-      t('Cancel')
+    $form,
+    t('Are you sure you want to delete %category?', array('%category' => $contact['category'])),
+    'admin/structure/contact',
+    t('This action cannot be undone.'),
+    t('Delete'),
+    t('Cancel')
   );
 }
 
@@ -218,8 +218,8 @@ function contact_category_delete_form_submit($form, &$form_state) {
   $contact = $form['contact']['#value'];
 
   db_delete('contact')
-  ->condition('cid', $contact['cid'])
-  ->execute();
+    ->condition('cid', $contact['cid'])
+    ->execute();
 
   drupal_set_message(t('Category %category has been deleted.', array('%category' => $contact['category'])));
   watchdog('contact', 'Category %category has been deleted.', array('%category' => $contact['category']), WATCHDOG_NOTICE);

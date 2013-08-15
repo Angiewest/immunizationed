@@ -97,13 +97,6 @@ class DrupalQueue {
 }
 
 interface DrupalQueueInterface {
-  /**
-   * Start working with a queue.
-   *
-   * @param $name
-   *   Arbitrary string. The name of the queue to work with.
-   */
-  public function __construct($name);
 
   /**
    * Add a queue item and store it directly to the queue.
@@ -115,7 +108,7 @@ interface DrupalQueueInterface {
    *   to the queue, otherwise FALSE. We don't guarantee the item was
    *   committed to disk etc, but as far as we know, the item is now in the
    *   queue.
-  */
+   */
   public function createItem($data);
 
   /**
@@ -131,7 +124,7 @@ interface DrupalQueueInterface {
    *
    * @return
    *   An integer estimate of the number of items in the queue.
-  */
+   */
   public function numberOfItems();
 
   /**
@@ -151,7 +144,7 @@ interface DrupalQueueInterface {
    *   item it returns false. This implies a best effort to retrieve an item
    *   and either the queue is empty or there is some other non-recoverable
    *   problem.
-  */
+   */
   public function claimItem($lease_time = 3600);
 
   /**
@@ -159,7 +152,7 @@ interface DrupalQueueInterface {
    *
    * @param $item
    *   The item returned by DrupalQueueInterface::claimItem().
-  */
+   */
   public function deleteItem($item);
 
   /**
@@ -168,7 +161,7 @@ interface DrupalQueueInterface {
    *
    * @param $item
    * @return boolean
-  */
+   */
   public function releaseItem($item);
 
   /**
@@ -181,12 +174,12 @@ interface DrupalQueueInterface {
    * first time a given queue is going to be initialized (for example, to make
    * a new database table or directory to hold tasks for the queue -- it
    * depends on the queue implementation if this is necessary at all).
-  */
+   */
   public function createQueue();
 
   /**
    * Delete a queue and every item in the queue.
-  */
+   */
   public function deleteQueue();
 }
 
@@ -218,13 +211,13 @@ class SystemQueue implements DrupalReliableQueueInterface {
     // During a Drupal 6.x to 7.x update, drupal_get_schema() does not contain
     // the queue table yet, so we cannot rely on drupal_write_record().
     $query = db_insert('queue')
-    ->fields(array(
+      ->fields(array(
         'name' => $this->name,
         'data' => serialize($data),
         // We cannot rely on REQUEST_TIME because many items might be created
         // by a single request which takes longer than 1 second.
         'created' => time(),
-    ));
+      ));
     return (bool) $query->execute();
   }
 
@@ -247,11 +240,11 @@ class SystemQueue implements DrupalReliableQueueInterface {
         // time from the lease, and will tend to reset items before the lease
         // should really expire.
         $update = db_update('queue')
-        ->fields(array(
+          ->fields(array(
             'expire' => time() + $lease_time,
-        ))
-        ->condition('item_id', $item->item_id)
-        ->condition('expire', 0);
+          ))
+          ->condition('item_id', $item->item_id)
+          ->condition('expire', 0);
         // If there are affected rows, this update succeeded.
         if ($update->execute()) {
           $item->data = unserialize($item->data);
@@ -267,17 +260,17 @@ class SystemQueue implements DrupalReliableQueueInterface {
 
   public function releaseItem($item) {
     $update = db_update('queue')
-    ->fields(array(
+      ->fields(array(
         'expire' => 0,
-    ))
-    ->condition('item_id', $item->item_id);
-    return $update->execute();
+      ))
+      ->condition('item_id', $item->item_id);
+      return $update->execute();
   }
 
   public function deleteItem($item) {
     db_delete('queue')
-    ->condition('item_id', $item->item_id)
-    ->execute();
+      ->condition('item_id', $item->item_id)
+      ->execute();
   }
 
   public function createQueue() {
@@ -288,8 +281,8 @@ class SystemQueue implements DrupalReliableQueueInterface {
 
   public function deleteQueue() {
     db_delete('queue')
-    ->condition('name', $this->name)
-    ->execute();
+      ->condition('name', $this->name)
+      ->execute();
   }
 }
 
@@ -315,6 +308,12 @@ class MemoryQueue implements DrupalQueueInterface {
    */
   protected $id_sequence;
 
+  /**
+   * Start working with a queue.
+   *
+   * @param $name
+   *   Arbitrary string. The name of the queue to work with.
+   */
   public function __construct($name) {
     $this->queue = array();
     $this->id_sequence = 0;

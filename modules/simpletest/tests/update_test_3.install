@@ -12,7 +12,7 @@
  */
 function update_test_3_update_dependencies() {
   $dependencies['update_test_3'][7000] = array(
-      'update_test_2' => 7000,
+    'update_test_2' => 7000,
   );
   return $dependencies;
 }

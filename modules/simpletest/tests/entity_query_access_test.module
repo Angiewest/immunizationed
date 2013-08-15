@@ -10,11 +10,11 @@
  */
 function entity_query_access_test_menu() {
   $items['entity-query-access/test/%'] = array(
-      'title' => "Retrieve a sample of entity query access data",
-      'page callback' => 'entity_query_access_test_sample_query',
-      'page arguments' => array(2),
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
+    'title' => "Retrieve a sample of entity query access data",
+    'page callback' => 'entity_query_access_test_sample_query',
+    'page arguments' => array(2),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
   );
 
   return $items;
@@ -32,12 +32,12 @@ function entity_query_access_test_sample_query($field_name) {
 
   $query = new EntityFieldQuery();
   $query
-  ->entityCondition('entity_type', 'test_entity_bundle_key')
-  ->fieldCondition($field_name, 'value', 0, '>')
-  ->entityOrderBy('entity_id', 'ASC');
+    ->entityCondition('entity_type', 'test_entity_bundle_key')
+    ->fieldCondition($field_name, 'value', 0, '>')
+    ->entityOrderBy('entity_id', 'ASC');
   $results = array(
-      'items' => array(),
-      'title' => t('EntityFieldQuery results'),
+    'items' => array(),
+    'title' => t('EntityFieldQuery results'),
   );
   foreach ($query->execute() as $entity_type => $entity_ids) {
     foreach ($entity_ids as $entity_id => $entity_stub) {

@@ -25,53 +25,53 @@
  */
 function openid_test_menu() {
   $items['openid-test/yadis/xrds'] = array(
-      'title' => 'XRDS service document',
-      'page callback' => 'openid_test_yadis_xrds',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
+    'title' => 'XRDS service document',
+    'page callback' => 'openid_test_yadis_xrds',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
   );
   $items['openid-test/yadis/x-xrds-location'] = array(
-      'title' => 'Yadis discovery using X-XRDS-Location header',
-      'page callback' => 'openid_test_yadis_x_xrds_location',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
+    'title' => 'Yadis discovery using X-XRDS-Location header',
+    'page callback' => 'openid_test_yadis_x_xrds_location',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
   );
   $items['openid-test/yadis/http-equiv'] = array(
-      'title' => 'Yadis discovery using <meta http-equiv="X-XRDS-Location" ...>',
-      'page callback' => 'openid_test_yadis_http_equiv',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
+    'title' => 'Yadis discovery using <meta http-equiv="X-XRDS-Location" ...>',
+    'page callback' => 'openid_test_yadis_http_equiv',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
   );
   $items['openid-test/html/openid1'] = array(
-      'title' => 'HTML-based discovery using <link rel="openid.server" ...>',
-      'page callback' => 'openid_test_html_openid1',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
+    'title' => 'HTML-based discovery using <link rel="openid.server" ...>',
+    'page callback' => 'openid_test_html_openid1',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
   );
   $items['openid-test/html/openid2'] = array(
-      'title' => 'HTML-based discovery using <link rel="openid2.provider" ...>',
-      'page callback' => 'openid_test_html_openid2',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
+    'title' => 'HTML-based discovery using <link rel="openid2.provider" ...>',
+    'page callback' => 'openid_test_html_openid2',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
   );
   $items['openid-test/endpoint'] = array(
-      'title' => 'OpenID Provider Endpoint',
-      'page callback' => 'openid_test_endpoint',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
+    'title' => 'OpenID Provider Endpoint',
+    'page callback' => 'openid_test_endpoint',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
   );
   $items['openid-test/redirect'] = array(
-      'title' => 'OpenID Provider Redirection Point',
-      'page callback' => 'openid_test_redirect',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
+    'title' => 'OpenID Provider Redirection Point',
+    'page callback' => 'openid_test_redirect',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
   );
   $items['openid-test/redirected/%/%'] = array(
-      'title' => 'OpenID Provider Final URL',
-      'page callback' => 'openid_test_redirected_method',
-      'page arguments' => array(2, 3),
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
+    'title' => 'OpenID Provider Final URL',
+    'page callback' => 'openid_test_redirected_method',
+    'page arguments' => array(2, 3),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
   );
   return $items;
 }
@@ -114,56 +114,56 @@ function openid_test_yadis_xrds() {
       print "\n<!DOCTYPE dct [ <!ELEMENT blue (#PCDATA)> ]>\n";
     }
     print '
-        <xrds:XRDS xmlns:xrds="xri://$xrds" xmlns="xri://$xrd*($v*2.0)" xmlns:openid="http://openid.net/xmlns/1.0">
+      <xrds:XRDS xmlns:xrds="xri://$xrds" xmlns="xri://$xrd*($v*2.0)" xmlns:openid="http://openid.net/xmlns/1.0">
         <XRD>
-        <Status cid="' . check_plain(variable_get('openid_test_canonical_id_status', 'verified')) . '"/>
-            <ProviderID>xri://@</ProviderID>
-            <CanonicalID>http://example.com/user</CanonicalID>
-            <Service>
+          <Status cid="' . check_plain(variable_get('openid_test_canonical_id_status', 'verified')) . '"/>
+          <ProviderID>xri://@</ProviderID>
+          <CanonicalID>http://example.com/user</CanonicalID>
+          <Service>
             <Type>http://example.com/this-is-ignored</Type>
-            </Service>
-            <Service priority="5">
+          </Service>
+          <Service priority="5">
             <Type>http://openid.net/signon/1.0</Type>
             <URI>http://example.com/this-is-only-openid-1.0</URI>
-            </Service>
-            <Service priority="10">
+          </Service>
+          <Service priority="10">
             <Type>http://specs.openid.net/auth/2.0/signon</Type>
             <Type>http://openid.net/srv/ax/1.0</Type>
             <URI>' . url('openid-test/endpoint', array('absolute' => TRUE)) . '</URI>
-                <LocalID>http://example.com/xrds</LocalID>
-                </Service>
-                <Service priority="15">
-                <Type>http://specs.openid.net/auth/2.0/signon</Type>
-                <URI>http://example.com/this-has-too-low-priority</URI>
-                </Service>
-                <Service>
-                <Type>http://specs.openid.net/auth/2.0/signon</Type>
-                <URI>http://example.com/this-has-too-low-priority</URI>
-                </Service>
-                ';
+            <LocalID>http://example.com/xrds</LocalID>
+          </Service>
+          <Service priority="15">
+            <Type>http://specs.openid.net/auth/2.0/signon</Type>
+            <URI>http://example.com/this-has-too-low-priority</URI>
+          </Service>
+          <Service>
+            <Type>http://specs.openid.net/auth/2.0/signon</Type>
+            <URI>http://example.com/this-has-too-low-priority</URI>
+          </Service>
+          ';
     if (arg(3) == 'server') {
       print '
           <Service>
-          <Type>http://specs.openid.net/auth/2.0/server</Type>
-          <URI>http://example.com/this-has-too-low-priority</URI>
+            <Type>http://specs.openid.net/auth/2.0/server</Type>
+            <URI>http://example.com/this-has-too-low-priority</URI>
           </Service>
           <Service priority="20">
-          <Type>http://specs.openid.net/auth/2.0/server</Type>
-          <URI>' . url('openid-test/endpoint', array('absolute' => TRUE)) . '</URI>
-              </Service>';
+            <Type>http://specs.openid.net/auth/2.0/server</Type>
+            <URI>' . url('openid-test/endpoint', array('absolute' => TRUE)) . '</URI>
+          </Service>';
     }
     elseif (arg(3) == 'delegate') {
       print '
           <Service priority="0">
-          <Type>http://specs.openid.net/auth/2.0/signon</Type>
-          <Type>http://openid.net/srv/ax/1.0</Type>
-          <URI>' . url('openid-test/endpoint', array('absolute' => TRUE)) . '</URI>
-              <openid:Delegate>http://example.com/xrds-delegate</openid:Delegate>
-              </Service>';
+            <Type>http://specs.openid.net/auth/2.0/signon</Type>
+            <Type>http://openid.net/srv/ax/1.0</Type>
+            <URI>' . url('openid-test/endpoint', array('absolute' => TRUE)) . '</URI>
+            <openid:Delegate>http://example.com/xrds-delegate</openid:Delegate>
+          </Service>';
     }
     print '
         </XRD>
-        </xrds:XRDS>';
+      </xrds:XRDS>';
   }
   else {
     return t('This is a regular HTML page. If the client sends an Accept: application/xrds+xml header when requesting this URL, an XRDS document is returned.');
@@ -183,11 +183,11 @@ function openid_test_yadis_x_xrds_location() {
  */
 function openid_test_yadis_http_equiv() {
   $element = array(
-      '#tag' => 'meta',
-      '#attributes' => array(
-          'http-equiv' => 'X-XRDS-Location',
-          'content' => url('openid-test/yadis/xrds', array('absolute' => TRUE)),
-      ),
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'http-equiv' => 'X-XRDS-Location',
+      'content' => url('openid-test/yadis/xrds', array('absolute' => TRUE)),
+    ),
   );
   drupal_add_html_head($element, 'openid_test_yadis_http_equiv');
   return t('This page includes a &lt;meta equiv=...&gt; element containing the URL of an XRDS document.');
@@ -286,13 +286,13 @@ function _openid_test_endpoint_associate() {
   // public key and its own private key, the Relying Party can calculate the
   // shared secret, and with this it can decrypt the encrypted MAC key.
   $response = array(
-      'ns' => 'http://specs.openid.net/auth/2.0',
-      'assoc_handle' => 'openid-test',
-      'session_type' => $_REQUEST['openid_session_type'],
-      'assoc_type' => $_REQUEST['openid_assoc_type'],
-      'expires_in' => '3600',
-      'dh_server_public' => _openid_dh_long_to_base64($public),
-      'enc_mac_key' => $enc_mac_key,
+    'ns' => 'http://specs.openid.net/auth/2.0',
+    'assoc_handle' => 'openid-test',
+    'session_type' => $_REQUEST['openid_session_type'],
+    'assoc_type' => $_REQUEST['openid_assoc_type'],
+    'expires_in' => '3600',
+    'dh_server_public' => _openid_dh_long_to_base64($public),
+    'enc_mac_key' => $enc_mac_key,
   );
 
   // Respond to Relying Party in the special Key-Value Form Encoding (see OpenID
@@ -316,9 +316,9 @@ function _openid_test_endpoint_authenticate() {
   $expected_identity = variable_get('openid_test_identity');
   if ($expected_identity && $_REQUEST['openid_identity'] != $expected_identity) {
     $response = variable_get('openid_test_response', array()) + array(
-        'openid.ns' => OPENID_NS_2_0,
-        'openid.mode' => 'error',
-        'openid.error' => 'Unexpted identity',
+      'openid.ns' => OPENID_NS_2_0,
+      'openid.mode' => 'error',
+      'openid.error' => 'Unexpted identity',
     );
     drupal_add_http_header('Content-Type', 'text/plain');
     header('Location: ' . url($_REQUEST['openid_return_to'], array('query' => $response, 'external' => TRUE)));
@@ -330,14 +330,14 @@ function _openid_test_endpoint_authenticate() {
 
   // Generate response containing the user's identity.
   $response = variable_get('openid_test_response', array()) + array(
-      'openid.ns' => OPENID_NS_2_0,
-      'openid.mode' => 'id_res',
-      'openid.op_endpoint' => url('openid-test/endpoint', array('absolute' => TRUE)),
-      'openid.claimed_id' => !empty($_REQUEST['openid_claimed_id']) ? $_REQUEST['openid_claimed_id'] : '',
-      'openid.identity' => $_REQUEST['openid_identity'],
-      'openid.return_to' => $_REQUEST['openid_return_to'],
-      'openid.response_nonce' => $nonce,
-      'openid.assoc_handle' => 'openid-test',
+    'openid.ns' => OPENID_NS_2_0,
+    'openid.mode' => 'id_res',
+    'openid.op_endpoint' => url('openid-test/endpoint', array('absolute' => TRUE)),
+    'openid.claimed_id' => !empty($_REQUEST['openid_claimed_id']) ? $_REQUEST['openid_claimed_id'] : '',
+    'openid.identity' => $_REQUEST['openid_identity'],
+    'openid.return_to' => $_REQUEST['openid_return_to'],
+    'openid.response_nonce' => $nonce,
+    'openid.assoc_handle' => 'openid-test',
   );
 
   if (isset($response['openid.signed'])) {

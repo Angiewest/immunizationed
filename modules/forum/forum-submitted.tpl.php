@@ -19,11 +19,12 @@
  */
 ?>
 <?php if ($time): ?>
-<span class="submitted"> <?php print t('By !author @time ago', array(
+  <span class="submitted">
+  <?php print t('By !author @time ago', array(
     '@time' => $time,
     '!author' => $author,
     )); ?>
-</span>
+  </span>
 <?php else: ?>
-<?php print t('n/a'); ?>
+  <?php print t('n/a'); ?>
 <?php endif; ?>

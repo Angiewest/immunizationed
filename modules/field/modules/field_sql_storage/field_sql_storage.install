@@ -37,25 +37,25 @@ function _update_7000_field_sql_storage_write($entity_type, $bundle, $entity_id,
   $revision_name = "field_revision_{$field_name}";
 
   db_delete($table_name)
-  ->condition('entity_type', $entity_type)
-  ->condition('entity_id', $entity_id)
-  ->execute();
+    ->condition('entity_type', $entity_type)
+    ->condition('entity_id', $entity_id)
+    ->execute();
   db_delete($revision_name)
-  ->condition('entity_type', $entity_type)
-  ->condition('entity_id', $entity_id)
-  ->condition('revision_id', $revision_id)
-  ->execute();
+    ->condition('entity_type', $entity_type)
+    ->condition('entity_id', $entity_id)
+    ->condition('revision_id', $revision_id)
+    ->execute();
 
   $columns = array();
   foreach ($data as $langcode => $items) {
     foreach ($items as $delta => $item) {
       $record = array(
-          'entity_type' => $entity_type,
-          'entity_id' => $entity_id,
-          'revision_id' => $revision_id,
-          'bundle' => $bundle,
-          'delta' => $delta,
-          'language' => $langcode,
+        'entity_type' => $entity_type,
+        'entity_id' => $entity_id,
+        'revision_id' => $revision_id,
+        'bundle' => $bundle,
+        'delta' => $delta,
+        'language' => $langcode,
       );
       foreach ($item as $column => $value) {
         $record[_field_sql_storage_columnname($field_name, $column)] = $value;
@@ -111,9 +111,9 @@ function field_sql_storage_update_7001(&$sandbox) {
     // tables.
     $sandbox['tables'] = array();
     $results = db_select('field_config', 'fc', array('fetch' => PDO::FETCH_ASSOC))
-    ->fields('fc')
-    ->condition('storage_module', 'field_sql_storage')
-    ->execute();
+      ->fields('fc')
+      ->condition('storage_module', 'field_sql_storage')
+      ->execute();
     foreach ($results as $field) {
       if ($field['deleted']) {
         $sandbox['tables']["field_deleted_data_{$field['id']}"] = 'data';
@@ -139,20 +139,20 @@ function field_sql_storage_update_7001(&$sandbox) {
       // Add the 'entity_type' column.
       if (!db_field_exists($table, 'entity_type')) {
         $column = array(
-            'type' => 'varchar',
-            'length' => 128,
-            'not null' => TRUE,
-            'default' => '',
-            'description' => 'The entity type this data is attached to.',
+          'type' => 'varchar',
+          'length' => 128,
+          'not null' => TRUE,
+          'default' => '',
+          'description' => 'The entity type this data is attached to.',
         );
         db_add_field($table, 'entity_type', $column);
 
         // Populate the 'entity_type' column based on the 'etid' column.
         foreach ($sandbox['etids'] as $etid => $entity_type) {
           db_update($table)
-          ->fields(array('entity_type' => $entity_type))
-          ->condition('etid', $etid)
-          ->execute();
+            ->fields(array('entity_type' => $entity_type))
+            ->condition('etid', $etid)
+            ->execute();
         }
 
         // Index the new column.
@@ -162,8 +162,8 @@ function field_sql_storage_update_7001(&$sandbox) {
       // Use the 'entity_type' column in the primary key.
       db_drop_primary_key($table);
       $primary_keys = array(
-          'data' => array('entity_type', 'entity_id', 'deleted', 'delta', 'language'),
-          'revision' => array('entity_type', 'entity_id', 'revision_id', 'deleted', 'delta', 'language'),
+        'data' => array('entity_type', 'entity_id', 'deleted', 'delta', 'language'),
+        'revision' => array('entity_type', 'entity_id', 'revision_id', 'deleted', 'delta', 'language'),
       );
       db_add_primary_key($table, $primary_keys[$type]);
 
@@ -196,9 +196,9 @@ function field_sql_storage_update_7001(&$sandbox) {
  */
 function field_sql_storage_update_7002() {
   $results = db_select('field_config', 'fc', array('fetch' => PDO::FETCH_ASSOC))
-  ->fields('fc')
-  ->condition('storage_module', 'field_sql_storage')
-  ->execute();
+    ->fields('fc')
+    ->condition('storage_module', 'field_sql_storage')
+    ->execute();
   foreach ($results as $field) {
     // Revision tables of deleted fields do not need to be fixed, since no new
     // data is written to them.

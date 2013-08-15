@@ -46,8 +46,8 @@ function hook_user_load($users) {
  */
 function hook_user_delete($account) {
   db_delete('mytable')
-  ->condition('uid', $account->uid)
-  ->execute();
+    ->condition('uid', $account->uid)
+    ->execute();
 }
 
 /**
@@ -55,7 +55,7 @@ function hook_user_delete($account) {
  *
  * This hook is invoked from user_cancel() before a user account is canceled.
  * Depending on the account cancellation method, the module should either do
-   * nothing, unpublish content, or anonymize content. See user_cancel_methods()
+ * nothing, unpublish content, or anonymize content. See user_cancel_methods()
  * for the list of default account cancellation methods provided by User module.
  * Modules may add further methods via hook_user_cancel_methods_alter().
  *
@@ -81,10 +81,10 @@ function hook_user_cancel($edit, $account, $method) {
       // Unpublish nodes (current revisions).
       module_load_include('inc', 'node', 'node.admin');
       $nodes = db_select('node', 'n')
-      ->fields('n', array('nid'))
-      ->condition('uid', $account->uid)
-      ->execute()
-      ->fetchCol();
+        ->fields('n', array('nid'))
+        ->condition('uid', $account->uid)
+        ->execute()
+        ->fetchCol();
       node_mass_update($nodes, array('status' => 0));
       break;
 
@@ -92,20 +92,20 @@ function hook_user_cancel($edit, $account, $method) {
       // Anonymize nodes (current revisions).
       module_load_include('inc', 'node', 'node.admin');
       $nodes = db_select('node', 'n')
-      ->fields('n', array('nid'))
-      ->condition('uid', $account->uid)
-      ->execute()
-      ->fetchCol();
+        ->fields('n', array('nid'))
+        ->condition('uid', $account->uid)
+        ->execute()
+        ->fetchCol();
       node_mass_update($nodes, array('uid' => 0));
       // Anonymize old revisions.
       db_update('node_revision')
-      ->fields(array('uid' => 0))
-      ->condition('uid', $account->uid)
-      ->execute();
+        ->fields(array('uid' => 0))
+        ->condition('uid', $account->uid)
+        ->execute();
       // Clean history.
       db_delete('history')
-      ->condition('uid', $account->uid)
-      ->execute();
+        ->condition('uid', $account->uid)
+        ->execute();
       break;
   }
 }
@@ -141,10 +141,10 @@ function hook_user_cancel_methods_alter(&$methods) {
 
   // Add a custom zero-out method.
   $methods['mymodule_zero_out'] = array(
-      'title' => t('Delete the account and remove all content.'),
-      'description' => t('All your content will be replaced by empty strings.'),
-      // access should be used for administrative methods only.
-      'access' => user_access('access zero-out account cancellation method'),
+    'title' => t('Delete the account and remove all content.'),
+    'description' => t('All your content will be replaced by empty strings.'),
+    // access should be used for administrative methods only.
+    'access' => user_access('access zero-out account cancellation method'),
   );
 }
 
@@ -167,17 +167,17 @@ function hook_user_cancel_methods_alter(&$methods) {
  */
 function hook_user_operations() {
   $operations = array(
-      'unblock' => array(
-          'label' => t('Unblock the selected users'),
-          'callback' => 'user_user_operations_unblock',
-      ),
-      'block' => array(
-          'label' => t('Block the selected users'),
-          'callback' => 'user_user_operations_block',
-      ),
-      'cancel' => array(
-          'label' => t('Cancel the selected user accounts'),
-      ),
+    'unblock' => array(
+      'label' => t('Unblock the selected users'),
+      'callback' => 'user_user_operations_unblock',
+    ),
+    'block' => array(
+      'label' => t('Block the selected users'),
+      'callback' => 'user_user_operations_block',
+    ),
+    'cancel' => array(
+      'label' => t('Cancel the selected user accounts'),
+    ),
   );
   return $operations;
 }
@@ -199,9 +199,9 @@ function hook_user_operations() {
  */
 function hook_user_categories() {
   return array(array(
-      'name' => 'account',
-      'title' => t('Account settings'),
-      'weight' => 1,
+    'name' => 'account',
+    'title' => t('Account settings'),
+    'weight' => 1,
   ));
 }
 
@@ -251,11 +251,11 @@ function hook_user_presave(&$edit, $account, $category) {
  */
 function hook_user_insert(&$edit, $account, $category) {
   db_insert('mytable')
-  ->fields(array(
-  'myfield' => $edit['myfield'],
-  'uid' => $account->uid,
-  ))
-  ->execute();
+    ->fields(array(
+      'myfield' => $edit['myfield'],
+      'uid' => $account->uid,
+    ))
+    ->execute();
 }
 
 /**
@@ -276,11 +276,11 @@ function hook_user_insert(&$edit, $account, $category) {
  */
 function hook_user_update(&$edit, $account, $category) {
   db_insert('user_changes')
-  ->fields(array(
-  'uid' => $account->uid,
-  'changed' => time(),
-  ))
-  ->execute();
+    ->fields(array(
+      'uid' => $account->uid,
+      'changed' => time(),
+    ))
+    ->execute();
 }
 
 /**
@@ -314,11 +314,11 @@ function hook_user_login(&$edit, $account) {
  */
 function hook_user_logout($account) {
   db_insert('logouts')
-  ->fields(array(
-  'uid' => $account->uid,
-  'time' => time(),
-  ))
-  ->execute();
+    ->fields(array(
+      'uid' => $account->uid,
+      'time' => time(),
+    ))
+    ->execute();
 }
 
 /**
@@ -348,10 +348,10 @@ function hook_user_logout($account) {
 function hook_user_view($account, $view_mode, $langcode) {
   if (user_access('create blog content', $account)) {
     $account->content['summary']['blog'] =  array(
-        '#type' => 'user_profile_item',
-        '#title' => t('Blog'),
-        '#markup' => l(t('View recent blog entries'), "blog/$account->uid", array('attributes' => array('title' => t("Read !username's latest blog entries.", array('!username' => format_username($account)))))),
-        '#attributes' => array('class' => array('blog')),
+      '#type' => 'user_profile_item',
+      '#title' => t('Blog'),
+      '#markup' => l(t('View recent blog entries'), "blog/$account->uid", array('attributes' => array('title' => t("Read !username's latest blog entries.", array('!username' => format_username($account)))))),
+      '#attributes' => array('class' => array('blog')),
     );
   }
 }
@@ -418,11 +418,11 @@ function hook_user_role_presave($role) {
 function hook_user_role_insert($role) {
   // Save extra fields provided by the module to user roles.
   db_insert('my_module_table')
-  ->fields(array(
-  'rid' => $role->rid,
-  'role_description' => $role->description,
-  ))
-  ->execute();
+    ->fields(array(
+      'rid' => $role->rid,
+      'role_description' => $role->description,
+    ))
+    ->execute();
 }
 
 /**
@@ -439,11 +439,11 @@ function hook_user_role_insert($role) {
 function hook_user_role_update($role) {
   // Save extra fields provided by the module to user roles.
   db_merge('my_module_table')
-  ->key(array('rid' => $role->rid))
-  ->fields(array(
-  'role_description' => $role->description
-  ))
-  ->execute();
+    ->key(array('rid' => $role->rid))
+    ->fields(array(
+      'role_description' => $role->description
+    ))
+    ->execute();
 }
 
 /**
@@ -460,8 +460,8 @@ function hook_user_role_update($role) {
 function hook_user_role_delete($role) {
   // Delete existing instances of the deleted role.
   db_delete('my_module_table')
-  ->condition('rid', $role->rid)
-  ->execute();
+    ->condition('rid', $role->rid)
+    ->execute();
 }
 
 /**

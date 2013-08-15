@@ -5,29 +5,29 @@
  */
 function error_test_menu() {
   $items['error-test/generate-warnings'] = array(
-      'title' => 'Generate warnings',
-      'page callback' => 'error_test_generate_warnings',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
+    'title' => 'Generate warnings',
+    'page callback' => 'error_test_generate_warnings',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
   );
   $items['error-test/generate-warnings-with-report'] = array(
-      'title' => 'Generate warnings with Simpletest reporting',
-      'page callback' => 'error_test_generate_warnings',
-      'page arguments' => array(TRUE),
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
+    'title' => 'Generate warnings with Simpletest reporting',
+    'page callback' => 'error_test_generate_warnings',
+    'page arguments' => array(TRUE),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
   );
   $items['error-test/trigger-exception'] = array(
-      'title' => 'Trigger an exception',
-      'page callback' => 'error_test_trigger_exception',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
+    'title' => 'Trigger an exception',
+    'page callback' => 'error_test_trigger_exception',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
   );
   $items['error-test/trigger-pdo-exception'] = array(
-      'title' => 'Trigger a PDO exception',
-      'page callback' => 'error_test_trigger_pdo_exception',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
+    'title' => 'Trigger a PDO exception',
+    'page callback' => 'error_test_trigger_pdo_exception',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
   );
 
   return $items;

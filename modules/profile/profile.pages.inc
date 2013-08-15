@@ -28,17 +28,17 @@ function profile_browse() {
 
     // Compile a list of fields to show.
     $fields = db_query('SELECT name, title, type, weight, page FROM {profile_field} WHERE fid <> :fid AND visibility = :visibility ORDER BY weight', array(
-        ':fid' => $field->fid,
-        ':visibility' => PROFILE_PUBLIC_LISTINGS,
+      ':fid' => $field->fid,
+      ':visibility' => PROFILE_PUBLIC_LISTINGS,
     ))->fetchAll();
 
     $query = db_select('users', 'u')->extend('PagerDefault');
     $query->join('profile_value', 'v', 'u.uid = v.uid');
     $query
-    ->fields('u', array('uid', 'access'))
-    ->condition('v.fid', $field->fid)
-    ->condition('u.status', 0, '<>')
-    ->orderBy('u.access', 'DESC');
+      ->fields('u', array('uid', 'access'))
+      ->condition('v.fid', $field->fid)
+      ->condition('u.status', 0, '<>')
+      ->orderBy('u.access', 'DESC');
 
     // Determine what query to use:
     $arguments = array($field->fid);
@@ -59,9 +59,9 @@ function profile_browse() {
     }
 
     $uids = $query
-    ->limit(20)
-    ->execute()
-    ->fetchCol();
+      ->limit(20)
+      ->execute()
+      ->fetchCol();
 
     // Load the users.
     $users = user_load_multiple($uids);
@@ -94,13 +94,13 @@ function profile_browse() {
     // Extract the affected users:
     $query = db_select('users', 'u')->extend('PagerDefault');
     $uids = $query
-    ->fields('u', array('uid', 'access'))
-    ->condition('u.uid', 0, '>')
-    ->condition('u.status', 0, '>')
-    ->orderBy('u.access', 'DESC')
-    ->limit(20)
-    ->execute()
-    ->fetchCol();
+      ->fields('u', array('uid', 'access'))
+      ->condition('u.uid', 0, '>')
+      ->condition('u.status', 0, '>')
+      ->orderBy('u.access', 'DESC')
+      ->limit(20)
+      ->execute()
+      ->fetchCol();
     $users = user_load_multiple($uids);
     $content = '';
     foreach ($users as $account) {
@@ -123,13 +123,13 @@ function profile_autocomplete($field, $string) {
   $autocomplete_field = (bool) db_query_range("SELECT 1 FROM {profile_field} WHERE fid = :fid AND autocomplete = 1", 0, 1, array(':fid' => $field))->fetchField();
   if ($autocomplete_field) {
     $values = db_select('profile_value')
-    ->fields('profile_value', array('value'))
-    ->condition('fid', $field)
-    ->condition('value', db_like($string) . '%', 'LIKE')
-    ->groupBy('value')
-    ->orderBy('value')
-    ->range(0, 10)
-    ->execute()->fetchCol();
+      ->fields('profile_value', array('value'))
+      ->condition('fid', $field)
+      ->condition('value', db_like($string) . '%', 'LIKE')
+      ->groupBy('value')
+      ->orderBy('value')
+      ->range(0, 10)
+      ->execute()->fetchCol();
     foreach ($values as $value) {
       $matches[$value] = check_plain($value);
     }

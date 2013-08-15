@@ -10,14 +10,14 @@
  */
 function image_test_image_toolkits() {
   return array(
-      'test' => array(
-          'title' => t('A dummy toolkit that works'),
-          'available' => TRUE,
-      ),
-      'broken' => array(
-          'title' => t('A dummy toolkit that is "broken"'),
-          'available' => FALSE,
-      ),
+    'test' => array(
+      'title' => t('A dummy toolkit that works'),
+      'available' => TRUE,
+    ),
+    'broken' => array(
+      'title' => t('A dummy toolkit that is "broken"'),
+      'available' => FALSE,
+    ),
   );
 }
 
@@ -29,13 +29,13 @@ function image_test_image_toolkits() {
 function image_test_reset() {
   // Keep track of calls to these operations
   $results = array(
-      'load' => array(),
-      'save' => array(),
-      'settings' => array(),
-      'resize' => array(),
-      'rotate' => array(),
-      'crop' => array(),
-      'desaturate' => array(),
+    'load' => array(),
+    'save' => array(),
+    'settings' => array(),
+    'resize' => array(),
+    'rotate' => array(),
+    'crop' => array(),
+    'desaturate' => array(),
   );
   variable_set('image_test_results', $results);
 }

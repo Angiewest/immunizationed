@@ -11,14 +11,14 @@
  */
 function field_test_field_storage_info() {
   return array(
-      'field_test_storage' => array(
-          'label' => t('Test storage'),
-          'description' => t('Dummy test storage backend. Stores field values in the variable table.'),
-      ),
-      'field_test_storage_failure' => array(
-          'label' => t('Test storage failure'),
-          'description' => t('Dummy test storage backend. Always fails to create fields.'),
-      ),
+    'field_test_storage' => array(
+      'label' => t('Test storage'),
+      'description' => t('Dummy test storage backend. Stores field values in the variable table.'),
+    ),
+    'field_test_storage_failure' => array(
+      'label' => t('Test storage failure'),
+      'description' => t('Dummy test storage backend. Always fails to create fields.'),
+    ),
   );
 }
 
@@ -34,10 +34,10 @@ function field_test_field_storage_details($field) {
     $columns[$column_name] = $column_name;
   }
   return array(
-      'drupal_variables' => array(
-          'field_test_storage_data[FIELD_LOAD_CURRENT]' => $columns,
-          'field_test_storage_data[FIELD_LOAD_REVISION]' => $columns,
-      ),
+    'drupal_variables' => array(
+      'field_test_storage_data[FIELD_LOAD_CURRENT]' => $columns,
+      'field_test_storage_data[FIELD_LOAD_REVISION]' => $columns,
+    ),
   );
 }
 
@@ -55,12 +55,12 @@ function field_test_field_storage_details_alter(&$details, $field) {
       $columns[$column_name] = $column_name;
     }
     $details['drupal_variables'] = array(
-        FIELD_LOAD_CURRENT => array(
-            'moon' => $columns,
-        ),
-        FIELD_LOAD_REVISION => array(
-            'mars' => $columns,
-        ),
+      FIELD_LOAD_CURRENT => array(
+        'moon' => $columns,
+      ),
+      FIELD_LOAD_REVISION => array(
+        'mars' => $columns,
+      ),
     );
   }
 }
@@ -155,14 +155,14 @@ function field_test_field_storage_write($entity_type, $entity, $op, $fields) {
       $delta_count = 0;
       foreach ($items as $delta => $item) {
         $row = (object) array(
-            'field_id' => $field_id,
-            'type' => $entity_type,
-            'entity_id' => $id,
-            'revision_id' => $vid,
-            'bundle' => $bundle,
-            'delta' => $delta,
-            'deleted' => FALSE,
-            'language' => $langcode,
+          'field_id' => $field_id,
+          'type' => $entity_type,
+          'entity_id' => $id,
+          'revision_id' => $vid,
+          'bundle' => $bundle,
+          'delta' => $delta,
+          'deleted' => FALSE,
+          'language' => $langcode,
         );
         foreach ($field['columns'] as $column => $attributes) {
           $row->{$column} = isset($item[$column]) ? $item[$column] : NULL;
@@ -256,7 +256,7 @@ function field_test_field_storage_query($field_id, $conditions, $count, &$cursor
   // We need to sort records by entity type and entity id.
   usort($field_data[$sub_table], '_field_test_field_storage_query_sort_helper');
 
-  // Initialize results array.
+    // Initialize results array.
   $return = array();
   $entity_count = 0;
   $rows_count = 0;
@@ -375,8 +375,8 @@ function field_test_field_storage_create_field($field) {
   $data = _field_test_storage_data();
 
   $data[$field['id']] = array(
-      'current' => array(),
-      'revisions' => array(),
+    'current' => array(),
+    'revisions' => array(),
   );
 
   _field_test_storage_data($data);

@@ -105,13 +105,13 @@
 function hook_block_info() {
   // This example comes from node.module.
   $blocks['syndicate'] = array(
-      'info' => t('Syndicate'),
-      'cache' => DRUPAL_NO_CACHE
+    'info' => t('Syndicate'),
+    'cache' => DRUPAL_NO_CACHE
   );
 
   $blocks['recent'] = array(
-      'info' => t('Recent content'),
-      // DRUPAL_CACHE_PER_ROLE will be assumed.
+    'info' => t('Recent content'),
+    // DRUPAL_CACHE_PER_ROLE will be assumed.
   );
 
   return $blocks;
@@ -159,10 +159,10 @@ function hook_block_configure($delta = '') {
   $form = array();
   if ($delta == 'recent') {
     $form['node_recent_block_count'] = array(
-        '#type' => 'select',
-        '#title' => t('Number of recent content items to display'),
-        '#default_value' => variable_get('node_recent_block_count', 10),
-        '#options' => drupal_map_assoc(array(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 30)),
+      '#type' => 'select',
+      '#title' => t('Number of recent content items to display'),
+      '#default_value' => variable_get('node_recent_block_count', 10),
+      '#options' => drupal_map_assoc(array(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 30)),
     );
   }
   return $form;
@@ -220,9 +220,9 @@ function hook_block_view($delta = '') {
     case 'syndicate':
       $block['subject'] = t('Syndicate');
       $block['content'] = array(
-          '#theme' => 'feed_icon',
-          '#url' => 'rss.xml',
-          '#title' => t('Syndicate'),
+        '#theme' => 'feed_icon',
+        '#url' => 'rss.xml',
+        '#title' => t('Syndicate'),
       );
       break;
 
@@ -231,8 +231,8 @@ function hook_block_view($delta = '') {
         $block['subject'] = t('Recent content');
         if ($nodes = node_get_recent(variable_get('node_recent_block_count', 10))) {
           $block['content'] = array(
-              '#theme' => 'node_recent_block',
-              '#nodes' => $nodes,
+            '#theme' => 'node_recent_block',
+            '#nodes' => $nodes,
           );
         } else {
           $block['content'] = t('No content available.');

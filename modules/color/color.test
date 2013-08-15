@@ -15,9 +15,9 @@ class ColorTestCase extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Color functionality',
-        'description' => 'Modify the Bartik and Garland theme colors and make sure the changes are reflected on the frontend',
-        'group' => 'Color',
+      'name' => 'Color functionality',
+      'description' => 'Modify the Bartik and Garland theme colors and make sure the changes are reflected on the frontend',
+      'group' => 'Color',
     );
   }
 
@@ -29,30 +29,30 @@ class ColorTestCase extends DrupalWebTestCase {
 
     // This tests the color module in both Bartik and Garland.
     $this->themes = array(
-        'bartik' => array(
-            'palette_input' => 'palette[bg]',
-            'scheme' => 'slate',
-            'scheme_color' => '#3b3b3b',
-        ),
-        'garland' => array(
-            'palette_input' => 'palette[link]',
-            'scheme' => 'greenbeam',
-            'scheme_color' => '#0c7a00',
-        ),
+      'bartik' => array(
+        'palette_input' => 'palette[bg]',
+        'scheme' => 'slate',
+        'scheme_color' => '#3b3b3b',
+      ),
+      'garland' => array(
+        'palette_input' => 'palette[link]',
+        'scheme' => 'greenbeam',
+        'scheme_color' => '#0c7a00',
+      ),
     );
     theme_enable(array_keys($this->themes));
 
     // Array filled with valid and not valid color values
     $this->colorTests = array(
-        '#000' => TRUE,
-        '#123456' => TRUE,
-        '#abcdef' => TRUE,
-        '#0' => FALSE,
-        '#00' => FALSE,
-        '#0000' => FALSE,
-        '#00000' => FALSE,
-        '123456' => FALSE,
-        '#00000g' => FALSE,
+      '#000' => TRUE,
+      '#123456' => TRUE,
+      '#abcdef' => TRUE,
+      '#0' => FALSE,
+      '#00' => FALSE,
+      '#0000' => FALSE,
+      '#00000' => FALSE,
+      '123456' => FALSE,
+      '#00000g' => FALSE,
     );
   }
 

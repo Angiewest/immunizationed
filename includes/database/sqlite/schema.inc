@@ -195,37 +195,37 @@ class DatabaseSchema_sqlite extends DatabaseSchema {
     // database types back into schema types.
     // $map does not use drupal_static as its value never changes.
     static $map = array(
-        'varchar:normal'  => 'VARCHAR',
-        'char:normal'     => 'CHAR',
+      'varchar:normal'  => 'VARCHAR',
+      'char:normal'     => 'CHAR',
 
-        'text:tiny'       => 'TEXT',
-        'text:small'      => 'TEXT',
-        'text:medium'     => 'TEXT',
-        'text:big'        => 'TEXT',
-        'text:normal'     => 'TEXT',
+      'text:tiny'       => 'TEXT',
+      'text:small'      => 'TEXT',
+      'text:medium'     => 'TEXT',
+      'text:big'        => 'TEXT',
+      'text:normal'     => 'TEXT',
 
-        'serial:tiny'     => 'INTEGER',
-        'serial:small'    => 'INTEGER',
-        'serial:medium'   => 'INTEGER',
-        'serial:big'      => 'INTEGER',
-        'serial:normal'   => 'INTEGER',
+      'serial:tiny'     => 'INTEGER',
+      'serial:small'    => 'INTEGER',
+      'serial:medium'   => 'INTEGER',
+      'serial:big'      => 'INTEGER',
+      'serial:normal'   => 'INTEGER',
 
-        'int:tiny'        => 'INTEGER',
-        'int:small'       => 'INTEGER',
-        'int:medium'      => 'INTEGER',
-        'int:big'         => 'INTEGER',
-        'int:normal'      => 'INTEGER',
+      'int:tiny'        => 'INTEGER',
+      'int:small'       => 'INTEGER',
+      'int:medium'      => 'INTEGER',
+      'int:big'         => 'INTEGER',
+      'int:normal'      => 'INTEGER',
 
-        'float:tiny'      => 'FLOAT',
-        'float:small'     => 'FLOAT',
-        'float:medium'    => 'FLOAT',
-        'float:big'       => 'FLOAT',
-        'float:normal'    => 'FLOAT',
+      'float:tiny'      => 'FLOAT',
+      'float:small'     => 'FLOAT',
+      'float:medium'    => 'FLOAT',
+      'float:big'       => 'FLOAT',
+      'float:normal'    => 'FLOAT',
 
-        'numeric:normal'  => 'NUMERIC',
+      'numeric:normal'  => 'NUMERIC',
 
-        'blob:big'        => 'BLOB',
-        'blob:normal'     => 'BLOB',
+      'blob:big'        => 'BLOB',
+      'blob:normal'     => 'BLOB',
     );
     return $map;
   }
@@ -296,8 +296,8 @@ class DatabaseSchema_sqlite extends DatabaseSchema {
       // Apply the initial value if set.
       if (isset($specification['initial'])) {
         $this->connection->update($table)
-        ->fields(array($field => $specification['initial']))
-        ->execute();
+          ->fields(array($field => $specification['initial']))
+          ->execute();
       }
     }
     else {
@@ -314,8 +314,8 @@ class DatabaseSchema_sqlite extends DatabaseSchema {
       if (isset($specification['initial'])) {
         // If we have a initial value, copy it over.
         $mapping[$field] = array(
-            'expression' => ':newfieldinitial',
-            'arguments' => array(':newfieldinitial' => $specification['initial']),
+          'expression' => ':newfieldinitial',
+          'arguments' => array(':newfieldinitial' => $specification['initial']),
         );
       }
       else {
@@ -383,8 +383,8 @@ class DatabaseSchema_sqlite extends DatabaseSchema {
 
     // Execute the data migration query.
     $this->connection->insert($new_table)
-    ->from($select)
-    ->execute();
+      ->from($select)
+      ->execute();
 
     $old_count = $this->connection->query('SELECT COUNT(*) FROM {' . $table . '}')->fetchField();
     $new_count = $this->connection->query('SELECT COUNT(*) FROM {' . $new_table . '}')->fetchField();
@@ -410,10 +410,10 @@ class DatabaseSchema_sqlite extends DatabaseSchema {
   protected function introspectSchema($table) {
     $mapped_fields = array_flip($this->getFieldTypeMap());
     $schema = array(
-        'fields' => array(),
-        'primary key' => array(),
-        'unique keys' => array(),
-        'indexes' => array(),
+      'fields' => array(),
+      'primary key' => array(),
+      'unique keys' => array(),
+      'indexes' => array(),
     );
 
     $info = $this->getPrefixInfo($table);
@@ -430,10 +430,10 @@ class DatabaseSchema_sqlite extends DatabaseSchema {
       if (isset($mapped_fields[$type])) {
         list($type, $size) = explode(':', $mapped_fields[$type]);
         $schema['fields'][$row->name] = array(
-            'type' => $type,
-            'size' => $size,
-            'not null' => !empty($row->notnull),
-            'default' => trim($row->dflt_value, "'"),
+          'type' => $type,
+          'size' => $size,
+          'not null' => !empty($row->notnull),
+          'default' => trim($row->dflt_value, "'"),
         );
         if ($length) {
           $schema['fields'][$row->name]['length'] = $length;
@@ -451,8 +451,8 @@ class DatabaseSchema_sqlite extends DatabaseSchema {
     foreach ($result as $row) {
       if (strpos($row->name, 'sqlite_autoindex_') !== 0) {
         $indexes[] = array(
-            'schema_key' => $row->unique ? 'unique keys' : 'indexes',
-            'name' => $row->name,
+          'schema_key' => $row->unique ? 'unique keys' : 'indexes',
+          'name' => $row->name,
         );
       }
     }
@@ -675,8 +675,8 @@ class DatabaseSchema_sqlite extends DatabaseSchema {
     // Can't use query placeholders for the schema because the query would have
     // to be :prefixsqlite_master, which does not work.
     $result = db_query("SELECT name FROM " . $info['schema'] . ".sqlite_master WHERE type = :type AND name LIKE :table_name", array(
-        ':type' => 'table',
-        ':table_name' => $info['table'],
+      ':type' => 'table',
+      ':table_name' => $info['table'],
     ));
     return $result->fetchAllKeyed(0, 0);
   }

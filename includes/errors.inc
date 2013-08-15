@@ -15,19 +15,19 @@
  */
 function drupal_error_levels() {
   $types = array(
-      E_ERROR => array('Error', WATCHDOG_ERROR),
-      E_WARNING => array('Warning', WATCHDOG_WARNING),
-      E_PARSE => array('Parse error', WATCHDOG_ERROR),
-      E_NOTICE => array('Notice', WATCHDOG_NOTICE),
-      E_CORE_ERROR => array('Core error', WATCHDOG_ERROR),
-      E_CORE_WARNING => array('Core warning', WATCHDOG_WARNING),
-      E_COMPILE_ERROR => array('Compile error', WATCHDOG_ERROR),
-      E_COMPILE_WARNING => array('Compile warning', WATCHDOG_WARNING),
-      E_USER_ERROR => array('User error', WATCHDOG_ERROR),
-      E_USER_WARNING => array('User warning', WATCHDOG_WARNING),
-      E_USER_NOTICE => array('User notice', WATCHDOG_NOTICE),
-      E_STRICT => array('Strict warning', WATCHDOG_DEBUG),
-      E_RECOVERABLE_ERROR => array('Recoverable fatal error', WATCHDOG_ERROR),
+    E_ERROR => array('Error', WATCHDOG_ERROR),
+    E_WARNING => array('Warning', WATCHDOG_WARNING),
+    E_PARSE => array('Parse error', WATCHDOG_ERROR),
+    E_NOTICE => array('Notice', WATCHDOG_NOTICE),
+    E_CORE_ERROR => array('Core error', WATCHDOG_ERROR),
+    E_CORE_WARNING => array('Core warning', WATCHDOG_WARNING),
+    E_COMPILE_ERROR => array('Compile error', WATCHDOG_ERROR),
+    E_COMPILE_WARNING => array('Compile warning', WATCHDOG_WARNING),
+    E_USER_ERROR => array('User error', WATCHDOG_ERROR),
+    E_USER_WARNING => array('User warning', WATCHDOG_WARNING),
+    E_USER_NOTICE => array('User notice', WATCHDOG_NOTICE),
+    E_STRICT => array('Strict warning', WATCHDOG_DEBUG),
+    E_RECOVERABLE_ERROR => array('Recoverable fatal error', WATCHDOG_ERROR),
   );
   // E_DEPRECATED and E_USER_DEPRECATED were added in PHP 5.3.0.
   if (defined('E_DEPRECATED')) {
@@ -64,14 +64,14 @@ function _drupal_error_handler_real($error_level, $message, $filename, $line, $c
 
     // We treat recoverable errors as fatal.
     _drupal_log_error(array(
-    '%type' => isset($types[$error_level]) ? $severity_msg : 'Unknown error',
-    // The standard PHP error handler considers that the error messages
-    // are HTML. We mimick this behavior here.
-    '!message' => filter_xss_admin($message),
-    '%function' => $caller['function'],
-    '%file' => $caller['file'],
-    '%line' => $caller['line'],
-    'severity_level' => $severity_level,
+      '%type' => isset($types[$error_level]) ? $severity_msg : 'Unknown error',
+      // The standard PHP error handler considers that the error messages
+      // are HTML. We mimick this behavior here.
+      '!message' => filter_xss_admin($message),
+      '%function' => $caller['function'],
+      '%file' => $caller['file'],
+      '%line' => $caller['line'],
+      'severity_level' => $severity_level,
     ), $error_level == E_RECOVERABLE_ERROR);
   }
 }
@@ -101,7 +101,7 @@ function _drupal_decode_exception($exception) {
     $db_functions = array('db_query',  'db_query_range');
     while (!empty($backtrace[1]) && ($caller = $backtrace[1]) &&
         ((isset($caller['class']) && (strpos($caller['class'], 'Query') !== FALSE || strpos($caller['class'], 'Database') !== FALSE || strpos($caller['class'], 'PDO') !== FALSE)) ||
-            in_array($caller['function'], $db_functions))) {
+        in_array($caller['function'], $db_functions))) {
       // We remove that call.
       array_shift($backtrace);
     }
@@ -112,14 +112,14 @@ function _drupal_decode_exception($exception) {
   $caller = _drupal_get_last_caller($backtrace);
 
   return array(
-      '%type' => get_class($exception),
-      // The standard PHP exception handler considers that the exception message
-      // is plain-text. We mimick this behavior here.
-      '!message' => check_plain($message),
-      '%function' => $caller['function'],
-      '%file' => $caller['file'],
-      '%line' => $caller['line'],
-      'severity_level' => WATCHDOG_ERROR,
+    '%type' => get_class($exception),
+    // The standard PHP exception handler considers that the exception message
+    // is plain-text. We mimick this behavior here.
+    '!message' => check_plain($message),
+    '%function' => $caller['function'],
+    '%file' => $caller['file'],
+    '%line' => $caller['line'],
+    'severity_level' => WATCHDOG_ERROR,
   );
 }
 
@@ -153,7 +153,7 @@ function error_displayable($error = NULL) {
   $updating = (defined('MAINTENANCE_MODE') && MAINTENANCE_MODE == 'update');
   $all_errors_displayed = ($error_level == ERROR_REPORTING_DISPLAY_ALL);
   $error_needs_display = ($error_level == ERROR_REPORTING_DISPLAY_SOME &&
-      isset($error) && $error['%type'] != 'Notice' && $error['%type'] != 'Strict warning');
+    isset($error) && $error['%type'] != 'Notice' && $error['%type'] != 'Strict warning');
 
   return ($updating || $all_errors_displayed || $error_needs_display);
 }
@@ -169,7 +169,7 @@ function error_displayable($error = NULL) {
  *   TRUE if the error is fatal.
  */
 function _drupal_log_error($error, $fatal = FALSE) {
-  // Initialize a maintenance theme if the boostrap was not complete.
+  // Initialize a maintenance theme if the bootstrap was not complete.
   // Do it early because drupal_set_message() triggers a drupal_theme_initialize().
   if ($fatal && (drupal_get_bootstrap_phase() != DRUPAL_BOOTSTRAP_FULL)) {
     unset($GLOBALS['theme']);
@@ -187,13 +187,13 @@ function _drupal_log_error($error, $fatal = FALSE) {
     // as it uniquely identifies each PHP error.
     static $number = 0;
     $assertion = array(
-        $error['!message'],
-        $error['%type'],
-        array(
-            'function' => $error['%function'],
-            'file' => $error['%file'],
-            'line' => $error['%line'],
-        ),
+      $error['!message'],
+      $error['%type'],
+      array(
+        'function' => $error['%function'],
+        'file' => $error['%file'],
+        'line' => $error['%line'],
+      ),
     );
     header('X-Drupal-Assertion-' . $number . ': ' . rawurlencode(serialize($assertion)));
     $number++;
@@ -262,7 +262,7 @@ function _drupal_get_last_caller($backtrace) {
   // information about file and line. Ignore black listed functions.
   $blacklist = array('debug', '_drupal_error_handler', '_drupal_exception_handler');
   while (($backtrace && !isset($backtrace[0]['line'])) ||
-      (isset($backtrace[1]['function']) && in_array($backtrace[1]['function'], $blacklist))) {
+         (isset($backtrace[1]['function']) && in_array($backtrace[1]['function'], $blacklist))) {
     array_shift($backtrace);
   }
 

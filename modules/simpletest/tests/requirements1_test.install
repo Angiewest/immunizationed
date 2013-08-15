@@ -11,9 +11,9 @@ function requirements1_test_requirements($phase) {
   // Always fails requirements.
   if ('install' == $phase) {
     $requirements['requirements1_test'] = array(
-        'title' => $t('Requirements 1 Test'),
-        'severity' => REQUIREMENT_ERROR,
-        'description' => $t('Requirements 1 Test failed requirements.'),
+      'title' => $t('Requirements 1 Test'),
+      'severity' => REQUIREMENT_ERROR,
+      'description' => $t('Requirements 1 Test failed requirements.'),
     );
   }
 

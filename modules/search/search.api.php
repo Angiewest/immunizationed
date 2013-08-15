@@ -30,49 +30,20 @@
  *
  * @return
  *   Array with optional keys:
- *   - 'title': Title for the tab on the search page for this module. Defaults
+ *   - title: Title for the tab on the search page for this module. Defaults
  *     to the module name if not given.
- *   - 'path': Path component after 'search/' for searching with this module.
+ *   - path: Path component after 'search/' for searching with this module.
  *     Defaults to the module name if not given.
- *   - 'conditions_callback': Name of a callback function that is invoked by
- *     search_view() to get an array of additional search conditions to pass to
- *     search_data(). For example, a search module may get additional keywords,
- *     filters, or modifiers for the search from the query string. Sample
- *     callback function: sample_search_conditions_callback().
+ *   - conditions_callback: An implementation of callback_search_conditions().
  *
  * @ingroup search
  */
 function hook_search_info() {
   return array(
-      'title' => 'Content',
-      'path' => 'node',
-      'conditions_callback' => 'sample_search_conditions_callback',
+    'title' => 'Content',
+    'path' => 'node',
+    'conditions_callback' => 'callback_search_conditions',
   );
-}
-
-/**
- * An example conditions callback function for search.
- *
- * This example pulls additional search keywords out of the $_REQUEST variable,
- * (i.e. from the query string of the request). The conditions may also be
- * generated internally - for example based on a module's settings.
- *
- * @see hook_search_info()
- * @ingroup search
- */
-function sample_search_conditions_callback($keys) {
-  $conditions = array();
-
-  if (!empty($_REQUEST['keys'])) {
-    $conditions['keys'] = $_REQUEST['keys'];
-  }
-  if (!empty($_REQUEST['sample_search_keys'])) {
-    $conditions['sample_search_keys'] = $_REQUEST['sample_search_keys'];
-  }
-  if ($force_keys = variable_get('sample_search_force_keywords', '')) {
-    $conditions['sample_search_force_keywords'] = $force_keys;
-  }
-  return $conditions;
 }
 
 /**
@@ -97,9 +68,9 @@ function hook_search_access() {
  */
 function hook_search_reset() {
   db_update('search_dataset')
-  ->fields(array('reindex' => REQUEST_TIME))
-  ->condition('type', 'node')
-  ->execute();
+    ->fields(array('reindex' => REQUEST_TIME))
+    ->condition('type', 'node')
+    ->execute();
 }
 
 /**
@@ -133,22 +104,22 @@ function hook_search_status() {
 function hook_search_admin() {
   // Output form for defining rank factor weights.
   $form['content_ranking'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Content ranking'),
+    '#type' => 'fieldset',
+    '#title' => t('Content ranking'),
   );
   $form['content_ranking']['#theme'] = 'node_search_admin';
   $form['content_ranking']['info'] = array(
-      '#value' => '<em>' . t('The following numbers control which properties the content search should favor when ordering the results. Higher numbers mean more influence, zero means the property is ignored. Changing these numbers does not require the search index to be rebuilt. Changes take effect immediately.') . '</em>'
+    '#value' => '<em>' . t('The following numbers control which properties the content search should favor when ordering the results. Higher numbers mean more influence, zero means the property is ignored. Changing these numbers does not require the search index to be rebuilt. Changes take effect immediately.') . '</em>'
   );
 
   // Note: reversed to reflect that higher number = higher ranking.
   $options = drupal_map_assoc(range(0, 10));
   foreach (module_invoke_all('ranking') as $var => $values) {
     $form['content_ranking']['factors']['node_rank_' . $var] = array(
-        '#title' => $values['title'],
-        '#type' => 'select',
-        '#options' => $options,
-        '#default_value' => variable_get('node_rank_' . $var, 0),
+      '#title' => $values['title'],
+      '#type' => 'select',
+      '#options' => $options,
+      '#default_value' => variable_get('node_rank_' . $var, 0),
     );
   }
   return $form;
@@ -198,9 +169,9 @@ function hook_search_execute($keys = NULL, $conditions = NULL) {
   $query = db_select('search_index', 'i', array('target' => 'slave'))->extend('SearchQuery')->extend('PagerDefault');
   $query->join('node', 'n', 'n.nid = i.sid');
   $query
-  ->condition('n.status', 1)
-  ->addTag('node_access')
-  ->searchExpression($keys, 'node');
+    ->condition('n.status', 1)
+    ->addTag('node_access')
+    ->searchExpression($keys, 'node');
 
   // Insert special keywords.
   $query->setOption('type', 'n.type');
@@ -218,8 +189,8 @@ function hook_search_execute($keys = NULL, $conditions = NULL) {
 
   // Load results.
   $find = $query
-  ->limit(10)
-  ->execute();
+    ->limit(10)
+    ->execute();
   $results = array();
   foreach ($find as $item) {
     // Build the node body.
@@ -235,15 +206,15 @@ function hook_search_execute($keys = NULL, $conditions = NULL) {
     $extra = module_invoke_all('node_search_result', $node);
 
     $results[] = array(
-        'link' => url('node/' . $item->sid, array('absolute' => TRUE)),
-        'type' => check_plain(node_type_get_name($node)),
-        'title' => $node->title,
-        'user' => theme('username', array('account' => $node)),
-        'date' => $node->changed,
-        'node' => $node,
-        'extra' => $extra,
-        'score' => $item->calculated_score,
-        'snippet' => search_excerpt($keys, $node->body),
+      'link' => url('node/' . $item->sid, array('absolute' => TRUE)),
+      'type' => check_plain(node_type_get_name($node)),
+      'title' => $node->title,
+      'user' => theme('username', array('account' => $node)),
+      'date' => $node->changed,
+      'node' => $node,
+      'extra' => $extra,
+      'score' => $item->calculated_score,
+      'snippet' => search_excerpt($keys, $node->body),
     );
   }
   return $results;
@@ -252,31 +223,32 @@ function hook_search_execute($keys = NULL, $conditions = NULL) {
 /**
  * Override the rendering of search results.
  *
- * A module that implements hook_search_info() to define a type of search
- * may implement this hook in order to override the default theming of
- * its search results, which is otherwise themed using theme('search_results').
+ * A module that implements hook_search_info() to define a type of search may
+ * implement this hook in order to override the default theming of its search
+ * results, which is otherwise themed using theme('search_results').
  *
  * Note that by default, theme('search_results') and theme('search_result')
  * work together to create an ordered list (OL). So your hook_search_page()
  * implementation should probably do this as well.
  *
- * @see search-result.tpl.php, search-results.tpl.php
- *
  * @param $results
  *   An array of search results.
  *
  * @return
- *   A renderable array, which will render the formatted search results with
- *   a pager included.
+ *   A renderable array, which will render the formatted search results with a
+ *   pager included.
+ *
+ * @see search-result.tpl.php
+ * @see search-results.tpl.php
  */
 function hook_search_page($results) {
   $output['prefix']['#markup'] = '<ol class="search-results">';
 
   foreach ($results as $entry) {
     $output[] = array(
-        '#theme' => 'search_result',
-        '#result' => $entry,
-        '#module' => 'my_module_name',
+      '#theme' => 'search_result',
+      '#result' => $entry,
+      '#module' => 'my_module_name',
     );
   }
   $output['suffix']['#markup'] = '</ol>' . theme('pager');
@@ -364,3 +336,41 @@ function hook_update_index() {
 /**
  * @} End of "addtogroup hooks".
  */
+
+/**
+ * Provide search query conditions.
+ *
+ * Callback for hook_search_info().
+ *
+ * This callback is invoked by search_view() to get an array of additional
+ * search conditions to pass to search_data(). For example, a search module
+ * may get additional keywords, filters, or modifiers for the search from
+ * the query string.
+ *
+ * This example pulls additional search keywords out of the $_REQUEST variable,
+ * (i.e. from the query string of the request). The conditions may also be
+ * generated internally - for example based on a module's settings.
+ *
+ * @param $keys
+ *   The search keywords string.
+ *
+ * @return
+ *   An array of additional conditions, such as filters.
+ *
+ * @ingroup callbacks
+ * @ingroup search
+ */
+function callback_search_conditions($keys) {
+  $conditions = array();
+
+  if (!empty($_REQUEST['keys'])) {
+    $conditions['keys'] = $_REQUEST['keys'];
+  }
+  if (!empty($_REQUEST['sample_search_keys'])) {
+    $conditions['sample_search_keys'] = $_REQUEST['sample_search_keys'];
+  }
+  if ($force_keys = config('sample_search.settings')->get('force_keywords')) {
+    $conditions['sample_search_force_keywords'] = $force_keys;
+  }
+  return $conditions;
+}

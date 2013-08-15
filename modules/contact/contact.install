@@ -10,55 +10,55 @@
  */
 function contact_schema() {
   $schema['contact'] = array(
-      'description' => 'Contact form category settings.',
-      'fields' => array(
-          'cid' => array(
-              'type' => 'serial',
-              'unsigned' => TRUE,
-              'not null' => TRUE,
-              'description' => 'Primary Key: Unique category ID.',
-          ),
-          'category' => array(
-              'type' => 'varchar',
-              'length' => 255,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => 'Category name.',
-              'translatable' => TRUE,
-          ),
-          'recipients' => array(
-              'type' => 'text',
-              'not null' => TRUE,
-              'size' => 'big',
-              'description' => 'Comma-separated list of recipient e-mail addresses.',
-          ),
-          'reply' => array(
-              'type' => 'text',
-              'not null' => TRUE,
-              'size' => 'big',
-              'description' => 'Text of the auto-reply message.',
-          ),
-          'weight' => array(
-              'type' => 'int',
-              'not null' => TRUE,
-              'default' => 0,
-              'description' => "The category's weight.",
-          ),
-          'selected' => array(
-              'type' => 'int',
-              'not null' => TRUE,
-              'default' => 0,
-              'size' => 'tiny',
-              'description' => 'Flag to indicate whether or not category is selected by default. (1 = Yes, 0 = No)',
-          ),
+    'description' => 'Contact form category settings.',
+    'fields' => array(
+      'cid' => array(
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique category ID.',
       ),
-      'primary key' => array('cid'),
-      'unique keys' => array(
-          'category' => array('category'),
+      'category' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Category name.',
+        'translatable' => TRUE,
       ),
-      'indexes' => array(
-          'list' => array('weight', 'category'),
+      'recipients' => array(
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'big',
+        'description' => 'Comma-separated list of recipient e-mail addresses.',
       ),
+      'reply' => array(
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'big',
+        'description' => 'Text of the auto-reply message.',
+      ),
+      'weight' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => "The category's weight.",
+      ),
+      'selected' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'tiny',
+        'description' => 'Flag to indicate whether or not category is selected by default. (1 = Yes, 0 = No)',
+      ),
+    ),
+    'primary key' => array('cid'),
+    'unique keys' => array(
+      'category' => array('category'),
+    ),
+    'indexes' => array(
+      'list' => array('weight', 'category'),
+    ),
   );
 
   return $schema;
@@ -70,13 +70,13 @@ function contact_schema() {
 function contact_install() {
   // Insert a default contact category.
   db_insert('contact')
-  ->fields(array(
-  'category' => 'Website feedback',
-  'recipients' => variable_get('site_mail', ini_get('sendmail_from')),
-  'selected' => 1,
-  'reply' => '',
-  ))
-  ->execute();
+    ->fields(array(
+      'category' => 'Website feedback',
+      'recipients' => variable_get('site_mail', ini_get('sendmail_from')),
+      'selected' => 1,
+      'reply' => '',
+    ))
+    ->execute();
 }
 
 /**
@@ -95,13 +95,13 @@ function contact_update_dependencies() {
   // contact_update_7001() relies on the {role_permission} table being updated
   // to the new format and filled with data.
   $dependencies['contact'][7001] = array(
-      'system' => 7007,
+    'system' => 7007,
   );
 
   // contact_update_7002() relies on the {role_permission} table having the
   // module field, which is created in user_update_7006().
   $dependencies['contact'][7002] = array(
-      'user' => 7006,
+    'user' => 7006,
   );
 
   return $dependencies;
@@ -125,9 +125,9 @@ function contact_update_7000() {
  */
 function contact_update_7001() {
   db_update('role_permission')
-  ->fields(array('permission' => 'administer contact forms'))
-  ->condition('permission', 'administer site-wide contact form')
-  ->execute();
+    ->fields(array('permission' => 'administer contact forms'))
+    ->condition('permission', 'administer site-wide contact form')
+    ->execute();
 }
 
 /**
@@ -138,12 +138,12 @@ function contact_update_7002() {
   // hook_permission(), which will not run for contact module if it is
   // disabled.
   db_merge('role_permission')
-  ->key(array(
-  'rid' => DRUPAL_AUTHENTICATED_RID,
-  'permission' => 'access user contact forms',
-  'module' => 'contact',
-  ))
-  ->execute();
+    ->key(array(
+      'rid' => DRUPAL_AUTHENTICATED_RID,
+      'permission' => 'access user contact forms',
+      'module' => 'contact',
+    ))
+    ->execute();
 }
 
 /**
@@ -152,14 +152,14 @@ function contact_update_7002() {
 function contact_update_7003() {
   db_drop_index('contact', 'list');
   db_change_field('contact', 'weight', 'weight', array(
-  'type' => 'int',
-  'not null' => TRUE,
-  'default' => 0,
-  'description' => "The category's weight.",
+    'type' => 'int',
+    'not null' => TRUE,
+    'default' => 0,
+    'description' => "The category's weight.",
   ), array(
-  'indexes' => array(
-  'list' => array('weight', 'category'),
-  ),
+    'indexes' => array(
+      'list' => array('weight', 'category'),
+    ),
   ));
 }
 

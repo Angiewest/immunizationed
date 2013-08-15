@@ -10,31 +10,31 @@
  */
 function menu_schema() {
   $schema['menu_custom'] = array(
-      'description' => 'Holds definitions for top-level custom menus (for example, Main menu).',
-      'fields' => array(
-          'menu_name' => array(
-              'type' => 'varchar',
-              'length' => 32,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => 'Primary Key: Unique key for menu. This is used as a block delta so length is 32.',
-          ),
-          'title' => array(
-              'type' => 'varchar',
-              'length' => 255,
-              'not null' => TRUE,
-              'default' => '',
-              'description' => 'Menu title; displayed at top of block.',
-              'translatable' => TRUE,
-          ),
-          'description' => array(
-              'type' => 'text',
-              'not null' => FALSE,
-              'description' => 'Menu description.',
-              'translatable' => TRUE,
-          ),
+    'description' => 'Holds definitions for top-level custom menus (for example, Main menu).',
+    'fields' => array(
+      'menu_name' => array(
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Primary Key: Unique key for menu. This is used as a block delta so length is 32.',
       ),
-      'primary key' => array('menu_name'),
+      'title' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Menu title; displayed at top of block.',
+        'translatable' => TRUE,
+      ),
+      'description' => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'description' => 'Menu description.',
+        'translatable' => TRUE,
+      ),
+    ),
+    'primary key' => array('menu_name'),
   );
 
   return $schema;
@@ -47,16 +47,16 @@ function menu_install() {
   $system_menus = menu_list_system_menus();
   $t = get_t();
   $descriptions = array(
-      'navigation' => $t('The <em>Navigation</em> menu contains links intended for site visitors. Links are added to the <em>Navigation</em> menu automatically by some modules.'),
-      'user-menu' => $t("The <em>User</em> menu contains links related to the user's account, as well as the 'Log out' link."),
-      'management' => $t('The <em>Management</em> menu contains links for administrative tasks.'),
-      'main-menu' => $t('The <em>Main</em> menu is used on many sites to show the major sections of the site, often in a top navigation bar.'),
+    'navigation' => $t('The <em>Navigation</em> menu contains links intended for site visitors. Links are added to the <em>Navigation</em> menu automatically by some modules.'),
+    'user-menu' => $t("The <em>User</em> menu contains links related to the user's account, as well as the 'Log out' link."),
+    'management' => $t('The <em>Management</em> menu contains links for administrative tasks.'),
+    'main-menu' => $t('The <em>Main</em> menu is used on many sites to show the major sections of the site, often in a top navigation bar.'),
   );
   foreach ($system_menus as $menu_name => $title) {
     $menu = array(
-        'menu_name' => $menu_name,
-        'title' => $t($title),
-        'description' => $descriptions[$menu_name],
+      'menu_name' => $menu_name,
+      'title' => $t($title),
+      'description' => $descriptions[$menu_name],
     );
     menu_save($menu);
   }
@@ -123,20 +123,20 @@ function menu_update_7001() {
   // - "Primary Links" has become system menu "Main menu".
   // - "Secondary Links" has become a new custom menu "Secondary menu".
   $rename = array(
-      'primary-links' => array('main-menu', 'Main menu'),
-      'secondary-links' => array('secondary-menu', 'Secondary menu'),
+    'primary-links' => array('main-menu', 'Main menu'),
+    'secondary-links' => array('secondary-menu', 'Secondary menu'),
   );
   foreach ($rename as $from_menu => $to) {
     list($to_menu, $to_title) = $to;
     // Rename the menu, and links in the menu.
     db_update('menu_custom')
-    ->fields(array('menu_name' => $to_menu, 'title' => $to_title))
-    ->condition('menu_name', $from_menu)
-    ->execute();
+      ->fields(array('menu_name' => $to_menu, 'title' => $to_title))
+      ->condition('menu_name', $from_menu)
+      ->execute();
     db_update('menu_links')
-    ->fields(array('menu_name' => $to_menu))
-    ->condition('menu_name', $from_menu)
-    ->execute();
+      ->fields(array('menu_name' => $to_menu))
+      ->condition('menu_name', $from_menu)
+      ->execute();
 
     // Update any content type that used this menu as a default menu.
     // Note: these variables may be unset/default, in which case we leave them
@@ -169,14 +169,14 @@ function menu_update_7002(&$sandbox) {
   // Check for the presence of old or new table names.
   if (db_table_exists('blocks') || db_table_exists('block')) {
     $renamed_deltas = array(
-        'menu' => array(
-            'primary-links' => 'main-menu',
-            'secondary-links' => 'secondary-menu',
-        ),
+      'menu' => array(
+        'primary-links' => 'main-menu',
+        'secondary-links' => 'secondary-menu',
+      ),
     );
 
     $moved_deltas = array(
-        'menu' => array('main-menu' => 'system'),
+      'menu' => array('main-menu' => 'system'),
     );
 
     update_fix_d7_block_deltas($sandbox, $renamed_deltas, $moved_deltas);

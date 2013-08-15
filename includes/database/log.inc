@@ -38,7 +38,7 @@ class DatabaseLog {
    * The connection key for which this object is logging.
    *
    * @var string
-  */
+   */
   protected $connectionKey = 'default';
 
   /**
@@ -115,11 +115,11 @@ class DatabaseLog {
   public function log(DatabaseStatementInterface $statement, $args, $time) {
     foreach (array_keys($this->queryLog) as $key) {
       $this->queryLog[$key][] = array(
-          'query' => $statement->getQueryString(),
-          'args' => $args,
-          'target' => $statement->dbh->getTarget(),
-          'caller' => $this->findCaller(),
-          'time' => $time,
+        'query' => $statement->getQueryString(),
+        'args' => $args,
+        'target' => $statement->dbh->getTarget(),
+        'caller' => $this->findCaller(),
+        'time' => $time,
       );
     }
   }
@@ -148,12 +148,12 @@ class DatabaseLog {
       if (!empty($stack[$i]['file']) && strpos($stack[$i]['file'], 'includes' . DIRECTORY_SEPARATOR . 'database') === FALSE) {
         $stack[$i] += array('args' => array());
         return array(
-            'file' => $stack[$i]['file'],
-            'line' => $stack[$i]['line'],
-            'function' => $stack[$i + 1]['function'],
-            'class' => isset($stack[$i + 1]['class']) ? $stack[$i + 1]['class'] : NULL,
-            'type' => isset($stack[$i + 1]['type']) ? $stack[$i + 1]['type'] : NULL,
-            'args' => $stack[$i + 1]['args'],
+          'file' => $stack[$i]['file'],
+          'line' => $stack[$i]['line'],
+          'function' => $stack[$i + 1]['function'],
+          'class' => isset($stack[$i + 1]['class']) ? $stack[$i + 1]['class'] : NULL,
+          'type' => isset($stack[$i + 1]['type']) ? $stack[$i + 1]['type'] : NULL,
+          'args' => $stack[$i + 1]['args'],
         );
       }
     }

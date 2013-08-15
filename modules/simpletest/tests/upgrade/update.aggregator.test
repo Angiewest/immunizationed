@@ -7,9 +7,9 @@ class AggregatorUpdatePathTestCase extends UpdatePathTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Aggregator update path',
-        'description' => 'Aggregator update path tests.',
-        'group' => 'Upgrade path',
+      'name' => 'Aggregator update path',
+      'description' => 'Aggregator update path tests.',
+      'group' => 'Upgrade path',
     );
   }
 
@@ -17,8 +17,8 @@ class AggregatorUpdatePathTestCase extends UpdatePathTestCase {
     // Use the normal installation and add our feed data.
     $path = drupal_get_path('module', 'simpletest') . '/tests/upgrade';
     $this->databaseDumpFiles = array(
-        $path . '/drupal-7.bare.standard_all.database.php.gz',
-        $path . '/drupal-7.aggregator.database.php',
+      $path . '/drupal-7.bare.standard_all.database.php.gz',
+      $path . '/drupal-7.aggregator.database.php',
     );
     parent::setUp();
 
@@ -34,8 +34,8 @@ class AggregatorUpdatePathTestCase extends UpdatePathTestCase {
     $query = db_select('aggregator_feed', 'af');
     $query->join('aggregator_item', 'ai', 'af.fid = ai.fid');
     $query
-    ->fields('af', array('url', 'link'))
-    ->fields('ai', array('link', 'guid'));
+      ->fields('af', array('url', 'link'))
+      ->fields('ai', array('link', 'guid'));
 
     $pre_update_data = $query->execute()->fetchAll();
     $this->assertTrue($this->performUpgrade(), 'The update was completed successfully.');

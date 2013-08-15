@@ -69,7 +69,7 @@ function update_manager_update_form($form, $form_state = array(), $context) {
   $available = update_get_available(TRUE);
   if (empty($available)) {
     $form['message'] = array(
-        '#markup' => t('There was a problem getting update information. Try again later.'),
+      '#markup' => t('There was a problem getting update information. Try again later.'),
     );
     return $form;
   }
@@ -127,9 +127,9 @@ function update_manager_update_form($form, $form_state = array(), $context) {
 
     // Create an entry for this project.
     $entry = array(
-        'title' => $project_name,
-        'installed_version' => $project['existing_version'],
-        'recommended_version' => $recommended_version,
+      'title' => $project_name,
+      'installed_version' => $project['existing_version'],
+      'recommended_version' => $recommended_version,
     );
 
     switch ($project['status']) {
@@ -172,13 +172,13 @@ function update_manager_update_form($form, $form_state = array(), $context) {
       $attributes = $entry['#attributes'];
       unset($entry['#attributes']);
       $entry = array(
-          'data' => $entry,
+        'data' => $entry,
       ) + $attributes;
     }
     else {
       $form['project_downloads'][$name] = array(
-          '#type' => 'value',
-          '#value' => $recommended_release['download_link'],
+        '#type' => 'value',
+        '#value' => $recommended_release['download_link'],
       );
     }
 
@@ -204,25 +204,25 @@ function update_manager_update_form($form, $form_state = array(), $context) {
 
   if (empty($projects)) {
     $form['message'] = array(
-        '#markup' => t('All of your projects are up to date.'),
+      '#markup' => t('All of your projects are up to date.'),
     );
     return $form;
   }
 
   $headers = array(
-      'title' => array(
-          'data' => t('Name'),
-          'class' => array('update-project-name'),
-      ),
-      'installed_version' => t('Installed version'),
-      'recommended_version' => t('Recommended version'),
+    'title' => array(
+      'data' => t('Name'),
+      'class' => array('update-project-name'),
+    ),
+    'installed_version' => t('Installed version'),
+    'recommended_version' => t('Recommended version'),
   );
 
   if (!empty($projects['enabled'])) {
     $form['projects'] = array(
-        '#type' => 'tableselect',
-        '#header' => $headers,
-        '#options' => $projects['enabled'],
+      '#type' => 'tableselect',
+      '#header' => $headers,
+      '#options' => $projects['enabled'],
     );
     if (!empty($projects['disabled'])) {
       $form['projects']['#prefix'] = '<h2>' . t('Enabled') . '</h2>';
@@ -231,11 +231,11 @@ function update_manager_update_form($form, $form_state = array(), $context) {
 
   if (!empty($projects['disabled'])) {
     $form['disabled_projects'] = array(
-        '#type' => 'tableselect',
-        '#header' => $headers,
-        '#options' => $projects['disabled'],
-        '#weight' => 1,
-        '#prefix' => '<h2>' . t('Disabled') . '</h2>',
+      '#type' => 'tableselect',
+      '#header' => $headers,
+      '#options' => $projects['disabled'],
+      '#weight' => 1,
+      '#prefix' => '<h2>' . t('Disabled') . '</h2>',
     );
   }
 
@@ -244,8 +244,8 @@ function update_manager_update_form($form, $form_state = array(), $context) {
   if (!empty($projects['enabled']) || !empty($projects['disabled'])) {
     $form['actions'] = array('#type' => 'actions');
     $form['actions']['submit'] = array(
-        '#type' => 'submit',
-        '#value' => t('Download these updates'),
+      '#type' => 'submit',
+      '#value' => t('Download these updates'),
     );
     $form['#validate'][] = 'update_manager_update_form_validate';
   }
@@ -254,10 +254,10 @@ function update_manager_update_form($form, $form_state = array(), $context) {
     $prefix = '<h2>' . t('Manual updates required') . '</h2>';
     $prefix .= '<p>' . t('Updates of Drupal core are not supported at this time.') . '</p>';
     $form['manual_updates'] = array(
-        '#type' => 'markup',
-        '#markup' => theme('table', array('header' => $headers, 'rows' => $projects['manual'])),
-        '#prefix' => $prefix,
-        '#weight' => 120,
+      '#type' => 'markup',
+      '#markup' => theme('table', array('header' => $headers, 'rows' => $projects['manual'])),
+      '#prefix' => $prefix,
+      '#weight' => 120,
     );
   }
 
@@ -317,19 +317,19 @@ function update_manager_update_form_submit($form, &$form_state) {
   $operations = array();
   foreach ($projects as $project) {
     $operations[] = array(
-        'update_manager_batch_project_get',
-        array(
-            $project,
-            $form_state['values']['project_downloads'][$project],
-        ),
+      'update_manager_batch_project_get',
+      array(
+        $project,
+        $form_state['values']['project_downloads'][$project],
+      ),
     );
   }
   $batch = array(
-      'title' => t('Downloading updates'),
-      'init_message' => t('Preparing to download selected updates'),
-      'operations' => $operations,
-      'finished' => 'update_manager_download_batch_finished',
-      'file' => drupal_get_path('module', 'update') . '/update.manager.inc',
+    'title' => t('Downloading updates'),
+    'init_message' => t('Preparing to download selected updates'),
+    'operations' => $operations,
+    'finished' => 'update_manager_download_batch_finished',
+    'file' => drupal_get_path('module', 'update') . '/update.manager.inc',
   );
   batch_set($batch);
 }
@@ -345,8 +345,8 @@ function update_manager_update_form_submit($form, &$form_state) {
 function update_manager_download_batch_finished($success, $results) {
   if (!empty($results['errors'])) {
     $error_list = array(
-        'title' => t('Downloading updates failed:'),
-        'items' => $results['errors'],
+      'title' => t('Downloading updates failed:'),
+      'items' => $results['errors'],
     );
     drupal_set_message(theme('item_list', $error_list), 'error');
   }
@@ -385,21 +385,21 @@ function update_manager_update_ready_form($form, &$form_state) {
   }
 
   $form['backup'] = array(
-      '#prefix' => '<strong>',
-      '#markup' => t('Back up your database and site before you continue. <a href="@backup_url">Learn how</a>.', array('@backup_url' => url('http://drupal.org/node/22281'))),
-      '#suffix' => '</strong>',
+    '#prefix' => '<strong>',
+    '#markup' => t('Back up your database and site before you continue. <a href="@backup_url">Learn how</a>.', array('@backup_url' => url('http://drupal.org/node/22281'))),
+    '#suffix' => '</strong>',
   );
 
   $form['maintenance_mode'] = array(
-      '#title' => t('Perform updates with site in maintenance mode (strongly recommended)'),
-      '#type' => 'checkbox',
-      '#default_value' => TRUE,
+    '#title' => t('Perform updates with site in maintenance mode (strongly recommended)'),
+    '#type' => 'checkbox',
+    '#default_value' => TRUE,
   );
 
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Continue'),
+    '#type' => 'submit',
+    '#value' => t('Continue'),
   );
 
   return $form;
@@ -440,9 +440,9 @@ function update_manager_update_ready_form_submit($form, &$form_state) {
       $updater = Updater::factory($project_location);
       $project_real_location = drupal_realpath($project_location);
       $updates[] = array(
-          'project' => $project,
-          'updater_name' => get_class($updater),
-          'local_url' => $project_real_location,
+        'project' => $project,
+        'updater_name' => get_class($updater),
+        'local_url' => $project_real_location,
       );
     }
 
@@ -499,38 +499,38 @@ function update_manager_install_form($form, &$form_state, $context) {
   }
 
   $form['help_text'] = array(
-      '#prefix' => '<p>',
-      '#markup' => t('You can find <a href="@module_url">modules</a> and <a href="@theme_url">themes</a> on <a href="@drupal_org_url">drupal.org</a>. The following file extensions are supported: %extensions.', array(
-          '@module_url' => 'http://drupal.org/project/modules',
-          '@theme_url' => 'http://drupal.org/project/themes',
-          '@drupal_org_url' => 'http://drupal.org',
-          '%extensions' => archiver_get_extensions(),
-      )),
-      '#suffix' => '</p>',
+    '#prefix' => '<p>',
+    '#markup' => t('You can find <a href="@module_url">modules</a> and <a href="@theme_url">themes</a> on <a href="@drupal_org_url">drupal.org</a>. The following file extensions are supported: %extensions.', array(
+      '@module_url' => 'http://drupal.org/project/modules',
+      '@theme_url' => 'http://drupal.org/project/themes',
+      '@drupal_org_url' => 'http://drupal.org',
+      '%extensions' => archiver_get_extensions(),
+    )),
+    '#suffix' => '</p>',
   );
 
   $form['project_url'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Install from a URL'),
-      '#description' => t('For example: %url', array('%url' => 'http://ftp.drupal.org/files/projects/name.tar.gz')),
+    '#type' => 'textfield',
+    '#title' => t('Install from a URL'),
+    '#description' => t('For example: %url', array('%url' => 'http://ftp.drupal.org/files/projects/name.tar.gz')),
   );
 
   $form['information'] = array(
-      '#prefix' => '<strong>',
-      '#markup' => t('Or'),
-      '#suffix' => '</strong>',
+    '#prefix' => '<strong>',
+    '#markup' => t('Or'),
+    '#suffix' => '</strong>',
   );
 
   $form['project_upload'] = array(
-      '#type' => 'file',
-      '#title' => t('Upload a module or theme archive to install'),
-      '#description' => t('For example: %filename from your local computer', array('%filename' => 'name.tar.gz')),
+    '#type' => 'file',
+    '#title' => t('Upload a module or theme archive to install'),
+    '#description' => t('For example: %filename from your local computer', array('%filename' => 'name.tar.gz')),
   );
 
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Install'),
+    '#type' => 'submit',
+    '#value' => t('Install'),
   );
 
   return $form;
@@ -561,8 +561,8 @@ function _update_manager_check_backends(&$form, $operation) {
 
   // Otherwise, show the available backends.
   $form['available_backends'] = array(
-      '#prefix' => '<p>',
-      '#suffix' => '</p>',
+    '#prefix' => '<p>',
+    '#suffix' => '</p>',
   );
 
   $available_backends = drupal_get_filetransfer_info();
@@ -582,23 +582,23 @@ function _update_manager_check_backends(&$form, $operation) {
   }
   if ($operation == 'update') {
     $form['available_backends']['#markup'] = format_plural(
-        count($available_backends),
-        'Updating modules and themes requires <strong>@backends access</strong> to your server. See the <a href="@handbook_url">handbook</a> for other update methods.',
-        'Updating modules and themes requires access to your server via one of the following methods: <strong>@backends</strong>. See the <a href="@handbook_url">handbook</a> for other update methods.',
-        array(
-            '@backends' => implode(', ', $backend_names),
-            '@handbook_url' => 'http://drupal.org/getting-started/install-contrib',
-        ));
+      count($available_backends),
+      'Updating modules and themes requires <strong>@backends access</strong> to your server. See the <a href="@handbook_url">handbook</a> for other update methods.',
+      'Updating modules and themes requires access to your server via one of the following methods: <strong>@backends</strong>. See the <a href="@handbook_url">handbook</a> for other update methods.',
+      array(
+        '@backends' => implode(', ', $backend_names),
+        '@handbook_url' => 'http://drupal.org/getting-started/install-contrib',
+      ));
   }
   else {
     $form['available_backends']['#markup'] = format_plural(
-        count($available_backends),
-        'Installing modules and themes requires <strong>@backends access</strong> to your server. See the <a href="@handbook_url">handbook</a> for other installation methods.',
-        'Installing modules and themes requires access to your server via one of the following methods: <strong>@backends</strong>. See the <a href="@handbook_url">handbook</a> for other installation methods.',
-        array(
-            '@backends' => implode(', ', $backend_names),
-            '@handbook_url' => 'http://drupal.org/getting-started/install-contrib',
-        ));
+      count($available_backends),
+      'Installing modules and themes requires <strong>@backends access</strong> to your server. See the <a href="@handbook_url">handbook</a> for other installation methods.',
+      'Installing modules and themes requires access to your server via one of the following methods: <strong>@backends</strong>. See the <a href="@handbook_url">handbook</a> for other installation methods.',
+      array(
+        '@backends' => implode(', ', $backend_names),
+        '@handbook_url' => 'http://drupal.org/getting-started/install-contrib',
+      ));
   }
   return TRUE;
 }
@@ -720,9 +720,9 @@ function update_manager_install_form_submit($form, &$form_state) {
 
   $project_real_location = drupal_realpath($project_location);
   $arguments = array(
-      'project' => $project,
-      'updater_name' => get_class($updater),
-      'local_url' => $project_real_location,
+    'project' => $project,
+    'updater_name' => get_class($updater),
+    'local_url' => $project_real_location,
   );
 
   // If the owner of the directory we extracted is the same as the

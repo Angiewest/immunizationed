@@ -24,17 +24,17 @@ function profile_admin_overview($form) {
     $form[$field->fid]['title'] = array('#markup' => check_plain($field->title));
     $form[$field->fid]['type'] = array('#markup' => $field->type);
     $form[$field->fid]['category'] = array(
-        '#type' => 'select',
-        '#title' => t('Category for @title', array('@title' => $field->title)),
-        '#title_display' => 'invisible',
-        '#default_value' => $field->category,
-        '#options' => array(),
+      '#type' => 'select',
+      '#title' => t('Category for @title', array('@title' => $field->title)),
+      '#title_display' => 'invisible',
+      '#default_value' => $field->category,
+      '#options' => array(),
     );
     $form[$field->fid]['weight'] = array(
-        '#type' => 'weight',
-        '#title' => t('Weight for @title', array('@title' => $field->title)),
-        '#title_display' => 'invisible',
-        '#default_value' => $field->weight,
+      '#type' => 'weight',
+      '#title' => t('Weight for @title', array('@title' => $field->title)),
+      '#title_display' => 'invisible',
+      '#default_value' => $field->weight,
     );
     $form[$field->fid]['edit'] = array('#type' => 'link', '#title' => t('edit'), '#href' => "admin/config/people/profile/edit/$field->fid");
     $form[$field->fid]['delete'] = array('#type' => 'link', '#title' => t('delete'), '#href' => "admin/config/people/profile/delete/$field->fid");
@@ -86,12 +86,12 @@ function profile_admin_overview_submit($form, &$form_state) {
       $category = $form_state['values'][$fid]['category'];
       if ($weight != $form[$fid]['weight']['#default_value'] || $category != $form[$fid]['category']['#default_value']) {
         db_update('profile_field')
-        ->fields(array(
-        'weight' => $weight,
-        'category' => $category,
-        ))
-        ->condition('fid', $fid)
-        ->execute();
+          ->fields(array(
+            'weight' => $weight,
+            'category' => $category,
+          ))
+          ->condition('fid', $fid)
+          ->execute();
       }
     }
   }
@@ -197,7 +197,7 @@ function profile_field_form($form, &$form_state, $arg = NULL) {
       }
       drupal_set_title(t('Edit %title', array('%title' => $edit['title'])), PASS_THROUGH);
       $form['fid'] = array('#type' => 'value',
-          '#value' => $fid,
+        '#value' => $fid,
       );
       $type = $edit['type'];
     }
@@ -218,88 +218,88 @@ function profile_field_form($form, &$form_state, $arg = NULL) {
     $form['type'] = array('#type' => 'value', '#value' => $type);
   }
   $edit += array(
-      'category' => '',
-      'title' => '',
-      'explanation' => '',
-      'weight' => 0,
-      'page' => '',
-      'autocomplete' => '',
-      'required' => '',
-      'register' => '',
+    'category' => '',
+    'title' => '',
+    'explanation' => '',
+    'weight' => 0,
+    'page' => '',
+    'autocomplete' => '',
+    'required' => '',
+    'register' => '',
   );
   $form['category'] = array('#type' => 'textfield',
-      '#title' => t('Category'),
-      '#default_value' => $edit['category'],
-      '#autocomplete_path' => 'admin/config/people/profile/autocomplete',
-      '#description' => t('The category the new field should be part of. Categories are used to group fields logically. An example category is "Personal information".'),
-      '#required' => TRUE,
+    '#title' => t('Category'),
+    '#default_value' => $edit['category'],
+    '#autocomplete_path' => 'admin/config/people/profile/autocomplete',
+    '#description' => t('The category the new field should be part of. Categories are used to group fields logically. An example category is "Personal information".'),
+    '#required' => TRUE,
   );
   $form['title'] = array('#type' => 'textfield',
-      '#title' => t('Title'),
-      '#default_value' => $edit['title'],
-      '#description' => t('The title of the new field. The title will be shown to the user. An example title is "Favorite color".'),
-      '#required' => TRUE,
+    '#title' => t('Title'),
+    '#default_value' => $edit['title'],
+    '#description' => t('The title of the new field. The title will be shown to the user. An example title is "Favorite color".'),
+    '#required' => TRUE,
   );
   $form['name'] = array('#type' => 'textfield',
-      '#title' => t('Form name'),
-      '#default_value' => $edit['name'],
-      '#description' => t('The name of the field. The form name is not shown to the user but used internally in the HTML code and URLs.
-          Unless you know what you are doing, it is highly recommended that you prefix the form name with <code>profile_</code> to avoid name clashes with other fields. Spaces or any other special characters except dash (-) and underscore (_) are not allowed. An example name is "profile_favorite_color" or perhaps just "profile_color".'),
-      '#required' => TRUE,
+    '#title' => t('Form name'),
+    '#default_value' => $edit['name'],
+    '#description' => t('The name of the field. The form name is not shown to the user but used internally in the HTML code and URLs.
+Unless you know what you are doing, it is highly recommended that you prefix the form name with <code>profile_</code> to avoid name clashes with other fields. Spaces or any other special characters except dash (-) and underscore (_) are not allowed. An example name is "profile_favorite_color" or perhaps just "profile_color".'),
+    '#required' => TRUE,
   );
   $form['explanation'] = array('#type' => 'textarea',
-      '#title' => t('Explanation'),
-      '#default_value' => $edit['explanation'],
-      '#description' => t('An optional explanation to go with the new field. The explanation will be shown to the user.'),
+    '#title' => t('Explanation'),
+    '#default_value' => $edit['explanation'],
+    '#description' => t('An optional explanation to go with the new field. The explanation will be shown to the user.'),
   );
   if ($type == 'selection') {
     $form['fields']['options'] = array('#type' => 'textarea',
-        '#title' => t('Selection options'),
-        '#default_value' => isset($edit['options']) ? $edit['options'] : '',
-        '#description' => t('A list of all options. Put each option on a separate line. Example options are "red", "blue", "green", etc.'),
+      '#title' => t('Selection options'),
+      '#default_value' => isset($edit['options']) ? $edit['options'] : '',
+      '#description' => t('A list of all options. Put each option on a separate line. Example options are "red", "blue", "green", etc.'),
     );
   }
   $form['visibility'] = array('#type' => 'radios',
-      '#title' => t('Visibility'),
-      '#default_value' => isset($edit['visibility']) ? $edit['visibility'] : PROFILE_PUBLIC,
-      '#options' => array(PROFILE_HIDDEN => t('Hidden profile field, only accessible by administrators, modules and themes.'), PROFILE_PRIVATE => t('Private field, content only available to privileged users.'), PROFILE_PUBLIC => t('Public field, content shown on profile page but not used on member list pages.'), PROFILE_PUBLIC_LISTINGS => t('Public field, content shown on profile page and on member list pages.')),
+    '#title' => t('Visibility'),
+    '#default_value' => isset($edit['visibility']) ? $edit['visibility'] : PROFILE_PUBLIC,
+    '#options' => array(PROFILE_HIDDEN => t('Hidden profile field, only accessible by administrators, modules and themes.'), PROFILE_PRIVATE => t('Private field, content only available to privileged users.'), PROFILE_PUBLIC => t('Public field, content shown on profile page but not used on member list pages.'), PROFILE_PUBLIC_LISTINGS => t('Public field, content shown on profile page and on member list pages.')),
   );
   if ($type == 'selection' || $type == 'list' || $type == 'textfield') {
     $form['fields']['page'] = array('#type' => 'textfield',
-        '#title' => t('Page title'),
-        '#default_value' => $edit['page'],
-        '#description' => t('To enable browsing this field by value, enter a title for the resulting page. The word <code>%value</code> will be substituted with the corresponding value. An example page title is "People whose favorite color is %value" . This is only applicable for a public field.'),
+      '#title' => t('Page title'),
+      '#default_value' => $edit['page'],
+      '#description' => t('To enable browsing this field by value, enter a title for the resulting page. The word <code>%value</code> will be substituted with the corresponding value. An example page title is "People whose favorite color is %value" . This is only applicable for a public field.'),
     );
   }
   elseif ($type == 'checkbox') {
     $form['fields']['page'] = array('#type' => 'textfield',
-        '#title' => t('Page title'),
-        '#default_value' => $edit['page'],
-        '#description' => t('To enable browsing this field by value, enter a title for the resulting page. An example page title is "People who are employed" . This is only applicable for a public field.'),
+      '#title' => t('Page title'),
+      '#default_value' => $edit['page'],
+      '#description' => t('To enable browsing this field by value, enter a title for the resulting page. An example page title is "People who are employed" . This is only applicable for a public field.'),
     );
   }
   $form['weight'] = array('#type' => 'weight',
-      '#title' => t('Weight'),
-      '#default_value' => $edit['weight'],
-      '#description' => t('The weights define the order in which the form fields are shown. Lighter fields "float up" towards the top of the category.'),
+    '#title' => t('Weight'),
+    '#default_value' => $edit['weight'],
+    '#description' => t('The weights define the order in which the form fields are shown. Lighter fields "float up" towards the top of the category.'),
   );
   $form['autocomplete'] = array('#type' => 'checkbox',
-      '#title' => t('Form will auto-complete while user is typing.'),
-      '#default_value' => $edit['autocomplete'],
-      '#description' => t('For security, auto-complete will be disabled if the user does not have access to user profiles.'),
+    '#title' => t('Form will auto-complete while user is typing.'),
+    '#default_value' => $edit['autocomplete'],
+    '#description' => t('For security, auto-complete will be disabled if the user does not have access to user profiles.'),
   );
   $form['required'] = array('#type' => 'checkbox',
-      '#title' => t('The user must enter a value.'),
-      '#default_value' => $edit['required'],
+    '#title' => t('The user must enter a value.'),
+    '#default_value' => $edit['required'],
   );
   $form['register'] = array('#type' => 'checkbox',
-      '#title' => t('Visible in user registration form.'),
-      '#default_value' => $edit['register'],
+    '#title' => t('Visible in user registration form.'),
+    '#default_value' => $edit['register'],
   );
 
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array('#type' => 'submit',
-      '#value' => t('Save field'),
+    '#value' => t('Save field'),
   );
   return $form;
 }
@@ -333,17 +333,17 @@ function profile_field_form_validate($form, &$form_state) {
   $query_name = clone $query;
 
   $title = $query
-  ->condition('title', $form_state['values']['title'])
-  ->condition('category', $form_state['values']['category'])
-  ->execute()
-  ->fetchField();
+    ->condition('title', $form_state['values']['title'])
+    ->condition('category', $form_state['values']['category'])
+    ->execute()
+    ->fetchField();
   if ($title) {
     form_set_error('title', t('The specified title is already in use.'));
   }
   $name = $query_name
-  ->condition('name', $form_state['values']['name'])
-  ->execute()
-  ->fetchField();
+    ->condition('name', $form_state['values']['name'])
+    ->execute()
+    ->fetchField();
   if ($name) {
     form_set_error('name', t('The specified name is already in use.'));
   }
@@ -371,16 +371,16 @@ function profile_field_form_submit($form, &$form_state) {
   $values = array_intersect_key($form_state['values'], array_flip(array('type', 'category', 'title', 'name', 'explanation', 'visibility', 'page', 'weight', 'autocomplete', 'required', 'register', 'options')));
   if (!isset($form_state['values']['fid'])) {
     db_insert('profile_field')
-    ->fields($values)
-    ->execute();
+      ->fields($values)
+      ->execute();
     drupal_set_message(t('The field has been created.'));
     watchdog('profile', 'Profile field %field added under category %category.', array('%field' => $form_state['values']['title'], '%category' => $form_state['values']['category']), WATCHDOG_NOTICE, l(t('view'), 'admin/config/people/profile'));
   }
   else {
     db_update('profile_field')
-    ->fields($values)
-    ->condition('fid', $form_state['values']['fid'])
-    ->execute();
+      ->fields($values)
+      ->condition('fid', $form_state['values']['fid'])
+      ->execute();
     drupal_set_message(t('The field has been updated.'));
   }
   cache_clear_all();
@@ -403,9 +403,9 @@ function profile_field_delete($form, &$form_state, $fid) {
   $form['title'] = array('#type' => 'value', '#value' => $field->title);
 
   return confirm_form($form,
-      t('Are you sure you want to delete the field %field?', array('%field' => $field->title)), 'admin/config/people/profile',
-      t('This action cannot be undone. If users have entered values into this field in their profile, these entries will also be deleted. If you want to keep the user-entered data, instead of deleting the field you may wish to <a href="@edit-field">edit this field</a> and change it to a hidden profile field so that it may only be accessed by administrators.', array('@edit-field' => url('admin/config/people/profile/edit/' . $fid))),
-      t('Delete'), t('Cancel'));
+    t('Are you sure you want to delete the field %field?', array('%field' => $field->title)), 'admin/config/people/profile',
+    t('This action cannot be undone. If users have entered values into this field in their profile, these entries will also be deleted. If you want to keep the user-entered data, instead of deleting the field you may wish to <a href="@edit-field">edit this field</a> and change it to a hidden profile field so that it may only be accessed by administrators.', array('@edit-field' => url('admin/config/people/profile/edit/' . $fid))),
+    t('Delete'), t('Cancel'));
 }
 
 /**
@@ -413,11 +413,11 @@ function profile_field_delete($form, &$form_state, $fid) {
  */
 function profile_field_delete_submit($form, &$form_state) {
   db_delete('profile_field')
-  ->condition('fid', $form_state['values']['fid'])
-  ->execute();
+    ->condition('fid', $form_state['values']['fid'])
+    ->execute();
   db_delete('profile_value')
-  ->condition('fid', $form_state['values']['fid'])
-  ->execute();
+    ->condition('fid', $form_state['values']['fid'])
+    ->execute();
 
   cache_clear_all();
 
@@ -434,10 +434,10 @@ function profile_field_delete_submit($form, &$form_state) {
 function profile_admin_settings_autocomplete($string) {
   $matches = array();
   $result = db_select('profile_field')
-  ->fields('profile_field', array('category'))
-  ->condition('category', db_like($string) . '%', 'LIKE')
-  ->range(0, 10)
-  ->execute();
+    ->fields('profile_field', array('category'))
+    ->condition('category', db_like($string) . '%', 'LIKE')
+    ->range(0, 10)
+    ->execute();
 
   foreach ($result as $data) {
     $matches[$data->category] = check_plain($data->category);

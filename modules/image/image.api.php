@@ -39,12 +39,12 @@ function hook_image_effect_info() {
   $effects = array();
 
   $effects['mymodule_resize'] = array(
-      'label' => t('Resize'),
-      'help' => t('Resize an image to an exact set of dimensions, ignoring aspect ratio.'),
-      'effect callback' => 'mymodule_resize_effect',
-      'dimensions callback' => 'mymodule_resize_dimensions',
-      'form callback' => 'mymodule_resize_form',
-      'summary theme' => 'mymodule_resize_summary',
+    'label' => t('Resize'),
+    'help' => t('Resize an image to an exact set of dimensions, ignoring aspect ratio.'),
+    'effect callback' => 'mymodule_resize_effect',
+    'dimensions callback' => 'mymodule_resize_dimensions',
+    'form callback' => 'mymodule_resize_form',
+    'summary theme' => 'mymodule_resize_summary',
   );
 
   return $effects;
@@ -144,10 +144,10 @@ function hook_image_styles_alter(&$styles) {
   if ($styles['thumbnail']['storage'] == IMAGE_STORAGE_DEFAULT) {
     // Add an additional effect to the thumbnail style.
     $styles['thumbnail']['effects'][] = array(
-        'name' => 'image_desaturate',
-        'data' => array(),
-        'weight' => 1,
-        'effect callback' => 'image_desaturate_effect',
+      'name' => 'image_desaturate',
+      'data' => array(),
+      'weight' => 1,
+      'effect callback' => 'image_desaturate_effect',
     );
   }
 }
@@ -177,23 +177,24 @@ function hook_image_default_styles() {
   $styles = array();
 
   $styles['mymodule_preview'] = array(
-      'effects' => array(
-          array(
-              'name' => 'image_scale',
-              'data' => array('width' => 400, 'height' => 400, 'upscale' => 1),
-              'weight' => 0,
-          ),
-          array(
-              'name' => 'image_desaturate',
-              'data' => array(),
-              'weight' => 1,
-          ),
+    'label' => 'My module preview',
+    'effects' => array(
+      array(
+        'name' => 'image_scale',
+        'data' => array('width' => 400, 'height' => 400, 'upscale' => 1),
+        'weight' => 0,
       ),
+      array(
+        'name' => 'image_desaturate',
+        'data' => array(),
+        'weight' => 1,
+      ),
+    ),
   );
 
   return $styles;
 }
 
-/**
- * @} End of "addtogroup hooks".
- */
+ /**
+  * @} End of "addtogroup hooks".
+  */

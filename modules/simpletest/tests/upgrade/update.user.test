@@ -11,16 +11,16 @@
 class UserUpdatePathTestCase extends UpdatePathTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'User update path',
-        'description' => 'User update path tests.',
-        'group' => 'Upgrade path',
+      'name' => 'User update path',
+      'description' => 'User update path tests.',
+      'group' => 'Upgrade path',
     );
   }
 
   public function setUp() {
     // Use the filled update path and our field data.
     $this->databaseDumpFiles = array(
-        drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-7.filled.standard_all.database.php.gz',
+      drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-7.filled.standard_all.database.php.gz',
     );
     parent::setUp();
   }
@@ -29,7 +29,7 @@ class UserUpdatePathTestCase extends UpdatePathTestCase {
    * Tests that the update is successful.
    */
   public function testFilledUpgrade() {
-    $this->assertTrue($this->performUpgrade(), t('The update was completed successfully.'));
+    $this->assertTrue($this->performUpgrade(), 'The update was completed successfully.');
     $this->assertTrue(db_index_exists('users', 'picture'), 'The {users}.picture column has an index.');
   }
 }

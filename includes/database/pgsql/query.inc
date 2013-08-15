@@ -119,7 +119,7 @@ class InsertQuery_pgsql extends InsertQuery {
 
     $max_placeholder = 0;
     $values = array();
-    if (count($this->insertValues)) {
+      if (count($this->insertValues)) {
       foreach ($this->insertValues as $insert_values) {
         $placeholders = array();
 

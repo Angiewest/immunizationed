@@ -15,14 +15,14 @@ define('FILE_URL_TEST_CDN_2', 'http://cdn2.example.com');
 
 /**
  * Implements hook_menu().
-*/
+ */
 function file_test_menu() {
   $items['file-test/upload'] = array(
-      'title' => 'Upload test',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('_file_test_form'),
-      'access arguments' => array('access content'),
-      'type' => MENU_CALLBACK,
+    'title' => 'Upload test',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('_file_test_form'),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
   );
   return $items;
 }
@@ -32,16 +32,16 @@ function file_test_menu() {
  */
 function file_test_stream_wrappers() {
   return array(
-      'dummy' => array(
-          'name' => t('Dummy files'),
-          'class' => 'DrupalDummyStreamWrapper',
-          'description' => t('Dummy wrapper for simpletest.'),
-      ),
-      'dummy-remote' => array(
-          'name' => t('Dummy files (remote)'),
-          'class' => 'DrupalDummyRemoteStreamWrapper',
-          'description' => t('Dummy wrapper for simpletest (remote).'),
-      ),
+    'dummy' => array(
+      'name' => t('Dummy files'),
+      'class' => 'DrupalDummyStreamWrapper',
+      'description' => t('Dummy wrapper for simpletest.'),
+    ),
+    'dummy-remote' => array(
+      'name' => t('Dummy files (remote)'),
+      'class' => 'DrupalDummyRemoteStreamWrapper',
+      'description' => t('Dummy wrapper for simpletest (remote).'),
+    ),
   );
 }
 
@@ -50,46 +50,46 @@ function file_test_stream_wrappers() {
  */
 function _file_test_form($form, &$form_state) {
   $form['file_test_upload'] = array(
-      '#type' => 'file',
-      '#title' => t('Upload a file'),
+    '#type' => 'file',
+    '#title' => t('Upload a file'),
   );
   $form['file_test_replace'] = array(
-      '#type' => 'select',
-      '#title' => t('Replace existing image'),
-      '#options' => array(
-          FILE_EXISTS_RENAME => t('Appends number until name is unique'),
-          FILE_EXISTS_REPLACE => t('Replace the existing file'),
-          FILE_EXISTS_ERROR => t('Fail with an error'),
-      ),
-      '#default_value' => FILE_EXISTS_RENAME,
+    '#type' => 'select',
+    '#title' => t('Replace existing image'),
+    '#options' => array(
+      FILE_EXISTS_RENAME => t('Appends number until name is unique'),
+      FILE_EXISTS_REPLACE => t('Replace the existing file'),
+      FILE_EXISTS_ERROR => t('Fail with an error'),
+    ),
+    '#default_value' => FILE_EXISTS_RENAME,
   );
   $form['file_subdir'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Subdirectory for test file'),
-      '#default_value' => '',
+    '#type' => 'textfield',
+    '#title' => t('Subdirectory for test file'),
+    '#default_value' => '',
   );
 
   $form['extensions'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Allowed extensions.'),
-      '#default_value' => '',
+    '#type' => 'textfield',
+    '#title' => t('Allowed extensions.'),
+    '#default_value' => '',
   );
 
   $form['allow_all_extensions'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Allow all extensions?'),
-      '#default_value' => FALSE,
+    '#type' => 'checkbox',
+    '#title' => t('Allow all extensions?'),
+    '#default_value' => FALSE,
   );
 
   $form['is_image_file'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Is this an image file?'),
-      '#default_value' => TRUE,
+    '#type' => 'checkbox',
+    '#title' => t('Is this an image file?'),
+    '#default_value' => TRUE,
   );
 
   $form['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Submit'),
+    '#type' => 'submit',
+    '#value' => t('Submit'),
   );
   return $form;
 }
@@ -144,21 +144,21 @@ function _file_test_form_submit(&$form, &$form_state) {
 function file_test_reset() {
   // Keep track of calls to these hooks
   $results = array(
-      'load' => array(),
-      'validate' => array(),
-      'download' => array(),
-      'insert' => array(),
-      'update' => array(),
-      'copy' => array(),
-      'move' => array(),
-      'delete' => array(),
+    'load' => array(),
+    'validate' => array(),
+    'download' => array(),
+    'insert' => array(),
+    'update' => array(),
+    'copy' => array(),
+    'move' => array(),
+    'delete' => array(),
   );
   variable_set('file_test_results', $results);
 
   // These hooks will return these values, see file_test_set_return().
   $return = array(
-      'validate' => array(),
-      'download' => NULL,
+    'validate' => array(),
+    'download' => NULL,
   );
   variable_set('file_test_return', $return);
 }

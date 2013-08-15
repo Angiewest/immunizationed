@@ -10,8 +10,8 @@
  */
 function aggregator_aggregator_fetch_info() {
   return array(
-      'title' => t('Default fetcher'),
-      'description' => t('Downloads data from a URL using Drupal\'s HTTP request handler.'),
+    'title' => t('Default fetcher'),
+    'description' => t('Downloads data from a URL using Drupal\'s HTTP request handler.'),
   );
 }
 

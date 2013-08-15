@@ -10,9 +10,9 @@
  */
 function search_extra_type_search_info() {
   return array(
-      'title' => 'Dummy search type',
-      'path' => 'dummy_path',
-      'conditions_callback' => 'search_extra_type_conditions',
+    'title' => 'Dummy search type',
+    'path' => 'dummy_path',
+    'conditions_callback' => 'search_extra_type_conditions',
   );
 }
 
@@ -39,12 +39,12 @@ function search_extra_type_search_execute($keys = NULL, $conditions = NULL) {
     $keys = '';
   }
   return array(
-      array(
-          'link' => url('node'),
-          'type' => 'Dummy result type',
-          'title' => 'Dummy title',
-          'snippet' => "Dummy search snippet to display. Keywords: {$keys}\n\nConditions: " . print_r($conditions, TRUE),
-  ),
+    array(
+      'link' => url('node'),
+      'type' => 'Dummy result type',
+      'title' => 'Dummy title',
+      'snippet' => "Dummy search snippet to display. Keywords: {$keys}\n\nConditions: " . print_r($conditions, TRUE),
+    ),
   );
 }
 
@@ -58,9 +58,9 @@ function search_extra_type_search_page($results) {
 
   foreach ($results as $entry) {
     $output[] = array(
-        '#theme' => 'search_result',
-        '#result' => $entry,
-        '#module' => 'search_extra_type',
+      '#theme' => 'search_result',
+      '#result' => $entry,
+      '#module' => 'search_extra_type',
     );
   }
   $output['suffix']['#markup'] = '</ol>' . theme('pager');

@@ -10,28 +10,28 @@
  */
 function openid_menu() {
   $items['openid/authenticate'] = array(
-      'title' => 'OpenID Login',
-      'page callback' => 'openid_authentication_page',
-      'access callback' => 'user_is_anonymous',
-      'type' => MENU_CALLBACK,
-      'file' => 'openid.pages.inc',
+    'title' => 'OpenID Login',
+    'page callback' => 'openid_authentication_page',
+    'access callback' => 'user_is_anonymous',
+    'type' => MENU_CALLBACK,
+    'file' => 'openid.pages.inc',
   );
   $items['user/%user/openid'] = array(
-      'title' => 'OpenID identities',
-      'page callback' => 'openid_user_identities',
-      'page arguments' => array(1),
-      'access callback' => 'user_edit_access',
-      'access arguments' => array(1),
-      'type' => MENU_LOCAL_TASK,
-      'file' => 'openid.pages.inc',
+    'title' => 'OpenID identities',
+    'page callback' => 'openid_user_identities',
+    'page arguments' => array(1),
+    'access callback' => 'user_edit_access',
+    'access arguments' => array(1),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'openid.pages.inc',
   );
   $items['user/%user/openid/delete'] = array(
-      'title' => 'Delete OpenID',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('openid_user_delete_form', 1),
-      'access callback' => 'user_edit_access',
-      'access arguments' => array(1),
-      'file' => 'openid.pages.inc',
+    'title' => 'Delete OpenID',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('openid_user_delete_form', 1),
+    'access callback' => 'user_edit_access',
+    'access arguments' => array(1),
+    'file' => 'openid.pages.inc',
   );
   return $items;
 }
@@ -51,8 +51,8 @@ function openid_menu_site_status_alter(&$menu_site_status, $path) {
  */
 function openid_admin_paths() {
   $paths = array(
-      'user/*/openid' => TRUE,
-      'user/*/openid/delete' => TRUE,
+    'user/*/openid' => TRUE,
+    'user/*/openid/delete' => TRUE,
   );
   return $paths;
 }
@@ -146,30 +146,30 @@ function _openid_user_login_form_alter(&$form, &$form_state) {
 
   $items = array();
   $items[] = array(
-      'data' => l(t('Log in using OpenID'), '#openid-login', array('external' => TRUE)),
-      'class' => array('openid-link'),
+    'data' => l(t('Log in using OpenID'), '#openid-login', array('external' => TRUE)),
+    'class' => array('openid-link'),
   );
   $items[] = array(
-      'data' => l(t('Cancel OpenID login'), '#', array('external' => TRUE)),
-      'class' => array('user-link'),
+    'data' => l(t('Cancel OpenID login'), '#', array('external' => TRUE)),
+    'class' => array('user-link'),
   );
 
   $form['openid_links'] = array(
-      '#theme' => 'item_list',
-      '#items' => $items,
-      '#attributes' => array('class' => array('openid-links')),
-      '#weight' => 1,
+    '#theme' => 'item_list',
+    '#items' => $items,
+    '#attributes' => array('class' => array('openid-links')),
+    '#weight' => 1,
   );
 
   $form['links']['#weight'] = 2;
 
   $form['openid_identifier'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Log in using OpenID'),
-      '#size' => $form['name']['#size'],
-      '#maxlength' => 255,
-      '#weight' => -1,
-      '#description' => l(t('What is OpenID?'), 'http://openid.net/', array('external' => TRUE)),
+    '#type' => 'textfield',
+    '#title' => t('Log in using OpenID'),
+    '#size' => $form['name']['#size'],
+    '#maxlength' => 255,
+    '#weight' => -1,
+    '#description' => l(t('What is OpenID?'), 'http://openid.net/', array('external' => TRUE)),
   );
   $form['openid.return_to'] = array('#type' => 'hidden', '#value' => url('openid/authenticate', array('absolute' => TRUE, 'query' => user_login_destination())));
 }
@@ -224,14 +224,14 @@ function openid_form_user_register_form_alter(&$form, &$form_state) {
     }
 
     $form['openid_claimed_id'] = array(
-        '#type' => 'value',
-        '#default_value' => $response['openid.claimed_id'],
+      '#type' => 'value',
+      '#default_value' => $response['openid.claimed_id'],
     );
     $form['openid_display'] = array(
-        '#type' => 'item',
-        '#title' => t('Your OpenID'),
-        '#description' => t('This OpenID will be attached to your account after registration.'),
-        '#markup' => check_plain($response['openid.claimed_id']),
+      '#type' => 'item',
+      '#title' => t('Your OpenID'),
+      '#description' => t('This OpenID will be attached to your account after registration.'),
+      '#markup' => check_plain($response['openid.claimed_id']),
     );
   }
 }
@@ -438,8 +438,8 @@ function openid_openid_discovery_method_info() {
   // identifiers via Yadis and HTML-based discovery, conforming to the OpenID 2.0
   // specification.
   return array(
-      'xri' => '_openid_xri_discovery',
-      'xrds' => '_openid_xrds_discovery',
+    'xri' => '_openid_xri_discovery',
+    'xrds' => '_openid_xrds_discovery',
   );
 }
 
@@ -548,9 +548,9 @@ function _openid_xrds_discovery($claimed_id) {
         }
         if (!empty($uri)) {
           $services[] = array(
-              'uri' => $uri,
-              'identity' => $identity,
-              'types' => array($type),
+            'uri' => $uri,
+            'identity' => $identity,
+            'types' => array($type),
           );
         }
       }
@@ -559,8 +559,8 @@ function _openid_xrds_discovery($claimed_id) {
 
   if (!empty($services)) {
     return array(
-        'services' => $services,
-        'claimed_id' => $claimed_id,
+      'services' => $services,
+      'claimed_id' => $claimed_id,
     );
   }
 }
@@ -575,8 +575,8 @@ function openid_openid_normalization_method_info() {
   // If the User-supplied Identifier looks like an XRI, treat it as such;
   // otherwise treat it as an HTTP URL.
   return array(
-      'xri' => '_openid_xri_normalize',
-      'url' => '_openid_url_normalize',
+    'xri' => '_openid_xri_normalize',
+    'url' => '_openid_url_normalize',
   );
 }
 
@@ -592,8 +592,8 @@ function openid_association($op_endpoint) {
 
   // Remove Old Associations:
   db_delete('openid_association')
-  ->where('created + expires_in < :request_time', array(':request_time' => REQUEST_TIME))
-  ->execute();
+    ->where('created + expires_in < :request_time', array(':request_time' => REQUEST_TIME))
+    ->execute();
 
   // Check to see if we have an association for this IdP already
   $assoc_handle = db_query("SELECT assoc_handle FROM {openid_association} WHERE idp_endpoint_uri = :endpoint", array(':endpoint' => $op_endpoint))->fetchField();
@@ -608,9 +608,9 @@ function openid_association($op_endpoint) {
     $assoc_request = openid_association_request($public);
     $assoc_message = _openid_encode_message(_openid_create_message($assoc_request));
     $assoc_options = array(
-        'headers' => array('Content-Type' => 'application/x-www-form-urlencoded; charset=utf-8'),
-        'method' => 'POST',
-        'data' => $assoc_message,
+      'headers' => array('Content-Type' => 'application/x-www-form-urlencoded; charset=utf-8'),
+      'method' => 'POST',
+      'data' => $assoc_message,
     );
     $assoc_result = drupal_http_request($op_endpoint, $assoc_options);
     if (isset($assoc_result->error)) {
@@ -629,16 +629,16 @@ function openid_association($op_endpoint) {
       $assoc_response['mac_key'] = base64_encode(_openid_dh_xorsecret($shared, $enc_mac_key));
     }
     db_insert('openid_association')
-    ->fields(array(
-    'idp_endpoint_uri' => $op_endpoint,
-    'session_type' => $assoc_response['session_type'],
-    'assoc_handle' => $assoc_response['assoc_handle'],
-    'assoc_type' => $assoc_response['assoc_type'],
-    'expires_in' => $assoc_response['expires_in'],
-    'mac_key' => $assoc_response['mac_key'],
-    'created' => REQUEST_TIME,
-    ))
-    ->execute();
+      ->fields(array(
+        'idp_endpoint_uri' => $op_endpoint,
+        'session_type' => $assoc_response['session_type'],
+        'assoc_handle' => $assoc_response['assoc_handle'],
+        'assoc_type' => $assoc_response['assoc_type'],
+        'expires_in' => $assoc_response['expires_in'],
+        'mac_key' => $assoc_response['mac_key'],
+        'created' => REQUEST_TIME,
+      ))
+      ->execute();
     $assoc_handle = $assoc_response['assoc_handle'];
   }
   return $assoc_handle;
@@ -723,10 +723,10 @@ function openid_association_request($public) {
   module_load_include('inc', 'openid');
 
   $request = array(
-      'openid.ns' => OPENID_NS_2_0,
-      'openid.mode' => 'associate',
-      'openid.session_type' => 'DH-SHA1',
-      'openid.assoc_type' => 'HMAC-SHA1'
+    'openid.ns' => OPENID_NS_2_0,
+    'openid.mode' => 'associate',
+    'openid.session_type' => 'DH-SHA1',
+    'openid.assoc_type' => 'HMAC-SHA1'
   );
 
   if ($request['openid.session_type'] == 'DH-SHA1' || $request['openid.session_type'] == 'DH-SHA256') {
@@ -743,10 +743,10 @@ function openid_authentication_request($claimed_id, $identity, $return_to = '', 
   module_load_include('inc', 'openid');
 
   $request =  array(
-      'openid.mode' => 'checkid_setup',
-      'openid.identity' => $identity,
-      'openid.assoc_handle' => $assoc_handle,
-      'openid.return_to' => $return_to,
+    'openid.mode' => 'checkid_setup',
+    'openid.identity' => $identity,
+    'openid.assoc_handle' => $assoc_handle,
+    'openid.return_to' => $return_to,
   );
 
   if ($service['version'] == 2) {
@@ -856,9 +856,9 @@ function openid_verify_assertion($service, $response) {
     $request['openid.mode'] = 'check_authentication';
     $message = _openid_create_message($request);
     $options = array(
-        'headers' => array('Content-Type' => 'application/x-www-form-urlencoded; charset=utf-8'),
-        'method' => 'POST',
-        'data' => _openid_encode_message($message),
+      'headers' => array('Content-Type' => 'application/x-www-form-urlencoded; charset=utf-8'),
+      'method' => 'POST',
+      'data' => _openid_encode_message($message),
     );
     $result = drupal_http_request($service['uri'], $options);
     if (!isset($result->error)) {
@@ -871,8 +871,8 @@ function openid_verify_assertion($service, $response) {
           // database to avoid reusing it again on a subsequent authentication request.
           // See http://openid.net/specs/openid-authentication-2_0.html#rfc.section.11.4.2.2
           db_delete('openid_association')
-          ->condition('assoc_handle', $response['invalidate_handle'])
-          ->execute();
+            ->condition('assoc_handle', $response['invalidate_handle'])
+            ->execute();
         }
       }
       else {
@@ -960,17 +960,17 @@ function openid_verify_assertion_nonce($service, $response) {
 
   // Record that this nonce was used.
   db_insert('openid_nonce')
-  ->fields(array(
-  'idp_endpoint_uri' => $service['uri'],
-  'nonce' => $response['openid.response_nonce'],
-  'expires' => $nonce_timestamp + $expiry,
-  ))
-  ->execute();
+    ->fields(array(
+      'idp_endpoint_uri' => $service['uri'],
+      'nonce' => $response['openid.response_nonce'],
+      'expires' => $nonce_timestamp + $expiry,
+    ))
+    ->execute();
 
   // Count the number of times this nonce was used.
   $count_used = db_query("SELECT COUNT(*) FROM {openid_nonce} WHERE nonce = :nonce AND idp_endpoint_uri = :idp_endpoint_uri", array(
-      ':nonce' => $response['openid.response_nonce'],
-      ':idp_endpoint_uri' => $service['uri'],
+    ':nonce' => $response['openid.response_nonce'],
+    ':idp_endpoint_uri' => $service['uri'],
   ))->fetchField();
 
   if ($count_used == 1) {
@@ -1028,6 +1028,6 @@ function openid_verify_assertion_return_url($service, $response) {
  */
 function openid_cron() {
   db_delete('openid_nonce')
-  ->condition('expires', REQUEST_TIME, '<')
-  ->execute();
+    ->condition('expires', REQUEST_TIME, '<')
+    ->execute();
 }

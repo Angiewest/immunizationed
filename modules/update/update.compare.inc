@@ -197,16 +197,16 @@ function _update_process_info_list(&$projects, $list, $project_type, $status) {
       // Only process this if we haven't done this project, since a single
       // project can have multiple modules or themes.
       $projects[$project_name] = array(
-          'name' => $project_name,
-          // Only save attributes from the .info file we care about so we do not
-          // bloat our RAM usage needlessly.
-          'info' => update_filter_project_info($file->info),
-          'datestamp' => $file->info['datestamp'],
-          'includes' => array($file->name => $file->info['name']),
-          'project_type' => $project_display_type,
-          'project_status' => $status,
-          'sub_themes' => $sub_themes,
-          'base_themes' => $base_themes,
+        'name' => $project_name,
+        // Only save attributes from the .info file we care about so we do not
+        // bloat our RAM usage needlessly.
+        'info' => update_filter_project_info($file->info),
+        'datestamp' => $file->info['datestamp'],
+        'includes' => array($file->name => $file->info['name']),
+        'project_type' => $project_display_type,
+        'project_status' => $status,
+        'sub_themes' => $sub_themes,
+        'base_themes' => $base_themes,
       );
     }
     elseif ($projects[$project_name]['project_type'] == $project_display_type) {
@@ -441,9 +441,9 @@ function update_calculate_project_update_status($project, &$project_data, $avail
           $project_data['extra'] = array();
         }
         $project_data['extra'][] = array(
-            'class' => array('project-not-secure'),
-            'label' => t('Project not secure'),
-            'data' => t('This project has been labeled insecure by the Drupal security team, and is no longer available for download. Immediately disabling everything included by this project is strongly recommended!'),
+          'class' => array('project-not-secure'),
+          'label' => t('Project not secure'),
+          'data' => t('This project has been labeled insecure by the Drupal security team, and is no longer available for download. Immediately disabling everything included by this project is strongly recommended!'),
         );
         break;
       case 'unpublished':
@@ -453,9 +453,9 @@ function update_calculate_project_update_status($project, &$project_data, $avail
           $project_data['extra'] = array();
         }
         $project_data['extra'][] = array(
-            'class' => array('project-revoked'),
-            'label' => t('Project revoked'),
-            'data' => t('This project has been revoked, and is no longer available for download. Disabling everything included by this project is strongly recommended!'),
+          'class' => array('project-revoked'),
+          'label' => t('Project revoked'),
+          'data' => t('This project has been revoked, and is no longer available for download. Disabling everything included by this project is strongly recommended!'),
         );
         break;
       case 'unsupported':
@@ -464,9 +464,9 @@ function update_calculate_project_update_status($project, &$project_data, $avail
           $project_data['extra'] = array();
         }
         $project_data['extra'][] = array(
-            'class' => array('project-not-supported'),
-            'label' => t('Project not supported'),
-            'data' => t('This project is no longer supported, and is no longer available for download. Disabling everything included by this project is strongly recommended!'),
+          'class' => array('project-not-supported'),
+          'label' => t('Project not supported'),
+          'data' => t('This project is no longer supported, and is no longer available for download. Disabling everything included by this project is strongly recommended!'),
         );
         break;
       case 'not-fetched':
@@ -554,7 +554,7 @@ function update_calculate_project_update_status($project, &$project_data, $avail
     // First, if this is the existing release, check a few conditions.
     if ($project_data['existing_version'] === $version) {
       if (isset($release['terms']['Release type']) &&
-      in_array('Insecure', $release['terms']['Release type'])) {
+          in_array('Insecure', $release['terms']['Release type'])) {
         $project_data['status'] = UPDATE_NOT_SECURE;
       }
       elseif ($release['status'] == 'unpublished') {
@@ -563,30 +563,30 @@ function update_calculate_project_update_status($project, &$project_data, $avail
           $project_data['extra'] = array();
         }
         $project_data['extra'][] = array(
-            'class' => array('release-revoked'),
-            'label' => t('Release revoked'),
-            'data' => t('Your currently installed release has been revoked, and is no longer available for download. Disabling everything included in this release or upgrading is strongly recommended!'),
+          'class' => array('release-revoked'),
+          'label' => t('Release revoked'),
+          'data' => t('Your currently installed release has been revoked, and is no longer available for download. Disabling everything included in this release or upgrading is strongly recommended!'),
         );
       }
       elseif (isset($release['terms']['Release type']) &&
-          in_array('Unsupported', $release['terms']['Release type'])) {
+              in_array('Unsupported', $release['terms']['Release type'])) {
         $project_data['status'] = UPDATE_NOT_SUPPORTED;
         if (empty($project_data['extra'])) {
           $project_data['extra'] = array();
         }
         $project_data['extra'][] = array(
-            'class' => array('release-not-supported'),
-            'label' => t('Release not supported'),
-            'data' => t('Your currently installed release is now unsupported, and is no longer available for download. Disabling everything included in this release or upgrading is strongly recommended!'),
+          'class' => array('release-not-supported'),
+          'label' => t('Release not supported'),
+          'data' => t('Your currently installed release is now unsupported, and is no longer available for download. Disabling everything included in this release or upgrading is strongly recommended!'),
         );
       }
     }
 
     // Otherwise, ignore unpublished, insecure, or unsupported releases.
     if ($release['status'] == 'unpublished' ||
-    (isset($release['terms']['Release type']) &&
-        (in_array('Insecure', $release['terms']['Release type']) ||
-            in_array('Unsupported', $release['terms']['Release type'])))) {
+        (isset($release['terms']['Release type']) &&
+         (in_array('Insecure', $release['terms']['Release type']) ||
+          in_array('Unsupported', $release['terms']['Release type'])))) {
       continue;
     }
 
@@ -618,16 +618,16 @@ function update_calculate_project_update_status($project, &$project_data, $avail
     // Look for the 'latest version' if we haven't found it yet. Latest is
     // defined as the most recent version for the target major version.
     if (!isset($project_data['latest_version'])
-    && $release['version_major'] == $target_major) {
+        && $release['version_major'] == $target_major) {
       $project_data['latest_version'] = $version;
       $project_data['releases'][$version] = $release;
     }
 
     // Look for the development snapshot release for this branch.
     if (!isset($project_data['dev_version'])
-    && $release['version_major'] == $target_major
-    && isset($release['version_extra'])
-    && $release['version_extra'] == 'dev') {
+        && $release['version_major'] == $target_major
+        && isset($release['version_extra'])
+        && $release['version_extra'] == 'dev') {
       $project_data['dev_version'] = $version;
       $project_data['releases'][$version] = $release;
     }
@@ -635,8 +635,8 @@ function update_calculate_project_update_status($project, &$project_data, $avail
     // Look for the 'recommended' version if we haven't found it yet (see
     // phpdoc at the top of this function for the definition).
     if (!isset($project_data['recommended'])
-    && $release['version_major'] == $target_major
-    && isset($release['version_patch'])) {
+        && $release['version_major'] == $target_major
+        && isset($release['version_patch'])) {
       if ($patch != $release['version_patch']) {
         $patch = $release['version_patch'];
         $release_patch_changed = $release;
@@ -671,7 +671,7 @@ function update_calculate_project_update_status($project, &$project_data, $avail
 
     // See if this release is a security update.
     if (isset($release['terms']['Release type'])
-    && in_array('Security update', $release['terms']['Release type'])) {
+        && in_array('Security update', $release['terms']['Release type'])) {
       $project_data['security updates'][] = $release;
     }
   }
@@ -783,15 +783,15 @@ function update_project_cache($cid) {
   // update status of the site to avoid presenting stale information.
   $q = $_GET['q'];
   $paths = array(
-      'admin/modules',
-      'admin/modules/update',
-      'admin/appearance',
-      'admin/appearance/update',
-      'admin/reports',
-      'admin/reports/updates',
-      'admin/reports/updates/update',
-      'admin/reports/status',
-      'admin/reports/updates/check',
+    'admin/modules',
+    'admin/modules/update',
+    'admin/appearance',
+    'admin/appearance/update',
+    'admin/reports',
+    'admin/reports/updates',
+    'admin/reports/updates/update',
+    'admin/reports/status',
+    'admin/reports/updates/check',
   );
   if (in_array($q, $paths)) {
     _update_cache_clear($cid);
@@ -818,14 +818,14 @@ function update_project_cache($cid) {
  */
 function update_filter_project_info($info) {
   $whitelist = array(
-      '_info_file_ctime',
-      'datestamp',
-      'major',
-      'name',
-      'package',
-      'project',
-      'project status url',
-      'version',
+    '_info_file_ctime',
+    'datestamp',
+    'major',
+    'name',
+    'package',
+    'project',
+    'project status url',
+    'version',
   );
   return array_intersect_key($info, drupal_map_assoc($whitelist));
 }

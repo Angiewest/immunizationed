@@ -35,7 +35,7 @@ class DatabaseSchema_pgsql extends DatabaseSchema {
    *   An object with two member variables:
    *     - 'blob_fields' that lists all the blob fields in the table.
    *     - 'sequences' that lists the sequences used in that table.
-  */
+   */
   public function queryTableInformation($table) {
     // Generate a key to reference this table's information on.
     $key = $this->connection->prefixTables('{' . $table . '}');
@@ -47,14 +47,14 @@ class DatabaseSchema_pgsql extends DatabaseSchema {
       // Split the key into schema and table for querying.
       list($schema, $table_name) = explode('.', $key);
       $table_information = (object) array(
-          'blob_fields' => array(),
-          'sequences' => array(),
+        'blob_fields' => array(),
+        'sequences' => array(),
       );
       // Don't use {} around information_schema.columns table.
       $result = $this->connection->query("SELECT column_name, data_type, column_default FROM information_schema.columns WHERE table_schema = :schema AND table_name = :table AND (data_type = 'bytea' OR (numeric_precision IS NOT NULL AND column_default LIKE :default))", array(
-          ':schema' => $schema,
-          ':table' => $table_name,
-          ':default' => '%nextval%',
+        ':schema' => $schema,
+        ':table' => $table_name,
+        ':default' => '%nextval%',
       ));
       foreach ($result as $column) {
         if ($column->data_type == 'bytea') {
@@ -97,9 +97,9 @@ class DatabaseSchema_pgsql extends DatabaseSchema {
         'checks' => array(),
     );
     $checks = $this->connection->query("SELECT conname FROM pg_class cl INNER JOIN pg_constraint co ON co.conrelid = cl.oid INNER JOIN pg_attribute attr ON attr.attrelid = cl.oid AND attr.attnum = ANY (co.conkey) INNER JOIN pg_namespace ns ON cl.relnamespace = ns.oid WHERE co.contype = 'c' AND ns.nspname = :schema AND cl.relname = :table AND attr.attname = :column", array(
-        ':schema' => $schema,
-        ':table' => $table_name,
-        ':column' => $field,
+      ':schema' => $schema,
+      ':table' => $table_name,
+      ':column' => $field,
     ));
     $field_information = $checks->fetchCol();
 
@@ -264,38 +264,38 @@ class DatabaseSchema_pgsql extends DatabaseSchema {
     // database types back into schema types.
     // $map does not use drupal_static as its value never changes.
     static $map = array(
-        'varchar:normal' => 'varchar',
-        'char:normal' => 'character',
+      'varchar:normal' => 'varchar',
+      'char:normal' => 'character',
 
-        'text:tiny' => 'text',
-        'text:small' => 'text',
-        'text:medium' => 'text',
-        'text:big' => 'text',
-        'text:normal' => 'text',
+      'text:tiny' => 'text',
+      'text:small' => 'text',
+      'text:medium' => 'text',
+      'text:big' => 'text',
+      'text:normal' => 'text',
 
-        'int:tiny' => 'smallint',
-        'int:small' => 'smallint',
-        'int:medium' => 'int',
-        'int:big' => 'bigint',
-        'int:normal' => 'int',
+      'int:tiny' => 'smallint',
+      'int:small' => 'smallint',
+      'int:medium' => 'int',
+      'int:big' => 'bigint',
+      'int:normal' => 'int',
 
-        'float:tiny' => 'real',
-        'float:small' => 'real',
-        'float:medium' => 'real',
-        'float:big' => 'double precision',
-        'float:normal' => 'real',
+      'float:tiny' => 'real',
+      'float:small' => 'real',
+      'float:medium' => 'real',
+      'float:big' => 'double precision',
+      'float:normal' => 'real',
 
-        'numeric:normal' => 'numeric',
+      'numeric:normal' => 'numeric',
 
-        'blob:big' => 'bytea',
-        'blob:normal' => 'bytea',
+      'blob:big' => 'bytea',
+      'blob:normal' => 'bytea',
 
-        'serial:tiny' => 'serial',
-        'serial:small' => 'serial',
-        'serial:medium' => 'serial',
-        'serial:big' => 'bigserial',
-        'serial:normal' => 'serial',
-    );
+      'serial:tiny' => 'serial',
+      'serial:small' => 'serial',
+      'serial:medium' => 'serial',
+      'serial:big' => 'bigserial',
+      'serial:normal' => 'serial',
+      );
     return $map;
   }
 
@@ -367,8 +367,8 @@ class DatabaseSchema_pgsql extends DatabaseSchema {
     $this->connection->query($query);
     if (isset($spec['initial'])) {
       $this->connection->update($table)
-      ->fields(array($field => $spec['initial']))
-      ->execute();
+        ->fields(array($field => $spec['initial']))
+        ->execute();
     }
     if ($fixnull) {
       $this->connection->query("ALTER TABLE {" . $table . "} ALTER $field SET NOT NULL");

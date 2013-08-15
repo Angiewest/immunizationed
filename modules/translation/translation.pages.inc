@@ -73,9 +73,9 @@ function translation_node_overview($node) {
   drupal_set_title(t('Translations of %title', array('%title' => $node->title)), PASS_THROUGH);
 
   $build['translation_node_overview'] = array(
-      '#theme' => 'table',
-      '#header' => $header,
-      '#rows' => $rows,
+    '#theme' => 'table',
+    '#header' => $header,
+    '#rows' => $rows,
   );
 
   return $build;

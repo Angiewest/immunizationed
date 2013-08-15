@@ -46,49 +46,49 @@ define('SAVED_NEW', 1);
 
 /**
  * Return status for saving which involved an update to an existing item.
-*/
+ */
 define('SAVED_UPDATED', 2);
 
 /**
  * Return status for saving which deleted an existing item.
-*/
+ */
 define('SAVED_DELETED', 3);
 
 /**
  * The default group for system CSS files added to the page.
-*/
+ */
 define('CSS_SYSTEM', -100);
 
 /**
  * The default group for module CSS files added to the page.
-*/
+ */
 define('CSS_DEFAULT', 0);
 
 /**
  * The default group for theme CSS files added to the page.
-*/
+ */
 define('CSS_THEME', 100);
 
 /**
  * The default group for JavaScript and jQuery libraries added to the page.
-*/
+ */
 define('JS_LIBRARY', -100);
 
 /**
  * The default group for module JavaScript code added to the page.
-*/
+ */
 define('JS_DEFAULT', 0);
 
 /**
  * The default group for theme JavaScript code added to the page.
-*/
+ */
 define('JS_THEME', 100);
 
 /**
  * Error code indicating that the request exceeded the specified timeout.
  *
  * @see drupal_http_request()
-*/
+ */
 define('HTTP_REQUEST_TIMEOUT', -1);
 
 /**
@@ -113,7 +113,7 @@ define('HTTP_REQUEST_TIMEOUT', -1);
  * built-in block cache (DRUPAL_NO_CACHE) and roll their own.
  *
  * Note that user 1 is excluded from block caching.
-*/
+ */
 
 /**
  * The block should not get cached.
@@ -123,7 +123,7 @@ define('HTTP_REQUEST_TIMEOUT', -1);
  *   querying the db cache would be more expensive than directly generating the
  *   content.
  * - For blocks that change too frequently.
-*/
+ */
 define('DRUPAL_NO_CACHE', -1);
 
 /**
@@ -131,7 +131,7 @@ define('DRUPAL_NO_CACHE', -1);
  *
  * This setting is useful when time based expiration is needed or a site uses a
  * node access which invalidates standard block cache.
-*/
+ */
 define('DRUPAL_CACHE_CUSTOM', -2);
 
 /**
@@ -139,7 +139,7 @@ define('DRUPAL_CACHE_CUSTOM', -2);
  *
  * This is the default setting for blocks, used when the block does not specify
  * anything.
-*/
+ */
 define('DRUPAL_CACHE_PER_ROLE', 0x0001);
 
 /**
@@ -147,22 +147,22 @@ define('DRUPAL_CACHE_PER_ROLE', 0x0001);
  *
  * This setting can be resource-consuming for sites with large number of users,
  * and thus should only be used when DRUPAL_CACHE_PER_ROLE is not sufficient.
-*/
+ */
 define('DRUPAL_CACHE_PER_USER', 0x0002);
 
 /**
  * The block or element can change depending on the page being viewed.
-*/
+ */
 define('DRUPAL_CACHE_PER_PAGE', 0x0004);
 
 /**
  * The block or element is the same for every user and page that it is visible.
-*/
+ */
 define('DRUPAL_CACHE_GLOBAL', 0x0008);
 
 /**
  * @} End of "defgroup block_caching".
-*/
+ */
 
 /**
  * Adds content to a specified region.
@@ -171,7 +171,7 @@ define('DRUPAL_CACHE_GLOBAL', 0x0008);
  *   Page region the content is added to.
  * @param $data
  *   Content to be added.
-*/
+ */
 function drupal_add_region_content($region = NULL, $data = NULL) {
   static $content = array();
 
@@ -321,25 +321,25 @@ function _drupal_default_html_head() {
   // IE browser may be vulnerable to XSS via encoding attacks from any content
   // that comes before this META tag, such as a TITLE tag.
   $elements['system_meta_content_type'] = array(
-      '#type' => 'html_tag',
-      '#tag' => 'meta',
-      '#attributes' => array(
-          'http-equiv' => 'Content-Type',
-          'content' => 'text/html; charset=utf-8',
-      ),
-      // Security: This always has to be output first.
-      '#weight' => -1000,
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'http-equiv' => 'Content-Type',
+      'content' => 'text/html; charset=utf-8',
+    ),
+    // Security: This always has to be output first.
+    '#weight' => -1000,
   );
   // Show Drupal and the major version number in the META GENERATOR tag.
   // Get the major version.
   list($version, ) = explode('.', VERSION);
   $elements['system_meta_generator'] = array(
-      '#type' => 'html_tag',
-      '#tag' => 'meta',
-      '#attributes' => array(
-          'name' => 'Generator',
-          'content' => 'Drupal ' . $version . ' (http://drupal.org)',
-      ),
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'Generator',
+      'content' => 'Drupal ' . $version . ' (http://drupal.org)',
+    ),
   );
   // Also send the generator in the HTTP header.
   $elements['system_meta_generator']['#attached']['drupal_add_http_header'][] = array('X-Generator', $elements['system_meta_generator']['#attributes']['content']);
@@ -372,12 +372,12 @@ function drupal_add_feed($url = NULL, $title = '') {
     $stored_feed_links[$url] = theme('feed_icon', array('url' => $url, 'title' => $title));
 
     drupal_add_html_head_link(array(
-    'rel' => 'alternate',
-    'type' => 'application/rss+xml',
-    'title' => $title,
-    // Force the URL to be absolute, for consistency with other <link> tags
-    // output by Drupal.
-    'href' => url($url, array('absolute' => TRUE)),
+      'rel' => 'alternate',
+      'type' => 'application/rss+xml',
+      'title' => $title,
+      // Force the URL to be absolute, for consistency with other <link> tags
+      // output by Drupal.
+      'href' => url($url, array('absolute' => TRUE)),
     ));
   }
   return $stored_feed_links;
@@ -579,9 +579,9 @@ function drupal_get_destination() {
  */
 function drupal_parse_url($url) {
   $options = array(
-      'path' => NULL,
-      'query' => array(),
-      'fragment' => '',
+    'path' => NULL,
+    'query' => array(),
+    'fragment' => '',
   );
 
   // External URLs: not using parse_url() here, so we do not have to rebuild
@@ -641,7 +641,7 @@ function drupal_encode_path($path) {
 }
 
 /**
- * Sends the user to a different Drupal page.
+ * Sends the user to a different page.
  *
  * This issues an on-site HTTP redirect. The function makes sure the redirected
  * URL is formatted correctly.
@@ -813,17 +813,17 @@ function drupal_http_request($url, array $options = array()) {
 
   // Merge the default options.
   $options += array(
-      'headers' => array(),
-      'method' => 'GET',
-      'data' => NULL,
-      'max_redirects' => 3,
-      'timeout' => 30.0,
-      'context' => NULL,
+    'headers' => array(),
+    'method' => 'GET',
+    'data' => NULL,
+    'max_redirects' => 3,
+    'timeout' => 30.0,
+    'context' => NULL,
   );
 
   // Merge the default headers.
   $options['headers'] += array(
-      'User-Agent' => 'Drupal (+http://drupal.org/)',
+    'User-Agent' => 'Drupal (+http://drupal.org/)',
   );
 
   // stream_socket_client() requires timeout to be a float.
@@ -1011,46 +1011,46 @@ function drupal_http_request($url, array $options = array()) {
   }
 
   $responses = array(
-      100 => 'Continue',
-      101 => 'Switching Protocols',
-      200 => 'OK',
-      201 => 'Created',
-      202 => 'Accepted',
-      203 => 'Non-Authoritative Information',
-      204 => 'No Content',
-      205 => 'Reset Content',
-      206 => 'Partial Content',
-      300 => 'Multiple Choices',
-      301 => 'Moved Permanently',
-      302 => 'Found',
-      303 => 'See Other',
-      304 => 'Not Modified',
-      305 => 'Use Proxy',
-      307 => 'Temporary Redirect',
-      400 => 'Bad Request',
-      401 => 'Unauthorized',
-      402 => 'Payment Required',
-      403 => 'Forbidden',
-      404 => 'Not Found',
-      405 => 'Method Not Allowed',
-      406 => 'Not Acceptable',
-      407 => 'Proxy Authentication Required',
-      408 => 'Request Time-out',
-      409 => 'Conflict',
-      410 => 'Gone',
-      411 => 'Length Required',
-      412 => 'Precondition Failed',
-      413 => 'Request Entity Too Large',
-      414 => 'Request-URI Too Large',
-      415 => 'Unsupported Media Type',
-      416 => 'Requested range not satisfiable',
-      417 => 'Expectation Failed',
-      500 => 'Internal Server Error',
-      501 => 'Not Implemented',
-      502 => 'Bad Gateway',
-      503 => 'Service Unavailable',
-      504 => 'Gateway Time-out',
-      505 => 'HTTP Version not supported',
+    100 => 'Continue',
+    101 => 'Switching Protocols',
+    200 => 'OK',
+    201 => 'Created',
+    202 => 'Accepted',
+    203 => 'Non-Authoritative Information',
+    204 => 'No Content',
+    205 => 'Reset Content',
+    206 => 'Partial Content',
+    300 => 'Multiple Choices',
+    301 => 'Moved Permanently',
+    302 => 'Found',
+    303 => 'See Other',
+    304 => 'Not Modified',
+    305 => 'Use Proxy',
+    307 => 'Temporary Redirect',
+    400 => 'Bad Request',
+    401 => 'Unauthorized',
+    402 => 'Payment Required',
+    403 => 'Forbidden',
+    404 => 'Not Found',
+    405 => 'Method Not Allowed',
+    406 => 'Not Acceptable',
+    407 => 'Proxy Authentication Required',
+    408 => 'Request Time-out',
+    409 => 'Conflict',
+    410 => 'Gone',
+    411 => 'Length Required',
+    412 => 'Precondition Failed',
+    413 => 'Request Entity Too Large',
+    414 => 'Request-URI Too Large',
+    415 => 'Unsupported Media Type',
+    416 => 'Requested range not satisfiable',
+    417 => 'Expectation Failed',
+    500 => 'Internal Server Error',
+    501 => 'Not Implemented',
+    502 => 'Bad Gateway',
+    503 => 'Service Unavailable',
+    504 => 'Gateway Time-out',
+    505 => 'HTTP Version not supported',
   );
   // RFC 2616 states that all unknown HTTP codes must be treated the same as the
   // base code in their class.
@@ -1204,21 +1204,21 @@ function valid_email_address($mail) {
 function valid_url($url, $absolute = FALSE) {
   if ($absolute) {
     return (bool)preg_match("
-        /^                                                      # Start at the beginning of the text
-        (?:ftp|https?|feed):\/\/                                # Look for ftp, http, https or feed schemes
-        (?:                                                     # Userinfo (optional) which is typically
+      /^                                                      # Start at the beginning of the text
+      (?:ftp|https?|feed):\/\/                                # Look for ftp, http, https or feed schemes
+      (?:                                                     # Userinfo (optional) which is typically
         (?:(?:[\w\.\-\+!$&'\(\)*\+,;=]|%[0-9a-f]{2})+:)*      # a username or a username and password
         (?:[\w\.\-\+%!$&'\(\)*\+,;=]|%[0-9a-f]{2})+@          # combination
-    )?
-        (?:
+      )?
+      (?:
         (?:[a-z0-9\-\.]|%[0-9a-f]{2})+                        # A domain name or a IPv4 address
         |(?:\[(?:[0-9a-f]{0,4}:)*(?:[0-9a-f]{0,4})\])         # or a well formed IPv6 address
-    )
-        (?::[0-9]+)?                                            # Server port number (optional)
-        (?:[\/|\?]
+      )
+      (?::[0-9]+)?                                            # Server port number (optional)
+      (?:[\/|\?]
         (?:[\w#!:\.\?\+=&@$'~*,;\/\(\)\[\]\-]|%[0-9a-f]{2})   # The path and query (optional)
-        *)?
-        $/xi", $url);
+      *)?
+    $/xi", $url);
   }
   else {
     return (bool)preg_match("/^(?:[\w#!:\.\?\+=&@$'~*,;\/\(\)\[\]\-]|%[0-9a-f]{2})+$/i", $url);
@@ -1247,13 +1247,13 @@ function flood_register_event($name, $window = 3600, $identifier = NULL) {
     $identifier = ip_address();
   }
   db_insert('flood')
-  ->fields(array(
-  'event' => $name,
-  'identifier' => $identifier,
-  'timestamp' => REQUEST_TIME,
-  'expiration' => REQUEST_TIME + $window,
-  ))
-  ->execute();
+    ->fields(array(
+      'event' => $name,
+      'identifier' => $identifier,
+      'timestamp' => REQUEST_TIME,
+      'expiration' => REQUEST_TIME + $window,
+    ))
+    ->execute();
 }
 
 /**
@@ -1269,9 +1269,9 @@ function flood_clear_event($name, $identifier = NULL) {
     $identifier = ip_address();
   }
   db_delete('flood')
-  ->condition('event', $name)
-  ->condition('identifier', $identifier)
-  ->execute();
+    ->condition('event', $name)
+    ->condition('identifier', $identifier)
+    ->execute();
 }
 
 /**
@@ -1300,10 +1300,10 @@ function flood_is_allowed($name, $threshold, $window = 3600, $identifier = NULL)
     $identifier = ip_address();
   }
   $number = db_query("SELECT COUNT(*) FROM {flood} WHERE event = :event AND identifier = :identifier AND timestamp > :timestamp", array(
-      ':event' => $name,
-      ':identifier' => $identifier,
-      ':timestamp' => REQUEST_TIME - $window))
-      ->fetchField();
+    ':event' => $name,
+    ':identifier' => $identifier,
+    ':timestamp' => REQUEST_TIME - $window))
+    ->fetchField();
   return ($number < $threshold);
 }
 
@@ -1452,15 +1452,15 @@ function filter_xss($string, $allowed_tags = array('a', 'em', 'strong', 'cite', 
   $string = preg_replace('/&amp;([A-Za-z][A-Za-z0-9]*;)/', '&\1', $string);
 
   return preg_replace_callback('%
-      (
-      <(?=[^a-zA-Z!/])  # a lone <
-      |                 # or
-      <!--.*?-->        # a comment
-      |                 # or
-      <[^>]*(>|$)       # a string that starts with a <, up until the > or the end of the string
-      |                 # or
-      >                 # just a >
-  )%x', '_filter_xss_split', $string);
+    (
+    <(?=[^a-zA-Z!/])  # a lone <
+    |                 # or
+    <!--.*?-->        # a comment
+    |                 # or
+    <[^>]*(>|$)       # a string that starts with a <, up until the > or the end of the string
+    |                 # or
+    >                 # just a >
+    )%x', '_filter_xss_split', $string);
 }
 
 /**
@@ -1618,16 +1618,16 @@ function _filter_xss_attributes($attr) {
     if ($working == 0) {
       // Not well formed; remove and try again.
       $attr = preg_replace('/
-          ^
-          (
-          "[^"]*("|$)     # - a string that starts with a double quote, up until the next double quote or the end of the string
-          |               # or
-          \'[^\']*(\'|$)| # - a string that starts with a quote, up until the next quote or the end of the string
-          |               # or
-          \S              # - a non-whitespace character
-      )*              # any number of the above three
-          \s*             # any number of whitespaces
-          /x', '', $attr);
+        ^
+        (
+        "[^"]*("|$)     # - a string that starts with a double quote, up until the next double quote or the end of the string
+        |               # or
+        \'[^\']*(\'|$)| # - a string that starts with a quote, up until the next quote or the end of the string
+        |               # or
+        \S              # - a non-whitespace character
+        )*              # any number of the above three
+        \s*             # any number of whitespaces
+        /x', '', $attr);
       $mode = 0;
     }
   }
@@ -1870,14 +1870,14 @@ function format_size($size, $langcode = NULL) {
   else {
     $size = $size / DRUPAL_KILOBYTE; // Convert bytes to kilobytes.
     $units = array(
-        t('@size KB', array(), array('langcode' => $langcode)),
-        t('@size MB', array(), array('langcode' => $langcode)),
-        t('@size GB', array(), array('langcode' => $langcode)),
-        t('@size TB', array(), array('langcode' => $langcode)),
-        t('@size PB', array(), array('langcode' => $langcode)),
-        t('@size EB', array(), array('langcode' => $langcode)),
-        t('@size ZB', array(), array('langcode' => $langcode)),
-        t('@size YB', array(), array('langcode' => $langcode)),
+      t('@size KB', array(), array('langcode' => $langcode)),
+      t('@size MB', array(), array('langcode' => $langcode)),
+      t('@size GB', array(), array('langcode' => $langcode)),
+      t('@size TB', array(), array('langcode' => $langcode)),
+      t('@size PB', array(), array('langcode' => $langcode)),
+      t('@size EB', array(), array('langcode' => $langcode)),
+      t('@size ZB', array(), array('langcode' => $langcode)),
+      t('@size YB', array(), array('langcode' => $langcode)),
     );
     foreach ($units as $unit) {
       if (round($size, 2) >= DRUPAL_KILOBYTE) {
@@ -1907,13 +1907,13 @@ function format_size($size, $langcode = NULL) {
  */
 function format_interval($interval, $granularity = 2, $langcode = NULL) {
   $units = array(
-      '1 year|@count years' => 31536000,
-      '1 month|@count months' => 2592000,
-      '1 week|@count weeks' => 604800,
-      '1 day|@count days' => 86400,
-      '1 hour|@count hours' => 3600,
-      '1 min|@count min' => 60,
-      '1 sec|@count sec' => 1
+    '1 year|@count years' => 31536000,
+    '1 month|@count months' => 2592000,
+    '1 week|@count weeks' => 604800,
+    '1 day|@count days' => 86400,
+    '1 hour|@count hours' => 3600,
+    '1 min|@count min' => 60,
+    '1 sec|@count sec' => 1
   );
   $output = '';
   foreach ($units as $key => $value) {
@@ -2066,7 +2066,7 @@ function _format_date_callback(array $matches = NULL, $new_langcode = NULL) {
 
   if (!isset($cache[$langcode][$code][$string])) {
     $options = array(
-        'langcode' => $langcode,
+      'langcode' => $langcode,
     );
 
     if ($code == 'F') {
@@ -2085,6 +2085,9 @@ function _format_date_callback(array $matches = NULL, $new_langcode = NULL) {
 
 /**
  * Format a username.
+ *
+ * This is also the label callback implementation of
+ * callback_entity_info_label() for user_entity_info().
  *
  * By default, the passed-in object's 'name' property is used if it exists, or
  * else, the site-defined value for the 'anonymous' variable. However, a module
@@ -2178,11 +2181,11 @@ function format_username($account) {
 function url($path = NULL, array $options = array()) {
   // Merge in defaults.
   $options += array(
-      'fragment' => '',
-      'query' => array(),
-      'absolute' => FALSE,
-      'alias' => FALSE,
-      'prefix' => ''
+    'fragment' => '',
+    'query' => array(),
+    'absolute' => FALSE,
+    'alias' => FALSE,
+    'prefix' => ''
   );
 
   if (!isset($options['external'])) {
@@ -2432,13 +2435,13 @@ function l($text, $path, array $options = array()) {
 
   // Merge in defaults.
   $options += array(
-      'attributes' => array(),
-      'html' => FALSE,
+    'attributes' => array(),
+    'html' => FALSE,
   );
 
   // Append active class.
   if (($path == $_GET['q'] || ($path == '<front>' && drupal_is_front_page())) &&
-  (empty($options['language']) || $options['language']->language == $language_url->language)) {
+      (empty($options['language']) || $options['language']->language == $language_url->language)) {
     $options['attributes']['class'][] = 'active';
   }
 
@@ -2662,7 +2665,7 @@ function drupal_deliver_html_page($page_callback_result) {
         drupal_add_http_header('Status', '503 Service unavailable');
         drupal_set_title(t('Site under maintenance'));
         print theme('maintenance_page', array('content' => filter_xss_admin(variable_get('maintenance_mode_message',
-            t('@site is currently under maintenance. We should be back shortly. Thank you for your patience.', array('@site' => variable_get('site_name', 'Drupal')))))));
+          t('@site is currently under maintenance. We should be back shortly. Thank you for your patience.', array('@site' => variable_get('site_name', 'Drupal')))))));
         break;
     }
   }
@@ -2830,8 +2833,8 @@ function base_path() {
  */
 function drupal_add_html_head_link($attributes, $header = FALSE) {
   $element = array(
-      '#tag' => 'link',
-      '#attributes' => $attributes,
+    '#tag' => 'link',
+    '#attributes' => $attributes,
   );
   $href = $attributes['href'];
 
@@ -2945,7 +2948,7 @@ function drupal_add_html_head_link($attributes, $header = FALSE) {
  *     - Then by the 'every_page' flag, with TRUE coming before FALSE.
  *     - Then by weight.
  *     - Then by the order in which the CSS was added. For example, all else
-   *       being the same, a stylesheet added by a call to drupal_add_css() that
+ *       being the same, a stylesheet added by a call to drupal_add_css() that
  *       happened later in the page request gets added to the page after one for
  *       which drupal_add_css() happened earlier in the page request.
  *   - 'media': The media type for the stylesheet, e.g., all, print, screen.
@@ -2978,18 +2981,18 @@ function drupal_add_css($data = NULL, $options = NULL) {
   // to the browser differently.
   if (isset($data)) {
     $options += array(
-        'type' => 'file',
-        'group' => CSS_DEFAULT,
-        'weight' => 0,
-        'every_page' => FALSE,
-        'media' => 'all',
-        'preprocess' => TRUE,
-        'data' => $data,
-        'browsers' => array(),
+      'type' => 'file',
+      'group' => CSS_DEFAULT,
+      'weight' => 0,
+      'every_page' => FALSE,
+      'media' => 'all',
+      'preprocess' => TRUE,
+      'data' => $data,
+      'browsers' => array(),
     );
     $options['browsers'] += array(
-        'IE' => TRUE,
-        '!IE' => TRUE,
+      'IE' => TRUE,
+      '!IE' => TRUE,
     );
 
     // Files with a query string cannot be preprocessed.
@@ -3087,8 +3090,8 @@ function drupal_get_css($css = NULL, $skip_alter = FALSE) {
 
   // Render the HTML needed to load the CSS.
   $styles = array(
-      '#type' => 'styles',
-      '#items' => $css,
+    '#type' => 'styles',
+    '#items' => $css,
   );
 
   if (!empty($setting)) {
@@ -3281,7 +3284,7 @@ function drupal_aggregate_css(&$css_groups) {
           $css_groups[$key]['data'] = drupal_build_css_cache($group['items']);
         }
         break;
-        // Aggregate all inline CSS content into the group's data property.
+      // Aggregate all inline CSS content into the group's data property.
       case 'inline':
         $css_groups[$key]['data'] = '';
         foreach ($group['items'] as $item) {
@@ -3376,19 +3379,19 @@ function drupal_pre_render_styles($elements) {
 
   // Defaults for LINK and STYLE elements.
   $link_element_defaults = array(
-      '#type' => 'html_tag',
-      '#tag' => 'link',
-      '#attributes' => array(
-          'type' => 'text/css',
-          'rel' => 'stylesheet',
-      ),
+    '#type' => 'html_tag',
+    '#tag' => 'link',
+    '#attributes' => array(
+      'type' => 'text/css',
+      'rel' => 'stylesheet',
+    ),
   );
   $style_element_defaults = array(
-      '#type' => 'html_tag',
-      '#tag' => 'style',
-      '#attributes' => array(
-          'type' => 'text/css',
-      ),
+    '#type' => 'html_tag',
+    '#tag' => 'style',
+    '#attributes' => array(
+      'type' => 'text/css',
+    ),
   );
 
   // Loop through each group.
@@ -3474,9 +3477,9 @@ function drupal_pre_render_styles($elements) {
           }
         }
         break;
-        // For inline content, the 'data' property contains the CSS content. If
-        // the group's 'data' property is set, then output it in a single STYLE
-        // tag. Otherwise, output a separate STYLE tag for each item.
+      // For inline content, the 'data' property contains the CSS content. If
+      // the group's 'data' property is set, then output it in a single STYLE
+      // tag. Otherwise, output a separate STYLE tag for each item.
       case 'inline':
         if (isset($group['data'])) {
           $element = $style_element_defaults;
@@ -3499,8 +3502,8 @@ function drupal_pre_render_styles($elements) {
           }
         }
         break;
-        // Output a LINK tag for each external item. The item's 'data' property
-        // contains the full URL.
+      // Output a LINK tag for each external item. The item's 'data' property
+      // contains the full URL.
       case 'external':
         foreach ($group['items'] as $item) {
           $element = $link_element_defaults;
@@ -3709,30 +3712,30 @@ function drupal_load_stylesheet_content($contents, $optimize = FALSE) {
     $single_quot = "'[^'\\\\]*(?:\\\\.[^'\\\\]*)*'";
     // Strip all comment blocks, but keep double/single quoted strings.
     $contents = preg_replace(
-        "<($double_quot|$single_quot)|$comment>Ss",
-        "$1",
-        $contents
+      "<($double_quot|$single_quot)|$comment>Ss",
+      "$1",
+      $contents
     );
     // Remove certain whitespace.
     // There are different conditions for removing leading and trailing
     // whitespace.
     // @see http://php.net/manual/en/regexp.reference.subpatterns.php
     $contents = preg_replace('<
-        # Strip leading and trailing whitespace.
+      # Strip leading and trailing whitespace.
         \s*([@{};,])\s*
-        # Strip only leading whitespace from:
-        # - Closing parenthesis: Retain "@media (bar) and foo".
-        | \s+([\)])
-        # Strip only trailing whitespace from:
-        # - Opening parenthesis: Retain "@media (bar) and foo".
-        # - Colon: Retain :pseudo-selectors.
-        | ([\(:])\s+
-        >xS',
-        // Only one of the three capturing groups will match, so its reference
-        // will contain the wanted value and the references for the
-        // two non-matching groups will be replaced with empty strings.
-        '$1$2$3',
-        $contents
+      # Strip only leading whitespace from:
+      # - Closing parenthesis: Retain "@media (bar) and foo".
+      | \s+([\)])
+      # Strip only trailing whitespace from:
+      # - Opening parenthesis: Retain "@media (bar) and foo".
+      # - Colon: Retain :pseudo-selectors.
+      | ([\(:])\s+
+    >xS',
+      // Only one of the three capturing groups will match, so its reference
+      // will contain the wanted value and the references for the
+      // two non-matching groups will be replaced with empty strings.
+      '$1$2$3',
+      $contents
     );
     // End the file with a new line.
     $contents = trim($contents);
@@ -3885,14 +3888,14 @@ function drupal_html_id($id) {
       // requested id. $_POST['ajax_html_ids'] contains the ids as they were
       // returned by this function, potentially with the appended counter, so
       // we parse that to reconstruct the $seen_ids array.
-      if (is_array($_POST['ajax_html_ids'])) {
+      if (isset($_POST['ajax_html_ids'][0]) && strpos($_POST['ajax_html_ids'][0], ',') === FALSE) {
         $ajax_html_ids = $_POST['ajax_html_ids'];
       }
       else {
-        // jquery.form.js may send the server a comma-separated string instead
-        // of an array (see http://drupal.org/node/1575060), so we need to
-        // convert it to an array in that case.
-        $ajax_html_ids = explode(',', $_POST['ajax_html_ids']);
+        // jquery.form.js may send the server a comma-separated string as the
+        // first element of an array (see http://drupal.org/node/1575060), so
+        // we need to convert it to an array in that case.
+        $ajax_html_ids = explode(',', $_POST['ajax_html_ids'][0]);
       }
       foreach ($ajax_html_ids as $seen_id) {
         // We rely on '--' being used solely for separating a base id from the
@@ -4139,28 +4142,28 @@ function drupal_add_js($data = NULL, $options = NULL) {
       // from url().
       url('', array('prefix' => &$prefix));
       $javascript = array(
-          'settings' => array(
-              'data' => array(
-                  array('basePath' => base_path()),
-                  array('pathPrefix' => empty($prefix) ? '' : $prefix),
-              ),
-              'type' => 'setting',
-              'scope' => 'header',
-              'group' => JS_LIBRARY,
-              'every_page' => TRUE,
-              'weight' => 0,
+        'settings' => array(
+          'data' => array(
+            array('basePath' => base_path()),
+            array('pathPrefix' => empty($prefix) ? '' : $prefix),
           ),
-          'misc/drupal.js' => array(
-              'data' => 'misc/drupal.js',
-              'type' => 'file',
-              'scope' => 'header',
-              'group' => JS_LIBRARY,
-              'every_page' => TRUE,
-              'weight' => -1,
-              'preprocess' => TRUE,
-              'cache' => TRUE,
-              'defer' => FALSE,
-          ),
+          'type' => 'setting',
+          'scope' => 'header',
+          'group' => JS_LIBRARY,
+          'every_page' => TRUE,
+          'weight' => 0,
+        ),
+        'misc/drupal.js' => array(
+          'data' => 'misc/drupal.js',
+          'type' => 'file',
+          'scope' => 'header',
+          'group' => JS_LIBRARY,
+          'every_page' => TRUE,
+          'weight' => -1,
+          'preprocess' => TRUE,
+          'cache' => TRUE,
+          'defer' => FALSE,
+        ),
       );
       // Register all required libraries.
       drupal_add_library('system', 'jquery', TRUE);
@@ -4198,16 +4201,16 @@ function drupal_add_js($data = NULL, $options = NULL) {
  */
 function drupal_js_defaults($data = NULL) {
   return array(
-      'type' => 'file',
-      'group' => JS_DEFAULT,
-      'every_page' => FALSE,
-      'weight' => 0,
-      'scope' => 'header',
-      'cache' => TRUE,
-      'defer' => FALSE,
-      'preprocess' => TRUE,
-      'version' => NULL,
-      'data' => $data,
+    'type' => 'file',
+    'group' => JS_DEFAULT,
+    'every_page' => FALSE,
+    'weight' => 0,
+    'scope' => 'header',
+    'cache' => TRUE,
+    'defer' => FALSE,
+    'preprocess' => TRUE,
+    'version' => NULL,
+    'data' => $data,
   );
 }
 
@@ -4312,11 +4315,11 @@ function drupal_get_js($scope = 'header', $javascript = NULL, $skip_alter = FALS
 
   // Loop through the JavaScript to construct the rendered output.
   $element = array(
-      '#tag' => 'script',
-      '#value' => '',
-      '#attributes' => array(
-          'type' => 'text/javascript',
-      ),
+    '#tag' => 'script',
+    '#value' => '',
+    '#attributes' => array(
+      'type' => 'text/javascript',
+    ),
   );
   foreach ($items as $item) {
     $query_string =  empty($item['version']) ? $default_query_string : $js_version_string . $item['version'];
@@ -4456,9 +4459,9 @@ function drupal_get_js($scope = 'header', $javascript = NULL, $skip_alter = FALS
 function drupal_process_attached($elements, $group = JS_DEFAULT, $dependency_check = FALSE, $every_page = NULL) {
   // Add defaults to the special attached structures that should be processed differently.
   $elements['#attached'] += array(
-      'library' => array(),
-      'js' => array(),
-      'css' => array(),
+    'library' => array(),
+    'js' => array(),
+    'css' => array(),
   );
 
   // Add the libraries first.
@@ -4644,8 +4647,8 @@ function drupal_process_attached($elements, $group = JS_DEFAULT, $dependency_che
 function drupal_process_states(&$elements) {
   $elements['#attached']['library'][] = array('system', 'drupal.states');
   $elements['#attached']['js'][] = array(
-      'type' => 'setting',
-      'data' => array('states' => array('#' . $elements['#id'] => $elements['#states'])),
+    'type' => 'setting',
+    'data' => array('states' => array('#' . $elements['#id'] => $elements['#states'])),
   );
 }
 
@@ -4683,9 +4686,9 @@ function drupal_add_library($module, $name, $every_page = NULL) {
     if ($library = drupal_get_library($module, $name)) {
       // Add all components within the library.
       $elements['#attached'] = array(
-          'library' => $library['dependencies'],
-          'js' => $library['js'],
-          'css' => $library['css'],
+        'library' => $library['dependencies'],
+        'js' => $library['js'],
+        'css' => $library['css'],
       );
       $added[$module][$name] = drupal_process_attached($elements, JS_LIBRARY, TRUE, $every_page);
     }
@@ -4883,12 +4886,12 @@ function drupal_add_tabledrag($table_id, $action, $relationship, $group, $subgro
   $target = isset($subgroup) ? $subgroup : $group;
   $source = isset($source) ? $source : $target;
   $settings['tableDrag'][$table_id][$group][] = array(
-      'target' => $target,
-      'source' => $source,
-      'relationship' => $relationship,
-      'action' => $action,
-      'hidden' => $hidden,
-      'limit' => $limit,
+    'target' => $target,
+    'source' => $source,
+    'relationship' => $relationship,
+    'action' => $action,
+    'hidden' => $hidden,
+    'limit' => $limit,
   );
   drupal_add_js($settings, 'setting');
 }
@@ -5032,19 +5035,6 @@ function drupal_json_output($var = NULL) {
 }
 
 /**
- * Gets a salt useful for hardening against SQL injection.
- *
- * @return
- *   A salt based on information in settings.php, not in the database.
- */
-function drupal_get_hash_salt() {
-  global $drupal_hash_salt, $databases;
-  // If the $drupal_hash_salt variable is empty, a hash of the serialized
-  // database credentials is used as a fallback salt.
-  return empty($drupal_hash_salt) ? hash('sha256', serialize($databases)) : $drupal_hash_salt;
-}
-
-/**
  * Ensures the private key variable used to generate tokens is set.
  *
  * @return
@@ -5066,8 +5056,10 @@ function drupal_get_private_key() {
  *
  * @return string
  *   A 43-character URL-safe token for validation, based on the user session ID,
- *   the global $drupal_hash_salt variable from settings.php, and the
+ *   the hash salt provided from drupal_get_hash_salt(), and the
  *   'drupal_private_key' configuration variable.
+ *
+ * @see drupal_get_hash_salt()
  */
 function drupal_get_token($value = '') {
   return drupal_hmac_base64($value, session_id() . drupal_get_private_key() . drupal_get_hash_salt());
@@ -5168,15 +5160,15 @@ function drupal_page_set_cache() {
 
   if (drupal_page_is_cacheable()) {
     $cache = (object) array(
-        'cid' => $base_root . request_uri(),
-        'data' => array(
-            'path' => $_GET['q'],
-            'body' => ob_get_clean(),
-            'title' => drupal_get_title(),
-            'headers' => array(),
-        ),
-        'expire' => CACHE_TEMPORARY,
-        'created' => REQUEST_TIME,
+      'cid' => $base_root . request_uri(),
+      'data' => array(
+        'path' => $_GET['q'],
+        'body' => ob_get_clean(),
+        'title' => drupal_get_title(),
+        'headers' => array(),
+      ),
+      'expire' => CACHE_TEMPORARY,
+      'created' => REQUEST_TIME,
     );
 
     // Restore preferred header names based on the lower-case names returned
@@ -5480,8 +5472,8 @@ function drupal_set_page_content($content = NULL) {
 function drupal_pre_render_conditional_comments($elements) {
   $browsers = isset($elements['#browsers']) ? $elements['#browsers'] : array();
   $browsers += array(
-      'IE' => TRUE,
-      '!IE' => TRUE,
+    'IE' => TRUE,
+    '!IE' => TRUE,
   );
 
   // If rendering in all browsers, no need for conditional comments.
@@ -5507,8 +5499,8 @@ function drupal_pre_render_conditional_comments($elements) {
   // either the "downlevel-hidden" or "downlevel-revealed" technique must be
   // used. See http://en.wikipedia.org/wiki/Conditional_comment for details.
   $elements += array(
-      '#prefix' => '',
-      '#suffix' => '',
+    '#prefix' => '',
+    '#suffix' => '',
   );
   if (!$browsers['!IE']) {
     // "downlevel-hidden".
@@ -5803,23 +5795,23 @@ function drupal_render_page($page) {
  * array to be rendered independently and prevents them from being rendered
  * more than once on subsequent calls to drupal_render() (e.g., as part of a
  * larger array). If the same array or array element is passed more than once
- * to drupal_render(), it simply returns a NULL value.
+ * to drupal_render(), it simply returns an empty string.
  *
- * @param $elements
+ * @param array $elements
  *   The structured array describing the data to be rendered.
  *
- * @return
+ * @return string
  *   The rendered HTML.
  */
 function drupal_render(&$elements) {
   // Early-return nothing if user does not have access.
   if (empty($elements) || (isset($elements['#access']) && !$elements['#access'])) {
-    return;
+    return '';
   }
 
   // Do not print elements twice.
   if (!empty($elements['#printed'])) {
-    return;
+    return '';
   }
 
   // Try to fetch the element's markup from cache and return.
@@ -5855,7 +5847,7 @@ function drupal_render(&$elements) {
 
   // Allow #pre_render to abort rendering.
   if (!empty($elements['#printed'])) {
-    return;
+    return '';
   }
 
   // Get the children of the element, sorted by weight.
@@ -6174,12 +6166,12 @@ function drupal_render_cache_by_query($query, $function, $expire = CACHE_TEMPORA
   $query->preExecute();
   $cache_keys[] = hash('sha256', serialize(array((string) $query, $query->getArguments())));
   return array(
-      '#query' => $query,
-      '#pre_render' => array($function . '_pre_render'),
-      '#cache' => array(
-          'keys' => $cache_keys,
-          'expire' => $expire,
-      ),
+    '#query' => $query,
+    '#pre_render' => array($function . '_pre_render'),
+    '#cache' => array(
+      'keys' => $cache_keys,
+      'expire' => $expire,
+    ),
   );
 }
 
@@ -6478,6 +6470,44 @@ function element_set_attributes(array &$element, array $map) {
 }
 
 /**
+ * Recursively computes the difference of arrays with additional index check.
+ *
+ * This is a version of array_diff_assoc() that supports multidimensional
+ * arrays.
+ *
+ * @param array $array1
+ *   The array to compare from.
+ * @param array $array2
+ *   The array to compare to.
+ *
+ * @return array
+ *   Returns an array containing all the values from array1 that are not present
+ *   in array2.
+ */
+function drupal_array_diff_assoc_recursive($array1, $array2) {
+  $difference = array();
+
+  foreach ($array1 as $key => $value) {
+    if (is_array($value)) {
+      if (!array_key_exists($key, $array2) || !is_array($array2[$key])) {
+        $difference[$key] = $value;
+      }
+      else {
+        $new_diff = drupal_array_diff_assoc_recursive($value, $array2[$key]);
+        if (!empty($new_diff)) {
+          $difference[$key] = $new_diff;
+        }
+      }
+    }
+    elseif (!array_key_exists($key, $array2) || $array2[$key] !== $value) {
+      $difference[$key] = $value;
+    }
+  }
+
+  return $difference;
+}
+
+/**
  * Sets a value in a nested array with variable depth.
  *
  * This helper function should be used when the depth of the array element you
@@ -6662,204 +6692,204 @@ function drupal_array_nested_key_exists(array $array, array $parents) {
  */
 function drupal_common_theme() {
   return array(
-      // From theme.inc.
-      'html' => array(
-          'render element' => 'page',
-          'template' => 'html',
-      ),
-      'page' => array(
-          'render element' => 'page',
-          'template' => 'page',
-      ),
-      'region' => array(
-          'render element' => 'elements',
-          'template' => 'region',
-      ),
-      'status_messages' => array(
-          'variables' => array('display' => NULL),
-      ),
-      'link' => array(
-          'variables' => array('text' => NULL, 'path' => NULL, 'options' => array()),
-      ),
-      'links' => array(
-          'variables' => array('links' => NULL, 'attributes' => array('class' => array('links')), 'heading' => array()),
-      ),
-      'image' => array(
-          // HTML 4 and XHTML 1.0 always require an alt attribute. The HTML 5 draft
-          // allows the alt attribute to be omitted in some cases. Therefore,
-          // default the alt attribute to an empty string, but allow code calling
-          // theme('image') to pass explicit NULL for it to be omitted. Usually,
-          // neither omission nor an empty string satisfies accessibility
-          // requirements, so it is strongly encouraged for code calling
-          // theme('image') to pass a meaningful value for the alt variable.
-          // - http://www.w3.org/TR/REC-html40/struct/objects.html#h-13.8
-          // - http://www.w3.org/TR/xhtml1/dtds.html
-          // - http://dev.w3.org/html5/spec/Overview.html#alt
-          // The title attribute is optional in all cases, so it is omitted by
-          // default.
-          'variables' => array('path' => NULL, 'width' => NULL, 'height' => NULL, 'alt' => '', 'title' => NULL, 'attributes' => array()),
-      ),
-      'breadcrumb' => array(
-          'variables' => array('breadcrumb' => NULL),
-      ),
-      'help' => array(
-          'variables' => array(),
-      ),
-      'table' => array(
-          'variables' => array('header' => NULL, 'rows' => NULL, 'attributes' => array(), 'caption' => NULL, 'colgroups' => array(), 'sticky' => TRUE, 'empty' => ''),
-      ),
-      'tablesort_indicator' => array(
-          'variables' => array('style' => NULL),
-      ),
-      'mark' => array(
-          'variables' => array('type' => MARK_NEW),
-      ),
-      'item_list' => array(
-          'variables' => array('items' => array(), 'title' => NULL, 'type' => 'ul', 'attributes' => array()),
-      ),
-      'more_help_link' => array(
-          'variables' => array('url' => NULL),
-      ),
-      'feed_icon' => array(
-          'variables' => array('url' => NULL, 'title' => NULL),
-      ),
-      'more_link' => array(
-          'variables' => array('url' => NULL, 'title' => NULL)
-      ),
-      'username' => array(
-          'variables' => array('account' => NULL),
-      ),
-      'progress_bar' => array(
-          'variables' => array('percent' => NULL, 'message' => NULL),
-      ),
-      'indentation' => array(
-          'variables' => array('size' => 1),
-      ),
-      'html_tag' => array(
-          'render element' => 'element',
-      ),
-      // From theme.maintenance.inc.
-      'maintenance_page' => array(
-          'variables' => array('content' => NULL, 'show_messages' => TRUE),
-          'template' => 'maintenance-page',
-      ),
-      'update_page' => array(
-          'variables' => array('content' => NULL, 'show_messages' => TRUE),
-      ),
-      'install_page' => array(
-          'variables' => array('content' => NULL),
-      ),
-      'task_list' => array(
-          'variables' => array('items' => NULL, 'active' => NULL),
-      ),
-      'authorize_message' => array(
-          'variables' => array('message' => NULL, 'success' => TRUE),
-      ),
-      'authorize_report' => array(
-          'variables' => array('messages' => array()),
-      ),
-      // From pager.inc.
-      'pager' => array(
-          'variables' => array('tags' => array(), 'element' => 0, 'parameters' => array(), 'quantity' => 9),
-      ),
-      'pager_first' => array(
-          'variables' => array('text' => NULL, 'element' => 0, 'parameters' => array()),
-      ),
-      'pager_previous' => array(
-          'variables' => array('text' => NULL, 'element' => 0, 'interval' => 1, 'parameters' => array()),
-      ),
-      'pager_next' => array(
-          'variables' => array('text' => NULL, 'element' => 0, 'interval' => 1, 'parameters' => array()),
-      ),
-      'pager_last' => array(
-          'variables' => array('text' => NULL, 'element' => 0, 'parameters' => array()),
-      ),
-      'pager_link' => array(
-          'variables' => array('text' => NULL, 'page_new' => NULL, 'element' => NULL, 'parameters' => array(), 'attributes' => array()),
-      ),
-      // From menu.inc.
-      'menu_link' => array(
-          'render element' => 'element',
-      ),
-      'menu_tree' => array(
-          'render element' => 'tree',
-      ),
-      'menu_local_task' => array(
-          'render element' => 'element',
-      ),
-      'menu_local_action' => array(
-          'render element' => 'element',
-      ),
-      'menu_local_tasks' => array(
-          'variables' => array('primary' => array(), 'secondary' => array()),
-      ),
-      // From form.inc.
-      'select' => array(
-          'render element' => 'element',
-      ),
-      'fieldset' => array(
-          'render element' => 'element',
-      ),
-      'radio' => array(
-          'render element' => 'element',
-      ),
-      'radios' => array(
-          'render element' => 'element',
-      ),
-      'date' => array(
-          'render element' => 'element',
-      ),
-      'exposed_filters' => array(
-          'render element' => 'form',
-      ),
-      'checkbox' => array(
-          'render element' => 'element',
-      ),
-      'checkboxes' => array(
-          'render element' => 'element',
-      ),
-      'button' => array(
-          'render element' => 'element',
-      ),
-      'image_button' => array(
-          'render element' => 'element',
-      ),
-      'hidden' => array(
-          'render element' => 'element',
-      ),
-      'textfield' => array(
-          'render element' => 'element',
-      ),
-      'form' => array(
-          'render element' => 'element',
-      ),
-      'textarea' => array(
-          'render element' => 'element',
-      ),
-      'password' => array(
-          'render element' => 'element',
-      ),
-      'file' => array(
-          'render element' => 'element',
-      ),
-      'tableselect' => array(
-          'render element' => 'element',
-      ),
-      'form_element' => array(
-          'render element' => 'element',
-      ),
-      'form_required_marker' => array(
-          'render element' => 'element',
-      ),
-      'form_element_label' => array(
-          'render element' => 'element',
-      ),
-      'vertical_tabs' => array(
-          'render element' => 'element',
-      ),
-      'container' => array(
-          'render element' => 'element',
-      ),
+    // From theme.inc.
+    'html' => array(
+      'render element' => 'page',
+      'template' => 'html',
+    ),
+    'page' => array(
+      'render element' => 'page',
+      'template' => 'page',
+    ),
+    'region' => array(
+      'render element' => 'elements',
+      'template' => 'region',
+    ),
+    'status_messages' => array(
+      'variables' => array('display' => NULL),
+    ),
+    'link' => array(
+      'variables' => array('text' => NULL, 'path' => NULL, 'options' => array()),
+    ),
+    'links' => array(
+      'variables' => array('links' => NULL, 'attributes' => array('class' => array('links')), 'heading' => array()),
+    ),
+    'image' => array(
+      // HTML 4 and XHTML 1.0 always require an alt attribute. The HTML 5 draft
+      // allows the alt attribute to be omitted in some cases. Therefore,
+      // default the alt attribute to an empty string, but allow code calling
+      // theme('image') to pass explicit NULL for it to be omitted. Usually,
+      // neither omission nor an empty string satisfies accessibility
+      // requirements, so it is strongly encouraged for code calling
+      // theme('image') to pass a meaningful value for the alt variable.
+      // - http://www.w3.org/TR/REC-html40/struct/objects.html#h-13.8
+      // - http://www.w3.org/TR/xhtml1/dtds.html
+      // - http://dev.w3.org/html5/spec/Overview.html#alt
+      // The title attribute is optional in all cases, so it is omitted by
+      // default.
+      'variables' => array('path' => NULL, 'width' => NULL, 'height' => NULL, 'alt' => '', 'title' => NULL, 'attributes' => array()),
+    ),
+    'breadcrumb' => array(
+      'variables' => array('breadcrumb' => NULL),
+    ),
+    'help' => array(
+      'variables' => array(),
+    ),
+    'table' => array(
+      'variables' => array('header' => NULL, 'rows' => NULL, 'attributes' => array(), 'caption' => NULL, 'colgroups' => array(), 'sticky' => TRUE, 'empty' => ''),
+    ),
+    'tablesort_indicator' => array(
+      'variables' => array('style' => NULL),
+    ),
+    'mark' => array(
+      'variables' => array('type' => MARK_NEW),
+    ),
+    'item_list' => array(
+      'variables' => array('items' => array(), 'title' => NULL, 'type' => 'ul', 'attributes' => array()),
+    ),
+    'more_help_link' => array(
+      'variables' => array('url' => NULL),
+    ),
+    'feed_icon' => array(
+      'variables' => array('url' => NULL, 'title' => NULL),
+    ),
+    'more_link' => array(
+      'variables' => array('url' => NULL, 'title' => NULL)
+    ),
+    'username' => array(
+      'variables' => array('account' => NULL),
+    ),
+    'progress_bar' => array(
+      'variables' => array('percent' => NULL, 'message' => NULL),
+    ),
+    'indentation' => array(
+      'variables' => array('size' => 1),
+    ),
+    'html_tag' => array(
+      'render element' => 'element',
+    ),
+    // From theme.maintenance.inc.
+    'maintenance_page' => array(
+      'variables' => array('content' => NULL, 'show_messages' => TRUE),
+      'template' => 'maintenance-page',
+    ),
+    'update_page' => array(
+      'variables' => array('content' => NULL, 'show_messages' => TRUE),
+    ),
+    'install_page' => array(
+      'variables' => array('content' => NULL),
+    ),
+    'task_list' => array(
+      'variables' => array('items' => NULL, 'active' => NULL),
+    ),
+    'authorize_message' => array(
+      'variables' => array('message' => NULL, 'success' => TRUE),
+    ),
+    'authorize_report' => array(
+      'variables' => array('messages' => array()),
+    ),
+    // From pager.inc.
+    'pager' => array(
+      'variables' => array('tags' => array(), 'element' => 0, 'parameters' => array(), 'quantity' => 9),
+    ),
+    'pager_first' => array(
+      'variables' => array('text' => NULL, 'element' => 0, 'parameters' => array()),
+    ),
+    'pager_previous' => array(
+      'variables' => array('text' => NULL, 'element' => 0, 'interval' => 1, 'parameters' => array()),
+    ),
+    'pager_next' => array(
+      'variables' => array('text' => NULL, 'element' => 0, 'interval' => 1, 'parameters' => array()),
+    ),
+    'pager_last' => array(
+      'variables' => array('text' => NULL, 'element' => 0, 'parameters' => array()),
+    ),
+    'pager_link' => array(
+      'variables' => array('text' => NULL, 'page_new' => NULL, 'element' => NULL, 'parameters' => array(), 'attributes' => array()),
+    ),
+    // From menu.inc.
+    'menu_link' => array(
+      'render element' => 'element',
+    ),
+    'menu_tree' => array(
+      'render element' => 'tree',
+    ),
+    'menu_local_task' => array(
+      'render element' => 'element',
+    ),
+    'menu_local_action' => array(
+      'render element' => 'element',
+    ),
+    'menu_local_tasks' => array(
+      'variables' => array('primary' => array(), 'secondary' => array()),
+    ),
+    // From form.inc.
+    'select' => array(
+      'render element' => 'element',
+    ),
+    'fieldset' => array(
+      'render element' => 'element',
+    ),
+    'radio' => array(
+      'render element' => 'element',
+    ),
+    'radios' => array(
+      'render element' => 'element',
+    ),
+    'date' => array(
+      'render element' => 'element',
+    ),
+    'exposed_filters' => array(
+      'render element' => 'form',
+    ),
+    'checkbox' => array(
+      'render element' => 'element',
+    ),
+    'checkboxes' => array(
+      'render element' => 'element',
+    ),
+    'button' => array(
+      'render element' => 'element',
+    ),
+    'image_button' => array(
+      'render element' => 'element',
+    ),
+    'hidden' => array(
+      'render element' => 'element',
+    ),
+    'textfield' => array(
+      'render element' => 'element',
+    ),
+    'form' => array(
+      'render element' => 'element',
+    ),
+    'textarea' => array(
+      'render element' => 'element',
+    ),
+    'password' => array(
+      'render element' => 'element',
+    ),
+    'file' => array(
+      'render element' => 'element',
+    ),
+    'tableselect' => array(
+      'render element' => 'element',
+    ),
+    'form_element' => array(
+      'render element' => 'element',
+    ),
+    'form_required_marker' => array(
+      'render element' => 'element',
+    ),
+    'form_element_label' => array(
+      'render element' => 'element',
+    ),
+    'vertical_tabs' => array(
+      'render element' => 'element',
+    ),
+    'container' => array(
+      'render element' => 'element',
+    ),
   );
 }
 
@@ -7266,53 +7296,53 @@ function drupal_parse_info_format($data) {
   $constants = get_defined_constants();
 
   if (preg_match_all('
-      @^\s*                           # Start at the beginning of a line, ignoring leading whitespace
-      ((?:
+    @^\s*                           # Start at the beginning of a line, ignoring leading whitespace
+    ((?:
       [^=;\[\]]|                    # Key names cannot contain equal signs, semi-colons or square brackets,
       \[[^\[\]]*\]                  # unless they are balanced and not nested
-  )+?)
-      \s*=\s*                         # Key/value pairs are separated by equal signs (ignoring white-space)
-      (?:
+    )+?)
+    \s*=\s*                         # Key/value pairs are separated by equal signs (ignoring white-space)
+    (?:
       ("(?:[^"]|(?<=\\\\)")*")|     # Double-quoted string, which may contain slash-escaped quotes/slashes
       (\'(?:[^\']|(?<=\\\\)\')*\')| # Single-quoted string, which may contain slash-escaped quotes/slashes
       ([^\r\n]*?)                   # Non-quoted string
-  )\s*$                           # Stop at the next end of a line, ignoring trailing whitespace
-      @msx', $data, $matches, PREG_SET_ORDER)) {
-      foreach ($matches as $match) {
-        // Fetch the key and value string.
-        $i = 0;
-        foreach (array('key', 'value1', 'value2', 'value3') as $var) {
-          $$var = isset($match[++$i]) ? $match[$i] : '';
-        }
-        $value = stripslashes(substr($value1, 1, -1)) . stripslashes(substr($value2, 1, -1)) . $value3;
-
-        // Parse array syntax.
-        $keys = preg_split('/\]?\[/', rtrim($key, ']'));
-        $last = array_pop($keys);
-        $parent = &$info;
-
-        // Create nested arrays.
-        foreach ($keys as $key) {
-          if ($key == '') {
-            $key = count($parent);
-          }
-          if (!isset($parent[$key]) || !is_array($parent[$key])) {
-            $parent[$key] = array();
-          }
-          $parent = &$parent[$key];
-        }
-
-        // Handle PHP constants.
-        if (isset($constants[$value])) {
-          $value = $constants[$value];
-        }
-
-        // Insert actual value.
-        if ($last == '') {
-          $last = count($parent);
-        }
-        $parent[$last] = $value;
+    )\s*$                           # Stop at the next end of a line, ignoring trailing whitespace
+    @msx', $data, $matches, PREG_SET_ORDER)) {
+    foreach ($matches as $match) {
+      // Fetch the key and value string.
+      $i = 0;
+      foreach (array('key', 'value1', 'value2', 'value3') as $var) {
+        $$var = isset($match[++$i]) ? $match[$i] : '';
       }
+      $value = stripslashes(substr($value1, 1, -1)) . stripslashes(substr($value2, 1, -1)) . $value3;
+
+      // Parse array syntax.
+      $keys = preg_split('/\]?\[/', rtrim($key, ']'));
+      $last = array_pop($keys);
+      $parent = &$info;
+
+      // Create nested arrays.
+      foreach ($keys as $key) {
+        if ($key == '') {
+          $key = count($parent);
+        }
+        if (!isset($parent[$key]) || !is_array($parent[$key])) {
+          $parent[$key] = array();
+        }
+        $parent = &$parent[$key];
+      }
+
+      // Handle PHP constants.
+      if (isset($constants[$value])) {
+        $value = $constants[$value];
+      }
+
+      // Insert actual value.
+      if ($last == '') {
+        $last = count($parent);
+      }
+      $parent[$last] = $value;
+    }
   }
 
   return $info;
@@ -7330,14 +7360,14 @@ function drupal_parse_info_format($data) {
  */
 function watchdog_severity_levels() {
   return array(
-      WATCHDOG_EMERGENCY => t('emergency'),
-      WATCHDOG_ALERT     => t('alert'),
-      WATCHDOG_CRITICAL  => t('critical'),
-      WATCHDOG_ERROR     => t('error'),
-      WATCHDOG_WARNING   => t('warning'),
-      WATCHDOG_NOTICE    => t('notice'),
-      WATCHDOG_INFO      => t('info'),
-      WATCHDOG_DEBUG     => t('debug'),
+    WATCHDOG_EMERGENCY => t('emergency'),
+    WATCHDOG_ALERT     => t('alert'),
+    WATCHDOG_CRITICAL  => t('critical'),
+    WATCHDOG_ERROR     => t('error'),
+    WATCHDOG_WARNING   => t('warning'),
+    WATCHDOG_NOTICE    => t('notice'),
+    WATCHDOG_INFO      => t('info'),
+    WATCHDOG_DEBUG     => t('debug'),
   );
 }
 
@@ -7579,23 +7609,23 @@ function entity_get_info($entity_type = NULL) {
       // Merge in default values.
       foreach ($entity_info as $name => $data) {
         $entity_info[$name] += array(
-            'fieldable' => FALSE,
-            'controller class' => 'DrupalDefaultEntityController',
-            'static cache' => TRUE,
-            'field cache' => TRUE,
-            'load hook' => $name . '_load',
-            'bundles' => array(),
-            'view modes' => array(),
-            'entity keys' => array(),
-            'translation' => array(),
+          'fieldable' => FALSE,
+          'controller class' => 'DrupalDefaultEntityController',
+          'static cache' => TRUE,
+          'field cache' => TRUE,
+          'load hook' => $name . '_load',
+          'bundles' => array(),
+          'view modes' => array(),
+          'entity keys' => array(),
+          'translation' => array(),
         );
         $entity_info[$name]['entity keys'] += array(
-            'revision' => '',
-            'bundle' => '',
+          'revision' => '',
+          'bundle' => '',
         );
         foreach ($entity_info[$name]['view modes'] as $view_mode => $view_mode_info) {
           $entity_info[$name]['view modes'][$view_mode] += array(
-              'custom settings' => FALSE,
+            'custom settings' => FALSE,
           );
         }
         // If no bundle key is provided, assume a single bundle, named after

@@ -31,28 +31,28 @@ function text_help($path, $arg) {
  */
 function text_field_info() {
   return array(
-      'text' => array(
-          'label' => t('Text'),
-          'description' => t('This field stores varchar text in the database.'),
-          'settings' => array('max_length' => 255),
-          'instance_settings' => array('text_processing' => 0),
-          'default_widget' => 'text_textfield',
-          'default_formatter' => 'text_default',
-      ),
-      'text_long' => array(
-          'label' => t('Long text'),
-          'description' => t('This field stores long text in the database.'),
-          'instance_settings' => array('text_processing' => 0),
-          'default_widget' => 'text_textarea',
-          'default_formatter' => 'text_default',
-      ),
-      'text_with_summary' => array(
-          'label' => t('Long text and summary'),
-          'description' => t('This field stores long text in the database along with optional summary text.'),
-          'instance_settings' => array('text_processing' => 1, 'display_summary' => 0),
-          'default_widget' => 'text_textarea_with_summary',
-          'default_formatter' => 'text_default',
-      ),
+    'text' => array(
+      'label' => t('Text'),
+      'description' => t('This field stores varchar text in the database.'),
+      'settings' => array('max_length' => 255),
+      'instance_settings' => array('text_processing' => 0),
+      'default_widget' => 'text_textfield',
+      'default_formatter' => 'text_default',
+    ),
+    'text_long' => array(
+      'label' => t('Long text'),
+      'description' => t('This field stores long text in the database.'),
+      'instance_settings' => array('text_processing' => 0),
+      'default_widget' => 'text_textarea',
+      'default_formatter' => 'text_default',
+    ),
+    'text_with_summary' => array(
+      'label' => t('Long text and summary'),
+      'description' => t('This field stores long text in the database along with optional summary text.'),
+      'instance_settings' => array('text_processing' => 1, 'display_summary' => 0),
+      'default_widget' => 'text_textarea_with_summary',
+      'default_formatter' => 'text_default',
+    ),
   );
 }
 
@@ -66,15 +66,15 @@ function text_field_settings_form($field, $instance, $has_data) {
 
   if ($field['type'] == 'text') {
     $form['max_length'] = array(
-        '#type' => 'textfield',
-        '#title' => t('Maximum length'),
-        '#default_value' => $settings['max_length'],
-        '#required' => TRUE,
-        '#description' => t('The maximum length of the field in characters.'),
-        '#element_validate' => array('element_validate_integer_positive'),
-        // @todo: If $has_data, add a validate handler that only allows
-        // max_length to increase.
-        '#disabled' => $has_data,
+      '#type' => 'textfield',
+      '#title' => t('Maximum length'),
+      '#default_value' => $settings['max_length'],
+      '#required' => TRUE,
+      '#description' => t('The maximum length of the field in characters.'),
+      '#element_validate' => array('element_validate_integer_positive'),
+      // @todo: If $has_data, add a validate handler that only allows
+      // max_length to increase.
+      '#disabled' => $has_data,
     );
   }
 
@@ -88,20 +88,20 @@ function text_field_instance_settings_form($field, $instance) {
   $settings = $instance['settings'];
 
   $form['text_processing'] = array(
-      '#type' => 'radios',
-      '#title' => t('Text processing'),
-      '#default_value' => $settings['text_processing'],
-      '#options' => array(
-          t('Plain text'),
-          t('Filtered text (user selects text format)'),
-      ),
+    '#type' => 'radios',
+    '#title' => t('Text processing'),
+    '#default_value' => $settings['text_processing'],
+    '#options' => array(
+      t('Plain text'),
+      t('Filtered text (user selects text format)'),
+    ),
   );
   if ($field['type'] == 'text_with_summary') {
     $form['display_summary'] = array(
-        '#type' => 'checkbox',
-        '#title' => t('Summary input'),
-        '#default_value' => $settings['display_summary'],
-        '#description' => t('This allows authors to input an explicit summary, to be displayed instead of the automatically trimmed text when using the "Summary or trimmed" display type.'),
+      '#type' => 'checkbox',
+      '#title' => t('Summary input'),
+      '#default_value' => $settings['display_summary'],
+      '#description' => t('This allows authors to input an explicit summary, to be displayed instead of the automatically trimmed text when using the "Summary or trimmed" display type.'),
     );
   }
 
@@ -132,8 +132,8 @@ function text_field_validate($entity_type, $entity, $field, $instance, $langcode
               break;
           }
           $errors[$field['field_name']][$langcode][$delta][] = array(
-              'error' => "text_{$column}_length",
-              'message' => $message,
+            'error' => "text_{$column}_length",
+            'message' => $message,
           );
         }
       }
@@ -180,35 +180,35 @@ function text_field_is_empty($item, $field) {
  */
 function text_field_formatter_info() {
   return array(
-      'text_default' => array(
-          'label' => t('Default'),
-          'field types' => array('text', 'text_long', 'text_with_summary'),
-      ),
-      'text_plain' => array(
-          'label' => t('Plain text'),
-          'field types' => array('text', 'text_long', 'text_with_summary'),
-      ),
+    'text_default' => array(
+      'label' => t('Default'),
+      'field types' => array('text', 'text_long', 'text_with_summary'),
+    ),
+    'text_plain' => array(
+      'label' => t('Plain text'),
+      'field types' => array('text', 'text_long', 'text_with_summary'),
+    ),
 
-      // The text_trimmed formatter displays the trimmed version of the
-      // full element of the field. It is intended to be used with text
-      // and text_long fields. It also works with text_with_summary
-      // fields though the text_summary_or_trimmed formatter makes more
-      // sense for that field type.
-      'text_trimmed' => array(
-          'label' => t('Trimmed'),
-          'field types' => array('text', 'text_long', 'text_with_summary'),
-          'settings' => array('trim_length' => 600),
-      ),
+    // The text_trimmed formatter displays the trimmed version of the
+    // full element of the field. It is intended to be used with text
+    // and text_long fields. It also works with text_with_summary
+    // fields though the text_summary_or_trimmed formatter makes more
+    // sense for that field type.
+    'text_trimmed' => array(
+      'label' => t('Trimmed'),
+      'field types' => array('text', 'text_long', 'text_with_summary'),
+      'settings' => array('trim_length' => 600),
+    ),
 
-      // The 'summary or trimmed' field formatter for text_with_summary
-      // fields displays returns the summary element of the field or, if
-      // the summary is empty, the trimmed version of the full element
-      // of the field.
-      'text_summary_or_trimmed' => array(
-          'label' => t('Summary or trimmed'),
-          'field types' => array('text_with_summary'),
-          'settings' => array('trim_length' => 600),
-      ),
+    // The 'summary or trimmed' field formatter for text_with_summary
+    // fields displays returns the summary element of the field or, if
+    // the summary is empty, the trimmed version of the full element
+    // of the field.
+    'text_summary_or_trimmed' => array(
+      'label' => t('Summary or trimmed'),
+      'field types' => array('text_with_summary'),
+      'settings' => array('trim_length' => 600),
+    ),
   );
 }
 
@@ -223,12 +223,12 @@ function text_field_formatter_settings_form($field, $instance, $view_mode, $form
 
   if (strpos($display['type'], '_trimmed') !== FALSE) {
     $element['trim_length'] = array(
-        '#title' => t('Trim length'),
-        '#type' => 'textfield',
-        '#size' => 10,
-        '#default_value' => $settings['trim_length'],
-        '#element_validate' => array('element_validate_integer_positive'),
-        '#required' => TRUE,
+      '#title' => t('Trim length'),
+      '#type' => 'textfield',
+      '#size' => 10,
+      '#default_value' => $settings['trim_length'],
+      '#element_validate' => array('element_validate_integer_positive'),
+      '#required' => TRUE,
     );
   }
 
@@ -449,21 +449,21 @@ function text_summary($text, $format = NULL, $size = NULL) {
  */
 function text_field_widget_info() {
   return array(
-      'text_textfield' => array(
-          'label' => t('Text field'),
-          'field types' => array('text'),
-          'settings' => array('size' => 60),
-      ),
-      'text_textarea' => array(
-          'label' => t('Text area (multiple rows)'),
-          'field types' => array('text_long'),
-          'settings' => array('rows' => 5),
-      ),
-      'text_textarea_with_summary' => array(
-          'label' => t('Text area with a summary'),
-          'field types' => array('text_with_summary'),
-          'settings' => array('rows' => 20, 'summary_rows' => 5),
-      ),
+    'text_textfield' => array(
+      'label' => t('Text field'),
+      'field types' => array('text'),
+      'settings' => array('size' => 60),
+    ),
+    'text_textarea' => array(
+      'label' => t('Text area (multiple rows)'),
+      'field types' => array('text_long'),
+      'settings' => array('rows' => 5),
+    ),
+    'text_textarea_with_summary' => array(
+      'label' => t('Text area with a summary'),
+      'field types' => array('text_with_summary'),
+      'settings' => array('rows' => 20, 'summary_rows' => 5),
+    ),
   );
 }
 
@@ -476,20 +476,20 @@ function text_field_widget_settings_form($field, $instance) {
 
   if ($widget['type'] == 'text_textfield') {
     $form['size'] = array(
-        '#type' => 'textfield',
-        '#title' => t('Size of textfield'),
-        '#default_value' => $settings['size'],
-        '#required' => TRUE,
-        '#element_validate' => array('element_validate_integer_positive'),
+      '#type' => 'textfield',
+      '#title' => t('Size of textfield'),
+      '#default_value' => $settings['size'],
+      '#required' => TRUE,
+      '#element_validate' => array('element_validate_integer_positive'),
     );
   }
   else {
     $form['rows'] = array(
-        '#type' => 'textfield',
-        '#title' => t('Rows'),
-        '#default_value' => $settings['rows'],
-        '#required' => TRUE,
-        '#element_validate' => array('element_validate_integer_positive'),
+      '#type' => 'textfield',
+      '#title' => t('Rows'),
+      '#default_value' => $settings['rows'],
+      '#required' => TRUE,
+      '#element_validate' => array('element_validate_integer_positive'),
     );
   }
 
@@ -506,38 +506,38 @@ function text_field_widget_form(&$form, &$form_state, $field, $instance, $langco
   switch ($instance['widget']['type']) {
     case 'text_textfield':
       $main_widget = $element + array(
-      '#type' => 'textfield',
-      '#default_value' => isset($items[$delta]['value']) ? $items[$delta]['value'] : NULL,
-      '#size' => $instance['widget']['settings']['size'],
-      '#maxlength' => $field['settings']['max_length'],
-      '#attributes' => array('class' => array('text-full')),
+        '#type' => 'textfield',
+        '#default_value' => isset($items[$delta]['value']) ? $items[$delta]['value'] : NULL,
+        '#size' => $instance['widget']['settings']['size'],
+        '#maxlength' => $field['settings']['max_length'],
+        '#attributes' => array('class' => array('text-full')),
       );
       break;
 
     case 'text_textarea_with_summary':
       $display = !empty($items[$delta]['summary']) || !empty($instance['settings']['display_summary']);
       $summary_widget = array(
-          '#type' => $display ? 'textarea' : 'value',
-          '#default_value' => isset($items[$delta]['summary']) ? $items[$delta]['summary'] : NULL,
-          '#title' => t('Summary'),
-          '#rows' => $instance['widget']['settings']['summary_rows'],
-          '#description' => t('Leave blank to use trimmed value of full text as the summary.'),
-          '#attached' => array(
-              'js' => array(drupal_get_path('module', 'text') . '/text.js'),
-          ),
-          '#attributes' => array('class' => array('text-summary')),
-          '#prefix' => '<div class="text-summary-wrapper">',
-          '#suffix' => '</div>',
-          '#weight' => -10,
+        '#type' => $display ? 'textarea' : 'value',
+        '#default_value' => isset($items[$delta]['summary']) ? $items[$delta]['summary'] : NULL,
+        '#title' => t('Summary'),
+        '#rows' => $instance['widget']['settings']['summary_rows'],
+        '#description' => t('Leave blank to use trimmed value of full text as the summary.'),
+        '#attached' => array(
+          'js' => array(drupal_get_path('module', 'text') . '/text.js'),
+        ),
+        '#attributes' => array('class' => array('text-summary')),
+        '#prefix' => '<div class="text-summary-wrapper">',
+        '#suffix' => '</div>',
+        '#weight' => -10,
       );
       // Fall through to the next case.
 
     case 'text_textarea':
       $main_widget = $element + array(
-      '#type' => 'textarea',
-      '#default_value' => isset($items[$delta]['value']) ? $items[$delta]['value'] : NULL,
-      '#rows' => $instance['widget']['settings']['rows'],
-      '#attributes' => array('class' => array('text-full')),
+        '#type' => 'textarea',
+        '#default_value' => isset($items[$delta]['value']) ? $items[$delta]['value'] : NULL,
+        '#rows' => $instance['widget']['settings']['rows'],
+        '#attributes' => array('class' => array('text-full')),
       );
       break;
   }

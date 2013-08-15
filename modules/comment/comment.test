@@ -257,9 +257,9 @@ class CommentHelperCase extends DrupalWebTestCase {
 class CommentInterfaceTest extends CommentHelperCase {
   public static function getInfo() {
     return array(
-        'name' => 'Comment interface',
-        'description' => 'Test comment user interfaces.',
-        'group' => 'Comment',
+      'name' => 'Comment interface',
+      'description' => 'Test comment user interfaces.',
+      'group' => 'Comment',
     );
   }
 
@@ -434,16 +434,16 @@ class CommentInterfaceTest extends CommentHelperCase {
     // Create a new comment. This helper function may be run with different
     // comment settings so use comment_save() to avoid complex setup.
     $comment = (object) array(
-        'cid' => NULL,
-        'nid' => $this->node->nid,
-        'node_type' => $this->node->type,
-        'pid' => 0,
-        'uid' => $this->loggedInUser->uid,
-        'status' => COMMENT_PUBLISHED,
-        'subject' => $this->randomName(),
-        'hostname' => ip_address(),
-        'language' => LANGUAGE_NONE,
-        'comment_body' => array(LANGUAGE_NONE => array($this->randomName())),
+      'cid' => NULL,
+      'nid' => $this->node->nid,
+      'node_type' => $this->node->type,
+      'pid' => 0,
+      'uid' => $this->loggedInUser->uid,
+      'status' => COMMENT_PUBLISHED,
+      'subject' => $this->randomName(),
+      'hostname' => ip_address(),
+      'language' => LANGUAGE_NONE,
+      'comment_body' => array(LANGUAGE_NONE => array($this->randomName())),
     );
     comment_save($comment);
     $this->drupalLogout();
@@ -472,10 +472,10 @@ class CommentInterfaceTest extends CommentHelperCase {
   function testCommentClasses() {
     // Create all permutations for comments, users, and nodes.
     $parameters = array(
-        'node_uid' => array(0, $this->web_user->uid),
-        'comment_uid' => array(0, $this->web_user->uid, $this->admin_user->uid),
-        'comment_status' => array(COMMENT_PUBLISHED, COMMENT_NOT_PUBLISHED),
-        'user' => array('anonymous', 'authenticated', 'admin'),
+      'node_uid' => array(0, $this->web_user->uid),
+      'comment_uid' => array(0, $this->web_user->uid, $this->admin_user->uid),
+      'comment_status' => array(COMMENT_PUBLISHED, COMMENT_NOT_PUBLISHED),
+      'user' => array('anonymous', 'authenticated', 'admin'),
     );
     $permutations = $this->generatePermutations($parameters);
 
@@ -485,14 +485,14 @@ class CommentInterfaceTest extends CommentHelperCase {
 
       // Add a comment.
       $comment = (object) array(
-          'cid' => NULL,
-          'nid' => $node->nid,
-          'pid' => 0,
-          'uid' => $case['comment_uid'],
-          'status' => $case['comment_status'],
-          'subject' => $this->randomName(),
-          'language' => LANGUAGE_NONE,
-          'comment_body' => array(LANGUAGE_NONE => array($this->randomName())),
+        'cid' => NULL,
+        'nid' => $node->nid,
+        'pid' => 0,
+        'uid' => $case['comment_uid'],
+        'status' => $case['comment_status'],
+        'subject' => $this->randomName(),
+        'language' => LANGUAGE_NONE,
+        'comment_body' => array(LANGUAGE_NONE => array($this->randomName())),
       );
       comment_save($comment);
 
@@ -613,9 +613,9 @@ class CommentInterfaceTest extends CommentHelperCase {
     variable_set('user_register', USER_REGISTER_VISITORS);
     $this->drupalLogin($this->admin_user);
     user_role_change_permissions(DRUPAL_ANONYMOUS_RID, array(
-    'access comments' => TRUE,
-    'post comments' => TRUE,
-    'skip comment approval' => FALSE,
+      'access comments' => TRUE,
+      'post comments' => TRUE,
+      'skip comment approval' => FALSE,
     ));
     // Ensure that the poster can leave some contact info.
     $this->setCommentAnonymous('1');
@@ -637,9 +637,9 @@ class CommentInterfaceTest extends CommentHelperCase {
     // Prepare for anonymous comment submission (no approval required).
     $this->drupalLogin($this->admin_user);
     user_role_change_permissions(DRUPAL_ANONYMOUS_RID, array(
-    'access comments' => TRUE,
-    'post comments' => TRUE,
-    'skip comment approval' => TRUE,
+      'access comments' => TRUE,
+      'post comments' => TRUE,
+      'skip comment approval' => TRUE,
     ));
     $this->drupalLogout();
 
@@ -680,18 +680,18 @@ class CommentInterfaceTest extends CommentHelperCase {
     // Matrix of possible environmental conditions and configuration settings.
     // See setEnvironment() for details.
     $conditions = array(
-        'authenticated'   => array(FALSE, TRUE),
-        'comment count'   => array(FALSE, TRUE),
-        'access comments' => array(0, 1),
-        'post comments'   => array(0, 1),
-        'form'            => array(COMMENT_FORM_BELOW, COMMENT_FORM_SEPARATE_PAGE),
-        // USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL is irrelevant for this
-        // test; there is only a difference between open and closed registration.
-        'user_register'   => array(USER_REGISTER_VISITORS, USER_REGISTER_ADMINISTRATORS_ONLY),
-        // @todo Complete test coverage for:
-        //'comments'        => array(COMMENT_NODE_OPEN, COMMENT_NODE_CLOSED, COMMENT_NODE_HIDDEN),
-        //// COMMENT_ANONYMOUS_MUST_CONTACT is irrelevant for this test.
-        //'contact '        => array(COMMENT_ANONYMOUS_MAY_CONTACT, COMMENT_ANONYMOUS_MAYNOT_CONTACT),
+      'authenticated'   => array(FALSE, TRUE),
+      'comment count'   => array(FALSE, TRUE),
+      'access comments' => array(0, 1),
+      'post comments'   => array(0, 1),
+      'form'            => array(COMMENT_FORM_BELOW, COMMENT_FORM_SEPARATE_PAGE),
+      // USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL is irrelevant for this
+      // test; there is only a difference between open and closed registration.
+      'user_register'   => array(USER_REGISTER_VISITORS, USER_REGISTER_ADMINISTRATORS_ONLY),
+      // @todo Complete test coverage for:
+      //'comments'        => array(COMMENT_NODE_OPEN, COMMENT_NODE_CLOSED, COMMENT_NODE_HIDDEN),
+      //// COMMENT_ANONYMOUS_MUST_CONTACT is irrelevant for this test.
+      //'contact '        => array(COMMENT_ANONYMOUS_MAY_CONTACT, COMMENT_ANONYMOUS_MAYNOT_CONTACT),
     );
 
     $environments = $this->generatePermutations($conditions);
@@ -733,17 +733,17 @@ class CommentInterfaceTest extends CommentHelperCase {
     // Apply defaults to initial environment.
     if (!isset($current)) {
       $current = array(
-          'authenticated' => FALSE,
-          'comment count' => FALSE,
-          'form' => COMMENT_FORM_BELOW,
-          'user_register' => USER_REGISTER_VISITORS,
-          'contact' => COMMENT_ANONYMOUS_MAY_CONTACT,
-          'comments' => COMMENT_NODE_OPEN,
-          'access comments' => 0,
-          'post comments' => 0,
-          // Enabled by default, because it's irrelevant for this test.
-          'skip comment approval' => 1,
-          'edit own comments' => 0,
+        'authenticated' => FALSE,
+        'comment count' => FALSE,
+        'form' => COMMENT_FORM_BELOW,
+        'user_register' => USER_REGISTER_VISITORS,
+        'contact' => COMMENT_ANONYMOUS_MAY_CONTACT,
+        'comments' => COMMENT_NODE_OPEN,
+        'access comments' => 0,
+        'post comments' => 0,
+        // Enabled by default, because it's irrelevant for this test.
+        'skip comment approval' => 1,
+        'edit own comments' => 0,
       );
     }
     // Complete new environment with current environment.
@@ -763,16 +763,16 @@ class CommentInterfaceTest extends CommentHelperCase {
         // Create a comment via CRUD API functionality, since
         // $this->postComment() relies on actual user permissions.
         $comment = (object) array(
-            'cid' => NULL,
-            'nid' => $this->node->nid,
-            'node_type' => $this->node->type,
-            'pid' => 0,
-            'uid' => 0,
-            'status' => COMMENT_PUBLISHED,
-            'subject' => $this->randomName(),
-            'hostname' => ip_address(),
-            'language' => LANGUAGE_NONE,
-            'comment_body' => array(LANGUAGE_NONE => array($this->randomName())),
+          'cid' => NULL,
+          'nid' => $this->node->nid,
+          'node_type' => $this->node->type,
+          'pid' => 0,
+          'uid' => 0,
+          'status' => COMMENT_PUBLISHED,
+          'subject' => $this->randomName(),
+          'hostname' => ip_address(),
+          'language' => LANGUAGE_NONE,
+          'comment_body' => array(LANGUAGE_NONE => array($this->randomName())),
         );
         comment_save($comment);
         $this->comment = $comment;
@@ -807,25 +807,25 @@ class CommentInterfaceTest extends CommentHelperCase {
     // Output verbose debugging information.
     // @see DrupalTestCase::error()
     $t_form = array(
-        COMMENT_FORM_BELOW => 'below',
-        COMMENT_FORM_SEPARATE_PAGE => 'separate page',
+      COMMENT_FORM_BELOW => 'below',
+      COMMENT_FORM_SEPARATE_PAGE => 'separate page',
     );
     $t_contact = array(
-        COMMENT_ANONYMOUS_MAY_CONTACT => 'optional',
-        COMMENT_ANONYMOUS_MAYNOT_CONTACT => 'disabled',
-        COMMENT_ANONYMOUS_MUST_CONTACT => 'required',
+      COMMENT_ANONYMOUS_MAY_CONTACT => 'optional',
+      COMMENT_ANONYMOUS_MAYNOT_CONTACT => 'disabled',
+      COMMENT_ANONYMOUS_MUST_CONTACT => 'required',
     );
     $t_comments = array(
-        COMMENT_NODE_OPEN => 'open',
-        COMMENT_NODE_CLOSED => 'closed',
-        COMMENT_NODE_HIDDEN => 'hidden',
+      COMMENT_NODE_OPEN => 'open',
+      COMMENT_NODE_CLOSED => 'closed',
+      COMMENT_NODE_HIDDEN => 'hidden',
     );
     $verbose = $info;
     $verbose['form'] = $t_form[$info['form']];
     $verbose['contact'] = $t_contact[$info['contact']];
     $verbose['comments'] = $t_comments[$info['comments']];
     $message = t('Changed environment:<pre>@verbose</pre>', array(
-        '@verbose' => var_export($verbose, TRUE),
+      '@verbose' => var_export($verbose, TRUE),
     ));
     $this->assert('debug', $message, 'Debug');
 
@@ -937,9 +937,9 @@ class CommentInterfaceTest extends CommentHelperCase {
 class CommentPreviewTest extends CommentHelperCase {
   public static function getInfo() {
     return array(
-        'name' => 'Comment preview',
-        'description' => 'Test comment preview.',
-        'group' => 'Comment',
+      'name' => 'Comment preview',
+      'description' => 'Test comment preview.',
+      'group' => 'Comment',
     );
   }
 
@@ -1059,9 +1059,9 @@ class CommentPreviewTest extends CommentHelperCase {
 class CommentAnonymous extends CommentHelperCase {
   public static function getInfo() {
     return array(
-        'name' => 'Anonymous comments',
-        'description' => 'Test anonymous comments.',
-        'group' => 'Comment',
+      'name' => 'Anonymous comments',
+      'description' => 'Test anonymous comments.',
+      'group' => 'Comment',
     );
   }
 
@@ -1077,9 +1077,9 @@ class CommentAnonymous extends CommentHelperCase {
     $this->drupalLogin($this->admin_user);
     // Enabled anonymous user comments.
     user_role_change_permissions(DRUPAL_ANONYMOUS_RID, array(
-    'access comments' => TRUE,
-    'post comments' => TRUE,
-    'skip comment approval' => TRUE,
+      'access comments' => TRUE,
+      'post comments' => TRUE,
+      'skip comment approval' => TRUE,
     ));
     $this->setCommentAnonymous('0'); // Ensure that doesn't require contact info.
     $this->drupalLogout();
@@ -1108,10 +1108,10 @@ class CommentAnonymous extends CommentHelperCase {
     // Ensure anonymous users cannot post in the name of registered users.
     $langcode = LANGUAGE_NONE;
     $edit = array(
-        'name' => $this->admin_user->name,
-        'mail' => $this->randomName() . '@example.com',
-        'subject' => $this->randomName(),
-        "comment_body[$langcode][0][value]" => $this->randomName(),
+      'name' => $this->admin_user->name,
+      'mail' => $this->randomName() . '@example.com',
+      'subject' => $this->randomName(),
+      "comment_body[$langcode][0][value]" => $this->randomName(),
     );
     $this->drupalPost('comment/reply/' . $this->node->nid, $edit, t('Save'));
     $this->assertText(t('The name you used belongs to a registered user.'));
@@ -1163,9 +1163,9 @@ class CommentAnonymous extends CommentHelperCase {
 
     // Reset.
     user_role_change_permissions(DRUPAL_ANONYMOUS_RID, array(
-    'access comments' => FALSE,
-    'post comments' => FALSE,
-    'skip comment approval' => FALSE,
+      'access comments' => FALSE,
+      'post comments' => FALSE,
+      'skip comment approval' => FALSE,
     ));
 
     // Attempt to view comments while disallowed.
@@ -1182,9 +1182,9 @@ class CommentAnonymous extends CommentHelperCase {
     $this->assertNoFieldByName("comment_body[$langcode][0][value]", '', 'Comment field not found.');
 
     user_role_change_permissions(DRUPAL_ANONYMOUS_RID, array(
-    'access comments' => TRUE,
-    'post comments' => FALSE,
-    'skip comment approval' => FALSE,
+      'access comments' => TRUE,
+      'post comments' => FALSE,
+      'skip comment approval' => FALSE,
     ));
     $this->drupalGet('node/' . $this->node->nid);
     $this->assertPattern('@<h2[^>]*>Comments</h2>@', 'Comments were displayed.');
@@ -1192,9 +1192,9 @@ class CommentAnonymous extends CommentHelperCase {
     $this->assertLink('register', 1, 'Link to register was found.');
 
     user_role_change_permissions(DRUPAL_ANONYMOUS_RID, array(
-    'access comments' => FALSE,
-    'post comments' => TRUE,
-    'skip comment approval' => TRUE,
+      'access comments' => FALSE,
+      'post comments' => TRUE,
+      'skip comment approval' => TRUE,
     ));
     $this->drupalGet('node/' . $this->node->nid);
     $this->assertNoPattern('@<h2[^>]*>Comments</h2>@', 'Comments were not displayed.');
@@ -1214,9 +1214,9 @@ class CommentPagerTest extends CommentHelperCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Comment paging settings',
-        'description' => 'Test paging of comments and their settings.',
-        'group' => 'Comment',
+      'name' => 'Comment paging settings',
+      'description' => 'Test paging of comments and their settings.',
+      'group' => 'Comment',
     );
   }
 
@@ -1342,13 +1342,13 @@ class CommentPagerTest extends CommentHelperCase {
     $this->setCommentSettings('comment_default_mode', COMMENT_MODE_FLAT, t('Comment paging changed.'));
 
     $expected_order = array(
-        0,
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
     );
     $this->drupalGet('node/' . $node->nid);
     $this->assertCommentOrder($comments, $expected_order);
@@ -1356,13 +1356,13 @@ class CommentPagerTest extends CommentHelperCase {
     $this->setCommentSettings('comment_default_mode', COMMENT_MODE_THREADED, t('Switched to threaded mode.'));
 
     $expected_order = array(
-        0,
-        4,
-        1,
-        3,
-        6,
-        2,
-        5,
+      0,
+      4,
+      1,
+      3,
+      6,
+      2,
+      5,
     );
     $this->drupalGet('node/' . $node->nid);
     $this->assertCommentOrder($comments, $expected_order);
@@ -1438,12 +1438,12 @@ class CommentPagerTest extends CommentHelperCase {
     $this->setCommentSettings('comment_default_mode', COMMENT_MODE_FLAT, t('Comment paging changed.'));
 
     $expected_pages = array(
-        1 => 5, // Page of comment 5
-        2 => 4, // Page of comment 4
-        3 => 3, // Page of comment 3
-        4 => 2, // Page of comment 2
-        5 => 1, // Page of comment 1
-        6 => 0, // Page of comment 0
+      1 => 5, // Page of comment 5
+      2 => 4, // Page of comment 4
+      3 => 3, // Page of comment 3
+      4 => 2, // Page of comment 2
+      5 => 1, // Page of comment 1
+      6 => 0, // Page of comment 0
     );
 
     $node = node_load($node->nid);
@@ -1456,12 +1456,12 @@ class CommentPagerTest extends CommentHelperCase {
     $this->setCommentSettings('comment_default_mode', COMMENT_MODE_THREADED, t('Switched to threaded mode.'));
 
     $expected_pages = array(
-        1 => 5, // Page of comment 5
-        2 => 1, // Page of comment 4
-        3 => 1, // Page of comment 4
-        4 => 1, // Page of comment 4
-        5 => 1, // Page of comment 4
-        6 => 0, // Page of comment 0
+      1 => 5, // Page of comment 5
+      2 => 1, // Page of comment 4
+      3 => 1, // Page of comment 4
+      4 => 1, // Page of comment 4
+      5 => 1, // Page of comment 4
+      6 => 0, // Page of comment 0
     );
 
     $node = node_load($node->nid);
@@ -1483,9 +1483,9 @@ class CommentPagerTest extends CommentHelperCase {
 class CommentNodeAccessTest extends CommentHelperCase {
   public static function getInfo() {
     return array(
-        'name' => 'Comment node access',
-        'description' => 'Test comment viewing with node access.',
-        'group' => 'Comment',
+      'name' => 'Comment node access',
+      'description' => 'Test comment viewing with node access.',
+      'group' => 'Comment',
     );
   }
 
@@ -1545,9 +1545,9 @@ class CommentNodeAccessTest extends CommentHelperCase {
 class CommentApprovalTest extends CommentHelperCase {
   public static function getInfo() {
     return array(
-        'name' => 'Comment approval',
-        'description' => 'Test comment approval functionality.',
-        'group' => 'Comment',
+      'name' => 'Comment approval',
+      'description' => 'Test comment approval functionality.',
+      'group' => 'Comment',
     );
   }
 
@@ -1557,9 +1557,9 @@ class CommentApprovalTest extends CommentHelperCase {
   function testApprovalAdminInterface() {
     // Set anonymous comments to require approval.
     user_role_change_permissions(DRUPAL_ANONYMOUS_RID, array(
-    'access comments' => TRUE,
-    'post comments' => TRUE,
-    'skip comment approval' => FALSE,
+      'access comments' => TRUE,
+      'post comments' => TRUE,
+      'skip comment approval' => FALSE,
     ));
     $this->drupalLogin($this->admin_user);
     $this->setCommentAnonymous('0'); // Ensure that doesn't require contact info.
@@ -1601,18 +1601,18 @@ class CommentApprovalTest extends CommentHelperCase {
     $this->drupalGet('admin/content/comment/approval');
     $this->assertText(t('Unapproved comments (@count)', array('@count' => 2)), 'Two unapproved comments waiting for approval.');
     $edit = array(
-        "comments[{$comments[0]->id}]" => 1,
-        "comments[{$comments[1]->id}]" => 1,
+      "comments[{$comments[0]->id}]" => 1,
+      "comments[{$comments[1]->id}]" => 1,
     );
     $this->drupalPost(NULL, $edit, t('Update'));
     $this->assertText(t('Unapproved comments (@count)', array('@count' => 0)), 'All comments were approved.');
 
     // Delete multiple comments in one operation.
     $edit = array(
-        'operation' => 'delete',
-        "comments[{$comments[0]->id}]" => 1,
-        "comments[{$comments[1]->id}]" => 1,
-        "comments[{$anonymous_comment4->id}]" => 1,
+      'operation' => 'delete',
+      "comments[{$comments[0]->id}]" => 1,
+      "comments[{$comments[1]->id}]" => 1,
+      "comments[{$anonymous_comment4->id}]" => 1,
     );
     $this->drupalPost(NULL, $edit, t('Update'));
     $this->assertText(t('Are you sure you want to delete these comments and all their children?'), 'Confirmation required.');
@@ -1626,9 +1626,9 @@ class CommentApprovalTest extends CommentHelperCase {
   function testApprovalNodeInterface() {
     // Set anonymous comments to require approval.
     user_role_change_permissions(DRUPAL_ANONYMOUS_RID, array(
-    'access comments' => TRUE,
-    'post comments' => TRUE,
-    'skip comment approval' => FALSE,
+      'access comments' => TRUE,
+      'post comments' => TRUE,
+      'skip comment approval' => FALSE,
     ));
     $this->drupalLogin($this->admin_user);
     $this->setCommentAnonymous('0'); // Ensure that doesn't require contact info.
@@ -1669,9 +1669,9 @@ class CommentApprovalTest extends CommentHelperCase {
 class CommentBlockFunctionalTest extends CommentHelperCase {
   public static function getInfo() {
     return array(
-        'name' => 'Comment blocks',
-        'description' => 'Test comment block functionality.',
-        'group' => 'Comment',
+      'name' => 'Comment blocks',
+      'description' => 'Test comment block functionality.',
+      'group' => 'Comment',
     );
   }
 
@@ -1683,15 +1683,15 @@ class CommentBlockFunctionalTest extends CommentHelperCase {
 
     // Set the block to a region to confirm block is available.
     $edit = array(
-        'blocks[comment_recent][region]' => 'sidebar_first',
+      'blocks[comment_recent][region]' => 'sidebar_first',
     );
     $this->drupalPost('admin/structure/block', $edit, t('Save blocks'));
     $this->assertText(t('The block settings have been updated.'), 'Block saved to first sidebar region.');
 
     // Set block title and variables.
     $block = array(
-        'title' => $this->randomName(),
-        'comment_block_count' => 2,
+      'title' => $this->randomName(),
+      'comment_block_count' => 2,
     );
     $this->drupalPost('admin/structure/block/manage/comment/recent/configure', $block, t('Save block'));
     $this->assertText(t('The block configuration has been saved.'), 'Block saved.');
@@ -1725,7 +1725,7 @@ class CommentBlockFunctionalTest extends CommentHelperCase {
     $this->drupalLogout();
     $this->drupalLogin($this->admin_user);
     $block = array(
-        'comment_block_count' => 10,
+      'comment_block_count' => 10,
     );
     $this->drupalPost('admin/structure/block/manage/comment/recent/configure', $block, t('Save block'));
     $this->assertText(t('The block configuration has been saved.'), 'Block saved.');
@@ -1761,9 +1761,9 @@ class CommentBlockFunctionalTest extends CommentHelperCase {
 class CommentRSSUnitTest extends CommentHelperCase {
   public static function getInfo() {
     return array(
-        'name' => 'Comment RSS',
-        'description' => 'Test comments as part of an RSS feed.',
-        'group' => 'Comment',
+      'name' => 'Comment RSS',
+      'description' => 'Test comments as part of an RSS feed.',
+      'group' => 'Comment',
     );
   }
 
@@ -1793,9 +1793,9 @@ class CommentRSSUnitTest extends CommentHelperCase {
 class CommentContentRebuild extends CommentHelperCase {
   public static function getInfo() {
     return array(
-        'name' => 'Comment Rebuild',
-        'description' => 'Test to make sure the comment content is rebuilt.',
-        'group' => 'Comment',
+      'name' => 'Comment Rebuild',
+      'description' => 'Test to make sure the comment content is rebuilt.',
+      'group' => 'Comment',
     );
   }
 
@@ -1833,9 +1833,9 @@ class CommentContentRebuild extends CommentHelperCase {
 class CommentTokenReplaceTestCase extends CommentHelperCase {
   public static function getInfo() {
     return array(
-        'name' => 'Comment token replacement',
-        'description' => 'Generates text using placeholders for dummy content to check comment token replacement.',
-        'group' => 'Comment',
+      'name' => 'Comment token replacement',
+      'description' => 'Generates text using placeholders for dummy content to check comment token replacement.',
+      'group' => 'Comment',
     );
   }
 
@@ -1845,8 +1845,8 @@ class CommentTokenReplaceTestCase extends CommentHelperCase {
   function testCommentTokenReplacement() {
     global $language;
     $url_options = array(
-        'absolute' => TRUE,
-        'language' => $language,
+      'absolute' => TRUE,
+      'language' => $language,
     );
 
     $this->drupalLogin($this->admin_user);
@@ -1933,9 +1933,9 @@ class CommentTokenReplaceTestCase extends CommentHelperCase {
 class CommentActionsTestCase extends CommentHelperCase {
   public static function getInfo() {
     return array(
-        'name' => 'Comment actions',
-        'description' => 'Test actions provided by the comment module.',
-        'group' => 'Comment',
+      'name' => 'Comment actions',
+      'description' => 'Test actions provided by the comment module.',
+      'group' => 'Comment',
     );
   }
 
@@ -2002,9 +2002,9 @@ class CommentActionsTestCase extends CommentHelperCase {
 class CommentFieldsTest extends CommentHelperCase {
   public static function getInfo() {
     return array(
-        'name' => 'Comment fields',
-        'description' => 'Tests fields on comments.',
-        'group' => 'Comment',
+      'name' => 'Comment fields',
+      'description' => 'Tests fields on comments.',
+      'group' => 'Comment',
     );
   }
 
@@ -2110,9 +2110,9 @@ class CommentFieldsTest extends CommentHelperCase {
 class CommentThreadingTestCase extends CommentHelperCase {
   public static function getInfo() {
     return array(
-        'name' => 'Comment Threading',
-        'description' => 'Test to make sure the comment number increments properly.',
-        'group' => 'Comment',
+      'name' => 'Comment Threading',
+      'description' => 'Test to make sure the comment number increments properly.',
+      'group' => 'Comment',
     );
   }
 
@@ -2206,9 +2206,9 @@ class CommentNodeChangesTestCase extends CommentHelperCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Comment deletion on node changes',
-        'description' => 'Tests that comments behave correctly when the node is changed.',
-        'group' => 'Comment',
+      'name' => 'Comment deletion on node changes',
+      'description' => 'Tests that comments behave correctly when the node is changed.',
+      'group' => 'Comment',
     );
   }
 

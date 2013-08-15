@@ -24,11 +24,11 @@
  */
 function hook_path_insert($path) {
   db_insert('mytable')
-  ->fields(array(
-  'alias' => $path['alias'],
-  'pid' => $path['pid'],
-  ))
-  ->execute();
+    ->fields(array(
+      'alias' => $path['alias'],
+      'pid' => $path['pid'],
+    ))
+    ->execute();
 }
 
 /**
@@ -45,9 +45,9 @@ function hook_path_insert($path) {
  */
 function hook_path_update($path) {
   db_update('mytable')
-  ->fields(array('alias' => $path['alias']))
-  ->condition('pid', $path['pid'])
-  ->execute();
+    ->fields(array('alias' => $path['alias']))
+    ->condition('pid', $path['pid'])
+    ->execute();
 }
 
 /**
@@ -64,8 +64,8 @@ function hook_path_update($path) {
  */
 function hook_path_delete($path) {
   db_delete('mytable')
-  ->condition('pid', $path['pid'])
-  ->execute();
+    ->condition('pid', $path['pid'])
+    ->execute();
 }
 
 /**

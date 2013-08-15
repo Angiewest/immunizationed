@@ -15,14 +15,14 @@
 function update_manual_status() {
   _update_refresh();
   $batch = array(
-      'operations' => array(
-          array('update_fetch_data_batch', array()),
-      ),
-      'finished' => 'update_fetch_data_finished',
-      'title' => t('Checking available update data'),
-      'progress_message' => t('Trying to check available update data ...'),
-      'error_message' => t('Error checking available update data.'),
-      'file' => drupal_get_path('module', 'update') . '/update.fetch.inc',
+    'operations' => array(
+      array('update_fetch_data_batch', array()),
+    ),
+    'finished' => 'update_fetch_data_finished',
+    'title' => t('Checking available update data'),
+    'progress_message' => t('Trying to check available update data ...'),
+    'error_message' => t('Error checking available update data.'),
+    'file' => drupal_get_path('module', 'update') . '/update.fetch.inc',
   );
   batch_set($batch);
   batch_process('admin/reports/updates');
@@ -252,11 +252,11 @@ function _update_create_fetch_task($project) {
     // enforces unique items.
     try {
       db_insert('cache_update')
-      ->fields(array(
-      'cid' => $cid,
-      'created' => REQUEST_TIME,
-      ))
-      ->execute();
+        ->fields(array(
+          'cid' => $cid,
+          'created' => REQUEST_TIME,
+        ))
+        ->execute();
     }
     catch (Exception $e) {
       // The exception can be ignored safely.
@@ -345,7 +345,7 @@ function _update_cron_notify() {
   foreach (array('core', 'contrib') as $report_type) {
     $type = 'update_' . $report_type;
     if (isset($status[$type]['severity'])
-    && ($status[$type]['severity'] == REQUIREMENT_ERROR || ($notify_all && $status[$type]['reason'] == UPDATE_NOT_CURRENT))) {
+        && ($status[$type]['severity'] == REQUIREMENT_ERROR || ($notify_all && $status[$type]['reason'] == UPDATE_NOT_CURRENT))) {
       $params[$report_type] = $status[$type]['reason'];
     }
   }

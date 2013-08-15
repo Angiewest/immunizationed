@@ -11,9 +11,9 @@
 class FieldUpdatePathTestCase extends UpdatePathTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Field update path',
-        'description' => 'Field update path tests.',
-        'group' => 'Upgrade path',
+      'name' => 'Field update path',
+      'description' => 'Field update path tests.',
+      'group' => 'Upgrade path',
     );
   }
 
@@ -21,8 +21,8 @@ class FieldUpdatePathTestCase extends UpdatePathTestCase {
     // Use the filled update path and our field data.
     $path = drupal_get_path('module', 'simpletest') . '/tests/upgrade';
     $this->databaseDumpFiles = array(
-        $path . '/drupal-7.filled.standard_all.database.php.gz',
-        $path . '/drupal-7.field.database.php',
+      $path . '/drupal-7.filled.standard_all.database.php.gz',
+      $path . '/drupal-7.field.database.php',
     );
     parent::setUp();
 
@@ -34,26 +34,26 @@ class FieldUpdatePathTestCase extends UpdatePathTestCase {
    * Tests that the update is successful.
    */
   public function testFilledUpgrade() {
-    $this->assertTrue($this->performUpgrade(), t('The update was completed successfully.'));
+    $this->assertTrue($this->performUpgrade(), 'The update was completed successfully.');
     $expected_settings = array(
-        'extra_fields' => array(
-            'display' => array(
-                'poll_view_voting' => array(
-                    'default' => array(
-                        'weight' => '0',
-                        'visible' => TRUE,
-                    ),
-                ),
-                'poll_view_results' => array(
-                    'default' => array(
-                        'weight' => '0',
-                        'visible' => FALSE,
-                    ),
-                ),
+      'extra_fields' => array(
+        'display' => array(
+          'poll_view_voting' => array(
+            'default' => array(
+              'weight' => '0',
+              'visible' => TRUE,
             ),
-            'form' => array(),
+          ),
+          'poll_view_results' => array(
+            'default' => array(
+              'weight' => '0',
+              'visible' => FALSE,
+            ),
+          ),
         ),
-        'view_modes' => array(),
+        'form' => array(),
+      ),
+      'view_modes' => array(),
     );
     $actual_settings = field_bundle_settings('node', 'poll');
     $this->assertEqual($expected_settings, $actual_settings, 'Settings stored in field_bundle_settings were updated to per-bundle settings.');

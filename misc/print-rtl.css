@@ -1,7 +1,7 @@
-body {
-	direction: rtl;
-}
 
+body {
+  direction: rtl;
+}
 th {
-	text-align: right;
+  text-align: right;
 }

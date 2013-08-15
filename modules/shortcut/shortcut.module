@@ -15,7 +15,7 @@ define('SHORTCUT_DEFAULT_SET_NAME', 'shortcut-set-1');
 
 /**
  * Implements hook_help().
-*/
+ */
 function shortcut_help($path, $arg) {
   global $user;
 
@@ -49,17 +49,17 @@ function shortcut_help($path, $arg) {
  */
 function shortcut_permission() {
   return array(
-      'administer shortcuts' => array(
-          'title' => t('Administer shortcuts'),
-      ),
-      'customize shortcut links' => array(
-          'title' => t('Edit current shortcut set'),
-          'description' => t('Editing the current shortcut set will affect other users if that set has been assigned to or selected by other users. Granting "Select any shortcut set" permission along with this permission will grant permission to edit any shortcut set.'),
-      ),
-      'switch shortcut sets' => array(
-          'title' => t('Select any shortcut set'),
-          'description' => t('From all shortcut sets, select one to be own active set. Without this permission, an administrator selects shortcut sets for users.'),
-      ),
+    'administer shortcuts' => array(
+      'title' => t('Administer shortcuts'),
+    ),
+    'customize shortcut links' => array(
+      'title' => t('Edit current shortcut set'),
+      'description' => t('Editing the current shortcut set will affect other users if that set has been assigned to or selected by other users. Granting "Select any shortcut set" permission along with this permission will grant permission to edit any shortcut set.'),
+    ),
+    'switch shortcut sets' => array(
+      'title' => t('Select any shortcut set'),
+      'description' => t('From all shortcut sets, select one to be own active set. Without this permission, an administrator selects shortcut sets for users.'),
+    ),
   );
 }
 
@@ -68,94 +68,94 @@ function shortcut_permission() {
  */
 function shortcut_menu() {
   $items['admin/config/user-interface/shortcut'] = array(
-      'title' => 'Shortcuts',
-      'description' => 'Add and modify shortcut sets.',
-      'page callback' => 'shortcut_set_admin',
-      'access arguments' => array('administer shortcuts'),
-      'file' => 'shortcut.admin.inc',
+    'title' => 'Shortcuts',
+    'description' => 'Add and modify shortcut sets.',
+    'page callback' => 'shortcut_set_admin',
+    'access arguments' => array('administer shortcuts'),
+    'file' => 'shortcut.admin.inc',
   );
   $items['admin/config/user-interface/shortcut/add-set'] = array(
-      'title' => 'Add shortcut set',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('shortcut_set_add_form'),
-      'access arguments' => array('administer shortcuts'),
-      'type' => MENU_LOCAL_ACTION,
-      'file' => 'shortcut.admin.inc',
+    'title' => 'Add shortcut set',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('shortcut_set_add_form'),
+    'access arguments' => array('administer shortcuts'),
+    'type' => MENU_LOCAL_ACTION,
+    'file' => 'shortcut.admin.inc',
   );
   $items['admin/config/user-interface/shortcut/%shortcut_set'] = array(
-      'title' => 'Edit shortcuts',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('shortcut_set_customize', 4),
-      'title callback' => 'shortcut_set_title_callback',
-      'title arguments' => array(4),
-      'access callback' => 'shortcut_set_edit_access',
-      'access arguments' => array(4),
-      'file' => 'shortcut.admin.inc',
+    'title' => 'Edit shortcuts',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('shortcut_set_customize', 4),
+    'title callback' => 'shortcut_set_title_callback',
+    'title arguments' => array(4),
+    'access callback' => 'shortcut_set_edit_access',
+    'access arguments' => array(4),
+    'file' => 'shortcut.admin.inc',
   );
   $items['admin/config/user-interface/shortcut/%shortcut_set/links'] = array(
-      'title' => 'List links',
-      'type' => MENU_DEFAULT_LOCAL_TASK,
+    'title' => 'List links',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
   );
   $items['admin/config/user-interface/shortcut/%shortcut_set/edit'] = array(
-      'title' => 'Edit set name',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('shortcut_set_edit_form', 4),
-      'access callback' => 'shortcut_set_edit_access',
-      'access arguments' => array(4),
-      'type' => MENU_LOCAL_TASK,
-      'file' => 'shortcut.admin.inc',
-      'weight' => 10,
+    'title' => 'Edit set name',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('shortcut_set_edit_form', 4),
+    'access callback' => 'shortcut_set_edit_access',
+    'access arguments' => array(4),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'shortcut.admin.inc',
+    'weight' => 10,
   );
   $items['admin/config/user-interface/shortcut/%shortcut_set/delete'] = array(
-      'title' => 'Delete shortcut set',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('shortcut_set_delete_form', 4),
-      'access callback' => 'shortcut_set_delete_access',
-      'access arguments' => array(4),
-      'file' => 'shortcut.admin.inc',
+    'title' => 'Delete shortcut set',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('shortcut_set_delete_form', 4),
+    'access callback' => 'shortcut_set_delete_access',
+    'access arguments' => array(4),
+    'file' => 'shortcut.admin.inc',
   );
   $items['admin/config/user-interface/shortcut/%shortcut_set/add-link'] = array(
-      'title' => 'Add shortcut',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('shortcut_link_add', 4),
-      'access callback' => 'shortcut_set_edit_access',
-      'access arguments' => array(4),
-      'type' => MENU_LOCAL_ACTION,
-      'file' => 'shortcut.admin.inc',
+    'title' => 'Add shortcut',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('shortcut_link_add', 4),
+    'access callback' => 'shortcut_set_edit_access',
+    'access arguments' => array(4),
+    'type' => MENU_LOCAL_ACTION,
+    'file' => 'shortcut.admin.inc',
   );
   $items['admin/config/user-interface/shortcut/%shortcut_set/add-link-inline'] = array(
-      'title' => 'Add shortcut',
-      'page callback' => 'shortcut_link_add_inline',
-      'page arguments' => array(4),
-      'access callback' => 'shortcut_set_edit_access',
-      'access arguments' => array(4),
-      'type' => MENU_CALLBACK,
-      'file' => 'shortcut.admin.inc',
+    'title' => 'Add shortcut',
+    'page callback' => 'shortcut_link_add_inline',
+    'page arguments' => array(4),
+    'access callback' => 'shortcut_set_edit_access',
+    'access arguments' => array(4),
+    'type' => MENU_CALLBACK,
+    'file' => 'shortcut.admin.inc',
   );
   $items['admin/config/user-interface/shortcut/link/%menu_link'] = array(
-      'title' => 'Edit shortcut',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('shortcut_link_edit', 5),
-      'access callback' => 'shortcut_link_access',
-      'access arguments' => array(5),
-      'file' => 'shortcut.admin.inc',
+    'title' => 'Edit shortcut',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('shortcut_link_edit', 5),
+    'access callback' => 'shortcut_link_access',
+    'access arguments' => array(5),
+    'file' => 'shortcut.admin.inc',
   );
   $items['admin/config/user-interface/shortcut/link/%menu_link/delete'] = array(
-      'title' => 'Delete shortcut',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('shortcut_link_delete', 5),
-      'access callback' => 'shortcut_link_access',
-      'access arguments' => array(5),
-      'file' => 'shortcut.admin.inc',
+    'title' => 'Delete shortcut',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('shortcut_link_delete', 5),
+    'access callback' => 'shortcut_link_access',
+    'access arguments' => array(5),
+    'file' => 'shortcut.admin.inc',
   );
   $items['user/%user/shortcuts'] = array(
-      'title' => 'Shortcuts',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('shortcut_set_switch', 1),
-      'access callback' => 'shortcut_set_switch_access',
-      'access arguments' => array(1),
-      'type' => MENU_LOCAL_TASK,
-      'file' => 'shortcut.admin.inc',
+    'title' => 'Shortcuts',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('shortcut_set_switch', 1),
+    'access callback' => 'shortcut_set_switch_access',
+    'access arguments' => array(1),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'shortcut.admin.inc',
   );
 
   return $items;
@@ -166,7 +166,7 @@ function shortcut_menu() {
  */
 function shortcut_admin_paths() {
   $paths = array(
-      'user/*/shortcuts' => TRUE,
+    'user/*/shortcuts' => TRUE,
   );
   return $paths;
 }
@@ -176,10 +176,10 @@ function shortcut_admin_paths() {
  */
 function shortcut_theme() {
   return array(
-      'shortcut_set_customize' => array(
-          'render element' => 'form',
-          'file' => 'shortcut.admin.inc',
-      ),
+    'shortcut_set_customize' => array(
+      'render element' => 'form',
+      'file' => 'shortcut.admin.inc',
+    ),
   );
 }
 
@@ -397,16 +397,16 @@ function shortcut_set_delete($shortcut_set) {
   // First, delete any user assignments for this set, so that each of these
   // users will go back to using whatever default set applies.
   db_delete('shortcut_set_users')
-  ->condition('set_name', $shortcut_set->set_name)
-  ->execute();
+    ->condition('set_name', $shortcut_set->set_name)
+    ->execute();
 
   // Next, delete the menu links for this set.
   menu_delete_links($shortcut_set->set_name);
 
   // Finally, delete the set itself.
   $deleted = db_delete('shortcut_set')
-  ->condition('set_name', $shortcut_set->set_name)
-  ->execute();
+    ->condition('set_name', $shortcut_set->set_name)
+    ->execute();
 
   return (bool) $deleted;
 }
@@ -440,9 +440,9 @@ function shortcut_set_reset_link_weights(&$shortcut_set) {
  */
 function shortcut_set_assign_user($shortcut_set, $account) {
   db_merge('shortcut_set_users')
-  ->key(array('uid' => $account->uid))
-  ->fields(array('set_name' => $shortcut_set->set_name))
-  ->execute();
+    ->key(array('uid' => $account->uid))
+    ->fields(array('set_name' => $shortcut_set->set_name))
+    ->execute();
   drupal_static_reset('shortcut_current_displayed_set');
 }
 
@@ -461,8 +461,8 @@ function shortcut_set_assign_user($shortcut_set, $account) {
  */
 function shortcut_set_unassign_user($account) {
   $deleted = db_delete('shortcut_set_users')
-  ->condition('uid', $account->uid)
-  ->execute();
+    ->condition('uid', $account->uid)
+    ->execute();
   return (bool) $deleted;
 }
 
@@ -651,11 +651,11 @@ function shortcut_preprocess_page(&$variables) {
     $link = $_GET['q'];
     $query_parameters = drupal_get_query_parameters();
     if (!empty($query_parameters)) {
-      $link .= '?' . drupal_http_build_query($query_parameters);
+     $link .= '?' . drupal_http_build_query($query_parameters);
     }
     $query = array(
-        'link' => $link,
-        'name' => drupal_get_title(),
+     'link' => $link,
+     'name' => drupal_get_title(),
     );
     $query += drupal_get_destination();
 
@@ -683,13 +683,13 @@ function shortcut_preprocess_page(&$variables) {
 
     if (theme_get_setting('shortcut_module_link')) {
       $variables['title_suffix']['add_or_remove_shortcut'] = array(
-          '#attached' => array('css' => array(drupal_get_path('module', 'shortcut') . '/shortcut.css')),
-          '#prefix' => '<div class="add-or-remove-shortcuts ' . $link_mode . '-shortcut">',
-          '#type' => 'link',
-          '#title' => '<span class="icon"></span><span class="text">' . $link_text . '</span>',
-          '#href' => $link_path,
-          '#options' => array('query' => $query, 'html' => TRUE),
-          '#suffix' => '</div>',
+        '#attached' => array('css' => array(drupal_get_path('module', 'shortcut') . '/shortcut.css')),
+        '#prefix' => '<div class="add-or-remove-shortcuts ' . $link_mode . '-shortcut">',
+        '#type' => 'link',
+        '#title' => '<span class="icon"></span><span class="text">' . $link_text . '</span>',
+        '#href' => $link_path,
+        '#options' => array('query' => $query, 'html' => TRUE),
+        '#suffix' => '</div>',
       );
     }
   }
@@ -718,16 +718,16 @@ function shortcut_toolbar_pre_render($toolbar) {
   $configure_link = NULL;
   if (shortcut_set_edit_access($shortcut_set)) {
     $configure_link = array(
-        '#type' => 'link',
-        '#title' => t('Edit shortcuts'),
-        '#href' => 'admin/config/user-interface/shortcut/' . $shortcut_set->set_name,
-        '#options' => array('attributes' => array('id' => 'edit-shortcuts')),
+      '#type' => 'link',
+      '#title' => t('Edit shortcuts'),
+      '#href' => 'admin/config/user-interface/shortcut/' . $shortcut_set->set_name,
+      '#options' => array('attributes' => array('id' => 'edit-shortcuts')),
     );
   }
 
   $drawer = array(
-      'shortcuts' => $links,
-      'configure' => $configure_link,
+    'shortcuts' => $links,
+    'configure' => $configure_link,
   );
 
   $toolbar['toolbar_drawer'][] = $drawer;

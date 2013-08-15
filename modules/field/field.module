@@ -14,9 +14,9 @@ class FieldException extends Exception {}
 
 /*
  * Load all public Field API functions. Drupal currently has no
-* mechanism for auto-loading core APIs, so we have to load them on
-* every page request.
-*/
+ * mechanism for auto-loading core APIs, so we have to load them on
+ * every page request.
+ */
 require_once DRUPAL_ROOT . '/modules/field/field.crud.inc';
 require_once DRUPAL_ROOT . '/modules/field/field.default.inc';
 require_once DRUPAL_ROOT . '/modules/field/field.info.inc';
@@ -239,7 +239,7 @@ define('FIELD_CARDINALITY_UNLIMITED', -1);
  * Value for field API indicating a widget doesn't accept default values.
  *
  * @see hook_field_widget_info()
-*/
+ */
 define('FIELD_BEHAVIOR_NONE', 0x0001);
 
 /**
@@ -251,31 +251,31 @@ define('FIELD_BEHAVIOR_NONE', 0x0001);
  * values. When used in a multiple value context for a widget that allows the
  * input of one single field value, indicates that the widget will be repeated
  * for each value input.
-*/
+ */
 define('FIELD_BEHAVIOR_DEFAULT', 0x0002);
 
 /**
  * Value for field API indicating a widget can receive several field values.
  *
  * @see hook_field_widget_info()
-*/
+ */
 define('FIELD_BEHAVIOR_CUSTOM', 0x0004);
 
 /**
  * Age argument for loading the most recent version of an entity's
  * field data with field_attach_load().
-*/
+ */
 define('FIELD_LOAD_CURRENT', 'FIELD_LOAD_CURRENT');
 
 /**
  * Age argument for loading the version of an entity's field data
  * specified in the entity with field_attach_load().
-*/
+ */
 define('FIELD_LOAD_REVISION', 'FIELD_LOAD_REVISION');
 
 /**
  * Exception class thrown by hook_field_update_forbid().
-*/
+ */
 class FieldUpdateForbiddenException extends FieldException {}
 
 /**
@@ -321,12 +321,12 @@ function field_help($path, $arg) {
  */
 function field_theme() {
   return array(
-      'field' => array(
-          'render element' => 'element',
-      ),
-      'field_multiple_value_form' => array(
-          'render element' => 'element',
-      ),
+    'field' => array(
+      'render element' => 'element',
+    ),
+    'field_multiple_value_form' => array(
+      'render element' => 'element',
+    ),
   );
 }
 
@@ -428,13 +428,13 @@ function field_sync_field_status() {
     field_associate_fields($module_name);
   }
   db_update('field_config')
-  ->fields(array('active' => 0))
-  ->condition('module', $modules, 'NOT IN')
-  ->execute();
+    ->fields(array('active' => 0))
+    ->condition('module', $modules, 'NOT IN')
+    ->execute();
   db_update('field_config')
-  ->fields(array('storage_active' => 0))
-  ->condition('storage_module', $modules, 'NOT IN')
-  ->execute();
+    ->fields(array('storage_active' => 0))
+    ->condition('storage_module', $modules, 'NOT IN')
+    ->execute();
 }
 
 /**
@@ -448,17 +448,17 @@ function field_associate_fields($module) {
   $field_types = (array) module_invoke($module, 'field_info');
   if ($field_types) {
     db_update('field_config')
-    ->fields(array('module' => $module, 'active' => 1))
-    ->condition('type', array_keys($field_types))
-    ->execute();
+      ->fields(array('module' => $module, 'active' => 1))
+      ->condition('type', array_keys($field_types))
+      ->execute();
   }
   // Associate storage backends.
   $storage_types = (array) module_invoke($module, 'field_storage_info');
   if ($storage_types) {
     db_update('field_config')
-    ->fields(array('storage_module' => $module, 'storage_active' => 1))
-    ->condition('storage_type', array_keys($storage_types))
-    ->execute();
+      ->fields(array('storage_module' => $module, 'storage_active' => 1))
+      ->condition('storage_type', array_keys($storage_types))
+      ->execute();
   }
 }
 
@@ -588,12 +588,12 @@ function field_bundle_settings($entity_type, $bundle, $settings = NULL) {
   else {
     $settings = variable_get('field_bundle_settings_' . $entity_type . '__' . $bundle, array());
     $settings += array(
-        'view_modes' => array(),
-        'extra_fields' => array(),
+      'view_modes' => array(),
+      'extra_fields' => array(),
     );
     $settings['extra_fields'] += array(
-        'form' => array(),
-        'display' => array(),
+      'form' => array(),
+      'display' => array(),
     );
 
     return $settings;
@@ -657,11 +657,11 @@ function field_get_display($instance, $view_mode, $entity) {
 
   // Let modules alter the display settings.
   $context = array(
-      'entity_type' => $instance['entity_type'],
-      'field' => field_info_field($instance['field_name']),
-      'instance' => $instance,
-      'entity' => $entity,
-      'view_mode' => $view_mode,
+    'entity_type' => $instance['entity_type'],
+    'field' => field_info_field($instance['field_name']),
+    'instance' => $instance,
+    'entity' => $entity,
+    'view_mode' => $view_mode,
   );
   drupal_alter(array('field_display', 'field_display_' . $instance['entity_type']), $display, $context);
 
@@ -695,9 +695,9 @@ function field_extra_fields_get_display($entity_type, $bundle, $view_mode) {
 
   // Let modules alter the display settings.
   $context = array(
-      'entity_type' => $entity_type,
-      'bundle' => $bundle,
-      'view_mode' => $view_mode,
+    'entity_type' => $entity_type,
+    'bundle' => $bundle,
+    'view_mode' => $view_mode,
   );
   drupal_alter('field_extra_fields_display', $displays, $context);
 
@@ -901,10 +901,10 @@ function field_view_field($entity_type, $entity, $field_name, $display = array()
     // Invoke hook_field_attach_view_alter() to let other modules alter the
     // renderable array, as in a full field_attach_view() execution.
     $context = array(
-        'entity_type' => $entity_type,
-        'entity' => $entity,
-        'view_mode' => '_custom',
-        'display' => $display,
+      'entity_type' => $entity_type,
+      'entity' => $entity,
+      'view_mode' => '_custom',
+      'display' => $display,
     );
     drupal_alter('field_attach_view', $result, $context);
 
@@ -948,14 +948,14 @@ function field_get_items($entity_type, $entity, $field_name, $langcode = NULL) {
 function field_has_data($field) {
   $query = new EntityFieldQuery();
   return (bool) $query
-  ->fieldCondition($field)
-  ->range(0, 1)
-  ->count()
-  // Neutralize the 'entity_field_access' query tag added by
-  // field_sql_storage_field_storage_query(). The result cannot depend on the
-  // access grants of the current user.
-  ->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT')
-  ->execute();
+    ->fieldCondition($field)
+    ->range(0, 1)
+    ->count()
+    // Neutralize the 'entity_field_access' query tag added by
+    // field_sql_storage_field_storage_query(). The result cannot depend on the
+    // access grants of the current user.
+    ->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT')
+    ->execute();
 }
 
 /**
@@ -1054,10 +1054,10 @@ function template_preprocess_field(&$variables, $hook) {
   $variables['field_name_css'] = strtr($element['#field_name'], '_', '-');
   $variables['field_type_css'] = strtr($element['#field_type'], '_', '-');
   $variables['classes_array'] = array(
-      'field',
-      'field-name-' . $variables['field_name_css'],
-      'field-type-' . $variables['field_type_css'],
-      'field-label-' . $element['#label_display'],
+    'field',
+    'field-name-' . $variables['field_name_css'],
+    'field-type-' . $variables['field_type_css'],
+    'field-label-' . $element['#label_display'],
   );
   // Add a "clearfix" class to the wrapper since we float the label and the
   // field items in field.css if the label is inline.
@@ -1067,10 +1067,10 @@ function template_preprocess_field(&$variables, $hook) {
 
   // Add specific suggestions that can override the default implementation.
   $variables['theme_hook_suggestions'] = array(
-      'field__' . $element['#field_type'],
-      'field__' . $element['#field_name'],
-      'field__' . $element['#bundle'],
-      'field__' . $element['#field_name'] . '__' . $element['#bundle'],
+    'field__' . $element['#field_type'],
+    'field__' . $element['#field_name'],
+    'field__' . $element['#bundle'],
+    'field__' . $element['#field_name'] . '__' . $element['#bundle'],
   );
 }
 
@@ -1103,7 +1103,7 @@ function template_process_field(&$variables, $hook) {
  *
  * This is the default theme implementation to display the value of a field.
  * Theme developers who are comfortable with overriding theme functions may do
-   * so in order to customize this markup. This function can be overridden with
+ * so in order to customize this markup. This function can be overridden with
  * varying levels of specificity. For example, for a field named 'body'
  * displayed on the 'article' content type, any of the following functions will
  * override this default implementation. The first of these functions that

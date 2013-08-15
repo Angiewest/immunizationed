@@ -50,18 +50,18 @@ class DatabaseConnection_pgsql extends DatabaseConnection {
 
     // Allow PDO options to be overridden.
     $connection_options += array(
-        'pdo' => array(),
+      'pdo' => array(),
     );
     $connection_options['pdo'] += array(
-        // Prepared statements are most effective for performance when queries
-        // are recycled (used several times). However, if they are not re-used,
-        // prepared statements become ineffecient. Since most of Drupal's
-        // prepared queries are not re-used, it should be faster to emulate
-        // the preparation than to actually ready statements for re-use. If in
-        // doubt, reset to FALSE and measure performance.
-        PDO::ATTR_EMULATE_PREPARES => TRUE,
-        // Convert numeric values to strings when fetching.
-        PDO::ATTR_STRINGIFY_FETCHES => TRUE,
+      // Prepared statements are most effective for performance when queries
+      // are recycled (used several times). However, if they are not re-used,
+      // prepared statements become ineffecient. Since most of Drupal's
+      // prepared queries are not re-used, it should be faster to emulate
+      // the preparation than to actually ready statements for re-use. If in
+      // doubt, reset to FALSE and measure performance.
+      PDO::ATTR_EMULATE_PREPARES => TRUE,
+      // Convert numeric values to strings when fetching.
+      PDO::ATTR_STRINGIFY_FETCHES => TRUE,
     );
     parent::__construct($dsn, $connection_options['username'], $connection_options['password'], $connection_options['pdo']);
 
@@ -164,10 +164,10 @@ class DatabaseConnection_pgsql extends DatabaseConnection {
     // Function calls not allowed in static declarations, thus this method.
     if (!isset($specials)) {
       $specials = array(
-          // In PostgreSQL, 'LIKE' is case-sensitive. For case-insensitive LIKE
-          // statements, we need to use ILIKE instead.
-          'LIKE' => array('operator' => 'ILIKE'),
-          'NOT LIKE' => array('operator' => 'NOT ILIKE'),
+        // In PostgreSQL, 'LIKE' is case-sensitive. For case-insensitive LIKE
+        // statements, we need to use ILIKE instead.
+        'LIKE' => array('operator' => 'ILIKE'),
+        'NOT LIKE' => array('operator' => 'NOT ILIKE'),
       );
     }
 

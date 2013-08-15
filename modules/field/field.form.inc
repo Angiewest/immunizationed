@@ -30,7 +30,7 @@
  *   or an empty array to use default values.
  * @param $form
  *   An array representing the form that the editing element will be attached
- *   to.
+ *   to. 
  * @param $form_state
  *   An array containing the current state of the form.
  * @param $get_delta
@@ -59,10 +59,10 @@ function field_default_form($entity_type, $entity, $field, $instance, $langcode,
 
   // Let modules alter the widget properties.
   $context = array(
-      'entity_type' => $entity_type,
-      'entity' => $entity,
-      'field' => $field,
-      'instance' => $instance,
+    'entity_type' => $entity_type,
+    'entity' => $entity,
+    'field' => $field,
+    'instance' => $instance,
   );
   drupal_alter(array('field_widget_properties', 'field_widget_properties_' . $entity_type), $instance['widget'], $context);
 
@@ -72,11 +72,11 @@ function field_default_form($entity_type, $entity, $field, $instance, $langcode,
   // Store field information in $form_state.
   if (!field_form_get_state($parents, $field_name, $langcode, $form_state)) {
     $field_state = array(
-        'field' => $field,
-        'instance' => $instance,
-        'items_count' => count($items),
-        'array_parents' => array(),
-        'errors' => array(),
+      'field' => $field,
+      'instance' => $instance,
+      'items_count' => count($items),
+      'array_parents' => array(),
+      'errors' => array(),
     );
     field_form_set_state($parents, $field_name, $langcode, $form_state, $field_state);
   }
@@ -96,28 +96,28 @@ function field_default_form($entity_type, $entity, $field, $instance, $langcode,
     $function = $instance['widget']['module'] . '_field_widget_form';
     if (function_exists($function)) {
       $element = array(
-          '#entity' => $entity,
-          '#entity_type' => $instance['entity_type'],
-          '#bundle' => $instance['bundle'],
-          '#field_name' => $field_name,
-          '#language' => $langcode,
-          '#field_parents' => $parents,
-          '#columns' => array_keys($field['columns']),
-          '#title' => check_plain($instance['label']),
-          '#description' => field_filter_xss($instance['description']),
-          // Only the first widget should be required.
-          '#required' => $delta == 0 && $instance['required'],
-          '#delta' => $delta,
+        '#entity' => $entity,
+        '#entity_type' => $instance['entity_type'],
+        '#bundle' => $instance['bundle'],
+        '#field_name' => $field_name,
+        '#language' => $langcode,
+        '#field_parents' => $parents,
+        '#columns' => array_keys($field['columns']),
+        '#title' => check_plain($instance['label']),
+        '#description' => field_filter_xss($instance['description']),
+        // Only the first widget should be required.
+        '#required' => $delta == 0 && $instance['required'],
+        '#delta' => $delta,
       );
       if ($element = $function($form, $form_state, $field, $instance, $langcode, $items, $delta, $element)) {
         // Allow modules to alter the field widget form element.
         $context = array(
-            'form' => $form,
-            'field' => $field,
-            'instance' => $instance,
-            'langcode' => $langcode,
-            'items' => $items,
-            'delta' => $delta,
+          'form' => $form,
+          'field' => $field,
+          'instance' => $instance,
+          'langcode' => $langcode,
+          'items' => $items,
+          'delta' => $delta,
         );
         drupal_alter(array('field_widget_form', 'field_widget_' . $instance['widget']['type'] . '_form'), $element, $form_state, $context);
 
@@ -138,15 +138,15 @@ function field_default_form($entity_type, $entity, $field, $instance, $langcode,
 
   // Also aid in theming of field widgets by rendering a classified container.
   $addition[$field_name] = array(
-      '#type' => 'container',
-      '#attributes' => array(
-          'class' => array(
-              'field-type-' . drupal_html_class($field['type']),
-              'field-name-' . drupal_html_class($field_name),
-              'field-widget-' . drupal_html_class($instance['widget']['type']),
-          ),
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => array(
+        'field-type-' . drupal_html_class($field['type']),
+        'field-name-' . drupal_html_class($field_name),
+        'field-widget-' . drupal_html_class($instance['widget']['type']),
       ),
-      '#weight' => $instance['widget']['weight'],
+    ),
+    '#weight' => $instance['widget']['weight'],
   );
 
   // Populate the 'array_parents' information in $form_state['field'] after
@@ -158,12 +158,12 @@ function field_default_form($entity_type, $entity, $field, $instance, $langcode,
   $elements['#field_parents'] = $parents;
 
   $addition[$field_name] += array(
-      '#tree' => TRUE,
-      // The '#language' key can be used to access the field's form element
-      // when $langcode is unknown.
-      '#language' => $langcode,
-      $langcode => $elements,
-      '#access' => field_access('edit', $field, $entity_type, $entity),
+    '#tree' => TRUE,
+    // The '#language' key can be used to access the field's form element
+    // when $langcode is unknown.
+    '#language' => $langcode,
+    $langcode => $elements,
+    '#access' => field_access('edit', $field, $entity_type, $entity),
   );
 
   return $addition;
@@ -206,20 +206,20 @@ function field_multiple_value_form($field, $instance, $langcode, $items, &$form,
     for ($delta = 0; $delta <= $max; $delta++) {
       $multiple = $field['cardinality'] > 1 || $field['cardinality'] == FIELD_CARDINALITY_UNLIMITED;
       $element = array(
-          '#entity_type' => $instance['entity_type'],
-          '#entity' => $form['#entity'],
-          '#bundle' => $instance['bundle'],
-          '#field_name' => $field_name,
-          '#language' => $langcode,
-          '#field_parents' => $parents,
-          '#columns' => array_keys($field['columns']),
-          // For multiple fields, title and description are handled by the wrapping table.
-          '#title' => $multiple ? '' : $title,
-          '#description' => $multiple ? '' : $description,
-          // Only the first widget should be required.
-          '#required' => $delta == 0 && $instance['required'],
-          '#delta' => $delta,
-          '#weight' => $delta,
+        '#entity_type' => $instance['entity_type'],
+        '#entity' => $form['#entity'],
+        '#bundle' => $instance['bundle'],
+        '#field_name' => $field_name,
+        '#language' => $langcode,
+        '#field_parents' => $parents,
+        '#columns' => array_keys($field['columns']),
+        // For multiple fields, title and description are handled by the wrapping table.
+        '#title' => $multiple ? '' : $title,
+        '#description' => $multiple ? '' : $description,
+        // Only the first widget should be required.
+        '#required' => $delta == 0 && $instance['required'],
+        '#delta' => $delta,
+        '#weight' => $delta,
       );
       if ($element = $function($form, $form_state, $field, $instance, $langcode, $items, $delta, $element)) {
         // Input field for the delta (drag-n-drop reordering).
@@ -227,24 +227,24 @@ function field_multiple_value_form($field, $instance, $langcode, $items, &$form,
           // We name the element '_weight' to avoid clashing with elements
           // defined by widget.
           $element['_weight'] = array(
-              '#type' => 'weight',
-              '#title' => t('Weight for row @number', array('@number' => $delta + 1)),
-              '#title_display' => 'invisible',
-              // Note: this 'delta' is the FAPI 'weight' element's property.
-              '#delta' => $max,
-              '#default_value' => isset($items[$delta]['_weight']) ? $items[$delta]['_weight'] : $delta,
-              '#weight' => 100,
+            '#type' => 'weight',
+            '#title' => t('Weight for row @number', array('@number' => $delta + 1)),
+            '#title_display' => 'invisible',
+             // Note: this 'delta' is the FAPI 'weight' element's property.
+            '#delta' => $max,
+            '#default_value' => isset($items[$delta]['_weight']) ? $items[$delta]['_weight'] : $delta,
+            '#weight' => 100,
           );
         }
 
         // Allow modules to alter the field widget form element.
         $context = array(
-            'form' => $form,
-            'field' => $field,
-            'instance' => $instance,
-            'langcode' => $langcode,
-            'items' => $items,
-            'delta' => $delta,
+          'form' => $form,
+          'field' => $field,
+          'instance' => $instance,
+          'langcode' => $langcode,
+          'items' => $items,
+          'delta' => $delta,
         );
         drupal_alter(array('field_widget_form', 'field_widget_' . $instance['widget']['type'] . '_form'), $element, $form_state, $context);
 
@@ -254,30 +254,30 @@ function field_multiple_value_form($field, $instance, $langcode, $items, &$form,
 
     if ($field_elements) {
       $field_elements += array(
-          '#theme' => 'field_multiple_value_form',
-          '#field_name' => $field['field_name'],
-          '#cardinality' => $field['cardinality'],
-          '#title' => $title,
-          '#required' => $instance['required'],
-          '#description' => $description,
-          '#prefix' => '<div id="' . $wrapper_id . '">',
-          '#suffix' => '</div>',
-          '#max_delta' => $max,
+        '#theme' => 'field_multiple_value_form',
+        '#field_name' => $field['field_name'],
+        '#cardinality' => $field['cardinality'],
+        '#title' => $title,
+        '#required' => $instance['required'],
+        '#description' => $description,
+        '#prefix' => '<div id="' . $wrapper_id . '">',
+        '#suffix' => '</div>',
+        '#max_delta' => $max,
       );
       // Add 'add more' button, if not working with a programmed form.
       if ($field['cardinality'] == FIELD_CARDINALITY_UNLIMITED && empty($form_state['programmed'])) {
         $field_elements['add_more'] = array(
-            '#type' => 'submit',
-            '#name' => strtr($id_prefix, '-', '_') . '_add_more',
-            '#value' => t('Add another item'),
-            '#attributes' => array('class' => array('field-add-more-submit')),
-            '#limit_validation_errors' => array(array_merge($parents, array($field_name, $langcode))),
-            '#submit' => array('field_add_more_submit'),
-            '#ajax' => array(
-                'callback' => 'field_add_more_js',
-                'wrapper' => $wrapper_id,
-                'effect' => 'fade',
-            ),
+          '#type' => 'submit',
+          '#name' => strtr($id_prefix, '-', '_') . '_add_more',
+          '#value' => t('Add another item'),
+          '#attributes' => array('class' => array('field-add-more-submit')),
+          '#limit_validation_errors' => array(array_merge($parents, array($field_name, $langcode))),
+          '#submit' => array('field_add_more_submit'),
+          '#ajax' => array(
+            'callback' => 'field_add_more_js',
+            'wrapper' => $wrapper_id,
+            'effect' => 'fade',
+          ),
         );
       }
     }
@@ -308,12 +308,12 @@ function theme_field_multiple_value_form($variables) {
     $required = !empty($element['#required']) ? theme('form_required_marker', $variables) : '';
 
     $header = array(
-        array(
-            'data' => '<label>' . t('!title !required', array('!title' => $element['#title'], '!required' => $required)) . "</label>",
-            'colspan' => 2,
-            'class' => array('field-label'),
-        ),
-        t('Order'),
+      array(
+        'data' => '<label>' . t('!title !required', array('!title' => $element['#title'], '!required' => $required)) . "</label>",
+        'colspan' => 2,
+        'class' => array('field-label'),
+      ),
+      t('Order'),
     );
     $rows = array();
 
@@ -335,13 +335,13 @@ function theme_field_multiple_value_form($variables) {
       $item['_weight']['#attributes']['class'] = array($order_class);
       $delta_element = drupal_render($item['_weight']);
       $cells = array(
-          array('data' => '', 'class' => array('field-multiple-drag')),
-          drupal_render($item),
-          array('data' => $delta_element, 'class' => array('delta-order')),
+        array('data' => '', 'class' => array('field-multiple-drag')),
+        drupal_render($item),
+        array('data' => $delta_element, 'class' => array('delta-order')),
       );
       $rows[] = array(
-          'data' => $cells,
-          'class' => array('draggable'),
+        'data' => $cells,
+        'class' => array('draggable'),
       );
     }
 

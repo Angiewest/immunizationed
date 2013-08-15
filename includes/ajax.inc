@@ -185,7 +185,7 @@
  * in a degraded state or not.
  *
  * When responding to Ajax requests, the server should do what it needs to do
-   * for that request, then create a commands array. This commands array will
+ * for that request, then create a commands array. This commands array will
  * be converted to a JSON object and returned to the client, which will then
  * iterate over the array and process it like a macro language.
  *
@@ -516,7 +516,7 @@ function ajax_prepare_response($page_callback_result) {
 
       case MENU_SITE_OFFLINE:
         $commands[] = ajax_command_alert(filter_xss_admin(variable_get('maintenance_mode_message',
-        t('@site is currently under maintenance. We should be back shortly. Thank you for your patience.', array('@site' => variable_get('site_name', 'Drupal'))))));
+          t('@site is currently under maintenance. We should be back shortly. Thank you for your patience.', array('@site' => variable_get('site_name', 'Drupal'))))));
         break;
     }
   }
@@ -686,8 +686,8 @@ function ajax_pre_render_element($element) {
 
     // Assign default settings.
     $settings += array(
-        'path' => 'system/ajax',
-        'options' => array(),
+      'path' => 'system/ajax',
+      'options' => array(),
     );
 
     // @todo Legacy support. Remove in Drupal 8.
@@ -739,8 +739,8 @@ function ajax_pre_render_element($element) {
     }
 
     $element['#attached']['js'][] = array(
-        'type' => 'setting',
-        'data' => array('ajax' => array($element['#id'] => $settings)),
+      'type' => 'setting',
+      'data' => array('ajax' => array($element['#id'] => $settings)),
     );
 
     // Indicate that Ajax processing was successful.
@@ -779,8 +779,8 @@ function ajax_pre_render_element($element) {
  */
 function ajax_command_alert($text) {
   return array(
-      'command' => 'alert',
-      'text' => $text,
+    'command' => 'alert',
+    'text' => $text,
   );
 }
 
@@ -807,11 +807,11 @@ function ajax_command_alert($text) {
  */
 function ajax_command_insert($selector, $html, $settings = NULL) {
   return array(
-      'command' => 'insert',
-      'method' => NULL,
-      'selector' => $selector,
-      'data' => $html,
-      'settings' => $settings,
+    'command' => 'insert',
+    'method' => NULL,
+    'selector' => $selector,
+    'data' => $html,
+    'settings' => $settings,
   );
 }
 
@@ -841,11 +841,11 @@ function ajax_command_insert($selector, $html, $settings = NULL) {
  */
 function ajax_command_replace($selector, $html, $settings = NULL) {
   return array(
-      'command' => 'insert',
-      'method' => 'replaceWith',
-      'selector' => $selector,
-      'data' => $html,
-      'settings' => $settings,
+    'command' => 'insert',
+    'method' => 'replaceWith',
+    'selector' => $selector,
+    'data' => $html,
+    'settings' => $settings,
   );
 }
 
@@ -874,11 +874,11 @@ function ajax_command_replace($selector, $html, $settings = NULL) {
  */
 function ajax_command_html($selector, $html, $settings = NULL) {
   return array(
-      'command' => 'insert',
-      'method' => 'html',
-      'selector' => $selector,
-      'data' => $html,
-      'settings' => $settings,
+    'command' => 'insert',
+    'method' => 'html',
+    'selector' => $selector,
+    'data' => $html,
+    'settings' => $settings,
   );
 }
 
@@ -907,11 +907,11 @@ function ajax_command_html($selector, $html, $settings = NULL) {
  */
 function ajax_command_prepend($selector, $html, $settings = NULL) {
   return array(
-      'command' => 'insert',
-      'method' => 'prepend',
-      'selector' => $selector,
-      'data' => $html,
-      'settings' => $settings,
+    'command' => 'insert',
+    'method' => 'prepend',
+    'selector' => $selector,
+    'data' => $html,
+    'settings' => $settings,
   );
 }
 
@@ -940,11 +940,11 @@ function ajax_command_prepend($selector, $html, $settings = NULL) {
  */
 function ajax_command_append($selector, $html, $settings = NULL) {
   return array(
-      'command' => 'insert',
-      'method' => 'append',
-      'selector' => $selector,
-      'data' => $html,
-      'settings' => $settings,
+    'command' => 'insert',
+    'method' => 'append',
+    'selector' => $selector,
+    'data' => $html,
+    'settings' => $settings,
   );
 }
 
@@ -973,11 +973,11 @@ function ajax_command_append($selector, $html, $settings = NULL) {
  */
 function ajax_command_after($selector, $html, $settings = NULL) {
   return array(
-      'command' => 'insert',
-      'method' => 'after',
-      'selector' => $selector,
-      'data' => $html,
-      'settings' => $settings,
+    'command' => 'insert',
+    'method' => 'after',
+    'selector' => $selector,
+    'data' => $html,
+    'settings' => $settings,
   );
 }
 
@@ -1006,11 +1006,11 @@ function ajax_command_after($selector, $html, $settings = NULL) {
  */
 function ajax_command_before($selector, $html, $settings = NULL) {
   return array(
-      'command' => 'insert',
-      'method' => 'before',
-      'selector' => $selector,
-      'data' => $html,
-      'settings' => $settings,
+    'command' => 'insert',
+    'method' => 'before',
+    'selector' => $selector,
+    'data' => $html,
+    'settings' => $settings,
   );
 }
 
@@ -1035,8 +1035,8 @@ function ajax_command_before($selector, $html, $settings = NULL) {
  */
 function ajax_command_remove($selector) {
   return array(
-      'command' => 'remove',
-      'selector' => $selector,
+    'command' => 'remove',
+    'selector' => $selector,
   );
 }
 
@@ -1061,9 +1061,9 @@ function ajax_command_remove($selector) {
  */
 function ajax_command_changed($selector, $asterisk = '') {
   return array(
-      'command' => 'changed',
-      'selector' => $selector,
-      'asterisk' => $asterisk,
+    'command' => 'changed',
+    'selector' => $selector,
+    'asterisk' => $asterisk,
   );
 }
 
@@ -1089,9 +1089,9 @@ function ajax_command_changed($selector, $asterisk = '') {
  */
 function ajax_command_css($selector, $argument) {
   return array(
-      'command' => 'css',
-      'selector' => $selector,
-      'argument' => $argument,
+    'command' => 'css',
+    'selector' => $selector,
+    'argument' => $argument,
   );
 }
 
@@ -1120,9 +1120,9 @@ function ajax_command_css($selector, $argument) {
  */
 function ajax_command_settings($argument, $merge = FALSE) {
   return array(
-      'command' => 'settings',
-      'settings' => $argument,
-      'merge' => $merge,
+    'command' => 'settings',
+    'settings' => $argument,
+    'merge' => $merge,
   );
 }
 
@@ -1151,10 +1151,10 @@ function ajax_command_settings($argument, $merge = FALSE) {
  */
 function ajax_command_data($selector, $name, $value) {
   return array(
-      'command' => 'data',
-      'selector' => $selector,
-      'name' => $name,
-      'value' => $value,
+    'command' => 'data',
+    'selector' => $selector,
+    'name' => $name,
+    'value' => $value,
   );
 }
 
@@ -1182,10 +1182,10 @@ function ajax_command_data($selector, $name, $value) {
  */
 function ajax_command_invoke($selector, $method, array $arguments = array()) {
   return array(
-      'command' => 'invoke',
-      'selector' => $selector,
-      'method' => $method,
-      'arguments' => $arguments,
+    'command' => 'invoke',
+    'selector' => $selector,
+    'method' => $method,
+    'arguments' => $arguments,
   );
 }
 
@@ -1206,7 +1206,7 @@ function ajax_command_invoke($selector, $method, array $arguments = array()) {
  */
 function ajax_command_restripe($selector) {
   return array(
-      'command' => 'restripe',
-      'selector' => $selector,
+    'command' => 'restripe',
+    'selector' => $selector,
   );
 }

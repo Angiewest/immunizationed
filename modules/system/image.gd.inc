@@ -16,17 +16,17 @@
 function image_gd_settings() {
   if (image_gd_check_settings()) {
     $form['status'] = array(
-        '#markup' => t('The GD toolkit is installed and working properly.')
+      '#markup' => t('The GD toolkit is installed and working properly.')
     );
 
     $form['image_jpeg_quality'] = array(
-        '#type' => 'textfield',
-        '#title' => t('JPEG quality'),
-        '#description' => t('Define the image quality for JPEG manipulations. Ranges from 0 to 100. Higher values mean better image quality but bigger files.'),
-        '#size' => 10,
-        '#maxlength' => 3,
-        '#default_value' => variable_get('image_jpeg_quality', 75),
-        '#field_suffix' => t('%'),
+      '#type' => 'textfield',
+      '#title' => t('JPEG quality'),
+      '#description' => t('Define the image quality for JPEG manipulations. Ranges from 0 to 100. Higher values mean better image quality but bigger files.'),
+      '#size' => 10,
+      '#maxlength' => 3,
+      '#default_value' => variable_get('image_jpeg_quality', 75),
+      '#field_suffix' => t('%'),
     );
     $form['#element_validate'] = array('image_gd_settings_validate');
 
@@ -352,10 +352,10 @@ function image_gd_get_info(stdClass $image) {
     $extensions = array('1' => 'gif', '2' => 'jpg', '3' => 'png');
     $extension = isset($extensions[$data[2]]) ?  $extensions[$data[2]] : '';
     $details = array(
-        'width'     => $data[0],
-        'height'    => $data[1],
-        'extension' => $extension,
-        'mime_type' => $data['mime'],
+      'width'     => $data[0],
+      'height'    => $data[1],
+      'extension' => $extension,
+      'mime_type' => $data['mime'],
     );
   }
 

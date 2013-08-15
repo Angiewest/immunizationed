@@ -49,9 +49,9 @@ class TaxonomyVocabularyFunctionalTest extends TaxonomyWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Taxonomy vocabulary interface',
-        'description' => 'Test the taxonomy vocabulary interface.',
-        'group' => 'Taxonomy',
+      'name' => 'Taxonomy vocabulary interface',
+      'description' => 'Test the taxonomy vocabulary interface.',
+      'group' => 'Taxonomy',
     );
   }
 
@@ -162,15 +162,16 @@ class TaxonomyVocabularyFunctionalTest extends TaxonomyWebTestCase {
   function testTaxonomyAdminDeletingVocabulary() {
     // Create a vocabulary.
     $edit = array(
-        'name' => $this->randomName(),
-        'machine_name' => drupal_strtolower($this->randomName()),
+      'name' => $this->randomName(),
+      'machine_name' => drupal_strtolower($this->randomName()),
     );
     $this->drupalPost('admin/structure/taxonomy/add', $edit, t('Save'));
     $this->assertText(t('Created new vocabulary'), 'New vocabulary was created.');
 
     // Check the created vocabulary.
     $vocabularies = taxonomy_get_vocabularies();
-    $vid = $vocabularies[count($vocabularies) - 1]->vid;
+    $vocabularies_keys = array_keys($vocabularies);
+    $vid = $vocabularies[end($vocabularies_keys)]->vid;
     entity_get_controller('taxonomy_vocabulary')->resetCache();
     $vocabulary = taxonomy_vocabulary_load($vid);
     $this->assertTrue($vocabulary, 'Vocabulary found in database.');
@@ -197,9 +198,9 @@ class TaxonomyVocabularyTestCase extends TaxonomyWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Taxonomy vocabularies',
-        'description' => 'Test loading, saving and deleting vocabularies.',
-        'group' => 'Taxonomy',
+      'name' => 'Taxonomy vocabularies',
+      'description' => 'Test loading, saving and deleting vocabularies.',
+      'group' => 'Taxonomy',
     );
   }
 
@@ -344,14 +345,14 @@ class TaxonomyVocabularyTestCase extends TaxonomyWebTestCase {
   function testTaxonomyVocabularyChangeMachineName() {
     // Add a field instance to the vocabulary.
     $field = array(
-        'field_name' => 'field_test',
-        'type' => 'test_field',
+      'field_name' => 'field_test',
+      'type' => 'test_field',
     );
     field_create_field($field);
     $instance = array(
-        'field_name' => 'field_test',
-        'entity_type' => 'taxonomy_term',
-        'bundle' => $this->vocabulary->machine_name,
+      'field_name' => 'field_test',
+      'entity_type' => 'taxonomy_term',
+      'bundle' => $this->vocabulary->machine_name,
     );
     field_create_instance($instance);
 
@@ -374,10 +375,10 @@ class TaxonomyVocabularyTestCase extends TaxonomyWebTestCase {
     $this->field = array('field_name' => $this->field_name, 'type' => 'text', 'cardinality' => 4);
     $this->field = field_create_field($this->field);
     $this->instance = array(
-        'field_name' => $this->field_name,
-        'entity_type' => 'taxonomy_term',
-        'bundle' => $this->vocabulary->machine_name,
-        'label' => $this->randomName() . '_label',
+      'field_name' => $this->field_name,
+      'entity_type' => 'taxonomy_term',
+      'bundle' => $this->vocabulary->machine_name,
+      'label' => $this->randomName() . '_label',
     );
     field_create_instance($this->instance);
 
@@ -406,9 +407,9 @@ class TaxonomyTermFunctionTestCase extends TaxonomyWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Taxonomy term unit tests',
-        'description' => 'Unit tests for taxonomy term functions.',
-        'group' => 'Taxonomy',
+      'name' => 'Taxonomy term unit tests',
+      'description' => 'Unit tests for taxonomy term functions.',
+      'group' => 'Taxonomy',
     );
   }
 
@@ -455,7 +456,7 @@ class TaxonomyTermFunctionTestCase extends TaxonomyWebTestCase {
      * -- term[5] | depth: 1
      * ---- term[2] | depth: 2
      * ------ term[3] | depth: 3
-    */
+     */
     // Count $term[1] parents with $max_depth = 1.
     $tree = taxonomy_get_tree($vocabulary->vid, $term[1]->tid, 1);
     $this->assertEqual(1, count($tree), 'We have one parent with depth 1.');
@@ -486,9 +487,9 @@ class TaxonomyLegacyTestCase extends TaxonomyWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Test for legacy node bug.',
-        'description' => 'Posts an article with a taxonomy term and a date prior to 1970.',
-        'group' => 'Taxonomy',
+      'name' => 'Test for legacy node bug.',
+      'description' => 'Posts an article with a taxonomy term and a date prior to 1970.',
+      'group' => 'Taxonomy',
     );
   }
 
@@ -524,9 +525,9 @@ class TaxonomyTermTestCase extends TaxonomyWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Taxonomy term functions and forms.',
-        'description' => 'Test load, save and delete for taxonomy terms.',
-        'group' => 'Taxonomy',
+      'name' => 'Taxonomy term functions and forms.',
+      'description' => 'Test load, save and delete for taxonomy terms.',
+      'group' => 'Taxonomy',
     );
   }
 
@@ -537,32 +538,32 @@ class TaxonomyTermTestCase extends TaxonomyWebTestCase {
     $this->vocabulary = $this->createVocabulary();
 
     $field = array(
-        'field_name' => 'taxonomy_' . $this->vocabulary->machine_name,
-        'type' => 'taxonomy_term_reference',
-        'cardinality' => FIELD_CARDINALITY_UNLIMITED,
-        'settings' => array(
-            'allowed_values' => array(
-                array(
-                    'vocabulary' => $this->vocabulary->machine_name,
-                    'parent' => 0,
-                ),
-            ),
+      'field_name' => 'taxonomy_' . $this->vocabulary->machine_name,
+      'type' => 'taxonomy_term_reference',
+      'cardinality' => FIELD_CARDINALITY_UNLIMITED,
+      'settings' => array(
+        'allowed_values' => array(
+          array(
+            'vocabulary' => $this->vocabulary->machine_name,
+            'parent' => 0,
+          ),
         ),
+      ),
     );
     field_create_field($field);
 
     $this->instance = array(
-        'field_name' => 'taxonomy_' . $this->vocabulary->machine_name,
-        'bundle' => 'article',
-        'entity_type' => 'node',
-        'widget' => array(
-            'type' => 'options_select',
+      'field_name' => 'taxonomy_' . $this->vocabulary->machine_name,
+      'bundle' => 'article',
+      'entity_type' => 'node',
+      'widget' => array(
+        'type' => 'options_select',
+      ),
+      'display' => array(
+        'default' => array(
+          'type' => 'taxonomy_term_reference_link',
         ),
-        'display' => array(
-            'default' => array(
-                'type' => 'taxonomy_term_reference_link',
-            ),
-        ),
+      ),
     );
     field_create_instance($this->instance);
   }
@@ -651,9 +652,9 @@ class TaxonomyTermTestCase extends TaxonomyWebTestCase {
     $instance['bundle'] = 'page';
     field_create_instance($instance);
     $terms = array(
-        'term1' => $this->randomName(),
-        'term2' => $this->randomName() . ', ' . $this->randomName(),
-        'term3' => $this->randomName(),
+      'term1' => $this->randomName(),
+      'term2' => $this->randomName() . ', ' . $this->randomName(),
+      'term3' => $this->randomName(),
     );
 
     $edit = array();
@@ -788,8 +789,8 @@ class TaxonomyTermTestCase extends TaxonomyWebTestCase {
    */
   function testTermInterface() {
     $edit = array(
-        'name' => $this->randomName(12),
-        'description[value]' => $this->randomName(100),
+      'name' => $this->randomName(12),
+      'description[value]' => $this->randomName(100),
     );
     // Explicitly set the parents field to 'root', to ensure that
     // taxonomy_form_term_submit() handles the invalid term ID correctly.
@@ -814,8 +815,8 @@ class TaxonomyTermTestCase extends TaxonomyWebTestCase {
     $this->assertText($edit['description[value]'], 'The randomly generated term description is present.');
 
     $edit = array(
-        'name' => $this->randomName(14),
-        'description[value]' => $this->randomName(102),
+      'name' => $this->randomName(14),
+      'description[value]' => $this->randomName(102),
     );
 
     // Edit the term.
@@ -877,18 +878,18 @@ class TaxonomyTermTestCase extends TaxonomyWebTestCase {
     // term3, term1 by setting weight property, make term3 a child of term2 by
     // setting the parent and depth properties, and update all hidden fields.
     $edit = array(
-        'tid:' . $term2->tid . ':0[tid]' => $term2->tid,
-        'tid:' . $term2->tid . ':0[parent]' => 0,
-        'tid:' . $term2->tid . ':0[depth]' => 0,
-        'tid:' . $term2->tid . ':0[weight]' => 0,
-        'tid:' . $term3->tid . ':0[tid]' => $term3->tid,
-        'tid:' . $term3->tid . ':0[parent]' => $term2->tid,
-        'tid:' . $term3->tid . ':0[depth]' => 1,
-        'tid:' . $term3->tid . ':0[weight]' => 1,
-        'tid:' . $term1->tid . ':0[tid]' => $term1->tid,
-        'tid:' . $term1->tid . ':0[parent]' => 0,
-        'tid:' . $term1->tid . ':0[depth]' => 0,
-        'tid:' . $term1->tid . ':0[weight]' => 2,
+      'tid:' . $term2->tid . ':0[tid]' => $term2->tid,
+      'tid:' . $term2->tid . ':0[parent]' => 0,
+      'tid:' . $term2->tid . ':0[depth]' => 0,
+      'tid:' . $term2->tid . ':0[weight]' => 0,
+      'tid:' . $term3->tid . ':0[tid]' => $term3->tid,
+      'tid:' . $term3->tid . ':0[parent]' => $term2->tid,
+      'tid:' . $term3->tid . ':0[depth]' => 1,
+      'tid:' . $term3->tid . ':0[weight]' => 1,
+      'tid:' . $term1->tid . ':0[tid]' => $term1->tid,
+      'tid:' . $term1->tid . ':0[parent]' => 0,
+      'tid:' . $term1->tid . ':0[depth]' => 0,
+      'tid:' . $term1->tid . ':0[weight]' => 2,
     );
     $this->drupalPost(NULL, $edit, t('Save'));
 
@@ -923,9 +924,9 @@ class TaxonomyTermTestCase extends TaxonomyWebTestCase {
 
     // Add a new term with multiple parents.
     $edit = array(
-        'name' => $this->randomName(12),
-        'description[value]' => $this->randomName(100),
-        'parent[]' => array(0, $parent->tid),
+      'name' => $this->randomName(12),
+      'description[value]' => $this->randomName(100),
+      'parent[]' => array(0, $parent->tid),
     );
     // Save the new term.
     $this->drupalPost('admin/structure/taxonomy/' . $this->vocabulary->machine_name . '/add', $edit, t('Save'));
@@ -1011,9 +1012,9 @@ class TaxonomyRSSTestCase extends TaxonomyWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Taxonomy RSS Content.',
-        'description' => 'Ensure that data added as terms appears in RSS feeds if "RSS Category" format is selected.',
-        'group' => 'Taxonomy',
+      'name' => 'Taxonomy RSS Content.',
+      'description' => 'Ensure that data added as terms appears in RSS feeds if "RSS Category" format is selected.',
+      'group' => 'Taxonomy',
     );
   }
 
@@ -1024,32 +1025,32 @@ class TaxonomyRSSTestCase extends TaxonomyWebTestCase {
     $this->vocabulary = $this->createVocabulary();
 
     $field = array(
-        'field_name' => 'taxonomy_' . $this->vocabulary->machine_name,
-        'type' => 'taxonomy_term_reference',
-        'cardinality' => FIELD_CARDINALITY_UNLIMITED,
-        'settings' => array(
-            'allowed_values' => array(
-                array(
-                    'vocabulary' => $this->vocabulary->machine_name,
-                    'parent' => 0,
-                ),
-            ),
+      'field_name' => 'taxonomy_' . $this->vocabulary->machine_name,
+      'type' => 'taxonomy_term_reference',
+      'cardinality' => FIELD_CARDINALITY_UNLIMITED,
+      'settings' => array(
+        'allowed_values' => array(
+          array(
+            'vocabulary' => $this->vocabulary->machine_name,
+            'parent' => 0,
+          ),
         ),
+      ),
     );
     field_create_field($field);
 
     $this->instance = array(
-        'field_name' => 'taxonomy_' . $this->vocabulary->machine_name,
-        'bundle' => 'article',
-        'entity_type' => 'node',
-        'widget' => array(
-            'type' => 'options_select',
+      'field_name' => 'taxonomy_' . $this->vocabulary->machine_name,
+      'bundle' => 'article',
+      'entity_type' => 'node',
+      'widget' => array(
+        'type' => 'options_select',
+      ),
+      'display' => array(
+        'default' => array(
+          'type' => 'taxonomy_term_reference_link',
         ),
-        'display' => array(
-            'default' => array(
-                'type' => 'taxonomy_term_reference_link',
-            ),
-        ),
+      ),
     );
     field_create_instance($this->instance);
   }
@@ -1066,14 +1067,14 @@ class TaxonomyRSSTestCase extends TaxonomyWebTestCase {
     // RSS display must be added manually.
     $this->drupalGet("admin/structure/types/manage/article/display");
     $edit = array(
-        "view_modes_custom[rss]" => '1',
+      "view_modes_custom[rss]" => '1',
     );
     $this->drupalPost(NULL, $edit, t('Save'));
 
     // Change the format to 'RSS category'.
     $this->drupalGet("admin/structure/types/manage/article/display/rss");
     $edit = array(
-        "fields[taxonomy_" . $this->vocabulary->machine_name . "][type]" => 'taxonomy_term_reference_rss_category',
+      "fields[taxonomy_" . $this->vocabulary->machine_name . "][type]" => 'taxonomy_term_reference_rss_category',
     );
     $this->drupalPost(NULL, $edit, t('Save'));
 
@@ -1087,11 +1088,11 @@ class TaxonomyRSSTestCase extends TaxonomyWebTestCase {
     // Check that the term is displayed when the RSS feed is viewed.
     $this->drupalGet('rss.xml');
     $test_element = array(
-        'key' => 'category',
-        'value' => $term1->name,
-        'attributes' => array(
-            'domain' => url('taxonomy/term/' . $term1->tid, array('absolute' => TRUE)),
-        ),
+      'key' => 'category',
+      'value' => $term1->name,
+      'attributes' => array(
+        'domain' => url('taxonomy/term/' . $term1->tid, array('absolute' => TRUE)),
+      ),
     );
     $this->assertRaw(format_xml_elements(array($test_element)), 'Term is displayed when viewing the rss feed.');
   }
@@ -1105,9 +1106,9 @@ class TaxonomyTermIndexTestCase extends TaxonomyWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Taxonomy term index',
-        'description' => 'Tests the hook implementations that maintain the taxonomy index.',
-        'group' => 'Taxonomy',
+      'name' => 'Taxonomy term index',
+      'description' => 'Tests the hook implementations that maintain the taxonomy index.',
+      'group' => 'Taxonomy',
     );
   }
 
@@ -1123,61 +1124,61 @@ class TaxonomyTermIndexTestCase extends TaxonomyWebTestCase {
 
     $this->field_name_1 = drupal_strtolower($this->randomName());
     $this->field_1 = array(
-        'field_name' => $this->field_name_1,
-        'type' => 'taxonomy_term_reference',
-        'cardinality' => FIELD_CARDINALITY_UNLIMITED,
-        'settings' => array(
-            'allowed_values' => array(
-                array(
-                    'vocabulary' => $this->vocabulary->machine_name,
-                    'parent' => 0,
-                ),
-            ),
+      'field_name' => $this->field_name_1,
+      'type' => 'taxonomy_term_reference',
+      'cardinality' => FIELD_CARDINALITY_UNLIMITED,
+      'settings' => array(
+        'allowed_values' => array(
+          array(
+            'vocabulary' => $this->vocabulary->machine_name,
+            'parent' => 0,
+          ),
         ),
+      ),
     );
     field_create_field($this->field_1);
     $this->instance_1 = array(
-        'field_name' => $this->field_name_1,
-        'bundle' => 'article',
-        'entity_type' => 'node',
-        'widget' => array(
-            'type' => 'options_select',
+      'field_name' => $this->field_name_1,
+      'bundle' => 'article',
+      'entity_type' => 'node',
+      'widget' => array(
+        'type' => 'options_select',
+      ),
+      'display' => array(
+        'default' => array(
+          'type' => 'taxonomy_term_reference_link',
         ),
-        'display' => array(
-            'default' => array(
-                'type' => 'taxonomy_term_reference_link',
-            ),
-        ),
+      ),
     );
     field_create_instance($this->instance_1);
 
     $this->field_name_2 = drupal_strtolower($this->randomName());
     $this->field_2 = array(
-        'field_name' => $this->field_name_2,
-        'type' => 'taxonomy_term_reference',
-        'cardinality' => FIELD_CARDINALITY_UNLIMITED,
-        'settings' => array(
-            'allowed_values' => array(
-                array(
-                    'vocabulary' => $this->vocabulary->machine_name,
-                    'parent' => 0,
-                ),
-            ),
+      'field_name' => $this->field_name_2,
+      'type' => 'taxonomy_term_reference',
+      'cardinality' => FIELD_CARDINALITY_UNLIMITED,
+      'settings' => array(
+        'allowed_values' => array(
+          array(
+            'vocabulary' => $this->vocabulary->machine_name,
+            'parent' => 0,
+          ),
         ),
+      ),
     );
     field_create_field($this->field_2);
     $this->instance_2 = array(
-        'field_name' => $this->field_name_2,
-        'bundle' => 'article',
-        'entity_type' => 'node',
-        'widget' => array(
-            'type' => 'options_select',
+      'field_name' => $this->field_name_2,
+      'bundle' => 'article',
+      'entity_type' => 'node',
+      'widget' => array(
+        'type' => 'options_select',
+      ),
+      'display' => array(
+        'default' => array(
+          'type' => 'taxonomy_term_reference_link',
         ),
-        'display' => array(
-            'default' => array(
-                'type' => 'taxonomy_term_reference_link',
-            ),
-        ),
+      ),
     );
     field_create_instance($this->instance_2);
   }
@@ -1202,8 +1203,8 @@ class TaxonomyTermIndexTestCase extends TaxonomyWebTestCase {
     // Check that the term is indexed, and only once.
     $node = $this->drupalGetNodeByTitle($edit["title"]);
     $index_count = db_query('SELECT COUNT(*) FROM {taxonomy_index} WHERE nid = :nid AND tid = :tid', array(
-        ':nid' => $node->nid,
-        ':tid' => $term_1->tid,
+      ':nid' => $node->nid,
+      ':tid' => $term_1->tid,
     ))->fetchField();
     $this->assertEqual(1, $index_count, 'Term 1 is indexed once.');
 
@@ -1213,13 +1214,13 @@ class TaxonomyTermIndexTestCase extends TaxonomyWebTestCase {
 
     // Check that both terms are indexed.
     $index_count = db_query('SELECT COUNT(*) FROM {taxonomy_index} WHERE nid = :nid AND tid = :tid', array(
-        ':nid' => $node->nid,
-        ':tid' => $term_1->tid,
+      ':nid' => $node->nid,
+      ':tid' => $term_1->tid,
     ))->fetchField();
     $this->assertEqual(1, $index_count, 'Term 1 is indexed.');
     $index_count = db_query('SELECT COUNT(*) FROM {taxonomy_index} WHERE nid = :nid AND tid = :tid', array(
-        ':nid' => $node->nid,
-        ':tid' => $term_2->tid,
+      ':nid' => $node->nid,
+      ':tid' => $term_2->tid,
     ))->fetchField();
     $this->assertEqual(1, $index_count, 'Term 2 is indexed.');
 
@@ -1229,23 +1230,23 @@ class TaxonomyTermIndexTestCase extends TaxonomyWebTestCase {
 
     // Check that only one term is indexed.
     $index_count = db_query('SELECT COUNT(*) FROM {taxonomy_index} WHERE nid = :nid AND tid = :tid', array(
-        ':nid' => $node->nid,
-        ':tid' => $term_1->tid,
+      ':nid' => $node->nid,
+      ':tid' => $term_1->tid,
     ))->fetchField();
     $this->assertEqual(0, $index_count, 'Term 1 is not indexed.');
     $index_count = db_query('SELECT COUNT(*) FROM {taxonomy_index} WHERE nid = :nid AND tid = :tid', array(
-        ':nid' => $node->nid,
-        ':tid' => $term_2->tid,
+      ':nid' => $node->nid,
+      ':tid' => $term_2->tid,
     ))->fetchField();
     $this->assertEqual(1, $index_count, 'Term 2 is indexed once.');
 
     // Redo the above tests without interface.
     $update_node = array(
-        'nid' => $node->nid,
-        'vid' => $node->vid,
-        'uid' => $node->uid,
-        'type' => $node->type,
-        'title' => $this->randomName(),
+      'nid' => $node->nid,
+      'vid' => $node->vid,
+      'uid' => $node->uid,
+      'type' => $node->type,
+      'title' => $this->randomName(),
     );
 
     // Update the article with no term changed.
@@ -1254,13 +1255,13 @@ class TaxonomyTermIndexTestCase extends TaxonomyWebTestCase {
 
     // Check that the index was not changed.
     $index_count = db_query('SELECT COUNT(*) FROM {taxonomy_index} WHERE nid = :nid AND tid = :tid', array(
-        ':nid' => $node->nid,
-        ':tid' => $term_1->tid,
+      ':nid' => $node->nid,
+      ':tid' => $term_1->tid,
     ))->fetchField();
     $this->assertEqual(0, $index_count, 'Term 1 is not indexed.');
     $index_count = db_query('SELECT COUNT(*) FROM {taxonomy_index} WHERE nid = :nid AND tid = :tid', array(
-        ':nid' => $node->nid,
-        ':tid' => $term_2->tid,
+      ':nid' => $node->nid,
+      ':tid' => $term_2->tid,
     ))->fetchField();
     $this->assertEqual(1, $index_count, 'Term 2 is indexed once.');
 
@@ -1271,13 +1272,13 @@ class TaxonomyTermIndexTestCase extends TaxonomyWebTestCase {
 
     // Check that both terms are indexed.
     $index_count = db_query('SELECT COUNT(*) FROM {taxonomy_index} WHERE nid = :nid AND tid = :tid', array(
-        ':nid' => $node->nid,
-        ':tid' => $term_1->tid,
+      ':nid' => $node->nid,
+      ':tid' => $term_1->tid,
     ))->fetchField();
     $this->assertEqual(1, $index_count, 'Term 1 is indexed.');
     $index_count = db_query('SELECT COUNT(*) FROM {taxonomy_index} WHERE nid = :nid AND tid = :tid', array(
-        ':nid' => $node->nid,
-        ':tid' => $term_2->tid,
+      ':nid' => $node->nid,
+      ':tid' => $term_2->tid,
     ))->fetchField();
     $this->assertEqual(1, $index_count, 'Term 2 is indexed.');
 
@@ -1288,13 +1289,13 @@ class TaxonomyTermIndexTestCase extends TaxonomyWebTestCase {
 
     // Check that only one term is indexed.
     $index_count = db_query('SELECT COUNT(*) FROM {taxonomy_index} WHERE nid = :nid AND tid = :tid', array(
-        ':nid' => $node->nid,
-        ':tid' => $term_1->tid,
+      ':nid' => $node->nid,
+      ':tid' => $term_1->tid,
     ))->fetchField();
     $this->assertEqual(1, $index_count, 'Term 1 is indexed once.');
     $index_count = db_query('SELECT COUNT(*) FROM {taxonomy_index} WHERE nid = :nid AND tid = :tid', array(
-        ':nid' => $node->nid,
-        ':tid' => $term_2->tid,
+      ':nid' => $node->nid,
+      ':tid' => $term_2->tid,
     ))->fetchField();
     $this->assertEqual(0, $index_count, 'Term 2 is not indexed.');
   }
@@ -1323,9 +1324,9 @@ class TaxonomyLoadMultipleTestCase extends TaxonomyWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Taxonomy term multiple loading',
-        'description' => 'Test the loading of multiple taxonomy terms at once',
-        'group' => 'Taxonomy',
+      'name' => 'Taxonomy term multiple loading',
+      'description' => 'Test the loading of multiple taxonomy terms at once',
+      'group' => 'Taxonomy',
     );
   }
 
@@ -1389,9 +1390,9 @@ class TaxonomyLoadMultipleTestCase extends TaxonomyWebTestCase {
 class TaxonomyHooksTestCase extends TaxonomyWebTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Taxonomy term hooks',
-        'description' => 'Hooks for taxonomy term load/save/delete.',
-        'group' => 'Taxonomy',
+      'name' => 'Taxonomy term hooks',
+      'description' => 'Hooks for taxonomy term load/save/delete.',
+      'group' => 'Taxonomy',
     );
   }
 
@@ -1413,8 +1414,8 @@ class TaxonomyHooksTestCase extends TaxonomyWebTestCase {
 
     // Create a term with one antonym.
     $edit = array(
-        'name' => $this->randomName(),
-        'antonym' => 'Long',
+      'name' => $this->randomName(),
+      'antonym' => 'Long',
     );
     $this->drupalPost('admin/structure/taxonomy/' . $vocabulary->machine_name . '/add', $edit, t('Save'));
     $terms = taxonomy_get_term_by_name($edit['name']);
@@ -1423,8 +1424,8 @@ class TaxonomyHooksTestCase extends TaxonomyWebTestCase {
 
     // Update the term with a different antonym.
     $edit = array(
-        'name' => $this->randomName(),
-        'antonym' => 'Short',
+      'name' => $this->randomName(),
+      'antonym' => 'Short',
     );
     $this->drupalPost('taxonomy/term/' . $term->tid . '/edit', $edit, t('Save'));
     taxonomy_terms_static_reset();
@@ -1456,9 +1457,9 @@ class TaxonomyTermFieldTestCase extends TaxonomyWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Taxonomy term reference field',
-        'description' => 'Test the creation of term fields.',
-        'group' => 'Taxonomy',
+      'name' => 'Taxonomy term reference field',
+      'description' => 'Test the creation of term fields.',
+      'group' => 'Taxonomy',
     );
   }
 
@@ -1472,30 +1473,30 @@ class TaxonomyTermFieldTestCase extends TaxonomyWebTestCase {
     // Setup a field and instance.
     $this->field_name = drupal_strtolower($this->randomName());
     $this->field = array(
-        'field_name' => $this->field_name,
-        'type' => 'taxonomy_term_reference',
-        'settings' => array(
-            'allowed_values' => array(
-                array(
-                    'vocabulary' => $this->vocabulary->machine_name,
-                    'parent' => '0',
-                ),
-            ),
-        )
+      'field_name' => $this->field_name,
+      'type' => 'taxonomy_term_reference',
+      'settings' => array(
+        'allowed_values' => array(
+          array(
+            'vocabulary' => $this->vocabulary->machine_name,
+            'parent' => '0',
+          ),
+        ),
+      )
     );
     field_create_field($this->field);
     $this->instance = array(
-        'field_name' => $this->field_name,
-        'entity_type' => 'test_entity',
-        'bundle' => 'test_bundle',
-        'widget' => array(
-            'type' => 'options_select',
+      'field_name' => $this->field_name,
+      'entity_type' => 'test_entity',
+      'bundle' => 'test_bundle',
+      'widget' => array(
+        'type' => 'options_select',
+      ),
+      'display' => array(
+        'full' => array(
+          'type' => 'taxonomy_term_reference_link',
         ),
-        'display' => array(
-            'full' => array(
-                'type' => 'taxonomy_term_reference_link',
-            ),
-        ),
+      ),
     );
     field_create_instance($this->instance);
   }
@@ -1543,7 +1544,7 @@ class TaxonomyTermFieldTestCase extends TaxonomyWebTestCase {
 
     // Submit with some value.
     $edit = array(
-        "{$this->field_name}[$langcode]" => array($term->tid),
+      "{$this->field_name}[$langcode]" => array($term->tid),
     );
     $this->drupalPost(NULL, $edit, t('Save'));
     preg_match('|test-entity/manage/(\d+)/edit|', $this->url, $match);
@@ -1571,18 +1572,18 @@ class TaxonomyTermFieldTestCase extends TaxonomyWebTestCase {
     // Add several entries in the 'allowed_values' setting, to make sure that
     // they all get updated.
     $this->field['settings']['allowed_values'] = array(
-        array(
-            'vocabulary' => $this->vocabulary->machine_name,
-            'parent' => '0',
-        ),
-        array(
-            'vocabulary' => $this->vocabulary->machine_name,
-            'parent' => '0',
-        ),
-        array(
-            'vocabulary' => 'foo',
-            'parent' => '0',
-        ),
+      array(
+        'vocabulary' => $this->vocabulary->machine_name,
+        'parent' => '0',
+      ),
+      array(
+        'vocabulary' => $this->vocabulary->machine_name,
+        'parent' => '0',
+      ),
+      array(
+        'vocabulary' => 'foo',
+        'parent' => '0',
+      ),
     );
     field_update_field($this->field);
     // Change the machine name.
@@ -1617,9 +1618,9 @@ class TaxonomyTermFieldMultipleVocabularyTestCase extends TaxonomyWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Multiple vocabulary term reference field',
-        'description' => 'Tests term reference fields that allow multiple vocabularies.',
-        'group' => 'Taxonomy',
+      'name' => 'Multiple vocabulary term reference field',
+      'description' => 'Tests term reference fields that allow multiple vocabularies.',
+      'group' => 'Taxonomy',
     );
   }
 
@@ -1634,35 +1635,35 @@ class TaxonomyTermFieldMultipleVocabularyTestCase extends TaxonomyWebTestCase {
     // Set up a field and instance.
     $this->field_name = drupal_strtolower($this->randomName());
     $this->field = array(
-        'field_name' => $this->field_name,
-        'type' => 'taxonomy_term_reference',
-        'cardinality' => FIELD_CARDINALITY_UNLIMITED,
-        'settings' => array(
-            'allowed_values' => array(
-                array(
-                    'vocabulary' => $this->vocabulary1->machine_name,
-                    'parent' => '0',
-                ),
-                array(
-                    'vocabulary' => $this->vocabulary2->machine_name,
-                    'parent' => '0',
-                ),
-            ),
-        )
+      'field_name' => $this->field_name,
+      'type' => 'taxonomy_term_reference',
+      'cardinality' => FIELD_CARDINALITY_UNLIMITED,
+      'settings' => array(
+        'allowed_values' => array(
+          array(
+            'vocabulary' => $this->vocabulary1->machine_name,
+            'parent' => '0',
+          ),
+          array(
+            'vocabulary' => $this->vocabulary2->machine_name,
+            'parent' => '0',
+          ),
+        ),
+      )
     );
     field_create_field($this->field);
     $this->instance = array(
-        'field_name' => $this->field_name,
-        'entity_type' => 'test_entity',
-        'bundle' => 'test_bundle',
-        'widget' => array(
-            'type' => 'options_select',
+      'field_name' => $this->field_name,
+      'entity_type' => 'test_entity',
+      'bundle' => 'test_bundle',
+      'widget' => array(
+        'type' => 'options_select',
+      ),
+      'display' => array(
+        'full' => array(
+          'type' => 'taxonomy_term_reference_link',
         ),
-        'display' => array(
-            'full' => array(
-                'type' => 'taxonomy_term_reference_link',
-            ),
-        ),
+      ),
     );
     field_create_instance($this->instance);
   }
@@ -1680,7 +1681,7 @@ class TaxonomyTermFieldMultipleVocabularyTestCase extends TaxonomyWebTestCase {
     $this->drupalGet('test-entity/add/test-bundle');
     $this->assertFieldByName("{$this->field_name}[$langcode][]", '', 'Widget is displayed.');
     $edit = array(
-        "{$this->field_name}[$langcode][]" => array($term1->tid, $term2->tid),
+      "{$this->field_name}[$langcode][]" => array($term1->tid, $term2->tid),
     );
     $this->drupalPost(NULL, $edit, t('Save'));
     preg_match('|test-entity/manage/(\d+)/edit|', $this->url, $match);
@@ -1721,7 +1722,7 @@ class TaxonomyTermFieldMultipleVocabularyTestCase extends TaxonomyWebTestCase {
 
     // Term 1 should still pass validation.
     $edit = array(
-        "{$this->field_name}[$langcode][]" => array($term1->tid),
+      "{$this->field_name}[$langcode][]" => array($term1->tid),
     );
     $this->drupalPost(NULL, $edit, t('Save'));
   }
@@ -1735,9 +1736,9 @@ class TaxonomyTokenReplaceTestCase extends TaxonomyWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Taxonomy token replacement',
-        'description' => 'Generates text using placeholders for dummy content to check taxonomy token replacement.',
-        'group' => 'Taxonomy',
+      'name' => 'Taxonomy token replacement',
+      'description' => 'Generates text using placeholders for dummy content to check taxonomy token replacement.',
+      'group' => 'Taxonomy',
     );
   }
 
@@ -1749,32 +1750,32 @@ class TaxonomyTokenReplaceTestCase extends TaxonomyWebTestCase {
     $this->langcode = LANGUAGE_NONE;
 
     $field = array(
-        'field_name' => 'taxonomy_' . $this->vocabulary->machine_name,
-        'type' => 'taxonomy_term_reference',
-        'cardinality' => FIELD_CARDINALITY_UNLIMITED,
-        'settings' => array(
-            'allowed_values' => array(
-                array(
-                    'vocabulary' => $this->vocabulary->machine_name,
-                    'parent' => 0,
-                ),
-            ),
+      'field_name' => 'taxonomy_' . $this->vocabulary->machine_name,
+      'type' => 'taxonomy_term_reference',
+      'cardinality' => FIELD_CARDINALITY_UNLIMITED,
+      'settings' => array(
+        'allowed_values' => array(
+          array(
+            'vocabulary' => $this->vocabulary->machine_name,
+            'parent' => 0,
+          ),
         ),
+      ),
     );
     field_create_field($field);
 
     $this->instance = array(
-        'field_name' => 'taxonomy_' . $this->vocabulary->machine_name,
-        'bundle' => 'article',
-        'entity_type' => 'node',
-        'widget' => array(
-            'type' => 'options_select',
+      'field_name' => 'taxonomy_' . $this->vocabulary->machine_name,
+      'bundle' => 'article',
+      'entity_type' => 'node',
+      'widget' => array(
+        'type' => 'options_select',
+      ),
+      'display' => array(
+        'default' => array(
+          'type' => 'taxonomy_term_reference_link',
         ),
-        'display' => array(
-            'default' => array(
-                'type' => 'taxonomy_term_reference_link',
-            ),
-        ),
+      ),
     );
     field_create_instance($this->instance);
   }
@@ -1882,9 +1883,9 @@ class TaxonomyThemeTestCase extends TaxonomyWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Taxonomy theme switching',
-        'description' => 'Verifies that various taxonomy pages use the expected theme.',
-        'group' => 'Taxonomy',
+      'name' => 'Taxonomy theme switching',
+      'description' => 'Verifies that various taxonomy pages use the expected theme.',
+      'group' => 'Taxonomy',
     );
   }
 
@@ -1930,9 +1931,9 @@ class TaxonomyThemeTestCase extends TaxonomyWebTestCase {
 class TaxonomyEFQTestCase extends TaxonomyWebTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Taxonomy EntityFieldQuery',
-        'description' => 'Verifies operation of a taxonomy-based EntityFieldQuery.',
-        'group' => 'Taxonomy',
+      'name' => 'Taxonomy EntityFieldQuery',
+      'description' => 'Verifies operation of a taxonomy-based EntityFieldQuery.',
+      'group' => 'Taxonomy',
     );
   }
 

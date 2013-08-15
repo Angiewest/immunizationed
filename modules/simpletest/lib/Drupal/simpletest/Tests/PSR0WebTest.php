@@ -6,9 +6,9 @@ class PSR0WebTest extends \DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'PSR0 web test',
-        'description' => 'We want to assert that this PSR-0 test case is being discovered.',
-        'group' => 'SimpleTest',
+      'name' => 'PSR0 web test',
+      'description' => 'We want to assert that this PSR-0 test case is being discovered.',
+      'group' => 'SimpleTest',
     );
   }
 

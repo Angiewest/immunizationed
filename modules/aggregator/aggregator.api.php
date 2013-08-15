@@ -60,8 +60,8 @@ function hook_aggregator_fetch($feed) {
  */
 function hook_aggregator_fetch_info() {
   return array(
-      'title' => t('Default fetcher'),
-      'description' => t('Default fetcher for resources available by URL.'),
+    'title' => t('Default fetcher'),
+    'description' => t('Default fetcher for resources available by URL.'),
   );
 }
 
@@ -135,8 +135,8 @@ function hook_aggregator_parse($feed) {
  */
 function hook_aggregator_parse_info() {
   return array(
-      'title' => t('Default parser'),
-      'description' => t('Default parser for RSS, Atom and RDF feeds.'),
+    'title' => t('Default parser'),
+    'description' => t('Default parser for RSS, Atom and RDF feeds.'),
   );
 }
 
@@ -189,10 +189,10 @@ function hook_aggregator_process($feed) {
  *
  * @ingroup aggregator
  */
-function hook_aggregator_process_info($feed) {
+function hook_aggregator_process_info() {
   return array(
-      'title' => t('Default processor'),
-      'description' => t('Creates lightweight records of feed items.'),
+    'title' => t('Default processor'),
+    'description' => t('Creates lightweight records of feed items.'),
   );
 }
 

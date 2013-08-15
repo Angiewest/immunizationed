@@ -29,33 +29,33 @@ function simpletest_help($path, $arg) {
  */
 function simpletest_menu() {
   $items['admin/config/development/testing'] = array(
-      'title' => 'Testing',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('simpletest_test_form'),
-      'description' => 'Run tests against Drupal core and your active modules. These tests help assure that your site code is working as designed.',
-      'access arguments' => array('administer unit tests'),
-      'file' => 'simpletest.pages.inc',
-      'weight' => -5,
+    'title' => 'Testing',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('simpletest_test_form'),
+    'description' => 'Run tests against Drupal core and your active modules. These tests help assure that your site code is working as designed.',
+    'access arguments' => array('administer unit tests'),
+    'file' => 'simpletest.pages.inc',
+    'weight' => -5,
   );
   $items['admin/config/development/testing/list'] = array(
-      'title' => 'List',
-      'type' => MENU_DEFAULT_LOCAL_TASK,
+    'title' => 'List',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
   );
   $items['admin/config/development/testing/settings'] = array(
-      'title' => 'Settings',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('simpletest_settings_form'),
-      'access arguments' => array('administer unit tests'),
-      'type' => MENU_LOCAL_TASK,
-      'file' => 'simpletest.pages.inc',
+    'title' => 'Settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('simpletest_settings_form'),
+    'access arguments' => array('administer unit tests'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'simpletest.pages.inc',
   );
   $items['admin/config/development/testing/results/%'] = array(
-      'title' => 'Test result',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('simpletest_result_form', 5),
-      'description' => 'View result of tests.',
-      'access arguments' => array('administer unit tests'),
-      'file' => 'simpletest.pages.inc',
+    'title' => 'Test result',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('simpletest_result_form', 5),
+    'description' => 'View result of tests.',
+    'access arguments' => array('administer unit tests'),
+    'file' => 'simpletest.pages.inc',
   );
   return $items;
 }
@@ -65,10 +65,10 @@ function simpletest_menu() {
  */
 function simpletest_permission() {
   return array(
-      'administer unit tests' => array(
-          'title' => t('Administer tests'),
-          'restrict access' => TRUE,
-      ),
+    'administer unit tests' => array(
+      'title' => t('Administer tests'),
+      'restrict access' => TRUE,
+    ),
   );
 }
 
@@ -77,14 +77,14 @@ function simpletest_permission() {
  */
 function simpletest_theme() {
   return array(
-      'simpletest_test_table' => array(
-          'render element' => 'table',
-          'file' => 'simpletest.pages.inc',
-      ),
-      'simpletest_result_summary' => array(
-          'render element' => 'form',
-          'file' => 'simpletest.pages.inc',
-      ),
+    'simpletest_test_table' => array(
+      'render element' => 'table',
+      'file' => 'simpletest.pages.inc',
+    ),
+    'simpletest_result_summary' => array(
+      'render element' => 'form',
+      'file' => 'simpletest.pages.inc',
+    ),
   );
 }
 
@@ -102,9 +102,9 @@ function simpletest_js_alter(&$javascript) {
 
 function _simpletest_format_summary_line($summary) {
   $args = array(
-      '@pass' => format_plural(isset($summary['#pass']) ? $summary['#pass'] : 0, '1 pass', '@count passes'),
-      '@fail' => format_plural(isset($summary['#fail']) ? $summary['#fail'] : 0, '1 fail', '@count fails'),
-      '@exception' => format_plural(isset($summary['#exception']) ? $summary['#exception'] : 0, '1 exception', '@count exceptions'),
+    '@pass' => format_plural(isset($summary['#pass']) ? $summary['#pass'] : 0, '1 pass', '@count passes'),
+    '@fail' => format_plural(isset($summary['#fail']) ? $summary['#fail'] : 0, '1 fail', '@count fails'),
+    '@exception' => format_plural(isset($summary['#exception']) ? $summary['#exception'] : 0, '1 exception', '@count exceptions'),
   );
   if (!$summary['#debug']) {
     return t('@pass, @fail, and @exception', $args);
@@ -124,8 +124,8 @@ function _simpletest_format_summary_line($summary) {
  */
 function simpletest_run_tests($test_list, $reporter = 'drupal') {
   $test_id = db_insert('simpletest_test_id')
-  ->useDefaults(array('test_id'))
-  ->execute();
+    ->useDefaults(array('test_id'))
+    ->execute();
 
   // Clear out the previous verbose files.
   file_unmanaged_delete_recursive('public://simpletest/verbose');
@@ -137,14 +137,14 @@ function simpletest_run_tests($test_list, $reporter = 'drupal') {
   $info = $first_instance->getInfo();
 
   $batch = array(
-      'title' => t('Running tests'),
-      'operations' => array(
-          array('_simpletest_batch_operation', array($test_list, $test_id)),
-      ),
-      'finished' => '_simpletest_batch_finished',
-      'progress_message' => '',
-      'css' => array(drupal_get_path('module', 'simpletest') . '/simpletest.css'),
-      'init_message' => t('Processing test @num of @max - %test.', array('%test' => $info['name'], '@num' => '1', '@max' => count($test_list))),
+    'title' => t('Running tests'),
+    'operations' => array(
+      array('_simpletest_batch_operation', array($test_list, $test_id)),
+    ),
+    'finished' => '_simpletest_batch_finished',
+    'progress_message' => '',
+    'css' => array(drupal_get_path('module', 'simpletest') . '/simpletest.css'),
+    'init_message' => t('Processing test @num of @max - %test.', array('%test' => $info['name'], '@num' => '1', '@max' => count($test_list))),
   );
   batch_set($batch);
 
@@ -267,8 +267,8 @@ function simpletest_log_read($test_id, $prefix, $test_class, $during_test = FALS
         // Parse PHP fatal errors for example: PHP Fatal error: Call to
         // undefined function break_me() in /path/to/file.php on line 17
         $caller = array(
-            'line' => $match[4],
-            'file' => $match[3],
+          'line' => $match[4],
+          'file' => $match[3],
         );
         DrupalTestCase::insertAssert($test_id, $test_class, FALSE, $match[2], $match[1], $caller);
       }
@@ -342,9 +342,9 @@ function simpletest_test_get_all() {
               foreach ($files as $file) {
                 // Convert the file name into the namespaced class name.
                 $replacements = array(
-                    '/' => '\\',
-                    $basedir => '',
-                    '.php' => '',
+                  '/' => '\\',
+                  $basedir => '',
+                  '.php' => '',
                 );
                 $classes[] = strtr($file->uri, $replacements);
               }
@@ -390,11 +390,11 @@ function simpletest_test_get_all() {
 
 /*
  * Register a simple class loader that can find D8-style PSR-0 test classes.
-*
-* Other PSR-0 class loading can happen in contrib, but those contrib class
-* loader modules will not be enabled when testbot runs. So we need to do this
-* one in core.
-*/
+ *
+ * Other PSR-0 class loading can happen in contrib, but those contrib class
+ * loader modules will not be enabled when testbot runs. So we need to do this
+ * one in core.
+ */
 function simpletest_classloader_register() {
 
   // Prevent duplicate classloader registration.
@@ -448,8 +448,8 @@ function _simpletest_autoload_psr0($class) {
 
         // Build the filepath where we expect the class to be defined.
         $path = dirname($extensions[$extension]) . '/lib/' .
-            str_replace('\\', '/', $namespace) . '/' .
-            str_replace('_', '/', $classname) . '.php';
+          str_replace('\\', '/', $namespace) . '/' .
+          str_replace('_', '/', $classname) . '.php';
 
         // Include the file, if it does exist.
         if (file_exists($path)) {
@@ -593,11 +593,11 @@ function simpletest_clean_results_table($test_id = NULL) {
       $count = db_query('SELECT COUNT(test_id) FROM {simpletest_test_id} WHERE test_id = :test_id', array(':test_id' => $test_id))->fetchField();
 
       db_delete('simpletest')
-      ->condition('test_id', $test_id)
-      ->execute();
+        ->condition('test_id', $test_id)
+        ->execute();
       db_delete('simpletest_test_id')
-      ->condition('test_id', $test_id)
-      ->execute();
+        ->condition('test_id', $test_id)
+        ->execute();
     }
     else {
       $count = db_query('SELECT COUNT(test_id) FROM {simpletest_test_id}')->fetchField();

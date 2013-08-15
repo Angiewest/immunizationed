@@ -58,23 +58,23 @@ function shortcut_set_switch($form, &$form_state, $account = NULL) {
 
   if (count($options) > 1) {
     $form['account'] = array(
-        '#type' => 'value',
-        '#value' => $account,
+      '#type' => 'value',
+      '#value' => $account,
     );
 
     $form['set'] = array(
-        '#type' => 'radios',
-        '#title' => $user->uid == $account->uid ? t('Choose a set of shortcuts to use') : t('Choose a set of shortcuts for this user'),
-        '#options' => $options,
-        '#default_value' => $current_set->set_name,
+      '#type' => 'radios',
+      '#title' => $user->uid == $account->uid ? t('Choose a set of shortcuts to use') : t('Choose a set of shortcuts for this user'),
+      '#options' => $options,
+      '#default_value' => $current_set->set_name,
     );
 
     $form['new'] = array(
-        '#type' => 'textfield',
-        '#title' => t('Name'),
-        '#title_display' => 'invisible',
-        '#description' => t('The new set is created by copying items from your default shortcut set.'),
-        '#access' => $add_access,
+      '#type' => 'textfield',
+      '#title' => t('Name'),
+      '#title_display' => 'invisible',
+      '#description' => t('The new set is created by copying items from your default shortcut set.'),
+      '#access' => $add_access,
     );
 
     if ($user->uid != $account->uid) {
@@ -83,20 +83,20 @@ function shortcut_set_switch($form, &$form_state, $account = NULL) {
     }
 
     $form['#attached'] = array(
-        'css' => array(drupal_get_path('module', 'shortcut') . '/shortcut.admin.css'),
-        'js' => array(drupal_get_path('module', 'shortcut') . '/shortcut.admin.js'),
+      'css' => array(drupal_get_path('module', 'shortcut') . '/shortcut.admin.css'),
+      'js' => array(drupal_get_path('module', 'shortcut') . '/shortcut.admin.js'),
     );
 
     $form['actions'] = array('#type' => 'actions');
     $form['actions']['submit'] = array(
-        '#type' => 'submit',
-        '#value' => t('Change set'),
+      '#type' => 'submit',
+      '#value' => t('Change set'),
     );
   }
   else {
     // There is only 1 option, so output a message in the $form array.
     $form['info'] = array(
-        '#markup' => '<p>' . t('You are currently using the %set-name shortcut set.', array('%set-name' => $current_set->title)) . '</p>',
+      '#markup' => '<p>' . t('You are currently using the %set-name shortcut set.', array('%set-name' => $current_set->title)) . '</p>',
     );
   }
 
@@ -130,14 +130,14 @@ function shortcut_set_switch_submit($form, &$form_state) {
     // Save a new shortcut set with links copied from the user's default set.
     $default_set = shortcut_default_set($account);
     $set = (object) array(
-        'title' => $form_state['values']['new'],
-        'links' => menu_links_clone($default_set->links),
+      'title' => $form_state['values']['new'],
+      'links' => menu_links_clone($default_set->links),
     );
     shortcut_set_save($set);
     $replacements = array(
-        '%user' => $account->name,
-        '%set_name' => $set->title,
-        '@switch-url' => url(current_path()),
+      '%user' => $account->name,
+      '%set_name' => $set->title,
+      '@switch-url' => url(current_path()),
     );
     if ($account->uid == $user->uid) {
       // Only administrators can create new shortcut sets, so we know they have
@@ -153,8 +153,8 @@ function shortcut_set_switch_submit($form, &$form_state) {
     // Switch to a different shortcut set.
     $set = shortcut_set_load($form_state['values']['set']);
     $replacements = array(
-        '%user' => $account->name,
-        '%set_name' => $set->title,
+      '%user' => $account->name,
+      '%set_name' => $set->title,
     );
     drupal_set_message($account->uid == $user->uid ? t('You are now using the %set_name shortcut set.', $replacements) : t('%user is now using the %set_name shortcut set.', $replacements));
   }
@@ -173,9 +173,9 @@ function shortcut_set_admin() {
   $rows = array();
   foreach ($shortcut_sets as $set) {
     $row = array(
-        check_plain($set->title),
-        l(t('list links'), "admin/config/user-interface/shortcut/$set->set_name"),
-        l(t('edit set name'), "admin/config/user-interface/shortcut/$set->set_name/edit"),
+      check_plain($set->title),
+      l(t('list links'), "admin/config/user-interface/shortcut/$set->set_name"),
+      l(t('edit set name'), "admin/config/user-interface/shortcut/$set->set_name/edit"),
     );
     if (shortcut_set_delete_access($set)) {
       $row[] = l(t('delete set'), "admin/config/user-interface/shortcut/$set->set_name/delete");
@@ -207,16 +207,16 @@ function shortcut_set_admin() {
  */
 function shortcut_set_add_form($form, &$form_state) {
   $form['new'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Set name'),
-      '#description' => t('The new set is created by copying items from your default shortcut set.'),
-      '#required' => TRUE,
+    '#type' => 'textfield',
+    '#title' => t('Set name'),
+    '#description' => t('The new set is created by copying items from your default shortcut set.'),
+    '#required' => TRUE,
   );
 
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Create new set'),
+    '#type' => 'submit',
+    '#value' => t('Create new set'),
   );
 
   return $form;
@@ -239,8 +239,8 @@ function shortcut_set_add_form_submit($form, &$form_state) {
   // Save a new shortcut set with links copied from the user's default set.
   $default_set = shortcut_default_set();
   $set = (object) array(
-      'title' => $form_state['values']['new'],
-      'links' => menu_links_clone($default_set->links),
+    'title' => $form_state['values']['new'],
+    'links' => menu_links_clone($default_set->links),
   );
   shortcut_set_save($set);
   drupal_set_message(t('The %set_name shortcut set has been created. You can edit it from this page.', array('%set_name' => $set->title)));
@@ -266,10 +266,10 @@ function shortcut_set_add_form_submit($form, &$form_state) {
 function shortcut_set_customize($form, &$form_state, $shortcut_set) {
   $form['#shortcut_set_name'] = $shortcut_set->set_name;
   $form['shortcuts'] = array(
-      '#tree' => TRUE,
-      '#weight' => -20,
-      'enabled' => array(),
-      'disabled' => array(),
+    '#tree' => TRUE,
+    '#weight' => -20,
+    'enabled' => array(),
+    'disabled' => array(),
   );
 
   foreach ($shortcut_set->links as $link) {
@@ -277,18 +277,18 @@ function shortcut_set_customize($form, &$form_state, $shortcut_set) {
     $status = $link['hidden'] ? 'disabled' : 'enabled';
     $form['shortcuts'][$status][$mlid]['name']['#markup'] = l($link['link_title'], $link['link_path']);
     $form['shortcuts'][$status][$mlid]['weight'] = array(
-        '#type' => 'weight',
-        '#title' => t('Weight'),
-        '#delta' => 50,
-        '#default_value' => $link['weight'],
-        '#attributes' => array('class' => array('shortcut-weight')),
+      '#type' => 'weight',
+      '#title' => t('Weight'),
+      '#delta' => 50,
+      '#default_value' => $link['weight'],
+      '#attributes' => array('class' => array('shortcut-weight')),
     );
     $form['shortcuts'][$status][$mlid]['status'] = array(
-        '#type' => 'select',
-        '#title' => t('Status'),
-        '#options' => array('disabled' => t('Disabled'), 'enabled' => t('Enabled')),
-        '#default_value' => $status,
-        '#attributes' => array('class' => array('shortcut-status-select')),
+      '#type' => 'select',
+      '#title' => t('Status'),
+      '#options' => array('disabled' => t('Disabled'), 'enabled' => t('Enabled')),
+      '#default_value' => $status,
+      '#attributes' => array('class' => array('shortcut-status-select')),
     );
 
     $form['shortcuts'][$status][$mlid]['edit']['#markup'] = l(t('edit'), 'admin/config/user-interface/shortcut/link/' . $mlid);
@@ -296,17 +296,17 @@ function shortcut_set_customize($form, &$form_state, $shortcut_set) {
   }
 
   $form['#attached'] = array(
-      'css' => array(drupal_get_path('module', 'shortcut') . '/shortcut.admin.css'),
-      'js' => array(drupal_get_path('module', 'shortcut') . '/shortcut.admin.js'),
+    'css' => array(drupal_get_path('module', 'shortcut') . '/shortcut.admin.css'),
+    'js' => array(drupal_get_path('module', 'shortcut') . '/shortcut.admin.js'),
   );
 
   $form['actions'] = array(
-      '#type' => 'actions',
-      '#access' => !empty($shortcut_set->links),
+    '#type' => 'actions',
+    '#access' => !empty($shortcut_set->links),
   );
   $form['actions']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Save changes'),
+    '#type' => 'submit',
+    '#value' => t('Save changes'),
   );
 
   return $form;
@@ -341,8 +341,8 @@ function theme_shortcut_set_customize($variables) {
   $form = $variables['form'];
   $map = array('disabled' => t('Disabled'), 'enabled' => t('Enabled'));
   $shortcuts_by_status = array(
-      'enabled' => element_children($form['shortcuts']['enabled']),
-      'disabled' => element_children($form['shortcuts']['disabled']),
+    'enabled' => element_children($form['shortcuts']['enabled']),
+    'disabled' => element_children($form['shortcuts']['disabled']),
   );
   // Do not add any rows to the table if there are no shortcuts to display.
   $statuses = empty($shortcuts_by_status['enabled']) && empty($shortcuts_by_status['disabled']) ? array() : array_keys($shortcuts_by_status);
@@ -352,11 +352,11 @@ function theme_shortcut_set_customize($variables) {
     drupal_add_tabledrag('shortcuts', 'match', 'sibling', 'shortcut-status-select');
     drupal_add_tabledrag('shortcuts', 'order', 'sibling', 'shortcut-weight');
     $rows[] = array(
-        'data' => array(array(
-            'colspan' => 5,
-            'data' => '<strong>' . $map[$status] . '</strong>',
-        )),
-        'class' => array('shortcut-status', 'shortcut-status-' . $status),
+      'data' => array(array(
+        'colspan' => 5,
+        'data' => '<strong>' . $map[$status] . '</strong>',
+      )),
+      'class' => array('shortcut-status', 'shortcut-status-' . $status),
     );
 
     foreach ($shortcuts_by_status[$status] as $key) {
@@ -368,19 +368,19 @@ function theme_shortcut_set_customize($variables) {
       $row[] = drupal_render($shortcut['edit']);
       $row[] = drupal_render($shortcut['delete']);
       $rows[] = array(
-          'data' => $row,
-          'class' => array('draggable'),
+        'data' => $row,
+        'class' => array('draggable'),
       );
     }
 
     if ($status == 'enabled') {
       for ($i = 0; $i < shortcut_max_slots(); $i++) {
         $rows['empty-' . $i] = array(
-            'data' => array(array(
-                'colspan' => 5,
-                'data' => '<em>' . t('Empty') . '</em>',
-            )),
-            'class' => array('shortcut-slot-empty'),
+          'data' => array(array(
+            'colspan' => 5,
+            'data' => '<em>' . t('Empty') . '</em>',
+          )),
+          'class' => array('shortcut-slot-empty'),
         );
       }
       $count_shortcuts = count($shortcuts_by_status[$status]);
@@ -419,8 +419,8 @@ function theme_shortcut_set_customize($variables) {
 function shortcut_link_add($form, &$form_state, $shortcut_set) {
   drupal_set_title(t('Add new shortcut'));
   $form['shortcut_set'] = array(
-      '#type' => 'value',
-      '#value' => $shortcut_set,
+    '#type' => 'value',
+    '#value' => $shortcut_set,
   );
   $form += _shortcut_link_form_elements();
   return $form;
@@ -446,8 +446,8 @@ function shortcut_link_add($form, &$form_state, $shortcut_set) {
 function shortcut_link_edit($form, &$form_state, $shortcut_link) {
   drupal_set_title(t('Editing @shortcut', array('@shortcut' => $shortcut_link['link_title'])));
   $form['original_shortcut_link'] = array(
-      '#type' => 'value',
-      '#value' => $shortcut_link,
+    '#type' => 'value',
+    '#value' => $shortcut_link,
   );
   $form += _shortcut_link_form_elements($shortcut_link);
   return $form;
@@ -466,8 +466,8 @@ function shortcut_link_edit($form, &$form_state, $shortcut_link) {
 function _shortcut_link_form_elements($shortcut_link = NULL) {
   if (!isset($shortcut_link)) {
     $shortcut_link = array(
-        'link_title' => '',
-        'link_path' => ''
+      'link_title' => '',
+      'link_path' => ''
     );
   }
   else {
@@ -476,31 +476,31 @@ function _shortcut_link_form_elements($shortcut_link = NULL) {
 
   $form['shortcut_link']['#tree'] = TRUE;
   $form['shortcut_link']['link_title'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Name'),
-      '#description' => t('The name of the shortcut.'),
-      '#size' => 40,
-      '#maxlength' => 255,
-      '#default_value' => $shortcut_link['link_title'],
-      '#required' => TRUE,
+    '#type' => 'textfield',
+    '#title' => t('Name'),
+    '#description' => t('The name of the shortcut.'),
+    '#size' => 40,
+    '#maxlength' => 255,
+    '#default_value' => $shortcut_link['link_title'],
+    '#required' => TRUE,
   );
 
   $form['shortcut_link']['link_path'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Path'),
-      '#description' => t('The path to the shortcut.'),
-      '#size' => 40,
-      '#maxlength' => 255,
-      '#field_prefix' => url(NULL, array('absolute' => TRUE)) . (variable_get('clean_url', 0) ? '' : '?q='),
-      '#default_value' => $shortcut_link['link_path'],
+    '#type' => 'textfield',
+    '#title' => t('Path'),
+    '#description' => t('The path to the shortcut.'),
+    '#size' => 40,
+    '#maxlength' => 255,
+    '#field_prefix' => url(NULL, array('absolute' => TRUE)) . (variable_get('clean_url', 0) ? '' : '?q='),
+    '#default_value' => $shortcut_link['link_path'],
   );
 
   $form['#validate'][] = 'shortcut_link_edit_validate';
 
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Save'),
+    '#type' => 'submit',
+    '#value' => t('Save'),
   );
 
   return $form;
@@ -610,22 +610,22 @@ function shortcut_admin_add_link($shortcut_link, &$shortcut_set, $limit = NULL) 
  */
 function shortcut_set_edit_form($form, &$form_state, $shortcut_set) {
   $form['shortcut_set'] = array(
-      '#type' => 'value',
-      '#value' => $shortcut_set,
+    '#type' => 'value',
+    '#value' => $shortcut_set,
   );
   $form['title'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Set name'),
-      '#default_value' => $shortcut_set->title,
-      '#maxlength' => 255,
-      '#required' => TRUE,
-      '#weight' => -5,
+    '#type' => 'textfield',
+    '#title' => t('Set name'),
+    '#default_value' => $shortcut_set->title,
+    '#maxlength' => 255,
+    '#required' => TRUE,
+    '#weight' => -5,
   );
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Save'),
-      '#weight' => 5,
+    '#type' => 'submit',
+    '#value' => t('Save'),
+    '#weight' => 5,
   );
 
   return $form;
@@ -672,8 +672,8 @@ function shortcut_set_edit_form_submit($form, &$form_state) {
  */
 function shortcut_set_delete_form($form, &$form_state, $shortcut_set) {
   $form['shortcut_set'] = array(
-      '#type' => 'value',
-      '#value' => $shortcut_set->set_name,
+    '#type' => 'value',
+    '#value' => $shortcut_set->set_name,
   );
 
   // Find out how many users are directly assigned to this shortcut set, and
@@ -682,8 +682,8 @@ function shortcut_set_delete_form($form, &$form_state, $shortcut_set) {
   $info = '';
   if ($number) {
     $info .= '<p>' . format_plural($number,
-        '1 user has chosen or been assigned to this shortcut set.',
-        '@count users have chosen or been assigned to this shortcut set.') . '</p>';
+      '1 user has chosen or been assigned to this shortcut set.',
+      '@count users have chosen or been assigned to this shortcut set.') . '</p>';
   }
 
   // Also, if a module implements hook_shortcut_default_set(), it's possible
@@ -693,16 +693,16 @@ function shortcut_set_delete_form($form, &$form_state, $shortcut_set) {
   }
 
   $form['info'] = array(
-      '#markup' => $info,
+    '#markup' => $info,
   );
 
   return confirm_form(
-      $form,
-      t('Are you sure you want to delete the shortcut set %title?', array('%title' => $shortcut_set->title)),
-      'admin/config/user-interface/shortcut/' . $shortcut_set->set_name,
-      t('This action cannot be undone.'),
-      t('Delete'),
-      t('Cancel')
+    $form,
+    t('Are you sure you want to delete the shortcut set %title?', array('%title' => $shortcut_set->title)),
+    'admin/config/user-interface/shortcut/' . $shortcut_set->set_name,
+    t('This action cannot be undone.'),
+    t('Delete'),
+    t('Cancel')
   );
 }
 
@@ -734,17 +734,17 @@ function shortcut_set_delete_form_submit($form, &$form_state) {
  */
 function shortcut_link_delete($form, &$form_state, $shortcut_link) {
   $form['shortcut_link'] = array(
-      '#type' => 'value',
-      '#value' => $shortcut_link,
+    '#type' => 'value',
+    '#value' => $shortcut_link,
   );
 
   return confirm_form(
-      $form,
-      t('Are you sure you want to delete the shortcut %title?', array('%title' => $shortcut_link['link_title'])),
-      'admin/config/user-interface/shortcut/' . $shortcut_link['menu_name'],
-      t('This action cannot be undone.'),
-      t('Delete'),
-      t('Cancel')
+    $form,
+    t('Are you sure you want to delete the shortcut %title?', array('%title' => $shortcut_link['link_title'])),
+    'admin/config/user-interface/shortcut/' . $shortcut_link['menu_name'],
+    t('This action cannot be undone.'),
+    t('Delete'),
+    t('Cancel')
   );
 }
 
@@ -771,8 +771,8 @@ function shortcut_link_add_inline($shortcut_set) {
     $item = menu_get_item($_GET['link']);
     $title = ($item && $item['title']) ? $item['title'] : $_GET['name'];
     $link = array(
-        'link_title' => $title,
-        'link_path' => $_GET['link'],
+      'link_title' => $title,
+      'link_path' => $_GET['link'],
     );
     shortcut_admin_add_link($link, $shortcut_set, shortcut_max_slots());
     if (shortcut_set_save($shortcut_set)) {

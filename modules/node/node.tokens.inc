@@ -12,77 +12,77 @@
  */
 function node_token_info() {
   $type = array(
-      'name' => t('Nodes'),
-      'description' => t('Tokens related to individual content items, or "nodes".'),
-      'needs-data' => 'node',
+    'name' => t('Nodes'),
+    'description' => t('Tokens related to individual content items, or "nodes".'),
+    'needs-data' => 'node',
   );
 
   // Core tokens for nodes.
   $node['nid'] = array(
-      'name' => t("Content ID"),
-      'description' => t('The unique ID of the content item, or "node".'),
+    'name' => t("Content ID"),
+    'description' => t('The unique ID of the content item, or "node".'),
   );
   $node['vid'] = array(
-      'name' => t("Revision ID"),
-      'description' => t("The unique ID of the node's latest revision."),
+    'name' => t("Revision ID"),
+    'description' => t("The unique ID of the node's latest revision."),
   );
   $node['tnid'] = array(
-      'name' => t("Translation set ID"),
-      'description' => t("The unique ID of the original-language version of this node, if one exists."),
+    'name' => t("Translation set ID"),
+    'description' => t("The unique ID of the original-language version of this node, if one exists."),
   );
   $node['type'] = array(
-      'name' => t("Content type"),
-      'description' => t("The type of the node."),
+    'name' => t("Content type"),
+    'description' => t("The type of the node."),
   );
   $node['type-name'] = array(
-      'name' => t("Content type name"),
-      'description' => t("The human-readable name of the node type."),
+    'name' => t("Content type name"),
+    'description' => t("The human-readable name of the node type."),
   );
   $node['title'] = array(
-      'name' => t("Title"),
-      'description' => t("The title of the node."),
+    'name' => t("Title"),
+    'description' => t("The title of the node."),
   );
   $node['body'] = array(
-      'name' => t("Body"),
-      'description' => t("The main body text of the node."),
+    'name' => t("Body"),
+    'description' => t("The main body text of the node."),
   );
   $node['summary'] = array(
-      'name' => t("Summary"),
-      'description' => t("The summary of the node's main body text."),
+    'name' => t("Summary"),
+    'description' => t("The summary of the node's main body text."),
   );
   $node['language'] = array(
-      'name' => t("Language"),
-      'description' => t("The language the node is written in."),
+    'name' => t("Language"),
+    'description' => t("The language the node is written in."),
   );
   $node['url'] = array(
-      'name' => t("URL"),
-      'description' => t("The URL of the node."),
+    'name' => t("URL"),
+    'description' => t("The URL of the node."),
   );
   $node['edit-url'] = array(
-      'name' => t("Edit URL"),
-      'description' => t("The URL of the node's edit page."),
+    'name' => t("Edit URL"),
+    'description' => t("The URL of the node's edit page."),
   );
 
   // Chained tokens for nodes.
   $node['created'] = array(
-      'name' => t("Date created"),
-      'description' => t("The date the node was posted."),
-      'type' => 'date',
+    'name' => t("Date created"),
+    'description' => t("The date the node was posted."),
+    'type' => 'date',
   );
   $node['changed'] = array(
-      'name' => t("Date changed"),
-      'description' => t("The date the node was most recently updated."),
-      'type' => 'date',
+    'name' => t("Date changed"),
+    'description' => t("The date the node was most recently updated."),
+    'type' => 'date',
   );
   $node['author'] = array(
-      'name' => t("Author"),
-      'description' => t("The author of the node."),
-      'type' => 'user',
+    'name' => t("Author"),
+    'description' => t("The author of the node."),
+    'type' => 'user',
   );
 
   return array(
-      'types' => array('node' => $type),
-      'tokens' => array('node' => $node),
+    'types' => array('node' => $type),
+    'tokens' => array('node' => $node),
   );
 }
 
@@ -156,7 +156,7 @@ function node_tokens($type, $tokens, array $data = array(), array $options = arr
           $replacements[$original] = url('node/' . $node->nid . '/edit', $url_options);
           break;
 
-          // Default values for the chained tokens handled below.
+        // Default values for the chained tokens handled below.
         case 'author':
           $account = user_load($node->uid);
           $name = format_username($account);

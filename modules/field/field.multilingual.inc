@@ -280,9 +280,9 @@ function field_language($entity_type, $entity, $field_name = NULL, $langcode = N
 
     if (field_has_translation_handler($entity_type)) {
       $context = array(
-          'entity_type' => $entity_type,
-          'entity' => $entity,
-          'language' => $langcode,
+        'entity_type' => $entity_type,
+        'entity' => $entity,
+        'language' => $langcode,
       );
       drupal_alter('field_language', $display_language, $context);
     }

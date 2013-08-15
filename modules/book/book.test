@@ -40,9 +40,9 @@ class BookTestCase extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Book functionality',
-        'description' => 'Create a book, add pages, and test book interface.',
-        'group' => 'Book',
+      'name' => 'Book functionality',
+      'description' => 'Create a book, add pages, and test book interface.',
+      'group' => 'Book',
     );
   }
 
@@ -70,13 +70,13 @@ class BookTestCase extends DrupalWebTestCase {
 
     /*
      * Add page hierarchy to book.
-    * Book
-    *  |- Node 0
-    *   |- Node 1
-    *   |- Node 2
-    *  |- Node 3
-    *  |- Node 4
-    */
+     * Book
+     *  |- Node 0
+     *   |- Node 1
+     *   |- Node 2
+     *  |- Node 3
+     *  |- Node 4
+     */
     $nodes = array();
     $nodes[] = $this->createBookNode($book->nid); // Node 0.
     $nodes[] = $this->createBookNode($book->nid, $nodes[0]->book['mlid']); // Node 1.
@@ -315,11 +315,11 @@ class BookTestCase extends DrupalWebTestCase {
     $this->drupalPost('admin/structure/block', $edit, t('Save blocks'));
     $this->assertText(t('The block settings have been updated.'), 'Block successfully move to footer region.');
 
-    // Give anonymous users the permission 'node test view'.
-    $edit = array();
-    $edit[DRUPAL_ANONYMOUS_RID . '[node test view]'] = TRUE;
-    $this->drupalPost('admin/people/permissions/' . DRUPAL_ANONYMOUS_RID, $edit, t('Save permissions'));
-    $this->assertText(t('The changes have been saved.'), "Permission 'node test view' successfully assigned to anonymous users.");
+     // Give anonymous users the permission 'node test view'.
+     $edit = array();
+     $edit[DRUPAL_ANONYMOUS_RID . '[node test view]'] = TRUE;
+     $this->drupalPost('admin/people/permissions/' . DRUPAL_ANONYMOUS_RID, $edit, t('Save permissions'));
+     $this->assertText(t('The changes have been saved.'), "Permission 'node test view' successfully assigned to anonymous users.");
 
     // Test correct display of the block.
     $nodes = $this->createBook();
@@ -332,67 +332,67 @@ class BookTestCase extends DrupalWebTestCase {
   /**
    * Tests the book navigation block when an access module is enabled.
    */
-  function testNavigationBlockOnAccessModuleEnabled() {
-    $this->drupalLogin($this->admin_user);
-    $edit = array();
+   function testNavigationBlockOnAccessModuleEnabled() {
+     $this->drupalLogin($this->admin_user);
+     $edit = array();
 
-    // Set the block title.
-    $block_title = $this->randomName(16);
-    $edit['title'] = $block_title;
+     // Set the block title.
+     $block_title = $this->randomName(16);
+     $edit['title'] = $block_title;
 
-    // Set block display to 'Show block only on book pages'.
-    $edit['book_block_mode'] = 'book pages';
-    $this->drupalPost('admin/structure/block/manage/book/navigation/configure', $edit, t('Save block'));
-    $this->assertText(t('The block configuration has been saved.'), 'Block configuration set.');
+     // Set block display to 'Show block only on book pages'.
+     $edit['book_block_mode'] = 'book pages';
+     $this->drupalPost('admin/structure/block/manage/book/navigation/configure', $edit, t('Save block'));
+     $this->assertText(t('The block configuration has been saved.'), 'Block configuration set.');
 
-    // Set the block to a region to confirm block is available.
-    $edit = array();
-    $edit['blocks[book_navigation][region]'] = 'footer';
-    $this->drupalPost('admin/structure/block', $edit, t('Save blocks'));
-    $this->assertText(t('The block settings have been updated.'), 'Block successfully move to footer region.');
+     // Set the block to a region to confirm block is available.
+     $edit = array();
+     $edit['blocks[book_navigation][region]'] = 'footer';
+     $this->drupalPost('admin/structure/block', $edit, t('Save blocks'));
+     $this->assertText(t('The block settings have been updated.'), 'Block successfully move to footer region.');
 
-    // Give anonymous users the permission 'node test view'.
-    $edit = array();
-    $edit[DRUPAL_ANONYMOUS_RID . '[node test view]'] = TRUE;
-    $this->drupalPost('admin/people/permissions/' . DRUPAL_ANONYMOUS_RID, $edit, t('Save permissions'));
-    $this->assertText(t('The changes have been saved.'), "Permission 'node test view' successfully assigned to anonymous users.");
+     // Give anonymous users the permission 'node test view'.
+     $edit = array();
+     $edit[DRUPAL_ANONYMOUS_RID . '[node test view]'] = TRUE;
+     $this->drupalPost('admin/people/permissions/' . DRUPAL_ANONYMOUS_RID, $edit, t('Save permissions'));
+     $this->assertText(t('The changes have been saved.'), "Permission 'node test view' successfully assigned to anonymous users.");
 
-    // Create a book.
-    $this->createBook();
+     // Create a book.
+     $this->createBook();
 
-    // Test correct display of the block to registered users.
-    $this->drupalLogin($this->web_user);
-    $this->drupalGet('node/' . $this->book->nid);
-    $this->assertText($block_title, 'Book navigation block is displayed to registered users.');
-    $this->drupalLogout();
+     // Test correct display of the block to registered users.
+     $this->drupalLogin($this->web_user);
+     $this->drupalGet('node/' . $this->book->nid);
+     $this->assertText($block_title, 'Book navigation block is displayed to registered users.');
+     $this->drupalLogout();
 
-    // Test correct display of the block to anonymous users.
-    $this->drupalGet('node/' . $this->book->nid);
-    $this->assertText($block_title, 'Book navigation block is displayed to anonymous users.');
-  }
+     // Test correct display of the block to anonymous users.
+     $this->drupalGet('node/' . $this->book->nid);
+     $this->assertText($block_title, 'Book navigation block is displayed to anonymous users.');
+   }
 
   /**
    * Tests the access for deleting top-level book nodes.
    */
-  function testBookDelete() {
-    $nodes = $this->createBook();
-    $this->drupalLogin($this->admin_user);
-    $edit = array();
+   function testBookDelete() {
+     $nodes = $this->createBook();
+     $this->drupalLogin($this->admin_user);
+     $edit = array();
 
-    // Test access to delete top-level and child book nodes.
-    $this->drupalGet('node/' . $this->book->nid . '/outline/remove');
-    $this->assertResponse('403', 'Deleting top-level book node properly forbidden.');
-    $this->drupalPost('node/' . $nodes[4]->nid . '/outline/remove', $edit, t('Remove'));
-    $node4 = node_load($nodes[4]->nid, NULL, TRUE);
-    $this->assertTrue(empty($node4->book), 'Deleting child book node properly allowed.');
+     // Test access to delete top-level and child book nodes.
+     $this->drupalGet('node/' . $this->book->nid . '/outline/remove');
+     $this->assertResponse('403', 'Deleting top-level book node properly forbidden.');
+     $this->drupalPost('node/' . $nodes[4]->nid . '/outline/remove', $edit, t('Remove'));
+     $node4 = node_load($nodes[4]->nid, NULL, TRUE);
+     $this->assertTrue(empty($node4->book), 'Deleting child book node properly allowed.');
 
-    // Delete all child book nodes and retest top-level node deletion.
-    foreach ($nodes as $node) {
-      $nids[] = $node->nid;
-    }
-    node_delete_multiple($nids);
-    $this->drupalPost('node/' . $this->book->nid . '/outline/remove', $edit, t('Remove'));
-    $node = node_load($this->book->nid, NULL, TRUE);
-    $this->assertTrue(empty($node->book), 'Deleting childless top-level book node properly allowed.');
-  }
+     // Delete all child book nodes and retest top-level node deletion.
+     foreach ($nodes as $node) {
+       $nids[] = $node->nid;
+     }
+     node_delete_multiple($nids);
+     $this->drupalPost('node/' . $this->book->nid . '/outline/remove', $edit, t('Remove'));
+     $node = node_load($this->book->nid, NULL, TRUE);
+     $this->assertTrue(empty($node->book), 'Deleting childless top-level book node properly allowed.');
+   }
 }

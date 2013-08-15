@@ -5,17 +5,17 @@
 class UserUpgradePathPasswordTokenTestCase extends UpgradePathTestCase {
   public static function getInfo() {
     return array(
-        'name'  => 'User upgrade path (password token involved)',
-        'description'  => 'User upgrade path tests (password token involved).',
-        'group' => 'Upgrade path',
+      'name'  => 'User upgrade path (password token involved)',
+      'description'  => 'User upgrade path tests (password token involved).',
+      'group' => 'Upgrade path',
     );
   }
 
   public function setUp() {
     // Path to the database dump files.
     $this->databaseDumpFiles = array(
-        drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-6.bare.database.php',
-        drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-6.user-password-token.database.php',
+      drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-6.bare.database.php',
+      drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-6.user-password-token.database.php',
     );
     parent::setUp();
   }
@@ -38,17 +38,17 @@ class UserUpgradePathPasswordTokenTestCase extends UpgradePathTestCase {
 class UserUpgradePathNoPasswordTokenTestCase extends UpgradePathTestCase {
   public static function getInfo() {
     return array(
-        'name'  => 'User upgrade path (password token not involved)',
-        'description'  => 'User upgrade path tests (password token not involved).',
-        'group' => 'Upgrade path',
+      'name'  => 'User upgrade path (password token not involved)',
+      'description'  => 'User upgrade path tests (password token not involved).',
+      'group' => 'Upgrade path',
     );
   }
 
   public function setUp() {
     // Path to the database dump files.
     $this->databaseDumpFiles = array(
-        drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-6.bare.database.php',
-        drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-6.user-no-password-token.database.php',
+      drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-6.bare.database.php',
+      drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-6.user-no-password-token.database.php',
     );
     parent::setUp();
   }
@@ -68,17 +68,17 @@ class UserUpgradePathNoPasswordTokenTestCase extends UpgradePathTestCase {
 class UserUpgradePathDuplicatedPermissionTestCase extends UpgradePathTestCase {
   public static function getInfo() {
     return array(
-        'name'  => 'User upgrade path (duplicated permission)',
-        'description'  => 'User upgrade path tests (duplicated permission).',
-        'group' => 'Upgrade path',
+      'name'  => 'User upgrade path (duplicated permission)',
+      'description'  => 'User upgrade path tests (duplicated permission).',
+      'group' => 'Upgrade path',
     );
   }
 
   public function setUp() {
     // Path to the database dump files.
     $this->databaseDumpFiles = array(
-        drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-6.bare.database.php',
-        drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-6.duplicate-permission.database.php',
+      drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-6.bare.database.php',
+      drupal_get_path('module', 'simpletest') . '/tests/upgrade/drupal-6.duplicate-permission.database.php',
     );
     parent::setUp();
   }

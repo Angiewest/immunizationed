@@ -12,22 +12,22 @@ define('PROFILE_PRIVATE', 1);
 
 /**
  * Public field, content shown on profile page but not used on member list pages.
-*/
+ */
 define('PROFILE_PUBLIC', 2);
 
 /**
  * Public field, content shown on profile page and on member list pages.
-*/
+ */
 define('PROFILE_PUBLIC_LISTINGS', 3);
 
 /**
  * Hidden profile field, only accessible by administrators, modules and themes.
-*/
+ */
 define('PROFILE_HIDDEN', 4);
 
 /**
  * Implements hook_help().
-*/
+ */
 function profile_help($path, $arg) {
   switch ($path) {
     case 'admin/help#profile':
@@ -54,22 +54,22 @@ function profile_help($path, $arg) {
  */
 function profile_theme() {
   return array(
-      'profile_block' => array(
-          'variables' => array('account' => NULL, 'fields' => array()),
-          'template' => 'profile-block',
-      ),
-      'profile_listing' => array(
-          'variables' => array('account' => NULL, 'fields' => array()),
-          'template' => 'profile-listing',
-      ),
-      'profile_wrapper' => array(
-          'variables' => array('content' => NULL),
-          'template' => 'profile-wrapper',
-      ),
-      'profile_admin_overview' => array(
-          'render element' => 'form',
-          'file' => 'profile.admin.inc',
-      )
+    'profile_block' => array(
+      'variables' => array('account' => NULL, 'fields' => array()),
+      'template' => 'profile-block',
+    ),
+    'profile_listing' => array(
+      'variables' => array('account' => NULL, 'fields' => array()),
+      'template' => 'profile-listing',
+    ),
+    'profile_wrapper' => array(
+      'variables' => array('content' => NULL),
+      'template' => 'profile-wrapper',
+    ),
+    'profile_admin_overview' => array(
+      'render element' => 'form',
+      'file' => 'profile.admin.inc',
+    )
   );
 }
 
@@ -78,57 +78,57 @@ function profile_theme() {
  */
 function profile_menu() {
   $items['profile'] = array(
-      'title' => 'User list',
-      'page callback' => 'profile_browse',
-      'access arguments' => array('access user profiles'),
-      'file' => 'profile.pages.inc',
-      'type' => MENU_SUGGESTED_ITEM,
+    'title' => 'User list',
+    'page callback' => 'profile_browse',
+    'access arguments' => array('access user profiles'),
+    'file' => 'profile.pages.inc',
+    'type' => MENU_SUGGESTED_ITEM,
   );
   $items['admin/config/people/profile'] = array(
-      'title' => 'Profiles',
-      'description' => 'Create customizable fields for your users.',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('profile_admin_overview'),
-      'access arguments' => array('administer users'),
-      'file' => 'profile.admin.inc',
+    'title' => 'Profiles',
+    'description' => 'Create customizable fields for your users.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('profile_admin_overview'),
+    'access arguments' => array('administer users'),
+    'file' => 'profile.admin.inc',
   );
   $items['admin/config/people/profile/add'] = array(
-      'title' => 'Add field',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('profile_field_form'),
-      'access arguments' => array('administer users'),
-      'type' => MENU_VISIBLE_IN_BREADCRUMB,
-      'file' => 'profile.admin.inc',
+    'title' => 'Add field',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('profile_field_form'),
+    'access arguments' => array('administer users'),
+    'type' => MENU_VISIBLE_IN_BREADCRUMB,
+    'file' => 'profile.admin.inc',
   );
   $items['admin/config/people/profile/autocomplete'] = array(
-      'title' => 'Profile category autocomplete',
-      'page callback' => 'profile_admin_settings_autocomplete',
-      'access arguments' => array('administer users'),
-      'file' => 'profile.admin.inc',
-      'type' => MENU_CALLBACK,
+    'title' => 'Profile category autocomplete',
+    'page callback' => 'profile_admin_settings_autocomplete',
+    'access arguments' => array('administer users'),
+    'file' => 'profile.admin.inc',
+    'type' => MENU_CALLBACK,
   );
   $items['admin/config/people/profile/edit'] = array(
-      'title' => 'Edit field',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('profile_field_form'),
-      'access arguments' => array('administer users'),
-      'type' => MENU_VISIBLE_IN_BREADCRUMB,
-      'file' => 'profile.admin.inc',
+    'title' => 'Edit field',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('profile_field_form'),
+    'access arguments' => array('administer users'),
+    'type' => MENU_VISIBLE_IN_BREADCRUMB,
+    'file' => 'profile.admin.inc',
   );
   $items['admin/config/people/profile/delete'] = array(
-      'title' => 'Delete field',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('profile_field_delete'),
-      'access arguments' => array('administer users'),
-      'type' => MENU_VISIBLE_IN_BREADCRUMB,
-      'file' => 'profile.admin.inc',
+    'title' => 'Delete field',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('profile_field_delete'),
+    'access arguments' => array('administer users'),
+    'type' => MENU_VISIBLE_IN_BREADCRUMB,
+    'file' => 'profile.admin.inc',
   );
   $items['profile/autocomplete'] = array(
-      'title' => 'Profile autocomplete',
-      'page callback' => 'profile_autocomplete',
-      'access arguments' => array('access user profiles'),
-      'file' => 'profile.pages.inc',
-      'type' => MENU_CALLBACK,
+    'title' => 'Profile autocomplete',
+    'page callback' => 'profile_autocomplete',
+    'access arguments' => array('access user profiles'),
+    'file' => 'profile.pages.inc',
+    'type' => MENU_CALLBACK,
   );
   return $items;
 }
@@ -136,7 +136,7 @@ function profile_menu() {
 /**
  * Implements hook_block_info().
  */
-function profile_block_info() {
+ function profile_block_info() {
   $blocks['author-information']['info'] = t('Author information');
   $blocks['author-information']['cache'] = DRUPAL_CACHE_PER_PAGE | DRUPAL_CACHE_PER_ROLE;
   return $blocks;
@@ -154,11 +154,11 @@ function profile_block_configure($delta = '') {
   }
   $fields['user_profile'] = t('Link to full user profile');
   $form['profile_block_author_fields'] = array(
-      '#type' => 'checkboxes',
-      '#title' => t('Profile fields to display'),
-      '#default_value' => variable_get('profile_block_author_fields', array()),
-      '#options' => $fields,
-      '#description' => t('Select which profile fields you wish to display in the block. Only fields designated as public in the <a href="@profile-admin">profile field configuration</a> are available.', array('@profile-admin' => url('admin/config/people/profile'))),
+    '#type' => 'checkboxes',
+    '#title' => t('Profile fields to display'),
+    '#default_value' => variable_get('profile_block_author_fields', array()),
+    '#options' => $fields,
+    '#description' => t('Select which profile fields you wish to display in the block. Only fields designated as public in the <a href="@profile-admin">profile field configuration</a> are available.', array('@profile-admin' => url('admin/config/people/profile'))),
   );
   return $form;
 }
@@ -233,8 +233,8 @@ function profile_user_cancel($edit, $account, $method) {
   switch ($method) {
     case 'user_cancel_reassign':
       db_delete('profile_value')
-      ->condition('uid', $account->uid)
-      ->execute();
+        ->condition('uid', $account->uid)
+        ->execute();
   }
 }
 
@@ -243,8 +243,8 @@ function profile_user_cancel($edit, $account, $method) {
  */
 function profile_user_delete($account) {
   db_delete('profile_value')
-  ->condition('uid', $account->uid)
-  ->execute();
+    ->condition('uid', $account->uid)
+    ->execute();
 }
 
 /**
@@ -266,12 +266,12 @@ function profile_save_profile(&$edit, $account, $category, $register = FALSE) {
       $edit[$field->name] = serialize($edit[$field->name]);
     }
     db_merge('profile_value')
-    ->key(array(
-    'fid' => $field->fid,
-    'uid' => $account->uid,
-    ))
-    ->fields(array('value' => $edit[$field->name]))
-    ->execute();
+      ->key(array(
+        'fid' => $field->fid,
+        'uid' => $account->uid,
+      ))
+      ->fields(array('value' => $edit[$field->name]))
+      ->execute();
   }
 }
 
@@ -280,8 +280,8 @@ function profile_view_field($account, $field) {
   // and if a user has permission to view profiles. Note that this check is
   // necessary because a user may always see their own profile.
   $browse = user_access('access user profiles')
-  && (user_access('administer users') || $field->visibility != PROFILE_PRIVATE)
-  && !empty($field->page);
+        && (user_access('administer users') || $field->visibility != PROFILE_PRIVATE)
+        && !empty($field->page);
 
   if (isset($account->{$field->name}) && $value = $account->{$field->name}) {
     switch ($field->type) {
@@ -300,13 +300,13 @@ function profile_view_field($account, $field) {
         // 1970 on Windows. This would make the date field useless for e.g.
         // birthdays.
         $replace = array(
-            'd' => sprintf('%02d', $value['day']),
-            'j' => $value['day'],
-            'm' => sprintf('%02d', $value['month']),
-            'M' => map_month($value['month']),
-            'Y' => $value['year'],
-            'H:i' => NULL,
-            'g:ia' => NULL,
+          'd' => sprintf('%02d', $value['day']),
+          'j' => $value['day'],
+          'm' => sprintf('%02d', $value['month']),
+          'M' => map_month($value['month']),
+          'Y' => $value['year'],
+          'H:i' => NULL,
+          'g:ia' => NULL,
         );
         return strtr($format, $replace);
       case 'list':
@@ -342,17 +342,17 @@ function profile_user_view($account) {
       // Create a single fieldset for each category.
       if (!isset($account->content[$field->category])) {
         $account->content[$field->category] = array(
-            '#type' => 'user_profile_category',
-            '#title' => $field->category,
+          '#type' => 'user_profile_category',
+          '#title' => $field->category,
         );
       }
 
       $account->content[$field->category][$field->name] = array(
-          '#type' => 'user_profile_item',
-          '#title' => $title,
-          '#markup' => $value,
-          '#weight' => $field->weight,
-          '#attributes' => array('class' => array('profile-' . $field->name)),
+        '#type' => 'user_profile_item',
+        '#title' => $title,
+        '#markup' => $value,
+        '#weight' => $field->weight,
+        '#attributes' => array('class' => array('profile-' . $field->name)),
       );
     }
   }
@@ -392,12 +392,12 @@ function profile_form_alter(&$form, &$form_state, $form_id) {
       case 'textfield':
       case 'url':
         $form[$category][$field->name] = array(
-        '#type' => 'textfield',
-        '#title' => check_plain($field->title),
-        '#default_value' => isset($account->{$field->name}) ? $account->{$field->name} : '',
-        '#maxlength' => 255,
-        '#description' => _profile_form_explanation($field),
-        '#required' => $field->required,
+          '#type' => 'textfield',
+          '#title' => check_plain($field->title),
+          '#default_value' => isset($account->{$field->name}) ? $account->{$field->name} : '',
+          '#maxlength' => 255,
+          '#description' => _profile_form_explanation($field),
+          '#required' => $field->required,
         );
         if ($field->autocomplete) {
           $form[$category][$field->name]['#autocomplete_path'] = "profile/autocomplete/" . $field->fid;
@@ -406,31 +406,31 @@ function profile_form_alter(&$form, &$form_state, $form_id) {
 
       case 'textarea':
         $form[$category][$field->name] = array(
-        '#type' => 'textarea',
-        '#title' => check_plain($field->title),
-        '#default_value' => isset($account->{$field->name}) ? $account->{$field->name} : '',
-        '#description' => _profile_form_explanation($field),
-        '#required' => $field->required,
+          '#type' => 'textarea',
+          '#title' => check_plain($field->title),
+          '#default_value' => isset($account->{$field->name}) ? $account->{$field->name} : '',
+          '#description' => _profile_form_explanation($field),
+          '#required' => $field->required,
         );
         break;
 
       case 'list':
         $form[$category][$field->name] = array(
-        '#type' => 'textarea',
-        '#title' => check_plain($field->title),
-        '#default_value' => isset($account->{$field->name}) ? $account->{$field->name} : '',
-        '#description' => _profile_form_explanation($field),
-        '#required' => $field->required,
+          '#type' => 'textarea',
+          '#title' => check_plain($field->title),
+          '#default_value' => isset($account->{$field->name}) ? $account->{$field->name} : '',
+          '#description' => _profile_form_explanation($field),
+          '#required' => $field->required,
         );
         break;
 
       case 'checkbox':
         $form[$category][$field->name] = array(
-        '#type' => 'checkbox',
-        '#title' => check_plain($field->title),
-        '#default_value' => isset($account->{$field->name}) ? $account->{$field->name} : '',
-        '#description' => _profile_form_explanation($field),
-        '#required' => $field->required,
+          '#type' => 'checkbox',
+          '#title' => check_plain($field->title),
+          '#default_value' => isset($account->{$field->name}) ? $account->{$field->name} : '',
+          '#description' => _profile_form_explanation($field),
+          '#required' => $field->required,
         );
         break;
 
@@ -443,23 +443,23 @@ function profile_form_alter(&$form, &$form_state, $form_id) {
           }
         }
         $form[$category][$field->name] = array(
-            '#type' => 'select',
-            '#title' => check_plain($field->title),
-            '#default_value' => isset($account->{$field->name}) ? $account->{$field->name} : '',
-            '#options' => $options,
-            '#description' => _profile_form_explanation($field),
-            '#required' => $field->required,
-            '#empty_value' => 0,
+          '#type' => 'select',
+          '#title' => check_plain($field->title),
+          '#default_value' => isset($account->{$field->name}) ? $account->{$field->name} : '',
+          '#options' => $options,
+          '#description' => _profile_form_explanation($field),
+          '#required' => $field->required,
+          '#empty_value' => 0,
         );
         break;
 
       case 'date':
         $form[$category][$field->name] = array(
-        '#type' => 'date',
-        '#title' => check_plain($field->title),
-        '#default_value' => isset($account->{$field->name}) ? $account->{$field->name} : '',
-        '#description' => _profile_form_explanation($field),
-        '#required' => $field->required,
+          '#type' => 'date',
+          '#title' => check_plain($field->title),
+          '#default_value' => isset($account->{$field->name}) ? $account->{$field->name} : '',
+          '#description' => _profile_form_explanation($field),
+          '#required' => $field->required,
         );
         break;
     }
@@ -503,11 +503,11 @@ function profile_user_categories() {
   $data = array();
   foreach ($result as $category) {
     $data[] = array(
-        'name' => $category->category,
-        'title' => $category->category,
-        'weight' => 3,
-        'access callback' => 'profile_category_access',
-        'access arguments' => array(1, $category->category)
+      'name' => $category->category,
+      'title' => $category->category,
+      'weight' => 3,
+      'access callback' => 'profile_category_access',
+      'access arguments' => array(1, $category->category)
     );
   }
   return $data;
@@ -522,8 +522,8 @@ function profile_category_access($account, $category) {
   }
   else {
     $category_visible = (bool) db_query_range('SELECT 1 FROM {profile_field} WHERE category = :category AND visibility <> :visibility', 0, 1, array(
-        ':category' => $category,
-        ':visibility' => PROFILE_HIDDEN
+      ':category' => $category,
+      ':visibility' => PROFILE_HIDDEN
     ))->fetchField();
     return user_edit_access($account) && $category_visible;
   }
@@ -597,12 +597,12 @@ function template_preprocess_profile_wrapper(&$variables) {
 
 function _profile_field_types($type = NULL) {
   $types = array('textfield' => t('single-line textfield'),
-      'textarea' => t('multi-line textfield'),
-      'checkbox' => t('checkbox'),
-      'selection' => t('list selection'),
-      'list' => t('freeform list'),
-      'url' => t('URL'),
-      'date' => t('date'));
+                 'textarea' => t('multi-line textfield'),
+                 'checkbox' => t('checkbox'),
+                 'selection' => t('list selection'),
+                 'list' => t('freeform list'),
+                 'url' => t('URL'),
+                 'date' => t('date'));
   return isset($type) ? $types[$type] : $types;
 }
 
@@ -622,8 +622,8 @@ function _profile_get_fields($category, $register = FALSE) {
     $query->condition('visibility', PROFILE_HIDDEN, '<>');
   }
   return $query
-  ->fields('profile_field')
-  ->orderBy('category', 'ASC')
-  ->orderBy('weight', 'ASC')
-  ->execute();
+    ->fields('profile_field')
+    ->orderBy('category', 'ASC')
+    ->orderBy('weight', 'ASC')
+    ->execute();
 }

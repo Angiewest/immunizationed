@@ -42,22 +42,22 @@ define('FILE_CREATE_DIRECTORY', 1);
 
 /**
  * Flag used by file_prepare_directory() -- file permissions may be changed.
-*/
+ */
 define('FILE_MODIFY_PERMISSIONS', 2);
 
 /**
  * Flag for dealing with existing files: Appends number until name is unique.
-*/
+ */
 define('FILE_EXISTS_RENAME', 0);
 
 /**
  * Flag for dealing with existing files: Replace the existing file.
-*/
+ */
 define('FILE_EXISTS_REPLACE', 1);
 
 /**
  * Flag for dealing with existing files: Do nothing and return FALSE.
-*/
+ */
 define('FILE_EXISTS_ERROR', 2);
 
 /**
@@ -66,7 +66,7 @@ define('FILE_EXISTS_ERROR', 2);
  * Temporary files older than DRUPAL_MAXIMUM_TEMP_FILE_AGE will be removed
  * during cron runs, but permanent files will not be removed during the file
  * garbage collection process.
-*/
+ */
 define('FILE_STATUS_PERMANENT', 1);
 
 /**
@@ -119,7 +119,7 @@ define('FILE_STATUS_PERMANENT', 1);
  *
  * @see hook_stream_wrappers()
  * @see hook_stream_wrappers_alter()
-*/
+ */
 function file_get_stream_wrappers($filter = STREAM_WRAPPERS_ALL) {
   $wrappers_storage = &drupal_static(__FUNCTION__);
 
@@ -606,10 +606,10 @@ function file_save(stdClass $file) {
  */
 function file_usage_list(stdClass $file) {
   $result = db_select('file_usage', 'f')
-  ->fields('f', array('module', 'type', 'id', 'count'))
-  ->condition('fid', $file->fid)
-  ->condition('count', 0, '>')
-  ->execute();
+    ->fields('f', array('module', 'type', 'id', 'count'))
+    ->condition('fid', $file->fid)
+    ->condition('count', 0, '>')
+    ->execute();
   $references = array();
   foreach ($result as $usage) {
     $references[$usage->module][$usage->type][$usage->id] = $usage->count;
@@ -646,15 +646,15 @@ function file_usage_list(stdClass $file) {
  */
 function file_usage_add(stdClass $file, $module, $type, $id, $count = 1) {
   db_merge('file_usage')
-  ->key(array(
-  'fid' => $file->fid,
-  'module' => $module,
-  'type' => $type,
-  'id' => $id,
-  ))
-  ->fields(array('count' => $count))
-  ->expression('count', 'count + :count', array(':count' => $count))
-  ->execute();
+    ->key(array(
+      'fid' => $file->fid,
+      'module' => $module,
+      'type' => $type,
+      'id' => $id,
+    ))
+    ->fields(array('count' => $count))
+    ->expression('count', 'count + :count', array(':count' => $count))
+    ->execute();
 }
 
 /**
@@ -685,12 +685,12 @@ function file_usage_add(stdClass $file, $module, $type, $id, $count = 1) {
 function file_usage_delete(stdClass $file, $module, $type = NULL, $id = NULL, $count = 1) {
   // Delete rows that have a exact or less value to prevent empty rows.
   $query = db_delete('file_usage')
-  ->condition('module', $module)
-  ->condition('fid', $file->fid);
+    ->condition('module', $module)
+    ->condition('fid', $file->fid);
   if ($type && $id) {
     $query
-    ->condition('type', $type)
-    ->condition('id', $id);
+      ->condition('type', $type)
+      ->condition('id', $id);
   }
   if ($count) {
     $query->condition('count', $count, '<=');
@@ -700,12 +700,12 @@ function file_usage_delete(stdClass $file, $module, $type = NULL, $id = NULL, $c
   // If the row has more than the specified count decrement it by that number.
   if (!$result && $count > 0) {
     $query = db_update('file_usage')
-    ->condition('module', $module)
-    ->condition('fid', $file->fid);
+      ->condition('module', $module)
+      ->condition('fid', $file->fid);
     if ($type && $id) {
       $query
-      ->condition('type', $type)
-      ->condition('id', $id);
+        ->condition('type', $type)
+        ->condition('id', $id);
     }
     $query->expression('count', 'count - :count', array(':count' => $count));
     $query->execute();
@@ -1433,7 +1433,7 @@ function file_save_upload($source, $validators = array(), $destination = FALSE, 
         break;
       }
 
-      // Unknown error
+    // Unknown error
     default:
       drupal_set_message(t('The file %file could not be saved. An unknown error has occurred.', array('%file' => $_FILES['files']['name'][$source])), 'error');
       return FALSE;
@@ -2021,11 +2021,11 @@ function file_download() {
 function file_scan_directory($dir, $mask, $options = array(), $depth = 0) {
   // Merge in defaults.
   $options += array(
-      'nomask' => '/(\.\.?|CVS)$/',
-      'callback' => 0,
-      'recurse' => TRUE,
-      'key' => 'uri',
-      'min_depth' => 0,
+    'nomask' => '/(\.\.?|CVS)$/',
+    'callback' => 0,
+    'recurse' => TRUE,
+    'key' => 'uri',
+    'min_depth' => 0,
   );
 
   $options['key'] = in_array($options['key'], array('uri', 'filename', 'name')) ? $options['key'] : 'uri';
@@ -2199,29 +2199,21 @@ function drupal_unlink($uri, $context = NULL) {
 }
 
 /**
- * Returns the absolute local filesystem path of a stream URI.
+ * Resolves the absolute filepath of a local URI or filepath.
  *
- * This function was originally written to ease the conversion of 6.x code to
- * use 7.x stream wrappers. However, it assumes that every URI may be resolved
- * to an absolute local filesystem path, and this assumption fails when stream
- * wrappers are used to support remote file storage. Remote stream wrappers
- * may implement the realpath method by always returning FALSE. The use of
- * drupal_realpath() is discouraged, and is slowly being removed from core
- * functions where possible.
+ * The use of drupal_realpath() is discouraged, because it does not work for
+ * remote URIs. Except in rare cases, URIs should not be manually resolved.
  *
  * Only use this function if you know that the stream wrapper in the URI uses
  * the local file system, and you need to pass an absolute path to a function
  * that is incompatible with stream URIs.
  *
- * @param $uri
- *   A stream wrapper URI or a filesystem path, possibly including one or more
- *   symbolic links.
+ * @param string $uri
+ *   A stream wrapper URI or a filepath, possibly including one or more symbolic
+ *   links.
  *
- * @return
- *   The absolute local filesystem path (with no symbolic links), or FALSE on
- *   failure.
- *
- * @todo This function is deprecated, and should be removed wherever possible.
+ * @return string|false
+ *   The absolute local filepath (with no symbolic links), or FALSE on failure.
  *
  * @see DrupalStreamWrapperInterface::realpath()
  * @see http://php.net/manual/function.realpath.php
@@ -2478,9 +2470,9 @@ function file_get_content_headers($file) {
   $type = mime_header_encode($file->filemime);
 
   return array(
-      'Content-Type' => $type,
-      'Content-Length' => $file->filesize,
-      'Cache-Control' => 'private',
+    'Content-Type' => $type,
+    'Content-Length' => $file->filesize,
+    'Cache-Control' => 'private',
   );
 }
 

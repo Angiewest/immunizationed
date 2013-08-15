@@ -3,9 +3,9 @@
 class RegistryParseFileTestCase extends DrupalWebTestCase {
   public static function getInfo() {
     return array(
-        'name' => 'Registry parse file test',
-        'description' => 'Parse a simple file and check that its resources are saved to the database.',
-        'group' => 'System'
+      'name' => 'Registry parse file test',
+      'description' => 'Parse a simple file and check that its resources are saved to the database.',
+      'group' => 'System'
     );
   }
 
@@ -50,9 +50,9 @@ class RegistryParseFilesTestCase extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Registry parse files test',
-        'description' => 'Read two a simple files from disc, and check that their resources are saved to the database.',
-        'group' => 'System'
+      'name' => 'Registry parse files test',
+      'description' => 'Read two a simple files from disc, and check that their resources are saved to the database.',
+      'group' => 'System'
     );
   }
 
@@ -73,21 +73,21 @@ class RegistryParseFilesTestCase extends DrupalWebTestCase {
         // Add a record with an incorrect hash.
         $this->$fileType->fakeHash = hash('sha256', mt_rand());
         db_insert('registry_file')
-        ->fields(array(
-        'hash' => $this->$fileType->fakeHash,
-        'filename' => $this->$fileType->fileName,
-        ))
-        ->execute();
+          ->fields(array(
+            'hash' => $this->$fileType->fakeHash,
+            'filename' => $this->$fileType->fileName,
+          ))
+          ->execute();
 
         // Insert some fake resource records.
         foreach (array('class', 'interface') as $type) {
           db_insert('registry')
-          ->fields(array(
-          'name' => $type . hash('sha256', microtime() . mt_rand()),
-          'type' => $type,
-          'filename' => $this->$fileType->fileName,
-          ))
-          ->execute();
+            ->fields(array(
+              'name' => $type . hash('sha256', microtime() . mt_rand()),
+              'type' => $type,
+              'filename' => $this->$fileType->fileName,
+            ))
+            ->execute();
         }
       }
     }

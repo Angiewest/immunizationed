@@ -80,8 +80,8 @@ function field_default_validate($entity_type, $entity, $field, $instance, $langc
   // widgets.
   if ($field['cardinality'] != FIELD_CARDINALITY_UNLIMITED && count($items) > $field['cardinality']) {
     $errors[$field['field_name']][$langcode][0][] = array(
-        'error' => 'field_cardinality',
-        'message' => t('%name: this field cannot hold more than @count values.', array('%name' => $instance['label'], '@count' => $field['cardinality'])),
+      'error' => 'field_cardinality',
+      'message' => t('%name: this field cannot hold more than @count values.', array('%name' => $instance['label'], '@count' => $field['cardinality'])),
     );
   }
 }
@@ -108,7 +108,7 @@ function field_default_insert($entity_type, $entity, $field, $instance, $langcod
   // languages get a default value. Otherwise we could have default values for
   // not yet open languages.
   if (empty($entity) || !property_exists($entity, $field['field_name']) ||
-  (isset($entity->{$field['field_name']}[$langcode]) && count($entity->{$field['field_name']}[$langcode]) == 0)) {
+    (isset($entity->{$field['field_name']}[$langcode]) && count($entity->{$field['field_name']}[$langcode]) == 0)) {
     $items = field_get_default_value($entity_type, $entity, $field, $instance, $langcode);
   }
 }
@@ -211,21 +211,21 @@ function field_default_view($entity_type, $entity, $field, $instance, $langcode,
 
       if ($elements) {
         $info = array(
-            '#theme' => 'field',
-            '#weight' => $display['weight'],
-            '#title' => $instance['label'],
-            '#access' => field_access('view', $field, $entity_type, $entity),
-            '#label_display' => $display['label'],
-            '#view_mode' => $view_mode,
-            '#language' => $langcode,
-            '#field_name' => $field['field_name'],
-            '#field_type' => $field['type'],
-            '#field_translatable' => $field['translatable'],
-            '#entity_type' => $entity_type,
-            '#bundle' => $bundle,
-            '#object' => $entity,
-            '#items' => $items,
-            '#formatter' => $display['type']
+          '#theme' => 'field',
+          '#weight' => $display['weight'],
+          '#title' => $instance['label'],
+          '#access' => field_access('view', $field, $entity_type, $entity),
+          '#label_display' => $display['label'],
+          '#view_mode' => $view_mode,
+          '#language' => $langcode,
+          '#field_name' => $field['field_name'],
+          '#field_type' => $field['type'],
+          '#field_translatable' => $field['translatable'],
+          '#entity_type' => $entity_type,
+          '#bundle' => $bundle,
+          '#object' => $entity,
+          '#items' => $items,
+          '#formatter' => $display['type']
         );
 
         $addition[$field['field_name']] = array_merge($info, $elements);

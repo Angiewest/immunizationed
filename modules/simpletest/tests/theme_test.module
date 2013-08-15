@@ -5,17 +5,17 @@
  */
 function theme_test_theme($existing, $type, $theme, $path) {
   $items['theme_test'] = array(
-      'file' => 'theme_test.inc',
-      'variables' => array('foo' => ''),
+    'file' => 'theme_test.inc',
+    'variables' => array('foo' => ''),
   );
   $items['theme_test_template_test'] = array(
-      'template' => 'theme_test.template_test',
+    'template' => 'theme_test.template_test',
   );
   $items['theme_test_template_test_2'] = array(
-      'template' => 'theme_test.template_test',
+    'template' => 'theme_test.template_test',
   );
   $items['theme_test_foo'] = array(
-      'variables' => array('foo' => NULL),
+    'variables' => array('foo' => NULL),
   );
   return $items;
 }
@@ -35,23 +35,23 @@ function theme_test_system_theme_info() {
  */
 function theme_test_menu() {
   $items['theme-test/suggestion'] = array(
-      'title' => 'Suggestion',
-      'page callback' => '_theme_test_suggestion',
-      'access arguments' => array('access content'),
-      'theme callback' => '_theme_custom_theme',
-      'type' => MENU_CALLBACK,
+    'title' => 'Suggestion',
+    'page callback' => '_theme_test_suggestion',
+    'access arguments' => array('access content'),
+    'theme callback' => '_theme_custom_theme',
+    'type' => MENU_CALLBACK,
   );
   $items['theme-test/alter'] = array(
-      'title' => 'Suggestion',
-      'page callback' => '_theme_test_alter',
-      'access arguments' => array('access content'),
-      'theme callback' => '_theme_custom_theme',
-      'type' => MENU_CALLBACK,
+    'title' => 'Suggestion',
+    'page callback' => '_theme_test_alter',
+    'access arguments' => array('access content'),
+    'theme callback' => '_theme_custom_theme',
+    'type' => MENU_CALLBACK,
   );
   $items['theme-test/hook-init'] = array(
-      'page callback' => 'theme_test_hook_init_page_callback',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
+    'page callback' => 'theme_test_hook_init_page_callback',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
   );
   return $items;
 }

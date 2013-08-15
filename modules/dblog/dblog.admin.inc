@@ -22,63 +22,63 @@ function dblog_overview() {
   $filter = dblog_build_filter_query();
   $rows = array();
   $classes = array(
-      WATCHDOG_DEBUG     => 'dblog-debug',
-      WATCHDOG_INFO      => 'dblog-info',
-      WATCHDOG_NOTICE    => 'dblog-notice',
-      WATCHDOG_WARNING   => 'dblog-warning',
-      WATCHDOG_ERROR     => 'dblog-error',
-      WATCHDOG_CRITICAL  => 'dblog-critical',
-      WATCHDOG_ALERT     => 'dblog-alert',
-      WATCHDOG_EMERGENCY => 'dblog-emerg',
+    WATCHDOG_DEBUG     => 'dblog-debug',
+    WATCHDOG_INFO      => 'dblog-info',
+    WATCHDOG_NOTICE    => 'dblog-notice',
+    WATCHDOG_WARNING   => 'dblog-warning',
+    WATCHDOG_ERROR     => 'dblog-error',
+    WATCHDOG_CRITICAL  => 'dblog-critical',
+    WATCHDOG_ALERT     => 'dblog-alert',
+    WATCHDOG_EMERGENCY => 'dblog-emerg',
   );
 
   $build['dblog_filter_form'] = drupal_get_form('dblog_filter_form');
   $build['dblog_clear_log_form'] = drupal_get_form('dblog_clear_log_form');
 
   $header = array(
-      '', // Icon column.
-      array('data' => t('Type'), 'field' => 'w.type'),
-      array('data' => t('Date'), 'field' => 'w.wid', 'sort' => 'desc'),
-      t('Message'),
-      array('data' => t('User'), 'field' => 'u.name'),
-      array('data' => t('Operations')),
+    '', // Icon column.
+    array('data' => t('Type'), 'field' => 'w.type'),
+    array('data' => t('Date'), 'field' => 'w.wid', 'sort' => 'desc'),
+    t('Message'),
+    array('data' => t('User'), 'field' => 'u.name'),
+    array('data' => t('Operations')),
   );
 
   $query = db_select('watchdog', 'w')->extend('PagerDefault')->extend('TableSort');
   $query->leftJoin('users', 'u', 'w.uid = u.uid');
   $query
-  ->fields('w', array('wid', 'uid', 'severity', 'type', 'timestamp', 'message', 'variables', 'link'))
-  ->addField('u', 'name');
+    ->fields('w', array('wid', 'uid', 'severity', 'type', 'timestamp', 'message', 'variables', 'link'))
+    ->addField('u', 'name');
   if (!empty($filter['where'])) {
     $query->where($filter['where'], $filter['args']);
   }
   $result = $query
-  ->limit(50)
-  ->orderByHeader($header)
-  ->execute();
+    ->limit(50)
+    ->orderByHeader($header)
+    ->execute();
 
   foreach ($result as $dblog) {
     $rows[] = array('data' =>
-        array(
-            // Cells
-            array('class' => 'icon'),
-            t($dblog->type),
-            format_date($dblog->timestamp, 'short'),
-            theme('dblog_message', array('event' => $dblog, 'link' => TRUE)),
-            theme('username', array('account' => $dblog)),
-            filter_xss($dblog->link),
-        ),
-        // Attributes for tr
-        'class' => array(drupal_html_class('dblog-' . $dblog->type), $classes[$dblog->severity]),
+      array(
+        // Cells
+        array('class' => 'icon'),
+        t($dblog->type),
+        format_date($dblog->timestamp, 'short'),
+        theme('dblog_message', array('event' => $dblog, 'link' => TRUE)),
+        theme('username', array('account' => $dblog)),
+        filter_xss($dblog->link),
+      ),
+      // Attributes for tr
+      'class' => array(drupal_html_class('dblog-' . $dblog->type), $classes[$dblog->severity]),
     );
   }
 
   $build['dblog_table'] = array(
-      '#theme' => 'table',
-      '#header' => $header,
-      '#rows' => $rows,
-      '#attributes' => array('id' => 'admin-dblog'),
-      '#empty' => t('No log messages available.'),
+    '#theme' => 'table',
+    '#header' => $header,
+    '#rows' => $rows,
+    '#attributes' => array('id' => 'admin-dblog'),
+    '#empty' => t('No log messages available.'),
   );
   $build['dblog_pager'] = array('#theme' => 'pager');
 
@@ -102,8 +102,8 @@ function dblog_overview() {
 function dblog_top($type) {
 
   $header = array(
-      array('data' => t('Count'), 'field' => 'count', 'sort' => 'desc'),
-      array('data' => t('Message'), 'field' => 'message')
+    array('data' => t('Count'), 'field' => 'count', 'sort' => 'desc'),
+    array('data' => t('Message'), 'field' => 'message')
   );
   $count_query = db_select('watchdog');
   $count_query->addExpression('COUNT(DISTINCT(message))');
@@ -112,12 +112,12 @@ function dblog_top($type) {
   $query = db_select('watchdog', 'w')->extend('PagerDefault')->extend('TableSort');
   $query->addExpression('COUNT(wid)', 'count');
   $query = $query
-  ->fields('w', array('message', 'variables'))
-  ->condition('w.type', $type)
-  ->groupBy('message')
-  ->groupBy('variables')
-  ->limit(30)
-  ->orderByHeader($header);
+    ->fields('w', array('message', 'variables'))
+    ->condition('w.type', $type)
+    ->groupBy('message')
+    ->groupBy('variables')
+    ->limit(30)
+    ->orderByHeader($header);
   $query->setCountQuery($count_query);
   $result = $query->execute();
 
@@ -127,10 +127,10 @@ function dblog_top($type) {
   }
 
   $build['dblog_top_table']  = array(
-      '#theme' => 'table',
-      '#header' => $header,
-      '#rows' => $rows,
-      '#empty' => t('No log messages available.'),
+    '#theme' => 'table',
+    '#header' => $header,
+    '#rows' => $rows,
+    '#empty' => t('No log messages available.'),
   );
   $build['dblog_top_pager'] = array('#theme' => 'pager');
 
@@ -154,47 +154,47 @@ function dblog_event($id) {
   $result = db_query('SELECT w.*, u.name, u.uid FROM {watchdog} w INNER JOIN {users} u ON w.uid = u.uid WHERE w.wid = :id', array(':id' => $id))->fetchObject();
   if ($dblog = $result) {
     $rows = array(
-        array(
-            array('data' => t('Type'), 'header' => TRUE),
-            t($dblog->type),
-        ),
-        array(
-            array('data' => t('Date'), 'header' => TRUE),
-            format_date($dblog->timestamp, 'long'),
-        ),
-        array(
-            array('data' => t('User'), 'header' => TRUE),
-            theme('username', array('account' => $dblog)),
-        ),
-        array(
-            array('data' => t('Location'), 'header' => TRUE),
-            l($dblog->location, $dblog->location),
-        ),
-        array(
-            array('data' => t('Referrer'), 'header' => TRUE),
-            l($dblog->referer, $dblog->referer),
-        ),
-        array(
-            array('data' => t('Message'), 'header' => TRUE),
-            theme('dblog_message', array('event' => $dblog)),
-        ),
-        array(
-            array('data' => t('Severity'), 'header' => TRUE),
-            $severity[$dblog->severity],
-        ),
-        array(
-            array('data' => t('Hostname'), 'header' => TRUE),
-            check_plain($dblog->hostname),
-        ),
-        array(
-            array('data' => t('Operations'), 'header' => TRUE),
-            $dblog->link,
-        ),
+      array(
+        array('data' => t('Type'), 'header' => TRUE),
+        t($dblog->type),
+      ),
+      array(
+        array('data' => t('Date'), 'header' => TRUE),
+        format_date($dblog->timestamp, 'long'),
+      ),
+      array(
+        array('data' => t('User'), 'header' => TRUE),
+        theme('username', array('account' => $dblog)),
+      ),
+      array(
+        array('data' => t('Location'), 'header' => TRUE),
+        l($dblog->location, $dblog->location),
+      ),
+      array(
+        array('data' => t('Referrer'), 'header' => TRUE),
+        l($dblog->referer, $dblog->referer),
+      ),
+      array(
+        array('data' => t('Message'), 'header' => TRUE),
+        theme('dblog_message', array('event' => $dblog)),
+      ),
+      array(
+        array('data' => t('Severity'), 'header' => TRUE),
+        $severity[$dblog->severity],
+      ),
+      array(
+        array('data' => t('Hostname'), 'header' => TRUE),
+        check_plain($dblog->hostname),
+      ),
+      array(
+        array('data' => t('Operations'), 'header' => TRUE),
+        $dblog->link,
+      ),
     );
     $build['dblog_table'] = array(
-        '#theme' => 'table',
-        '#rows' => $rows,
-        '#attributes' => array('class' => array('dblog-event')),
+      '#theme' => 'table',
+      '#rows' => $rows,
+      '#attributes' => array('class' => array('dblog-event')),
     );
     return $build;
   }
@@ -231,8 +231,8 @@ function dblog_build_filter_query() {
   $where = !empty($where) ? implode(' AND ', $where) : '';
 
   return array(
-      'where' => $where,
-      'args' => $args,
+    'where' => $where,
+    'args' => $args,
   );
 }
 
@@ -256,16 +256,16 @@ function dblog_filters() {
 
   if (!empty($types)) {
     $filters['type'] = array(
-        'title' => t('Type'),
-        'where' => "w.type = ?",
-        'options' => $types,
+      'title' => t('Type'),
+      'where' => "w.type = ?",
+      'options' => $types,
     );
   }
 
   $filters['severity'] = array(
-      'title' => t('Severity'),
-      'where' => 'w.severity = ?',
-      'options' => watchdog_severity_levels(),
+    'title' => t('Severity'),
+    'where' => 'w.severity = ?',
+    'options' => watchdog_severity_levels(),
   );
 
   return $filters;
@@ -316,18 +316,18 @@ function dblog_filter_form($form) {
   $filters = dblog_filters();
 
   $form['filters'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Filter log messages'),
-      '#collapsible' => TRUE,
-      '#collapsed' => empty($_SESSION['dblog_overview_filter']),
+    '#type' => 'fieldset',
+    '#title' => t('Filter log messages'),
+    '#collapsible' => TRUE,
+    '#collapsed' => empty($_SESSION['dblog_overview_filter']),
   );
   foreach ($filters as $key => $filter) {
     $form['filters']['status'][$key] = array(
-        '#title' => $filter['title'],
-        '#type' => 'select',
-        '#multiple' => TRUE,
-        '#size' => 8,
-        '#options' => $filter['options'],
+      '#title' => $filter['title'],
+      '#type' => 'select',
+      '#multiple' => TRUE,
+      '#size' => 8,
+      '#options' => $filter['options'],
     );
     if (!empty($_SESSION['dblog_overview_filter'][$key])) {
       $form['filters']['status'][$key]['#default_value'] = $_SESSION['dblog_overview_filter'][$key];
@@ -335,17 +335,17 @@ function dblog_filter_form($form) {
   }
 
   $form['filters']['actions'] = array(
-      '#type' => 'actions',
-      '#attributes' => array('class' => array('container-inline')),
+    '#type' => 'actions',
+    '#attributes' => array('class' => array('container-inline')),
   );
   $form['filters']['actions']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Filter'),
+    '#type' => 'submit',
+    '#value' => t('Filter'),
   );
   if (!empty($_SESSION['dblog_overview_filter'])) {
     $form['filters']['actions']['reset'] = array(
-        '#type' => 'submit',
-        '#value' => t('Reset')
+      '#type' => 'submit',
+      '#value' => t('Reset')
     );
   }
   return $form;
@@ -393,16 +393,16 @@ function dblog_filter_form_submit($form, &$form_state) {
  */
 function dblog_clear_log_form($form) {
   $form['dblog_clear'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Clear log messages'),
-      '#description' => t('This will permanently remove the log messages from the database.'),
-      '#collapsible' => TRUE,
-      '#collapsed' => TRUE,
+    '#type' => 'fieldset',
+    '#title' => t('Clear log messages'),
+    '#description' => t('This will permanently remove the log messages from the database.'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
   );
   $form['dblog_clear']['clear'] = array(
-      '#type' => 'submit',
-      '#value' => t('Clear log messages'),
-      '#submit' => array('dblog_clear_log_submit'),
+    '#type' => 'submit',
+    '#value' => t('Clear log messages'),
+    '#submit' => array('dblog_clear_log_submit'),
   );
 
   return $form;

@@ -66,20 +66,20 @@ function taxonomy_help($path, $arg) {
  */
 function taxonomy_permission() {
   $permissions = array(
-      'administer taxonomy' => array(
-          'title' => t('Administer vocabularies and terms'),
-      ),
+    'administer taxonomy' => array(
+      'title' => t('Administer vocabularies and terms'),
+    ),
   );
   foreach (taxonomy_get_vocabularies() as $vocabulary) {
     $permissions += array(
-        'edit terms in ' . $vocabulary->vid => array(
-            'title' => t('Edit terms in %vocabulary', array('%vocabulary' => $vocabulary->name)),
-        ),
+      'edit terms in ' . $vocabulary->vid => array(
+        'title' => t('Edit terms in %vocabulary', array('%vocabulary' => $vocabulary->name)),
+      ),
     );
     $permissions += array(
-        'delete terms in ' . $vocabulary->vid => array(
-            'title' => t('Delete terms from %vocabulary', array('%vocabulary' => $vocabulary->name)),
-        ),
+       'delete terms in ' . $vocabulary->vid => array(
+         'title' => t('Delete terms from %vocabulary', array('%vocabulary' => $vocabulary->name)),
+      ),
     );
   }
   return $permissions;
@@ -90,61 +90,61 @@ function taxonomy_permission() {
  */
 function taxonomy_entity_info() {
   $return = array(
-      'taxonomy_term' => array(
-          'label' => t('Taxonomy term'),
-          'controller class' => 'TaxonomyTermController',
-          'base table' => 'taxonomy_term_data',
-          'uri callback' => 'taxonomy_term_uri',
-          'fieldable' => TRUE,
-          'entity keys' => array(
-              'id' => 'tid',
-              'bundle' => 'vocabulary_machine_name',
-              'label' => 'name',
-          ),
-          'bundle keys' => array(
-              'bundle' => 'machine_name',
-          ),
-          'bundles' => array(),
-          'view modes' => array(
-              // @todo View mode for display as a field (when attached to nodes etc).
-              'full' => array(
-                  'label' => t('Taxonomy term page'),
-                  'custom settings' => FALSE,
-              ),
-          ),
+    'taxonomy_term' => array(
+      'label' => t('Taxonomy term'),
+      'controller class' => 'TaxonomyTermController',
+      'base table' => 'taxonomy_term_data',
+      'uri callback' => 'taxonomy_term_uri',
+      'fieldable' => TRUE,
+      'entity keys' => array(
+        'id' => 'tid',
+        'bundle' => 'vocabulary_machine_name',
+        'label' => 'name',
       ),
+      'bundle keys' => array(
+        'bundle' => 'machine_name',
+      ),
+      'bundles' => array(),
+      'view modes' => array(
+        // @todo View mode for display as a field (when attached to nodes etc).
+        'full' => array(
+          'label' => t('Taxonomy term page'),
+          'custom settings' => FALSE,
+        ),
+      ),
+    ),
   );
   foreach (taxonomy_vocabulary_get_names() as $machine_name => $vocabulary) {
     $return['taxonomy_term']['bundles'][$machine_name] = array(
-        'label' => $vocabulary->name,
-        'admin' => array(
-            'path' => 'admin/structure/taxonomy/%taxonomy_vocabulary_machine_name',
-            'real path' => 'admin/structure/taxonomy/' . $machine_name,
-            'bundle argument' => 3,
-            'access arguments' => array('administer taxonomy'),
-        ),
+      'label' => $vocabulary->name,
+      'admin' => array(
+        'path' => 'admin/structure/taxonomy/%taxonomy_vocabulary_machine_name',
+        'real path' => 'admin/structure/taxonomy/' . $machine_name,
+        'bundle argument' => 3,
+        'access arguments' => array('administer taxonomy'),
+      ),
     );
   }
   $return['taxonomy_vocabulary'] = array(
-      'label' => t('Taxonomy vocabulary'),
-      'controller class' => 'TaxonomyVocabularyController',
-      'base table' => 'taxonomy_vocabulary',
-      'entity keys' => array(
-          'id' => 'vid',
-          'label' => 'name',
-      ),
-      'fieldable' => FALSE,
+    'label' => t('Taxonomy vocabulary'),
+    'controller class' => 'TaxonomyVocabularyController',
+    'base table' => 'taxonomy_vocabulary',
+    'entity keys' => array(
+      'id' => 'vid',
+      'label' => 'name',
+    ),
+    'fieldable' => FALSE,
   );
 
   return $return;
 }
 
 /**
- * Entity URI callback.
+ * Implements callback_entity_info_uri().
  */
 function taxonomy_term_uri($term) {
   return array(
-      'path' => 'taxonomy/term/' . $term->tid,
+    'path' => 'taxonomy/term/' . $term->tid,
   );
 }
 
@@ -156,25 +156,25 @@ function taxonomy_field_extra_fields() {
   $info = entity_get_info('taxonomy_term');
   foreach (array_keys($info['bundles']) as $bundle) {
     $return['taxonomy_term'][$bundle] = array(
-        'form' => array(
-            'name' => array(
-                'label' => t('Name'),
-                'description' => t('Term name textfield'),
-                'weight' => -5,
-            ),
-            'description' => array(
-                'label' => t('Description'),
-                'description' => t('Term description textarea'),
-                'weight' => 0,
-            ),
+      'form' => array(
+        'name' => array(
+          'label' => t('Name'),
+          'description' => t('Term name textfield'),
+          'weight' => -5,
         ),
-        'display' => array(
-            'description' => array(
-                'label' => t('Description'),
-                'description' => t('Term description'),
-                'weight' => 0,
-            ),
+        'description' => array(
+          'label' => t('Description'),
+          'description' => t('Term description textarea'),
+          'weight' => 0,
         ),
+      ),
+      'display' => array(
+        'description' => array(
+          'label' => t('Description'),
+          'description' => t('Term description'),
+          'weight' => 0,
+        ),
+      ),
     );
   }
 
@@ -240,16 +240,16 @@ function taxonomy_select_nodes($tid, $pager = TRUE, $limit = FALSE, $order = arr
  */
 function taxonomy_theme() {
   return array(
-      'taxonomy_overview_vocabularies' => array(
-          'render element' => 'form',
-      ),
-      'taxonomy_overview_terms' => array(
-          'render element' => 'form',
-      ),
-      'taxonomy_term' => array(
-          'render element' => 'elements',
-          'template' => 'taxonomy-term',
-      ),
+    'taxonomy_overview_vocabularies' => array(
+      'render element' => 'form',
+    ),
+    'taxonomy_overview_terms' => array(
+      'render element' => 'form',
+    ),
+    'taxonomy_term' => array(
+      'render element' => 'elements',
+      'template' => 'taxonomy-term',
+    ),
   );
 }
 
@@ -258,100 +258,100 @@ function taxonomy_theme() {
  */
 function taxonomy_menu() {
   $items['admin/structure/taxonomy'] = array(
-      'title' => 'Taxonomy',
-      'description' => 'Manage tagging, categorization, and classification of your content.',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('taxonomy_overview_vocabularies'),
-      'access arguments' => array('administer taxonomy'),
-      'file' => 'taxonomy.admin.inc',
+    'title' => 'Taxonomy',
+    'description' => 'Manage tagging, categorization, and classification of your content.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('taxonomy_overview_vocabularies'),
+    'access arguments' => array('administer taxonomy'),
+    'file' => 'taxonomy.admin.inc',
   );
   $items['admin/structure/taxonomy/list'] = array(
-      'title' => 'List',
-      'type' => MENU_DEFAULT_LOCAL_TASK,
-      'weight' => -10,
+    'title' => 'List',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -10,
   );
   $items['admin/structure/taxonomy/add'] = array(
-      'title' => 'Add vocabulary',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('taxonomy_form_vocabulary'),
-      'access arguments' => array('administer taxonomy'),
-      'type' => MENU_LOCAL_ACTION,
-      'file' => 'taxonomy.admin.inc',
+    'title' => 'Add vocabulary',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('taxonomy_form_vocabulary'),
+    'access arguments' => array('administer taxonomy'),
+    'type' => MENU_LOCAL_ACTION,
+    'file' => 'taxonomy.admin.inc',
   );
 
   $items['taxonomy/term/%taxonomy_term'] = array(
-      'title' => 'Taxonomy term',
-      'title callback' => 'taxonomy_term_title',
-      'title arguments' => array(2),
-      'page callback' => 'taxonomy_term_page',
-      'page arguments' => array(2),
-      'access arguments' => array('access content'),
-      'file' => 'taxonomy.pages.inc',
+    'title' => 'Taxonomy term',
+    'title callback' => 'taxonomy_term_title',
+    'title arguments' => array(2),
+    'page callback' => 'taxonomy_term_page',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'file' => 'taxonomy.pages.inc',
   );
   $items['taxonomy/term/%taxonomy_term/view'] = array(
-      'title' => 'View',
-      'type' => MENU_DEFAULT_LOCAL_TASK,
+    'title' => 'View',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
   );
   $items['taxonomy/term/%taxonomy_term/edit'] = array(
-      'title' => 'Edit',
-      'page callback' => 'drupal_get_form',
-      // Pass a NULL argument to ensure that additional path components are not
-      // passed to taxonomy_form_term() as the vocabulary machine name argument.
-      'page arguments' => array('taxonomy_form_term', 2, NULL),
-      'access callback' => 'taxonomy_term_edit_access',
-      'access arguments' => array(2),
-      'type' => MENU_LOCAL_TASK,
-      'weight' => 10,
-      'file' => 'taxonomy.admin.inc',
+    'title' => 'Edit',
+    'page callback' => 'drupal_get_form',
+    // Pass a NULL argument to ensure that additional path components are not
+    // passed to taxonomy_form_term() as the vocabulary machine name argument.
+    'page arguments' => array('taxonomy_form_term', 2, NULL),
+    'access callback' => 'taxonomy_term_edit_access',
+    'access arguments' => array(2),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 10,
+    'file' => 'taxonomy.admin.inc',
   );
   $items['taxonomy/term/%taxonomy_term/feed'] = array(
-      'title' => 'Taxonomy term',
-      'title callback' => 'taxonomy_term_title',
-      'title arguments' => array(2),
-      'page callback' => 'taxonomy_term_feed',
-      'page arguments' => array(2),
-      'access arguments' => array('access content'),
-      'type' => MENU_CALLBACK,
-      'file' => 'taxonomy.pages.inc',
+    'title' => 'Taxonomy term',
+    'title callback' => 'taxonomy_term_title',
+    'title arguments' => array(2),
+    'page callback' => 'taxonomy_term_feed',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'taxonomy.pages.inc',
   );
   $items['taxonomy/autocomplete'] = array(
-      'title' => 'Autocomplete taxonomy',
-      'page callback' => 'taxonomy_autocomplete',
-      'access arguments' => array('access content'),
-      'type' => MENU_CALLBACK,
-      'file' => 'taxonomy.pages.inc',
+    'title' => 'Autocomplete taxonomy',
+    'page callback' => 'taxonomy_autocomplete',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'taxonomy.pages.inc',
   );
 
   $items['admin/structure/taxonomy/%taxonomy_vocabulary_machine_name'] = array(
-      'title callback' => 'entity_label',
-      'title arguments' => array('taxonomy_vocabulary', 3),
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('taxonomy_overview_terms', 3),
-      'access arguments' => array('administer taxonomy'),
-      'file' => 'taxonomy.admin.inc',
+    'title callback' => 'entity_label',
+    'title arguments' => array('taxonomy_vocabulary', 3),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('taxonomy_overview_terms', 3),
+    'access arguments' => array('administer taxonomy'),
+    'file' => 'taxonomy.admin.inc',
   );
   $items['admin/structure/taxonomy/%taxonomy_vocabulary_machine_name/list'] = array(
-      'title' => 'List',
-      'type' => MENU_DEFAULT_LOCAL_TASK,
-      'weight' => -20,
+    'title' => 'List',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -20,
   );
   $items['admin/structure/taxonomy/%taxonomy_vocabulary_machine_name/edit'] = array(
-      'title' => 'Edit',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('taxonomy_form_vocabulary', 3),
-      'access arguments' => array('administer taxonomy'),
-      'type' => MENU_LOCAL_TASK,
-      'weight' => -10,
-      'file' => 'taxonomy.admin.inc',
+    'title' => 'Edit',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('taxonomy_form_vocabulary', 3),
+    'access arguments' => array('administer taxonomy'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => -10,
+    'file' => 'taxonomy.admin.inc',
   );
 
   $items['admin/structure/taxonomy/%taxonomy_vocabulary_machine_name/add'] = array(
-      'title' => 'Add term',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('taxonomy_form_term', array(), 3),
-      'access arguments' => array('administer taxonomy'),
-      'type' => MENU_LOCAL_ACTION,
-      'file' => 'taxonomy.admin.inc',
+    'title' => 'Add term',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('taxonomy_form_term', array(), 3),
+    'access arguments' => array('administer taxonomy'),
+    'type' => MENU_LOCAL_ACTION,
+    'file' => 'taxonomy.admin.inc',
   );
 
   return $items;
@@ -362,7 +362,7 @@ function taxonomy_menu() {
  */
 function taxonomy_admin_paths() {
   $paths = array(
-      'taxonomy/term/*/edit' => TRUE,
+    'taxonomy/term/*/edit' => TRUE,
   );
   return $paths;
 }
@@ -475,8 +475,8 @@ function taxonomy_vocabulary_delete($vid) {
       taxonomy_term_delete($tid);
     }
     db_delete('taxonomy_vocabulary')
-    ->condition('vid', $vid)
-    ->execute();
+      ->condition('vid', $vid)
+      ->execute();
 
     field_attach_delete_bundle('taxonomy_term', $vocabulary->machine_name);
     module_invoke_all('taxonomy_vocabulary_delete', $vocabulary);
@@ -649,8 +649,8 @@ function taxonomy_term_save($term) {
     field_attach_update('taxonomy_term', $term);
     if (isset($term->parent)) {
       db_delete('taxonomy_term_hierarchy')
-      ->condition('tid', $term->tid)
-      ->execute();
+        ->condition('tid', $term->tid)
+        ->execute();
     }
   }
 
@@ -659,20 +659,20 @@ function taxonomy_term_save($term) {
       $term->parent = array($term->parent);
     }
     $query = db_insert('taxonomy_term_hierarchy')
-    ->fields(array('tid', 'parent'));
+      ->fields(array('tid', 'parent'));
     foreach ($term->parent as $parent) {
       if (is_array($parent)) {
         foreach ($parent as $tid) {
           $query->values(array(
-              'tid' => $term->tid,
-              'parent' => $tid
+            'tid' => $term->tid,
+            'parent' => $tid
           ));
         }
       }
       else {
         $query->values(array(
-            'tid' => $term->tid,
-            'parent' => $parent
+          'tid' => $term->tid,
+          'parent' => $parent
         ));
       }
     }
@@ -718,11 +718,11 @@ function taxonomy_term_delete($tid) {
 
         if ($term = taxonomy_term_load($tid)) {
           db_delete('taxonomy_term_data')
-          ->condition('tid', $tid)
-          ->execute();
+            ->condition('tid', $tid)
+            ->execute();
           db_delete('taxonomy_term_hierarchy')
-          ->condition('tid', $tid)
-          ->execute();
+            ->condition('tid', $tid)
+            ->execute();
 
           field_attach_delete('taxonomy_term', $term);
           module_invoke_all('taxonomy_term_delete', $term);
@@ -813,9 +813,9 @@ function taxonomy_term_build_content($term, $view_mode = 'full', $langcode = NUL
 
   // Allow modules to change the view mode.
   $context = array(
-      'entity_type' => 'taxonomy_term',
-      'entity' => $term,
-      'langcode' => $langcode,
+    'entity_type' => 'taxonomy_term',
+    'entity' => $term,
+    'langcode' => $langcode,
   );
   drupal_alter('entity_view_mode', $view_mode, $context);
 
@@ -826,10 +826,10 @@ function taxonomy_term_build_content($term, $view_mode = 'full', $langcode = NUL
   $fields = field_extra_fields_get_display($type, $entity_ids[2], $view_mode);
   if (!empty($term->description) && isset($fields['description']) && $fields['description']['visible']) {
     $term->content['description'] = array(
-        '#markup' => check_markup($term->description, $term->format, '', TRUE),
-        '#weight' => $fields['description']['weight'],
-        '#prefix' => '<div class="taxonomy-term-description">',
-        '#suffix' => '</div>',
+      '#markup' => check_markup($term->description, $term->format, '', TRUE),
+      '#weight' => $fields['description']['weight'],
+      '#prefix' => '<div class="taxonomy-term-description">',
+      '#suffix' => '</div>',
     );
   }
 
@@ -877,10 +877,10 @@ function taxonomy_term_view($term, $view_mode = 'full', $langcode = NULL) {
   unset($term->content);
 
   $build += array(
-      '#theme' => 'taxonomy_term',
-      '#term' => $term,
-      '#view_mode' => $view_mode,
-      '#language' => $langcode,
+    '#theme' => 'taxonomy_term',
+    '#term' => $term,
+    '#view_mode' => $view_mode,
+    '#language' => $langcode,
   );
 
   $build['#attached']['css'][] = drupal_get_path('module', 'taxonomy') . '/taxonomy.css';
@@ -1117,14 +1117,14 @@ function taxonomy_get_tree($vid, $parent = 0, $max_depth = NULL, $load_entities 
     $query = db_select('taxonomy_term_data', 't');
     $query->join('taxonomy_term_hierarchy', 'h', 'h.tid = t.tid');
     $result = $query
-    ->addTag('translatable')
-    ->addTag('term_access')
-    ->fields('t')
-    ->fields('h', array('parent'))
-    ->condition('t.vid', $vid)
-    ->orderBy('t.weight')
-    ->orderBy('t.name')
-    ->execute();
+      ->addTag('translatable')
+      ->addTag('term_access')
+      ->fields('t')
+      ->fields('h', array('parent'))
+      ->condition('t.vid', $vid)
+      ->orderBy('t.weight')
+      ->orderBy('t.name')
+      ->execute();
 
     foreach ($result as $term) {
       $children[$vid][$term->parent][] = $term->tid;
@@ -1433,20 +1433,20 @@ function taxonomy_implode_tags($tags, $vid = NULL) {
  */
 function taxonomy_field_info() {
   return array(
-      'taxonomy_term_reference' => array(
-          'label' => t('Term reference'),
-          'description' => t('This field stores a reference to a taxonomy term.'),
-          'default_widget' => 'options_select',
-          'default_formatter' => 'taxonomy_term_reference_link',
-          'settings' => array(
-              'allowed_values' => array(
-                  array(
-                      'vocabulary' => '',
-                      'parent' => '0',
-                  ),
-              ),
+    'taxonomy_term_reference' => array(
+      'label' => t('Term reference'),
+      'description' => t('This field stores a reference to a taxonomy term.'),
+      'default_widget' => 'options_select',
+      'default_formatter' => 'taxonomy_term_reference_link',
+      'settings' => array(
+        'allowed_values' => array(
+          array(
+            'vocabulary' => '',
+            'parent' => '0',
           ),
+        ),
       ),
+    ),
   );
 }
 
@@ -1455,17 +1455,17 @@ function taxonomy_field_info() {
  */
 function taxonomy_field_widget_info() {
   return array(
-      'taxonomy_autocomplete' => array(
-          'label' => t('Autocomplete term widget (tagging)'),
-          'field types' => array('taxonomy_term_reference'),
-          'settings' => array(
-              'size' => 60,
-              'autocomplete_path' => 'taxonomy/autocomplete',
-          ),
-          'behaviors' => array(
-              'multiple values' => FIELD_BEHAVIOR_CUSTOM,
-          ),
+    'taxonomy_autocomplete' => array(
+      'label' => t('Autocomplete term widget (tagging)'),
+      'field types' => array('taxonomy_term_reference'),
+      'settings' => array(
+        'size' => 60,
+        'autocomplete_path' => 'taxonomy/autocomplete',
       ),
+      'behaviors' => array(
+        'multiple values' => FIELD_BEHAVIOR_CUSTOM,
+      ),
+    ),
   );
 }
 
@@ -1536,8 +1536,8 @@ function taxonomy_field_validate($entity_type, $entity, $field, $instance, $lang
       }
       if (!$validate) {
         $errors[$field['field_name']][$langcode][$delta][] = array(
-            'error' => 'taxonomy_term_reference_illegal_value',
-            'message' => t('%name: illegal value.', array('%name' => $instance['label'])),
+          'error' => 'taxonomy_term_reference_illegal_value',
+          'message' => t('%name: illegal value.', array('%name' => $instance['label'])),
         );
       }
     }
@@ -1559,18 +1559,18 @@ function taxonomy_field_is_empty($item, $field) {
  */
 function taxonomy_field_formatter_info() {
   return array(
-      'taxonomy_term_reference_link' => array(
-          'label' => t('Link'),
-          'field types' => array('taxonomy_term_reference'),
-      ),
-      'taxonomy_term_reference_plain' => array(
-          'label' => t('Plain text'),
-          'field types' => array('taxonomy_term_reference'),
-      ),
-      'taxonomy_term_reference_rss_category' => array(
-          'label' => t('RSS category'),
-          'field types' => array('taxonomy_term_reference'),
-      ),
+    'taxonomy_term_reference_link' => array(
+      'label' => t('Link'),
+      'field types' => array('taxonomy_term_reference'),
+    ),
+    'taxonomy_term_reference_plain' => array(
+      'label' => t('Plain text'),
+      'field types' => array('taxonomy_term_reference'),
+    ),
+    'taxonomy_term_reference_rss_category' => array(
+      'label' => t('RSS category'),
+      'field types' => array('taxonomy_term_reference'),
+    ),
   );
 }
 
@@ -1589,17 +1589,17 @@ function taxonomy_field_formatter_view($entity_type, $entity, $field, $instance,
       foreach ($items as $delta => $item) {
         if ($item['tid'] == 'autocreate') {
           $element[$delta] = array(
-              '#markup' => check_plain($item['name']),
+            '#markup' => check_plain($item['name']),
           );
         }
         else {
           $term = $item['taxonomy_term'];
           $uri = entity_uri('taxonomy_term', $term);
           $element[$delta] = array(
-              '#type' => 'link',
-              '#title' => $term->name,
-              '#href' => $uri['path'],
-              '#options' => $uri['options'],
+            '#type' => 'link',
+            '#title' => $term->name,
+            '#href' => $uri['path'],
+            '#options' => $uri['options'],
           );
         }
       }
@@ -1609,7 +1609,7 @@ function taxonomy_field_formatter_view($entity_type, $entity, $field, $instance,
       foreach ($items as $delta => $item) {
         $name = ($item['tid'] != 'autocreate' ? $item['taxonomy_term']->name : $item['name']);
         $element[$delta] = array(
-            '#markup' => check_plain($name),
+          '#markup' => check_plain($name),
         );
       }
       break;
@@ -1617,11 +1617,11 @@ function taxonomy_field_formatter_view($entity_type, $entity, $field, $instance,
     case 'taxonomy_term_reference_rss_category':
       foreach ($items as $delta => $item) {
         $entity->rss_elements[] = array(
-            'key' => 'category',
-            'value' => $item['tid'] != 'autocreate' ? $item['taxonomy_term']->name : $item['name'],
-            'attributes' => array(
-                'domain' => $item['tid'] != 'autocreate' ? url('taxonomy/term/' . $item['tid'], array('absolute' => TRUE)) : '',
-            ),
+          'key' => 'category',
+          'value' => $item['tid'] != 'autocreate' ? $item['taxonomy_term']->name : $item['name'],
+          'attributes' => array(
+            'domain' => $item['tid'] != 'autocreate' ? url('taxonomy/term/' . $item['tid'], array('absolute' => TRUE)) : '',
+          ),
         );
       }
       break;
@@ -1725,12 +1725,12 @@ function taxonomy_field_widget_form(&$form, &$form_state, $field, $instance, $la
   }
 
   $element += array(
-      '#type' => 'textfield',
-      '#default_value' => taxonomy_implode_tags($tags),
-      '#autocomplete_path' => $instance['widget']['settings']['autocomplete_path'] . '/' . $field['field_name'],
-      '#size' => $instance['widget']['settings']['size'],
-      '#maxlength' => 1024,
-      '#element_validate' => array('taxonomy_autocomplete_validate'),
+    '#type' => 'textfield',
+    '#default_value' => taxonomy_implode_tags($tags),
+    '#autocomplete_path' => $instance['widget']['settings']['autocomplete_path'] . '/' . $field['field_name'],
+    '#size' => $instance['widget']['settings']['size'],
+    '#maxlength' => 1024,
+    '#element_validate' => array('taxonomy_autocomplete_validate'),
   );
 
   return $element;
@@ -1764,10 +1764,10 @@ function taxonomy_autocomplete_validate($element, &$form_state) {
       else {
         $vocabulary = reset($vocabularies);
         $term = array(
-            'tid' => 'autocreate',
-            'vid' => $vocabulary->vid,
-            'name' => $typed_term,
-            'vocabulary_machine_name' => $vocabulary->machine_name,
+          'tid' => 'autocreate',
+          'vid' => $vocabulary->vid,
+          'name' => $typed_term,
+          'vocabulary_machine_name' => $vocabulary->machine_name,
         );
       }
       $value[] = (array)$term;
@@ -1794,22 +1794,22 @@ function taxonomy_field_settings_form($field, $instance, $has_data) {
     $options[$vocabulary->machine_name] = $vocabulary->name;
   }
   $form['allowed_values'] = array(
-      '#tree' => TRUE,
+    '#tree' => TRUE,
   );
 
   foreach ($field['settings']['allowed_values'] as $delta => $tree) {
     $form['allowed_values'][$delta]['vocabulary'] = array(
-        '#type' => 'select',
-        '#title' => t('Vocabulary'),
-        '#default_value' => $tree['vocabulary'],
-        '#options' => $options,
-        '#required' => TRUE,
-        '#description' => t('The vocabulary which supplies the options for this field.'),
-        '#disabled' => $has_data,
+      '#type' => 'select',
+      '#title' => t('Vocabulary'),
+      '#default_value' => $tree['vocabulary'],
+      '#options' => $options,
+      '#required' => TRUE,
+      '#description' => t('The vocabulary which supplies the options for this field.'),
+      '#disabled' => $has_data,
     );
     $form['allowed_values'][$delta]['parent'] = array(
-        '#type' => 'value',
-        '#value' => $tree['parent'],
+      '#type' => 'value',
+      '#value' => $tree['parent'],
     );
   }
 
@@ -1824,40 +1824,40 @@ function taxonomy_field_settings_form($field, $instance, $has_data) {
  */
 function taxonomy_rdf_mapping() {
   return array(
-      array(
-          'type' => 'taxonomy_term',
-          'bundle' => RDF_DEFAULT_BUNDLE,
-          'mapping' => array(
-              'rdftype' => array('skos:Concept'),
-              'name'   => array(
-                  'predicates' => array('rdfs:label', 'skos:prefLabel'),
-              ),
-              'description'   => array(
-                  'predicates' => array('skos:definition'),
-              ),
-              'vid'   => array(
-                  'predicates' => array('skos:inScheme'),
-                  'type' => 'rel',
-              ),
-              'parent'   => array(
-                  'predicates' => array('skos:broader'),
-                  'type' => 'rel',
-              ),
-          ),
+    array(
+      'type' => 'taxonomy_term',
+      'bundle' => RDF_DEFAULT_BUNDLE,
+      'mapping' => array(
+        'rdftype' => array('skos:Concept'),
+        'name'   => array(
+          'predicates' => array('rdfs:label', 'skos:prefLabel'),
+        ),
+        'description'   => array(
+          'predicates' => array('skos:definition'),
+        ),
+        'vid'   => array(
+          'predicates' => array('skos:inScheme'),
+          'type' => 'rel',
+        ),
+        'parent'   => array(
+          'predicates' => array('skos:broader'),
+          'type' => 'rel',
+        ),
       ),
-      array(
-          'type' => 'taxonomy_vocabulary',
-          'bundle' => RDF_DEFAULT_BUNDLE,
-          'mapping' => array(
-              'rdftype' => array('skos:ConceptScheme'),
-              'name'   => array(
-                  'predicates' => array('dc:title'),
-              ),
-              'description'   => array(
-                  'predicates' => array('rdfs:comment'),
-              ),
-          ),
+    ),
+    array(
+      'type' => 'taxonomy_vocabulary',
+      'bundle' => RDF_DEFAULT_BUNDLE,
+      'mapping' => array(
+        'rdftype' => array('skos:ConceptScheme'),
+        'name'   => array(
+          'predicates' => array('dc:title'),
+        ),
+        'description'   => array(
+          'predicates' => array('rdfs:comment'),
+        ),
       ),
+    ),
   );
 }
 
@@ -1961,10 +1961,10 @@ function taxonomy_build_node_index($node) {
       $query = db_insert('taxonomy_index')->fields(array('nid', 'tid', 'sticky', 'created'));
       foreach ($tid_all as $tid) {
         $query->values(array(
-            'nid' => $node->nid,
-            'tid' => $tid,
-            'sticky' => $sticky,
-            'created' => $node->created,
+          'nid' => $node->nid,
+          'tid' => $tid,
+          'sticky' => $sticky,
+          'created' => $node->created,
         ));
       }
       $query->execute();

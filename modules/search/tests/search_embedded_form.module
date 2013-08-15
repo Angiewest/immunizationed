@@ -10,15 +10,15 @@
  */
 
 /**
- * Implements hook_menu().
- */
+  * Implements hook_menu().
+  */
 function search_embedded_form_menu() {
   $items['search_embedded_form'] = array(
-      'title' => 'Search_Embed_Form',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('search_embedded_form_form'),
-      'access arguments' => array('search content'),
-      'type' => MENU_CALLBACK,
+    'title' => 'Search_Embed_Form',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('search_embedded_form_form'),
+    'access arguments' => array('search content'),
+    'type' => MENU_CALLBACK,
   );
 
   return $items;
@@ -33,18 +33,18 @@ function search_embedded_form_form($form, &$form_state) {
   $count = variable_get('search_embedded_form_submitted', 0);
 
   $form['name'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Your name'),
-      '#maxlength' => 255,
-      '#default_value' => '',
-      '#required' => TRUE,
-      '#description' => t('Times form has been submitted: %count', array('%count' => $count)),
+    '#type' => 'textfield',
+    '#title' => t('Your name'),
+    '#maxlength' => 255,
+    '#default_value' => '',
+    '#required' => TRUE,
+    '#description' => t('Times form has been submitted: %count', array('%count' => $count)),
   );
 
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Send away'),
+    '#type' => 'submit',
+    '#value' => t('Send away'),
   );
 
   $form['#submit'][] = 'search_embedded_form_form_submit';

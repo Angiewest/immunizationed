@@ -23,17 +23,17 @@ function overlay_help($path, $arg) {
  */
 function overlay_menu() {
   $items['overlay-ajax/%'] = array(
-      'title' => '',
-      'page callback' => 'overlay_ajax_render_region',
-      'page arguments' => array(1),
-      'access arguments' => array('access overlay'),
-      'type' => MENU_CALLBACK,
+    'title' => '',
+    'page callback' => 'overlay_ajax_render_region',
+    'page arguments' => array(1),
+    'access arguments' => array('access overlay'),
+    'type' => MENU_CALLBACK,
   );
   $items['overlay/dismiss-message'] = array(
-      'title' => '',
-      'page callback' => 'overlay_user_dismiss_message',
-      'access arguments' => array('access overlay'),
-      'type' => MENU_CALLBACK,
+    'title' => '',
+    'page callback' => 'overlay_user_dismiss_message',
+    'access arguments' => array('access overlay'),
+    'type' => MENU_CALLBACK,
   );
   return $items;
 }
@@ -43,10 +43,10 @@ function overlay_menu() {
  */
 function overlay_admin_paths() {
   $paths = array(
-      // This is marked as an administrative path so that if it is visited from
-      // within the overlay, the user will stay within the overlay while the
-      // callback is being processed.
-      'overlay/dismiss-message' => TRUE,
+    // This is marked as an administrative path so that if it is visited from
+    // within the overlay, the user will stay within the overlay while the
+    // callback is being processed.
+    'overlay/dismiss-message' => TRUE,
   );
   return $paths;
 }
@@ -56,10 +56,10 @@ function overlay_admin_paths() {
  */
 function overlay_permission() {
   return array(
-      'access overlay' => array(
-          'title' => t('Access the administrative overlay'),
-          'description' => t('View administrative pages in the overlay.'),
-      ),
+    'access overlay' => array(
+      'title' => t('Access the administrative overlay'),
+      'description' => t('View administrative pages in the overlay.'),
+    ),
   );
 }
 
@@ -68,13 +68,13 @@ function overlay_permission() {
  */
 function overlay_theme() {
   return array(
-      'overlay' => array(
-          'render element' => 'page',
-          'template' => 'overlay',
-      ),
-      'overlay_disable_message' => array(
-          'render element' => 'element',
-      ),
+    'overlay' => array(
+      'render element' => 'page',
+      'template' => 'overlay',
+    ),
+    'overlay_disable_message' => array(
+      'render element' => 'element',
+    ),
   );
 }
 
@@ -86,17 +86,17 @@ function overlay_form_user_profile_form_alter(&$form, &$form_state) {
     $account = $form['#user'];
     if (user_access('access overlay', $account)) {
       $form['overlay_control'] = array(
-          '#type' => 'fieldset',
-          '#title' => t('Administrative overlay'),
-          '#weight' => 4,
-          '#collapsible' => TRUE,
+        '#type' => 'fieldset',
+        '#title' => t('Administrative overlay'),
+        '#weight' => 4,
+        '#collapsible' => TRUE,
       );
 
       $form['overlay_control']['overlay'] = array(
-          '#type' => 'checkbox',
-          '#title' => t('Use the overlay for administrative pages.'),
-          '#description' => t('Show administrative pages on top of the page you started from.'),
-          '#default_value' => isset($account->data['overlay']) ? $account->data['overlay'] : 1,
+        '#type' => 'checkbox',
+        '#title' => t('Use the overlay for administrative pages.'),
+        '#description' => t('Show administrative pages on top of the page you started from.'),
+        '#default_value' => isset($account->data['overlay']) ? $account->data['overlay'] : 1,
       );
     }
   }
@@ -201,31 +201,31 @@ function overlay_library() {
 
   // Overlay parent.
   $libraries['parent'] = array(
-      'title' => 'Overlay: Parent',
-      'website' => 'http://drupal.org/documentation/modules/overlay',
-      'version' => '1.0',
-      'js' => array(
-          $module_path . '/overlay-parent.js' => array(),
-      ),
-      'css' => array(
-          $module_path . '/overlay-parent.css' => array(),
-      ),
-      'dependencies' => array(
-          array('system', 'ui'),
-          array('system', 'jquery.bbq'),
-      ),
+    'title' => 'Overlay: Parent',
+    'website' => 'http://drupal.org/documentation/modules/overlay',
+    'version' => '1.0',
+    'js' => array(
+      $module_path . '/overlay-parent.js' => array(),
+    ),
+    'css' => array(
+      $module_path . '/overlay-parent.css' => array(),
+    ),
+    'dependencies' => array(
+      array('system', 'ui'),
+      array('system', 'jquery.bbq'),
+    ),
   );
   // Overlay child.
   $libraries['child'] = array(
-      'title' => 'Overlay: Child',
-      'website' => 'http://drupal.org/documentation/modules/overlay',
-      'version' => '1.0',
-      'js' => array(
-          $module_path . '/overlay-child.js' => array(),
-      ),
-      'css' => array(
-          $module_path . '/overlay-child.css' => array(),
-      ),
+    'title' => 'Overlay: Child',
+    'website' => 'http://drupal.org/documentation/modules/overlay',
+    'version' => '1.0',
+    'js' => array(
+      $module_path . '/overlay-child.js' => array(),
+    ),
+    'css' => array(
+      $module_path . '/overlay-child.css' => array(),
+    ),
   );
 
   return $libraries;
@@ -342,42 +342,42 @@ function overlay_disable_message() {
 
   if (!empty($user->uid) && empty($user->data['overlay_message_dismissed']) && (!isset($user->data['overlay']) || $user->data['overlay']) && user_access('access overlay')) {
     $build = array(
-        '#theme' => 'overlay_disable_message',
-        '#weight' => -99,
-        // Link to the user's profile page, where the overlay can be disabled.
-        'profile_link' => array(
-            '#type' => 'link',
-            '#title' => t('If you have problems accessing administrative pages on this site, disable the overlay on your profile page.'),
-            '#href' => 'user/' . $user->uid . '/edit',
-            '#options' => array(
-                'query' => drupal_get_destination(),
-                'fragment' => 'edit-overlay-control',
-                'attributes' => array(
-                    'id' => 'overlay-profile-link',
-                    // Prevent the target page from being opened in the overlay.
-                    'class' => array('overlay-exclude'),
-                ),
-            ),
+      '#theme' => 'overlay_disable_message',
+      '#weight' => -99,
+      // Link to the user's profile page, where the overlay can be disabled.
+      'profile_link' => array(
+        '#type' => 'link',
+        '#title' => t('If you have problems accessing administrative pages on this site, disable the overlay on your profile page.'),
+        '#href' => 'user/' . $user->uid . '/edit',
+        '#options' => array(
+          'query' => drupal_get_destination(),
+          'fragment' => 'edit-overlay-control',
+          'attributes' => array(
+            'id' => 'overlay-profile-link',
+            // Prevent the target page from being opened in the overlay.
+            'class' => array('overlay-exclude'),
+          ),
         ),
-        // Link to a menu callback that allows this message to be permanently
-        // dismissed for the current user.
-        'dismiss_message_link' => array(
-            '#type' => 'link',
-            '#title' => t('Dismiss this message.'),
-            '#href' => 'overlay/dismiss-message',
-            '#options' => array(
-                'query' => drupal_get_destination() + array(
-                    // Add a token to protect against cross-site request forgeries.
-                    'token' => drupal_get_token('overlay'),
-                ),
-                'attributes' => array(
-                    'id' => 'overlay-dismiss-message',
-                    // If this message is being displayed outside the overlay, prevent
-                    // this link from opening the overlay.
-                    'class' => (overlay_get_mode() == 'parent') ? array('overlay-exclude') : array(),
-                ),
-            ),
-        )
+      ),
+      // Link to a menu callback that allows this message to be permanently
+      // dismissed for the current user.
+      'dismiss_message_link' => array(
+        '#type' => 'link',
+        '#title' => t('Dismiss this message.'),
+        '#href' => 'overlay/dismiss-message',
+        '#options' => array(
+          'query' => drupal_get_destination() + array(
+            // Add a token to protect against cross-site request forgeries.
+            'token' => drupal_get_token('overlay'),
+          ),
+          'attributes' => array(
+            'id' => 'overlay-dismiss-message',
+            // If this message is being displayed outside the overlay, prevent
+            // this link from opening the overlay.
+            'class' => (overlay_get_mode() == 'parent') ? array('overlay-exclude') : array(),
+          ),
+        ),
+      )
     );
   }
   else {
@@ -717,9 +717,9 @@ function overlay_overlay_child_initialize() {
  */
 function overlay_close_dialog($redirect = NULL, $redirect_options = array()) {
   $settings = array(
-      'overlayChild' => array(
-          'closeOverlay' => TRUE,
-      ),
+    'overlayChild' => array(
+      'closeOverlay' => TRUE,
+    ),
   );
 
   // Tell the child window to perform the redirection when requested to.
@@ -869,9 +869,9 @@ function overlay_render_region($region) {
   $system_main_content_added = &drupal_static('system_main_content_added');
   $system_main_content_added = TRUE;
   $page = array(
-      '#type' => 'page',
-      '#theme' => NULL,
-      '#theme_wrappers' => array(),
+    '#type' => 'page',
+    '#theme' => NULL,
+    '#theme_wrappers' => array(),
   );
   // Render the region, but do not cache any JavaScript or CSS associated with
   // it. This region might not be included the next time drupal_render_page()
@@ -978,9 +978,9 @@ function overlay_request_page_refresh() {
 function overlay_trigger_refresh() {
   if (!empty($_SESSION['overlay_regions_to_refresh'])) {
     $settings = array(
-        'overlayChild' => array(
-            'refreshRegions' => $_SESSION['overlay_regions_to_refresh'],
-        ),
+      'overlayChild' => array(
+        'refreshRegions' => $_SESSION['overlay_regions_to_refresh'],
+      ),
     );
     drupal_add_js($settings, array('type' => 'setting'));
     unset($_SESSION['overlay_regions_to_refresh']);

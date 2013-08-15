@@ -55,7 +55,7 @@ class DatabaseStatementPrefetch implements Iterator, DatabaseStatementInterface 
    * The current row, retrieved in PDO::FETCH_ASSOC format.
    *
    * @var Array
-  */
+   */
   protected $currentRow = NULL;
 
   /**
@@ -100,17 +100,17 @@ class DatabaseStatementPrefetch implements Iterator, DatabaseStatementInterface 
    * @var Array
    */
   protected $fetchOptions = array(
-      'class' => 'stdClass',
-      'constructor_args' => array(),
-      'object' => NULL,
-      'column' => 0,
+    'class' => 'stdClass',
+    'constructor_args' => array(),
+    'object' => NULL,
+    'column' => 0,
   );
 
   /**
    * Holds the default fetch style.
    *
    * @var int
-  */
+   */
   protected $defaultFetchStyle = PDO::FETCH_OBJ;
 
   /**
@@ -119,10 +119,10 @@ class DatabaseStatementPrefetch implements Iterator, DatabaseStatementInterface 
    * @var Array
    */
   protected $defaultFetchOptions = array(
-      'class' => 'stdClass',
-      'constructor_args' => array(),
-      'object' => NULL,
-      'column' => 0,
+    'class' => 'stdClass',
+    'constructor_args' => array(),
+    'object' => NULL,
+    'column' => 0,
   );
 
   public function __construct(DatabaseConnection $connection, $query, array $driver_options = array()) {
