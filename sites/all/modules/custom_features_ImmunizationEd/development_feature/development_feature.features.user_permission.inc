@@ -10,7 +10,7 @@
 function development_feature_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: access devel information.
+  // Exported permission: 'access devel information'.
   $permissions['access devel information'] = array(
     'name' => 'access devel information',
     'roles' => array(
@@ -26,7 +26,7 @@ function development_feature_user_default_permissions() {
     'module' => 'devel',
   );
 
-  // Exported permission: access menu clone.
+  // Exported permission: 'access menu clone'.
   $permissions['access menu clone'] = array(
     'name' => 'access menu clone',
     'roles' => array(
@@ -36,7 +36,7 @@ function development_feature_user_default_permissions() {
     'module' => 'menu_clone',
   );
 
-  // Exported permission: administer reroute email.
+  // Exported permission: 'administer reroute email'.
   $permissions['administer reroute email'] = array(
     'name' => 'administer reroute email',
     'roles' => array(
@@ -45,7 +45,7 @@ function development_feature_user_default_permissions() {
     'module' => 'reroute_email',
   );
 
-  // Exported permission: execute php code.
+  // Exported permission: 'execute php code'.
   $permissions['execute php code'] = array(
     'name' => 'execute php code',
     'roles' => array(
@@ -61,7 +61,7 @@ function development_feature_user_default_permissions() {
     'module' => 'devel',
   );
 
-  // Exported permission: import users.
+  // Exported permission: 'import users'.
   $permissions['import users'] = array(
     'name' => 'import users',
     'roles' => array(
@@ -71,7 +71,7 @@ function development_feature_user_default_permissions() {
     'module' => 'user_import',
   );
 
-  // Exported permission: switch users.
+  // Exported permission: 'switch users'.
   $permissions['switch users'] = array(
     'name' => 'switch users',
     'roles' => array(
@@ -87,7 +87,7 @@ function development_feature_user_default_permissions() {
     'module' => 'devel',
   );
 
-  // Exported permission: view devel_node_access information.
+  // Exported permission: 'view devel_node_access information'.
   $permissions['view devel_node_access information'] = array(
     'name' => 'view devel_node_access information',
     'roles' => array(

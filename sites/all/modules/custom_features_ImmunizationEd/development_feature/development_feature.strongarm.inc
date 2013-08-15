@@ -177,7 +177,7 @@ function development_feature_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'reroute_email_address';
-  $strongarm->value = 'jraviotta@gmail.com';
+  $strongarm->value = 'raviottaj@upmc.edu';
   $export['reroute_email_address'] = $strongarm;
 
   $strongarm = new stdClass();
