@@ -16,11 +16,21 @@ function immunizationed_practice_inputs_default_rules_configuration() {
       "ON" : [ "node_view" ],
       "IF" : [
         { "node_is_of_type" : { "node" : [ "node" ], "type" : { "value" : { "task" : "task" } } } },
-        { "og_user_has_role" : {
-            "account" : [ "site:current-user" ],
-            "group" : [ "node:og-group-ref:0" ],
-            "roles" : { "value" : { "14" : "14" } }
-          }
+        { "AND" : [
+            { "og_user_has_permission" : {
+                "permission" : "administer group",
+                "group" : [ "node:og-group-ref:0" ],
+                "account" : [ "site:current-user" ]
+              }
+            },
+            { "NOT entity_field_access" : {
+                "entity" : [ "node" ],
+                "field" : "og_group_ref",
+                "op" : "edit",
+                "account" : [ "site:current-user" ]
+              }
+            }
+          ]
         }
       ],
       "DO" : [ { "redirect" : { "url" : [ "node:edit-url" ] } } ]
