@@ -455,7 +455,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'module' => 'menu',
     'hidden' => 1,
     'external' => 0,
-    'has_children' => 1,
+    'has_children' => 0,
     'expanded' => 1,
     'weight' => -47,
   );
@@ -476,7 +476,6 @@ function immunizationed_menus_menu_default_menu_links() {
     'has_children' => 0,
     'expanded' => 0,
     'weight' => 0,
-    'parent_path' => 'admin/people',
   );
   // Exported menu link: menu-editing:admin/people/create
   $menu_links['menu-editing:admin/people/create'] = array(
@@ -727,24 +726,6 @@ function immunizationed_menus_menu_default_menu_links() {
     'has_children' => 0,
     'expanded' => 0,
     'weight' => 0,
-  );
-  // Exported menu link: menu-site-admin:admin/people-details
-  $menu_links['menu-site-admin:admin/people-details'] = array(
-    'menu_name' => 'menu-site-admin',
-    'link_path' => 'admin/people-details',
-    'router_path' => 'admin/people-details',
-    'link_title' => 'View People',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Site user details',
-      ),
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -46,
   );
   // Exported menu link: menu-site-admin:admin/people/create
   $menu_links['menu-site-admin:admin/people/create'] = array(
@@ -1529,7 +1510,6 @@ function immunizationed_menus_menu_default_menu_links() {
   t('Vaccination data from EMR');
   t('Video');
   t('View Content');
-  t('View People');
   t('Webform');
 
 

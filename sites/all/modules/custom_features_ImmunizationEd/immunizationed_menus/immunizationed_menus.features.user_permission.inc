@@ -10,7 +10,7 @@
 function immunizationed_menus_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: administer menu.
+  // Exported permission: 'administer menu'.
   $permissions['administer menu'] = array(
     'name' => 'administer menu',
     'roles' => array(
@@ -20,7 +20,7 @@ function immunizationed_menus_user_default_permissions() {
     'module' => 'menu',
   );
 
-  // Exported permission: administer menu attributes.
+  // Exported permission: 'administer menu attributes'.
   $permissions['administer menu attributes'] = array(
     'name' => 'administer menu attributes',
     'roles' => array(
