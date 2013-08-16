@@ -21,6 +21,7 @@ features[field_base][] = field_synonym
 features[field_instance][] = taxonomy_term-taxonomy_pillar_tags_-field_guid
 features[field_instance][] = taxonomy_term-taxonomy_pillar_tags_-field_synonym
 features[taxonomy][] = taxonomy_pillar_tags_
+features[user_permission][] = administer panelizer taxonomy_term taxonomy_pillar_tags_ defaults
 features[user_permission][] = create field_pillar_tags
 features[user_permission][] = delete terms in taxonomy_pillar_tags_
 features[user_permission][] = edit field_pillar_tags

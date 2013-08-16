@@ -102,7 +102,9 @@ function immunizationed_help_user_default_permissions() {
   // Exported permission: 'create help_manual_page content'.
   $permissions['create help_manual_page content'] = array(
     'name' => 'create help_manual_page content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -120,7 +122,9 @@ function immunizationed_help_user_default_permissions() {
   // Exported permission: 'delete any help_manual_page content'.
   $permissions['delete any help_manual_page content'] = array(
     'name' => 'delete any help_manual_page content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -138,7 +142,9 @@ function immunizationed_help_user_default_permissions() {
   // Exported permission: 'delete own help_manual_page content'.
   $permissions['delete own help_manual_page content'] = array(
     'name' => 'delete own help_manual_page content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -163,7 +169,9 @@ function immunizationed_help_user_default_permissions() {
   // Exported permission: 'edit any help_manual_page content'.
   $permissions['edit any help_manual_page content'] = array(
     'name' => 'edit any help_manual_page content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -247,7 +255,9 @@ function immunizationed_help_user_default_permissions() {
   // Exported permission: 'edit own help_manual_page content'.
   $permissions['edit own help_manual_page content'] = array(
     'name' => 'edit own help_manual_page content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -293,8 +303,13 @@ function immunizationed_help_user_default_permissions() {
   $permissions['view field_content_type_reference_for'] = array(
     'name' => 'view field_content_type_reference_for',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -303,8 +318,13 @@ function immunizationed_help_user_default_permissions() {
   $permissions['view field_help_topics_tags'] = array(
     'name' => 'view field_help_topics_tags',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -329,8 +349,13 @@ function immunizationed_help_user_default_permissions() {
   $permissions['view own field_content_type_reference_for'] = array(
     'name' => 'view own field_content_type_reference_for',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -339,6 +364,9 @@ function immunizationed_help_user_default_permissions() {
   $permissions['view own field_help_topics_tags'] = array(
     'name' => 'view own field_help_topics_tags',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',

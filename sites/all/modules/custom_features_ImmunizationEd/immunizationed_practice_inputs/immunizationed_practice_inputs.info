@@ -85,6 +85,7 @@ features[taxonomy][] = motivation
 features[taxonomy][] = motivation_strategies_
 features[taxonomy][] = patient_notification_other
 features[taxonomy][] = patient_notification_strategies
+features[user_permission][] = administer panelizer node announcement defaults
 features[user_permission][] = administer panelizer node convenient_vaccination_services defaults
 features[user_permission][] = administer panelizer node enhanced_vaccination_systems defaults
 features[user_permission][] = administer panelizer node meeting_agenda defaults

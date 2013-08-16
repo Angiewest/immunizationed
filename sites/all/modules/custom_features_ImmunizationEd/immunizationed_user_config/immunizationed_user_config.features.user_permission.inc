@@ -384,6 +384,7 @@ function immunizationed_user_config_user_default_permissions() {
       'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
@@ -446,6 +447,7 @@ function immunizationed_user_config_user_default_permissions() {
     'name' => 'edit og_user_node',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',

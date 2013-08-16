@@ -10,6 +10,15 @@
 function immunizationed_practice_inputs_user_default_permissions() {
   $permissions = array();
 
+  // Exported permission: 'administer panelizer node announcement defaults'.
+  $permissions['administer panelizer node announcement defaults'] = array(
+    'name' => 'administer panelizer node announcement defaults',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panelizer',
+  );
+
   // Exported permission: 'administer panelizer node convenient_vaccination_services defaults'.
   $permissions['administer panelizer node convenient_vaccination_services defaults'] = array(
     'name' => 'administer panelizer node convenient_vaccination_services defaults',

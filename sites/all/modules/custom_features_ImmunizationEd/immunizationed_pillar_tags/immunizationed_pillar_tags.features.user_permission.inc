@@ -10,6 +10,13 @@
 function immunizationed_pillar_tags_user_default_permissions() {
   $permissions = array();
 
+  // Exported permission: 'administer panelizer taxonomy_term taxonomy_pillar_tags_ defaults'.
+  $permissions['administer panelizer taxonomy_term taxonomy_pillar_tags_ defaults'] = array(
+    'name' => 'administer panelizer taxonomy_term taxonomy_pillar_tags_ defaults',
+    'roles' => array(),
+    'module' => 'panelizer',
+  );
+
   // Exported permission: 'create field_pillar_tags'.
   $permissions['create field_pillar_tags'] = array(
     'name' => 'create field_pillar_tags',
@@ -61,7 +68,13 @@ function immunizationed_pillar_tags_user_default_permissions() {
   $permissions['view field_pillar_tags'] = array(
     'name' => 'view field_pillar_tags',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -70,7 +83,13 @@ function immunizationed_pillar_tags_user_default_permissions() {
   $permissions['view own field_pillar_tags'] = array(
     'name' => 'view own field_pillar_tags',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );

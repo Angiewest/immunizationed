@@ -291,7 +291,12 @@ function immunizationed_structure_user_default_permissions() {
   // Exported permission: 'create field_resource_links'.
   $permissions['create field_resource_links'] = array(
     'name' => 'create field_resource_links',
-    'roles' => array(),
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
     'module' => 'field_permissions',
   );
 
@@ -1010,7 +1015,12 @@ function immunizationed_structure_user_default_permissions() {
   // Exported permission: 'edit field_resource_links'.
   $permissions['edit field_resource_links'] = array(
     'name' => 'edit field_resource_links',
-    'roles' => array(),
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
     'module' => 'field_permissions',
   );
 
@@ -1245,7 +1255,12 @@ function immunizationed_structure_user_default_permissions() {
   // Exported permission: 'edit own field_resource_links'.
   $permissions['edit own field_resource_links'] = array(
     'name' => 'edit own field_resource_links',
-    'roles' => array(),
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
     'module' => 'field_permissions',
   );
 
@@ -1445,6 +1460,9 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view field_applicable_roles'] = array(
     'name' => 'view field_applicable_roles',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
@@ -1473,8 +1491,13 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view field_certification_entity'] = array(
     'name' => 'view field_certification_entity',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -1556,9 +1579,14 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view field_internal_video_url'] = array(
     'name' => 'view field_internal_video_url',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -1567,8 +1595,13 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view field_reference_to_onsite_video'] = array(
     'name' => 'view field_reference_to_onsite_video',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -1576,7 +1609,16 @@ function immunizationed_structure_user_default_permissions() {
   // Exported permission: 'view field_resource_links'.
   $permissions['view field_resource_links'] = array(
     'name' => 'view field_resource_links',
-    'roles' => array(),
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
+    ),
     'module' => 'field_permissions',
   );
 
@@ -1672,6 +1714,9 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view own field_applicable_roles'] = array(
     'name' => 'view own field_applicable_roles',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
@@ -1700,8 +1745,13 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view own field_certification_entity'] = array(
     'name' => 'view own field_certification_entity',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -1782,6 +1832,9 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view own field_internal_video_url'] = array(
     'name' => 'view own field_internal_video_url',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'apprentice admin' => 'apprentice admin',
@@ -1795,6 +1848,9 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view own field_reference_to_onsite_video'] = array(
     'name' => 'view own field_reference_to_onsite_video',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
@@ -1806,7 +1862,16 @@ function immunizationed_structure_user_default_permissions() {
   // Exported permission: 'view own field_resource_links'.
   $permissions['view own field_resource_links'] = array(
     'name' => 'view own field_resource_links',
-    'roles' => array(),
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
+    ),
     'module' => 'field_permissions',
   );
 

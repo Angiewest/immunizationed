@@ -979,6 +979,52 @@ function immunizationed_emr_importer_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-vaccination_data_from_emr-field_td'
+  $field_instances['node-vaccination_data_from_emr-field_td'] = array(
+    'bundle' => 'vaccination_data_from_emr',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Number of doses of TD vaccine',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_td',
+    'label' => 'TD',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 10,
+    ),
+  );
+
   // Exported field_instance: 'node-vaccination_data_from_emr-field_tdap'
   $field_instances['node-vaccination_data_from_emr-field_tdap'] = array(
     'bundle' => 'vaccination_data_from_emr',
@@ -1398,6 +1444,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
   t('LT 65 flu eligible estimated rate');
   t('Month');
   t('Number of doses of Influenza vaccine');
+  t('Number of doses of TD vaccine');
   t('Number of doses of TDAP');
   t('Number of doses of pneumococcal vaccine');
   t('Number of patient visits');
@@ -1412,6 +1459,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
   t('Reporting period');
   t('Reporting period start biweekly');
   t('Select this box if this is baseline data.');
+  t('TD');
   t('TDAP');
   t('TDAP eligible estimated rate');
   t('TDAP eligible estimated visits');
