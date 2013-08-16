@@ -154,9 +154,14 @@ function immunizationed_media_user_default_permissions() {
   $permissions['view field_image'] = array(
     'name' => 'view field_image',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );

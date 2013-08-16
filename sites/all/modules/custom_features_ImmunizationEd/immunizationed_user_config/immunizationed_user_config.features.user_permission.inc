@@ -380,9 +380,12 @@ function immunizationed_user_config_user_default_permissions() {
   $permissions['create field_responsible_role'] = array(
     'name' => 'create field_responsible_role',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -391,9 +394,14 @@ function immunizationed_user_config_user_default_permissions() {
   $permissions['create og_user_node'] = array(
     'name' => 'create og_user_node',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -449,6 +457,8 @@ function immunizationed_user_config_user_default_permissions() {
   $permissions['edit own field_responsible_role'] = array(
     'name' => 'edit own field_responsible_role',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -704,9 +714,13 @@ function immunizationed_user_config_user_default_permissions() {
   $permissions['view field_responsible_role'] = array(
     'name' => 'view field_responsible_role',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -715,9 +729,14 @@ function immunizationed_user_config_user_default_permissions() {
   $permissions['view og_user_node'] = array(
     'name' => 'view og_user_node',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -726,10 +745,13 @@ function immunizationed_user_config_user_default_permissions() {
   $permissions['view own field_responsible_role'] = array(
     'name' => 'view own field_responsible_role',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -738,9 +760,14 @@ function immunizationed_user_config_user_default_permissions() {
   $permissions['view own og_user_node'] = array(
     'name' => 'view own og_user_node',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );

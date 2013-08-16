@@ -277,9 +277,14 @@ function immunizationed_help_user_default_permissions() {
   $permissions['view field_book_page_graphic'] = array(
     'name' => 'view field_book_page_graphic',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -308,9 +313,14 @@ function immunizationed_help_user_default_permissions() {
   $permissions['view own field_book_page_graphic'] = array(
     'name' => 'view own field_book_page_graphic',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );

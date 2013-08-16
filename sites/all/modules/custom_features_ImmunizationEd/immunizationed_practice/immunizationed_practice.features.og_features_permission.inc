@@ -318,6 +318,13 @@ function immunizationed_practice_og_features_default_permissions() {
     ),
   );
 
+  // Exported og permission: 'node:practice_group:update field_audience field'
+  $permissions['node:practice_group:update field_audience field'] = array(
+    'roles' => array(
+      'Administrator member' => 'Administrator member',
+    ),
+  );
+
   // Exported og permission: 'node:practice_group:update field_date field'
   $permissions['node:practice_group:update field_date field'] = array(
     'roles' => array(
@@ -732,6 +739,13 @@ function immunizationed_practice_og_features_default_permissions() {
       'Administrator member' => 'Administrator member',
       'member' => 'member',
       'non-member' => 'non-member',
+    ),
+  );
+
+  // Exported og permission: 'node:practice_group:view field_audience field'
+  $permissions['node:practice_group:view field_audience field'] = array(
+    'roles' => array(
+      'Administrator member' => 'Administrator member',
     ),
   );
 

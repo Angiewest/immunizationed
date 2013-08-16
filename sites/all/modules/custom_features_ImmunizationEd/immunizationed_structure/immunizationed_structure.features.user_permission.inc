@@ -369,8 +369,13 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['create og_group_ref'] = array(
     'name' => 'create og_group_ref',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -1058,9 +1063,11 @@ function immunizationed_structure_user_default_permissions() {
     'name' => 'edit og_group_ref',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
@@ -1316,9 +1323,11 @@ function immunizationed_structure_user_default_permissions() {
     'name' => 'edit own og_group_ref',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
@@ -1420,6 +1429,9 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view body'] = array(
     'name' => 'view body',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'apprentice admin' => 'apprentice admin',
@@ -1514,8 +1526,13 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view field_educational_objectives'] = array(
     'name' => 'view field_educational_objectives',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -1567,8 +1584,13 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view field_tags'] = array(
     'name' => 'view field_tags',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -1619,8 +1641,13 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view og_group_ref'] = array(
     'name' => 'view og_group_ref',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -1629,6 +1656,9 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view own body'] = array(
     'name' => 'view own body',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'apprentice admin' => 'apprentice admin',
@@ -1654,6 +1684,9 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view own field_audience'] = array(
     'name' => 'view own field_audience',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'apprentice admin' => 'apprentice admin',
@@ -1719,8 +1752,13 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view own field_educational_objectives'] = array(
     'name' => 'view own field_educational_objectives',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -1776,8 +1814,13 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view own field_tags'] = array(
     'name' => 'view own field_tags',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -1828,6 +1871,9 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['view own og_group_ref'] = array(
     'name' => 'view own og_group_ref',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Group member' => 'Group member',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
