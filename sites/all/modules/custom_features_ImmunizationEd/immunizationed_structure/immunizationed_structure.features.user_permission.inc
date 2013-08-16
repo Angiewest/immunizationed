@@ -1057,6 +1057,8 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['edit og_group_ref'] = array(
     'name' => 'edit og_group_ref',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -1313,6 +1315,8 @@ function immunizationed_structure_user_default_permissions() {
   $permissions['edit own og_group_ref'] = array(
     'name' => 'edit own og_group_ref',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',

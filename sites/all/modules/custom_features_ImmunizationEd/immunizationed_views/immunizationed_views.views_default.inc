@@ -2876,7 +2876,7 @@ function immunizationed_views_views_default_views() {
     'field_task_due_date' => 'field_task_due_date',
     'field_responsible_role' => 'field_responsible_role',
   );
-  $handler->display->display_options['style_options']['default'] = 'field_task_due_date';
+  $handler->display->display_options['style_options']['default'] = 'field_task_start_date';
   $handler->display->display_options['style_options']['info'] = array(
     'title' => array(
       'sortable' => 0,
@@ -3081,14 +3081,6 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['fields']['field_responsible_role']['field'] = 'field_responsible_role';
   $handler->display->display_options['fields']['field_responsible_role']['delta_offset'] = '0';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Content: Task start date (field_task_start_date) */
-  $handler->display->display_options['sorts']['field_task_start_date_value']['id'] = 'field_task_start_date_value';
-  $handler->display->display_options['sorts']['field_task_start_date_value']['table'] = 'field_data_field_task_start_date';
-  $handler->display->display_options['sorts']['field_task_start_date_value']['field'] = 'field_task_start_date_value';
-  /* Sort criterion: Content: Task due date (field_task_due_date) */
-  $handler->display->display_options['sorts']['field_task_due_date_value']['id'] = 'field_task_due_date_value';
-  $handler->display->display_options['sorts']['field_task_due_date_value']['table'] = 'field_data_field_task_due_date';
-  $handler->display->display_options['sorts']['field_task_due_date_value']['field'] = 'field_task_due_date_value';
   $handler->display->display_options['path'] = 'node/%/blueprints';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Blueprints';
