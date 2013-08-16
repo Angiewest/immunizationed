@@ -1,0 +1,77 @@
+From 3b50e547e16451aebfde94cf91034f8b3e87c2d3 Mon Sep 17 00:00:00 2001
+From: othermachines <othermachines@1201100.no-reply.drupal.org>
+Date: Tue, 12 Feb 2013 10:31:40 -0700
+Subject: [PATCH] Issue #1816800 by hernani, othermachines: Added OG role
+ events.
+
+---
+ og.module    |  8 ++++++++
+ og.rules.inc | 26 ++++++++++++++++++++++++--
+ 2 files changed, 32 insertions(+), 2 deletions(-)
+
+diff --git a/og.module b/og.module
+index 04c2669..9a486b4 100644
+--- a/og.module
++++ b/og.module
+@@ -2856,6 +2856,10 @@ function og_role_grant($group_type, $gid, $uid, $rid) {
+     drupal_write_record('og_users_roles', $role);
+     og_invalidate_cache();
+     module_invoke_all('og_role_grant', $group_type, $gid, $uid, $rid);
++    
++    if (module_exists('rules'))  {
++      rules_invoke_event('og_role_grant', og_get_membership('node', $gid, 'user', $uid), entity_metadata_wrapper('user', user_load($uid)), $rid);
++    }
+   }
+ }
+ 
+@@ -2877,6 +2881,10 @@ function og_role_revoke($group_type, $gid, $uid, $rid) {
+       ->condition('gid', $gid)
+       ->execute();
+     module_invoke_all('og_role_revoke', $group_type, $gid, $uid, $rid);
++    
++    if (module_exists('rules'))  {
++      rules_invoke_event('og_role_revoke', og_get_membership('node', $gid, 'user', $uid), entity_metadata_wrapper('user', user_load($uid)), $rid);
++    }
+   }
+ }
+ 
+diff --git a/og.rules.inc b/og.rules.inc
+index ccfa6e3..4f95deb 100644
+--- a/og.rules.inc
++++ b/og.rules.inc
+@@ -41,8 +41,30 @@ function og_rules_event_info() {
+     'og_user_delete' => $defaults + array(
+       'label' => t('User has been removed from group'),
+       'help' => t("A user has been removed from group and is no longer a group member."),
+-   ),
+- );
++    ),
++    'og_role_grant' => array_merge_recursive($defaults, array(
++      'label' => t('OG role granted to user'),
++      'help' => t("An OG role has been granted to this user."),
++      'variables' => array(
++        'og_rid' => array(
++          'type' => 'integer',
++          'label' => t('OG role ID'),
++          'description' => t('The id of the OG user role.'),
++        ),
++      ),
++    )),
++    'og_role_revoke' => array_merge_recursive($defaults, array(
++      'label' => t('OG role revoked from user'),
++      'help' => t("An OG role has been revoked from this user."),
++      'variables' => array(
++        'og_rid' => array(
++          'type' => 'integer',
++          'label' => t('OG role ID'),
++          'description' => t('The id of the OG user role.'),
++        ),
++      ),
++    )),
++  );
+ }
+ 
+ /**
+-- 
+1.8.0.msysgit.0
+

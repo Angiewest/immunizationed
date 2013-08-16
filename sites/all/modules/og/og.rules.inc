@@ -41,8 +41,8 @@ function og_rules_event_info() {
     'og_user_delete' => $defaults + array(
       'label' => t('User has been removed from group'),
       'help' => t("A user has been removed from group and is no longer a group member."),
-   ),
- );
+    ),
+  );
 }
 
 /**
@@ -217,6 +217,7 @@ function og_rules_action_info() {
       'roles' => array(
         'type' => 'list<integer>',
         'label' => t('Group roles'),
+        'description' => t('Default roles will not be granted if they are being overridden in the group\'s settings.'),
         'options list' => 'og_rules_group_roles_options_list',
         'restriction' => 'input',
       ),
@@ -256,18 +257,43 @@ function og_rules_action_info() {
 
 /**
  * Options list callback for group roles.
+ *
+ * Note: Not all roles will be compatible with the group entity being
+ * evaluated. For instance, a role that is part of a default set will not
+ * be granted if the group being evaluated has its default roles and
+ * permissions overridden. Our options list will include the bundle name 
+ * and, in cases where default roles are being overridden for a group  
+ * entity, the entity's id. It will be up to the administrator to use 
+ * this information to select the correct role. 
  */
 function og_rules_group_roles_options_list($element) {
   
   $og_roles = array(); 
-  
+
   foreach (og_get_all_group_bundle() as $group_type => $bundles) {
     foreach ($bundles as $bundle => $label) {
-      $bundle_roles = og_roles($group_type, $bundle);
-      foreach ($bundle_roles as $rid => $name) {
-        // Don't return anonymous and authenticated member roles.
-        if (!in_array($name, array(OG_ANONYMOUS_ROLE, OG_AUTHENTICATED_ROLE))) {
-          $og_roles[$rid] = $label . ': ' . $name;
+      
+      $query = db_select('og_role', 'ogr')
+        ->distinct()
+        ->fields('ogr', array('gid', 'group_type'))
+        ->condition('group_bundle', $bundle, '=')
+        ->orderBy('gid', 'ASC');
+      
+      $result = $query->execute();
+      while ($row = $result->fetchAssoc()) {
+        
+        $label_append = $row['gid'] ? $row['group_type'] . ':' . $row['gid'] : t('Defaults');
+        
+        $roles = array();
+        $bundle_roles = og_roles($group_type, $bundle, $row['gid']);
+        foreach ($bundle_roles as $rid => $name) {
+          // Don't return anonymous and authenticated member roles.
+          if (!in_array($name, array(OG_ANONYMOUS_ROLE, OG_AUTHENTICATED_ROLE))) {
+            $roles[$rid] = $name;
+          }
+        }
+        if (!empty($roles)) {
+          $og_roles[$label . ' (' . $label_append . ')'] = $roles;
         }
       }
     }

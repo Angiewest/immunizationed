@@ -15,9 +15,9 @@ abstract class EntityWebTestCase extends DrupalWebTestCase {
    */
   protected function createVocabulary() {
     $vocab = entity_create('taxonomy_vocabulary', array(
-        'name' => $this->randomName(),
-        'machine_name' => drupal_strtolower($this->randomName()),
-        'description' => $this->randomName(),
+      'name' => $this->randomName(),
+      'machine_name' => drupal_strtolower($this->randomName()),
+      'description' => $this->randomName(),
     ));
     entity_save('taxonomy_vocabulary', $vocab);
     return $vocab;
@@ -48,9 +48,9 @@ class EntityAPITestCase extends EntityWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Entity CRUD',
-        'description' => 'Tests basic CRUD API functionality.',
-        'group' => 'Entity API',
+      'name' => 'Entity CRUD',
+      'description' => 'Tests basic CRUD API functionality.',
+      'group' => 'Entity API',
     );
   }
 
@@ -103,19 +103,19 @@ class EntityAPITestCase extends EntityWebTestCase {
 
     // Add text field to entity.
     $field_info = array(
-        'field_name' => 'field_text',
-        'type' => 'text',
-        'entity_types' => array('entity_test2'),
+      'field_name' => 'field_text',
+      'type' => 'text',
+      'entity_types' => array('entity_test2'),
     );
     field_create_field($field_info);
 
     $instance = array(
-        'label' => 'Text Field',
-        'field_name' => 'field_text',
-        'entity_type' => 'entity_test2',
-        'bundle' => 'entity_test2',
-        'settings' => array(),
-        'required' => FALSE,
+      'label' => 'Text Field',
+      'field_name' => 'field_text',
+      'entity_type' => 'entity_test2',
+      'bundle' => 'entity_test2',
+      'settings' => array(),
+      'required' => FALSE,
     );
     field_create_instance($instance);
 
@@ -195,10 +195,10 @@ class EntityAPITestCase extends EntityWebTestCase {
     entity_delete('entity_test2', $entity_second_revision->pid);
     $entity_info = entity_get_info('entity_test2');
     $result = db_select($entity_info['revision table'])
-    ->condition('revision_id', $entity_third_revision->revision_id)
-    ->countQuery()
-    ->execute()
-    ->fetchField();
+      ->condition('revision_id', $entity_third_revision->revision_id)
+      ->countQuery()
+      ->execute()
+      ->fetchField();
     $this->assertEqual($result, 0, 'Entity deleted with its all revisions.');
   }
 
@@ -341,9 +341,9 @@ class EntityAPITestCase extends EntityWebTestCase {
 
     // Add a new test entity in DB and make sure the hook is invoked too.
     $test3 = entity_create('entity_test_type', array(
-        'name' => 'test3',
-        'label' => 'label',
-        'weight' => 0,
+      'name' => 'test3',
+      'label' => 'label',
+      'weight' => 0,
     ));
     $test3->save();
 
@@ -432,30 +432,30 @@ class EntityAPITestCase extends EntityWebTestCase {
     // Add a test type and add a field instance, uninstall, then re-install and
     // make sure the field instance can be re-created.
     $test_type = entity_create('entity_test_type', array(
-        'name' => 'test',
-        'label' => 'label',
-        'weight' => 0,
+      'name' => 'test',
+      'label' => 'label',
+      'weight' => 0,
     ));
     $test_type->save();
 
     $field = array(
-        'field_name' => 'field_test_fullname',
-        'type' => 'text',
-        'cardinality' => 1,
-        'translatable' => FALSE,
+      'field_name' => 'field_test_fullname',
+      'type' => 'text',
+      'cardinality' => 1,
+      'translatable' => FALSE,
     );
     field_create_field($field);
 
     $instance = array(
-        'entity_type' => 'entity_test',
-        'field_name' => 'field_test_fullname',
-        'bundle' => 'test',
-        'label' => 'Full name',
-        'description' => 'Specify your first and last name.',
-        'widget' => array(
-            'type' => 'text_textfield',
-            'weight' => 0,
-        ),
+      'entity_type' => 'entity_test',
+      'field_name' => 'field_test_fullname',
+      'bundle' => 'test',
+      'label' => 'Full name',
+      'description' => 'Specify your first and last name.',
+      'widget' => array(
+        'type' => 'text_textfield',
+        'weight' => 0,
+      ),
     );
     field_create_instance($instance);
 
@@ -471,9 +471,9 @@ class EntityAPITestCase extends EntityWebTestCase {
     // Ensure re-creating the same instance now works.
     module_enable(array('entity_test'));
     $test_type = entity_create('entity_test_type', array(
-        'name' => 'test',
-        'label' => 'label',
-        'weight' => 0,
+      'name' => 'test',
+      'label' => 'label',
+      'weight' => 0,
     ));
     $test_type->save();
     field_create_field($field);
@@ -491,10 +491,10 @@ class EntityAPIRulesIntegrationTestCase extends EntityWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Entity CRUD Rules integration',
-        'description' => 'Tests the Rules integration provided by the Entity CRUD API.',
-        'group' => 'Entity API',
-        'dependencies' => array('rules'),
+      'name' => 'Entity CRUD Rules integration',
+      'description' => 'Tests the Rules integration provided by the Entity CRUD API.',
+      'group' => 'Entity API',
+      'dependencies' => array('rules'),
     );
   }
 
@@ -536,16 +536,67 @@ class EntityAPIRulesIntegrationTestCase extends EntityWebTestCase {
 }
 
 /**
+ * Tests comments with node access.
+ */
+class EntityAPICommentNodeAccessTestCase extends CommentHelperCase {
+
+  public static function getInfo() {
+    return array(
+      'name' => 'Entity API comment node access',
+      'description' => 'Test viewing comments on nodes with node access.',
+      'group' => 'Entity API',
+    );
+  }
+
+  function setUp() {
+    DrupalWebTestCase::setUp('comment', 'entity', 'node_access_test');
+    node_access_rebuild();
+
+    // Create test node and user with simple node access permission. The
+    // 'node test view' permission is implemented and granted by the
+    // node_access_test module.
+    $this->accessUser = $this->drupalCreateUser(array('access comments', 'post comments', 'edit own comments', 'node test view'));
+    $this->noAccessUser = $this->drupalCreateUser(array('administer comments'));
+    $this->node = $this->drupalCreateNode(array('type' => 'article', 'uid' => $this->accessUser->uid));
+  }
+
+  /**
+   * Tests comment access when node access is enabled.
+   */
+  function testCommentNodeAccess() {
+    // Post comment.
+    $this->drupalLogin($this->accessUser);
+    $comment_text = $this->randomName();
+    $comment = $this->postComment($this->node, $comment_text);
+    $comment_loaded = comment_load($comment->id);
+    $this->assertTrue($this->commentExists($comment), 'Comment found.');
+    $this->drupalLogout();
+
+    // Check access to node and associated comment for access user.
+    $this->assertTrue(entity_access('view', 'node', $this->node, $this->accessUser), 'Access to view node was granted for access user');
+    $this->assertTrue(entity_access('view', 'comment', $comment_loaded, $this->accessUser), 'Access to view comment was granted for access user');
+    $this->assertTrue(entity_access('update', 'comment', $comment_loaded, $this->accessUser), 'Access to update comment was granted for access user');
+    $this->assertFalse(entity_access('delete', 'comment', $comment_loaded, $this->accessUser), 'Access to delete comment was denied for access user');
+
+    // Check access to node and associated comment for no access user.
+    $this->assertFalse(entity_access('view', 'node', $this->node, $this->noAccessUser), 'Access to view node was denied for no access user');
+    $this->assertFalse(entity_access('view', 'comment', $comment_loaded, $this->noAccessUser), 'Access to view comment was denied for no access user');
+    $this->assertFalse(entity_access('update', 'comment', $comment_loaded, $this->noAccessUser), 'Access to update comment was denied for no access user');
+    $this->assertFalse(entity_access('delete', 'comment', $comment_loaded, $this->noAccessUser), 'Access to delete comment was denied for no access user');
+  }
+}
+
+/**
  * Test the i18n integration.
  */
 class EntityAPIi18nItegrationTestCase extends EntityWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Entity CRUD i18n integration',
-        'description' => 'Tests the i18n integration provided by the Entity CRUD API.',
-        'group' => 'Entity API',
-        'dependencies' => array('i18n_string'),
+      'name' => 'Entity CRUD i18n integration',
+      'description' => 'Tests the i18n integration provided by the Entity CRUD API.',
+      'group' => 'Entity API',
+      'dependencies' => array('i18n_string'),
     );
   }
 
@@ -598,9 +649,9 @@ class EntityAPIi18nItegrationTestCase extends EntityWebTestCase {
   function testDefaultController() {
     // Create test entities for the user1 and unrelated to a user.
     $entity = entity_create('entity_test_type', array(
-        'name' => 'test',
-        'uid' => $GLOBALS['user']->uid,
-        'label' => 'label-en',
+      'name' => 'test',
+      'uid' => $GLOBALS['user']->uid,
+      'label' => 'label-en',
     ));
     $entity->save();
 
@@ -644,9 +695,9 @@ class EntityMetadataTestCase extends EntityWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Metadata Wrapper',
-        'description' => 'Makes sure metadata wrapper are working right.',
-        'group' => 'Entity API',
+      'name' => 'Metadata Wrapper',
+      'description' => 'Makes sure metadata wrapper are working right.',
+      'group' => 'Entity API',
     );
   }
 
@@ -658,22 +709,22 @@ class EntityMetadataTestCase extends EntityWebTestCase {
     $this->field = field_create_field($this->field);
     $this->field_id = $this->field['id'];
     $this->instance = array(
-        'field_name' => $this->field_name,
-        'entity_type' => 'node',
-        'bundle' => 'page',
-        'label' => $this->randomName() . '_label',
-        'description' => $this->randomName() . '_description',
-        'weight' => mt_rand(0, 127),
+      'field_name' => $this->field_name,
+      'entity_type' => 'node',
+      'bundle' => 'page',
+      'label' => $this->randomName() . '_label',
+      'description' => $this->randomName() . '_description',
+      'weight' => mt_rand(0, 127),
+      'settings' => array(
+        'text_processing' => FALSE,
+      ),
+      'widget' => array(
+        'type' => 'text_textfield',
+        'label' => 'Test Field',
         'settings' => array(
-            'text_processing' => FALSE,
-        ),
-        'widget' => array(
-            'type' => 'text_textfield',
-            'label' => 'Test Field',
-            'settings' => array(
-                'size' => 64,
-            )
+          'size' => 64,
         )
+      )
     );
     field_create_instance($this->instance);
 
@@ -883,12 +934,12 @@ class EntityMetadataTestCase extends EntityWebTestCase {
     // Test using a list of entities with a list of term objects.
     $list = array();
     $list[] = entity_property_values_create_entity('taxonomy_term', array(
-        'name' => 'term 1',
-        'vocabulary' => 1,
+      'name' => 'term 1',
+      'vocabulary' => 1,
     ))->save()->value();
     $list[] = entity_property_values_create_entity('taxonomy_term', array(
-        'name' => 'term 2',
-        'vocabulary' => 1,
+      'name' => 'term 2',
+      'vocabulary' => 1,
     ))->save()->value();
     $wrapper = entity_metadata_wrapper('list<taxonomy_term>', $list);
     $this->assertTrue($wrapper[0]->name->value() == 'term 1', 'Used a list of entities.');
@@ -953,17 +1004,17 @@ class EntityMetadataTestCase extends EntityWebTestCase {
    */
   function testDataStructureWrapper() {
     $log_entry = array(
-        'type'        => 'entity',
-        'message'     => $this->randomName(8),
-        'variables'   => array(),
-        'severity'    => WATCHDOG_NOTICE,
-        'link'        => '',
-        'user'        => $GLOBALS['user'],
+      'type'        => 'entity',
+      'message'     => $this->randomName(8),
+      'variables'   => array(),
+      'severity'    => WATCHDOG_NOTICE,
+      'link'        => '',
+      'user'        => $GLOBALS['user'],
     );
     $info['property info'] = array(
-        'type' => array('type' => 'text', 'label' => 'The category to which this message belongs.'),
-        'message' => array('type' => 'text', 'label' => 'The log message.'),
-        'user' => array('type' => 'user', 'label' => 'The user causing the log entry.'),
+      'type' => array('type' => 'text', 'label' => 'The category to which this message belongs.'),
+      'message' => array('type' => 'text', 'label' => 'The log message.'),
+      'user' => array('type' => 'user', 'label' => 'The user causing the log entry.'),
     );
     $wrapper = entity_metadata_wrapper('log_entry', $log_entry, $info);
     $this->assertEqual($wrapper->user->name->value(), $GLOBALS['user']->name, 'Wrapped custom entity.');
@@ -992,8 +1043,8 @@ class EntityMetadataTestCase extends EntityWebTestCase {
 
     // Create another test node and try querying for tags.
     $tag = entity_property_values_create_entity('taxonomy_term', array(
-        'name' => $this->randomName(),
-        'vocabulary' => 1,
+          'name' => $this->randomName(),
+          'vocabulary' => 1,
     ))->save();
     $field_tag_value[LANGUAGE_NONE][0]['tid'] = $tag->getIdentifier();
     $node = $this->drupalCreateNode(array('type' => 'article', 'field_tags' => $field_tag_value));
@@ -1043,9 +1094,9 @@ class EntityTokenTestCase extends EntityWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Entity tokens',
-        'description' => 'Tests provided tokens for entity properties.',
-        'group' => 'Entity API',
+      'name' => 'Entity tokens',
+      'description' => 'Tests provided tokens for entity properties.',
+      'group' => 'Entity API',
     );
   }
 
@@ -1070,8 +1121,8 @@ class EntityTokenTestCase extends EntityWebTestCase {
     // Test multiple-value tokens using the tags field of articles.
     for ($i = 0; $i < 4; $i++) {
       $tags[$i] = entity_property_values_create_entity('taxonomy_term', array(
-          'name' => $this->randomName(),
-          'vocabulary' => 1,
+        'name' => $this->randomName(),
+        'vocabulary' => 1,
       ))->save();
       $field_value[LANGUAGE_NONE][$i]['tid'] = $tags[$i]->getIdentifier();
       $labels[$i] = $tags[$i]->label();
@@ -1110,9 +1161,9 @@ class EntityMetadataIntegrationTestCase extends EntityWebTestCase {
 
   public static function getInfo() {
     return array(
-        'name' => 'Property info core integration',
-        'description' => 'Tests using metadata wrapper for drupal core.',
-        'group' => 'Entity API',
+      'name' => 'Property info core integration',
+      'description' => 'Tests using metadata wrapper for drupal core.',
+      'group' => 'Entity API',
     );
   }
 
@@ -1173,14 +1224,14 @@ class EntityMetadataIntegrationTestCase extends EntityWebTestCase {
     $node = $this->drupalCreateNode(array('title' => $title, 'type' => 'page'));
     $account = $this->drupalCreateUser();
     $comment = (object)array(
-        'subject' => 'topic',
-        'nid' => $node->nid,
-        'uid' => $account->uid,
-        'cid' => FALSE,
-        'pid' => 0,
-        'homepage' => '',
-        'language' => LANGUAGE_NONE,
-        'hostname' => ip_address(),
+      'subject' => 'topic',
+      'nid' => $node->nid,
+      'uid' => $account->uid,
+      'cid' => FALSE,
+      'pid' => 0,
+      'homepage' => '',
+      'language' => LANGUAGE_NONE,
+      'hostname' => ip_address(),
     );
     $comment->comment_body[LANGUAGE_NONE][0] = array('value' => 'text', 'format' => 0);
     comment_save($comment);
@@ -1217,19 +1268,19 @@ class EntityMetadataIntegrationTestCase extends EntityWebTestCase {
   function testTaxonomyProperties() {
     $vocab = $this->createVocabulary();
     $term_parent = entity_property_values_create_entity('taxonomy_term', array(
-        'name' => $this->randomName(),
-        'vocabulary' => $vocab,
+      'name' => $this->randomName(),
+      'vocabulary' => $vocab,
     ))->save()->value();
     $term_parent2 = entity_property_values_create_entity('taxonomy_term', array(
-        'name' => $this->randomName(),
-        'vocabulary' => $vocab,
+      'name' => $this->randomName(),
+      'vocabulary' => $vocab,
     ))->save()->value();
     $term = entity_property_values_create_entity('taxonomy_term', array(
-        'name' => $this->randomName(),
-        'vocabulary' => $vocab,
-        'description' => $this->randomString(),
-        'weight' => mt_rand(0, 10),
-        'parent' => array($term_parent->tid),
+      'name' => $this->randomName(),
+      'vocabulary' => $vocab,
+      'description' => $this->randomString(),
+      'weight' => mt_rand(0, 10),
+      'parent' => array($term_parent->tid),
     ))->save()->value();
 
     $wrapper = entity_metadata_wrapper('taxonomy_term', $term);
@@ -1279,16 +1330,16 @@ class EntityMetadataIntegrationTestCase extends EntityWebTestCase {
     $field = field_create_field($field);
     $field_id = $field['id'];
     $field_instance = array(
-        'field_name' => $field_name,
-        'entity_type' => 'node',
-        'bundle' => 'article',
-        'label' => $this->randomName() . '_label',
-        'description' => $this->randomName() . '_description',
-        'weight' => mt_rand(0, 127),
-        'widget' => array(
-            'type' => 'options_select',
-            'label' => 'Test term field',
-        )
+      'field_name' => $field_name,
+      'entity_type' => 'node',
+      'bundle' => 'article',
+      'label' => $this->randomName() . '_label',
+      'description' => $this->randomName() . '_description',
+      'weight' => mt_rand(0, 127),
+      'widget' => array(
+        'type' => 'options_select',
+        'label' => 'Test term field',
+      )
     );
     field_create_instance($field_instance);
     $term_field[LANGUAGE_NONE][0]['tid'] = $term->tid;
@@ -1387,20 +1438,20 @@ class EntityMetadataIntegrationTestCase extends EntityWebTestCase {
   function testTextFields() {
     // Create a simple text field without text processing.
     $field = array(
-        'field_name' => 'field_text',
-        'type' => 'text',
-        'cardinality' => 2,
+      'field_name' => 'field_text',
+      'type' => 'text',
+      'cardinality' => 2,
     );
     field_create_field($field);
     $instance = array(
-        'field_name' => 'field_text',
-        'entity_type' => 'node',
-        'label' => 'test',
-        'bundle' => 'article',
-        'widget' => array(
-            'type' => 'text_textfield',
-            'weight' => -1,
-        ),
+      'field_name' => 'field_text',
+      'entity_type' => 'node',
+      'label' => 'test',
+      'bundle' => 'article',
+      'widget' => array(
+        'type' => 'text_textfield',
+        'weight' => -1,
+      ),
     );
     field_create_instance($instance);
 
@@ -1432,21 +1483,21 @@ class EntityMetadataIntegrationTestCase extends EntityWebTestCase {
 
     // Create a text field with summary but without text processing.
     $field = array(
-        'field_name' => 'field_text2',
-        'type' => 'text_with_summary',
-        'cardinality' => 1,
+      'field_name' => 'field_text2',
+      'type' => 'text_with_summary',
+      'cardinality' => 1,
     );
     field_create_field($field);
     $instance = array(
-        'field_name' => 'field_text2',
-        'entity_type' => 'node',
-        'label' => 'test',
-        'bundle' => 'article',
-        'settings' => array('text_processing' => 0),
-        'widget' => array(
-            'type' => 'text_textarea_with_summary',
-            'weight' => -1,
-        ),
+      'field_name' => 'field_text2',
+      'entity_type' => 'node',
+      'label' => 'test',
+      'bundle' => 'article',
+      'settings' => array('text_processing' => 0),
+      'widget' => array(
+        'type' => 'text_textarea_with_summary',
+        'weight' => -1,
+      ),
     );
     field_create_instance($instance);
 
@@ -1474,23 +1525,23 @@ class EntityMetadataIntegrationTestCase extends EntityWebTestCase {
 
     // Create a file field.
     $field = array(
-        'field_name' => 'field_file',
-        'type' => 'file',
-        'cardinality' => 2,
-        'settings' => array('display_field' => TRUE),
+      'field_name' => 'field_file',
+      'type' => 'file',
+      'cardinality' => 2,
+      'settings' => array('display_field' => TRUE),
     );
     field_create_field($field);
     $instance = array(
-        'field_name' => 'field_file',
-        'entity_type' => 'node',
-        'label' => 'File',
-        'bundle' => 'article',
-        'settings' => array('description_field' => TRUE),
-        'required' => FALSE,
-        'widget' => array(
-            'type' => 'file_generic',
-            'weight' => -1,
-        ),
+      'field_name' => 'field_file',
+      'entity_type' => 'node',
+      'label' => 'File',
+      'bundle' => 'article',
+      'settings' => array('description_field' => TRUE),
+      'required' => FALSE,
+      'widget' => array(
+        'type' => 'file_generic',
+        'weight' => -1,
+      ),
     );
     field_create_instance($instance);
 
