@@ -405,6 +405,7 @@ features[variable][] = comment_subject_field_video
 features[variable][] = comment_task
 features[variable][] = comment_video
 features[variable][] = comment_webform
+features[variable][] = date_format_short_no_time
 features[variable][] = diff_enable_revisions_page_node_announcement
 features[variable][] = diff_show_preview_changes_node_announcement
 features[variable][] = diff_view_mode_preview_node_announcement

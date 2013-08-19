@@ -601,6 +601,13 @@ function immunizationed_structure_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'date_format_short_no_time';
+  $strongarm->value = 'm/d/Y';
+  $export['date_format_short_no_time'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'diff_enable_revisions_page_node_announcement';
   $strongarm->value = 0;
   $export['diff_enable_revisions_page_node_announcement'] = $strongarm;
