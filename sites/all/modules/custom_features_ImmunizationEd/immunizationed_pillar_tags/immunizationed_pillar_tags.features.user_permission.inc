@@ -28,13 +28,6 @@ function immunizationed_pillar_tags_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: 'delete terms in taxonomy_pillar_tags_'.
-  $permissions['delete terms in taxonomy_pillar_tags_'] = array(
-    'name' => 'delete terms in taxonomy_pillar_tags_',
-    'roles' => array(),
-    'module' => 'taxonomy',
-  );
-
   // Exported permission: 'edit field_pillar_tags'.
   $permissions['edit field_pillar_tags'] = array(
     'name' => 'edit field_pillar_tags',
@@ -55,13 +48,6 @@ function immunizationed_pillar_tags_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'edit terms in taxonomy_pillar_tags_'.
-  $permissions['edit terms in taxonomy_pillar_tags_'] = array(
-    'name' => 'edit terms in taxonomy_pillar_tags_',
-    'roles' => array(),
-    'module' => 'taxonomy',
   );
 
   // Exported permission: 'view field_pillar_tags'.
