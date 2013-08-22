@@ -27,6 +27,7 @@ features[page_manager_pages][] = practice_progress_charts
 features[user_permission][] = administer analytics dashboard
 features[user_permission][] = view analytics dashboard
 features[views_view][] = backup_vaccination_charts_by_practice
+features[views_view][] = baseline_charts_captions
 features[views_view][] = influenza_progress_charts
 features[views_view][] = influenza_progress_charts_by_practice
 features[views_view][] = influenza_vaccination_charts_all_sites

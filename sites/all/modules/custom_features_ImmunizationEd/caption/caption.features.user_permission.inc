@@ -10,13 +10,6 @@
 function caption_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: 'administer panelizer node caption defaults'.
-  $permissions['administer panelizer node caption defaults'] = array(
-    'name' => 'administer panelizer node caption defaults',
-    'roles' => array(),
-    'module' => 'panelizer',
-  );
-
   // Exported permission: 'create caption content'.
   $permissions['create caption content'] = array(
     'name' => 'create caption content',
