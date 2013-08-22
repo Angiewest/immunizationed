@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Caption feature.
+ */
+
+include_once 'caption.features.inc';

@@ -24,24 +24,9 @@ function immunizationed_charts_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
   );
-  // Exported menu link: menu-charts:practice-admin/charts/progress
-  $menu_links['menu-charts:practice-admin/charts/progress'] = array(
-    'menu_name' => 'menu-charts',
-    'link_path' => 'practice-admin/charts/progress',
-    'router_path' => 'practice-admin/charts/progress',
-    'link_title' => 'Progress Charts',
-    'options' => array(),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-  );
   // Translatables
   // Included for use with string extractors like potx.
   t('Baseline Charts');
-  t('Progress Charts');
 
 
   return $menu_links;

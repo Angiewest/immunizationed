@@ -42,6 +42,14 @@ function immunizationed_charts_default_page_manager_pages() {
         'context' => 'logged-in-user',
         'not' => FALSE,
       ),
+      3 => array(
+        'name' => 'perm',
+        'settings' => array(
+          'perm' => 'edit users with role CoIadmin',
+        ),
+        'context' => 'logged-in-user',
+        'not' => FALSE,
+      ),
     ),
     'logic' => 'or',
   );
@@ -97,7 +105,7 @@ function immunizationed_charts_default_page_manager_pages() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = 'Baseline Charts of Doses & Eligible Visits - All Sites';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
@@ -122,7 +130,7 @@ function immunizationed_charts_default_page_manager_pages() {
     $pane->pid = 'new-2';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
-    $pane->subtype = 'pneumo_vaccination_charts_by_practice-panel_pane_5';
+    $pane->subtype = 'influenza_vaccination_charts_by_practice-panel_pane_3';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array();
@@ -140,7 +148,7 @@ function immunizationed_charts_default_page_manager_pages() {
     $pane->pid = 'new-3';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
-    $pane->subtype = 'tdap_vaccination_charts_by_practice-panel_pane_5';
+    $pane->subtype = 'pneumo_vaccination_charts_by_practice-panel_pane_5';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array();
@@ -154,6 +162,60 @@ function immunizationed_charts_default_page_manager_pages() {
     $pane->locks = array();
     $display->content['new-3'] = $pane;
     $display->panels['middle'][2] = 'new-3';
+    $pane = new stdClass();
+    $pane->pid = 'new-4';
+    $pane->panel = 'middle';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'pneumo_vaccination_charts_by_practice-panel_pane_3';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 3;
+    $pane->locks = array();
+    $display->content['new-4'] = $pane;
+    $display->panels['middle'][3] = 'new-4';
+    $pane = new stdClass();
+    $pane->pid = 'new-5';
+    $pane->panel = 'middle';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'tdap_vaccination_charts_by_practice-panel_pane_5';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 4;
+    $pane->locks = array();
+    $display->content['new-5'] = $pane;
+    $display->panels['middle'][4] = 'new-5';
+    $pane = new stdClass();
+    $pane->pid = 'new-6';
+    $pane->panel = 'middle';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'tdap_vaccination_charts_by_practice-panel_pane_3';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 5;
+    $pane->locks = array();
+    $display->content['new-6'] = $pane;
+    $display->panels['middle'][5] = 'new-6';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -163,53 +225,60 @@ function immunizationed_charts_default_page_manager_pages() {
   $page = new stdClass();
   $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
   $page->api_version = 1;
-  $page->name = 'admin_progress_charts';
+  $page->name = 'practice_baseline_charts';
   $page->task = 'page';
-  $page->admin_title = 'Admin progress charts';
-  $page->admin_description = 'All site charts';
-  $page->path = 'practice-admin/charts/progress';
+  $page->admin_title = 'practice baseline charts';
+  $page->admin_description = 'Page for practice charts';
+  $page->path = 'node/%gid/charts/baseline';
   $page->access = array(
+    'logic' => 'or',
     'plugins' => array(
       0 => array(
-        'name' => 'perm',
+        'name' => 'og_member',
         'settings' => array(
-          'perm' => 'edit users with role administrator',
+          'state' => array(
+            1 => '1',
+          ),
         ),
-        'context' => 'logged-in-user',
+        'context' => array(
+          0 => 'logged-in-user',
+          1 => 'argument_entity_id:node_1',
+        ),
         'not' => FALSE,
       ),
       1 => array(
-        'name' => 'perm',
+        'name' => 'og_perm',
         'settings' => array(
-          'perm' => 'edit users with role apprenticeadmin',
+          'perm' => 'administer group',
         ),
-        'context' => 'logged-in-user',
-        'not' => FALSE,
-      ),
-      2 => array(
-        'name' => 'perm',
-        'settings' => array(
-          'perm' => 'edit users with role editor',
+        'context' => array(
+          0 => 'logged-in-user',
+          1 => 'argument_entity_id:node_1',
         ),
-        'context' => 'logged-in-user',
         'not' => FALSE,
       ),
     ),
-    'logic' => 'or',
   );
   $page->menu = array(
-    'type' => 'normal',
-    'title' => 'Progress Charts',
-    'name' => 'menu-charts',
-    'weight' => '0',
+    'type' => 'none',
+    'title' => 'Baseline Charts',
+    'name' => 'navigation',
+    'weight' => '10',
     'parent' => array(
-      'type' => 'none',
+      'type' => 'tab',
       'title' => '',
       'name' => 'navigation',
       'weight' => '0',
     ),
   );
-  $page->arguments = array();
+  $page->arguments = array(
+    'gid' => array(
+      'id' => 1,
+      'identifier' => 'Node: ID',
+      'name' => 'entity_id:node',
+      'settings' => array(),
+    ),
+  );
   $page->conf = array(
     'admin_paths' => FALSE,
   );
@@ -217,13 +286,13 @@ function immunizationed_charts_default_page_manager_pages() {
   $handler = new stdClass();
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
-  $handler->name = 'page_admin_progress_charts_panel_context';
+  $handler->name = 'page_practice_baseline_charts_panel_context';
   $handler->task = 'page';
-  $handler->subtask = 'admin_progress_charts';
+  $handler->subtask = 'practice_baseline_charts';
   $handler->handler = 'panel_context';
   $handler->weight = 0;
   $handler->conf = array(
-    'title' => 'Baseline Charts Panel',
+    'title' => 'Charts panel',
     'no_blocks' => 0,
     'pipeline' => 'standard',
     'body_classes_to_remove' => '',
@@ -249,17 +318,21 @@ function immunizationed_charts_default_page_manager_pages() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = 'Baseline Vaccination Charts for %gid:title';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-4';
+    $pane->pid = 'new-7';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
-    $pane->subtype = 'influenza_progress_charts-panel_pane_5';
+    $pane->subtype = 'influenza_vaccination_charts_by_practice-panel_pane_2';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array();
+    $pane->configuration = array(
+      'arguments' => array(
+        'gid' => '',
+      ),
+    );
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
@@ -268,13 +341,123 @@ function immunizationed_charts_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-4'] = $pane;
-    $display->panels['middle'][0] = 'new-4';
+    $display->content['new-7'] = $pane;
+    $display->panels['middle'][0] = 'new-7';
+    $pane = new stdClass();
+    $pane->pid = 'new-8';
+    $pane->panel = 'middle';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'influenza_vaccination_charts_by_practice-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'arguments' => array(
+        'gid' => '',
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-8'] = $pane;
+    $display->panels['middle'][1] = 'new-8';
+    $pane = new stdClass();
+    $pane->pid = 'new-9';
+    $pane->panel = 'middle';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'pneumo_vaccination_charts_by_practice-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'arguments' => array(
+        'gid' => '',
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $display->content['new-9'] = $pane;
+    $display->panels['middle'][2] = 'new-9';
+    $pane = new stdClass();
+    $pane->pid = 'new-10';
+    $pane->panel = 'middle';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'pneumo_vaccination_charts_by_practice-panel_pane_2';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'arguments' => array(
+        'gid' => '',
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 3;
+    $pane->locks = array();
+    $display->content['new-10'] = $pane;
+    $display->panels['middle'][3] = 'new-10';
+    $pane = new stdClass();
+    $pane->pid = 'new-11';
+    $pane->panel = 'middle';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'tdap_vaccination_charts_by_practice-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'arguments' => array(
+        'gid' => '',
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 4;
+    $pane->locks = array();
+    $display->content['new-11'] = $pane;
+    $display->panels['middle'][4] = 'new-11';
+    $pane = new stdClass();
+    $pane->pid = 'new-12';
+    $pane->panel = 'middle';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'tdap_vaccination_charts_by_practice-panel_pane_2';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'arguments' => array(
+        'gid' => '',
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 5;
+    $pane->locks = array();
+    $display->content['new-12'] = $pane;
+    $display->panels['middle'][5] = 'new-12';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
-  $pages['admin_progress_charts'] = $page;
+  $pages['practice_baseline_charts'] = $page;
 
   $page = new stdClass();
   $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
@@ -285,7 +468,33 @@ function immunizationed_charts_default_page_manager_pages() {
   $page->admin_description = 'Page for practice charts';
   $page->path = 'node/%gid/charts';
   $page->access = array(
-    'logic' => 'and',
+    'logic' => 'or',
+    'plugins' => array(
+      0 => array(
+        'name' => 'og_member',
+        'settings' => array(
+          'state' => array(
+            1 => '1',
+          ),
+        ),
+        'context' => array(
+          0 => 'logged-in-user',
+          1 => 'argument_entity_id:node_1',
+        ),
+        'not' => FALSE,
+      ),
+      1 => array(
+        'name' => 'og_perm',
+        'settings' => array(
+          'perm' => 'administer group',
+        ),
+        'context' => array(
+          0 => 'logged-in-user',
+          1 => 'argument_entity_id:node_1',
+        ),
+        'not' => FALSE,
+      ),
+    ),
   );
   $page->menu = array(
     'type' => 'tab',
@@ -364,9 +573,22 @@ function immunizationed_charts_default_page_manager_pages() {
   $page->admin_description = 'Page for practice charts';
   $page->path = 'node/%gid/charts/progress';
   $page->access = array(
-    'logic' => 'and',
+    'logic' => 'or',
     'plugins' => array(
       0 => array(
+        'name' => 'og_member',
+        'settings' => array(
+          'state' => array(
+            1 => '1',
+          ),
+        ),
+        'context' => array(
+          0 => 'logged-in-user',
+          1 => 'argument_entity_id:node_1',
+        ),
+        'not' => FALSE,
+      ),
+      1 => array(
         'name' => 'og_perm',
         'settings' => array(
           'perm' => 'administer group',
