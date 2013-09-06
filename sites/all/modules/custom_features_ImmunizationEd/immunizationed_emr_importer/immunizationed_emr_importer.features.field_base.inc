@@ -52,6 +52,27 @@ function immunizationed_emr_importer_field_default_field_bases() {
     'type' => 'number_decimal',
   );
 
+  // Exported field_base: 'field_average_age_at_visit'
+  $field_bases['field_average_age_at_visit'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_average_age_at_visit',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(
+      'decimal_separator' => '.',
+    ),
+    'translatable' => 0,
+    'type' => 'number_float',
+  );
+
   // Exported field_base: 'field_baseline_indicator'
   $field_bases['field_baseline_indicator'] = array(
     'active' => 1,
@@ -100,13 +121,13 @@ function immunizationed_emr_importer_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_gte_65_flu_eligible_estima'
-  $field_bases['field_gte_65_flu_eligible_estima'] = array(
+  // Exported field_base: 'field_day_of_month'
+  $field_bases['field_day_of_month'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_gte_65_flu_eligible_estima',
+    'field_name' => 'field_day_of_month',
     'field_permissions' => array(
       'type' => 2,
     ),
@@ -114,22 +135,37 @@ function immunizationed_emr_importer_field_default_field_bases() {
     'indexes' => array(),
     'locked' => 0,
     'module' => 'number',
-    'settings' => array(
-      'decimal_separator' => '.',
-      'precision' => 10,
-      'scale' => 2,
-    ),
+    'settings' => array(),
     'translatable' => 0,
-    'type' => 'number_decimal',
+    'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_gte_65_flu_est_visits'
-  $field_bases['field_gte_65_flu_est_visits'] = array(
+  // Exported field_base: 'field_day_of_year'
+  $field_bases['field_day_of_year'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_gte_65_flu_est_visits',
+    'field_name' => 'field_day_of_year',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'number_integer',
+  );
+
+  // Exported field_base: 'field_flu_vaccine_indicated_'
+  $field_bases['field_flu_vaccine_indicated_'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_flu_vaccine_indicated_',
     'field_permissions' => array(
       'type' => 2,
     ),
@@ -180,48 +216,6 @@ function immunizationed_emr_importer_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'number_float',
-  );
-
-  // Exported field_base: 'field_lt_65_flu_eligible_estimat'
-  $field_bases['field_lt_65_flu_eligible_estimat'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_lt_65_flu_eligible_estimat',
-    'field_permissions' => array(
-      'type' => 2,
-    ),
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'number',
-    'settings' => array(
-      'decimal_separator' => '.',
-      'precision' => 10,
-      'scale' => 2,
-    ),
-    'translatable' => 0,
-    'type' => 'number_decimal',
-  );
-
-  // Exported field_base: 'field_lt_65_flu_est_visits'
-  $field_bases['field_lt_65_flu_est_visits'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_lt_65_flu_est_visits',
-    'field_permissions' => array(
-      'type' => 2,
-    ),
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'number',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'number_integer',
   );
 
   // Exported field_base: 'field_month'
@@ -302,6 +296,25 @@ function immunizationed_emr_importer_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'number_decimal',
+  );
+
+  // Exported field_base: 'field_pneumo_vaccine_indicated'
+  $field_bases['field_pneumo_vaccine_indicated'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_pneumo_vaccine_indicated',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'number_integer',
   );
 
   // Exported field_base: 'field_pneumo_vax_rate'
@@ -476,25 +489,6 @@ function immunizationed_emr_importer_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_td'
-  $field_bases['field_td'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_td',
-    'field_permissions' => array(
-      'type' => 2,
-    ),
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'number',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'number_integer',
-  );
-
   // Exported field_base: 'field_tdap'
   $field_bases['field_tdap'] = array(
     'active' => 1,
@@ -556,6 +550,25 @@ function immunizationed_emr_importer_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
+  // Exported field_base: 'field_tdap_vaccine_indicated'
+  $field_bases['field_tdap_vaccine_indicated'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_tdap_vaccine_indicated',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'number_integer',
+  );
+
   // Exported field_base: 'field_tdap_vax_rate'
   $field_bases['field_tdap_vax_rate'] = array(
     'active' => 1,
@@ -596,6 +609,40 @@ function immunizationed_emr_importer_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
+  // Exported field_base: 'field_visit_date'
+  $field_bases['field_visit_date'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_visit_date',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'date',
+    'settings' => array(
+      'cache_count' => 4,
+      'cache_enabled' => 0,
+      'granularity' => array(
+        'day' => 'day',
+        'hour' => 0,
+        'minute' => 0,
+        'month' => 'month',
+        'second' => 0,
+        'year' => 'year',
+      ),
+      'repeat' => 0,
+      'timezone_db' => '',
+      'todate' => '',
+      'tz_handling' => 'none',
+    ),
+    'translatable' => 0,
+    'type' => 'datetime',
+  );
+
   // Exported field_base: 'field_visits'
   $field_bases['field_visits'] = array(
     'active' => 1,
@@ -624,6 +671,25 @@ function immunizationed_emr_importer_field_default_field_bases() {
     'field_name' => 'field_week',
     'field_permissions' => array(
       'type' => 0,
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'number_integer',
+  );
+
+  // Exported field_base: 'field_year'
+  $field_bases['field_year'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_year',
+    'field_permissions' => array(
+      'type' => 2,
     ),
     'foreign keys' => array(),
     'indexes' => array(),
