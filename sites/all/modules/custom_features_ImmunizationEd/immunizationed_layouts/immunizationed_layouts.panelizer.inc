@@ -358,14 +358,18 @@ function immunizationed_layouts_panelizer_defaults() {
     $pane->access = array();
     $pane->configuration = array(
       'label' => 'hidden',
-      'formatter' => 'file_rendered',
-      'delta_limit' => 0,
+      'formatter' => 'image',
+      'delta_limit' => '0',
       'delta_offset' => '0',
-      'delta_reversed' => FALSE,
+      'delta_reversed' => 0,
       'formatter_settings' => array(
         'file_view_mode' => 'teaser',
+        'image_style' => 'thumbnail',
+        'image_link' => '',
       ),
       'context' => 'panelizer',
+      'override_title' => 0,
+      'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array(
