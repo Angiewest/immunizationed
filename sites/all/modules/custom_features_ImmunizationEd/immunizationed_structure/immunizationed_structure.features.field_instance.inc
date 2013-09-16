@@ -2854,7 +2854,6 @@ function immunizationed_structure_field_default_field_instances() {
     'bundle' => 'video',
     'default_value' => array(
       0 => array(
-        'title' => '[current-page:title]',
         'url' => 'sites/default/files/video/',
       ),
     ),
@@ -2877,7 +2876,7 @@ function immunizationed_structure_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_internal_video_url',
-    'label' => 'Internal video url',
+    'label' => 'Video link',
     'required' => 0,
     'settings' => array(
       'attributes' => array(
@@ -3173,7 +3172,6 @@ function immunizationed_structure_field_default_field_instances() {
   t('Image');
   t('Integer used to calculate due date');
   t('Integer used to calculate suggested start date.');
-  t('Internal video url');
   t('Links');
   t('Links to resources associated with this waypoint.');
   t('Optionally enter a fixed due date');
@@ -3215,6 +3213,7 @@ function immunizationed_structure_field_default_field_instances() {
   t('Upload a graphic to be displayed with this page');
   t('Upload an image to associate with this content');
   t('Upload an image to go with this article.');
+  t('Video link');
   t('Visibility');
   t('add links to resources');
   t('article image');

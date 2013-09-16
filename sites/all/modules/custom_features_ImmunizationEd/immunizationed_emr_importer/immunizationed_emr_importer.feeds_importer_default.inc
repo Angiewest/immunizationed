@@ -44,8 +44,8 @@ function immunizationed_emr_importer_feeds_importer_default() {
         'expire' => '-1',
         'mappings' => array(
           0 => array(
-            'source' => 'practice',
-            'target' => 'field_practice',
+            'source' => 'date',
+            'target' => 'field_visit_date:start',
             'unique' => FALSE,
           ),
           1 => array(
@@ -54,43 +54,43 @@ function immunizationed_emr_importer_feeds_importer_default() {
             'unique' => FALSE,
           ),
           2 => array(
-            'source' => 'report_id',
-            'target' => 'field_report_id',
+            'source' => 'practice',
+            'target' => 'field_practice',
             'unique' => FALSE,
           ),
           3 => array(
-            'source' => 'title',
-            'target' => 'title',
-            'unique' => 1,
-          ),
-          4 => array(
-            'source' => 'reporting_period_start',
-            'target' => 'field_reporting_period:start',
-            'unique' => FALSE,
-          ),
-          5 => array(
-            'source' => 'end',
-            'target' => 'field_reporting_period:end',
-            'unique' => FALSE,
-          ),
-          6 => array(
             'source' => 'quarter',
             'target' => 'field_quarter',
             'unique' => FALSE,
           ),
-          7 => array(
+          4 => array(
             'source' => 'month',
             'target' => 'field_month',
             'unique' => FALSE,
           ),
+          5 => array(
+            'source' => 'week',
+            'target' => 'field_week',
+            'unique' => FALSE,
+          ),
+          6 => array(
+            'source' => 'jday',
+            'target' => 'field_day_of_year',
+            'unique' => FALSE,
+          ),
+          7 => array(
+            'source' => 'mday',
+            'target' => 'field_day_of_month',
+            'unique' => FALSE,
+          ),
           8 => array(
-            'source' => 'biweek',
-            'target' => 'field_biweek_number',
+            'source' => 'year',
+            'target' => 'field_year',
             'unique' => FALSE,
           ),
           9 => array(
-            'source' => 'week',
-            'target' => 'field_week',
+            'source' => 'biweek',
+            'target' => 'field_biweek_number',
             'unique' => FALSE,
           ),
           10 => array(
@@ -99,78 +99,78 @@ function immunizationed_emr_importer_feeds_importer_default() {
             'unique' => FALSE,
           ),
           11 => array(
+            'source' => 'report_id',
+            'target' => 'field_report_id',
+            'unique' => FALSE,
+          ),
+          12 => array(
+            'source' => 'title',
+            'target' => 'title',
+            'unique' => 1,
+          ),
+          13 => array(
+            'source' => 'reporting_period_start',
+            'target' => 'field_reporting_period:start',
+            'unique' => FALSE,
+          ),
+          14 => array(
+            'source' => 'end',
+            'target' => 'field_reporting_period:end',
+            'unique' => FALSE,
+          ),
+          15 => array(
             'source' => 'Influenza',
             'target' => 'field_influenza',
             'unique' => FALSE,
           ),
-          12 => array(
+          16 => array(
             'source' => 'Pneumo',
             'target' => 'field_pneumo',
             'unique' => FALSE,
           ),
-          13 => array(
+          17 => array(
             'source' => 'TDAP',
             'target' => 'field_tdap',
             'unique' => FALSE,
           ),
-          14 => array(
+          18 => array(
             'source' => 'Total',
             'target' => 'field_total',
             'unique' => FALSE,
           ),
-          15 => array(
+          19 => array(
             'source' => 'flu_rate',
             'target' => 'field_influenza_vax_rate',
             'unique' => FALSE,
           ),
-          16 => array(
+          20 => array(
             'source' => 'pneum_rate',
             'target' => 'field_pneumo_vax_rate',
             'unique' => FALSE,
           ),
-          17 => array(
+          21 => array(
             'source' => 'Tdap_rate',
             'target' => 'field_tdap_vax_rate',
             'unique' => FALSE,
           ),
-          18 => array(
+          22 => array(
             'source' => 'all_flu_rate_estimated_eligible',
             'target' => 'field_all_flu_eligible_estimated',
             'unique' => FALSE,
           ),
-          19 => array(
+          23 => array(
             'source' => 'pneumo_rate_estimated_eligible',
             'target' => 'field_pneumo_eligible_estimated_',
             'unique' => FALSE,
           ),
-          20 => array(
+          24 => array(
             'source' => 'tdap_rate_estimated_eligible',
             'target' => 'field_tdap_eligible_estimated_ra',
             'unique' => FALSE,
           ),
-          21 => array(
-            'source' => 'lt_65_flu_rate_estimated_eligible',
-            'target' => 'field_lt_65_flu_eligible_estimat',
-            'unique' => FALSE,
-          ),
-          22 => array(
-            'source' => 'gte_65_flu_rate_estimated_eligible',
-            'target' => 'field_gte_65_flu_eligible_estima',
-            'unique' => FALSE,
-          ),
-          23 => array(
+          25 => array(
             'source' => 'tdap_visits_estimated',
             'target' => 'field_tdap_eligible_estimated_vi',
-            'unique' => FALSE,
-          ),
-          24 => array(
-            'source' => 'lt_65_flu_visits_estimated',
-            'target' => 'field_lt_65_flu_est_visits',
-            'unique' => FALSE,
-          ),
-          25 => array(
-            'source' => 'gte_65_flu_visits_estimated',
-            'target' => 'field_gte_65_flu_est_visits',
             'unique' => FALSE,
           ),
           26 => array(

@@ -64,6 +64,45 @@ function immunizationed_practice_user_default_permissions() {
     'module' => 'panelizer',
   );
 
+  // Exported permission: 'create field_target_flu_percent'.
+  $permissions['create field_target_flu_percent'] = array(
+    'name' => 'create field_target_flu_percent',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'create field_target_pneumo_percent'.
+  $permissions['create field_target_pneumo_percent'] = array(
+    'name' => 'create field_target_pneumo_percent',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'create field_target_tdap_percent'.
+  $permissions['create field_target_tdap_percent'] = array(
+    'name' => 'create field_target_tdap_percent',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'create practice_admin_group content'.
   $permissions['create practice_admin_group content'] = array(
     'name' => 'create practice_admin_group content',
@@ -130,6 +169,78 @@ function immunizationed_practice_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'edit field_target_flu_percent'.
+  $permissions['edit field_target_flu_percent'] = array(
+    'name' => 'edit field_target_flu_percent',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit field_target_pneumo_percent'.
+  $permissions['edit field_target_pneumo_percent'] = array(
+    'name' => 'edit field_target_pneumo_percent',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit field_target_tdap_percent'.
+  $permissions['edit field_target_tdap_percent'] = array(
+    'name' => 'edit field_target_tdap_percent',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit own field_target_flu_percent'.
+  $permissions['edit own field_target_flu_percent'] = array(
+    'name' => 'edit own field_target_flu_percent',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit own field_target_pneumo_percent'.
+  $permissions['edit own field_target_pneumo_percent'] = array(
+    'name' => 'edit own field_target_pneumo_percent',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit own field_target_tdap_percent'.
+  $permissions['edit own field_target_tdap_percent'] = array(
+    'name' => 'edit own field_target_tdap_percent',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'edit own practice_admin_group content'.
   $permissions['edit own practice_admin_group content'] = array(
     'name' => 'edit own practice_admin_group content',
@@ -187,6 +298,70 @@ function immunizationed_practice_user_default_permissions() {
       'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'actions_permissions',
+  );
+
+  // Exported permission: 'view field_target_flu_percent'.
+  $permissions['view field_target_flu_percent'] = array(
+    'name' => 'view field_target_flu_percent',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view field_target_pneumo_percent'.
+  $permissions['view field_target_pneumo_percent'] = array(
+    'name' => 'view field_target_pneumo_percent',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view field_target_tdap_percent'.
+  $permissions['view field_target_tdap_percent'] = array(
+    'name' => 'view field_target_tdap_percent',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view own field_target_flu_percent'.
+  $permissions['view own field_target_flu_percent'] = array(
+    'name' => 'view own field_target_flu_percent',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view own field_target_pneumo_percent'.
+  $permissions['view own field_target_pneumo_percent'] = array(
+    'name' => 'view own field_target_pneumo_percent',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view own field_target_tdap_percent'.
+  $permissions['view own field_target_tdap_percent'] = array(
+    'name' => 'view own field_target_tdap_percent',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
   );
 
   return $permissions;
