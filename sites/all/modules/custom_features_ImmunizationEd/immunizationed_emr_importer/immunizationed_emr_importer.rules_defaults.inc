@@ -67,7 +67,7 @@ function immunizationed_emr_importer_default_rules_configuration() {
           }
         },
         { "entity_save" : { "data" : [ "unsaved-feed-item" ], "immediate" : 1 } },
-        { "drupal_message" : { "message" : "[unsaved-feed-item:title]\\t" } }
+        { "drupal_message" : { "message" : "[unsaved-feed-item:title]\\u0009" } }
       ]
     }
   }');

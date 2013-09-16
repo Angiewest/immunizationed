@@ -13,9 +13,9 @@ function immunizationed_charts_default_page_manager_pages() {
   $page->api_version = 1;
   $page->name = 'admin_charts';
   $page->task = 'page';
-  $page->admin_title = 'Admin baseline charts';
+  $page->admin_title = 'Admin charts';
   $page->admin_description = 'All site charts';
-  $page->path = 'practice-admin/charts/baseline';
+  $page->path = 'practice-admin/charts/%chart-type';
   $page->access = array(
     'plugins' => array(
       0 => array(
@@ -54,7 +54,7 @@ function immunizationed_charts_default_page_manager_pages() {
     'logic' => 'or',
   );
   $page->menu = array(
-    'type' => 'normal',
+    'type' => 'none',
     'title' => 'Baseline Charts',
     'name' => 'menu-charts',
     'weight' => '0',
@@ -65,7 +65,16 @@ function immunizationed_charts_default_page_manager_pages() {
       'weight' => '0',
     ),
   );
-  $page->arguments = array();
+  $page->arguments = array(
+    'chart-type' => array(
+      'id' => 1,
+      'identifier' => 'chart-type string',
+      'name' => 'string',
+      'settings' => array(
+        'use_tail' => 0,
+      ),
+    ),
+  );
   $page->conf = array(
     'admin_paths' => FALSE,
   );
@@ -615,19 +624,6 @@ function immunizationed_charts_default_page_manager_pages() {
       ),
       'logic' => 'and',
     ),
-    'access' => array(
-      'plugins' => array(
-        0 => array(
-          'name' => 'context_exists',
-          'settings' => array(
-            'exists' => '0',
-          ),
-          'context' => 'argument_string_1',
-          'not' => FALSE,
-        ),
-      ),
-      'logic' => 'and',
-    ),
   );
   $display = new panels_display();
   $display->layout = 'twocol_bricks';
@@ -919,6 +915,28 @@ function immunizationed_charts_default_page_manager_pages() {
   $display->title = 'Vaccination Charts for %gid:title';
   $display->content = array();
   $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-24';
+    $pane->panel = 'middle';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'progress_influenza_vaccination_charts-panel_pane_2';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'arguments' => array(
+        'gid' => '',
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-24'] = $pane;
+    $display->panels['middle'][0] = 'new-24';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -1024,6 +1042,50 @@ function immunizationed_charts_default_page_manager_pages() {
   $display->title = 'Vaccination Charts for %gid:title';
   $display->content = array();
   $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-25';
+    $pane->panel = 'middle';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'influenza_progress_charts-panel_pane_2';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'arguments' => array(
+        'gid' => '',
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-25'] = $pane;
+    $display->panels['middle'][0] = 'new-25';
+    $pane = new stdClass();
+    $pane->pid = 'new-26';
+    $pane->panel = 'middle';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'influenza_progress_charts-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'arguments' => array(
+        'gid' => '',
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-26'] = $pane;
+    $display->panels['middle'][1] = 'new-26';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
