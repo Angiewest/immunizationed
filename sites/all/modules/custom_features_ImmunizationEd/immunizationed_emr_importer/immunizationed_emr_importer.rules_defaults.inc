@@ -102,7 +102,7 @@ function immunizationed_emr_importer_default_rules_configuration() {
                 "flu_ratio" : "flu ratio",
                 "flu_target" : "flu target",
                 "pneumo_ratio" : "pneumo ratio",
-                "pneumo_doses" : "pneumo doses",
+                "target_pneumo_doses" : "target pneumo doses",
                 "tdap_ratio" : "tdap ratio",
                 "tdap_doses" : "tdap doses"
               }
@@ -193,12 +193,12 @@ function immunizationed_emr_importer_default_rules_configuration() {
                     "op" : "*",
                     "input_2" : [ "imported-feed-item:field-pneumo-eligible-est-visits" ]
                   },
-                  "PROVIDE" : { "result" : { "pneumo_doses" : "pneumo doses" } }
+                  "PROVIDE" : { "result" : { "target_pneumo_doses" : "target pneumo doses" } }
                 }
               },
               { "data_set" : {
                   "data" : [ "imported-feed-item:field-target-pneumo-doses" ],
-                  "value" : [ "pneumo-doses" ]
+                  "value" : [ "target-pneumo-doses" ]
                 }
               },
               { "data_calc" : {
@@ -226,7 +226,7 @@ function immunizationed_emr_importer_default_rules_configuration() {
               },
               { "entity_save" : { "data" : [ "imported-feed-item" ], "immediate" : 1 } }
             ],
-            "LABEL" : "calculate dose goals2"
+            "LABEL" : "calculate dose goals"
           }
         }
       ]

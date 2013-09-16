@@ -198,6 +198,21 @@ function immunizationed_emr_importer_feeds_importer_default() {
             'target' => 'field_all_flu_eligible_est_visit',
             'unique' => FALSE,
           ),
+          31 => array(
+            'source' => 'pneumo_indicated_sum',
+            'target' => 'field_pneumo_vaccine_indicated',
+            'unique' => FALSE,
+          ),
+          32 => array(
+            'source' => 'flu_indicated_sum',
+            'target' => 'field_flu_vaccine_indicated_',
+            'unique' => FALSE,
+          ),
+          33 => array(
+            'source' => 'tdap_indicated_sum',
+            'target' => 'field_tdap_vaccine_indicated',
+            'unique' => FALSE,
+          ),
         ),
         'input_format' => 'plain_text',
         'author' => 0,

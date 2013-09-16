@@ -1097,11 +1097,16 @@ function immunizationed_structure_field_default_field_instances() {
         'allowed_types' => array(
           0 => 0,
           'audio' => 0,
-          'default' => 0,
+          'document' => 0,
           'image' => 'image',
           'video' => 0,
         ),
-        'browser_plugins' => array(),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'media_internet' => 0,
+          'upload' => 0,
+        ),
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
