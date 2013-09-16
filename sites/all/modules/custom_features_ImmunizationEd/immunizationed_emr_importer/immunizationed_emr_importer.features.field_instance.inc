@@ -1027,10 +1027,13 @@ function immunizationed_emr_importer_field_default_field_instances() {
 
   // Exported field_instance: 'node-vaccination_data_from_emr-field_target_flu_doses'
   $field_instances['node-vaccination_data_from_emr-field_target_flu_doses'] = array(
+  // Exported field_instance: 'node-vaccination_data_from_emr-field_tdap'
+  $field_instances['node-vaccination_data_from_emr-field_tdap'] = array(
     'bundle' => 'vaccination_data_from_emr',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
+    'description' => 'Number of doses of TDAP',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1038,11 +1041,13 @@ function immunizationed_emr_importer_field_default_field_instances() {
         'settings' => array(
           'decimal_separator' => '.',
           'prefix_suffix' => TRUE,
-          'scale' => 2,
+          'scale' => 0,
           'thousand_separator' => ' ',
         ),
         'type' => 'number_decimal',
         'weight' => 43,
+        'type' => 'number_integer',
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1054,6 +1059,8 @@ function immunizationed_emr_importer_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_target_flu_doses',
     'label' => 'Target influenza doses',
+    'field_name' => 'field_tdap',
+    'label' => 'TDAP',
     'required' => 0,
     'settings' => array(
       'max' => '',
@@ -1160,51 +1167,6 @@ function immunizationed_emr_importer_field_default_field_instances() {
       'settings' => array(),
       'type' => 'number',
       'weight' => 38,
-    ),
-  );
-
-  // Exported field_instance: 'node-vaccination_data_from_emr-field_tdap'
-  $field_instances['node-vaccination_data_from_emr-field_tdap'] = array(
-    'bundle' => 'vaccination_data_from_emr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Number of doses of TDAP',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_integer',
-        'weight' => 5,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_tdap',
-    'label' => 'TDAP',
-    'required' => 0,
-    'settings' => array(
-      'max' => '',
-      'min' => '',
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
       'weight' => 27,
     ),
   );
@@ -1251,6 +1213,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
+      'weight' => 27,
       'weight' => 26,
     ),
   );
@@ -1284,6 +1247,53 @@ function immunizationed_emr_importer_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_tdap_eligible_estimated_vi',
     'label' => 'TDAP eligible estimated visits',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 26,
+      'weight' => 25,
+    ),
+  );
+
+  // Exported field_instance: 'node-vaccination_data_from_emr-field_tdap_vaccine_indicated'
+  $field_instances['node-vaccination_data_from_emr-field_tdap_vaccine_indicated'] = array(
+    'bundle' => 'vaccination_data_from_emr',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 41,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_tdap_vaccine_indicated',
+    'label' => 'TDAP vaccine indicated',
     'required' => 0,
     'settings' => array(
       'max' => '',
@@ -1343,6 +1353,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
+      'weight' => 24,
       'weight' => 24,
     ),
   );
@@ -1747,6 +1758,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
   t('Target TDAP doses');
   t('Target influenza doses');
   t('Target pneumo doses');
+  t('TDAP vaccine indicated');
   t('Tdap vax rate');
   t('The month containing the reporting period end date.');
   t('The quarter containing the reporting period end date. ');
