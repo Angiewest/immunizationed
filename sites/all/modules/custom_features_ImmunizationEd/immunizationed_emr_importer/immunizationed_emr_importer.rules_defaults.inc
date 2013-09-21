@@ -10,12 +10,12 @@
 function immunizationed_emr_importer_default_rules_configuration() {
   $items = array();
   $items['rules_actions_on_feed_import'] = entity_import('rules_config', '{ "rules_actions_on_feed_import" : {
-      "LABEL" : "Actions on EMR feed import",
+      "LABEL" : "Add practice to EMR feed import item",
       "PLUGIN" : "reaction rule",
       "WEIGHT" : "1",
       "TAGS" : [ "import" ],
       "REQUIRES" : [ "rules", "feeds" ],
-      "ON" : [ "feeds_import_emr_importer" ],
+      "ON" : [ "feeds_import_emr_importer", "feeds_import_emr_baseline_import" ],
       "IF" : [
         { "component_rules_check_feed_item_for_practice_assignment" : { "unsaved_feed_item" : [ "node" ] } }
       ],
@@ -25,8 +25,7 @@ function immunizationed_emr_importer_default_rules_configuration() {
             "USING" : { "unsaved_feed_item" : [ "node" ] },
             "PROVIDE" : { "practice_list_item" : { "practice_list_item" : "practice list item" } }
           }
-        },
-        { "component_rules_calculate_vaccination_goal" : { "imported_feed_item" : [ "node" ] } }
+        }
       ]
     }
   }');

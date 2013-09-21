@@ -354,8 +354,8 @@ print $static;
   $handler->display->display_options['filters']['field_visit_date_value']['table'] = 'field_data_field_visit_date';
   $handler->display->display_options['filters']['field_visit_date_value']['field'] = 'field_visit_date_value';
   $handler->display->display_options['filters']['field_visit_date_value']['operator'] = 'between';
-  $handler->display->display_options['filters']['field_visit_date_value']['value']['min'] = '2013-07-01';
-  $handler->display->display_options['filters']['field_visit_date_value']['value']['max'] = '2014-07-01';
+  $handler->display->display_options['filters']['field_visit_date_value']['value']['min'] = '2013-08-15';
+  $handler->display->display_options['filters']['field_visit_date_value']['value']['max'] = '2014-04-01';
   $handler->display->display_options['filters']['field_visit_date_value']['year_range'] = '-1:+1';
 
   /* Display: Practice/Line/doses vs target */
@@ -651,13 +651,6 @@ print $static;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'google_chart_tools_views';
-  $handler->display->display_options['style_options']['grouping'] = array(
-    0 => array(
-      'field' => 'field_reporting_period',
-      'rendered' => 1,
-      'rendered_strip' => 0,
-    ),
-  );
   $handler->display->display_options['style_options']['title'] = 'Baseline doses of influenza vaccine and eligible visits';
   $handler->display->display_options['style_options']['width'] = '820';
   $handler->display->display_options['style_options']['height'] = '400';
