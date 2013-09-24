@@ -10,12 +10,12 @@
 function immunizationed_emr_importer_default_rules_configuration() {
   $items = array();
   $items['rules_actions_on_feed_import'] = entity_import('rules_config', '{ "rules_actions_on_feed_import" : {
-      "LABEL" : "Add practice to EMR feed import item",
+      "LABEL" : "Actions on EMR feed import",
       "PLUGIN" : "reaction rule",
       "WEIGHT" : "1",
       "TAGS" : [ "import" ],
       "REQUIRES" : [ "rules", "feeds" ],
-      "ON" : [ "feeds_import_emr_baseline_import" ],
+      "ON" : [ "feeds_import_emr_importer" ],
       "IF" : [
         { "component_rules_check_feed_item_for_practice_assignment" : { "unsaved_feed_item" : [ "node" ] } }
       ],
@@ -25,12 +25,13 @@ function immunizationed_emr_importer_default_rules_configuration() {
             "USING" : { "unsaved_feed_item" : [ "node" ] },
             "PROVIDE" : { "practice_list_item" : { "practice_list_item" : "practice list item" } }
           }
-        }
+        },
+        { "component_rules_calculate_vaccination_goal" : { "imported_feed_item" : [ "node" ] } }
       ]
     }
   }');
   $items['rules_assign_practice_to_emr_import_record'] = entity_import('rules_config', '{ "rules_assign_practice_to_emr_import_record" : {
-      "LABEL" : "Assign practice and calculate targets for EMR import record",
+      "LABEL" : "Assign practice to EMR import record",
       "PLUGIN" : "rule",
       "TAGS" : [ "import" ],
       "REQUIRES" : [ "rules" ],
@@ -39,22 +40,6 @@ function immunizationed_emr_importer_default_rules_configuration() {
         "unsaved_feed_item" : { "label" : "unsaved feed item", "type" : "node" }
       },
       "IF" : [
-        { "entity_has_field" : {
-            "entity" : [ "unsaved-feed-item" ],
-            "field" : "field_tdap_eligible_estimated_vi"
-          }
-        },
-        { "entity_has_field" : { "entity" : [ "unsaved-feed-item" ], "field" : "field_target_flu_doses" } },
-        { "entity_has_field" : {
-            "entity" : [ "unsaved-feed-item" ],
-            "field" : "field_target_pneumo_doses"
-          }
-        },
-        { "entity_has_field" : {
-            "entity" : [ "unsaved-feed-item" ],
-            "field" : "field_target_tdap_doses"
-          }
-        },
         { "entity_has_field" : { "entity" : [ "practice-list-item" ], "field" : "field_epic_id" } },
         { "entity_has_field" : { "entity" : [ "unsaved-feed-item" ], "field" : "field_epic_id" } },
         { "data_is" : {
@@ -68,16 +53,6 @@ function immunizationed_emr_importer_default_rules_configuration() {
             "node" : [ "practice-list-item" ],
             "type" : { "value" : { "practice_group" : "practice_group" } }
           }
-        },
-        { "entity_has_field" : {
-            "entity" : [ "unsaved-feed-item" ],
-            "field" : "field_all_flu_eligible_est_visit"
-          }
-        },
-        { "entity_has_field" : {
-            "entity" : [ "unsaved-feed-item" ],
-            "field" : "field_pneumo_eligible_est_visits"
-          }
         }
       ],
       "DO" : [
@@ -86,81 +61,174 @@ function immunizationed_emr_importer_default_rules_configuration() {
             "PROVIDE" : { "entity_fetched" : { "entity_fetched" : "Fetched entity" } }
           }
         },
-        { "data_calc" : {
-            "USING" : {
-              "input_1" : [ "practice-list-item:field-target-flu-percent" ],
-              "op" : "\\u002F",
-              "input_2" : "100"
-            },
-            "PROVIDE" : { "result" : { "flu_rate_decimal" : "flu rate decimal" } }
-          }
-        },
-        { "data_calc" : {
-            "USING" : {
-              "input_1" : [ "unsaved-feed-item:field-all-flu-eligible-est-visit" ],
-              "op" : "*",
-              "input_2" : [ "flu-rate-decimal" ]
-            },
-            "PROVIDE" : { "result" : { "target_flu_doses" : "target flu doses" } }
-          }
-        },
-        { "data_set" : {
-            "data" : [ "unsaved-feed-item:field-target-flu-doses" ],
-            "value" : [ "target-flu-doses" ]
-          }
-        },
-        { "data_calc" : {
-            "USING" : {
-              "input_1" : [ "practice-list-item:field-target-pneumo-percent" ],
-              "op" : "\\u002F",
-              "input_2" : "100"
-            },
-            "PROVIDE" : { "result" : { "pneumo_target_decimal" : "pneumo target decimal" } }
-          }
-        },
-        { "data_calc" : {
-            "USING" : {
-              "input_1" : [ "practice-list-item:field-target-tdap-percent" ],
-              "op" : "\\u002F",
-              "input_2" : "100"
-            },
-            "PROVIDE" : { "result" : { "tdap_target_decimal" : "tdap target decimal" } }
-          }
-        },
-        { "data_calc" : {
-            "USING" : {
-              "input_1" : [ "unsaved-feed-item:field-pneumo-eligible-est-visits" ],
-              "op" : "*",
-              "input_2" : [ "pneumo-target-decimal" ]
-            },
-            "PROVIDE" : { "result" : { "target_pneumo_doses" : "target pneumo doses" } }
-          }
-        },
-        { "data_calc" : {
-            "USING" : {
-              "input_1" : [ "unsaved-feed-item:field-tdap-eligible-estimated-vi" ],
-              "op" : "*",
-              "input_2" : [ "tdap-target-decimal" ]
-            },
-            "PROVIDE" : { "result" : { "tdap_target_doses" : "tdap target doses" } }
-          }
-        },
-        { "data_set" : {
-            "data" : [ "unsaved-feed-item:field-target-tdap-doses" ],
-            "value" : [ "tdap-target-doses" ]
-          }
-        },
-        { "data_set" : {
-            "data" : [ "unsaved-feed-item:field-target-pneumo-doses" ],
-            "value" : [ "target-pneumo-doses" ]
-          }
-        },
         { "data_set" : {
             "data" : [ "unsaved-feed-item:og-group-ref:0" ],
             "value" : [ "practice-list-item" ]
           }
         },
-        { "entity_save" : { "data" : [ "unsaved-feed-item" ], "immediate" : 1 } }
+        { "entity_save" : { "data" : [ "unsaved-feed-item" ], "immediate" : 1 } },
+        { "drupal_message" : { "message" : "[unsaved-feed-item:title]\\u0009" } }
+      ]
+    }
+  }');
+  $items['rules_calculate_vaccination_goal'] = entity_import('rules_config', '{ "rules_calculate_vaccination_goal" : {
+      "LABEL" : "calculate vaccination goals",
+      "PLUGIN" : "rule set",
+      "REQUIRES" : [ "rules" ],
+      "USES VARIABLES" : { "imported_feed_item" : { "label" : "imported feed item", "type" : "node" } },
+      "RULES" : [
+        { "RULE" : {
+            "PROVIDE" : { "entity_fetched" : { "practice_fetched" : "Fetched practice" } },
+            "IF" : [
+              { "entity_has_field" : { "entity" : [ "imported-feed-item" ], "field" : "og_group_ref" } },
+              { "NOT data_is_empty" : { "data" : [ "imported-feed-item:og-group-ref" ] } }
+            ],
+            "DO" : [
+              { "entity_fetch" : {
+                  "USING" : {
+                    "type" : "node",
+                    "id" : [ "imported-feed-item:og-group-ref:0:nid" ],
+                    "revision_id" : [ "" ]
+                  },
+                  "PROVIDE" : { "entity_fetched" : { "practice_fetched" : "Fetched practice" } }
+                }
+              }
+            ],
+            "LABEL" : "get practice"
+          }
+        },
+        { "RULE" : {
+            "PROVIDE" : { "result" : {
+                "flu_ratio" : "flu ratio",
+                "flu_target" : "flu target",
+                "pneumo_ratio" : "pneumo ratio",
+                "target_pneumo_doses" : "target pneumo doses",
+                "tdap_ratio" : "tdap ratio",
+                "tdap_doses" : "tdap doses"
+              }
+            },
+            "IF" : [
+              { "entity_has_field" : {
+                  "entity" : [ "practice-fetched" ],
+                  "field" : "field_target_flu_percent"
+                }
+              },
+              { "entity_has_field" : {
+                  "entity" : [ "imported-feed-item" ],
+                  "field" : "field_target_flu_doses"
+                }
+              },
+              { "entity_has_field" : {
+                  "entity" : [ "imported-feed-item" ],
+                  "field" : "field_all_flu_eligible_est_visit"
+                }
+              },
+              { "entity_has_field" : {
+                  "entity" : [ "practice-fetched" ],
+                  "field" : "field_target_pneumo_percent"
+                }
+              },
+              { "entity_has_field" : {
+                  "entity" : [ "practice-fetched" ],
+                  "field" : "field_target_tdap_percent"
+                }
+              },
+              { "entity_has_field" : {
+                  "entity" : [ "imported-feed-item" ],
+                  "field" : "field_target_pneumo_doses"
+                }
+              },
+              { "entity_has_field" : {
+                  "entity" : [ "imported-feed-item" ],
+                  "field" : "field_target_tdap_doses"
+                }
+              },
+              { "entity_has_field" : {
+                  "entity" : [ "imported-feed-item" ],
+                  "field" : "field_pneumo_eligible_est_visits"
+                }
+              },
+              { "entity_has_field" : {
+                  "entity" : [ "imported-feed-item" ],
+                  "field" : "field_tdap_eligible_estimated_vi"
+                }
+              }
+            ],
+            "DO" : [
+              { "data_calc" : {
+                  "USING" : {
+                    "input_1" : [ "practice-fetched:field-target-flu-percent" ],
+                    "op" : "\\u002F",
+                    "input_2" : "100"
+                  },
+                  "PROVIDE" : { "result" : { "flu_ratio" : "flu ratio" } }
+                }
+              },
+              { "data_calc" : {
+                  "USING" : {
+                    "input_1" : [ "imported-feed-item:field-all-flu-eligible-est-visit" ],
+                    "op" : "*",
+                    "input_2" : [ "flu-ratio" ]
+                  },
+                  "PROVIDE" : { "result" : { "flu_target" : "flu target" } }
+                }
+              },
+              { "data_set" : {
+                  "data" : [ "imported-feed-item:field-target-flu-doses" ],
+                  "value" : [ "flu-target" ]
+                }
+              },
+              { "data_calc" : {
+                  "USING" : {
+                    "input_1" : [ "practice-fetched:field-target-pneumo-percent" ],
+                    "op" : "\\u002F",
+                    "input_2" : "100"
+                  },
+                  "PROVIDE" : { "result" : { "pneumo_ratio" : "pneumo ratio" } }
+                }
+              },
+              { "data_calc" : {
+                  "USING" : {
+                    "input_1" : [ "pneumo-ratio" ],
+                    "op" : "*",
+                    "input_2" : [ "imported-feed-item:field-pneumo-eligible-est-visits" ]
+                  },
+                  "PROVIDE" : { "result" : { "target_pneumo_doses" : "target pneumo doses" } }
+                }
+              },
+              { "data_set" : {
+                  "data" : [ "imported-feed-item:field-target-pneumo-doses" ],
+                  "value" : [ "target-pneumo-doses" ]
+                }
+              },
+              { "data_calc" : {
+                  "USING" : {
+                    "input_1" : [ "practice-fetched:field-target-tdap-percent" ],
+                    "op" : "\\u002F",
+                    "input_2" : "100"
+                  },
+                  "PROVIDE" : { "result" : { "tdap_ratio" : "tdap ratio" } }
+                }
+              },
+              { "data_calc" : {
+                  "USING" : {
+                    "input_1" : [ "imported-feed-item:field-tdap-eligible-estimated-vi" ],
+                    "op" : "*",
+                    "input_2" : [ "tdap-ratio" ]
+                  },
+                  "PROVIDE" : { "result" : { "tdap_doses" : "tdap doses" } }
+                }
+              },
+              { "data_set" : {
+                  "data" : [ "imported-feed-item:field-target-tdap-doses" ],
+                  "value" : [ "tdap-doses" ]
+                }
+              },
+              { "entity_save" : { "data" : [ "imported-feed-item" ], "immediate" : 1 } }
+            ],
+            "LABEL" : "calculate dose goals"
+          }
+        }
       ]
     }
   }');
@@ -177,7 +245,7 @@ function immunizationed_emr_importer_default_rules_configuration() {
     }
   }');
   $items['rules_loop_through_list_of_practices'] = entity_import('rules_config', '{ "rules_loop_through_list_of_practices" : {
-      "LABEL" : "find group from epic id and assign to emr item",
+      "LABEL" : "loop through list of practices",
       "PLUGIN" : "rule",
       "TAGS" : [ "import" ],
       "REQUIRES" : [ "rules", "views_bulk_operations" ],
