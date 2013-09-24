@@ -26,16 +26,6 @@ function immunizationed_emr_importer_user_default_permissions() {
     'module' => 'panelizer',
   );
 
-  // Exported permission: 'clear emr_importer feeds'.
-  $permissions['clear emr_importer feeds'] = array(
-    'name' => 'clear emr_importer feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'feeds',
-  );
-
   // Exported permission: 'create field_all_flu_eligible_est_visit'.
   $permissions['create field_all_flu_eligible_est_visit'] = array(
     'name' => 'create field_all_flu_eligible_est_visit',
@@ -339,11 +329,8 @@ function immunizationed_emr_importer_user_default_permissions() {
   $permissions['create field_total'] = array(
     'name' => 'create field_total',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -710,7 +697,6 @@ function immunizationed_emr_importer_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -1040,7 +1026,6 @@ function immunizationed_emr_importer_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -1089,26 +1074,6 @@ function immunizationed_emr_importer_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'node',
-  );
-
-  // Exported permission: 'import emr_importer feeds'.
-  $permissions['import emr_importer feeds'] = array(
-    'name' => 'import emr_importer feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'feeds',
-  );
-
-  // Exported permission: 'unlock emr_importer feeds'.
-  $permissions['unlock emr_importer feeds'] = array(
-    'name' => 'unlock emr_importer feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-    ),
-    'module' => 'feeds',
   );
 
   // Exported permission: 'view field_all_flu_eligible_est_visit'.
@@ -1338,13 +1303,8 @@ function immunizationed_emr_importer_user_default_permissions() {
   $permissions['view field_reporting_period_start_biw'] = array(
     'name' => 'view field_reporting_period_start_biw',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
-      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -1708,13 +1668,8 @@ function immunizationed_emr_importer_user_default_permissions() {
   $permissions['view own field_reporting_period_start_biw'] = array(
     'name' => 'view own field_reporting_period_start_biw',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
-      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );

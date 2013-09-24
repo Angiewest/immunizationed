@@ -64,6 +64,42 @@ function immunizationed_practice_user_default_permissions() {
     'module' => 'panelizer',
   );
 
+  // Exported permission: 'create field_baseline_flu_vax_rate'.
+  $permissions['create field_baseline_flu_vax_rate'] = array(
+    'name' => 'create field_baseline_flu_vax_rate',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'create field_baseline_pneumo_vax_rate'.
+  $permissions['create field_baseline_pneumo_vax_rate'] = array(
+    'name' => 'create field_baseline_pneumo_vax_rate',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'create field_baseline_tdap_vax_rate'.
+  $permissions['create field_baseline_tdap_vax_rate'] = array(
+    'name' => 'create field_baseline_tdap_vax_rate',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'create field_target_flu_percent'.
   $permissions['create field_target_flu_percent'] = array(
     'name' => 'create field_target_flu_percent',
@@ -169,6 +205,42 @@ function immunizationed_practice_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'edit field_baseline_flu_vax_rate'.
+  $permissions['edit field_baseline_flu_vax_rate'] = array(
+    'name' => 'edit field_baseline_flu_vax_rate',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit field_baseline_pneumo_vax_rate'.
+  $permissions['edit field_baseline_pneumo_vax_rate'] = array(
+    'name' => 'edit field_baseline_pneumo_vax_rate',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit field_baseline_tdap_vax_rate'.
+  $permissions['edit field_baseline_tdap_vax_rate'] = array(
+    'name' => 'edit field_baseline_tdap_vax_rate',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'edit field_target_flu_percent'.
   $permissions['edit field_target_flu_percent'] = array(
     'name' => 'edit field_target_flu_percent',
@@ -196,6 +268,42 @@ function immunizationed_practice_user_default_permissions() {
   // Exported permission: 'edit field_target_tdap_percent'.
   $permissions['edit field_target_tdap_percent'] = array(
     'name' => 'edit field_target_tdap_percent',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit own field_baseline_flu_vax_rate'.
+  $permissions['edit own field_baseline_flu_vax_rate'] = array(
+    'name' => 'edit own field_baseline_flu_vax_rate',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit own field_baseline_pneumo_vax_rate'.
+  $permissions['edit own field_baseline_pneumo_vax_rate'] = array(
+    'name' => 'edit own field_baseline_pneumo_vax_rate',
+    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'administrator' => 'administrator',
+      'apprentice admin' => 'apprentice admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit own field_baseline_tdap_vax_rate'.
+  $permissions['edit own field_baseline_tdap_vax_rate'] = array(
+    'name' => 'edit own field_baseline_tdap_vax_rate',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
       'administrator' => 'administrator',
@@ -300,6 +408,36 @@ function immunizationed_practice_user_default_permissions() {
     'module' => 'actions_permissions',
   );
 
+  // Exported permission: 'view field_baseline_flu_vax_rate'.
+  $permissions['view field_baseline_flu_vax_rate'] = array(
+    'name' => 'view field_baseline_flu_vax_rate',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view field_baseline_pneumo_vax_rate'.
+  $permissions['view field_baseline_pneumo_vax_rate'] = array(
+    'name' => 'view field_baseline_pneumo_vax_rate',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view field_baseline_tdap_vax_rate'.
+  $permissions['view field_baseline_tdap_vax_rate'] = array(
+    'name' => 'view field_baseline_tdap_vax_rate',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'view field_target_flu_percent'.
   $permissions['view field_target_flu_percent'] = array(
     'name' => 'view field_target_flu_percent',
@@ -324,6 +462,36 @@ function immunizationed_practice_user_default_permissions() {
   // Exported permission: 'view field_target_tdap_percent'.
   $permissions['view field_target_tdap_percent'] = array(
     'name' => 'view field_target_tdap_percent',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view own field_baseline_flu_vax_rate'.
+  $permissions['view own field_baseline_flu_vax_rate'] = array(
+    'name' => 'view own field_baseline_flu_vax_rate',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view own field_baseline_pneumo_vax_rate'.
+  $permissions['view own field_baseline_pneumo_vax_rate'] = array(
+    'name' => 'view own field_baseline_pneumo_vax_rate',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view own field_baseline_tdap_vax_rate'.
+  $permissions['view own field_baseline_tdap_vax_rate'] = array(
+    'name' => 'view own field_baseline_tdap_vax_rate',
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',

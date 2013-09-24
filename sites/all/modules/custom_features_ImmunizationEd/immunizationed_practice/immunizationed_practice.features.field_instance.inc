@@ -55,6 +55,144 @@ function immunizationed_practice_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-practice_group-field_baseline_flu_vax_rate'
+  $field_instances['node-practice_group-field_baseline_flu_vax_rate'] = array(
+    'bundle' => 'practice_group',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 2,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_decimal',
+        'weight' => 12,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_baseline_flu_vax_rate',
+    'label' => 'Baseline Influenza immunization rate',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 35,
+    ),
+  );
+
+  // Exported field_instance: 'node-practice_group-field_baseline_pneumo_vax_rate'
+  $field_instances['node-practice_group-field_baseline_pneumo_vax_rate'] = array(
+    'bundle' => 'practice_group',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 2,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_decimal',
+        'weight' => 13,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_baseline_pneumo_vax_rate',
+    'label' => 'Baseline Pneumo immunization rate',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 36,
+    ),
+  );
+
+  // Exported field_instance: 'node-practice_group-field_baseline_tdap_vax_rate'
+  $field_instances['node-practice_group-field_baseline_tdap_vax_rate'] = array(
+    'bundle' => 'practice_group',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 2,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_decimal',
+        'weight' => 14,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_baseline_tdap_vax_rate',
+    'label' => 'Baseline TDAP immunization rate',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 37,
+    ),
+  );
+
   // Exported field_instance: 'node-practice_group-field_epic_id'
   $field_instances['node-practice_group-field_epic_id'] = array(
     'bundle' => 'practice_group',
@@ -591,6 +729,9 @@ For example, a practice with a baseline rate of 8% should set their goal as 28%.
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Baseline Influenza immunization rate');
+  t('Baseline Pneumo immunization rate');
+  t('Baseline TDAP immunization rate');
   t('Choose a target TDAP immunization rate. For most practices, this rate should be 20 percentage points higher than your baseline.
 For example, a practice with a baseline rate of 8% should set their goal as 28%.');
   t('Choose a target pneumococcal immunization rate. For most practices, this rate should be 20 percentage points higher than your baseline.

@@ -38,7 +38,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_all_flu_eligible_est_visit',
-    'label' => 'All Flu eligible estimated visits',
+    'label' => 'Flu eligible visits',
     'required' => 0,
     'settings' => array(
       'max' => '',
@@ -84,7 +84,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_all_flu_eligible_estimated',
-    'label' => 'All Flu eligible estimated rate',
+    'label' => 'Flu eligible rate',
     'required' => 0,
     'settings' => array(
       'max' => '',
@@ -219,7 +219,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_biweek_number',
-    'label' => 'Biweek number',
+    'label' => 'Biweek',
     'required' => 0,
     'settings' => array(
       'max' => '',
@@ -974,7 +974,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
   $field_instances['node-vaccination_data_from_emr-field_reporting_period_start_biw'] = array(
     'bundle' => 'vaccination_data_from_emr',
     'deleted' => 0,
-    'description' => 'field for grouping and display of biweekly charts',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -988,7 +988,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'show_repeat_rule' => 'show',
         ),
         'type' => 'date_default',
-        'weight' => 34,
+        'weight' => 46,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1021,7 +1021,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_text',
-      'weight' => 9,
+      'weight' => 39,
     ),
   );
 
@@ -1421,7 +1421,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_total',
-    'label' => 'Total',
+    'label' => 'Total doses',
     'required' => 0,
     'settings' => array(
       'max' => '',
@@ -1704,11 +1704,9 @@ function immunizationed_emr_importer_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Aggregation of even week numbers into odd week numbers containing reporting period end date.');
-  t('All Flu eligible estimated rate');
-  t('All Flu eligible estimated visits');
   t('Average age at visit');
   t('Baseline indicator');
-  t('Biweek number');
+  t('Biweek');
   t('Day of month');
   t('Day of year');
   t('Epic ID');
@@ -1719,6 +1717,8 @@ function immunizationed_emr_importer_field_default_field_instances() {
   t('Estimated number of visits eligible for Flu vaccine.');
   t('Estimated percentage of TDAP eligible patients from baseline analysis.');
   t('Estimated percentage of flu eligible patients correctly vaccinated during baseline.');
+  t('Flu eligible rate');
+  t('Flu eligible visits');
   t('Flu vaccine indicated ');
   t('Groups audience');
   t('Influenza');
@@ -1751,13 +1751,12 @@ function immunizationed_emr_importer_field_default_field_instances() {
   t('The month containing the reporting period end date.');
   t('The quarter containing the reporting period end date. ');
   t('The start and end date of the reporting period');
-  t('Total');
+  t('Total doses');
   t('Unique report id created by Epic ID + Unix timestamp of report start');
   t('Visit date');
   t('Visits');
   t('Week');
   t('Year');
-  t('field for grouping and display of biweekly charts');
 
   return $field_instances;
 }
