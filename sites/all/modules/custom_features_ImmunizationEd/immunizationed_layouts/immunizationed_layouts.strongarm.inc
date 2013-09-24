@@ -62,6 +62,13 @@ function immunizationed_layouts_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'date_format_us_short_date';
+  $strongarm->value = 'm/d/Y';
+  $export['date_format_us_short_date'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'diff_enable_revisions_page_node_article';
   $strongarm->value = 0;
   $export['diff_enable_revisions_page_node_article'] = $strongarm;
