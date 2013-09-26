@@ -124,6 +124,5 @@ features_exclude[dependencies][immunizationed_practice] = immunizationed_practic
 features_exclude[dependencies][immunizationed_practice_inputs] = immunizationed_practice_inputs
 features_exclude[dependencies][immunizationed_menus] = immunizationed_menus
 features_exclude[dependencies][immunizationed_pillar_tags] = immunizationed_pillar_tags
-features_exclude[dependencies][immunizationed_structure] = immunizationed_structure
 features_exclude[taxonomy][special_practice_role] = special_practice_role
 project path = sites/all/modules/custom_features_immunizationed

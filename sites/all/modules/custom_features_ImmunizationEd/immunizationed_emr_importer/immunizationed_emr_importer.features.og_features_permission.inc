@@ -30,6 +30,26 @@ function immunizationed_emr_importer_og_features_default_permissions() {
     'roles' => array(),
   );
 
+  // Exported og permission: 'node:practice_group:update field_gte_65_flu_eligible_estima field'
+  $permissions['node:practice_group:update field_gte_65_flu_eligible_estima field'] = array(
+    'roles' => array(),
+  );
+
+  // Exported og permission: 'node:practice_group:update field_gte_65_flu_est_visits field'
+  $permissions['node:practice_group:update field_gte_65_flu_est_visits field'] = array(
+    'roles' => array(),
+  );
+
+  // Exported og permission: 'node:practice_group:update field_lt_65_flu_eligible_estimat field'
+  $permissions['node:practice_group:update field_lt_65_flu_eligible_estimat field'] = array(
+    'roles' => array(),
+  );
+
+  // Exported og permission: 'node:practice_group:update field_lt_65_flu_est_visits field'
+  $permissions['node:practice_group:update field_lt_65_flu_est_visits field'] = array(
+    'roles' => array(),
+  );
+
   // Exported og permission: 'node:practice_group:update field_month field'
   $permissions['node:practice_group:update field_month field'] = array(
     'roles' => array(),
@@ -52,6 +72,11 @@ function immunizationed_emr_importer_og_features_default_permissions() {
 
   // Exported og permission: 'node:practice_group:update field_reporting_period_start_biw field'
   $permissions['node:practice_group:update field_reporting_period_start_biw field'] = array(
+    'roles' => array(),
+  );
+
+  // Exported og permission: 'node:practice_group:update field_td field'
+  $permissions['node:practice_group:update field_td field'] = array(
     'roles' => array(),
   );
 
@@ -85,6 +110,26 @@ function immunizationed_emr_importer_og_features_default_permissions() {
     'roles' => array(),
   );
 
+  // Exported og permission: 'node:practice_group:view field_gte_65_flu_eligible_estima field'
+  $permissions['node:practice_group:view field_gte_65_flu_eligible_estima field'] = array(
+    'roles' => array(),
+  );
+
+  // Exported og permission: 'node:practice_group:view field_gte_65_flu_est_visits field'
+  $permissions['node:practice_group:view field_gte_65_flu_est_visits field'] = array(
+    'roles' => array(),
+  );
+
+  // Exported og permission: 'node:practice_group:view field_lt_65_flu_eligible_estimat field'
+  $permissions['node:practice_group:view field_lt_65_flu_eligible_estimat field'] = array(
+    'roles' => array(),
+  );
+
+  // Exported og permission: 'node:practice_group:view field_lt_65_flu_est_visits field'
+  $permissions['node:practice_group:view field_lt_65_flu_est_visits field'] = array(
+    'roles' => array(),
+  );
+
   // Exported og permission: 'node:practice_group:view field_month field'
   $permissions['node:practice_group:view field_month field'] = array(
     'roles' => array(),
@@ -107,6 +152,11 @@ function immunizationed_emr_importer_og_features_default_permissions() {
 
   // Exported og permission: 'node:practice_group:view field_reporting_period_start_biw field'
   $permissions['node:practice_group:view field_reporting_period_start_biw field'] = array(
+    'roles' => array(),
+  );
+
+  // Exported og permission: 'node:practice_group:view field_td field'
+  $permissions['node:practice_group:view field_td field'] = array(
     'roles' => array(),
   );
 

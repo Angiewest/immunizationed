@@ -14,12 +14,10 @@ function immunizationed_charts_menu_default_menu_links() {
   $menu_links['menu-charts:practice-admin/charts/baseline'] = array(
     'menu_name' => 'menu-charts',
     'link_path' => 'practice-admin/charts/baseline',
-    'router_path' => 'practice-admin/charts/%',
-    'link_title' => 'Baseline charts',
-    'options' => array(
-      'attributes' => array(),
-    ),
-    'module' => 'menu',
+    'router_path' => 'practice-admin/charts/baseline',
+    'link_title' => 'Baseline Charts',
+    'options' => array(),
+    'module' => 'system',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
@@ -28,7 +26,7 @@ function immunizationed_charts_menu_default_menu_links() {
   );
   // Translatables
   // Included for use with string extractors like potx.
-  t('Baseline charts');
+  t('Baseline Charts');
 
 
   return $menu_links;

@@ -196,9 +196,7 @@ function immunizationed_media_user_default_permissions() {
   // Exported permission: 'download any document files'.
   $permissions['download any document files'] = array(
     'name' => 'download any document files',
-    'roles' => array(
-      'anonymous user' => 'anonymous user',
-    ),
+    'roles' => array(),
     'module' => 'file_entity',
   );
 
@@ -231,7 +229,6 @@ function immunizationed_media_user_default_permissions() {
     'name' => 'download own document files',
     'roles' => array(
       'administrator' => 'administrator',
-      'anonymous user' => 'anonymous user',
       'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'file_entity',
@@ -437,7 +434,6 @@ function immunizationed_media_user_default_permissions() {
     'name' => 'view files',
     'roles' => array(
       'administrator' => 'administrator',
-      'anonymous user' => 'anonymous user',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
     ),
