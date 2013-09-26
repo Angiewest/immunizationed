@@ -124,6 +124,7 @@ features[og_features_permission][] = node:practice_group:view field_tdap_eligibl
 features[og_features_permission][] = node:practice_group:view field_tdap_eligible_estimated_vi field
 features[rules_config][] = rules_actions_on_feed_import
 features[rules_config][] = rules_assign_practice_to_emr_import_record
+features[rules_config][] = rules_calculate_vaccination_goals
 features[rules_config][] = rules_check_feed_item_for_practice_assignment
 features[rules_config][] = rules_loop_through_list_of_practices
 features[rules_config][] = rules_skip_import_of_empty_feed_items

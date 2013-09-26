@@ -164,6 +164,77 @@ function immunizationed_emr_importer_default_rules_configuration() {
       ]
     }
   }');
+  $items['rules_calculate_vaccination_goals'] = entity_import('rules_config', '{ "rules_calculate_vaccination_goals" : {
+      "LABEL" : "calculate vaccination goals for practices on baseline import",
+      "PLUGIN" : "reaction rule",
+      "REQUIRES" : [ "rules", "feeds" ],
+      "ON" : [ "feeds_import_baseline_rate_importer" ],
+      "IF" : [
+        { "node_is_of_type" : {
+            "node" : [ "node" ],
+            "type" : { "value" : { "practice_group" : "practice_group" } }
+          }
+        },
+        { "OR" : [
+            { "NOT data_is_empty" : { "data" : [ "node:field-baseline-flu-vax-rate" ] } },
+            { "NOT data_is_empty" : { "data" : [ "node:field-baseline-pneumo-vax-rate" ] } },
+            { "NOT data_is_empty" : { "data" : [ "node:field-baseline-tdap-vax-rate" ] } }
+          ]
+        },
+        { "AND" : [
+            { "data_is_empty" : { "data" : [ "node:field-target-flu-percent" ] } },
+            { "data_is_empty" : { "data" : [ "node:field-target-pneumo-percent" ] } },
+            { "data_is_empty" : { "data" : [ "node:field-target-tdap-percent" ] } }
+          ]
+        }
+      ],
+      "DO" : [
+        { "data_calc" : {
+            "USING" : {
+              "input_1" : [ "node:field-baseline-flu-vax-rate" ],
+              "op" : "+",
+              "input_2" : "20"
+            },
+            "PROVIDE" : { "result" : { "flu_result" : "flu result" } }
+          }
+        },
+        { "data_calc" : {
+            "USING" : {
+              "input_1" : [ "node:field-baseline-pneumo-vax-rate" ],
+              "op" : "+",
+              "input_2" : "20"
+            },
+            "PROVIDE" : { "result" : { "pneumo_result" : "pneumo result" } }
+          }
+        },
+        { "data_calc" : {
+            "USING" : {
+              "input_1" : [ "node:field-baseline-tdap-vax-rate" ],
+              "op" : "+",
+              "input_2" : "20"
+            },
+            "PROVIDE" : { "result" : { "tdap_result" : "tdap result" } }
+          }
+        },
+        { "data_set" : {
+            "data" : [ "node:field-target-flu-percent" ],
+            "value" : [ "flu-result" ]
+          }
+        },
+        { "data_set" : {
+            "data" : [ "node:field-target-pneumo-percent" ],
+            "value" : [ "pneumo-result" ]
+          }
+        },
+        { "data_set" : {
+            "data" : [ "node:field-target-tdap-percent" ],
+            "value" : [ "tdap-result" ]
+          }
+        },
+        { "drupal_message" : { "message" : "The baseline vaccination rates of eligible patients are as follows:\\u003Cbr\\u003E\\u000D\\u000AInfluenza: [node:field-baseline-flu-vax-rate]\\u003Cbr\\u003E\\u000D\\u000APneumo: [node:field-baseline-pneumo-vax-rate]\\u003Cbr\\u003E\\u000D\\u000ATdap: [node:field-baseline-tdap-vax-rate]\\u003Cbr\\u003E\\u000D\\u000AThe goals have been calculated as:\\u003Cbr\\u003E\\u000D\\u000AInfluenza: [node:field-target-flu-percent]\\u0009\\u003Cbr\\u003E\\u000D\\u000APneumo: [node:field-target-pneumo-percent]\\u003Cbr\\u003E\\u000D\\u000ATdap: [node:field-target-tdap-percent]\\u003Cbr\\u003E\\u000D\\u000A\\u003Cbr\\u003E\\u000D\\u000AGood luck!" } }
+      ]
+    }
+  }');
   $items['rules_check_feed_item_for_practice_assignment'] = entity_import('rules_config', '{ "rules_check_feed_item_for_practice_assignment" : {
       "LABEL" : "check feed item for practice assignment",
       "PLUGIN" : "and",
