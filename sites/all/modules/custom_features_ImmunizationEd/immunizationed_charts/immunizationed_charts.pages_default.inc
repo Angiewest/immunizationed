@@ -875,7 +875,7 @@ function immunizationed_charts_default_page_manager_pages() {
     $pane->pid = 'new-22';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
-    $pane->subtype = 'pneumo_vaccination_charts_by_practice-panel_pane_1';
+    $pane->subtype = 'influenza_vaccination_charts_by_practice-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -897,10 +897,14 @@ function immunizationed_charts_default_page_manager_pages() {
     $pane->pid = 'new-23';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
-    $pane->subtype = 'baseline_charts_captions-panel_pane_3';
+    $pane->subtype = 'pneumo_vaccination_charts_by_practice-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array();
+    $pane->configuration = array(
+      'arguments' => array(
+        'gid' => '',
+      ),
+    );
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
@@ -915,14 +919,10 @@ function immunizationed_charts_default_page_manager_pages() {
     $pane->pid = 'new-24';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
-    $pane->subtype = 'tdap_vaccination_charts_by_practice-panel_pane_1';
+    $pane->subtype = 'baseline_charts_captions-panel_pane_3';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array(
-      'arguments' => array(
-        'gid' => '',
-      ),
-    );
+    $pane->configuration = array();
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
@@ -937,10 +937,14 @@ function immunizationed_charts_default_page_manager_pages() {
     $pane->pid = 'new-25';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
-    $pane->subtype = 'baseline_charts_captions-panel_pane_4';
+    $pane->subtype = 'pneumo_vaccination_charts_by_practice-panel_pane_2';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array();
+    $pane->configuration = array(
+      'arguments' => array(
+        'gid' => '',
+      ),
+    );
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
@@ -951,6 +955,68 @@ function immunizationed_charts_default_page_manager_pages() {
     $pane->locks = array();
     $display->content['new-25'] = $pane;
     $display->panels['middle'][6] = 'new-25';
+    $pane = new stdClass();
+    $pane->pid = 'new-26';
+    $pane->panel = 'middle';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'clone_of_baseline_tdap_vaccination_charts-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'arguments' => array(
+        'gid' => '',
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 7;
+    $pane->locks = array();
+    $display->content['new-26'] = $pane;
+    $display->panels['middle'][7] = 'new-26';
+    $pane = new stdClass();
+    $pane->pid = 'new-27';
+    $pane->panel = 'middle';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'baseline_charts_captions-panel_pane_4';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 8;
+    $pane->locks = array();
+    $display->content['new-27'] = $pane;
+    $display->panels['middle'][8] = 'new-27';
+    $pane = new stdClass();
+    $pane->pid = 'new-28';
+    $pane->panel = 'middle';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'clone_of_baseline_tdap_vaccination_charts-panel_pane_2';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'arguments' => array(
+        'gid' => '',
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 9;
+    $pane->locks = array();
+    $display->content['new-28'] = $pane;
+    $display->panels['middle'][9] = 'new-28';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -984,6 +1050,14 @@ function immunizationed_charts_default_page_manager_pages() {
           'context' => 'argument_string_1',
           'not' => FALSE,
         ),
+        1 => array(
+          'name' => 'perm',
+          'settings' => array(
+            'perm' => 'edit users with role CoIadmin and other roles',
+          ),
+          'context' => 'logged-in-user',
+          'not' => FALSE,
+        ),
       ),
       'logic' => 'and',
     ),
@@ -1008,10 +1082,10 @@ function immunizationed_charts_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-26';
+    $pane->pid = 'new-29';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
-    $pane->subtype = 'influenza_progress_charts-panel_pane_2';
+    $pane->subtype = 'progress_flu_charts_practices-panel_pane_5';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -1027,20 +1101,16 @@ function immunizationed_charts_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-26'] = $pane;
-    $display->panels['middle'][0] = 'new-26';
+    $display->content['new-29'] = $pane;
+    $display->panels['middle'][0] = 'new-29';
     $pane = new stdClass();
-    $pane->pid = 'new-27';
+    $pane->pid = 'new-30';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
-    $pane->subtype = 'influenza_progress_charts-panel_pane_1';
+    $pane->subtype = 'progress_flu_charts_practices-panel_pane_3';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array(
-      'arguments' => array(
-        'gid' => '',
-      ),
-    );
+    $pane->configuration = array();
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
@@ -1049,20 +1119,16 @@ function immunizationed_charts_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-27'] = $pane;
-    $display->panels['middle'][1] = 'new-27';
+    $display->content['new-30'] = $pane;
+    $display->panels['middle'][1] = 'new-30';
     $pane = new stdClass();
-    $pane->pid = 'new-28';
+    $pane->pid = 'new-31';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
-    $pane->subtype = 'tdap_progress_charts-panel_pane_2';
+    $pane->subtype = 'progress_pneumo_charts_practices-panel_pane_2';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array(
-      'arguments' => array(
-        'gid' => '',
-      ),
-    );
+    $pane->configuration = array();
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
@@ -1071,20 +1137,16 @@ function immunizationed_charts_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-28'] = $pane;
-    $display->panels['middle'][2] = 'new-28';
+    $display->content['new-31'] = $pane;
+    $display->panels['middle'][2] = 'new-31';
     $pane = new stdClass();
-    $pane->pid = 'new-29';
+    $pane->pid = 'new-32';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
-    $pane->subtype = 'tdap_progress_charts-panel_pane_1';
+    $pane->subtype = 'progress_pneumo_charts_practices-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array(
-      'arguments' => array(
-        'gid' => '',
-      ),
-    );
+    $pane->configuration = array();
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
@@ -1093,20 +1155,16 @@ function immunizationed_charts_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 3;
     $pane->locks = array();
-    $display->content['new-29'] = $pane;
-    $display->panels['middle'][3] = 'new-29';
+    $display->content['new-32'] = $pane;
+    $display->panels['middle'][3] = 'new-32';
     $pane = new stdClass();
-    $pane->pid = 'new-30';
+    $pane->pid = 'new-33';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
-    $pane->subtype = 'pneumo_progress_charts-panel_pane_2';
+    $pane->subtype = 'progress_tdap_charts_practices-panel_pane_2';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array(
-      'arguments' => array(
-        'gid' => '',
-      ),
-    );
+    $pane->configuration = array();
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
@@ -1115,20 +1173,16 @@ function immunizationed_charts_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 4;
     $pane->locks = array();
-    $display->content['new-30'] = $pane;
-    $display->panels['middle'][4] = 'new-30';
+    $display->content['new-33'] = $pane;
+    $display->panels['middle'][4] = 'new-33';
     $pane = new stdClass();
-    $pane->pid = 'new-31';
+    $pane->pid = 'new-34';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
-    $pane->subtype = 'pneumo_progress_charts-panel_pane_1';
+    $pane->subtype = 'progress_tdap_charts_practices-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array(
-      'arguments' => array(
-        'gid' => '',
-      ),
-    );
+    $pane->configuration = array();
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
@@ -1137,8 +1191,8 @@ function immunizationed_charts_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 5;
     $pane->locks = array();
-    $display->content['new-31'] = $pane;
-    $display->panels['middle'][5] = 'new-31';
+    $display->content['new-34'] = $pane;
+    $display->panels['middle'][5] = 'new-34';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -1245,7 +1299,7 @@ function immunizationed_charts_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-32';
+    $pane->pid = 'new-35';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'influenza_progress_charts-panel_pane_2';
@@ -1264,10 +1318,10 @@ function immunizationed_charts_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-32'] = $pane;
-    $display->panels['middle'][0] = 'new-32';
+    $display->content['new-35'] = $pane;
+    $display->panels['middle'][0] = 'new-35';
     $pane = new stdClass();
-    $pane->pid = 'new-33';
+    $pane->pid = 'new-36';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'influenza_progress_charts-panel_pane_1';
@@ -1286,8 +1340,8 @@ function immunizationed_charts_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-33'] = $pane;
-    $display->panels['middle'][1] = 'new-33';
+    $display->content['new-36'] = $pane;
+    $display->panels['middle'][1] = 'new-36';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
