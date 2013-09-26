@@ -233,4 +233,4 @@ sites/*/settings*.php
 sites/*/files
 sites/*/private
 
-web.config
+*/web.config
