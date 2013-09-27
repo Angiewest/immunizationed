@@ -219,9 +219,9 @@ function immunizationed_structure_field_group_info() {
     'label' => 'Content tags',
     'weight' => '33',
     'children' => array(
-      0 => 'group_content_tags',
+      0 => 'group_audience_tags',
       1 => 'group_cme',
-      2 => 'group_audience_tags',
+      2 => 'group_content_tags',
     ),
     'format_type' => 'accordion',
     'format_settings' => array(
