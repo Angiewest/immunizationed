@@ -1452,7 +1452,7 @@ print $static;
   $handler->display->display_options['style_options']['title'] = 'Baseline doses of influenza vaccine and eligible visits';
   $handler->display->display_options['style_options']['width'] = '820';
   $handler->display->display_options['style_options']['height'] = '400';
-  $handler->display->display_options['style_options']['isstacked'] = 1;
+  $handler->display->display_options['style_options']['isstacked'] = 0;
   $handler->display->display_options['style_options']['pointsize'] = '0';
   /* Field: Content: Reporting period start biweekly */
   $handler->display->display_options['fields']['field_reporting_period_start_biw']['id'] = 'field_reporting_period_start_biw';
@@ -1467,6 +1467,16 @@ print $static;
     'multiple_to' => '',
     'show_repeat_rule' => 'show',
   );
+  /* Field: SUM(Content: Visits) */
+  $handler->display->display_options['fields']['field_visits']['id'] = 'field_visits';
+  $handler->display->display_options['fields']['field_visits']['table'] = 'field_data_field_visits';
+  $handler->display->display_options['fields']['field_visits']['field'] = 'field_visits';
+  $handler->display->display_options['fields']['field_visits']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_visits']['label'] = 'All Visits';
+  $handler->display->display_options['fields']['field_visits']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 0,
+  );
   /* Field: SUM(Content: Flu vaccine indicated ) */
   $handler->display->display_options['fields']['field_flu_vaccine_indicated_']['id'] = 'field_flu_vaccine_indicated_';
   $handler->display->display_options['fields']['field_flu_vaccine_indicated_']['table'] = 'field_data_field_flu_vaccine_indicated_';
@@ -1474,7 +1484,7 @@ print $static;
   $handler->display->display_options['fields']['field_flu_vaccine_indicated_']['group_type'] = 'sum';
   $handler->display->display_options['fields']['field_flu_vaccine_indicated_']['settings'] = array(
     'thousand_separator' => '',
-    'prefix_suffix' => 1,
+    'prefix_suffix' => 0,
   );
   /* Field: SUM(Content: Flu eligible visits) */
   $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['id'] = 'field_all_flu_eligible_est_visit';
@@ -1984,8 +1994,7 @@ print $static;
   $handler = $view->new_display('panel_pane', 'Flu progress chart', 'panel_pane_5');
   $handler->display->display_options['display_description'] = 'Line Chart-All sites: Flu eligible visits & doses';
   $handler->display->display_options['defaults']['access'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'edit users with role CoIadmin';
+  $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['argument_input'] = array(
     'gid' => array(
       'type' => 'user',
@@ -2001,8 +2010,7 @@ print $static;
   $handler = $view->new_display('panel_pane', 'progress flu table', 'panel_pane_3');
   $handler->display->display_options['display_description'] = 'Data for all sites flu baseline chart';
   $handler->display->display_options['defaults']['access'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'edit users with role CoIadmin';
+  $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(

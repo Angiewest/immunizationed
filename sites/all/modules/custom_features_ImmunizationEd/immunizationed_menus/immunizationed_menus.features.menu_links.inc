@@ -423,24 +423,6 @@ function immunizationed_menus_menu_default_menu_links() {
     'weight' => -36,
     'parent_path' => 'node/add',
   );
-  // Exported menu link: menu-editing:admin/content
-  $menu_links['menu-editing:admin/content'] = array(
-    'menu_name' => 'menu-editing',
-    'link_path' => 'admin/content',
-    'router_path' => 'admin/content',
-    'link_title' => 'View Content',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'View all site content',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 1,
-    'weight' => -49,
-  );
   // Exported menu link: menu-editing:admin/people
   $menu_links['menu-editing:admin/people'] = array(
     'menu_name' => 'menu-editing',
@@ -1509,7 +1491,6 @@ function immunizationed_menus_menu_default_menu_links() {
   t('User account');
   t('Vaccination data from EMR');
   t('Video');
-  t('View Content');
   t('Webform');
 
 
