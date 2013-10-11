@@ -80,7 +80,6 @@ features[menu_links][] = navigation:node/add/page
 features[menu_links][] = navigation:node/add/panel
 features[menu_links][] = navigation:node/add/patient-notification
 features[menu_links][] = navigation:node/add/practice
-features[menu_links][] = navigation:node/add/practice-admin-group
 features[menu_links][] = navigation:node/add/practice-group
 features[menu_links][] = navigation:node/add/required-disclosure
 features[menu_links][] = navigation:node/add/roadmap-waypoint
