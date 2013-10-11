@@ -835,10 +835,14 @@ function immunizationed_charts_default_page_manager_pages() {
     $pane->pid = 'new-22';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
-    $pane->subtype = 'progress_flu_charts_practices-panel_pane_3';
+    $pane->subtype = 'progress_flu_charts_practices-panel_pane_5';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array();
+    $pane->configuration = array(
+      'arguments' => array(
+        'gid' => '',
+      ),
+    );
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
@@ -853,7 +857,7 @@ function immunizationed_charts_default_page_manager_pages() {
     $pane->pid = 'new-23';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
-    $pane->subtype = 'progress_pneumo_charts_practices-panel_pane_2';
+    $pane->subtype = 'progress_flu_charts_practices-panel_pane_3';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array();
@@ -871,7 +875,7 @@ function immunizationed_charts_default_page_manager_pages() {
     $pane->pid = 'new-24';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
-    $pane->subtype = 'progress_pneumo_charts_practices-panel_pane_1';
+    $pane->subtype = 'progress_pneumo_charts_practices-panel_pane_2';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array();
@@ -889,7 +893,7 @@ function immunizationed_charts_default_page_manager_pages() {
     $pane->pid = 'new-25';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
-    $pane->subtype = 'progress_tdap_charts_practices-panel_pane_2';
+    $pane->subtype = 'progress_pneumo_charts_practices-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array();
@@ -907,7 +911,7 @@ function immunizationed_charts_default_page_manager_pages() {
     $pane->pid = 'new-26';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
-    $pane->subtype = 'progress_tdap_charts_practices-panel_pane_1';
+    $pane->subtype = 'progress_tdap_charts_practices-panel_pane_2';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array();
@@ -925,14 +929,10 @@ function immunizationed_charts_default_page_manager_pages() {
     $pane->pid = 'new-27';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
-    $pane->subtype = 'progress_flu_charts_practices-panel_pane_5';
+    $pane->subtype = 'progress_tdap_charts_practices-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array(
-      'arguments' => array(
-        'gid' => '',
-      ),
-    );
+    $pane->configuration = array();
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,

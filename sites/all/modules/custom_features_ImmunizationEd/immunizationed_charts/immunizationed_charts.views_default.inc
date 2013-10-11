@@ -1812,6 +1812,10 @@ print $static;
   $handler->display->display_options['style_options']['height'] = '400';
   $handler->display->display_options['style_options']['isstacked'] = 1;
   $handler->display->display_options['style_options']['pointsize'] = '0';
+  /* Relationship: OG membership: Node from OG membership */
+  $handler->display->display_options['relationships']['og_membership_related_node']['id'] = 'og_membership_related_node';
+  $handler->display->display_options['relationships']['og_membership_related_node']['table'] = 'og_membership';
+  $handler->display->display_options['relationships']['og_membership_related_node']['field'] = 'og_membership_related_node';
   /* Field: Content: Reporting period start biweekly */
   $handler->display->display_options['fields']['field_reporting_period_start_biw']['id'] = 'field_reporting_period_start_biw';
   $handler->display->display_options['fields']['field_reporting_period_start_biw']['table'] = 'field_data_field_reporting_period_start_biw';
@@ -1902,7 +1906,7 @@ print $static;
   $handler->display->display_options['fields']['php_4']['label'] = 'Cumulative flu indicated';
   $handler->display->display_options['fields']['php_4']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_4']['php_output'] = '<?php
-$static = $static+ $data->field_field_target_flu_vaccine_indicated[0][\'raw\'][\'value\'];
+$static = $static+ $data->field_field_flu_vaccine_indicated_[0][\'raw\'][\'value\'];
 print $static; 
 ?>';
   $handler->display->display_options['fields']['php_4']['use_php_click_sortable'] = '0';
@@ -1946,18 +1950,6 @@ print $static;
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
-  /* Contextual filter: OG membership: Group ID */
-  $handler->display->display_options['arguments']['gid']['id'] = 'gid';
-  $handler->display->display_options['arguments']['gid']['table'] = 'og_membership';
-  $handler->display->display_options['arguments']['gid']['field'] = 'gid';
-  $handler->display->display_options['arguments']['gid']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['gid']['default_argument_type'] = 'raw';
-  $handler->display->display_options['arguments']['gid']['default_argument_options']['index'] = '1';
-  $handler->display->display_options['arguments']['gid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['gid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['gid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['gid']['specify_validation'] = TRUE;
-  $handler->display->display_options['arguments']['gid']['validate']['type'] = 'og';
   /* Contextual filter: Content: Groups audience (og_group_ref) */
   $handler->display->display_options['arguments']['og_group_ref_target_id']['id'] = 'og_group_ref_target_id';
   $handler->display->display_options['arguments']['og_group_ref_target_id']['table'] = 'og_membership';
@@ -1970,6 +1962,7 @@ print $static;
   $handler->display->display_options['arguments']['og_group_ref_target_id']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['og_group_ref_target_id']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['og_group_ref_target_id']['validate']['type'] = 'og';
+  $handler->display->display_options['arguments']['og_group_ref_target_id']['validate']['fail'] = 'access denied';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -1982,27 +1975,27 @@ print $static;
   $handler->display->display_options['filters']['type']['value'] = array(
     'vaccination_data_from_emr' => 'vaccination_data_from_emr',
   );
-  /* Filter criterion: Content: Visit date (field_visit_date) */
-  $handler->display->display_options['filters']['field_visit_date_value']['id'] = 'field_visit_date_value';
-  $handler->display->display_options['filters']['field_visit_date_value']['table'] = 'field_data_field_visit_date';
-  $handler->display->display_options['filters']['field_visit_date_value']['field'] = 'field_visit_date_value';
-  $handler->display->display_options['filters']['field_visit_date_value']['operator'] = 'between';
-  $handler->display->display_options['filters']['field_visit_date_value']['value']['min'] = '2013-09-01';
-  $handler->display->display_options['filters']['field_visit_date_value']['value']['max'] = '2014-04-01';
-  $handler->display->display_options['filters']['field_visit_date_value']['value']['value'] = '2013-08-15';
+  /* Filter criterion: Content: Reporting period start biweekly (field_reporting_period_start_biw) */
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['id'] = 'field_reporting_period_start_biw_value';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['table'] = 'field_data_field_reporting_period_start_biw';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['field'] = 'field_reporting_period_start_biw_value';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['value']['value'] = '2013-08-25';
 
   /* Display: Flu progress chart */
   $handler = $view->new_display('panel_pane', 'Flu progress chart', 'panel_pane_5');
   $handler->display->display_options['display_description'] = 'Line Chart-All sites: Flu eligible visits & doses';
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Visit date */
-  $handler->display->display_options['fields']['field_visit_date']['id'] = 'field_visit_date';
-  $handler->display->display_options['fields']['field_visit_date']['table'] = 'field_data_field_visit_date';
-  $handler->display->display_options['fields']['field_visit_date']['field'] = 'field_visit_date';
-  $handler->display->display_options['fields']['field_visit_date']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_visit_date']['settings'] = array(
+  /* Field: Content: Reporting period start biweekly */
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['id'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['table'] = 'field_data_field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['field'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['label'] = 'Reporting period start';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['settings'] = array(
     'format_type' => 'short',
     'fromto' => 'both',
     'multiple_number' => '',
@@ -2010,14 +2003,13 @@ print $static;
     'multiple_to' => '',
     'show_repeat_rule' => 'show',
   );
-  /* Field: Content: Reporting period start biweekly */
-  $handler->display->display_options['fields']['field_reporting_period_start_biw']['id'] = 'field_reporting_period_start_biw';
-  $handler->display->display_options['fields']['field_reporting_period_start_biw']['table'] = 'field_data_field_reporting_period_start_biw';
-  $handler->display->display_options['fields']['field_reporting_period_start_biw']['field'] = 'field_reporting_period_start_biw';
-  $handler->display->display_options['fields']['field_reporting_period_start_biw']['label'] = 'Reporting period start';
-  $handler->display->display_options['fields']['field_reporting_period_start_biw']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_reporting_period_start_biw']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_reporting_period_start_biw']['settings'] = array(
+  /* Field: Content: Visit date */
+  $handler->display->display_options['fields']['field_visit_date']['id'] = 'field_visit_date';
+  $handler->display->display_options['fields']['field_visit_date']['table'] = 'field_data_field_visit_date';
+  $handler->display->display_options['fields']['field_visit_date']['field'] = 'field_visit_date';
+  $handler->display->display_options['fields']['field_visit_date']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_visit_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_visit_date']['settings'] = array(
     'format_type' => 'short',
     'fromto' => 'both',
     'multiple_number' => '',
@@ -2101,7 +2093,7 @@ print $static;
   $handler->display->display_options['fields']['php_4']['label'] = 'Cumulative flu indicated';
   $handler->display->display_options['fields']['php_4']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_4']['php_output'] = '<?php
-$static = $static+ $data->field_field_target_flu_vaccine_indicated[0][\'raw\'][\'value\'];
+$static = $static+ $data->field_field_flu_vaccine_indicated_[0][\'raw\'][\'value\'];
 print $static; 
 ?>';
   $handler->display->display_options['fields']['php_4']['use_php_click_sortable'] = '0';
@@ -2211,7 +2203,6 @@ print $static;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['argument_input'] = array(
     'gid' => array(
       'type' => 'user',
@@ -2383,6 +2374,17 @@ print $static;
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
+  /* Contextual filter: OG membership: Group ID */
+  $handler->display->display_options['arguments']['gid']['id'] = 'gid';
+  $handler->display->display_options['arguments']['gid']['table'] = 'og_membership';
+  $handler->display->display_options['arguments']['gid']['field'] = 'gid';
+  $handler->display->display_options['arguments']['gid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['gid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['gid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['gid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['gid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['gid']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['gid']['validate']['type'] = 'og';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -2929,24 +2931,35 @@ print $static;
   $handler->display->display_options['filters']['type']['value'] = array(
     'vaccination_data_from_emr' => 'vaccination_data_from_emr',
   );
-  /* Filter criterion: Content: Visit date (field_visit_date) */
-  $handler->display->display_options['filters']['field_visit_date_value']['id'] = 'field_visit_date_value';
-  $handler->display->display_options['filters']['field_visit_date_value']['table'] = 'field_data_field_visit_date';
-  $handler->display->display_options['filters']['field_visit_date_value']['field'] = 'field_visit_date_value';
-  $handler->display->display_options['filters']['field_visit_date_value']['operator'] = '>';
-  $handler->display->display_options['filters']['field_visit_date_value']['value']['min'] = '2013-07-01';
-  $handler->display->display_options['filters']['field_visit_date_value']['value']['max'] = '2014-07-01';
-  $handler->display->display_options['filters']['field_visit_date_value']['value']['value'] = '2013-07-01';
-  $handler->display->display_options['filters']['field_visit_date_value']['year_range'] = '-1:+1';
+  /* Filter criterion: Content: Reporting period start biweekly (field_reporting_period_start_biw) */
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['id'] = 'field_reporting_period_start_biw_value';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['table'] = 'field_data_field_reporting_period_start_biw';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['field'] = 'field_reporting_period_start_biw_value';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['value']['value'] = '2013-07-01';
 
   /* Display: pneumo progress chart */
   $handler = $view->new_display('panel_pane', 'pneumo progress chart', 'panel_pane_2');
   $handler->display->display_options['display_description'] = 'Line Chart: Pneumo doses vs target';
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Reporting period start biweekly */
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['id'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['table'] = 'field_data_field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['field'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+  );
   /* Field: Content: Visit date */
   $handler->display->display_options['fields']['field_visit_date']['id'] = 'field_visit_date';
   $handler->display->display_options['fields']['field_visit_date']['table'] = 'field_data_field_visit_date';
   $handler->display->display_options['fields']['field_visit_date']['field'] = 'field_visit_date';
+  $handler->display->display_options['fields']['field_visit_date']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_visit_date']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_visit_date']['settings'] = array(
     'format_type' => 'short',
@@ -3676,10 +3689,24 @@ print $static;
   $handler->display->display_options['style_options']['height'] = '400';
   $handler->display->display_options['style_options']['isstacked'] = 1;
   $handler->display->display_options['style_options']['pointsize'] = '0';
+  /* Field: Content: Reporting period start biweekly */
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['id'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['table'] = 'field_data_field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['field'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+  );
   /* Field: Content: Visit date */
   $handler->display->display_options['fields']['field_visit_date']['id'] = 'field_visit_date';
   $handler->display->display_options['fields']['field_visit_date']['table'] = 'field_data_field_visit_date';
   $handler->display->display_options['fields']['field_visit_date']['field'] = 'field_visit_date';
+  $handler->display->display_options['fields']['field_visit_date']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_visit_date']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_visit_date']['settings'] = array(
     'format_type' => 'short',
@@ -3820,15 +3847,12 @@ print $static;
   $handler->display->display_options['filters']['type']['value'] = array(
     'vaccination_data_from_emr' => 'vaccination_data_from_emr',
   );
-  /* Filter criterion: Content: Visit date (field_visit_date) */
-  $handler->display->display_options['filters']['field_visit_date_value']['id'] = 'field_visit_date_value';
-  $handler->display->display_options['filters']['field_visit_date_value']['table'] = 'field_data_field_visit_date';
-  $handler->display->display_options['filters']['field_visit_date_value']['field'] = 'field_visit_date_value';
-  $handler->display->display_options['filters']['field_visit_date_value']['operator'] = '>';
-  $handler->display->display_options['filters']['field_visit_date_value']['value']['min'] = '2013-07-01';
-  $handler->display->display_options['filters']['field_visit_date_value']['value']['max'] = '2014-07-01';
-  $handler->display->display_options['filters']['field_visit_date_value']['value']['value'] = '2013-07-01';
-  $handler->display->display_options['filters']['field_visit_date_value']['year_range'] = '-1:+1';
+  /* Filter criterion: Content: Reporting period start biweekly (field_reporting_period_start_biw) */
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['id'] = 'field_reporting_period_start_biw_value';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['table'] = 'field_data_field_reporting_period_start_biw';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['field'] = 'field_reporting_period_start_biw_value';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['value']['value'] = '2013-07-01';
 
   /* Display: progress tdap chart */
   $handler = $view->new_display('panel_pane', 'progress tdap chart', 'panel_pane_2');
@@ -3896,7 +3920,7 @@ print $static;
   $handler->display->display_options['fields']['field_reporting_period_start_biw']['field'] = 'field_reporting_period_start_biw';
   $handler->display->display_options['fields']['field_reporting_period_start_biw']['label'] = 'Reporting period start';
   $handler->display->display_options['fields']['field_reporting_period_start_biw']['settings'] = array(
-    'format_type' => 'us_short_date',
+    'format_type' => 'short',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
