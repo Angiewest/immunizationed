@@ -15,10 +15,10 @@ function immunizationed_emr_importer_default_rules_configuration() {
       "WEIGHT" : "1",
       "TAGS" : [ "import" ],
       "REQUIRES" : [ "rules", "feeds" ],
-      "ON" : [
-        "feeds_import_emr_baseline_import",
-        "feeds_import_pitt_progress_emr_importer"
-      ],
+      "ON" : {
+        "feeds_import_emr_baseline_import" : [],
+        "feeds_import_pitt_progress_emr_importer" : []
+      },
       "IF" : [
         { "component_rules_check_feed_item_for_practice_assignment" : { "unsaved_feed_item" : [ "node" ] } }
       ],
@@ -171,7 +171,7 @@ function immunizationed_emr_importer_default_rules_configuration() {
       "LABEL" : "calculate vaccination goals for practices on baseline import",
       "PLUGIN" : "reaction rule",
       "REQUIRES" : [ "rules", "feeds" ],
-      "ON" : [ "feeds_import_baseline_rate_importer" ],
+      "ON" : { "feeds_import_baseline_rate_importer" : [] },
       "IF" : [
         { "node_is_of_type" : {
             "node" : [ "node" ],
