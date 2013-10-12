@@ -511,7 +511,7 @@ div.Header
 	position: relative;
 	z-index:0;
 	width: 894px;
-	height: 150px;
+	height: 100px;
 }
 /* end Header */
 
@@ -520,8 +520,8 @@ div.Header
 {
 	display : block;
 	position: absolute;
-	left: 4px;
-	top: 4px;
+	left: 30px;
+	top: 30px;
 }
 /* end Logo */
 
@@ -1678,21 +1678,16 @@ tr.even, tr.odd
 }
 
 #featured {
-	float: right;
 	position: relative;
-	top: 10px;
-	height: 132px;
-
-	/*background: url(images/h_back.jpg) no-repeat center;*/
+	height: 280px;
+	background: url(images/h_back.jpg) no-repeat center;
 }
 
 #featured .block {
-	position: relative;
+	position: absolute;
 	padding-left: 5.0em;
-	padding-right: 1.0em;
-	top: 5px;
-	width: 200px;
-
+	bottom: 25px;
+	width: 469px;
 }
 
 .comment span.new-text {
@@ -1739,7 +1734,7 @@ tr.even, tr.odd
 ul.links:after, .field-type-taxonomy-term-reference:after {
 	clear: both;
 	height: 0;
-	content: ' ';
+	content: ' ';
 	display: block;
 	overflow: hidden;
 }
