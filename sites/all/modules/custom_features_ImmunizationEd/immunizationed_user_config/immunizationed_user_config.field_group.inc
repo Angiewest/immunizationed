@@ -35,7 +35,7 @@ function immunizationed_user_config_field_group_info() {
     'format_settings' => array(
       'formatter' => '',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => ' group-administration field-group-tabs',
       ),
     ),
   );
@@ -66,7 +66,7 @@ function immunizationed_user_config_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-personal-tab field-group-htab',
         'required_fields' => 1,
       ),
     ),
@@ -94,7 +94,7 @@ function immunizationed_user_config_field_group_info() {
     'format_settings' => array(
       'label' => 'Account',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => ' group-personal field-group-htabs',
       ),
     ),
   );
@@ -121,7 +121,7 @@ function immunizationed_user_config_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-registration field-group-htab',
         'required_fields' => 1,
       ),
     ),
@@ -149,7 +149,7 @@ function immunizationed_user_config_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-roles field-group-htab',
         'required_fields' => 1,
       ),
     ),

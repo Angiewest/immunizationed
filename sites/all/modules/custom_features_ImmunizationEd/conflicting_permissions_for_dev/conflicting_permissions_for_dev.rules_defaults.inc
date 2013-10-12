@@ -14,7 +14,7 @@ function conflicting_permissions_for_dev_default_rules_configuration() {
       "PLUGIN" : "reaction rule",
       "ACTIVE" : false,
       "REQUIRES" : [ "rules", "mimemail" ],
-      "ON" : [ "user_login" ],
+      "ON" : { "user_login" : [] },
       "DO" : [
         { "mimemail" : {
             "to" : "raviottaj@upmc.edu",
