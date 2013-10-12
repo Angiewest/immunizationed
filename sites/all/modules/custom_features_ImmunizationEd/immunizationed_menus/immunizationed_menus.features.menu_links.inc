@@ -753,7 +753,7 @@ function immunizationed_menus_menu_default_menu_links() {
     'link_title' => 'All Content',
     'options' => array(
       'attributes' => array(
-        'title' => 'View all site content',
+        'title' => 'View all site content with filters',
       ),
     ),
     'module' => 'menu',
