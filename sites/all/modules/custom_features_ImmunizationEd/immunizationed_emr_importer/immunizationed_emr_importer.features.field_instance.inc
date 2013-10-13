@@ -27,7 +27,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 33,
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -72,7 +72,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 16,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -116,7 +116,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 29,
+        'weight' => 11,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -156,7 +156,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
         'module' => 'computed_field',
         'settings' => array(),
         'type' => 'computed_field_plain',
-        'weight' => 48,
+        'weight' => 18,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -192,7 +192,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
         'module' => 'computed_field',
         'settings' => array(),
         'type' => 'computed_field_plain',
-        'weight' => 50,
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -228,7 +228,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
         'module' => 'computed_field',
         'settings' => array(),
         'type' => 'computed_field_plain',
-        'weight' => 49,
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -264,7 +264,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
         'module' => 'computed_field',
         'settings' => array(),
         'type' => 'computed_field_plain',
-        'weight' => 47,
+        'weight' => 28,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -306,7 +306,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 37,
+        'weight' => 14,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -352,7 +352,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 36,
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -398,7 +398,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 10,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -444,7 +444,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 40,
+        'weight' => 16,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -490,7 +490,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 51,
+        'weight' => 19,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -515,7 +515,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 32,
+      'weight' => 19,
     ),
   );
 
@@ -536,7 +536,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 28,
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -582,7 +582,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 3,
+        'weight' => 27,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -628,7 +628,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 32,
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -674,7 +674,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 42,
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -715,7 +715,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 15,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -760,7 +760,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 27,
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -801,7 +801,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 9,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -847,7 +847,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'show_repeat_rule' => 'show',
         ),
         'type' => 'date_default',
-        'weight' => 8,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -902,7 +902,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'show_repeat_rule' => 'show',
         ),
         'type' => 'date_default',
-        'weight' => 46,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -956,7 +956,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 5,
+        'weight' => 23,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1002,7 +1002,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 22,
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1048,7 +1048,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 41,
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1095,7 +1095,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'show_repeat_rule' => 'show',
         ),
         'type' => 'date_default',
-        'weight' => 35,
+        'weight' => 12,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1149,7 +1149,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 1,
+        'weight' => 15,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1195,7 +1195,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 14,
+        'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1241,7 +1241,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 38,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
