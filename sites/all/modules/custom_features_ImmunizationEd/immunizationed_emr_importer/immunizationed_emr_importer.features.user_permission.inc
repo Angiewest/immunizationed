@@ -114,7 +114,6 @@ function immunizationed_emr_importer_user_default_permissions() {
     'name' => 'create field_influenza',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -408,7 +407,6 @@ function immunizationed_emr_importer_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -650,7 +648,6 @@ function immunizationed_emr_importer_user_default_permissions() {
     'name' => 'edit own field_influenza',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -914,12 +911,9 @@ function immunizationed_emr_importer_user_default_permissions() {
   $permissions['view field_influenza'] = array(
     'name' => 'view field_influenza',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'field_permissions',
   );
@@ -1180,12 +1174,9 @@ function immunizationed_emr_importer_user_default_permissions() {
   $permissions['view own field_influenza'] = array(
     'name' => 'view own field_influenza',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'field_permissions',
   );

@@ -85,7 +85,7 @@ function immunizationed_emr_importer_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_computed_target_flu_doses',
     'field_permissions' => array(
-      'type' => 2,
+      'type' => 0,
     ),
     'foreign keys' => array(),
     'indexes' => array(),
@@ -104,7 +104,7 @@ function immunizationed_emr_importer_field_default_field_bases() {
         'data_type' => 'varchar',
       ),
       'display_format' => '$display_output = $entity_field_item[\'value\'];',
-      'store' => 1,
+      'store' => 0,
     ),
     'translatable' => 0,
     'type' => 'computed',
@@ -137,7 +137,7 @@ function immunizationed_emr_importer_field_default_field_bases() {
         'data_type' => 'varchar',
       ),
       'display_format' => '$display_output = $entity_field_item[\'value\'];',
-      'store' => 1,
+      'store' => 0,
     ),
     'translatable' => 0,
     'type' => 'computed',
@@ -151,7 +151,7 @@ function immunizationed_emr_importer_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_computed_target_tdap_doses',
     'field_permissions' => array(
-      'type' => 2,
+      'type' => 0,
     ),
     'foreign keys' => array(),
     'indexes' => array(),
@@ -170,7 +170,7 @@ function immunizationed_emr_importer_field_default_field_bases() {
         'data_type' => 'varchar',
       ),
       'display_format' => '$display_output = $entity_field_item[\'value\'];',
-      'store' => 1,
+      'store' => 0,
     ),
     'translatable' => 0,
     'type' => 'computed',
@@ -191,7 +191,10 @@ function immunizationed_emr_importer_field_default_field_bases() {
     'locked' => 0,
     'module' => 'computed_field',
     'settings' => array(
-      'code' => '$entity_field[0][\'value\'] = "";',
+      'code' => '$entity_field[0][\'value\']= 
+    array_pop(array_pop(field_get_items($entity_type,$entity,\'field_pneumo\'))) +
+    array_pop(array_pop(field_get_items($entity_type,$entity,\'field_tdap\'))) +
+    array_pop(array_pop(field_get_items($entity_type,$entity,\'field_influenza\')));',
       'database' => array(
         'data_default' => '',
         'data_index' => 0,
@@ -203,7 +206,7 @@ function immunizationed_emr_importer_field_default_field_bases() {
         'data_type' => 'varchar',
       ),
       'display_format' => '$display_output = $entity_field_item[\'value\'];',
-      'store' => 1,
+      'store' => 0,
     ),
     'translatable' => 0,
     'type' => 'computed',

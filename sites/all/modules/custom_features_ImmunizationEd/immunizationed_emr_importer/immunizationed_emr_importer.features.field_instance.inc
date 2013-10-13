@@ -156,7 +156,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
         'module' => 'computed_field',
         'settings' => array(),
         'type' => 'computed_field_plain',
-        'weight' => 52,
+        'weight' => 48,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -177,7 +177,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
       'module' => 'computed_field',
       'settings' => array(),
       'type' => 'computed',
-      'weight' => 32,
+      'weight' => 29,
     ),
   );
 
@@ -213,7 +213,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
       'module' => 'computed_field',
       'settings' => array(),
       'type' => 'computed',
-      'weight' => 30,
+      'weight' => 31,
     ),
   );
 
@@ -228,7 +228,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
         'module' => 'computed_field',
         'settings' => array(),
         'type' => 'computed_field_plain',
-        'weight' => 51,
+        'weight' => 49,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -249,7 +249,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
       'module' => 'computed_field',
       'settings' => array(),
       'type' => 'computed',
-      'weight' => 31,
+      'weight' => 30,
     ),
   );
 
@@ -264,7 +264,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
         'module' => 'computed_field',
         'settings' => array(),
         'type' => 'computed_field_plain',
-        'weight' => 48,
+        'weight' => 47,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -478,7 +478,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
     'bundle' => 'vaccination_data_from_emr',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Number of doses of Influenza vaccine',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -490,7 +490,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 4,
+        'weight' => 51,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -515,7 +515,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 19,
+      'weight' => 32,
     ),
   );
 
@@ -1356,7 +1356,6 @@ function immunizationed_emr_importer_field_default_field_instances() {
   t('Flu indicated ');
   t('Groups audience');
   t('Month');
-  t('Number of doses of Influenza vaccine');
   t('Number of doses of TDAP');
   t('Number of doses of pneumococcal vaccine');
   t('Number of patient visits');
