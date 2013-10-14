@@ -60,7 +60,7 @@ function computed_field_YOUR_FIELD_MACHINE_NAME_display($field, $entity_field_it
 */
 /*
  * Computed fields for Vaccination data from EMR
- */
+ *
 function computed_field_field_computed_target_flu_doses_compute(&$entity_field, $entity_type, $entity, $field, $instance, $langcode, $items){
   $OgId=$entity->og_group_ref['und'][0]['target_id'];
   $practice=node_load($OgId);
@@ -82,6 +82,8 @@ function computed_field_field_computed_target_tdap_doses_compute(&$entity_field,
   $target_doses=array_pop(array_pop(field_get_items($entity_type,$entity,'field_tdap_eligible_estimated_vi'))) * $rate;
   $entity_field[0]['value']= round($target_doses);
 }
+ * 
+ */
 // function computed_field_field_computed_total_doses_compute(&$entity_field, $entity_type, $entity, $field, $instance, $langcode, $items){
   // $entity_field[0]['value']= 
     // array_pop(array_pop(field_get_items($entity_type,$entity,'field_pneumo'))) +
