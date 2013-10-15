@@ -31,7 +31,7 @@ function immunizationed_help_field_group_info() {
       'formatter' => '',
       'instance_settings' => array(
         'effect' => 'none',
-        'classes' => '',
+        'classes' => ' group-attachments field-group-accordion',
       ),
     ),
   );
@@ -57,7 +57,7 @@ function immunizationed_help_field_group_info() {
       'label' => 'Attach Document',
       'instance_settings' => array(
         'required_fields' => 0,
-        'classes' => '',
+        'classes' => ' group-document field-group-accordion-item',
         'description' => '',
       ),
       'formatter' => 'closed',
@@ -85,7 +85,7 @@ function immunizationed_help_field_group_info() {
       'label' => 'Attach Graphic',
       'instance_settings' => array(
         'required_fields' => 0,
-        'classes' => '',
+        'classes' => ' group-graphic field-group-accordion-item',
         'description' => 'Attach a graphic to be displayed with some views',
       ),
       'formatter' => 'closed',
@@ -115,7 +115,7 @@ function immunizationed_help_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-tags field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
