@@ -382,6 +382,11 @@ function immunizationed_practice_og_features_default_permissions() {
     'roles' => array(),
   );
 
+  // Exported og permission: 'node:practice_group:update field_influenza_vax_rate field'
+  $permissions['node:practice_group:update field_influenza_vax_rate field'] = array(
+    'roles' => array(),
+  );
+
   // Exported og permission: 'node:practice_group:update field_job_other field'
   $permissions['node:practice_group:update field_job_other field'] = array(
     'roles' => array(
@@ -445,6 +450,11 @@ function immunizationed_practice_og_features_default_permissions() {
 
   // Exported og permission: 'node:practice_group:update field_pneumo field'
   $permissions['node:practice_group:update field_pneumo field'] = array(
+    'roles' => array(),
+  );
+
+  // Exported og permission: 'node:practice_group:update field_pneumo_vax_rate field'
+  $permissions['node:practice_group:update field_pneumo_vax_rate field'] = array(
     'roles' => array(),
   );
 
@@ -563,6 +573,16 @@ function immunizationed_practice_og_features_default_permissions() {
 
   // Exported og permission: 'node:practice_group:update field_tdap field'
   $permissions['node:practice_group:update field_tdap field'] = array(
+    'roles' => array(),
+  );
+
+  // Exported og permission: 'node:practice_group:update field_tdap_vax_rate field'
+  $permissions['node:practice_group:update field_tdap_vax_rate field'] = array(
+    'roles' => array(),
+  );
+
+  // Exported og permission: 'node:practice_group:update field_total field'
+  $permissions['node:practice_group:update field_total field'] = array(
     'roles' => array(),
   );
 
@@ -810,6 +830,15 @@ function immunizationed_practice_og_features_default_permissions() {
     ),
   );
 
+  // Exported og permission: 'node:practice_group:view field_influenza_vax_rate field'
+  $permissions['node:practice_group:view field_influenza_vax_rate field'] = array(
+    'roles' => array(
+      'Administrator member' => 'Administrator member',
+      'member' => 'member',
+      'non-member' => 'non-member',
+    ),
+  );
+
   // Exported og permission: 'node:practice_group:view field_job_other field'
   $permissions['node:practice_group:view field_job_other field'] = array(
     'roles' => array(
@@ -889,6 +918,15 @@ function immunizationed_practice_og_features_default_permissions() {
 
   // Exported og permission: 'node:practice_group:view field_pneumo field'
   $permissions['node:practice_group:view field_pneumo field'] = array(
+    'roles' => array(
+      'Administrator member' => 'Administrator member',
+      'member' => 'member',
+      'non-member' => 'non-member',
+    ),
+  );
+
+  // Exported og permission: 'node:practice_group:view field_pneumo_vax_rate field'
+  $permissions['node:practice_group:view field_pneumo_vax_rate field'] = array(
     'roles' => array(
       'Administrator member' => 'Administrator member',
       'member' => 'member',
@@ -1060,6 +1098,24 @@ function immunizationed_practice_og_features_default_permissions() {
 
   // Exported og permission: 'node:practice_group:view field_tdap field'
   $permissions['node:practice_group:view field_tdap field'] = array(
+    'roles' => array(
+      'Administrator member' => 'Administrator member',
+      'member' => 'member',
+      'non-member' => 'non-member',
+    ),
+  );
+
+  // Exported og permission: 'node:practice_group:view field_tdap_vax_rate field'
+  $permissions['node:practice_group:view field_tdap_vax_rate field'] = array(
+    'roles' => array(
+      'Administrator member' => 'Administrator member',
+      'member' => 'member',
+      'non-member' => 'non-member',
+    ),
+  );
+
+  // Exported og permission: 'node:practice_group:view field_total field'
+  $permissions['node:practice_group:view field_total field'] = array(
     'roles' => array(
       'Administrator member' => 'Administrator member',
       'member' => 'member',

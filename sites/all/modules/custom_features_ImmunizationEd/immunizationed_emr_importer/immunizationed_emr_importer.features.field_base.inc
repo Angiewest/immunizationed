@@ -29,6 +29,50 @@ function immunizationed_emr_importer_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
+  // Exported field_base: 'field_all_flu_eligible_estimated'
+  $field_bases['field_all_flu_eligible_estimated'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_all_flu_eligible_estimated',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(
+      'decimal_separator' => '.',
+      'precision' => 10,
+      'scale' => 2,
+    ),
+    'translatable' => 0,
+    'type' => 'number_decimal',
+  );
+
+  // Exported field_base: 'field_average_age_at_visit'
+  $field_bases['field_average_age_at_visit'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_average_age_at_visit',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(
+      'decimal_separator' => '.',
+    ),
+    'translatable' => 0,
+    'type' => 'number_float',
+  );
+
   // Exported field_base: 'field_baseline_indicator'
   $field_bases['field_baseline_indicator'] = array(
     'active' => 1,
@@ -75,141 +119,6 @@ function immunizationed_emr_importer_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'number_integer',
-  );
-
-  // Exported field_base: 'field_computed_target_flu_doses'
-  $field_bases['field_computed_target_flu_doses'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_computed_target_flu_doses',
-    'field_permissions' => array(
-      'type' => 0,
-    ),
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'computed_field',
-    'settings' => array(
-      'code' => '$entity_field[0][\'value\'] = "";',
-      'database' => array(
-        'data_default' => '',
-        'data_index' => 0,
-        'data_length' => 32,
-        'data_not_NULL' => 0,
-        'data_precision' => 10,
-        'data_scale' => 2,
-        'data_size' => 'normal',
-        'data_type' => 'varchar',
-      ),
-      'display_format' => '$display_output = $entity_field_item[\'value\'];',
-      'store' => 1,
-    ),
-    'translatable' => 0,
-    'type' => 'computed',
-  );
-
-  // Exported field_base: 'field_computed_target_pneumo_dos'
-  $field_bases['field_computed_target_pneumo_dos'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_computed_target_pneumo_dos',
-    'field_permissions' => array(
-      'type' => 2,
-    ),
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'computed_field',
-    'settings' => array(
-      'code' => '$entity_field[0][\'value\'] = "";',
-      'database' => array(
-        'data_default' => '',
-        'data_index' => 0,
-        'data_length' => 32,
-        'data_not_NULL' => 0,
-        'data_precision' => 10,
-        'data_scale' => 2,
-        'data_size' => 'normal',
-        'data_type' => 'varchar',
-      ),
-      'display_format' => '$display_output = $entity_field_item[\'value\'];',
-      'store' => 1,
-    ),
-    'translatable' => 0,
-    'type' => 'computed',
-  );
-
-  // Exported field_base: 'field_computed_target_tdap_doses'
-  $field_bases['field_computed_target_tdap_doses'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_computed_target_tdap_doses',
-    'field_permissions' => array(
-      'type' => 0,
-    ),
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'computed_field',
-    'settings' => array(
-      'code' => '$entity_field[0][\'value\'] = "";',
-      'database' => array(
-        'data_default' => '',
-        'data_index' => 0,
-        'data_length' => 32,
-        'data_not_NULL' => 0,
-        'data_precision' => 10,
-        'data_scale' => 2,
-        'data_size' => 'normal',
-        'data_type' => 'varchar',
-      ),
-      'display_format' => '$display_output = $entity_field_item[\'value\'];',
-      'store' => 1,
-    ),
-    'translatable' => 0,
-    'type' => 'computed',
-  );
-
-  // Exported field_base: 'field_computed_total_doses'
-  $field_bases['field_computed_total_doses'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_computed_total_doses',
-    'field_permissions' => array(
-      'type' => 2,
-    ),
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'computed_field',
-    'settings' => array(
-      'code' => '$entity_field[0][\'value\']= 
-    array_pop(array_pop(field_get_items($entity_type,$entity,\'field_pneumo\'))) +
-    array_pop(array_pop(field_get_items($entity_type,$entity,\'field_tdap\'))) +
-    array_pop(array_pop(field_get_items($entity_type,$entity,\'field_influenza\')));',
-      'database' => array(
-        'data_default' => '',
-        'data_index' => 0,
-        'data_length' => 32,
-        'data_not_NULL' => 0,
-        'data_precision' => 10,
-        'data_scale' => 2,
-        'data_size' => 'normal',
-        'data_type' => 'varchar',
-      ),
-      'display_format' => '$display_output = $entity_field_item[\'value\'];',
-      'store' => 1,
-    ),
-    'translatable' => 0,
-    'type' => 'computed',
   );
 
   // Exported field_base: 'field_day_of_month'
@@ -288,6 +197,27 @@ function immunizationed_emr_importer_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
+  // Exported field_base: 'field_influenza_vax_rate'
+  $field_bases['field_influenza_vax_rate'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_influenza_vax_rate',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(
+      'decimal_separator' => '.',
+    ),
+    'translatable' => 0,
+    'type' => 'number_float',
+  );
+
   // Exported field_base: 'field_month'
   $field_bases['field_month'] = array(
     'active' => 1,
@@ -345,6 +275,29 @@ function immunizationed_emr_importer_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
+  // Exported field_base: 'field_pneumo_eligible_estimated_'
+  $field_bases['field_pneumo_eligible_estimated_'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_pneumo_eligible_estimated_',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(
+      'decimal_separator' => '.',
+      'precision' => 10,
+      'scale' => 2,
+    ),
+    'translatable' => 0,
+    'type' => 'number_decimal',
+  );
+
   // Exported field_base: 'field_pneumo_vaccine_indicated'
   $field_bases['field_pneumo_vaccine_indicated'] = array(
     'active' => 1,
@@ -362,6 +315,27 @@ function immunizationed_emr_importer_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'number_integer',
+  );
+
+  // Exported field_base: 'field_pneumo_vax_rate'
+  $field_bases['field_pneumo_vax_rate'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_pneumo_vax_rate',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(
+      'decimal_separator' => '.',
+    ),
+    'translatable' => 0,
+    'type' => 'number_float',
   );
 
   // Exported field_base: 'field_practice'
@@ -515,6 +489,75 @@ function immunizationed_emr_importer_field_default_field_bases() {
     'type' => 'datetime',
   );
 
+  // Exported field_base: 'field_target_flu_doses'
+  $field_bases['field_target_flu_doses'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_target_flu_doses',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(
+      'decimal_separator' => '.',
+      'precision' => 10,
+      'scale' => 0,
+    ),
+    'translatable' => 0,
+    'type' => 'number_decimal',
+  );
+
+  // Exported field_base: 'field_target_pneumo_doses'
+  $field_bases['field_target_pneumo_doses'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_target_pneumo_doses',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(
+      'decimal_separator' => '.',
+      'precision' => 10,
+      'scale' => 0,
+    ),
+    'translatable' => 0,
+    'type' => 'number_decimal',
+  );
+
+  // Exported field_base: 'field_target_tdap_doses'
+  $field_bases['field_target_tdap_doses'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_target_tdap_doses',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(
+      'decimal_separator' => '.',
+      'precision' => 10,
+      'scale' => 0,
+    ),
+    'translatable' => 0,
+    'type' => 'number_decimal',
+  );
+
   // Exported field_base: 'field_tdap'
   $field_bases['field_tdap'] = array(
     'active' => 1,
@@ -532,6 +575,29 @@ function immunizationed_emr_importer_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'number_integer',
+  );
+
+  // Exported field_base: 'field_tdap_eligible_estimated_ra'
+  $field_bases['field_tdap_eligible_estimated_ra'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_tdap_eligible_estimated_ra',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(
+      'decimal_separator' => '.',
+      'precision' => 10,
+      'scale' => 2,
+    ),
+    'translatable' => 0,
+    'type' => 'number_decimal',
   );
 
   // Exported field_base: 'field_tdap_eligible_estimated_vi'
@@ -560,6 +626,46 @@ function immunizationed_emr_importer_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_tdap_vaccine_indicated',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'number_integer',
+  );
+
+  // Exported field_base: 'field_tdap_vax_rate'
+  $field_bases['field_tdap_vax_rate'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_tdap_vax_rate',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(
+      'decimal_separator' => '.',
+    ),
+    'translatable' => 0,
+    'type' => 'number_float',
+  );
+
+  // Exported field_base: 'field_total'
+  $field_bases['field_total'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_total',
     'field_permissions' => array(
       'type' => 2,
     ),
