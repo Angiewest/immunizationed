@@ -14,7 +14,7 @@ function immunizationed_user_config_default_rules_configuration() {
       "PLUGIN" : "reaction rule",
       "TAGS" : [ "role", "users" ],
       "REQUIRES" : [ "rules", "og" ],
-      "ON" : [ "user_presave" ],
+      "ON" : { "user_presave" : [] },
       "IF" : [
         { "NOT data_is_empty" : { "data" : [ "account-unchanged:field-responsible-role" ] } },
         { "data_is_empty" : { "data" : [ "account:field-responsible-role" ] } },

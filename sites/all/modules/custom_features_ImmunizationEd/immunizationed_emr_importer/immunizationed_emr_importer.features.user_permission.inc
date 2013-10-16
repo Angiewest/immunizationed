@@ -37,30 +37,6 @@ function immunizationed_emr_importer_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: 'create field_all_flu_eligible_estimated'.
-  $permissions['create field_all_flu_eligible_estimated'] = array(
-    'name' => 'create field_all_flu_eligible_estimated',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'create field_average_age_at_visit'.
-  $permissions['create field_average_age_at_visit'] = array(
-    'name' => 'create field_average_age_at_visit',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: 'create field_baseline_indicator'.
   $permissions['create field_baseline_indicator'] = array(
     'name' => 'create field_baseline_indicator',
@@ -138,7 +114,6 @@ function immunizationed_emr_importer_user_default_permissions() {
     'name' => 'create field_influenza',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -174,17 +149,8 @@ function immunizationed_emr_importer_user_default_permissions() {
   $permissions['create field_pneumo_eligible_est_visits'] = array(
     'name' => 'create field_pneumo_eligible_est_visits',
     'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'create field_pneumo_eligible_estimated_'.
-  $permissions['create field_pneumo_eligible_estimated_'] = array(
-    'name' => 'create field_pneumo_eligible_estimated_',
-    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -240,60 +206,12 @@ function immunizationed_emr_importer_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: 'create field_target_flu_doses'.
-  $permissions['create field_target_flu_doses'] = array(
-    'name' => 'create field_target_flu_doses',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'create field_target_pneumo_doses'.
-  $permissions['create field_target_pneumo_doses'] = array(
-    'name' => 'create field_target_pneumo_doses',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'create field_target_tdap_doses'.
-  $permissions['create field_target_tdap_doses'] = array(
-    'name' => 'create field_target_tdap_doses',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: 'create field_tdap'.
   $permissions['create field_tdap'] = array(
     'name' => 'create field_tdap',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
       'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'create field_tdap_eligible_estimated_ra'.
-  $permissions['create field_tdap_eligible_estimated_ra'] = array(
-    'name' => 'create field_tdap_eligible_estimated_ra',
-    'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -321,16 +239,6 @@ function immunizationed_emr_importer_user_default_permissions() {
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'create field_total'.
-  $permissions['create field_total'] = array(
-    'name' => 'create field_total',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'field_permissions',
   );
@@ -421,30 +329,6 @@ function immunizationed_emr_importer_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: 'edit field_all_flu_eligible_estimated'.
-  $permissions['edit field_all_flu_eligible_estimated'] = array(
-    'name' => 'edit field_all_flu_eligible_estimated',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'edit field_average_age_at_visit'.
-  $permissions['edit field_average_age_at_visit'] = array(
-    'name' => 'edit field_average_age_at_visit',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: 'edit field_baseline_indicator'.
   $permissions['edit field_baseline_indicator'] = array(
     'name' => 'edit field_baseline_indicator',
@@ -523,7 +407,6 @@ function immunizationed_emr_importer_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -561,23 +444,10 @@ function immunizationed_emr_importer_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: 'edit field_pneumo_eligible_estimated_'.
-  $permissions['edit field_pneumo_eligible_estimated_'] = array(
-    'name' => 'edit field_pneumo_eligible_estimated_',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: 'edit field_pneumo_vaccine_indicated'.
   $permissions['edit field_pneumo_vaccine_indicated'] = array(
     'name' => 'edit field_pneumo_vaccine_indicated',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -618,47 +488,9 @@ function immunizationed_emr_importer_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: 'edit field_target_flu_doses'.
-  $permissions['edit field_target_flu_doses'] = array(
-    'name' => 'edit field_target_flu_doses',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'edit field_target_pneumo_doses'.
-  $permissions['edit field_target_pneumo_doses'] = array(
-    'name' => 'edit field_target_pneumo_doses',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'edit field_target_tdap_doses'.
-  $permissions['edit field_target_tdap_doses'] = array(
-    'name' => 'edit field_target_tdap_doses',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: 'edit field_tdap'.
   $permissions['edit field_tdap'] = array(
     'name' => 'edit field_tdap',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'edit field_tdap_eligible_estimated_ra'.
-  $permissions['edit field_tdap_eligible_estimated_ra'] = array(
-    'name' => 'edit field_tdap_eligible_estimated_ra',
     'roles' => array(
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
@@ -687,16 +519,6 @@ function immunizationed_emr_importer_user_default_permissions() {
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'edit field_total'.
-  $permissions['edit field_total'] = array(
-    'name' => 'edit field_total',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'field_permissions',
   );
@@ -742,30 +564,6 @@ function immunizationed_emr_importer_user_default_permissions() {
   $permissions['edit own field_all_flu_eligible_est_visit'] = array(
     'name' => 'edit own field_all_flu_eligible_est_visit',
     'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'edit own field_all_flu_eligible_estimated'.
-  $permissions['edit own field_all_flu_eligible_estimated'] = array(
-    'name' => 'edit own field_all_flu_eligible_estimated',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'edit own field_average_age_at_visit'.
-  $permissions['edit own field_average_age_at_visit'] = array(
-    'name' => 'edit own field_average_age_at_visit',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -872,6 +670,8 @@ function immunizationed_emr_importer_user_default_permissions() {
   $permissions['edit own field_pneumo'] = array(
     'name' => 'edit own field_pneumo',
     'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -883,17 +683,8 @@ function immunizationed_emr_importer_user_default_permissions() {
   $permissions['edit own field_pneumo_eligible_est_visits'] = array(
     'name' => 'edit own field_pneumo_eligible_est_visits',
     'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'edit own field_pneumo_eligible_estimated_'.
-  $permissions['edit own field_pneumo_eligible_estimated_'] = array(
-    'name' => 'edit own field_pneumo_eligible_estimated_',
-    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -947,48 +738,12 @@ function immunizationed_emr_importer_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: 'edit own field_target_flu_doses'.
-  $permissions['edit own field_target_flu_doses'] = array(
-    'name' => 'edit own field_target_flu_doses',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'edit own field_target_pneumo_doses'.
-  $permissions['edit own field_target_pneumo_doses'] = array(
-    'name' => 'edit own field_target_pneumo_doses',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'edit own field_target_tdap_doses'.
-  $permissions['edit own field_target_tdap_doses'] = array(
-    'name' => 'edit own field_target_tdap_doses',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: 'edit own field_tdap'.
   $permissions['edit own field_tdap'] = array(
     'name' => 'edit own field_tdap',
     'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'edit own field_tdap_eligible_estimated_ra'.
-  $permissions['edit own field_tdap_eligible_estimated_ra'] = array(
-    'name' => 'edit own field_tdap_eligible_estimated_ra',
-    'roles' => array(
+      'Co-I admin' => 'Co-I admin',
+      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -1016,16 +771,6 @@ function immunizationed_emr_importer_user_default_permissions() {
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'edit own field_total'.
-  $permissions['edit own field_total'] = array(
-    'name' => 'edit own field_total',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
     ),
     'module' => 'field_permissions',
   );
@@ -1087,31 +832,6 @@ function immunizationed_emr_importer_user_default_permissions() {
       'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
       'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'view field_all_flu_eligible_estimated'.
-  $permissions['view field_all_flu_eligible_estimated'] = array(
-    'name' => 'view field_all_flu_eligible_estimated',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'authenticated user' => 'authenticated user',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'view field_average_age_at_visit'.
-  $permissions['view field_average_age_at_visit'] = array(
-    'name' => 'view field_average_age_at_visit',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
     ),
     'module' => 'field_permissions',
   );
@@ -1191,12 +911,9 @@ function immunizationed_emr_importer_user_default_permissions() {
   $permissions['view field_influenza'] = array(
     'name' => 'view field_influenza',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'field_permissions',
   );
@@ -1233,21 +950,6 @@ function immunizationed_emr_importer_user_default_permissions() {
   // Exported permission: 'view field_pneumo_eligible_est_visits'.
   $permissions['view field_pneumo_eligible_est_visits'] = array(
     'name' => 'view field_pneumo_eligible_est_visits',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'authenticated user' => 'authenticated user',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'view field_pneumo_eligible_estimated_'.
-  $permissions['view field_pneumo_eligible_estimated_'] = array(
-    'name' => 'view field_pneumo_eligible_estimated_',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
       'Group member' => 'Group member',
@@ -1309,36 +1011,6 @@ function immunizationed_emr_importer_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: 'view field_target_flu_doses'.
-  $permissions['view field_target_flu_doses'] = array(
-    'name' => 'view field_target_flu_doses',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'view field_target_pneumo_doses'.
-  $permissions['view field_target_pneumo_doses'] = array(
-    'name' => 'view field_target_pneumo_doses',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'view field_target_tdap_doses'.
-  $permissions['view field_target_tdap_doses'] = array(
-    'name' => 'view field_target_tdap_doses',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: 'view field_tdap'.
   $permissions['view field_tdap'] = array(
     'name' => 'view field_tdap',
@@ -1348,21 +1020,6 @@ function immunizationed_emr_importer_user_default_permissions() {
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'view field_tdap_eligible_estimated_ra'.
-  $permissions['view field_tdap_eligible_estimated_ra'] = array(
-    'name' => 'view field_tdap_eligible_estimated_ra',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
@@ -1389,20 +1046,6 @@ function immunizationed_emr_importer_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'view field_total'.
-  $permissions['view field_total'] = array(
-    'name' => 'view field_total',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );
@@ -1452,31 +1095,6 @@ function immunizationed_emr_importer_user_default_permissions() {
       'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
       'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'view own field_all_flu_eligible_estimated'.
-  $permissions['view own field_all_flu_eligible_estimated'] = array(
-    'name' => 'view own field_all_flu_eligible_estimated',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'authenticated user' => 'authenticated user',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'view own field_average_age_at_visit'.
-  $permissions['view own field_average_age_at_visit'] = array(
-    'name' => 'view own field_average_age_at_visit',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
     ),
     'module' => 'field_permissions',
   );
@@ -1556,12 +1174,9 @@ function immunizationed_emr_importer_user_default_permissions() {
   $permissions['view own field_influenza'] = array(
     'name' => 'view own field_influenza',
     'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'field_permissions',
   );
@@ -1598,21 +1213,6 @@ function immunizationed_emr_importer_user_default_permissions() {
   // Exported permission: 'view own field_pneumo_eligible_est_visits'.
   $permissions['view own field_pneumo_eligible_est_visits'] = array(
     'name' => 'view own field_pneumo_eligible_est_visits',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'authenticated user' => 'authenticated user',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'view own field_pneumo_eligible_estimated_'.
-  $permissions['view own field_pneumo_eligible_estimated_'] = array(
-    'name' => 'view own field_pneumo_eligible_estimated_',
     'roles' => array(
       'Co-I admin' => 'Co-I admin',
       'Group member' => 'Group member',
@@ -1674,36 +1274,6 @@ function immunizationed_emr_importer_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: 'view own field_target_flu_doses'.
-  $permissions['view own field_target_flu_doses'] = array(
-    'name' => 'view own field_target_flu_doses',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'view own field_target_pneumo_doses'.
-  $permissions['view own field_target_pneumo_doses'] = array(
-    'name' => 'view own field_target_pneumo_doses',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'view own field_target_tdap_doses'.
-  $permissions['view own field_target_tdap_doses'] = array(
-    'name' => 'view own field_target_tdap_doses',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: 'view own field_tdap'.
   $permissions['view own field_tdap'] = array(
     'name' => 'view own field_tdap',
@@ -1713,21 +1283,6 @@ function immunizationed_emr_importer_user_default_permissions() {
       'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'view own field_tdap_eligible_estimated_ra'.
-  $permissions['view own field_tdap_eligible_estimated_ra'] = array(
-    'name' => 'view own field_tdap_eligible_estimated_ra',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
     'module' => 'field_permissions',
@@ -1754,20 +1309,6 @@ function immunizationed_emr_importer_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'view own field_total'.
-  $permissions['view own field_total'] = array(
-    'name' => 'view own field_total',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Group member' => 'Group member',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
     ),
     'module' => 'field_permissions',
   );

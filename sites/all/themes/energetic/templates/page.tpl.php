@@ -23,15 +23,17 @@
             </div>
           <?php endif; ?>
           <div class="Header">
-            <div class="logo">
+          <div class="logo">
               <?php if ($logo): ?>
                 <a href="<?php print $base_path ?>" title="<?php print t('Home') ?>"><img src="<?php print $logo ?>" alt="<?php print t('Home') ?>" /></a>
               <?php endif; ?>
             </div>
-          </div>
-          <div id="featured">
+                <div id="featured">
               <?php if (array_key_exists('featured', $page)): print render($page['featured']); endif; ?>
           </div>
+
+          </div>
+
           <div class="contentLayout">
             <?php if ($page['left']) print '<div class="sidebar1">' . render($page['left']) . "</div>";
                   else if (array_key_exists('sidebar_first', $page)) print '<div class="sidebar1">' . render($page['sidebar_first']) . "</div>";?>
@@ -56,8 +58,7 @@
                       <?php if ($tabs){ print '<div id="tabs-wrapper" class="clear-block">'; } ?>
                       <?php if ($title){ print '<h2 class="PostHeaderIcon-wrapper'. ($tabs ? ' with-tabs' : '') .'">'. $title .'</h2>'; } ?>
                       <?php if ($tabs){ print render($tabs) . '</div>'; } ?>
-                      <!--?php if ($tabs['#secondary']): print '<ul class="tabs secondary">'. render($tabs['#secondary']) .'</ul>'; endif; ?-->
-                      <!--?php if ($mission){ print '<div id="mission">' . $mission . '</div>'; } ?-->
+                     <!--   <?php if ($tabs['#secondary']): print '<ul class="tabs secondary">'. render($tabs['#secondary']) .'</ul>'; endif; ?>-->
                       <?php if (array_key_exists('help', $page)){ print render($page['help']); } ?>
                       <?php if ($show_messages && $messages){ print $messages; } ?>
                       <?php print art_content_replace(render($page['content'])); ?>
@@ -86,3 +87,4 @@
       <p class="page-footer"><!--?php print $footer_message; ?--></p>
     </div>
     <!--?php print $closure; ?-->
+

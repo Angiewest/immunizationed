@@ -27,7 +27,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 33,
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -38,103 +38,11 @@ function immunizationed_emr_importer_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_all_flu_eligible_est_visit',
-    'label' => 'Flu eligible visits',
+    'label' => 'Flu eligible',
     'required' => 0,
     'settings' => array(
       'max' => '',
       'min' => '',
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 20,
-    ),
-  );
-
-  // Exported field_instance: 'node-vaccination_data_from_emr-field_all_flu_eligible_estimated'
-  $field_instances['node-vaccination_data_from_emr-field_all_flu_eligible_estimated'] = array(
-    'bundle' => 'vaccination_data_from_emr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Estimated percentage of flu eligible patients correctly vaccinated during baseline.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 2,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_decimal',
-        'weight' => 30,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_all_flu_eligible_estimated',
-    'label' => 'Flu eligible rate',
-    'required' => 0,
-    'settings' => array(
-      'max' => '',
-      'min' => '',
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 21,
-    ),
-  );
-
-  // Exported field_instance: 'node-vaccination_data_from_emr-field_average_age_at_visit'
-  $field_instances['node-vaccination_data_from_emr-field_average_age_at_visit'] = array(
-    'bundle' => 'vaccination_data_from_emr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 2,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_decimal',
-        'weight' => 39,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_average_age_at_visit',
-    'label' => 'Average age at visit',
-    'required' => 0,
-    'settings' => array(
-      'max' => 90,
-      'min' => 0,
       'prefix' => '',
       'suffix' => '',
       'user_register_form' => FALSE,
@@ -164,7 +72,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 16,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -187,7 +95,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 35,
+      'weight' => 26,
     ),
   );
 
@@ -208,7 +116,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 29,
+        'weight' => 11,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -233,7 +141,151 @@ function immunizationed_emr_importer_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 16,
+      'weight' => 15,
+    ),
+  );
+
+  // Exported field_instance: 'node-vaccination_data_from_emr-field_computed_target_flu_doses'
+  $field_instances['node-vaccination_data_from_emr-field_computed_target_flu_doses'] = array(
+    'bundle' => 'vaccination_data_from_emr',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'computed_field',
+        'settings' => array(),
+        'type' => 'computed_field_plain',
+        'weight' => 18,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_computed_target_flu_doses',
+    'label' => 'Target flu doses',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'computed_field',
+      'settings' => array(),
+      'type' => 'computed',
+      'weight' => 29,
+    ),
+  );
+
+  // Exported field_instance: 'node-vaccination_data_from_emr-field_computed_target_pneumo_dos'
+  $field_instances['node-vaccination_data_from_emr-field_computed_target_pneumo_dos'] = array(
+    'bundle' => 'vaccination_data_from_emr',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'computed_field',
+        'settings' => array(),
+        'type' => 'computed_field_plain',
+        'weight' => 26,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_computed_target_pneumo_dos',
+    'label' => 'Target pneumo doses',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'computed_field',
+      'settings' => array(),
+      'type' => 'computed',
+      'weight' => 31,
+    ),
+  );
+
+  // Exported field_instance: 'node-vaccination_data_from_emr-field_computed_target_tdap_doses'
+  $field_instances['node-vaccination_data_from_emr-field_computed_target_tdap_doses'] = array(
+    'bundle' => 'vaccination_data_from_emr',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'computed_field',
+        'settings' => array(),
+        'type' => 'computed_field_plain',
+        'weight' => 22,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_computed_target_tdap_doses',
+    'label' => 'Target TDAP doses',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'computed_field',
+      'settings' => array(),
+      'type' => 'computed',
+      'weight' => 30,
+    ),
+  );
+
+  // Exported field_instance: 'node-vaccination_data_from_emr-field_computed_total_doses'
+  $field_instances['node-vaccination_data_from_emr-field_computed_total_doses'] = array(
+    'bundle' => 'vaccination_data_from_emr',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'computed_field',
+        'settings' => array(),
+        'type' => 'computed_field_plain',
+        'weight' => 28,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_computed_total_doses',
+    'label' => 'Total doses',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'computed_field',
+      'settings' => array(),
+      'type' => 'computed',
+      'weight' => 28,
     ),
   );
 
@@ -254,7 +306,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 37,
+        'weight' => 14,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -279,7 +331,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 14,
+      'weight' => 13,
     ),
   );
 
@@ -300,7 +352,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 36,
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -325,7 +377,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 13,
+      'weight' => 12,
     ),
   );
 
@@ -346,7 +398,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 10,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -392,7 +444,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 40,
+        'weight' => 16,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -403,7 +455,53 @@ function immunizationed_emr_importer_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_flu_vaccine_indicated_',
-    'label' => 'Flu vaccine indicated ',
+    'label' => 'Flu indicated ',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 17,
+    ),
+  );
+
+  // Exported field_instance: 'node-vaccination_data_from_emr-field_influenza'
+  $field_instances['node-vaccination_data_from_emr-field_influenza'] = array(
+    'bundle' => 'vaccination_data_from_emr',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 19,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_influenza',
+    'label' => 'Flu doses',
     'required' => 0,
     'settings' => array(
       'max' => '',
@@ -418,98 +516,6 @@ function immunizationed_emr_importer_field_default_field_instances() {
       'settings' => array(),
       'type' => 'number',
       'weight' => 19,
-    ),
-  );
-
-  // Exported field_instance: 'node-vaccination_data_from_emr-field_influenza'
-  $field_instances['node-vaccination_data_from_emr-field_influenza'] = array(
-    'bundle' => 'vaccination_data_from_emr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Number of doses of Influenza vaccine',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_integer',
-        'weight' => 4,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_influenza',
-    'label' => 'Influenza',
-    'required' => 0,
-    'settings' => array(
-      'max' => '',
-      'min' => '',
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 22,
-    ),
-  );
-
-  // Exported field_instance: 'node-vaccination_data_from_emr-field_influenza_vax_rate'
-  $field_instances['node-vaccination_data_from_emr-field_influenza_vax_rate'] = array(
-    'bundle' => 'vaccination_data_from_emr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 2,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_decimal',
-        'weight' => 11,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_influenza_vax_rate',
-    'label' => 'Influenza vax rate',
-    'required' => 0,
-    'settings' => array(
-      'max' => '',
-      'min' => '',
-      'prefix' => '',
-      'suffix' => '%',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 23,
     ),
   );
 
@@ -530,7 +536,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 28,
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -555,7 +561,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 11,
+      'weight' => 10,
     ),
   );
 
@@ -576,7 +582,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 3,
+        'weight' => 27,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -587,7 +593,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_pneumo',
-    'label' => 'Pneumo',
+    'label' => 'Pneumo doses',
     'required' => 0,
     'settings' => array(
       'max' => '',
@@ -601,7 +607,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 32,
+      'weight' => 25,
     ),
   );
 
@@ -622,7 +628,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 32,
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -633,7 +639,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_pneumo_eligible_est_visits',
-    'label' => 'Pneumo eligible estimated visits',
+    'label' => 'Pneumo eligible',
     'required' => 0,
     'settings' => array(
       'max' => '',
@@ -647,53 +653,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 30,
-    ),
-  );
-
-  // Exported field_instance: 'node-vaccination_data_from_emr-field_pneumo_eligible_estimated_'
-  $field_instances['node-vaccination_data_from_emr-field_pneumo_eligible_estimated_'] = array(
-    'bundle' => 'vaccination_data_from_emr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Estimate proportion of patients eligible for pneumo vaccination.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 2,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_decimal',
-        'weight' => 31,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_pneumo_eligible_estimated_',
-    'label' => 'Pneumo eligible estimated rate',
-    'required' => 0,
-    'settings' => array(
-      'max' => '',
-      'min' => '',
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 31,
+      'weight' => 24,
     ),
   );
 
@@ -714,7 +674,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 42,
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -725,7 +685,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_pneumo_vaccine_indicated',
-    'label' => 'Pneumo vaccine indicated',
+    'label' => 'Pneumo indicated',
     'required' => 0,
     'settings' => array(
       'max' => '',
@@ -739,53 +699,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 29,
-    ),
-  );
-
-  // Exported field_instance: 'node-vaccination_data_from_emr-field_pneumo_vax_rate'
-  $field_instances['node-vaccination_data_from_emr-field_pneumo_vax_rate'] = array(
-    'bundle' => 'vaccination_data_from_emr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 2,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_decimal',
-        'weight' => 13,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_pneumo_vax_rate',
-    'label' => 'Pneumo vax rate',
-    'required' => 0,
-    'settings' => array(
-      'max' => '',
-      'min' => '',
-      'prefix' => '',
-      'suffix' => '%',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 33,
+      'weight' => 23,
     ),
   );
 
@@ -801,7 +715,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 15,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -846,7 +760,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 27,
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -871,7 +785,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 10,
+      'weight' => 9,
     ),
   );
 
@@ -887,7 +801,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 9,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -933,7 +847,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'show_repeat_rule' => 'show',
         ),
         'type' => 'date_default',
-        'weight' => 8,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -988,7 +902,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'show_repeat_rule' => 'show',
         ),
         'type' => 'date_default',
-        'weight' => 46,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1021,145 +935,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_text',
-      'weight' => 39,
-    ),
-  );
-
-  // Exported field_instance: 'node-vaccination_data_from_emr-field_target_flu_doses'
-  $field_instances['node-vaccination_data_from_emr-field_target_flu_doses'] = array(
-    'bundle' => 'vaccination_data_from_emr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 2,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_decimal',
-        'weight' => 43,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_target_flu_doses',
-    'label' => 'Target influenza doses',
-    'required' => 0,
-    'settings' => array(
-      'max' => '',
-      'min' => '',
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 36,
-    ),
-  );
-
-  // Exported field_instance: 'node-vaccination_data_from_emr-field_target_pneumo_doses'
-  $field_instances['node-vaccination_data_from_emr-field_target_pneumo_doses'] = array(
-    'bundle' => 'vaccination_data_from_emr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 2,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_decimal',
-        'weight' => 44,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_target_pneumo_doses',
-    'label' => 'Target pneumo doses',
-    'required' => 0,
-    'settings' => array(
-      'max' => '',
-      'min' => 0,
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 37,
-    ),
-  );
-
-  // Exported field_instance: 'node-vaccination_data_from_emr-field_target_tdap_doses'
-  $field_instances['node-vaccination_data_from_emr-field_target_tdap_doses'] = array(
-    'bundle' => 'vaccination_data_from_emr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 2,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_decimal',
-        'weight' => 45,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_target_tdap_doses',
-    'label' => 'Target TDAP doses',
-    'required' => 0,
-    'settings' => array(
-      'max' => '',
-      'min' => 0,
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 38,
+      'weight' => 27,
     ),
   );
 
@@ -1180,7 +956,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 5,
+        'weight' => 23,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1191,7 +967,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_tdap',
-    'label' => 'TDAP',
+    'label' => 'TDAP doses',
     'required' => 0,
     'settings' => array(
       'max' => '',
@@ -1205,53 +981,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 27,
-    ),
-  );
-
-  // Exported field_instance: 'node-vaccination_data_from_emr-field_tdap_eligible_estimated_ra'
-  $field_instances['node-vaccination_data_from_emr-field_tdap_eligible_estimated_ra'] = array(
-    'bundle' => 'vaccination_data_from_emr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Estimated percentage of TDAP eligible patients from baseline analysis.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 2,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_decimal',
-        'weight' => 17,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_tdap_eligible_estimated_ra',
-    'label' => 'TDAP eligible estimated rate',
-    'required' => 0,
-    'settings' => array(
-      'max' => '',
-      'min' => '',
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 26,
+      'weight' => 22,
     ),
   );
 
@@ -1272,7 +1002,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 22,
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1283,7 +1013,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_tdap_eligible_estimated_vi',
-    'label' => 'TDAP eligible estimated visits',
+    'label' => 'TDAP eligible',
     'required' => 0,
     'settings' => array(
       'max' => '',
@@ -1297,7 +1027,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 25,
+      'weight' => 21,
     ),
   );
 
@@ -1318,7 +1048,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 41,
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1329,7 +1059,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_tdap_vaccine_indicated',
-    'label' => 'TDAP vaccine indicated',
+    'label' => 'TDAP indicated',
     'required' => 0,
     'settings' => array(
       'max' => '',
@@ -1343,99 +1073,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 24,
-    ),
-  );
-
-  // Exported field_instance: 'node-vaccination_data_from_emr-field_tdap_vax_rate'
-  $field_instances['node-vaccination_data_from_emr-field_tdap_vax_rate'] = array(
-    'bundle' => 'vaccination_data_from_emr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 2,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_decimal',
-        'weight' => 12,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_tdap_vax_rate',
-    'label' => 'Tdap vax rate',
-    'required' => 0,
-    'settings' => array(
-      'max' => '',
-      'min' => '',
-      'prefix' => '',
-      'suffix' => '%',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 28,
-    ),
-  );
-
-  // Exported field_instance: 'node-vaccination_data_from_emr-field_total'
-  $field_instances['node-vaccination_data_from_emr-field_total'] = array(
-    'bundle' => 'vaccination_data_from_emr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Number of total doses of all vaccines',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_integer',
-        'weight' => 7,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_total',
-    'label' => 'Total doses',
-    'required' => 0,
-    'settings' => array(
-      'max' => '',
-      'min' => '',
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 34,
+      'weight' => 20,
     ),
   );
 
@@ -1457,7 +1095,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'show_repeat_rule' => 'show',
         ),
         'type' => 'date_default',
-        'weight' => 35,
+        'weight' => 12,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1511,7 +1149,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 1,
+        'weight' => 15,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1536,7 +1174,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 17,
+      'weight' => 16,
     ),
   );
 
@@ -1557,7 +1195,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 14,
+        'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1582,7 +1220,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 12,
+      'weight' => 11,
     ),
   );
 
@@ -1603,7 +1241,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 38,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1628,7 +1266,7 @@ function immunizationed_emr_importer_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 15,
+      'weight' => 14,
     ),
   );
 
@@ -1704,50 +1342,38 @@ function immunizationed_emr_importer_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Aggregation of even week numbers into odd week numbers containing reporting period end date.');
-  t('Average age at visit');
   t('Baseline indicator');
   t('Biweek');
   t('Day of month');
   t('Day of year');
   t('Epic ID');
   t('Epic ID of the practice');
-  t('Estimate proportion of patients eligible for pneumo vaccination.');
   t('Estimated number of TDAP eligible patients calculated from baseline analysis and number of visits.');
   t('Estimated number of patients eligible for Pneumo vaccination.');
   t('Estimated number of visits eligible for Flu vaccine.');
-  t('Estimated percentage of TDAP eligible patients from baseline analysis.');
-  t('Estimated percentage of flu eligible patients correctly vaccinated during baseline.');
-  t('Flu eligible rate');
-  t('Flu eligible visits');
-  t('Flu vaccine indicated ');
+  t('Flu doses');
+  t('Flu eligible');
+  t('Flu indicated ');
   t('Groups audience');
-  t('Influenza');
-  t('Influenza vax rate');
   t('Month');
-  t('Number of doses of Influenza vaccine');
   t('Number of doses of TDAP');
   t('Number of doses of pneumococcal vaccine');
   t('Number of patient visits');
-  t('Number of total doses of all vaccines');
-  t('Pneumo');
-  t('Pneumo eligible estimated rate');
-  t('Pneumo eligible estimated visits');
-  t('Pneumo vaccine indicated');
-  t('Pneumo vax rate');
+  t('Pneumo doses');
+  t('Pneumo eligible');
+  t('Pneumo indicated');
   t('Practice');
   t('Quarter');
   t('Report ID');
   t('Reporting period');
   t('Reporting period start biweekly');
   t('Select this box if this is baseline data.');
-  t('TDAP');
-  t('TDAP eligible estimated rate');
-  t('TDAP eligible estimated visits');
-  t('TDAP vaccine indicated');
+  t('TDAP doses');
+  t('TDAP eligible');
+  t('TDAP indicated');
   t('Target TDAP doses');
-  t('Target influenza doses');
+  t('Target flu doses');
   t('Target pneumo doses');
-  t('Tdap vax rate');
   t('The month containing the reporting period end date.');
   t('The quarter containing the reporting period end date. ');
   t('The start and end date of the reporting period');

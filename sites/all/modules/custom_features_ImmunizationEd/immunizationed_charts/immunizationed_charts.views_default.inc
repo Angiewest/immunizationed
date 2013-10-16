@@ -1253,7 +1253,7 @@ function immunizationed_charts_views_default_views() {
   $handler->display->display_options['fields']['php_2']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_2']['php_output'] = '<?php
 $static = $static+ $data->field_field_visits[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_2']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_2']['php_click_sortable'] = '';
@@ -1266,7 +1266,7 @@ print $static;
   $handler->display->display_options['fields']['php_4']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_4']['php_output'] = '<?php
 $static = $static+ $data->field_field_target_flu_vaccine_indicated[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_4']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_4']['php_click_sortable'] = '';
@@ -1279,7 +1279,7 @@ print $static;
   $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
 $static = $static+ $data->field_field_all_flu_eligible_est_visit[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_3']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_3']['php_click_sortable'] = '';
@@ -1292,7 +1292,7 @@ print $static;
   $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_1']['php_output'] = '<?php
 $static = $static+ $data->field_field_target_flu_doses[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_1']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_1']['php_click_sortable'] = '';
@@ -1305,7 +1305,7 @@ print $static;
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php']['php_output'] = '<?php
 $static = $static+ $data->field_field_influenza[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
@@ -1862,13 +1862,13 @@ print $static;
     'prefix_suffix' => 1,
   );
   /* Field: SUM(Content: Target influenza doses) */
-  $handler->display->display_options['fields']['field_target_flu_doses']['id'] = 'field_target_flu_doses';
-  $handler->display->display_options['fields']['field_target_flu_doses']['table'] = 'field_data_field_target_flu_doses';
-  $handler->display->display_options['fields']['field_target_flu_doses']['field'] = 'field_target_flu_doses';
-  $handler->display->display_options['fields']['field_target_flu_doses']['group_type'] = 'sum';
-  $handler->display->display_options['fields']['field_target_flu_doses']['label'] = 'Target flu doses';
-  $handler->display->display_options['fields']['field_target_flu_doses']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_target_flu_doses']['settings'] = array(
+  $handler->display->display_options['fields']['field_computed_target_flu_doses']['id'] = 'field_computed_target_flu_doses';
+  $handler->display->display_options['fields']['field_computed_target_flu_doses']['table'] = 'field_data_field_computed_target_flu_doses';
+  $handler->display->display_options['fields']['field_computed_target_flu_doses']['field'] = 'field_computed_target_flu_doses';
+  $handler->display->display_options['fields']['field_computed_target_flu_doses']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_computed_target_flu_doses']['label'] = 'Target flu doses';
+  $handler->display->display_options['fields']['field_computed_target_flu_doses']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_computed_target_flu_doses']['settings'] = array(
     'thousand_separator' => '',
     'decimal_separator' => '.',
     'scale' => '0',
@@ -1894,7 +1894,7 @@ print $static;
   $handler->display->display_options['fields']['php_2']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_2']['php_output'] = '<?php
 $static = $static+ $data->field_field_visits[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_2']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_2']['php_click_sortable'] = '';
@@ -1907,7 +1907,7 @@ print $static;
   $handler->display->display_options['fields']['php_4']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_4']['php_output'] = '<?php
 $static = $static+ $data->field_field_flu_vaccine_indicated_[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_4']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_4']['php_click_sortable'] = '';
@@ -1920,7 +1920,7 @@ print $static;
   $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
 $static = $static+ $data->field_field_all_flu_eligible_est_visit[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_3']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_3']['php_click_sortable'] = '';
@@ -1932,8 +1932,8 @@ print $static;
   $handler->display->display_options['fields']['php_1']['label'] = 'Cumulative flu goal';
   $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_1']['php_output'] = '<?php
-$static = $static+ $data->field_field_target_flu_doses[0][\'raw\'][\'value\'];
-print $static; 
+$static = $static+ $data->field_field_computed_target_flu_doses[0][\'raw\'][\'value\'];
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_1']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_1']['php_click_sortable'] = '';
@@ -1946,7 +1946,7 @@ print $static;
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php']['php_output'] = '<?php
 $static = $static+ $data->field_field_influenza[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
@@ -2049,13 +2049,13 @@ print $static;
     'prefix_suffix' => 1,
   );
   /* Field: SUM(Content: Target influenza doses) */
-  $handler->display->display_options['fields']['field_target_flu_doses']['id'] = 'field_target_flu_doses';
-  $handler->display->display_options['fields']['field_target_flu_doses']['table'] = 'field_data_field_target_flu_doses';
-  $handler->display->display_options['fields']['field_target_flu_doses']['field'] = 'field_target_flu_doses';
-  $handler->display->display_options['fields']['field_target_flu_doses']['group_type'] = 'sum';
-  $handler->display->display_options['fields']['field_target_flu_doses']['label'] = 'Target flu doses';
-  $handler->display->display_options['fields']['field_target_flu_doses']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_target_flu_doses']['settings'] = array(
+  $handler->display->display_options['fields']['field_computed_target_flu_doses']['id'] = 'field_computed_target_flu_doses';
+  $handler->display->display_options['fields']['field_computed_target_flu_doses']['table'] = 'field_data_field_computed_target_flu_doses';
+  $handler->display->display_options['fields']['field_computed_target_flu_doses']['field'] = 'field_computed_target_flu_doses';
+  $handler->display->display_options['fields']['field_computed_target_flu_doses']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_computed_target_flu_doses']['label'] = 'Target flu doses';
+  $handler->display->display_options['fields']['field_computed_target_flu_doses']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_computed_target_flu_doses']['settings'] = array(
     'thousand_separator' => '',
     'decimal_separator' => '.',
     'scale' => '0',
@@ -2081,7 +2081,7 @@ print $static;
   $handler->display->display_options['fields']['php_2']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_2']['php_output'] = '<?php
 $static = $static+ $data->field_field_visits[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_2']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_2']['php_click_sortable'] = '';
@@ -2094,7 +2094,7 @@ print $static;
   $handler->display->display_options['fields']['php_4']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_4']['php_output'] = '<?php
 $static = $static+ $data->field_field_flu_vaccine_indicated_[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_4']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_4']['php_click_sortable'] = '';
@@ -2107,7 +2107,7 @@ print $static;
   $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
 $static = $static+ $data->field_field_all_flu_eligible_est_visit[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_3']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_3']['php_click_sortable'] = '';
@@ -2119,8 +2119,8 @@ print $static;
   $handler->display->display_options['fields']['php_1']['label'] = 'Cumulative flu goal';
   $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_1']['php_output'] = '<?php
-$static = $static+ $data->field_field_target_flu_doses[0][\'raw\'][\'value\'];
-print $static; 
+$static = $static+ $data->field_field_computed_target_flu_doses[0][\'raw\'][\'value\'];
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_1']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_1']['php_click_sortable'] = '';
@@ -2133,7 +2133,7 @@ print $static;
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php']['php_output'] = '<?php
 $static = $static+ $data->field_field_influenza[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
@@ -2318,7 +2318,7 @@ print $static;
   $handler->display->display_options['fields']['php_2']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_2']['php_output'] = '<?php
 $static = $static+ $data->field_field_visits[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_2']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_2']['php_click_sortable'] = '';
@@ -2331,7 +2331,7 @@ print $static;
   $handler->display->display_options['fields']['php_4']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_4']['php_output'] = '<?php
 $static = $static+ $data->field_field_pneumo_vaccine_indicated[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_4']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_4']['php_click_sortable'] = '';
@@ -2344,7 +2344,7 @@ print $static;
   $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
 $static = $static+ $data->field_field_pneumo_eligible_est_visits[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_3']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_3']['php_click_sortable'] = '';
@@ -2357,7 +2357,7 @@ print $static;
   $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_1']['php_output'] = '<?php
 $static = $static+ $data->field_field_target_pneumo_doses[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_1']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_1']['php_click_sortable'] = '';
@@ -2370,7 +2370,7 @@ print $static;
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php']['php_output'] = '<?php
 $static = $static+ $data->field_field_pneumo[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
@@ -2489,7 +2489,7 @@ print $static;
   $handler->display->display_options['fields']['php_2']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_2']['php_output'] = '<?php
 $static = $static+ $data->field_field_visits[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_2']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_2']['php_click_sortable'] = '';
@@ -2503,7 +2503,7 @@ print $static;
   $handler->display->display_options['fields']['php_4']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_4']['php_output'] = '<?php
 $static = $static+ $data->field_field_pneumo_vaccine_indicated[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_4']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_4']['php_click_sortable'] = '';
@@ -2516,7 +2516,7 @@ print $static;
   $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
 $static = $static+ $data->field_field_pneumo_eligible_est_visits[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_3']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_3']['php_click_sortable'] = '';
@@ -2529,7 +2529,7 @@ print $static;
   $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_1']['php_output'] = '<?php
 $static = $static+ $data->field_field_target_pneumo_doses[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_1']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_1']['php_click_sortable'] = '';
@@ -2542,7 +2542,7 @@ print $static;
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php']['php_output'] = '<?php
 $static = $static+ $data->field_field_pneumo[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
@@ -2680,7 +2680,7 @@ print $static;
   $handler->display->display_options['fields']['php_2']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_2']['php_output'] = '<?php
 $static = $static+ $data->field_field_visits[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_2']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_2']['php_click_sortable'] = '';
@@ -2693,7 +2693,7 @@ print $static;
   $handler->display->display_options['fields']['php_4']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_4']['php_output'] = '<?php
 $static = $static+ $data->field_field_pneumo_vaccine_indicated[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_4']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_4']['php_click_sortable'] = '';
@@ -2706,7 +2706,7 @@ print $static;
   $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
 $static = $static+ $data->field_field_pneumo_eligible_est_visits[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_3']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_3']['php_click_sortable'] = '';
@@ -2719,7 +2719,7 @@ print $static;
   $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_1']['php_output'] = '<?php
 $static = $static+ $data->field_field_target_pneumo_doses[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_1']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_1']['php_click_sortable'] = '';
@@ -2732,7 +2732,7 @@ print $static;
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php']['php_output'] = '<?php
 $static = $static+ $data->field_field_pneumo[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
@@ -2851,7 +2851,7 @@ print $static;
   $handler->display->display_options['fields']['php_2']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_2']['php_output'] = '<?php
 $static = $static+ $data->field_field_visits[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_2']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_2']['php_click_sortable'] = '';
@@ -2864,7 +2864,7 @@ print $static;
   $handler->display->display_options['fields']['php_4']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_4']['php_output'] = '<?php
 $static = $static+ $data->field_field_pneumo_vaccine_indicated[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_4']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_4']['php_click_sortable'] = '';
@@ -2877,7 +2877,7 @@ print $static;
   $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
 $static = $static+ $data->field_field_pneumo_eligible_est_visits[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_3']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_3']['php_click_sortable'] = '';
@@ -2890,7 +2890,7 @@ print $static;
   $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_1']['php_output'] = '<?php
 $static = $static+ $data->field_field_target_pneumo_doses[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_1']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_1']['php_click_sortable'] = '';
@@ -2903,7 +2903,7 @@ print $static;
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php']['php_output'] = '<?php
 $static = $static+ $data->field_field_pneumo[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
@@ -3034,7 +3034,7 @@ print $static;
   $handler->display->display_options['fields']['php_2']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_2']['php_output'] = '<?php
 $static = $static+ $data->field_field_visits[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_2']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_2']['php_click_sortable'] = '';
@@ -3048,7 +3048,7 @@ print $static;
   $handler->display->display_options['fields']['php_4']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_4']['php_output'] = '<?php
 $static = $static+ $data->field_field_pneumo_vaccine_indicated[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_4']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_4']['php_click_sortable'] = '';
@@ -3061,7 +3061,7 @@ print $static;
   $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
 $static = $static+ $data->field_field_pneumo_eligible_est_visits[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_3']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_3']['php_click_sortable'] = '';
@@ -3074,7 +3074,7 @@ print $static;
   $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_1']['php_output'] = '<?php
 $static = $static+ $data->field_field_target_pneumo_doses[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_1']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_1']['php_click_sortable'] = '';
@@ -3087,7 +3087,7 @@ print $static;
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php']['php_output'] = '<?php
 $static = $static+ $data->field_field_pneumo[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
@@ -3225,7 +3225,7 @@ print $static;
   $handler->display->display_options['fields']['php_2']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_2']['php_output'] = '<?php
 $static = $static+ $data->field_field_visits[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_2']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_2']['php_click_sortable'] = '';
@@ -3238,7 +3238,7 @@ print $static;
   $handler->display->display_options['fields']['php_4']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_4']['php_output'] = '<?php
 $static = $static+ $data->field_field_pneumo_vaccine_indicated[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_4']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_4']['php_click_sortable'] = '';
@@ -3251,7 +3251,7 @@ print $static;
   $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
 $static = $static+ $data->field_field_pneumo_eligible_est_visits[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_3']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_3']['php_click_sortable'] = '';
@@ -3264,7 +3264,7 @@ print $static;
   $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_1']['php_output'] = '<?php
 $static = $static+ $data->field_field_target_pneumo_doses[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_1']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_1']['php_click_sortable'] = '';
@@ -3277,7 +3277,7 @@ print $static;
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php']['php_output'] = '<?php
 $static = $static+ $data->field_field_pneumo[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
@@ -3363,12 +3363,12 @@ print $static;
     'prefix_suffix' => 1,
   );
   /* Field: SUM(Content: Target TDAP doses) */
-  $handler->display->display_options['fields']['field_target_tdap_doses']['id'] = 'field_target_tdap_doses';
-  $handler->display->display_options['fields']['field_target_tdap_doses']['table'] = 'field_data_field_target_tdap_doses';
-  $handler->display->display_options['fields']['field_target_tdap_doses']['field'] = 'field_target_tdap_doses';
-  $handler->display->display_options['fields']['field_target_tdap_doses']['group_type'] = 'sum';
-  $handler->display->display_options['fields']['field_target_tdap_doses']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_target_tdap_doses']['settings'] = array(
+  $handler->display->display_options['fields']['field_computed_target_tdap_doses']['id'] = 'field_computed_target_tdap_doses';
+  $handler->display->display_options['fields']['field_computed_target_tdap_doses']['table'] = 'field_data_field_computed_target_tdap_doses';
+  $handler->display->display_options['fields']['field_computed_target_tdap_doses']['field'] = 'field_computed_target_tdap_doses';
+  $handler->display->display_options['fields']['field_computed_target_tdap_doses']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_computed_target_tdap_doses']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_computed_target_tdap_doses']['settings'] = array(
     'thousand_separator' => ' ',
     'decimal_separator' => '.',
     'scale' => '0',
@@ -3395,7 +3395,7 @@ print $static;
   $handler->display->display_options['fields']['php_2']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_2']['php_output'] = '<?php
 $static = $static+ $data->field_field_visits[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_2']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_2']['php_click_sortable'] = '';
@@ -3408,7 +3408,7 @@ print $static;
   $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
 $static = $static+ $data->field_field_tdap_eligible_estimated_vi[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_3']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_3']['php_click_sortable'] = '';
@@ -3420,8 +3420,8 @@ print $static;
   $handler->display->display_options['fields']['php_1']['label'] = 'Cumulative TDAP goal';
   $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_1']['php_output'] = '<?php
-$static = $static+ $data->field_field_target_tdap_doses[0][\'raw\'][\'value\'];
-print $static; 
+$static = $static+ $data->field_field_computed_target_tdap_doses[0][\'raw\'][\'value\'];
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_1']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_1']['php_click_sortable'] = '';
@@ -3434,7 +3434,7 @@ print $static;
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php']['php_output'] = '<?php
 $static = $static+ $data->field_field_tdap[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
@@ -3565,12 +3565,12 @@ print $static;
     'prefix_suffix' => 1,
   );
   /* Field: SUM(Content: Target TDAP doses) */
-  $handler->display->display_options['fields']['field_target_tdap_doses']['id'] = 'field_target_tdap_doses';
-  $handler->display->display_options['fields']['field_target_tdap_doses']['table'] = 'field_data_field_target_tdap_doses';
-  $handler->display->display_options['fields']['field_target_tdap_doses']['field'] = 'field_target_tdap_doses';
-  $handler->display->display_options['fields']['field_target_tdap_doses']['group_type'] = 'sum';
-  $handler->display->display_options['fields']['field_target_tdap_doses']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_target_tdap_doses']['settings'] = array(
+  $handler->display->display_options['fields']['field_computed_target_tdap_doses']['id'] = 'field_computed_target_tdap_doses';
+  $handler->display->display_options['fields']['field_computed_target_tdap_doses']['table'] = 'field_data_field_computed_target_tdap_doses';
+  $handler->display->display_options['fields']['field_computed_target_tdap_doses']['field'] = 'field_computed_target_tdap_doses';
+  $handler->display->display_options['fields']['field_computed_target_tdap_doses']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_computed_target_tdap_doses']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_computed_target_tdap_doses']['settings'] = array(
     'thousand_separator' => ' ',
     'decimal_separator' => '.',
     'scale' => '0',
@@ -3596,7 +3596,7 @@ print $static;
   $handler->display->display_options['fields']['php_2']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_2']['php_output'] = '<?php
 $static = $static+ $data->field_field_visits[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_2']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_2']['php_click_sortable'] = '';
@@ -3609,7 +3609,7 @@ print $static;
   $handler->display->display_options['fields']['php_4']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_4']['php_output'] = '<?php
 $static = $static+ $data->field_field_tdap_vaccine_indicated[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_4']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_4']['php_click_sortable'] = '';
@@ -3622,7 +3622,7 @@ print $static;
   $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
 $static = $static+ $data->field_field_tdap_eligible_estimated_vi[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_3']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_3']['php_click_sortable'] = '';
@@ -3634,8 +3634,8 @@ print $static;
   $handler->display->display_options['fields']['php_1']['label'] = 'Cumulative TDAP goal';
   $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_1']['php_output'] = '<?php
-$static = $static+ $data->field_field_target_tdap_doses[0][\'raw\'][\'value\'];
-print $static; 
+$static = $static+ $data->field_field_computed_target_tdap_doses[0][\'raw\'][\'value\'];
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_1']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_1']['php_click_sortable'] = '';
@@ -3648,7 +3648,7 @@ print $static;
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php']['php_output'] = '<?php
 $static = $static+ $data->field_field_tdap[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
@@ -3748,12 +3748,12 @@ print $static;
     'prefix_suffix' => 1,
   );
   /* Field: SUM(Content: Target TDAP doses) */
-  $handler->display->display_options['fields']['field_target_tdap_doses']['id'] = 'field_target_tdap_doses';
-  $handler->display->display_options['fields']['field_target_tdap_doses']['table'] = 'field_data_field_target_tdap_doses';
-  $handler->display->display_options['fields']['field_target_tdap_doses']['field'] = 'field_target_tdap_doses';
-  $handler->display->display_options['fields']['field_target_tdap_doses']['group_type'] = 'sum';
-  $handler->display->display_options['fields']['field_target_tdap_doses']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_target_tdap_doses']['settings'] = array(
+  $handler->display->display_options['fields']['field_computed_target_tdap_doses']['id'] = 'field_computed_target_tdap_doses';
+  $handler->display->display_options['fields']['field_computed_target_tdap_doses']['table'] = 'field_data_field_computed_target_tdap_doses';
+  $handler->display->display_options['fields']['field_computed_target_tdap_doses']['field'] = 'field_computed_target_tdap_doses';
+  $handler->display->display_options['fields']['field_computed_target_tdap_doses']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_computed_target_tdap_doses']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_computed_target_tdap_doses']['settings'] = array(
     'thousand_separator' => ' ',
     'decimal_separator' => '.',
     'scale' => '0',
@@ -3780,7 +3780,7 @@ print $static;
   $handler->display->display_options['fields']['php_2']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_2']['php_output'] = '<?php
 $static = $static+ $data->field_field_visits[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_2']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_2']['php_click_sortable'] = '';
@@ -3793,7 +3793,7 @@ print $static;
   $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
 $static = $static+ $data->field_field_tdap_eligible_estimated_vi[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_3']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_3']['php_click_sortable'] = '';
@@ -3805,8 +3805,8 @@ print $static;
   $handler->display->display_options['fields']['php_1']['label'] = 'Cumulative TDAP goal';
   $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_1']['php_output'] = '<?php
-$static = $static+ $data->field_field_target_tdap_doses[0][\'raw\'][\'value\'];
-print $static; 
+$static = $static+ $data->field_field_computed_target_tdap_doses[0][\'raw\'][\'value\'];
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_1']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_1']['php_click_sortable'] = '';
@@ -3819,7 +3819,7 @@ print $static;
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php']['php_output'] = '<?php
 $static = $static+ $data->field_field_tdap[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
@@ -3959,12 +3959,12 @@ print $static;
     'prefix_suffix' => 1,
   );
   /* Field: SUM(Content: Target TDAP doses) */
-  $handler->display->display_options['fields']['field_target_tdap_doses']['id'] = 'field_target_tdap_doses';
-  $handler->display->display_options['fields']['field_target_tdap_doses']['table'] = 'field_data_field_target_tdap_doses';
-  $handler->display->display_options['fields']['field_target_tdap_doses']['field'] = 'field_target_tdap_doses';
-  $handler->display->display_options['fields']['field_target_tdap_doses']['group_type'] = 'sum';
-  $handler->display->display_options['fields']['field_target_tdap_doses']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_target_tdap_doses']['settings'] = array(
+  $handler->display->display_options['fields']['field_computed_target_tdap_doses']['id'] = 'field_computed_target_tdap_doses';
+  $handler->display->display_options['fields']['field_computed_target_tdap_doses']['table'] = 'field_data_field_computed_target_tdap_doses';
+  $handler->display->display_options['fields']['field_computed_target_tdap_doses']['field'] = 'field_computed_target_tdap_doses';
+  $handler->display->display_options['fields']['field_computed_target_tdap_doses']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_computed_target_tdap_doses']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_computed_target_tdap_doses']['settings'] = array(
     'thousand_separator' => ' ',
     'decimal_separator' => '.',
     'scale' => '0',
@@ -3990,7 +3990,7 @@ print $static;
   $handler->display->display_options['fields']['php_2']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_2']['php_output'] = '<?php
 $static = $static+ $data->field_field_visits[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_2']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_2']['php_click_sortable'] = '';
@@ -4003,7 +4003,7 @@ print $static;
   $handler->display->display_options['fields']['php_4']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_4']['php_output'] = '<?php
 $static = $static+ $data->field_field_tdap_vaccine_indicated[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_4']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_4']['php_click_sortable'] = '';
@@ -4016,7 +4016,7 @@ print $static;
   $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
 $static = $static+ $data->field_field_tdap_eligible_estimated_vi[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_3']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_3']['php_click_sortable'] = '';
@@ -4028,8 +4028,8 @@ print $static;
   $handler->display->display_options['fields']['php_1']['label'] = 'Cumulative TDAP goal';
   $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_1']['php_output'] = '<?php
-$static = $static+ $data->field_field_target_tdap_doses[0][\'raw\'][\'value\'];
-print $static; 
+$static = $static+ $data->field_field_computed_target_tdap_doses[0][\'raw\'][\'value\'];
+print $static;
 ?>';
   $handler->display->display_options['fields']['php_1']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_1']['php_click_sortable'] = '';
@@ -4042,7 +4042,7 @@ print $static;
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php']['php_output'] = '<?php
 $static = $static+ $data->field_field_tdap[0][\'raw\'][\'value\'];
-print $static; 
+print $static;
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
