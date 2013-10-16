@@ -1989,13 +1989,12 @@ print $static;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Reporting period start biweekly */
-  $handler->display->display_options['fields']['field_reporting_period_start_biw']['id'] = 'field_reporting_period_start_biw';
-  $handler->display->display_options['fields']['field_reporting_period_start_biw']['table'] = 'field_data_field_reporting_period_start_biw';
-  $handler->display->display_options['fields']['field_reporting_period_start_biw']['field'] = 'field_reporting_period_start_biw';
-  $handler->display->display_options['fields']['field_reporting_period_start_biw']['label'] = 'Reporting period start';
-  $handler->display->display_options['fields']['field_reporting_period_start_biw']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_reporting_period_start_biw']['settings'] = array(
+  /* Field: Content: Visit date */
+  $handler->display->display_options['fields']['field_visit_date']['id'] = 'field_visit_date';
+  $handler->display->display_options['fields']['field_visit_date']['table'] = 'field_data_field_visit_date';
+  $handler->display->display_options['fields']['field_visit_date']['field'] = 'field_visit_date';
+  $handler->display->display_options['fields']['field_visit_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_visit_date']['settings'] = array(
     'format_type' => 'short',
     'fromto' => 'both',
     'multiple_number' => '',
@@ -2003,13 +2002,14 @@ print $static;
     'multiple_to' => '',
     'show_repeat_rule' => 'show',
   );
-  /* Field: Content: Visit date */
-  $handler->display->display_options['fields']['field_visit_date']['id'] = 'field_visit_date';
-  $handler->display->display_options['fields']['field_visit_date']['table'] = 'field_data_field_visit_date';
-  $handler->display->display_options['fields']['field_visit_date']['field'] = 'field_visit_date';
-  $handler->display->display_options['fields']['field_visit_date']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_visit_date']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_visit_date']['settings'] = array(
+  /* Field: Content: Reporting period start biweekly */
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['id'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['table'] = 'field_data_field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['field'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['label'] = 'Reporting period start';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['settings'] = array(
     'format_type' => 'short',
     'fromto' => 'both',
     'multiple_number' => '',
@@ -2078,6 +2078,7 @@ print $static;
   $handler->display->display_options['fields']['php_2']['field'] = 'php';
   $handler->display->display_options['fields']['php_2']['group_type'] = 'sum';
   $handler->display->display_options['fields']['php_2']['label'] = 'Cumulative visits';
+  $handler->display->display_options['fields']['php_2']['exclude'] = TRUE;
   $handler->display->display_options['fields']['php_2']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_2']['php_output'] = '<?php
 $static = $static+ $data->field_field_visits[0][\'raw\'][\'value\'];
@@ -2091,6 +2092,7 @@ print $static;
   $handler->display->display_options['fields']['php_4']['field'] = 'php';
   $handler->display->display_options['fields']['php_4']['group_type'] = 'sum';
   $handler->display->display_options['fields']['php_4']['label'] = 'Cumulative flu indicated';
+  $handler->display->display_options['fields']['php_4']['exclude'] = TRUE;
   $handler->display->display_options['fields']['php_4']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_4']['php_output'] = '<?php
 $static = $static+ $data->field_field_flu_vaccine_indicated_[0][\'raw\'][\'value\'];
@@ -2104,6 +2106,7 @@ print $static;
   $handler->display->display_options['fields']['php_3']['field'] = 'php';
   $handler->display->display_options['fields']['php_3']['group_type'] = 'sum';
   $handler->display->display_options['fields']['php_3']['label'] = 'Cumulative flu eligible';
+  $handler->display->display_options['fields']['php_3']['exclude'] = TRUE;
   $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
 $static = $static+ $data->field_field_all_flu_eligible_est_visit[0][\'raw\'][\'value\'];
@@ -2936,18 +2939,18 @@ print $static;
   $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['table'] = 'field_data_field_reporting_period_start_biw';
   $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['field'] = 'field_reporting_period_start_biw_value';
   $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['value']['value'] = '2013-07-01';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['value']['value'] = '2013-08-25';
 
   /* Display: pneumo progress chart */
   $handler = $view->new_display('panel_pane', 'pneumo progress chart', 'panel_pane_2');
   $handler->display->display_options['display_description'] = 'Line Chart: Pneumo doses vs target';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Reporting period start biweekly */
-  $handler->display->display_options['fields']['field_reporting_period_start_biw']['id'] = 'field_reporting_period_start_biw';
-  $handler->display->display_options['fields']['field_reporting_period_start_biw']['table'] = 'field_data_field_reporting_period_start_biw';
-  $handler->display->display_options['fields']['field_reporting_period_start_biw']['field'] = 'field_reporting_period_start_biw';
-  $handler->display->display_options['fields']['field_reporting_period_start_biw']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_reporting_period_start_biw']['settings'] = array(
+  /* Field: Content: Visit date */
+  $handler->display->display_options['fields']['field_visit_date']['id'] = 'field_visit_date';
+  $handler->display->display_options['fields']['field_visit_date']['table'] = 'field_data_field_visit_date';
+  $handler->display->display_options['fields']['field_visit_date']['field'] = 'field_visit_date';
+  $handler->display->display_options['fields']['field_visit_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_visit_date']['settings'] = array(
     'format_type' => 'short',
     'fromto' => 'both',
     'multiple_number' => '',
@@ -2955,13 +2958,13 @@ print $static;
     'multiple_to' => '',
     'show_repeat_rule' => 'show',
   );
-  /* Field: Content: Visit date */
-  $handler->display->display_options['fields']['field_visit_date']['id'] = 'field_visit_date';
-  $handler->display->display_options['fields']['field_visit_date']['table'] = 'field_data_field_visit_date';
-  $handler->display->display_options['fields']['field_visit_date']['field'] = 'field_visit_date';
-  $handler->display->display_options['fields']['field_visit_date']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_visit_date']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_visit_date']['settings'] = array(
+  /* Field: Content: Reporting period start biweekly */
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['id'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['table'] = 'field_data_field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['field'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['settings'] = array(
     'format_type' => 'short',
     'fromto' => 'both',
     'multiple_number' => '',
@@ -3058,6 +3061,7 @@ print $static;
   $handler->display->display_options['fields']['php_3']['field'] = 'php';
   $handler->display->display_options['fields']['php_3']['group_type'] = 'sum';
   $handler->display->display_options['fields']['php_3']['label'] = 'Cumulative Pneumo eligible';
+  $handler->display->display_options['fields']['php_3']['exclude'] = TRUE;
   $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
 $static = $static+ $data->field_field_pneumo_eligible_est_visits[0][\'raw\'][\'value\'];
@@ -3689,12 +3693,12 @@ print $static;
   $handler->display->display_options['style_options']['height'] = '400';
   $handler->display->display_options['style_options']['isstacked'] = 1;
   $handler->display->display_options['style_options']['pointsize'] = '0';
-  /* Field: Content: Reporting period start biweekly */
-  $handler->display->display_options['fields']['field_reporting_period_start_biw']['id'] = 'field_reporting_period_start_biw';
-  $handler->display->display_options['fields']['field_reporting_period_start_biw']['table'] = 'field_data_field_reporting_period_start_biw';
-  $handler->display->display_options['fields']['field_reporting_period_start_biw']['field'] = 'field_reporting_period_start_biw';
-  $handler->display->display_options['fields']['field_reporting_period_start_biw']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_reporting_period_start_biw']['settings'] = array(
+  /* Field: Content: Visit date */
+  $handler->display->display_options['fields']['field_visit_date']['id'] = 'field_visit_date';
+  $handler->display->display_options['fields']['field_visit_date']['table'] = 'field_data_field_visit_date';
+  $handler->display->display_options['fields']['field_visit_date']['field'] = 'field_visit_date';
+  $handler->display->display_options['fields']['field_visit_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_visit_date']['settings'] = array(
     'format_type' => 'short',
     'fromto' => 'both',
     'multiple_number' => '',
@@ -3702,13 +3706,13 @@ print $static;
     'multiple_to' => '',
     'show_repeat_rule' => 'show',
   );
-  /* Field: Content: Visit date */
-  $handler->display->display_options['fields']['field_visit_date']['id'] = 'field_visit_date';
-  $handler->display->display_options['fields']['field_visit_date']['table'] = 'field_data_field_visit_date';
-  $handler->display->display_options['fields']['field_visit_date']['field'] = 'field_visit_date';
-  $handler->display->display_options['fields']['field_visit_date']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_visit_date']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_visit_date']['settings'] = array(
+  /* Field: Content: Reporting period start biweekly */
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['id'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['table'] = 'field_data_field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['field'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['settings'] = array(
     'format_type' => 'short',
     'fromto' => 'both',
     'multiple_number' => '',
@@ -3790,6 +3794,7 @@ print $static;
   $handler->display->display_options['fields']['php_3']['field'] = 'php';
   $handler->display->display_options['fields']['php_3']['group_type'] = 'sum';
   $handler->display->display_options['fields']['php_3']['label'] = 'Cumulative TDAP eligible';
+  $handler->display->display_options['fields']['php_3']['exclude'] = TRUE;
   $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
 $static = $static+ $data->field_field_tdap_eligible_estimated_vi[0][\'raw\'][\'value\'];
@@ -3852,7 +3857,7 @@ print $static;
   $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['table'] = 'field_data_field_reporting_period_start_biw';
   $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['field'] = 'field_reporting_period_start_biw_value';
   $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['value']['value'] = '2013-07-01';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['value']['value'] = '2013-08-25';
 
   /* Display: progress tdap chart */
   $handler = $view->new_display('panel_pane', 'progress tdap chart', 'panel_pane_2');

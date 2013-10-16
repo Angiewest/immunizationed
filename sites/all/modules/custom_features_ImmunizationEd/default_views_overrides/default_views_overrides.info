@@ -1,0 +1,11 @@
+name = Default views overrides
+core = 7.x
+package = immunizationed
+version = 7.x-1.0
+project = default_views_overrides
+dependencies[] = admin_views
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features_exclude[dependencies][ctools] = ctools
+project path = sites/all/modules/custom_features_immunizationed

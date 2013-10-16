@@ -29,6 +29,7 @@ features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[feeds_importer][] = baseline_rate_importer
 features[feeds_importer][] = emr_baseline_import
+features[feeds_importer][] = pitt_progress_emr_importer
 features[field_base][] = field_all_flu_eligible_est_visit
 features[field_base][] = field_all_flu_eligible_estimated
 features[field_base][] = field_average_age_at_visit

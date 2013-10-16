@@ -92,7 +92,7 @@ function immunizationed_emr_importer_default_rules_configuration() {
         { "data_calc" : {
             "USING" : {
               "input_1" : [ "practice-list-item:field-target-flu-percent" ],
-              "op" : "\\/",
+              "op" : "\\u002F",
               "input_2" : "100"
             },
             "PROVIDE" : { "result" : { "flu_rate_decimal" : "flu rate decimal" } }
@@ -115,7 +115,7 @@ function immunizationed_emr_importer_default_rules_configuration() {
         { "data_calc" : {
             "USING" : {
               "input_1" : [ "practice-list-item:field-target-pneumo-percent" ],
-              "op" : "\\/",
+              "op" : "\\u002F",
               "input_2" : "100"
             },
             "PROVIDE" : { "result" : { "pneumo_target_decimal" : "pneumo target decimal" } }
@@ -124,7 +124,7 @@ function immunizationed_emr_importer_default_rules_configuration() {
         { "data_calc" : {
             "USING" : {
               "input_1" : [ "practice-list-item:field-target-tdap-percent" ],
-              "op" : "\\/",
+              "op" : "\\u002F",
               "input_2" : "100"
             },
             "PROVIDE" : { "result" : { "tdap_target_decimal" : "tdap target decimal" } }
@@ -234,7 +234,7 @@ function immunizationed_emr_importer_default_rules_configuration() {
             "value" : [ "tdap-result" ]
           }
         },
-        { "drupal_message" : { "message" : "The baseline vaccination rates of eligible patients are as follows:\\u003Cbr\\u003E\\r\\nInfluenza: [node:field-baseline-flu-vax-rate]\\u003Cbr\\u003E\\r\\nPneumo: [node:field-baseline-pneumo-vax-rate]\\u003Cbr\\u003E\\r\\nTdap: [node:field-baseline-tdap-vax-rate]\\u003Cbr\\u003E\\r\\nThe goals have been calculated as:\\u003Cbr\\u003E\\r\\nInfluenza: [node:field-target-flu-percent]\\t\\u003Cbr\\u003E\\r\\nPneumo: [node:field-target-pneumo-percent]\\u003Cbr\\u003E\\r\\nTdap: [node:field-target-tdap-percent]\\u003Cbr\\u003E\\r\\n\\u003Cbr\\u003E\\r\\nGood luck!" } }
+        { "drupal_message" : { "message" : "The baseline vaccination rates of eligible patients are as follows:\\u003Cbr\\u003E\\u000D\\u000AInfluenza: [node:field-baseline-flu-vax-rate]\\u003Cbr\\u003E\\u000D\\u000APneumo: [node:field-baseline-pneumo-vax-rate]\\u003Cbr\\u003E\\u000D\\u000ATdap: [node:field-baseline-tdap-vax-rate]\\u003Cbr\\u003E\\u000D\\u000AThe goals have been calculated as:\\u003Cbr\\u003E\\u000D\\u000AInfluenza: [node:field-target-flu-percent]\\u0009\\u003Cbr\\u003E\\u000D\\u000APneumo: [node:field-target-pneumo-percent]\\u003Cbr\\u003E\\u000D\\u000ATdap: [node:field-target-tdap-percent]\\u003Cbr\\u003E\\u000D\\u000A\\u003Cbr\\u003E\\u000D\\u000AGood luck!" } }
       ]
     }
   }');
