@@ -1176,13 +1176,27 @@ function immunizationed_charts_views_default_views() {
   $handler->display->display_options['style_options']['height'] = '400';
   $handler->display->display_options['style_options']['isstacked'] = 1;
   $handler->display->display_options['style_options']['pointsize'] = '0';
+  /* Field: Content: Reporting period start biweekly */
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['id'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['table'] = 'field_data_field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['field'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['label'] = 'Reporting period start';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+  );
   /* Field: Content: Visit date */
   $handler->display->display_options['fields']['field_visit_date']['id'] = 'field_visit_date';
   $handler->display->display_options['fields']['field_visit_date']['table'] = 'field_data_field_visit_date';
   $handler->display->display_options['fields']['field_visit_date']['field'] = 'field_visit_date';
+  $handler->display->display_options['fields']['field_visit_date']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_visit_date']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_visit_date']['settings'] = array(
-    'format_type' => 'us_short_date',
+    'format_type' => 'short',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
@@ -1265,7 +1279,7 @@ print $static;
   $handler->display->display_options['fields']['php_4']['label'] = 'Cumulative flu indicated';
   $handler->display->display_options['fields']['php_4']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_4']['php_output'] = '<?php
-$static = $static+ $data->field_field_target_flu_vaccine_indicated[0][\'raw\'][\'value\'];
+$static = $static+ $data->field_field_flu_vaccine_indicated_[0][\'raw\'][\'value\'];
 print $static; 
 ?>';
   $handler->display->display_options['fields']['php_4']['use_php_click_sortable'] = '0';
@@ -1333,14 +1347,12 @@ print $static;
   $handler->display->display_options['filters']['type']['value'] = array(
     'vaccination_data_from_emr' => 'vaccination_data_from_emr',
   );
-  /* Filter criterion: Content: Visit date (field_visit_date) */
-  $handler->display->display_options['filters']['field_visit_date_value']['id'] = 'field_visit_date_value';
-  $handler->display->display_options['filters']['field_visit_date_value']['table'] = 'field_data_field_visit_date';
-  $handler->display->display_options['filters']['field_visit_date_value']['field'] = 'field_visit_date_value';
-  $handler->display->display_options['filters']['field_visit_date_value']['operator'] = 'between';
-  $handler->display->display_options['filters']['field_visit_date_value']['value']['min'] = '2013-09-01';
-  $handler->display->display_options['filters']['field_visit_date_value']['value']['max'] = '2014-04-01';
-  $handler->display->display_options['filters']['field_visit_date_value']['value']['value'] = '2013-08-15';
+  /* Filter criterion: Content: Reporting period start biweekly (field_reporting_period_start_biw) */
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['id'] = 'field_reporting_period_start_biw_value';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['table'] = 'field_data_field_reporting_period_start_biw';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['field'] = 'field_reporting_period_start_biw_value';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['value']['value'] = '2013-08-25';
 
   /* Display: Flu progress chart */
   $handler = $view->new_display('panel_pane', 'Flu progress chart', 'panel_pane_5');
@@ -1348,6 +1360,143 @@ print $static;
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'edit users with role CoIadmin';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Visit date */
+  $handler->display->display_options['fields']['field_visit_date']['id'] = 'field_visit_date';
+  $handler->display->display_options['fields']['field_visit_date']['table'] = 'field_data_field_visit_date';
+  $handler->display->display_options['fields']['field_visit_date']['field'] = 'field_visit_date';
+  $handler->display->display_options['fields']['field_visit_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_visit_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: SUM(Content: Visits) */
+  $handler->display->display_options['fields']['field_visits']['id'] = 'field_visits';
+  $handler->display->display_options['fields']['field_visits']['table'] = 'field_data_field_visits';
+  $handler->display->display_options['fields']['field_visits']['field'] = 'field_visits';
+  $handler->display->display_options['fields']['field_visits']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_visits']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_visits']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  /* Field: SUM(Content: Flu vaccine indicated ) */
+  $handler->display->display_options['fields']['field_flu_vaccine_indicated_']['id'] = 'field_flu_vaccine_indicated_';
+  $handler->display->display_options['fields']['field_flu_vaccine_indicated_']['table'] = 'field_data_field_flu_vaccine_indicated_';
+  $handler->display->display_options['fields']['field_flu_vaccine_indicated_']['field'] = 'field_flu_vaccine_indicated_';
+  $handler->display->display_options['fields']['field_flu_vaccine_indicated_']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_flu_vaccine_indicated_']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_flu_vaccine_indicated_']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  /* Field: SUM(Content: Flu eligible visits) */
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['id'] = 'field_all_flu_eligible_est_visit';
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['table'] = 'field_data_field_all_flu_eligible_est_visit';
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['field'] = 'field_all_flu_eligible_est_visit';
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['label'] = 'All Flu eligible estimated visits';
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  /* Field: SUM(Content: Target influenza doses) */
+  $handler->display->display_options['fields']['field_target_flu_doses']['id'] = 'field_target_flu_doses';
+  $handler->display->display_options['fields']['field_target_flu_doses']['table'] = 'field_data_field_target_flu_doses';
+  $handler->display->display_options['fields']['field_target_flu_doses']['field'] = 'field_target_flu_doses';
+  $handler->display->display_options['fields']['field_target_flu_doses']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_target_flu_doses']['label'] = 'Target flu doses';
+  $handler->display->display_options['fields']['field_target_flu_doses']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_target_flu_doses']['settings'] = array(
+    'thousand_separator' => '',
+    'decimal_separator' => '.',
+    'scale' => '0',
+    'prefix_suffix' => 1,
+  );
+  /* Field: SUM(Content: Influenza) */
+  $handler->display->display_options['fields']['field_influenza']['id'] = 'field_influenza';
+  $handler->display->display_options['fields']['field_influenza']['table'] = 'field_data_field_influenza';
+  $handler->display->display_options['fields']['field_influenza']['field'] = 'field_influenza';
+  $handler->display->display_options['fields']['field_influenza']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_influenza']['label'] = 'Flu doses';
+  $handler->display->display_options['fields']['field_influenza']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_influenza']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  /* Field: SUM(Global: PHP) */
+  $handler->display->display_options['fields']['php_2']['id'] = 'php_2';
+  $handler->display->display_options['fields']['php_2']['table'] = 'views';
+  $handler->display->display_options['fields']['php_2']['field'] = 'php';
+  $handler->display->display_options['fields']['php_2']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['php_2']['label'] = 'Cumulative visits';
+  $handler->display->display_options['fields']['php_2']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['php_2']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_2']['php_output'] = '<?php
+$static = $static+ $data->field_field_visits[0][\'raw\'][\'value\'];
+print $static; 
+?>';
+  $handler->display->display_options['fields']['php_2']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_2']['php_click_sortable'] = '';
+  /* Field: SUM(Global: PHP) */
+  $handler->display->display_options['fields']['php_4']['id'] = 'php_4';
+  $handler->display->display_options['fields']['php_4']['table'] = 'views';
+  $handler->display->display_options['fields']['php_4']['field'] = 'php';
+  $handler->display->display_options['fields']['php_4']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['php_4']['label'] = 'Cumulative flu indicated';
+  $handler->display->display_options['fields']['php_4']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['php_4']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_4']['php_output'] = '<?php
+$static = $static+ $data->field_field_target_flu_vaccine_indicated[0][\'raw\'][\'value\'];
+print $static; 
+?>';
+  $handler->display->display_options['fields']['php_4']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_4']['php_click_sortable'] = '';
+  /* Field: SUM(Global: PHP) */
+  $handler->display->display_options['fields']['php_3']['id'] = 'php_3';
+  $handler->display->display_options['fields']['php_3']['table'] = 'views';
+  $handler->display->display_options['fields']['php_3']['field'] = 'php';
+  $handler->display->display_options['fields']['php_3']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['php_3']['label'] = 'Cumulative flu eligible';
+  $handler->display->display_options['fields']['php_3']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
+$static = $static+ $data->field_field_all_flu_eligible_est_visit[0][\'raw\'][\'value\'];
+print $static; 
+?>';
+  $handler->display->display_options['fields']['php_3']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_3']['php_click_sortable'] = '';
+  /* Field: SUM(Global: PHP) */
+  $handler->display->display_options['fields']['php_1']['id'] = 'php_1';
+  $handler->display->display_options['fields']['php_1']['table'] = 'views';
+  $handler->display->display_options['fields']['php_1']['field'] = 'php';
+  $handler->display->display_options['fields']['php_1']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['php_1']['label'] = 'Cumulative flu goal';
+  $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_1']['php_output'] = '<?php
+$static = $static+ $data->field_field_target_flu_doses[0][\'raw\'][\'value\'];
+print $static; 
+?>';
+  $handler->display->display_options['fields']['php_1']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_1']['php_click_sortable'] = '';
+  /* Field: SUM(Global: PHP) */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['php']['label'] = 'Cumulative flu doses';
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<?php
+$static = $static+ $data->field_field_influenza[0][\'raw\'][\'value\'];
+print $static; 
+?>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['argument_input'] = array(
     'gid' => array(
@@ -1369,21 +1518,21 @@ print $static;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
-    'field_reporting_period' => 'field_reporting_period',
     'field_reporting_period_start_biw' => 'field_reporting_period_start_biw',
-    'field_visits_1' => 'field_visits_1',
+    'field_visit_date' => 'field_visit_date',
+    'field_visits' => 'field_visits',
+    'field_flu_vaccine_indicated_' => 'field_flu_vaccine_indicated_',
     'field_all_flu_eligible_est_visit' => 'field_all_flu_eligible_est_visit',
-    'field_influenza_1' => 'field_influenza_1',
+    'field_target_flu_doses' => 'field_target_flu_doses',
+    'field_influenza' => 'field_influenza',
+    'php_2' => 'php_2',
+    'php_4' => 'php_4',
+    'php_3' => 'php_3',
+    'php_1' => 'php_1',
+    'php' => 'php',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
-    'field_reporting_period' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
     'field_reporting_period_start_biw' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
@@ -1391,7 +1540,21 @@ print $static;
       'separator' => '',
       'empty_column' => 0,
     ),
-    'field_visits_1' => array(
+    'field_visit_date' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_visits' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_flu_vaccine_indicated_' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -1405,9 +1568,41 @@ print $static;
       'separator' => '',
       'empty_column' => 0,
     ),
-    'field_influenza_1' => array(
+    'field_target_flu_doses' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_influenza' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'php_2' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'php_4' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'php_3' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'php_1' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'php' => array(
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -1416,6 +1611,140 @@ print $static;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Reporting period start biweekly */
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['id'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['table'] = 'field_data_field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['field'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['label'] = 'Reporting period start';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: SUM(Content: Visits) */
+  $handler->display->display_options['fields']['field_visits']['id'] = 'field_visits';
+  $handler->display->display_options['fields']['field_visits']['table'] = 'field_data_field_visits';
+  $handler->display->display_options['fields']['field_visits']['field'] = 'field_visits';
+  $handler->display->display_options['fields']['field_visits']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_visits']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_visits']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  /* Field: SUM(Content: Flu vaccine indicated ) */
+  $handler->display->display_options['fields']['field_flu_vaccine_indicated_']['id'] = 'field_flu_vaccine_indicated_';
+  $handler->display->display_options['fields']['field_flu_vaccine_indicated_']['table'] = 'field_data_field_flu_vaccine_indicated_';
+  $handler->display->display_options['fields']['field_flu_vaccine_indicated_']['field'] = 'field_flu_vaccine_indicated_';
+  $handler->display->display_options['fields']['field_flu_vaccine_indicated_']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_flu_vaccine_indicated_']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_flu_vaccine_indicated_']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  /* Field: SUM(Content: Flu eligible visits) */
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['id'] = 'field_all_flu_eligible_est_visit';
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['table'] = 'field_data_field_all_flu_eligible_est_visit';
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['field'] = 'field_all_flu_eligible_est_visit';
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['label'] = 'All Flu eligible estimated visits';
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  /* Field: SUM(Content: Target influenza doses) */
+  $handler->display->display_options['fields']['field_target_flu_doses']['id'] = 'field_target_flu_doses';
+  $handler->display->display_options['fields']['field_target_flu_doses']['table'] = 'field_data_field_target_flu_doses';
+  $handler->display->display_options['fields']['field_target_flu_doses']['field'] = 'field_target_flu_doses';
+  $handler->display->display_options['fields']['field_target_flu_doses']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_target_flu_doses']['label'] = 'Target flu doses';
+  $handler->display->display_options['fields']['field_target_flu_doses']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_target_flu_doses']['settings'] = array(
+    'thousand_separator' => '',
+    'decimal_separator' => '.',
+    'scale' => '0',
+    'prefix_suffix' => 1,
+  );
+  /* Field: SUM(Content: Influenza) */
+  $handler->display->display_options['fields']['field_influenza']['id'] = 'field_influenza';
+  $handler->display->display_options['fields']['field_influenza']['table'] = 'field_data_field_influenza';
+  $handler->display->display_options['fields']['field_influenza']['field'] = 'field_influenza';
+  $handler->display->display_options['fields']['field_influenza']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['field_influenza']['label'] = 'Flu doses';
+  $handler->display->display_options['fields']['field_influenza']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_influenza']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  /* Field: SUM(Global: PHP) */
+  $handler->display->display_options['fields']['php_2']['id'] = 'php_2';
+  $handler->display->display_options['fields']['php_2']['table'] = 'views';
+  $handler->display->display_options['fields']['php_2']['field'] = 'php';
+  $handler->display->display_options['fields']['php_2']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['php_2']['label'] = 'Cumulative visits';
+  $handler->display->display_options['fields']['php_2']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_2']['php_output'] = '<?php
+$static = $static+ $data->field_field_visits[0][\'raw\'][\'value\'];
+print $static; 
+?>';
+  $handler->display->display_options['fields']['php_2']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_2']['php_click_sortable'] = '';
+  /* Field: SUM(Global: PHP) */
+  $handler->display->display_options['fields']['php_4']['id'] = 'php_4';
+  $handler->display->display_options['fields']['php_4']['table'] = 'views';
+  $handler->display->display_options['fields']['php_4']['field'] = 'php';
+  $handler->display->display_options['fields']['php_4']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['php_4']['label'] = 'Cumulative flu indicated';
+  $handler->display->display_options['fields']['php_4']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_4']['php_output'] = '<?php
+$static = $static+ $data->field_field_flu_vaccine_indicated_[0][\'raw\'][\'value\'];
+print $static; 
+?>';
+  $handler->display->display_options['fields']['php_4']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_4']['php_click_sortable'] = '';
+  /* Field: SUM(Global: PHP) */
+  $handler->display->display_options['fields']['php_3']['id'] = 'php_3';
+  $handler->display->display_options['fields']['php_3']['table'] = 'views';
+  $handler->display->display_options['fields']['php_3']['field'] = 'php';
+  $handler->display->display_options['fields']['php_3']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['php_3']['label'] = 'Cumulative flu eligible';
+  $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
+$static = $static+ $data->field_field_all_flu_eligible_est_visit[0][\'raw\'][\'value\'];
+print $static; 
+?>';
+  $handler->display->display_options['fields']['php_3']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_3']['php_click_sortable'] = '';
+  /* Field: SUM(Global: PHP) */
+  $handler->display->display_options['fields']['php_1']['id'] = 'php_1';
+  $handler->display->display_options['fields']['php_1']['table'] = 'views';
+  $handler->display->display_options['fields']['php_1']['field'] = 'php';
+  $handler->display->display_options['fields']['php_1']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['php_1']['label'] = 'Cumulative flu goal';
+  $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_1']['php_output'] = '<?php
+$static = $static+ $data->field_field_target_flu_doses[0][\'raw\'][\'value\'];
+print $static; 
+?>';
+  $handler->display->display_options['fields']['php_1']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_1']['php_click_sortable'] = '';
+  /* Field: SUM(Global: PHP) */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['group_type'] = 'sum';
+  $handler->display->display_options['fields']['php']['label'] = 'Cumulative flu doses';
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<?php
+$static = $static+ $data->field_field_influenza[0][\'raw\'][\'value\'];
+print $static; 
+?>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['argument_input'] = array(
     'gid' => array(
@@ -2377,17 +2706,6 @@ print $static;
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
-  /* Contextual filter: OG membership: Group ID */
-  $handler->display->display_options['arguments']['gid']['id'] = 'gid';
-  $handler->display->display_options['arguments']['gid']['table'] = 'og_membership';
-  $handler->display->display_options['arguments']['gid']['field'] = 'gid';
-  $handler->display->display_options['arguments']['gid']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['gid']['default_argument_type'] = 'node';
-  $handler->display->display_options['arguments']['gid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['gid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['gid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['gid']['specify_validation'] = TRUE;
-  $handler->display->display_options['arguments']['gid']['validate']['type'] = 'og';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -2400,15 +2718,12 @@ print $static;
   $handler->display->display_options['filters']['type']['value'] = array(
     'vaccination_data_from_emr' => 'vaccination_data_from_emr',
   );
-  /* Filter criterion: Content: Visit date (field_visit_date) */
-  $handler->display->display_options['filters']['field_visit_date_value']['id'] = 'field_visit_date_value';
-  $handler->display->display_options['filters']['field_visit_date_value']['table'] = 'field_data_field_visit_date';
-  $handler->display->display_options['filters']['field_visit_date_value']['field'] = 'field_visit_date_value';
-  $handler->display->display_options['filters']['field_visit_date_value']['operator'] = '>';
-  $handler->display->display_options['filters']['field_visit_date_value']['value']['min'] = '2013-07-01';
-  $handler->display->display_options['filters']['field_visit_date_value']['value']['max'] = '2014-07-01';
-  $handler->display->display_options['filters']['field_visit_date_value']['value']['value'] = '2013-07-01';
-  $handler->display->display_options['filters']['field_visit_date_value']['year_range'] = '-1:+1';
+  /* Filter criterion: Content: Reporting period start biweekly (field_reporting_period_start_biw) */
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['id'] = 'field_reporting_period_start_biw_value';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['table'] = 'field_data_field_reporting_period_start_biw';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['field'] = 'field_reporting_period_start_biw_value';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['value']['value'] = '2013-08-25';
 
   /* Display: pneumo progress chart */
   $handler = $view->new_display('panel_pane', 'pneumo progress chart', 'panel_pane_2');
@@ -2516,6 +2831,7 @@ print $static;
   $handler->display->display_options['fields']['php_3']['field'] = 'php';
   $handler->display->display_options['fields']['php_3']['group_type'] = 'sum';
   $handler->display->display_options['fields']['php_3']['label'] = 'Cumulative Pneumo eligible';
+  $handler->display->display_options['fields']['php_3']['exclude'] = TRUE;
   $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
 $static = $static+ $data->field_field_pneumo_eligible_est_visits[0][\'raw\'][\'value\'];
@@ -2739,6 +3055,26 @@ print $static;
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'vaccination_data_from_emr' => 'vaccination_data_from_emr',
+  );
+  /* Filter criterion: Content: Reporting period start biweekly (field_reporting_period_start_biw) */
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['id'] = 'field_reporting_period_start_biw_value';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['table'] = 'field_data_field_reporting_period_start_biw';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['field'] = 'field_reporting_period_start_biw_value';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['value']['value'] = '2013-08-25';
   $handler->display->display_options['argument_input'] = array(
     'gid' => array(
       'type' => 'user',
@@ -3409,6 +3745,7 @@ print $static;
   $handler->display->display_options['fields']['php_3']['field'] = 'php';
   $handler->display->display_options['fields']['php_3']['group_type'] = 'sum';
   $handler->display->display_options['fields']['php_3']['label'] = 'Cumulative TDAP eligible';
+  $handler->display->display_options['fields']['php_3']['exclude'] = TRUE;
   $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
 $static = $static+ $data->field_field_tdap_eligible_estimated_vi[0][\'raw\'][\'value\'];
@@ -3454,15 +3791,12 @@ print $static;
   $handler->display->display_options['filters']['type']['value'] = array(
     'vaccination_data_from_emr' => 'vaccination_data_from_emr',
   );
-  /* Filter criterion: Content: Visit date (field_visit_date) */
-  $handler->display->display_options['filters']['field_visit_date_value']['id'] = 'field_visit_date_value';
-  $handler->display->display_options['filters']['field_visit_date_value']['table'] = 'field_data_field_visit_date';
-  $handler->display->display_options['filters']['field_visit_date_value']['field'] = 'field_visit_date_value';
-  $handler->display->display_options['filters']['field_visit_date_value']['operator'] = '>';
-  $handler->display->display_options['filters']['field_visit_date_value']['value']['min'] = '2013-07-01';
-  $handler->display->display_options['filters']['field_visit_date_value']['value']['max'] = '2014-07-01';
-  $handler->display->display_options['filters']['field_visit_date_value']['value']['value'] = '2013-07-01';
-  $handler->display->display_options['filters']['field_visit_date_value']['year_range'] = '-1:+1';
+  /* Filter criterion: Content: Reporting period start biweekly (field_reporting_period_start_biw) */
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['id'] = 'field_reporting_period_start_biw_value';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['table'] = 'field_data_field_reporting_period_start_biw';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['field'] = 'field_reporting_period_start_biw_value';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_reporting_period_start_biw_value']['value']['value'] = '2013-08-25';
 
   /* Display: progress tdap chart */
   $handler = $view->new_display('panel_pane', 'progress tdap chart', 'panel_pane_2');
