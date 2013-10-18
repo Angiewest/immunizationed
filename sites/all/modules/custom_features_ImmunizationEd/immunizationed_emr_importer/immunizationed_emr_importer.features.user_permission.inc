@@ -48,19 +48,6 @@ function immunizationed_emr_importer_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: 'create field_average_age_at_visit'.
-  $permissions['create field_average_age_at_visit'] = array(
-    'name' => 'create field_average_age_at_visit',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: 'create field_baseline_indicator'.
   $permissions['create field_baseline_indicator'] = array(
     'name' => 'create field_baseline_indicator',
@@ -432,19 +419,6 @@ function immunizationed_emr_importer_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: 'edit field_average_age_at_visit'.
-  $permissions['edit field_average_age_at_visit'] = array(
-    'name' => 'edit field_average_age_at_visit',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: 'edit field_baseline_indicator'.
   $permissions['edit field_baseline_indicator'] = array(
     'name' => 'edit field_baseline_indicator',
@@ -753,19 +727,6 @@ function immunizationed_emr_importer_user_default_permissions() {
   $permissions['edit own field_all_flu_eligible_estimated'] = array(
     'name' => 'edit own field_all_flu_eligible_estimated',
     'roles' => array(
-      'administrator' => 'administrator',
-      'apprentice admin' => 'apprentice admin',
-      'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'edit own field_average_age_at_visit'.
-  $permissions['edit own field_average_age_at_visit'] = array(
-    'name' => 'edit own field_average_age_at_visit',
-    'roles' => array(
-      'Co-I admin' => 'Co-I admin',
-      'Practice admin' => 'Practice admin',
       'administrator' => 'administrator',
       'apprentice admin' => 'apprentice admin',
       'editor' => 'editor',
@@ -1102,16 +1063,6 @@ function immunizationed_emr_importer_user_default_permissions() {
       'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
       'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'view field_average_age_at_visit'.
-  $permissions['view field_average_age_at_visit'] = array(
-    'name' => 'view field_average_age_at_visit',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
     ),
     'module' => 'field_permissions',
   );
@@ -1467,16 +1418,6 @@ function immunizationed_emr_importer_user_default_permissions() {
       'apprentice admin' => 'apprentice admin',
       'authenticated user' => 'authenticated user',
       'editor' => 'editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'view own field_average_age_at_visit'.
-  $permissions['view own field_average_age_at_visit'] = array(
-    'name' => 'view own field_average_age_at_visit',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
     ),
     'module' => 'field_permissions',
   );
