@@ -36,6 +36,7 @@ features[views_view][] = pneumo_vaccination_charts_by_practice
 features[views_view][] = progress_combined_charts_all_sites
 features[views_view][] = progress_combined_charts_practices
 features[views_view][] = progress_flu_charts_practices
+features[views_view][] = progress_gauges_practices
 features[views_view][] = progress_pneumo_charts_all_sites
 features[views_view][] = progress_pneumo_charts_practices
 features[views_view][] = progress_tdap_charts_all_sites
