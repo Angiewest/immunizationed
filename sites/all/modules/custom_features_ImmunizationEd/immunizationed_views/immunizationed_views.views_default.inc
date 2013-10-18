@@ -2876,7 +2876,6 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['access']['perm'] = 'unsubscribe';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'grid';
-  $handler->display->display_options['style_options']['columns'] = '2';
   $handler->display->display_options['style_options']['alignment'] = 'vertical';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
@@ -2924,10 +2923,10 @@ function immunizationed_views_views_default_views() {
     'pillar_tags' => 0,
   );
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Content: Pillar tags (field_pillar_tags) */
-  $handler->display->display_options['sorts']['field_pillar_tags_tid']['id'] = 'field_pillar_tags_tid';
-  $handler->display->display_options['sorts']['field_pillar_tags_tid']['table'] = 'field_data_field_pillar_tags';
-  $handler->display->display_options['sorts']['field_pillar_tags_tid']['field'] = 'field_pillar_tags_tid';
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['filter_groups']['groups'] = array(
     1 => 'AND',
