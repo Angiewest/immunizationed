@@ -104,12 +104,12 @@ function immunizationed_practice_panelizer_defaults() {
     $pane->pid = 'new-2';
     $pane->panel = 'left_above';
     $pane->type = 'views_panes';
-    $pane->subtype = 'progress_combined_charts_practices-panel_pane_1';
+    $pane->subtype = 'progress_combined_charts_practices-panel_pane_3';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'context' => array(
-        0 => 'panelizer',
+      'arguments' => array(
+        'gid' => '',
       ),
     );
     $pane->cache = array();

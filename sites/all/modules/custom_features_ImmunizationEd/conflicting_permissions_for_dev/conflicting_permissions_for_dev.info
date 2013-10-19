@@ -21,7 +21,6 @@ features[variable][] = rules_debug_log
 features[variable][] = rules_debug_region_bartik
 features[variable][] = rules_debug_region_energetic
 features[variable][] = rules_debug_region_seven
-features[variable][] = rules_empty_sets
 features[variable][] = rules_log_errors
 features[variable][] = rules_path_cleaning_callback
 project path = sites/all/modules/custom_features_immunizationed

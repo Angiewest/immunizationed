@@ -13,15 +13,10 @@ function conflicting_permissions_for_dev_default_rules_configuration() {
       "LABEL" : "Email on\\/off test",
       "PLUGIN" : "reaction rule",
       "ACTIVE" : false,
-      "REQUIRES" : [ "rules", "mimemail" ],
-      "ON" : [ "user_login" ],
+      "REQUIRES" : [ "rules" ],
+      "ON" : { "user_login" : [] },
       "DO" : [
-        { "mimemail" : {
-            "to" : "raviottaj@upmc.edu",
-            "subject" : "email test",
-            "body" : "[account:name] logged in"
-          }
-        },
+        { "mimemail" : [] },
         { "drupal_message" : { "message" : "test email sent to admin" } }
       ]
     }
