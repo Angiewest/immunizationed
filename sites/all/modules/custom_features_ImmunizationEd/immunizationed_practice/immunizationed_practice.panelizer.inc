@@ -104,34 +104,10 @@ function immunizationed_practice_panelizer_defaults() {
     $pane->pid = 'new-2';
     $pane->panel = 'left_above';
     $pane->type = 'views_panes';
-    $pane->subtype = 'progress_combined_charts_practices-panel_pane_3';
+    $pane->subtype = 'progress_flu_charts_practices-panel_pane_1';
     $pane->shown = TRUE;
-    $pane->access = array(
-      'plugins' => array(
-        0 => array(
-          'name' => 'context_exists',
-          'settings' => array(
-            'exists' => '1',
-          ),
-          'context' => 'panelizer',
-          'not' => FALSE,
-        ),
-        1 => array(
-          'name' => 'path_visibility',
-          'settings' => array(
-            'visibility_setting' => '1',
-            'paths' => '/practice/cdc-research-practice',
-          ),
-          'context' => 'empty',
-          'not' => FALSE,
-        ),
-      ),
-    );
-    $pane->configuration = array(
-      'arguments' => array(
-        'gid' => '',
-      ),
-    );
+    $pane->access = array();
+    $pane->configuration = array();
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
@@ -144,24 +120,6 @@ function immunizationed_practice_panelizer_defaults() {
     $display->panels['left_above'][0] = 'new-2';
     $pane = new stdClass();
     $pane->pid = 'new-3';
-    $pane->panel = 'left_above';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'progress_combined_cumulative_line_charts_all_sites-panel_pane_3';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array();
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 1;
-    $pane->locks = array();
-    $display->content['new-3'] = $pane;
-    $display->panels['left_above'][1] = 'new-3';
-    $pane = new stdClass();
-    $pane->pid = 'new-4';
     $pane->panel = 'left_below';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -197,10 +155,10 @@ function immunizationed_practice_panelizer_defaults() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-4'] = $pane;
-    $display->panels['left_below'][0] = 'new-4';
+    $display->content['new-3'] = $pane;
+    $display->panels['left_below'][0] = 'new-3';
     $pane = new stdClass();
-    $pane->pid = 'new-5';
+    $pane->pid = 'new-4';
     $pane->panel = 'left_below';
     $pane->type = 'views_panes';
     $pane->subtype = 'practice_crew-panel_pane_1';
@@ -216,10 +174,10 @@ function immunizationed_practice_panelizer_defaults() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-5'] = $pane;
-    $display->panels['left_below'][1] = 'new-5';
+    $display->content['new-4'] = $pane;
+    $display->panels['left_below'][1] = 'new-4';
     $pane = new stdClass();
-    $pane->pid = 'new-6';
+    $pane->pid = 'new-5';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'practice_task_content-panel_pane_1';
@@ -235,10 +193,10 @@ function immunizationed_practice_panelizer_defaults() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-6'] = $pane;
-    $display->panels['middle'][0] = 'new-6';
+    $display->content['new-5'] = $pane;
+    $display->panels['middle'][0] = 'new-5';
     $pane = new stdClass();
-    $pane->pid = 'new-7';
+    $pane->pid = 'new-6';
     $pane->panel = 'right_above';
     $pane->type = 'block';
     $pane->subtype = 'menu-menu-practice-charts';
@@ -257,10 +215,10 @@ function immunizationed_practice_panelizer_defaults() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-7'] = $pane;
-    $display->panels['right_above'][0] = 'new-7';
+    $display->content['new-6'] = $pane;
+    $display->panels['right_above'][0] = 'new-6';
     $pane = new stdClass();
-    $pane->pid = 'new-8';
+    $pane->pid = 'new-7';
     $pane->panel = 'right_below';
     $pane->type = 'node_prepopulate';
     $pane->subtype = 'node_prepopulate';
@@ -300,10 +258,10 @@ function immunizationed_practice_panelizer_defaults() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-8'] = $pane;
-    $display->panels['right_below'][0] = 'new-8';
+    $display->content['new-7'] = $pane;
+    $display->panels['right_below'][0] = 'new-7';
     $pane = new stdClass();
-    $pane->pid = 'new-9';
+    $pane->pid = 'new-8';
     $pane->panel = 'right_below';
     $pane->type = 'node_prepopulate';
     $pane->subtype = 'node_prepopulate';
@@ -344,10 +302,10 @@ function immunizationed_practice_panelizer_defaults() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-9'] = $pane;
-    $display->panels['right_below'][1] = 'new-9';
+    $display->content['new-8'] = $pane;
+    $display->panels['right_below'][1] = 'new-8';
     $pane = new stdClass();
-    $pane->pid = 'new-10';
+    $pane->pid = 'new-9';
     $pane->panel = 'right_below';
     $pane->type = 'views_panes';
     $pane->subtype = 'meeting_minutes-panel_pane_1';
@@ -363,10 +321,10 @@ function immunizationed_practice_panelizer_defaults() {
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-10'] = $pane;
-    $display->panels['right_below'][2] = 'new-10';
+    $display->content['new-9'] = $pane;
+    $display->panels['right_below'][2] = 'new-9';
     $pane = new stdClass();
-    $pane->pid = 'new-11';
+    $pane->pid = 'new-10';
     $pane->panel = 'top';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_practice_photo';
@@ -407,10 +365,10 @@ function immunizationed_practice_panelizer_defaults() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-11'] = $pane;
-    $display->panels['top'][0] = 'new-11';
+    $display->content['new-10'] = $pane;
+    $display->panels['top'][0] = 'new-10';
     $pane = new stdClass();
-    $pane->pid = 'new-12';
+    $pane->pid = 'new-11';
     $pane->panel = 'top';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:group_group';
@@ -450,10 +408,10 @@ function immunizationed_practice_panelizer_defaults() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-12'] = $pane;
-    $display->panels['top'][1] = 'new-12';
+    $display->content['new-11'] = $pane;
+    $display->panels['top'][1] = 'new-11';
     $pane = new stdClass();
-    $pane->pid = 'new-13';
+    $pane->pid = 'new-12';
     $pane->panel = 'top';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_practice_website';
@@ -489,10 +447,10 @@ function immunizationed_practice_panelizer_defaults() {
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-13'] = $pane;
-    $display->panels['top'][2] = 'new-13';
+    $display->content['new-12'] = $pane;
+    $display->panels['top'][2] = 'new-12';
     $pane = new stdClass();
-    $pane->pid = 'new-14';
+    $pane->pid = 'new-13';
     $pane->panel = 'top';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_practice_address';
@@ -533,10 +491,10 @@ function immunizationed_practice_panelizer_defaults() {
     $pane->extras = array();
     $pane->position = 3;
     $pane->locks = array();
-    $display->content['new-14'] = $pane;
-    $display->panels['top'][3] = 'new-14';
+    $display->content['new-13'] = $pane;
+    $display->panels['top'][3] = 'new-13';
     $pane = new stdClass();
-    $pane->pid = 'new-15';
+    $pane->pid = 'new-14';
     $pane->panel = 'top';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_practice_phone';
@@ -572,10 +530,10 @@ function immunizationed_practice_panelizer_defaults() {
     $pane->extras = array();
     $pane->position = 4;
     $pane->locks = array();
-    $display->content['new-15'] = $pane;
-    $display->panels['top'][4] = 'new-15';
+    $display->content['new-14'] = $pane;
+    $display->panels['top'][4] = 'new-14';
     $pane = new stdClass();
-    $pane->pid = 'new-16';
+    $pane->pid = 'new-15';
     $pane->panel = 'top';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:body';
@@ -611,10 +569,10 @@ function immunizationed_practice_panelizer_defaults() {
     $pane->extras = array();
     $pane->position = 5;
     $pane->locks = array();
-    $display->content['new-16'] = $pane;
-    $display->panels['top'][5] = 'new-16';
+    $display->content['new-15'] = $pane;
+    $display->panels['top'][5] = 'new-15';
     $pane = new stdClass();
-    $pane->pid = 'new-17';
+    $pane->pid = 'new-16';
     $pane->panel = 'top';
     $pane->type = 'views_panes';
     $pane->subtype = 'practice_selected_strategies-panel_pane_1';
@@ -632,8 +590,8 @@ function immunizationed_practice_panelizer_defaults() {
     $pane->extras = array();
     $pane->position = 6;
     $pane->locks = array();
-    $display->content['new-17'] = $pane;
-    $display->panels['top'][6] = 'new-17';
+    $display->content['new-16'] = $pane;
+    $display->panels['top'][6] = 'new-16';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $panelizer->display = $display;
