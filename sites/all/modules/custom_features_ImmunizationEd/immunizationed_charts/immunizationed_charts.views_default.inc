@@ -3841,7 +3841,7 @@ print $static;
   $handler->display->display_options['fields']['php_1']['table'] = 'views';
   $handler->display->display_options['fields']['php_1']['field'] = 'php';
   $handler->display->display_options['fields']['php_1']['group_type'] = 'sum';
-  $handler->display->display_options['fields']['php_1']['label'] = 'Cumulative flu goal';
+  $handler->display->display_options['fields']['php_1']['label'] = 'Goal';
   $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_1']['php_output'] = '<?php
 $static = $static + $data->field_field_target_flu_doses[0][\'raw\'][\'value\'];
@@ -3854,7 +3854,7 @@ print $static;
   $handler->display->display_options['fields']['php']['table'] = 'views';
   $handler->display->display_options['fields']['php']['field'] = 'php';
   $handler->display->display_options['fields']['php']['group_type'] = 'sum';
-  $handler->display->display_options['fields']['php']['label'] = 'Cumulative flu doses';
+  $handler->display->display_options['fields']['php']['label'] = 'Given';
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php']['php_output'] = '<?php
 $static = $static+ $data->field_field_influenza[0][\'raw\'][\'value\'];
