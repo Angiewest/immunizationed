@@ -16,9 +16,9 @@ files[] = taxonomy_xml_rdf.inc
 files[] = tcs_format.inc
 files[] = xml_format.inc
 
-; Information added by drupal.org packaging script on 2013-10-01
+; Information added by drupal.org packaging script on 2013-10-19
 version = "7.x-1.x-dev"
 core = "7.x"
 project = "taxonomy_xml"
-datestamp = "1380639337"
+datestamp = "1382146246"
 
