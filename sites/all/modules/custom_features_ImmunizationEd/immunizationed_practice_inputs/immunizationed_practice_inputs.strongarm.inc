@@ -1298,5 +1298,117 @@ function immunizationed_practice_inputs_strongarm() {
   $strongarm->value = '';
   $export['pathauto_taxonomy_term_patient_notification_strategies_pattern'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_default_convenient_vaccination_services';
+  $strongarm->value = '0';
+  $export['weight_default_convenient_vaccination_services'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_default_enhanced_vaccination_systems';
+  $strongarm->value = '2';
+  $export['weight_default_enhanced_vaccination_systems'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_default_motivation';
+  $strongarm->value = '3';
+  $export['weight_default_motivation'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_default_patient_notification';
+  $strongarm->value = '1';
+  $export['weight_default_patient_notification'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_enabled_convenient_vaccination_services';
+  $strongarm->value = '1';
+  $export['weight_enabled_convenient_vaccination_services'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_enabled_enhanced_vaccination_systems';
+  $strongarm->value = '1';
+  $export['weight_enabled_enhanced_vaccination_systems'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_enabled_motivation';
+  $strongarm->value = '1';
+  $export['weight_enabled_motivation'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_enabled_patient_notification';
+  $strongarm->value = '1';
+  $export['weight_enabled_patient_notification'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_menu_convenient_vaccination_services';
+  $strongarm->value = '0';
+  $export['weight_menu_convenient_vaccination_services'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_menu_enhanced_vaccination_systems';
+  $strongarm->value = '0';
+  $export['weight_menu_enhanced_vaccination_systems'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_menu_motivation';
+  $strongarm->value = '0';
+  $export['weight_menu_motivation'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_menu_patient_notification';
+  $strongarm->value = '0';
+  $export['weight_menu_patient_notification'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_range_convenient_vaccination_services';
+  $strongarm->value = '10';
+  $export['weight_range_convenient_vaccination_services'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_range_enhanced_vaccination_systems';
+  $strongarm->value = '10';
+  $export['weight_range_enhanced_vaccination_systems'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_range_motivation';
+  $strongarm->value = '10';
+  $export['weight_range_motivation'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_range_patient_notification';
+  $strongarm->value = '10';
+  $export['weight_range_patient_notification'] = $strongarm;
+
   return $export;
 }
