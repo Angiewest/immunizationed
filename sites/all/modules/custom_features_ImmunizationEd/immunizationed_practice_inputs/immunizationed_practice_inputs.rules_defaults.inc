@@ -14,7 +14,7 @@ function immunizationed_practice_inputs_default_rules_configuration() {
       "PLUGIN" : "reaction rule",
       "WEIGHT" : "-10",
       "REQUIRES" : [ "rules", "og" ],
-      "ON" : { "node_view" : [] },
+      "ON" : { "node_view" : [  ] },
       "IF" : [
         { "node_is_of_type" : { "node" : [ "node" ], "type" : { "value" : { "task" : "task" } } } },
         { "og_user_has_permission" : {

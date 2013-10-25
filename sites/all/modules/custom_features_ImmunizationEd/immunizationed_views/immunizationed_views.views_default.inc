@@ -2922,10 +2922,6 @@ function immunizationed_views_views_default_views() {
     'form_relationships' => 0,
     'pillar_tags' => 0,
   );
-  /* Field: Content: Type */
-  $handler->display->display_options['fields']['type_1']['id'] = 'type_1';
-  $handler->display->display_options['fields']['type_1']['table'] = 'node';
-  $handler->display->display_options['fields']['type_1']['field'] = 'type';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Weight: Weight */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
