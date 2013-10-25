@@ -79,3 +79,44 @@ function immunizationed_practice_inputs_node_info() {
   );
   return $items;
 }
+
+/**
+ * Implements hook_weight_features_default_settings().
+ */
+function immunizationed_practice_inputs_weight_features_default_settings() {
+  $settings = array();
+
+  $settings['convenient_vaccination_services'] = array(
+    'enabled' => 1,
+    'range' => 10,
+    'menu_weight' => 0,
+    'default' => 0,
+    'sync_translations' => 0,
+  );
+
+  $settings['enhanced_vaccination_systems'] = array(
+    'enabled' => 1,
+    'range' => 10,
+    'menu_weight' => 0,
+    'default' => 2,
+    'sync_translations' => 0,
+  );
+
+  $settings['motivation'] = array(
+    'enabled' => 1,
+    'range' => 10,
+    'menu_weight' => 0,
+    'default' => 3,
+    'sync_translations' => 0,
+  );
+
+  $settings['patient_notification'] = array(
+    'enabled' => 1,
+    'range' => 10,
+    'menu_weight' => 0,
+    'default' => 1,
+    'sync_translations' => 0,
+  );
+
+  return $settings;
+}
