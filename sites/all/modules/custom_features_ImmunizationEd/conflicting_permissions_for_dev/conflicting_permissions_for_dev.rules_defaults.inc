@@ -17,8 +17,14 @@ function conflicting_permissions_for_dev_default_rules_configuration() {
       "REQUIRES" : [ "rules" ],
       "ON" : { "user_login" : [  ] },
       "DO" : [
-        { "mimemail" : [  ] },
-        { "drupal_message" : { "message" : "test email sent to admin" } }
+        { "drupal_message" : { "message" : "test email sent to admin" } },
+        { "mail" : {
+            "to" : "[site:mail]",
+            "subject" : "email is active",
+            "message" : "email is active",
+            "language" : [ "" ]
+          }
+        }
       ]
     }
   }');
