@@ -10,13 +10,14 @@
 function conflicting_permissions_for_dev_default_rules_configuration() {
   $items = array();
   $items['rules_email_on_off_test'] = entity_import('rules_config', '{ "rules_email_on_off_test" : {
-      "LABEL" : "Email on\\/off test",
+      "LABEL" : "Email on\\u002Foff test",
       "PLUGIN" : "reaction rule",
       "ACTIVE" : false,
+      "OWNER" : "rules",
       "REQUIRES" : [ "rules" ],
-      "ON" : { "user_login" : [] },
+      "ON" : { "user_login" : [  ] },
       "DO" : [
-        { "mimemail" : [] },
+        { "mimemail" : [  ] },
         { "drupal_message" : { "message" : "test email sent to admin" } }
       ]
     }
