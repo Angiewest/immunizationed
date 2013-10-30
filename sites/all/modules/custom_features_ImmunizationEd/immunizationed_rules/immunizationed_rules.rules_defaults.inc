@@ -23,6 +23,7 @@ function immunizationed_rules_default_rules_configuration() {
       "LABEL" : "Actions on practice creation",
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
+      "TAGS" : [ "practice" ],
       "REQUIRES" : [ "rules", "og" ],
       "ON" : { "node_insert" : [  ] },
       "IF" : [
@@ -384,10 +385,8 @@ function immunizationed_rules_default_rules_configuration() {
       "LABEL" : "Redirect to group home after group content addition",
       "PLUGIN" : "reaction rule",
       "WEIGHT" : "10",
-      "ACTIVE" : false,
       "OWNER" : "rules",
-      "TAGS" : [ "content" ],
-      "REQUIRES" : [ "rules", 0 ],
+      "REQUIRES" : [ "rules" ],
       "ON" : { "node_insert" : [  ], "node_update" : [  ] },
       "IF" : [
         { "entity_has_field" : { "entity" : [ "node" ], "field" : "og_group_ref" } },
@@ -601,6 +600,7 @@ function immunizationed_rules_default_rules_configuration() {
   $items['rules_send_email_for_article_posted_to_practice_page'] = entity_import('rules_config', '{ "rules_send_email_for_article_posted_to_practice_page" : {
       "LABEL" : "send email for article posted to practice page",
       "PLUGIN" : "reaction rule",
+      "ACTIVE" : false,
       "OWNER" : "rules",
       "TAGS" : [ "notifications" ],
       "REQUIRES" : [ "og", "rules" ],
@@ -612,7 +612,8 @@ function immunizationed_rules_default_rules_configuration() {
             "type" : "node",
             "bundle" : { "value" : { "article" : "article" } }
           }
-        }
+        },
+        { "node_is_published" : { "node" : [ "node" ] } }
       ],
       "DO" : [
         { "og_get_members" : {
@@ -641,10 +642,20 @@ function immunizationed_rules_default_rules_configuration() {
   $items['rules_send_email_to_article_practice_audience'] = entity_import('rules_config', '{ "rules_send_email_to_article_practice_audience" : {
       "LABEL" : "send email to article practice audience",
       "PLUGIN" : "reaction rule",
+      "ACTIVE" : false,
       "OWNER" : "rules",
-      "REQUIRES" : [ "og", "rules" ],
+      "REQUIRES" : [ "rules", "og" ],
       "ON" : { "node_insert--article" : { "bundle" : "article" } },
-      "IF" : [ { "og_entity_is_group_content" : { "entity" : [ "node" ] } } ],
+      "IF" : [
+        { "entity_is_of_bundle" : {
+            "entity" : [ "node" ],
+            "type" : "node",
+            "bundle" : { "value" : { "article" : "article" } }
+          }
+        },
+        { "og_entity_is_group_content" : { "entity" : [ "node" ] } },
+        { "node_is_published" : { "node" : [ "node" ] } }
+      ],
       "DO" : [
         { "og_get_members" : {
             "USING" : { "group_content" : [ "node" ] },
