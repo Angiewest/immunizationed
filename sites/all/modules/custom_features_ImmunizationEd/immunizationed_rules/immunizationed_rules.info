@@ -30,7 +30,6 @@ features[rules_config][] = rules_practice_member_approved
 features[rules_config][] = rules_practice_member_exit
 features[rules_config][] = rules_rules_on_login
 features[rules_config][] = rules_send_email_for_article_posted_to_practice_page
-features[rules_config][] = rules_send_email_to_article_practice_audience
 features[rules_config][] = rules_send_email_when_practice_is_created
 features[rules_config][] = rules_send_emails
 features[rules_config][] = rules_send_task_email

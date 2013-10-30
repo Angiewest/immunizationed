@@ -116,7 +116,8 @@ function immunizationed_rules_default_rules_configuration() {
             }
           }
         },
-        { "entity_has_field" : { "entity" : [ "node" ], "field" : "og_group_ref" } }
+        { "entity_has_field" : { "entity" : [ "node" ], "field" : "og_group_ref" } },
+        { "node_is_published" : { "node" : [ "node" ] } }
       ],
       "DO" : [
         { "views_bulk_operations_action_load_list" : {
@@ -600,7 +601,6 @@ function immunizationed_rules_default_rules_configuration() {
   $items['rules_send_email_for_article_posted_to_practice_page'] = entity_import('rules_config', '{ "rules_send_email_for_article_posted_to_practice_page" : {
       "LABEL" : "send email for article posted to practice page",
       "PLUGIN" : "reaction rule",
-      "ACTIVE" : false,
       "OWNER" : "rules",
       "TAGS" : [ "notifications" ],
       "REQUIRES" : [ "og", "rules" ],
@@ -629,47 +629,6 @@ function immunizationed_rules_default_rules_configuration() {
                   "to" : "[list-item:mail]",
                   "subject" : "A new article was shared with [list-item:og_user_node]",
                   "message" : "Hello [list-item:profile-salutation] [list-item:profile-last-name],\\u003Cbr\\u003E\\u003Cbr\\u003E\\u000D\\u000A\\u000D\\u000AA new article has been posted to the [list-item:og_user_node] homepage. We thought you might find \\u0022[node:title]\\u0022 interesting.\\u003Cbr\\u003E\\u000D\\u000ALog in an take a look.\\u003Cbr\\u003E\\u000D\\u000A\\u003Cbr\\u003E\\u000D\\u000A\\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\u002Fa\\u003E\\u000D\\u000A\\u003Cbr\\u003E\\u003Cbr\\u003E\\u000D\\u000A\\u000D\\u000AIn health,\\u003Cbr\\u003E\\u000D\\u000AThe 4 Pillars Team",
-                  "language" : [ "" ]
-                }
-              },
-              { "drupal_message" : { "message" : "Email sent to [list-item:mail]." } }
-            ]
-          }
-        }
-      ]
-    }
-  }');
-  $items['rules_send_email_to_article_practice_audience'] = entity_import('rules_config', '{ "rules_send_email_to_article_practice_audience" : {
-      "LABEL" : "send email to article practice audience",
-      "PLUGIN" : "reaction rule",
-      "ACTIVE" : false,
-      "OWNER" : "rules",
-      "REQUIRES" : [ "rules", "og" ],
-      "ON" : { "node_insert--article" : { "bundle" : "article" } },
-      "IF" : [
-        { "entity_is_of_bundle" : {
-            "entity" : [ "node" ],
-            "type" : "node",
-            "bundle" : { "value" : { "article" : "article" } }
-          }
-        },
-        { "og_entity_is_group_content" : { "entity" : [ "node" ] } },
-        { "node_is_published" : { "node" : [ "node" ] } }
-      ],
-      "DO" : [
-        { "og_get_members" : {
-            "USING" : { "group_content" : [ "node" ] },
-            "PROVIDE" : { "group_members" : { "group_members" : "List of group members" } }
-          }
-        },
-        { "LOOP" : {
-            "USING" : { "list" : [ "group-members" ] },
-            "ITEM" : { "list_item" : "Current list item" },
-            "DO" : [
-              { "mail" : {
-                  "to" : "[list-item:mail]",
-                  "subject" : "A new article was shared with [list-item:og_user_node]",
-                  "message" : "Hello [list-item:profile-salutation] [list-item:profile-last-name],\\u003Cbr\\u003E\\u003Cbr\\u003E\\u000D\\u000A\\u000D\\u000AA new article has been posted to the [list-item:og_user_node] homepage. We thought you might find \\u0022[node:title]\\u0022 interesting.\\u003Cbr\\u003E\\u000D\\u000ALog in an take a look.\\u003Cbr\\u003E\\u000D\\u000A\\u003Cbr\\u003E\\u000D\\u000A\\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\u002Fa\\u003E\\u000D\\u000A\\u003Cbr\\u003E\\u003Cbr\\u003E\\u000D\\u000A\\u000D\\u000AIn health,\\u003Cbr\\u003E\\u000D\\u000APittVax",
                   "language" : [ "" ]
                 }
               },
