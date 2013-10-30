@@ -12,9 +12,10 @@ function immunizationed_user_config_default_rules_configuration() {
   $items['rules_actions_on_special_role_removal'] = entity_import('rules_config', '{ "rules_actions_on_special_role_removal" : {
       "LABEL" : "Actions on special role removal",
       "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
       "TAGS" : [ "role", "users" ],
       "REQUIRES" : [ "rules", "og" ],
-      "ON" : [ "user_presave" ],
+      "ON" : { "user_presave" : [  ] },
       "IF" : [
         { "NOT data_is_empty" : { "data" : [ "account-unchanged:field-responsible-role" ] } },
         { "data_is_empty" : { "data" : [ "account:field-responsible-role" ] } },

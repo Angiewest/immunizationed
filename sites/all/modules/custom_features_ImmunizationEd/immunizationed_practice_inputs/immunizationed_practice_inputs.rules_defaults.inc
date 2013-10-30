@@ -13,6 +13,7 @@ function immunizationed_practice_inputs_default_rules_configuration() {
       "LABEL" : "Redirect practice admins to edit task tab",
       "PLUGIN" : "reaction rule",
       "WEIGHT" : "-10",
+      "OWNER" : "rules",
       "REQUIRES" : [ "rules", "og" ],
       "ON" : { "node_view" : [  ] },
       "IF" : [

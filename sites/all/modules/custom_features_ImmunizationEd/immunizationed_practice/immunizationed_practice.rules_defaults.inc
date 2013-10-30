@@ -12,6 +12,7 @@ function immunizationed_practice_default_rules_configuration() {
   $items['rules_practice_member_subscribe_pending_'] = entity_import('rules_config', '{ "rules_practice_member_subscribe_pending_" : {
       "LABEL" : "Practice member subscribe (Pending)",
       "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
       "TAGS" : [ "practice" ],
       "REQUIRES" : [ "rules", "og" ],
       "ON" : { "og_user_insert" : [  ] },
