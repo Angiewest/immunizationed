@@ -116,8 +116,7 @@ function immunizationed_rules_default_rules_configuration() {
             }
           }
         },
-        { "entity_has_field" : { "entity" : [ "node" ], "field" : "og_group_ref" } },
-        { "node_is_published" : { "node" : [ "node" ] } }
+        { "entity_has_field" : { "entity" : [ "node" ], "field" : "og_group_ref" } }
       ],
       "DO" : [
         { "views_bulk_operations_action_load_list" : {
@@ -391,39 +390,20 @@ function immunizationed_rules_default_rules_configuration() {
       "ON" : { "node_insert" : [  ], "node_update" : [  ] },
       "IF" : [
         { "entity_has_field" : { "entity" : [ "node" ], "field" : "og_group_ref" } },
-        { "AND" : [
-            { "OR" : [
-                { "node_is_of_type" : {
-                    "node" : [ "node" ],
-                    "type" : { "value" : { "meeting_agenda" : "meeting_agenda" } }
-                  }
-                },
-                { "node_is_of_type" : {
-                    "node" : [ "node" ],
-                    "type" : { "value" : { "announcement" : "announcement" } }
-                  }
-                },
-                { "node_is_of_type" : { "node" : [ "node" ], "type" : { "value" : { "task" : "task" } } } },
-                { "node_is_of_type" : {
-                    "node" : [ "node" ],
-                    "type" : { "value" : { "practice_group" : "practice_group" } }
-                  }
-                },
-                { "node_is_of_type" : {
-                    "node" : [ "node" ],
-                    "type" : { "value" : {
-                        "convenient_vaccination_services" : "convenient_vaccination_services",
-                        "enhanced_vaccination_systems" : "enhanced_vaccination_systems",
-                        "meeting_agenda" : "meeting_agenda",
-                        "motivation" : "motivation",
-                        "patient_notification" : "patient_notification"
-                      }
-                    }
-                  }
-                }
-              ]
+        { "entity_is_of_bundle" : {
+            "entity" : [ "node" ],
+            "type" : "node",
+            "bundle" : { "value" : {
+                "task" : "task",
+                "meeting_agenda" : "meeting_agenda",
+                "convenient_vaccination_services" : "convenient_vaccination_services",
+                "patient_notification" : "patient_notification",
+                "enhanced_vaccination_systems" : "enhanced_vaccination_systems",
+                "motivation" : "motivation",
+                "announcement" : "announcement"
+              }
             }
-          ]
+          }
         }
       ],
       "DO" : [ { "redirect" : { "url" : [ "node:og-group-ref:0:url" ] } } ]
@@ -612,8 +592,7 @@ function immunizationed_rules_default_rules_configuration() {
             "type" : "node",
             "bundle" : { "value" : { "article" : "article" } }
           }
-        },
-        { "node_is_published" : { "node" : [ "node" ] } }
+        }
       ],
       "DO" : [
         { "og_get_members" : {
