@@ -3411,6 +3411,12 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['filters']['title_4']['field'] = 'title';
   $handler->display->display_options['filters']['title_4']['operator'] = '!=';
   $handler->display->display_options['filters']['title_4']['value'] = 'Review your vaccine inventory process';
+  /* Filter criterion: Content: Title */
+  $handler->display->display_options['filters']['title_5']['id'] = 'title_5';
+  $handler->display->display_options['filters']['title_5']['table'] = 'node';
+  $handler->display->display_options['filters']['title_5']['field'] = 'title';
+  $handler->display->display_options['filters']['title_5']['operator'] = '!=';
+  $handler->display->display_options['filters']['title_5']['value'] = 'Hold 2nd monthly meeting with members of the Toolkit Team and/or staff';
   $export['practice_task_content'] = $view;
 
   $view = new view();
