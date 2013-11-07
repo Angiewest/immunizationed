@@ -1,0 +1,199 @@
+<?php
+
+/**
+ * The main file for breadcrumb_multichoice.
+ *
+  * @file
+ * Special variety of Multiplechoice question type for the Quiz module.
+ *
+ */
+
+/**
+ * Implements hook_help().
+ */
+function breadcrumb_multichoice_help($path, $args) {
+  if ($path == 'admin/help#breadcrumb_multichoice') {
+    return t("
+      <p>This module provides a multiple choice question type for Quiz.</p>
+
+      <p>The module has three settings.
+      <em>Multiple answers</em> allows the quiz taker to select more than one alternative
+      (it also allows for the possibility that none of the alternatives are correct).
+      Alternatives are selected using checkboxes instead of radio buttons.
+      <em>Random order</em> displays the alternatives in random order when quiz is beeing taken.
+      <em>Simple scoring</em> gives max score if everything is correct. Zero points otherwise.</p>
+
+      <p>The scoring system in breadcrumb_multichoice is a bit complex. With multiple answers each alternative adds a given number of points to
+      the total score if it is chosen, and another number of points is added if the alternative isn't chosen. Both <em>score if chosen</em> and
+      <em>score if not chosen</em> may be edited for each alternative by the question creator.
+      If multiple answers isn't allowed the score will be set to the <em>score if chosen</em> of the alternative that has been chosen.
+      The question is considered correct if the quiz taker gets the maximum amount of points possible for the question.</p>
+    ");
+  }
+}
+/**
+ * Implements hook_quiz_question_info().
+ */
+function breadcrumb_multichoice_quiz_question_info() {
+  return array(
+    'breadcrumb_multichoice' => array(
+      'name' => t('Multiple choice question'),
+      'description' => t('This provides multiple choice questions for use by the Quiz module.'),
+      'question provider' => 'breadcrumb_multichoiceQuestion',
+      'response provider' => 'breadcrumb_multichoiceResponse',
+      'module' => 'quiz_question', // All wrapper functions are in that module.
+    ),
+  );
+}
+/**
+ * Implements hook_config().
+ */
+function breadcrumb_multichoice_config() {
+  $form['breadcrumb_multichoice_def_num_of_alts'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Default number of alternatives'),
+    '#default_value' => variable_get('breadcrumb_multichoice_def_num_of_alts', 2),
+  );
+  $form['breadcrumb_multichoice_def_scoring'] = array(
+    '#type' => 'radios',
+    '#title' => t('Default scoring method'),
+    '#description' => t('Choose the default scoring method for questions with multiple correct answers.'),
+    '#options' => array(
+      0 => t('Give minus one point for incorrect answers'),
+      1 => t("Give one point for each incorrect option that haven't been chosen"),
+    ),
+    '#default_value' => variable_get('breadcrumb_multichoice_def_scoring', 0),
+  );
+  $form['#validate'][] = 'breadcrumb_multichoice_config_validate';
+  return $form;
+}
+
+/**
+ * Validate the breadcrumb_multichoice config form values
+ */
+function breadcrumb_multichoice_config_validate($form, $form_state) {
+  if (!_quiz_is_int($form_state['values']['breadcrumb_multichoice_def_num_of_alts'], 2, 50)) {
+    form_set_error('breadcrumb_multichoice_def_num_of_alts', t('The default number of alternatives must be between 2 and 50'));
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function breadcrumb_multichoice_theme($existing, $type, $theme, $path) {
+  $path = drupal_get_path('module', 'breadcrumb_multichoice') . '/theme';
+  return array(
+    'breadcrumb_multichoice_creation_form' => array(
+      'render element' => 'form',
+      'path' => $path,
+      'file' => 'breadcrumb_multichoice.theme.inc',
+    ),
+    'breadcrumb_multichoice_answer_node_view' => array(
+      'variables' => array(
+        'alternatives' => NULL,
+        'show_correct' => NULL,
+      ),
+      'path' => $path,
+      'file' => 'breadcrumb_multichoice.theme.inc',
+    ),
+    'breadcrumb_multichoice_response' => array(
+      'variables' => array(
+        'data' => array(),
+      ),
+      'path' => $path,
+      'file' => 'breadcrumb_multichoice.theme.inc',
+    ),
+    'breadcrumb_multichoice_alternative_creation' => array(
+      'render element' => 'form',
+      'path' => $path,
+      'template' => 'breadcrumb_multichoice-alternative-creation',
+    ),
+    'breadcrumb_multichoice_answering_form' => array(
+      'render element' => 'form',
+      'path' => $path,
+      'template' => 'breadcrumb_multichoice-answering-form',
+    ),
+    'breadcrumb_multichoice_alternative' => array(
+      'render element' => 'form',
+      'path' => $path,
+      'template' => 'breadcrumb_multichoice-alternative',
+    ),
+  );
+}
+
+/**
+ * ajax callback function used when adding alternatives to the node-form
+ */
+function breadcrumb_multichoice_add_alternative_ajax_callback($form, &$form_state) {
+  $i = 0;
+  while (isset($form['alternatives'][$i])) {
+    $i++;
+  }
+  return $form['alternatives'][$i - 1];
+}
+
+/**
+ * Submit handler used when adding more alternatives to the node-form
+ */
+function breadcrumb_multichoice_more_choices_submit($form, &$form_state) {
+  // Set the form to rebuild and run submit handlers.
+  if (!empty($form['node']->nid)) {
+    node_form_submit_build_node($form, $form_state);
+  }
+
+  // Count the existing alternatives
+  $exists = 0;
+  while (isset($form['alternatives'][$exists])) {
+    $exists++;
+  }
+
+  // Make the changes we want to the form state.
+  if ($form_state['values']['alternatives']['breadcrumb_multichoice_add_alternative']) {
+    // We add 3 if js is disabled. 1 if the adding is done using ahah
+    $n = $_GET['q'] == 'system/ajax' ? 1 : 3;
+    $form_state['choice_count'] = $exists + $n;
+  }
+  $form_state['rebuild'] = TRUE;
+}
+/**
+ * Recursive helper function to set the validated property. (Taken from the skip validation module.)
+ *
+ * @param &$elements
+ *   The elements that are currently being processed.
+ */
+function _breadcrumb_multichoice_skip_validation(&$elements) {
+  $elements['#validated'] = TRUE;
+  foreach (element_children($elements) as $key) {
+    _breadcrumb_multichoice_skip_validation($elements[$key]);
+  }
+}
+
+/**
+ * Implements hook_user_cancel().
+ */
+function breadcrumb_multichoice_user_cancel($edit, $account, $method) {
+  db_delete('quiz_breadcrumb_multichoice_user_settings')
+  ->condition('uid', $account->uid)
+  ->execute();
+}
+
+/**
+ * Implementation of hook user.
+ */
+function breadcrumb_multichoice_user_OLD($op, &$edit, &$account, $category = NULL) { }
+
+/**
+ * Implements hook_field_extra_fields().
+ */
+function breadcrumb_multichoice_field_extra_fields() {
+  $extra['node']['breadcrumb_multichoice'] = array(
+    'form' => array(
+      'alternatives' => array(
+        'label' => t('Alternatives'),
+        'description' => t('Alternatives for breadcrumb_multichoice'),
+        'weight' => -4,
+      ),
+    ),
+  );
+  return $extra;
+}
