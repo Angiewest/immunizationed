@@ -130,7 +130,7 @@ class MultichoiceQuestion extends QuizQuestion {
     $is_new = $is_new || $this->node->revision == 1;
 
     // Before we save we forgive some possible user errors
-    // jkm 9/21/13 we've taken over the scoring so iognore    
+    // jkm 9/21/13 we've taken over the scoring so iognore
 	//$this->forgive();
 
     // We also add warnings on other possible user errors
@@ -192,7 +192,7 @@ class MultichoiceQuestion extends QuizQuestion {
           // If existing alternative
           else {
 		  	//drupal_set_message(t('at calling update: ]' . $short['feedback_if_not_chosen'] . '['));  //debug
-			
+
             $this->updateAlternative($i);
             // Make sure this alternative isn't deleted
             $key = array_search($short['id'], $ids_to_delete);
@@ -220,16 +220,16 @@ class MultichoiceQuestion extends QuizQuestion {
   private function insertAlternative($i) {
     // jkm 8/31/13 force default value for fileds no longer used ($alternatives['score_if_not_chosen'])
     $alternatives = $this->node->alternatives[$i];
-	
+
 	// drupal_set_message(t('at insert: ]' . $alternatives['feedback_if_not_chosen'] . '['));
-	 
+
 	 // jkm 9/23 save right/wrong in format field
 	if ($alternatives['score_if_chosen'] == '9999') {
 		$right_wrong = "R";
 	} else {
-		$right_wrong = "W";	
+		$right_wrong = "W";
 	}
-	
+
     db_insert('quiz_multichoice_answers')
       ->fields(array(
         'answer' => $alternatives['answer']['value'],
@@ -237,7 +237,7 @@ class MultichoiceQuestion extends QuizQuestion {
         'feedback_if_chosen' => $alternatives['feedback_if_chosen']['value'],
         'feedback_if_chosen_format' => $alternatives['feedback_if_chosen']['format'],
         //'feedback_if_not_chosen' => $alternatives['feedback_if_not_chosen']['value'],   //jkm actually group id
-		'feedback_if_not_chosen' => isset($alternatives['feedback_if_not_chosen']) ? $alternatives['feedback_if_not_chosen'] : '0',		
+		'feedback_if_not_chosen' => isset($alternatives['feedback_if_not_chosen']) ? $alternatives['feedback_if_not_chosen'] : '0',
         //'feedback_if_not_chosen_format' => $alternatives['feedback_if_not_chosen']['format'],  // jkm no lnger used
         'feedback_if_not_chosen_format' => $right_wrong,		// jkm we now use this to hold R or W indicator (right or wrong answer)
         'score_if_chosen' => $alternatives['score_if_chosen'],
@@ -256,16 +256,16 @@ class MultichoiceQuestion extends QuizQuestion {
    */
   private function updateAlternative($i) {
     $short = $this->node->alternatives[$i];
-	
+
 	//drupal_set_message(t('at update: ]' . $short['score_if_chosen'] . '['));
-	
+
 	// jkm 9/23 save right/wrong in format field
 	if ($short['score_if_chosen'] == '9999') {
 		$right_wrong = "R";
 	} else {
-		$right_wrong = "W";	
+		$right_wrong = "W";
 	}
-	
+
     db_update('quiz_multichoice_answers')
       ->fields(array(
         'answer' => $short['answer']['value'],
@@ -273,8 +273,8 @@ class MultichoiceQuestion extends QuizQuestion {
         'feedback_if_chosen' => $short['feedback_if_chosen']['value'],
         'feedback_if_chosen_format' => $short['feedback_if_chosen']['format'],
         //'feedback_if_not_chosen' => $short['feedback_if_not_chosen']['value'],
-		'feedback_if_not_chosen' => isset($short['feedback_if_not_chosen']) ? $short['feedback_if_not_chosen'] : '0',	
-        //'feedback_if_not_chosen_format' => $short['feedback_if_not_chosen']['format'],  
+		'feedback_if_not_chosen' => isset($short['feedback_if_not_chosen']) ? $short['feedback_if_not_chosen'] : '0',
+        //'feedback_if_not_chosen_format' => $short['feedback_if_not_chosen']['format'],
 		'feedback_if_not_chosen_format' => $right_wrong,		// jkm we now use this to hold R or W indicator (right or wrong answer)
         'score_if_chosen' => $short['score_if_chosen'],
         'score_if_not_chosen' => $short['score_if_not_chosen'],
@@ -295,7 +295,7 @@ class MultichoiceQuestion extends QuizQuestion {
       $found_one_correct = FALSE;
       for ($i = 0; (isset($this->node->alternatives[$i]) && is_array($this->node->alternatives[$i])); $i++) {
         $short = $this->node->alternatives[$i];
-			
+
         if (drupal_strlen($this->checkMarkup($i, 'answer')) < 1) {
           continue;
         }
@@ -318,47 +318,47 @@ class MultichoiceQuestion extends QuizQuestion {
         if (strlen($this->checkMarkup($i, 'answer')) < 1) {
           continue;
         }
-		
+
 		// check correct marker in synch
-		
+
 		//drupal_set_message('Marker:' . t($short['score_if_chosen'] . '-' . $short['correct']));
 		if ($short['score_if_chosen'] != '9999' && $short['correct'] == 1) {
 			drupal_set_message(t('marker out of synch'));
 			$short['correct'] = 0;
-         }									
+         }
 
-		
+
         // check custom field to see if right or wrong
 		if ($short['correct'] == 1 || $short['score_if_chosen'] == '9999') {
 				//drupal_set_message(t('right answer...'));
 			$ans_right = TRUE;
 		} else {
-				//drupal_set_message(t('wrong answer...'));		
-			$ans_right = FALSE;		
+				//drupal_set_message(t('wrong answer...'));
+			$ans_right = FALSE;
 		}
-		
-		// jkm 8/19/13 set score to neg value if answer is wrong (so right answers are always worth more than wrong) 
+
+		// jkm 8/19/13 set score to neg value if answer is wrong (so right answers are always worth more than wrong)
 		if (!$ans_right) $short['score_if_chosen']  = -(pow(2, $i));
-		//drupal_set_message('score:' . $short['score_if_chosen']);	
-		
-		// check if tagged as right or wrong and prefix feedback ith R: or W:	
+		//drupal_set_message('score:' . $short['score_if_chosen']);
+
+		// check if tagged as right or wrong and prefix feedback ith R: or W:
 		// jkm 9/23/13  R/W now stored in feedback_if_not_chosen_fornmat field
 //        if ($ans_right) {
 //				$short['feedback_if_chosen'] = "R: " . $short['feedback_if_chosen'];
 //		} else {
-//				$short['feedback_if_chosen'] = "W: " . $short['feedback_if_chosen'];		
+//				$short['feedback_if_chosen'] = "W: " . $short['feedback_if_chosen'];
 //		}
-			
-		// jkm since we're chaging the scoring metod, don't need this check	
+
+		// jkm since we're chaging the scoring metod, don't need this check
 //        if ($short['score_if_chosen'] < $short['score_if_not_chosen'] && $short['correct']) {
 //          form_set_error("alternatives][$i][score_if_not_chosen", t('The alternative is marked as correct, but gives more points if you don\'t select it.'));
 //        }
 //        elseif ($short['score_if_chosen'] > $short['score_if_not_chosen'] && !$short['correct']) {
 //          form_set_error("alternatives][$i][score_if_chosen", t('The alternative is not marked as correct, but gives more points if you select it.'));
 //        }
-		
+
 		// drupal_set_message(t('at validate: ]' . $short['score_if_chosen'] . '['));  //debug
-		 
+
 		// jkm 9/10/13 show error if fogot to pick group id (it's a drop dwon now not a text string)
 		if ($short['feedback_if_not_chosen'] == "0") {
 			form_set_error("alternatives][$i][feedback_if_not_chosen", t('Don\'t forget to assign a tested knowledge area to each possible response.'));
@@ -532,23 +532,23 @@ class MultichoiceQuestion extends QuizQuestion {
    * form to loopup available groups
    *
    */
-   
-function get_group_terms() {  
+
+function get_group_terms() {
     // get the vid value from vocabulary_node_types file
-    //$result = db_query("SELECT * FROM vocabulary_node_types WHERE type = 'my_type' ");  
+    //$result = db_query("SELECT * FROM vocabulary_node_types WHERE type = 'my_type' ");
     //$node = db_fetch_object($result) ;
-    //$vid = $node->vid ; 
+    //$vid = $node->vid ;
 
     // get corresponding term names from term_data file
     //$items = array();
     //$terms = taxonomy_get_tree($vid);
     //foreach ( $terms as $term ) {
     //    $count = taxonomy_term_count_nodes($term->tid);
-    //    if ($count) {       
+    //    if ($count) {
     //        $items[$term->tid] = $term->name;
     //    }
-    //} 
-	
+    //}
+
 	  // setup the array of radio buttons
  $items = array(
     0 => "Group 1",
@@ -557,10 +557,10 @@ function get_group_terms() {
     3 => "Group 4",
     4 => "Group 5"
   );
-  
+
 	return $items;
 }
-	
+
   /**
    * Implementation of getCreationForm
    *
@@ -672,14 +672,14 @@ function get_group_terms() {
 			$dropdown_default = 9999;
 		} else {
 			$correct_default = -1;
-			$dropdown_default = -1;			
+			$dropdown_default = -1;
 		}
  //drupal_set_message(t('correct flag from db: ]' . $correct_default . '['));
 
       $form['alternatives'][$i]['correct'] = array(
         '#type' => 'checkbox',
         '#title' => t(' '),  // jkm required field   t('Correct')
-		'#access' => FALSE, // jkm  hide field		
+		'#access' => FALSE, // jkm  hide field
         '#default_value' => $correct_default,
         '#attributes' => array('onchange' => 'Multichoice.refreshScores(this, ' . variable_get('multichoice_def_scoring', 0) . ')'),
       );
@@ -691,7 +691,7 @@ function get_group_terms() {
       );
 
 	  // jkm 8/20/13 change to just text field
-	  
+
 //      $form['alternatives'][$i]['answer'] = array(
 //        //'#type' => 'text_format',
 //		'#type' => 'textfield',
@@ -713,42 +713,42 @@ function get_group_terms() {
         '#format' => t('filtered_html'),  //isset($short['answer_format']) ? $short['answer_format'] : NULL,
         '#rows' => 1,
       );
-	  
+
       $form['alternatives'][$i]['advanced'] = array(
         '#type' => 'fieldset',
         '#title' => t('Details'),
         '#collapsible' => TRUE,
         '#collapsed' => TRUE,
       );
-	  
+
 	  // jkm 8/19/13  Add a new field to hold if right or wrong answer
 	   $form['alternatives'][$i]['advanced']['score_if_chosen'] = array(
-		"#type" => "select", 
-		"#title" => t("Indicate whether this is a correct answer or a wrong answer."), 
+		"#type" => "select",
+		"#title" => t("Indicate whether this is a correct answer or a wrong answer."),
 		"#default_value" => $dropdown_default,
 		"#options" => array(
 		"9999" => t("Answer is correct"),
-		"-1" => t("Answer is wrong"), 
+		"-1" => t("Answer is wrong"),
 		),
         '#attributes' => array(
           'onkeypress' => 'Multichoice.refreshCorrect(this)',
           'onkeyup' => 'Multichoice.refreshCorrect(this)',
           'onchange' => 'Multichoice.refreshCorrect(this)'
         ),
-        '#parents' => array('alternatives', $i, 'score_if_chosen')		
+        '#parents' => array('alternatives', $i, 'score_if_chosen')
 		//"#description" => t("Select plugin."),
 		);
-	  
+
 	  // jkm this field is hidden since now calculated. First we need to figure out if this is a right answer (alwsys 9999) or if it is a wrong answer (calc score from alternative number)
 	  // we don't know if the question is right or wrong at this point, so we assume it is wrong and double check later when the form is submitted
-	  
+
 	  // this field drives the built in right/wrong indicator so we use it to set the score. pos = right, neg = wrong
-	  
+
 	  //$calc_score = -(pow(2, $i));   //populate as if it was a wrong answer
-	  
+
      /* $form['alternatives'][$i]['advanced']['score_if_chosen'] = array(
         '#type' => 'textfield',
-		//'#access' => FALSE, // jkm  hide field		
+		//'#access' => FALSE, // jkm  hide field
 		//  jkm 6/13/13 Added custom message
         '#title' => t('Score if chosen (9999 if correct, -1,-2,-4,-8,-16,etc if wrong)'),
         '#size' => 4,
@@ -762,12 +762,12 @@ function get_group_terms() {
         ),
         '#parents' => array('alternatives', $i, 'score_if_chosen')
       ); */
-	  
+
       $form['alternatives'][$i]['advanced']['feedback_if_chosen'] = array(
         '#type' => 'text_format',
         '#base_type' => 'textarea',
-        '#title' => t('Feedback if chosen (make it positive is this is a correct answer, or corrective if this is a wrong answer)'),
-        '#description' => t('This feedback is given to users who chooses this alternative.'),
+        '#title' => t('Feedback if chosen (make it positive if this is a correct answer, or corrective if this is a wrong answer)'),
+        '#description' => t('This feedback is given to users who choose this alternative.'),
         '#parents' => array('alternatives', $i, 'feedback_if_chosen'),
         '#default_value' => $short['feedback_if_chosen'],
         '#format' => isset($short['feedback_if_chosen_format']) ? $short['feedback_if_chosen_format'] : NULL,
@@ -775,20 +775,20 @@ function get_group_terms() {
       );
       // We add 'helper' to trick the current version of the wysiwyg module to add an editor to several
       // textareas in the same fieldset
-	  
+
 	  // jkm 8/19/13 turn this into a drop down driven by the taxonomy of groups
-	  
+
 	  /*
 	      '#type' => 'select',
     '#title' => t('Choose a value'),
-    '#id' => 'limiter', 
+    '#id' => 'limiter',
     '#options' => get_group_terms(),
 	*/
-	
+
 	// jkm 9/21/13 Build a list from the taxonomy and use it for the dropdown
-	
+
 	//get the list of locations from taxonomy to use in the dropdown
-	$dropdown_source = taxonomy_get_tree(3);
+    $dropdown_source = taxonomy_get_tree(16) ;
 	$dropdown_array = array('0' => t("Unassigned"));
 	foreach ($dropdown_source as $item) {
 		$key = $item->tid;
@@ -809,12 +809,12 @@ function get_group_terms() {
 //	unset($dropdown_array);
 
 	// end list build
-	
+
    /* original
 
     $form['alternatives'][$i]['advanced']['helper']['feedback_if_not_chosen'] = array(
         //'#type' => 'text_format',
-		"#type" => "select", 
+		"#type" => "select",
         '#base_type' => 'textarea',
         '#title' => t('Tested Knowledge Area'),  // jkm 9/9/13
         '#description' => t('Assign this response to a resource that provides a clue to the answer that guides the student to the corect response.'),
@@ -823,7 +823,7 @@ function get_group_terms() {
         //'#format' => isset($short['feedback_if_not_chosen_format']) ? $short['feedback_if_not_chosen_format'] : NULL,
         //'#rows' => 3,
 		"#options" => array(
-		"0" => t("Unassigned"),		
+		"0" => t("Unassigned"),
 		"100" => t("PORT"),
 		"101" => t("ISDA"),
 		"102" => t("ISDA_CAP"),
@@ -841,15 +841,15 @@ function get_group_terms() {
 		"114" => t("BIBLIOGRAPHY"),
 		)
       );  */
-	  
+
 	 // drupal_set_message(t('from db: ]' . $short['feedback_if_not_chosen'] . '['));
-	  
+
 	  $form['alternatives'][$i]['advanced']['helper']['feedback_if_not_chosen'] = array(
         //'#type' => 'text_format',
-		"#type" => "select", 
+		"#type" => "select",
         '#base_type' => 'textarea',
         '#title' => t('Tested Knowledge Area'),  // jkm 9/9/13
-        '#description' => t('Assign this response to a resource that provides a clue to the answer that guides the student to the corect response.'),
+        '#description' => t('Assign this response to a resource that provides a clue to the answer and guides the student to the corect response.'),
         '#parents' => array('alternatives', $i, 'feedback_if_not_chosen'),
         '#default_value' => $short['feedback_if_not_chosen'],
         //'#format' => isset($short['feedback_if_not_chosen_format']) ? $short['feedback_if_not_chosen_format'] : NULL,
@@ -857,7 +857,7 @@ function get_group_terms() {
 		'#options' => $dropdown_array,
       );
       $default_value = isset($this->node->alternatives[$i]['score_if_chosen']) ? $this->node->alternatives[$i]['score_if_chosen'] : 0;
-	  
+
       $default_value = $short['score_if_not_chosen'];
       if (!isset($default_value)) {
         $default_value = '0';
@@ -879,7 +879,7 @@ function get_group_terms() {
         '#parents' => array('alternatives', $i, 'score_if_not_chosen')
       );
     }
-	
+
     // ahah helper tag. New questions will be inserted before this tag
     $form['alternatives']["placeholder"] = array(
       '#markup' => '<div id="placeholder"></div>',
