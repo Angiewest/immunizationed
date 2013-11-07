@@ -33,7 +33,8 @@ function display_analysis($quiz_nid, $question_nid, $question_vid, $question_num
 //    $res = db_query("SELECT answer,feedback_if_chosen,feedback_if_not_chosen,score_if_chosen FROM {quiz_multichoice_answers} WHERE question_nid = :ques_nid ORDER BY score_if_chosen DESC", array(':ques_nid' => $question_nid));
 //   $res = db_query("SELECT feedback_if_not_chosen as group_id,MIN(score_if_chosen),MIN(feedback_if_chosen) FROM {quiz_multichoice_answers} WHERE question_nid = :ques_nid GROUP BY feedback_if_not_chosen ORDER BY score_if_chosen DESC", array(':ques_nid' => $question_nid));
 
-   $res = db_query("SELECT feedback_if_not_chosen as group_id,MAX(score_if_chosen) as min_group_score,MIN(feedback_if_chosen) As right_text,MAX(feedback_if_chosen) as wrong_text FROM {quiz_multichoice_answers} WHERE question_nid = :ques_nid AND question_vid = :ques_vid GROUP BY feedback_if_not_chosen ORDER BY score_if_chosen ", array(':ques_nid' => $question_nid, ':ques_vid' => $question_vid));
+	// jkm 9/23/13 moved R/W indicator to format field
+   $res = db_query("SELECT feedback_if_not_chosen as group_id,MAX(score_if_chosen) as min_group_score,MIN(CONCAT(feedback_if_not_chosen_format,':',feedback_if_chosen)) As right_text,MAX(CONCAT(feedback_if_not_chosen_format,':',feedback_if_chosen)) as wrong_text FROM {quiz_multichoice_answers} WHERE question_nid = :ques_nid AND question_vid = :ques_vid GROUP BY feedback_if_not_chosen ORDER BY score_if_chosen ", array(':ques_nid' => $question_nid, ':ques_vid' => $question_vid));
   //     drupal_set_message("score'" . $score);
   $num_wrong = 0; 
   foreach ($res as $res_o) {
