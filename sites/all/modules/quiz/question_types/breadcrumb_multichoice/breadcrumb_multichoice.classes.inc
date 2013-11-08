@@ -6,13 +6,11 @@
  *
  * These inherit or implement code found in quiz_question.classes.inc.
  *
+ * Shamelessly copied from multichoice question type
  * Sponsored by: Norwegian Centre for Telemedicine
  * Code: falcon
- *
  * Based on:
  * Other question types in the quiz framework.
- *
- *
  *
  * @file
  * Question type, enabling the creation of multiple choice and multiple answer questions.
@@ -204,7 +202,7 @@ class breadcrumb_multichoiceQuestion extends QuizQuestion {
    *  The alternative index
    */
   private function insertAlternative($i) {
-    // jkm 8/31/13 force default value for fileds no longer used ($alternatives['score_if_not_chosen'])
+    // jkm 8/31/13 force default value for fields no longer used ($alternatives['score_if_not_chosen'])
     $alternatives = $this->node->alternatives[$i];
     db_insert('quiz_breadcrumb_multichoice_answers')
       ->fields(array(
@@ -230,7 +228,7 @@ class breadcrumb_multichoiceQuestion extends QuizQuestion {
    * @param $i
    *  The alternative index
    */
-  private function updateAlternative($i) {
+   private function updateAlternative($i) {
     $short = $this->node->alternatives[$i];
     db_update('quiz_breadcrumb_multichoice_answers')
       ->fields(array(
@@ -476,7 +474,7 @@ class breadcrumb_multichoiceQuestion extends QuizQuestion {
   }
 
   /**
-   * form to loopup available groups
+   * form to lookup available groups
    *
    */
 
@@ -614,19 +612,19 @@ function get_group_terms() {
         $correct_default = FALSE;
       }
       $form['alternatives'][$i]['correct'] = array(
-        '#type' => 'checkbox',
-        '#title' => t('Correct'),
-        '#default_value' => $correct_default,
-        '#attributes' => array('onchange' => 'breadcrumb_multichoice.refreshScores(this, ' . variable_get('breadcrumb_multichoice_def_scoring', 0) . ')'),
+          '#type' => 'checkbox',
+          '#title' => t('Correct'),
+          '#default_value' => $correct_default,
+          '#attributes' => array('onchange' => 'breadcrumb_multichoice.refreshScores(this, ' . variable_get('breadcrumb_multichoice_def_scoring', 0) . ')'),
       );
       // We add id to be able to update the correct alternatives if the node is updated, without destroying
       // existing answer reports
       $form['alternatives'][$i]['id'] = array(
-        '#type' => 'value',
-        '#value' => $short['id'],
+          '#type' => 'value',
+          '#value' => $short['id'],
       );
 
-	  // jkm 8/20/13 change to just text field
+      // jkm 8/20/13 change to just text field
 
       $form['alternatives'][$i]['answer'] = array(
         //'#type' => 'text_format',
@@ -664,8 +662,10 @@ function get_group_terms() {
 		//"#description" => t("Select plugin."),
 		);
 
-	  // jkm this field is hidden since now calculated. First we need to figure out if this is a right answer (alwsys 9999) or if it is a wrong answer (calc score from alternative number)
-	  // we don't know if the question is right or wrong at this point, so we assume it is wrong and double check later when the form is submitted
+	  // jkm this field is hidden since now calculated. First we need to figure out if this is a right answer (alwsys 9999)
+	  // or if it is a wrong answer (calc score from alternative number)
+	  // we don't know if the question is right or wrong at this point,
+	  // so we assume it is wrong and double check later when the form is submitted
 
 	  // this field drives the built in right/wrong indicator so we use it to set the score. pos = right, neg = wrong
 
@@ -691,8 +691,8 @@ function get_group_terms() {
       $form['alternatives'][$i]['advanced']['feedback_if_chosen'] = array(
         '#type' => 'text_format',
         '#base_type' => 'textarea',
-        '#title' => t('Feedback if chosen (make it positive is this is a correct answer, or corrective if this is a wrong answer)'),
-        '#description' => t('This feedback is given to users who chooses this alternative.'),
+        '#title' => t('Feedback if chosen (make it positive if this is a correct answer, or corrective if this is a wrong answer)'),
+        '#description' => t('This feedback is given to users who choose this alternative.'),
         '#parents' => array('alternatives', $i, 'feedback_if_chosen'),
         '#default_value' => $short['feedback_if_chosen'],
         '#format' => isset($short['feedback_if_chosen_format']) ? $short['feedback_if_chosen_format'] : NULL,

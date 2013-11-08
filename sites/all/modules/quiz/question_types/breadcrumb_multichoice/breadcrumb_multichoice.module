@@ -14,6 +14,7 @@
 function breadcrumb_multichoice_help($path, $args) {
   if ($path == 'admin/help#breadcrumb_multichoice') {
     return t("
+      <p>All of the following text is totaly wrong. Ignore it please.</p>
       <p>This module provides a multiple choice question type for Quiz.</p>
 
       <p>The module has three settings.
@@ -37,8 +38,8 @@ function breadcrumb_multichoice_help($path, $args) {
 function breadcrumb_multichoice_quiz_question_info() {
   return array(
     'breadcrumb_multichoice' => array(
-      'name' => t('Multiple choice question'),
-      'description' => t('This provides multiple choice questions for use by the Quiz module.'),
+      'name' => t('Breadcrumb Multiple choice question'),
+      'description' => t('This provides breadcrumb multiple choice questions for use by the Quiz module.'),
       'question provider' => 'breadcrumb_multichoiceQuestion',
       'response provider' => 'breadcrumb_multichoiceResponse',
       'module' => 'quiz_question', // All wrapper functions are in that module.
@@ -190,7 +191,7 @@ function breadcrumb_multichoice_field_extra_fields() {
     'form' => array(
       'alternatives' => array(
         'label' => t('Alternatives'),
-        'description' => t('Alternatives for breadcrumb_multichoice'),
+        'description' => t('Alternatives for breadcrumb multichoice'),
         'weight' => -4,
       ),
     ),

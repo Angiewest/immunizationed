@@ -10,8 +10,8 @@
 
 ?>
 <?php
-$p = drupal_get_path('module', 'multichoice');
-drupal_add_js($p .'/theme/multichoice-alternative-creation.js', 'module');
+$p = drupal_get_path('module', 'breadcrumb_multichoice');
+drupal_add_js($p .'/theme/breadcrumb_multichoice-alternative-creation.js', 'module');
 
 // Get the title from the checkbox, and then unset it. We will place it as a table header
 $title_correct = check_plain($form['correct']['#title']);
@@ -25,11 +25,11 @@ $title_answer = check_plain($form['answer']['#title']).$suf;
 $form['answer']['#title'] = '';
 
 // Now we can render the table
-$row[] = drupal_render($form['correct']);
 $row[] = drupal_render($form['answer']);
+$row[] = drupal_render($form['correct']);
 $rows[] = $row;
-$header[] = array('data' => $title_correct);
 $header[] = array('data' => $title_answer);
+$header[] = array('data' => $title_correct);
 print theme('table', array('header' => $header, 'rows' => $rows));
 
 //These lines make things look alot beter if user only has one input format available:
