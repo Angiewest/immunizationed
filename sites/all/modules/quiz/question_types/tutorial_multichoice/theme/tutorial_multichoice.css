@@ -3,31 +3,31 @@ table td div.quiz_choice_answer_correct {
 	background-color: lightgreen;
 }
 
-.multichoice-icon-cell {
+.tutorial_multichoice-icon-cell {
   width: 32px;
   padding: 0 5px;
 }
-.multichoice-icon {
+.tutorial_multichoice-icon {
   display: inline-block;
   width: 32px;
   height: 32px;
   background: url(images/icons.png) no-repeat;
 }
-.multichoice-icon.wrong {
+.tutorial_multichoice-icon.wrong {
   background-position: -32px 0;
 }
-.multichoice-icon.unknown {
+.tutorial_multichoice-icon.unknown {
   background-position: -64px 0;
 }
-.multichoice-icon.should {
+.tutorial_multichoice-icon.should {
   background-position: -96px 0;
 }
-.multichoice-icon.almost {
+.tutorial_multichoice-icon.almost {
   background-position: -128px 0;
 }
-.multichoice-label {
+.tutorial_multichoice-label {
   font-weight: bold;
 }
-.multichoice-feedback {
+.tutorial_multichoice-feedback {
   display: block;
 }

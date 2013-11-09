@@ -1,22 +1,22 @@
 <?php
 
 /**
- * The theme file for multichoice.
+ * The theme file for tutorial_multichoice.
  *
  * Sponsored by: Norwegian Centre for Telemedicine
  * Code: falcon
  *
  * @file
- * Theming functions for the multichoice question type.
+ * Theming functions for the tutorial_multichoice question type.
  */
 
 /**
  * @todo Please document this function.
  * @see http://drupal.org/node/1354
  */
-function theme_multichoice_creation_form($variables) {
+function theme_tutorial_multichoice_creation_form($variables) {
   $form = $variables['form'];
-  $path = drupal_get_path('module', 'multichoice') . '/multichoice.js';
+  $path = drupal_get_path('module', 'tutorial_multichoice') . '/tutorial_multichoice.js';
   drupal_add_js($path);
 
   // We open the settings fieldset if there is errors involving the choice_multi setting
@@ -45,13 +45,13 @@ function theme_multichoice_creation_form($variables) {
  * @param $show_correct
  *  True if the user is allowed to view the solution
  */
-function theme_multichoice_answer_node_view($variables) {
+function theme_tutorial_multichoice_answer_node_view($variables) {
   $alternatives = $variables['alternatives'];
   $show_correct = $variables['show_correct'];
   $header = array('', '');
 
-  $p = drupal_get_path('module', 'multichoice');
-  drupal_add_css($p .'/theme/multichoice.css');
+  $p = drupal_get_path('module', 'tutorial_multichoice');
+  drupal_add_css($p .'/theme/tutorial_multichoice.css');
 
   foreach ($alternatives as $i => $short) {
     $answer_markup = check_markup($short['answer'], $short['answer_format']);
@@ -69,7 +69,7 @@ function theme_multichoice_answer_node_view($variables) {
             '#tag' => 'span',
             '#attributes' => array(
               'class' => array(
-                'multichoice-icon',
+                'tutorial_multichoice-icon',
                 $image,
               ),
               'title' => $show_correct ?
@@ -80,7 +80,7 @@ function theme_multichoice_answer_node_view($variables) {
                 t('You are not allowed to view the solution for this question'),
             ),
           ),
-          'class' => array('multichoice-icon-cell'),
+          'class' => array('tutorial_multichoice-icon-cell'),
         ),
         $answer_markup
       );
@@ -89,47 +89,47 @@ function theme_multichoice_answer_node_view($variables) {
 }
 
 /**
- * Theme function for the multichoice report
+ * Theme function for the tutorial_multichoice report
  *
  * @param $data
  *  Array of data to be presented in the report
  */
-function theme_multichoice_response($variables) {
+function theme_tutorial_multichoice_response($variables) {
   static $css_added;
   if (!$css_added) {
-    drupal_add_css(drupal_get_path('module', 'multichoice') . '/theme/multichoice.css');
+    drupal_add_css(drupal_get_path('module', 'tutorial_multichoice') . '/theme/tutorial_multichoice.css');
     $css_added = TRUE;
   }
-  
+
   $rows = array();
   foreach ($variables['data'] as &$alternative) {
     if ($alternative['is_chosen']) {
       switch ($alternative['is_correct']) {
         case 0:
-          $icon = '<span class="multichoice-icon wrong" title="' . t('This option is wrong.') . '"></span>';
+          $icon = '<span class="tutorial_multichoice-icon wrong" title="' . t('This option is wrong.') . '"></span>';
           break;
         case 1:
-          $icon = '<span class="multichoice-icon almost" title="' . t('This option is correct, but there is another that gives a higher score.') . '"></span>';
+          $icon = '<span class="tutorial_multichoice-icon almost" title="' . t('This option is correct, but there is another that gives a higher score.') . '"></span>';
           break;
         case 2:
-          $icon = '<span class="multichoice-icon correct" title="' . t('This option is correct.') . '"></span>';
+          $icon = '<span class="tutorial_multichoice-icon correct" title="' . t('This option is correct.') . '"></span>';
           break;
       }
     }
     else {
-      $icon = $alternative['is_correct'] == 2 ? '<span class="multichoice-icon should" title="' . t("This option is correct, but you didn't select it.") . '"></span>' : '';
+      $icon = $alternative['is_correct'] == 2 ? '<span class="tutorial_multichoice-icon should" title="' . t("This option is correct, but you didn't select it.") . '"></span>' : '';
     }
     $rowspan = $alternative['feedback'] ? 2 : 1;
     $rows[] = array(
       array(
         'data' => $icon,
         'rowspan' => $rowspan,
-        'class' => 'selector-td multichoice-icon-cell',
+        'class' => 'selector-td tutorial_multichoice-icon-cell',
       ),
       $alternative['answer']
     );
     if ($rowspan == 2) {
-      $rows[] = array('<div class="multichoice-label">' . t('Feedback') . ':</div><div class="multichoice-feedback">' . $alternative['feedback'] . '</div>');
+      $rows[] = array('<div class="tutorial_multichoice-label">' . t('Feedback') . ':</div><div class="tutorial_multichoice-feedback">' . $alternative['feedback'] . '</div>');
     }
   }
   return theme('table', array('header' => NULL, 'rows' => $rows));

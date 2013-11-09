@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Handles the layout of the multichoice answering form
+ * Handles the layout of the tutorial_multichoice answering form
  *
  *
  * Variables available:
@@ -10,15 +10,15 @@
 
 ?>
 <?php
-$p = drupal_get_path('module', 'multichoice');
-drupal_add_css($p .'/theme/multichoice.css');
+$p = drupal_get_path('module', 'tutorial_multichoice');
+drupal_add_css($p .'/theme/tutorial_multichoice.css');
 
 // Add script for using the entire alternative row as a button
 drupal_add_js(
 "( function($) {
-  Drupal.behaviors.multichoiceAlternativeBehavior = {
+  Drupal.behaviors.tutorial_multichoiceAlternativeBehavior = {
     attach: function(context, settings) {
-      $('.multichoice_row')
+      $('.tutorial_multichoice_row')
       .once()
       .filter(':has(:checkbox:checked)')
       .addClass('selected')
@@ -31,7 +31,7 @@ drupal_add_js(
           });
           $(':radio', this).attr('checked', true);
           if ($(':radio', this).html() != null) {
-            $('.multichoice_row').removeClass('selected');
+            $('.tutorial_multichoice_row').removeClass('selected');
               $(this).addClass('selected');
           }
         }
@@ -58,7 +58,7 @@ foreach ($titles as $key => $value) {
   $row = array();
   $row[] = array('data' => drupal_render($fullOptions[$key]), 'width' => 35, 'class' => 'selector-td');
   $row[] = $value;
-  $rows[] = array('data' => $row, 'class' => array('multichoice_row'));
+  $rows[] = array('data' => $row, 'class' => array('tutorial_multichoice_row'));
 }
 print theme('table', array('header' => array(), 'rows' => $rows));
 ?>
