@@ -1,11 +1,8 @@
 <?php
 
 /**
- * Sponsored by: Norwegian Centre for Telemedicine
- * Code: falcon
- *
  * @file
- * tutorial_tutorial_multichoice Install (a quiz question type)
+ * tutorial_multichoice Install (a quiz question type)
  */
 
 
