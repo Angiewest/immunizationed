@@ -247,7 +247,6 @@ class MultichoiceQuestion extends QuizQuestion {
    *  The alternative index
    */
   private function insertAlternative($i) {
-<<<<<<< HEAD
     // jkm 8/31/13 force default value for fileds no longer used ($alternatives['score_if_not_chosen'])
     $alternatives = $this->node->alternatives[$i];
 
