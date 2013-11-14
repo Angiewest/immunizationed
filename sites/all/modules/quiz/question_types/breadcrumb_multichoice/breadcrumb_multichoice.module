@@ -40,8 +40,8 @@ function breadcrumb_multichoice_quiz_question_info() {
     'breadcrumb_multichoice' => array(
       'name' => t('Breadcrumb Multiple choice question'),
       'description' => t('This provides breadcrumb multiple choice questions for use by the Quiz module.'),
-      'question provider' => 'breadcrumbMultichoiceQuestion',
-      'response provider' => 'breadcrumbMultichoiceResponse',
+      'question provider' => 'breadcrumb_multichoiceQuestion',
+      'response provider' => 'breadcrumb_multichoiceResponse',
       'module' => 'quiz_question', // All wrapper functions are in that module.
     ),
   );

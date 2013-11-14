@@ -19,7 +19,7 @@
 /**
  * Extension of QuizQuestion.
  */
-class breadcrumbMultichoiceQuestion extends QuizQuestion {
+class breadcrumb_multichoiceQuestion extends QuizQuestion {
 
   /**
    * Forgive some possible logical flaws in the user input.
@@ -152,11 +152,11 @@ class breadcrumbMultichoiceQuestion extends QuizQuestion {
         if (drupal_strlen($this->node->alternatives[$i]['answer']['value']) > 0) {
           $this->insertAlternative($i);
         }
-		} else {
+	 } else {
 			// warn need an answer
-			//form_set_error(alternatives[$i]['answer']['value'], t('Please fill out the details for the alternatives you have creared.'));
-		}
-      }
+			//form_set_error(alternatives[$i]['answer']['value'], t('Please fill out the details for the alternatives you have created.');
+    }
+     }
     }
     else {
       db_update('quiz_breadcrumb_multichoice_properties')
@@ -209,35 +209,6 @@ class breadcrumbMultichoiceQuestion extends QuizQuestion {
     $this->saveUserSettings();
   }
 
-  function _normalizeAlternative($alternatives) {
-    $copy = $alternatives;
-    // answer
-    if (is_array($alternatives['answer']) && isset($alternatives['answer']['value'])) {
-      $copy['answer'] = $alternatives['answer']['value'];
-    }
-    // answer format
-    if (is_array($alternatives['answer']) && isset($alternatives['answer']['format'])) {
-      $copy['answer_format'] = $alternatives['answer']['format'];
-    }
-    // feedback if choosen
-    if (is_array($alternatives['feedback_if_chosen']) && isset($alternatives['feedback_if_chosen']['value'])) {
-      $copy['feedback_if_chosen'] = $alternatives['feedback_if_chosen']['value'];
-    }
-    // feedback if choosen foramt
-    if (is_array($alternatives['feedback_if_chosen']) && isset($alternatives['feedback_if_chosen']['format'])) {
-      $copy['feedback_if_chosen_format'] = $alternatives['feedback_if_chosen']['format'];
-    }
-    // feedback if not chosen
-    if (is_array($alternatives['feedback_if_not_chosen']) && isset($alternatives['feedback_if_not_chosen']['value'])) {
-      $copy['feedback_if_not_chosen'] = $alternatives['feedback_if_not_chosen']['value'];
-    }
-    // feedback if not chosen foramt
-    if (is_array($alternatives['feedback_if_not_chosen']) && isset($alternatives['feedback_if_not_chosen']['format'])) {
-      $copy['feedback_if_not_chosen_format'] = $alternatives['feedback_if_not_chosen']['format'];
-    }
-    return $copy;
-  }
-
   /**
    * Helper function. Saves new alternatives
    *
@@ -267,17 +238,6 @@ class breadcrumbMultichoiceQuestion extends QuizQuestion {
 		    'feedback_if_not_chosen' => isset($alternatives['feedback_if_not_chosen']) ? $alternatives['feedback_if_not_chosen'] : '0',
         //'feedback_if_not_chosen_format' => $alternatives['feedback_if_not_chosen']['format'],  // jkm no lnger used
         'feedback_if_not_chosen_format' => $right_wrong,		// jkm we now use this to hold R or W indicator (right or wrong answer)
-
-    // $alternatives = $this->_normalizeAlternative($this->node->alternatives[$i])
-    // db_insert('quiz_breadcrumb_multichoice_answers')
-      // ->fields(array(
-        // 'answer' => $alternatives['answer'],
-        // 'answer_format' => $alternatives['answer_format'],
-        // 'feedback_if_chosen' => $alternatives['feedback_if_chosen'],
-        // 'feedback_if_chosen_format' => $alternatives['feedback_if_chosen_format'],
-        // 'feedback_if_not_chosen' => $alternatives['feedback_if_not_chosen'],
-        // 'feedback_if_not_chosen_format' => $alternatives['feedback_if_not_chosen_format'],
-
         'score_if_chosen' => $alternatives['score_if_chosen'],
         'score_if_not_chosen' => $alternatives['score_if_not_chosen'],
         'question_nid' => $this->node->nid,
@@ -316,21 +276,8 @@ class breadcrumbMultichoiceQuestion extends QuizQuestion {
 		'feedback_if_not_chosen_format' => $right_wrong,		// jkm we now use this to hold R or W indicator (right or wrong answer)
         'score_if_chosen' => $short['score_if_chosen'],
         'score_if_not_chosen' => $short['score_if_not_chosen'],
-
-    // $alternatives = $this->_normalizeAlternative($this->node->alternatives[$i]);
-    // db_update('quiz_breadcrumb_multichoice_answers')
-      // ->fields(array(
-        // 'answer' => $alternatives['answer'],
-        // 'answer_format' => $alternatives['answer_format'],
-        // 'feedback_if_chosen' => $alternatives['feedback_if_chosen'],
-        // 'feedback_if_chosen_format' => $alternatives['feedback_if_chosen_format'],
-        // 'feedback_if_not_chosen' => $alternatives['feedback_if_not_chosen'],
-        // 'feedback_if_not_chosen_format' => $alternatives['feedback_if_not_chosen_format'],
-        // 'score_if_chosen' => $alternatives['score_if_chosen'],
-        // 'score_if_not_chosen' => $alternatives['score_if_not_chosen'],
-
       ))
-      ->condition('id', $alternatives['id'])
+      ->condition('id', $short['id'])
       ->condition('question_nid', $this->node->nid)
       ->condition('question_vid', $this->node->vid)
       ->execute();
@@ -415,13 +362,6 @@ class breadcrumbMultichoiceQuestion extends QuizQuestion {
 			form_set_error("alternatives][$i][feedback_if_not_chosen", t('Don\'t forget to assign a tested knowledge area to each possible response.'));
 			//form_set_error("alternatives][$i][feedback_if_not_chosen", t('The alternative is not marked as correct, but gives more points if you select it.'));
 		}
-
-        if ($short['score_if_chosen'] < $short['score_if_not_chosen'] && $short['correct']) {
-          form_set_error("alternatives][$i][score_if_not_chosen", t('The alternative is marked as correct, but gives more points if you don\'t select it.'));
-        }
-        elseif ($short['score_if_chosen'] > $short['score_if_not_chosen'] && !$short['correct']) {
-          form_set_error("alternatives][$i][score_if_chosen", t('The alternative is not marked as correct, but gives more points if you select it.'));
-        }
       }
     }
   }
@@ -450,11 +390,10 @@ class breadcrumbMultichoiceQuestion extends QuizQuestion {
       $user_answer_id = db_query('SELECT id FROM {quiz_breadcrumb_multichoice_user_answers} WHERE question_nid = :nid', array(':nid' => $this->node->nid))->fetchCol();
     }
 
-    if (!empty($user_answer_id)) {
-      db_delete('quiz_breadcrumb_multichoice_user_answer_multi')
+    db_delete('quiz_breadcrumb_multichoice_user_answer_multi')
       ->condition('user_answer_id', $user_answer_id, 'IN')
       ->execute();
-    }
+
     $delete_properties->execute();
     $delete_answers->execute();
     $delete_results->execute();
@@ -531,7 +470,7 @@ class breadcrumbMultichoiceQuestion extends QuizQuestion {
     );
     if (isset($rid)) {
       // This question has already been answered. We load the answer.
-      $response = new breadcrumbmultichoiceResponse($rid, $this->node);
+      $response = new breadcrumb_multichoiceResponse($rid, $this->node);
     }
     for ($i = 0; isset($this->node->alternatives[$i]); $i++) {
       $short = $this->node->alternatives[$i];
@@ -773,10 +712,6 @@ function get_group_terms() {
 
         '#format' => t('filtered_html'),  //isset($short['answer_format']) ? $short['answer_format'] : NULL,
         '#rows' => 1,
-
-        '#format' => isset($short['answer_format']) ? $short['answer_format'] : NULL,
-        '#rows' => 3,
-
       );
 
       $form['alternatives'][$i]['advanced'] = array(
@@ -833,7 +768,6 @@ function get_group_terms() {
         '#base_type' => 'textarea',
         '#title' => t('Feedback if chosen (make it positive if this is a correct answer, or corrective if this is a wrong answer)'),
         '#description' => t('This feedback is given to users who choose this alternative.'),
-
         '#parents' => array('alternatives', $i, 'feedback_if_chosen'),
         '#default_value' => $short['feedback_if_chosen'],
         '#format' => isset($short['feedback_if_chosen_format']) ? $short['feedback_if_chosen_format'] : NULL,
@@ -854,7 +788,7 @@ function get_group_terms() {
 	// jkm 9/21/13 Build a list from the taxonomy and use it for the dropdown
 
 	//get the list of locations from taxonomy to use in the dropdown
-    $dropdown_source = taxonomy_get_tree(16) ;
+  $dropdown_source = taxonomy_get_tree(16) ;
 	$dropdown_array = array('0' => t("Unassigned"));
 	foreach ($dropdown_source as $item) {
 		$key = $item->tid;
@@ -923,32 +857,6 @@ function get_group_terms() {
 		'#options' => $dropdown_array,
       );
       $default_value = isset($this->node->alternatives[$i]['score_if_chosen']) ? $this->node->alternatives[$i]['score_if_chosen'] : 0;
-
-      $form['alternatives'][$i]['advanced']['helper']['feedback_if_not_chosen'] = array(
-        '#type' => 'text_format',
-        '#base_type' => 'textarea',
-        '#title' => t('Feedback if not chosen'),
-        '#description' => t('This feedback is given to users who doesn\'t choose this alternative.'),
-        '#parents' => array('alternatives', $i, 'feedback_if_not_chosen'),
-        '#default_value' => $short['feedback_if_not_chosen'],
-        '#format' => isset($short['feedback_if_not_chosen_format']) ? $short['feedback_if_not_chosen_format'] : NULL,
-        '#rows' => 3,
-      );
-      $default_value = isset($this->node->alternatives[$i]['score_if_chosen']) ? $this->node->alternatives[$i]['score_if_chosen'] : 0;
-      $form['alternatives'][$i]['advanced']['score_if_chosen'] = array(
-        '#type' => 'textfield',
-        '#title' => t('Score if chosen'),
-        '#size' => 4,
-        '#maxlength' => 4,
-        '#default_value' => $default_value,
-        '#description' => t('This score is added to the users total score if the user chooses this alternative.'),
-        '#attributes' => array(
-          'onkeypress' => 'breadcrumb_Multichoice.refreshCorrect(this)',
-          'onkeyup' => 'breadcrumb_Multichoice.refreshCorrect(this)',
-          'onchange' => 'breadcrumb_Multichoice.refreshCorrect(this)'
-        ),
-        '#parents' => array('alternatives', $i, 'score_if_chosen')
-      );
 
       $default_value = $short['score_if_not_chosen'];
       if (!isset($default_value)) {
@@ -1088,7 +996,7 @@ function get_group_terms() {
 /**
  * Extension of QuizQuestionResponse
  */
-class breadcrumbMultichoiceResponse extends QuizQuestionResponse {
+class breadcrumb_multichoiceResponse extends QuizQuestionResponse {
   /**
    * ID of the answers.
    */
