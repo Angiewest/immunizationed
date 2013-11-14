@@ -2,17 +2,15 @@
 
 
 /**
- * The main classes for the multichoice question type.
+ * The main classes for the breadcrumb_multichoice question type.
  *
  * These inherit or implement code found in quiz_question.classes.inc.
  *
+ * Shamelessly copied from multichoice question type
  * Sponsored by: Norwegian Centre for Telemedicine
  * Code: falcon
- *
  * Based on:
  * Other question types in the quiz framework.
- *
- *
  *
  * @file
  * Question type, enabling the creation of multiple choice and multiple answer questions.
@@ -21,7 +19,7 @@
 /**
  * Extension of QuizQuestion.
  */
-class MultichoiceQuestion extends QuizQuestion {
+class breadcrumb_multichoiceQuestion extends QuizQuestion {
 
   /**
    * Forgive some possible logical flaws in the user input.
@@ -39,11 +37,11 @@ class MultichoiceQuestion extends QuizQuestion {
             $short['score_if_not_chosen'] = 0;
           }
           else {
-            if (variable_get('multichoice_def_scoring', 0) == 0) {
+            if (variable_get('breadcrumb_multichoice_def_scoring', 0) == 0) {
               $short['score_if_chosen'] = -1;
               $short['score_if_not_chosen'] = 0;
             }
-            elseif (variable_get('multichoice_def_scoring', 0) == 1) {
+            elseif (variable_get('breadcrumb_multichoice_def_scoring', 0) == 1) {
               $short['score_if_chosen'] = 0;
               $short['score_if_not_chosen'] = 1;
             }
@@ -109,12 +107,7 @@ class MultichoiceQuestion extends QuizQuestion {
    */
   private function checkMarkup($alternativeIndex, $field, $check_user_access = FALSE) {
     $alternative = $this->node->alternatives[$alternativeIndex];
-	//jkm 9/21/13 check that value is set before validating
-	if (isset($alternative[$field]['value']) && isset($alternative[$field]['format']) ) {
-		// jkm drupal_set_message(t($alternative[$field]['value'] .' ' .$alternative[$field]['format']));
-		return check_markup($alternative[$field]['value'], $alternative[$field]['format']);
-	}
-
+    return check_markup($alternative[$field]['value'], $alternative[$field]['format']);
   }
 
   /**
@@ -130,14 +123,13 @@ class MultichoiceQuestion extends QuizQuestion {
     $is_new = $is_new || $this->node->revision == 1;
 
     // Before we save we forgive some possible user errors
-    // jkm 9/21/13 we've taken over the scoring so iognore
-	//$this->forgive();
+    $this->forgive();
 
     // We also add warnings on other possible user errors
     $this->warn();
 
     if ($is_new) {
-      $id = db_insert('quiz_multichoice_properties')
+      $id = db_insert('quiz_breadcrumb_multichoice_properties')
         ->fields(array(
           'nid' => $this->node->nid,
           'vid' => $this->node->vid,
@@ -149,19 +141,13 @@ class MultichoiceQuestion extends QuizQuestion {
 
       // TODO: utilize the benefit of multiple insert of DBTNG
       for ($i = 0; isset($this->node->alternatives[$i]); $i++) {
-	    // jkm 9/21/13 added check for value (alts not filed in)
-		if ( isset($this->node->alternatives[$i]['answer']['value']) ) {
-			if (drupal_strlen($this->node->alternatives[$i]['answer']['value']) > 0) {
-			  $this->insertAlternative($i);
-			}
-		} else {
-			// warn need an answer
-			//form_set_error(alternatives[$i]['answer']['value'], t('Please fill out the details for the alternatives you have creared.'));
-		}
+        if (drupal_strlen($this->node->alternatives[$i]['answer']['value']) > 0) {
+          $this->insertAlternative($i);
+        }
       }
     }
     else {
-      db_update('quiz_multichoice_properties')
+      db_update('quiz_breadcrumb_multichoice_properties')
         ->fields(array(
           'choice_multi' => $this->node->choice_multi,
           'choice_random' => $this->node->choice_random,
@@ -173,7 +159,7 @@ class MultichoiceQuestion extends QuizQuestion {
 
       // We fetch ids for the existing answers belonging to this question
       // We need to figure out if an existing alternative has been changed or deleted.
-      $res = db_query('SELECT id FROM {quiz_multichoice_answers}
+      $res = db_query('SELECT id FROM {quiz_breadcrumb_multichoice_answers}
               WHERE question_nid = :nid AND question_vid = :vid', array(':nid' => $this->node->nid, ':vid' => $this->node->vid));
 
       // We start by assuming that all existing alternatives needs to be deleted
@@ -191,8 +177,6 @@ class MultichoiceQuestion extends QuizQuestion {
           }
           // If existing alternative
           else {
-		  	//drupal_set_message(t('at calling update: ]' . $short['feedback_if_not_chosen'] . '['));  //debug
-
             $this->updateAlternative($i);
             // Make sure this alternative isn't deleted
             $key = array_search($short['id'], $ids_to_delete);
@@ -202,42 +186,13 @@ class MultichoiceQuestion extends QuizQuestion {
       }
       foreach ($ids_to_delete as $id_to_delete) {
         if ($id_to_delete) {
-          db_delete('quiz_multichoice_answers')
+          db_delete('quiz_breadcrumb_multichoice_answers')
             ->condition('id', $id_to_delete)
             ->execute();
         }
       }
     }
     $this->saveUserSettings();
-  }
-
-  function _normalizeAlternative($alternatives) {
-    $copy = $alternatives;
-    // answer
-    if (is_array($alternatives['answer']) && isset($alternatives['answer']['value'])) {
-      $copy['answer'] = $alternatives['answer']['value'];
-    }
-    // answer format
-    if (is_array($alternatives['answer']) && isset($alternatives['answer']['format'])) {
-      $copy['answer_format'] = $alternatives['answer']['format'];
-    }
-    // feedback if choosen
-    if (is_array($alternatives['feedback_if_chosen']) && isset($alternatives['feedback_if_chosen']['value'])) {
-      $copy['feedback_if_chosen'] = $alternatives['feedback_if_chosen']['value'];
-    }
-    // feedback if choosen foramt
-    if (is_array($alternatives['feedback_if_chosen']) && isset($alternatives['feedback_if_chosen']['format'])) {
-      $copy['feedback_if_chosen_format'] = $alternatives['feedback_if_chosen']['format'];
-    }
-    // feedback if not chosen
-    if (is_array($alternatives['feedback_if_not_chosen']) && isset($alternatives['feedback_if_not_chosen']['value'])) {
-      $copy['feedback_if_not_chosen'] = $alternatives['feedback_if_not_chosen']['value'];
-    }
-    // feedback if not chosen foramt
-    if (is_array($alternatives['feedback_if_not_chosen']) && isset($alternatives['feedback_if_not_chosen']['format'])) {
-      $copy['feedback_if_not_chosen_format'] = $alternatives['feedback_if_not_chosen']['format'];
-    }
-    return $copy;
   }
 
   /**
@@ -247,40 +202,18 @@ class MultichoiceQuestion extends QuizQuestion {
    *  The alternative index
    */
   private function insertAlternative($i) {
-<<<<<<< HEAD
-    // jkm 8/31/13 force default value for fileds no longer used ($alternatives['score_if_not_chosen'])
+    // jkm 8/31/13 force default value for fields no longer used ($alternatives['score_if_not_chosen'])
     $alternatives = $this->node->alternatives[$i];
-
-	// drupal_set_message(t('at insert: ]' . $alternatives['feedback_if_not_chosen'] . '['));
-
-	 // jkm 9/23 save right/wrong in format field
-	if ($alternatives['score_if_chosen'] == '9999') {
-		$right_wrong = "R";
-	} else {
-		$right_wrong = "W";
-	}
-
-    db_insert('quiz_multichoice_answers')
+    db_insert('quiz_breadcrumb_multichoice_answers')
       ->fields(array(
         'answer' => $alternatives['answer']['value'],
         'answer_format' => $alternatives['answer']['format'],
         'feedback_if_chosen' => $alternatives['feedback_if_chosen']['value'],
         'feedback_if_chosen_format' => $alternatives['feedback_if_chosen']['format'],
-        //'feedback_if_not_chosen' => $alternatives['feedback_if_not_chosen']['value'],   //jkm actually group id
-		'feedback_if_not_chosen' => isset($alternatives['feedback_if_not_chosen']) ? $alternatives['feedback_if_not_chosen'] : '0',
-        //'feedback_if_not_chosen_format' => $alternatives['feedback_if_not_chosen']['format'],  // jkm no lnger used
-        'feedback_if_not_chosen_format' => $right_wrong,		// jkm we now use this to hold R or W indicator (right or wrong answer)
-=======
-    $alternatives = $this->_normalizeAlternative($this->node->alternatives[$i]);
-    db_insert('quiz_multichoice_answers')
-      ->fields(array(
-        'answer' => $alternatives['answer'],
-        'answer_format' => $alternatives['answer_format'],
-        'feedback_if_chosen' => $alternatives['feedback_if_chosen'],
-        'feedback_if_chosen_format' => $alternatives['feedback_if_chosen_format'],
-        'feedback_if_not_chosen' => $alternatives['feedback_if_not_chosen'],
-        'feedback_if_not_chosen_format' => $alternatives['feedback_if_not_chosen_format'],
->>>>>>> 473c11e4c54fee51fe1d9050f459f871bb83724c
+        //'feedback_if_not_chosen' => $alternatives['feedback_if_not_chosen']['value'],
+        'feedback_if_not_chosen' => "No feedback chosen",
+        //'feedback_if_not_chosen_format' => $alternatives['feedback_if_not_chosen']['format'],
+        'feedback_if_not_chosen_format' => "feedback_if_not_chosen",
         'score_if_chosen' => $alternatives['score_if_chosen'],
         'score_if_not_chosen' => $alternatives['score_if_not_chosen'],
         'question_nid' => $this->node->nid,
@@ -295,46 +228,20 @@ class MultichoiceQuestion extends QuizQuestion {
    * @param $i
    *  The alternative index
    */
-  private function updateAlternative($i) {
-<<<<<<< HEAD
+   private function updateAlternative($i) {
     $short = $this->node->alternatives[$i];
-
-	//drupal_set_message(t('at update: ]' . $short['score_if_chosen'] . '['));
-
-	// jkm 9/23 save right/wrong in format field
-	if ($short['score_if_chosen'] == '9999') {
-		$right_wrong = "R";
-	} else {
-		$right_wrong = "W";
-	}
-
-    db_update('quiz_multichoice_answers')
+    db_update('quiz_breadcrumb_multichoice_answers')
       ->fields(array(
         'answer' => $short['answer']['value'],
         'answer_format' => $short['answer']['format'],
         'feedback_if_chosen' => $short['feedback_if_chosen']['value'],
         'feedback_if_chosen_format' => $short['feedback_if_chosen']['format'],
-        //'feedback_if_not_chosen' => $short['feedback_if_not_chosen']['value'],
-		'feedback_if_not_chosen' => isset($short['feedback_if_not_chosen']) ? $short['feedback_if_not_chosen'] : '0',
-        //'feedback_if_not_chosen_format' => $short['feedback_if_not_chosen']['format'],
-		'feedback_if_not_chosen_format' => $right_wrong,		// jkm we now use this to hold R or W indicator (right or wrong answer)
+        'feedback_if_not_chosen' => $short['feedback_if_not_chosen']['value'],
+        'feedback_if_not_chosen_format' => $short['feedback_if_not_chosen']['format'],
         'score_if_chosen' => $short['score_if_chosen'],
         'score_if_not_chosen' => $short['score_if_not_chosen'],
-=======
-    $alternatives = $this->_normalizeAlternative($this->node->alternatives[$i]);
-    db_update('quiz_multichoice_answers')
-      ->fields(array(
-        'answer' => $alternatives['answer'],
-        'answer_format' => $alternatives['answer_format'],
-        'feedback_if_chosen' => $alternatives['feedback_if_chosen'],
-        'feedback_if_chosen_format' => $alternatives['feedback_if_chosen_format'],
-        'feedback_if_not_chosen' => $alternatives['feedback_if_not_chosen'],
-        'feedback_if_not_chosen_format' => $alternatives['feedback_if_not_chosen_format'],
-        'score_if_chosen' => $alternatives['score_if_chosen'],
-        'score_if_not_chosen' => $alternatives['score_if_not_chosen'],
->>>>>>> 473c11e4c54fee51fe1d9050f459f871bb83724c
       ))
-      ->condition('id', $alternatives['id'])
+      ->condition('id', $short['id'])
       ->condition('question_nid', $this->node->nid)
       ->condition('question_vid', $this->node->vid)
       ->execute();
@@ -350,10 +257,7 @@ class MultichoiceQuestion extends QuizQuestion {
       $found_one_correct = FALSE;
       for ($i = 0; (isset($this->node->alternatives[$i]) && is_array($this->node->alternatives[$i])); $i++) {
         $short = $this->node->alternatives[$i];
-<<<<<<< HEAD
 
-=======
->>>>>>> 473c11e4c54fee51fe1d9050f459f871bb83724c
         if (drupal_strlen($this->checkMarkup($i, 'answer')) < 1) {
           continue;
         }
@@ -376,61 +280,35 @@ class MultichoiceQuestion extends QuizQuestion {
         if (strlen($this->checkMarkup($i, 'answer')) < 1) {
           continue;
         }
-<<<<<<< HEAD
 
-		// check correct marker in synch
-
-		//drupal_set_message('Marker:' . t($short['score_if_chosen'] . '-' . $short['correct']));
-		if ($short['score_if_chosen'] != '9999' && $short['correct'] == 1) {
-			drupal_set_message(t('marker out of synch'));
-			$short['correct'] = 0;
-         }
 
 
         // check custom field to see if right or wrong
-		if ($short['correct'] == 1 || $short['score_if_chosen'] == '9999') {
-				//drupal_set_message(t('right answer...'));
+		if ($short['correct'] == 1) {
+				drupal_set_message(t('right answer...'));
 			$ans_right = TRUE;
 		} else {
-				//drupal_set_message(t('wrong answer...'));
+				drupal_set_message(t('wrong answer...'));
 			$ans_right = FALSE;
 		}
 
 		// jkm 8/19/13 set score to neg value if answer is wrong (so right answers are always worth more than wrong)
-		if (!$ans_right) $short['score_if_chosen']  = -(pow(2, $i));
-		//drupal_set_message('score:' . $short['score_if_chosen']);
+		if ($ans_right) $short['score_if_chosen']  = -(pow(2, $i));
+		drupal_set_message($short['score_if_chosen']);
 
 		// check if tagged as right or wrong and prefix feedback ith R: or W:
-		// jkm 9/23/13  R/W now stored in feedback_if_not_chosen_fornmat field
-//        if ($ans_right) {
-//				$short['feedback_if_chosen'] = "R: " . $short['feedback_if_chosen'];
-//		} else {
-//				$short['feedback_if_chosen'] = "W: " . $short['feedback_if_chosen'];
-//		}
-
-		// jkm since we're chaging the scoring metod, don't need this check
-//        if ($short['score_if_chosen'] < $short['score_if_not_chosen'] && $short['correct']) {
-//          form_set_error("alternatives][$i][score_if_not_chosen", t('The alternative is marked as correct, but gives more points if you don\'t select it.'));
-//        }
-//        elseif ($short['score_if_chosen'] > $short['score_if_not_chosen'] && !$short['correct']) {
-//          form_set_error("alternatives][$i][score_if_chosen", t('The alternative is not marked as correct, but gives more points if you select it.'));
-//        }
-
-		// drupal_set_message(t('at validate: ]' . $short['score_if_chosen'] . '['));  //debug
-
-		// jkm 9/10/13 show error if fogot to pick group id (it's a drop dwon now not a text string)
-		if ($short['feedback_if_not_chosen'] == "0") {
-			form_set_error("alternatives][$i][feedback_if_not_chosen", t('Don\'t forget to assign a tested knowledge area to each possible response.'));
-			//form_set_error("alternatives][$i][feedback_if_not_chosen", t('The alternative is not marked as correct, but gives more points if you select it.'));
+        if ($ans_right) {
+				$short['feedback_if_chosen'] = "R: " . $short['feedback_if_chosen'];
+		} else {
+				$short['feedback_if_chosen'] = "W: " . $short['feedback_if_chosen'];
 		}
-=======
+
         if ($short['score_if_chosen'] < $short['score_if_not_chosen'] && $short['correct']) {
           form_set_error("alternatives][$i][score_if_not_chosen", t('The alternative is marked as correct, but gives more points if you don\'t select it.'));
         }
         elseif ($short['score_if_chosen'] > $short['score_if_not_chosen'] && !$short['correct']) {
           form_set_error("alternatives][$i][score_if_chosen", t('The alternative is not marked as correct, but gives more points if you select it.'));
         }
->>>>>>> 473c11e4c54fee51fe1d9050f459f871bb83724c
       }
     }
   }
@@ -441,9 +319,9 @@ class MultichoiceQuestion extends QuizQuestion {
    * @see QuizQuestion#delete()
    */
   public function delete($only_this_version = FALSE) {
-    $delete_properties = db_delete('quiz_multichoice_properties')->condition('nid', $this->node->nid);
-    $delete_answers = db_delete('quiz_multichoice_answers')->condition('question_nid', $this->node->nid);
-    $delete_results = db_delete('quiz_multichoice_user_answers')->condition('question_nid', $this->node->nid);
+    $delete_properties = db_delete('quiz_breadcrumb_multichoice_properties')->condition('nid', $this->node->nid);
+    $delete_answers = db_delete('quiz_breadcrumb_multichoice_answers')->condition('question_nid', $this->node->nid);
+    $delete_results = db_delete('quiz_breadcrumb_multichoice_user_answers')->condition('question_nid', $this->node->nid);
 
     if ($only_this_version) {
       $delete_properties->condition('vid', $this->node->vid);
@@ -451,19 +329,18 @@ class MultichoiceQuestion extends QuizQuestion {
       $delete_results->condition('question_vid', $this->node->vid);
     }
 
-    // Delete from table quiz_multichoice_user_answer_multi
+    // Delete from table quiz_breadcrumb_multichoice_user_answer_multi
     if ($only_this_version) {
-      $user_answer_id = db_query('SELECT id FROM {quiz_multichoice_user_answers} WHERE question_nid = :nid AND question_vid = :vid', array(':nid' => $this->node->nid, ':vid' => $this->node->vid))->fetchCol();
+      $user_answer_id = db_query('SELECT id FROM {quiz_breadcrumb_multichoice_user_answers} WHERE question_nid = :nid AND question_vid = :vid', array(':nid' => $this->node->nid, ':vid' => $this->node->vid))->fetchCol();
     }
     else {
-      $user_answer_id = db_query('SELECT id FROM {quiz_multichoice_user_answers} WHERE question_nid = :nid', array(':nid' => $this->node->nid))->fetchCol();
+      $user_answer_id = db_query('SELECT id FROM {quiz_breadcrumb_multichoice_user_answers} WHERE question_nid = :nid', array(':nid' => $this->node->nid))->fetchCol();
     }
 
-    if (!empty($user_answer_id)) {
-      db_delete('quiz_multichoice_user_answer_multi')
-        ->condition('user_answer_id', $user_answer_id, 'IN')
-        ->execute();
-    }
+    db_delete('quiz_breadcrumb_multichoice_user_answer_multi')
+      ->condition('user_answer_id', $user_answer_id, 'IN')
+      ->execute();
+
     $delete_properties->execute();
     $delete_answers->execute();
     $delete_results->execute();
@@ -481,7 +358,7 @@ class MultichoiceQuestion extends QuizQuestion {
     }
     $props = parent::getNodeProperties();
 
-    $res_a = db_query('SELECT choice_multi, choice_random, choice_boolean FROM {quiz_multichoice_properties}
+    $res_a = db_query('SELECT choice_multi, choice_random, choice_boolean FROM {quiz_breadcrumb_multichoice_properties}
             WHERE nid = :nid AND vid = :vid', array(':nid' => $this->node->nid, ':vid' => $this->node->vid))->fetchAssoc();
 
     if (is_array($res_a)) {
@@ -491,7 +368,7 @@ class MultichoiceQuestion extends QuizQuestion {
     // Load the answers
     $res = db_query('SELECT id, answer, answer_format, feedback_if_chosen, feedback_if_chosen_format,
             feedback_if_not_chosen, feedback_if_not_chosen_format, score_if_chosen, score_if_not_chosen
-            FROM {quiz_multichoice_answers}
+            FROM {quiz_breadcrumb_multichoice_answers}
             WHERE question_nid = :question_nid AND question_vid = :question_vid
             ORDER BY id', array(':question_nid' => $this->node->nid, ':question_vid' => $this->node->vid));
     $props['alternatives'] = array(); // init array so it can be iterated even if empty
@@ -513,7 +390,7 @@ class MultichoiceQuestion extends QuizQuestion {
       $this->shuffle($this->node->alternatives);
     }
     $content['answers'] = array(
-       '#markup' => theme('multichoice_answer_node_view', array('alternatives' => $this->node->alternatives, 'show_correct' => $this->viewCanRevealCorrect())),
+       '#markup' => theme('breadcrumb_multichoice_answer_node_view', array('alternatives' => $this->node->alternatives, 'show_correct' => $this->viewCanRevealCorrect())),
        '#weight' => 2,
     );
 
@@ -528,7 +405,7 @@ class MultichoiceQuestion extends QuizQuestion {
    */
   public function getAnsweringForm(array $form_state = NULL, $rid) {
     $form = parent::getAnsweringForm($form_state, $rid);
-    //$form['#theme'] = 'multichoice_answering_form';
+    //$form['#theme'] = 'breadcrumb_multichoice_answering_form';
 
     /* We use an array looking key to be able to store multiple answers in tries.
      * At the moment all user answers have to be stored in tries. This is something we plan
@@ -536,11 +413,11 @@ class MultichoiceQuestion extends QuizQuestion {
      */
     $form['tries[answer]'] = array(
       '#options' => array(),
-      '#theme' => 'multichoice_alternative',
+      '#theme' => 'breadcrumb_multichoice_alternative',
     );
     if (isset($rid)) {
       // This question has already been answered. We load the answer.
-      $response = new MultichoiceResponse($rid, $this->node);
+      $response = new breadcrumb_multichoiceResponse($rid, $this->node);
     }
     for ($i = 0; isset($this->node->alternatives[$i]); $i++) {
       $short = $this->node->alternatives[$i];
@@ -597,8 +474,7 @@ class MultichoiceQuestion extends QuizQuestion {
   }
 
   /**
-<<<<<<< HEAD
-   * form to loopup available groups
+   * form to lookup available groups
    *
    */
 
@@ -631,8 +507,6 @@ function get_group_terms() {
 }
 
   /**
-=======
->>>>>>> 473c11e4c54fee51fe1d9050f459f871bb83724c
    * Implementation of getCreationForm
    *
    * @see QuizQuestion#getCreationForm()
@@ -703,7 +577,7 @@ function get_group_terms() {
       '#markup' => '<DIV id="input-all-ph"></DIV>',
     );
 
-    $form['alternatives']['#theme'][] = 'multichoice_creation_form';
+    $form['alternatives']['#theme'][] = 'breadcrumb_multichoice_creation_form';
     $i = 0;
 
     // choice_count might be stored in the form_state after an ajax callback
@@ -711,88 +585,56 @@ function get_group_terms() {
       $choice_count = $form_state['choice_count'];
     }
     else {
-      $choice_count = max(variable_get('multichoice_def_num_of_alts', 2), isset($this->node->alternatives) ? count($this->node->alternatives) : 0);
+      $choice_count = max(variable_get('breadcrumb_multichoice_def_num_of_alts', 2), isset($this->node->alternatives) ? count($this->node->alternatives) : 0);
     }
 
     for (; $i < $choice_count; $i++) {
       $short = isset($this->node->alternatives[$i]) ? $this->node->alternatives[$i] : NULL;
       $form['alternatives'][$i] = array(
         '#type' => 'fieldset',
-        '#title' => t('Alternative !i - ', array('!i' => ($i + 1))) . $short['answer'],
+        '#title' => t('Alternative !i', array('!i' => ($i + 1))),
         '#collapsible' => TRUE,
         '#collapsed' => FALSE,
         // - The two first alternatives won't be collapsed.
         // - Populated alternatives won't be collapsed
       );
-      $form['alternatives'][$i]['#theme'][] = 'multichoice_alternative_creation';
+      $form['alternatives'][$i]['#theme'][] = 'breadcrumb_multichoice_alternative_creation';
 
-	  // jkm 9/21/13 we're taken over the scoring logic here
-//      if (is_array($short)) {
-//        if ($short['score_if_chosen'] == $short['score_if_not_chosen']) {
-//          $correct_default = isset($short['correct']) ? $short['correct'] : FALSE;
-//        }
-//        else {
-//          $correct_default = $short['score_if_chosen'] > $short['score_if_not_chosen'];
-//        }
-//      }
-//      else {
-//        $correct_default = FALSE;
-//      }
-		if ($short['score_if_chosen'] == '9999') {
-			$correct_default = 1;
-			$dropdown_default = 9999;
-		} else {
-			$correct_default = -1;
-			$dropdown_default = -1;
-		}
- //drupal_set_message(t('correct flag from db: ]' . $correct_default . '['));
-
+      if (is_array($short)) {
+        if ($short['score_if_chosen'] == $short['score_if_not_chosen']) {
+          $correct_default = isset($short['correct']) ? $short['correct'] : FALSE;
+        }
+        else {
+          $correct_default = $short['score_if_chosen'] > $short['score_if_not_chosen'];
+        }
+      }
+      else {
+        $correct_default = FALSE;
+      }
       $form['alternatives'][$i]['correct'] = array(
-        '#type' => 'checkbox',
-        '#title' => t(' '),  // jkm required field   t('Correct')
-		'#access' => FALSE, // jkm  hide field
-        '#default_value' => $correct_default,
-        '#attributes' => array('onchange' => 'Multichoice.refreshScores(this, ' . variable_get('multichoice_def_scoring', 0) . ')'),
+          '#type' => 'checkbox',
+          '#title' => t('Correct'),
+          '#default_value' => $correct_default,
+          '#attributes' => array('onchange' => 'breadcrumb_multichoice.refreshScores(this, ' . variable_get('breadcrumb_multichoice_def_scoring', 0) . ')'),
       );
       // We add id to be able to update the correct alternatives if the node is updated, without destroying
       // existing answer reports
       $form['alternatives'][$i]['id'] = array(
-        '#type' => 'value',
-        '#value' => $short['id'],
+          '#type' => 'value',
+          '#value' => $short['id'],
       );
 
-<<<<<<< HEAD
-	  // jkm 8/20/13 change to just text field
+      // jkm 8/20/13 change to just text field
 
-//      $form['alternatives'][$i]['answer'] = array(
-//        //'#type' => 'text_format',
-//		'#type' => 'textfield',
-//        //'#base_type' => 'textarea',
-//        '#title' => t('Alternative !i', array('!i' => ($i + 1))),
-//        '#default_value' => $short['answer'],
-//        '#required' => $i < 2,
-//        '#format' => isset($short['answer_format']) ? $short['answer_format'] : NULL,
-//       // '#rows' => 3,
-//      );
-
-	   $form['alternatives'][$i]['answer'] = array(
-        '#type' => 'text_format',
-		//'#type' => 'textfield',
-=======
       $form['alternatives'][$i]['answer'] = array(
-        '#type' => 'text_format',
->>>>>>> 473c11e4c54fee51fe1d9050f459f871bb83724c
-        '#base_type' => 'textarea',
+        //'#type' => 'text_format',
+		'#type' => 'textfield',
+        //'#base_type' => 'textarea',
         '#title' => t('Alternative !i', array('!i' => ($i + 1))),
         '#default_value' => $short['answer'],
         '#required' => $i < 2,
-<<<<<<< HEAD
-        '#format' => t('filtered_html'),  //isset($short['answer_format']) ? $short['answer_format'] : NULL,
-        '#rows' => 1,
-=======
-        '#format' => isset($short['answer_format']) ? $short['answer_format'] : NULL,
-        '#rows' => 3,
->>>>>>> 473c11e4c54fee51fe1d9050f459f871bb83724c
+        //'#format' => isset($short['answer_format']) ? $short['answer_format'] : NULL,
+       // '#rows' => 3,
       );
 
       $form['alternatives'][$i]['advanced'] = array(
@@ -801,28 +643,29 @@ function get_group_terms() {
         '#collapsible' => TRUE,
         '#collapsed' => TRUE,
       );
-<<<<<<< HEAD
 
 	  // jkm 8/19/13  Add a new field to hold if right or wrong answer
 	   $form['alternatives'][$i]['advanced']['score_if_chosen'] = array(
 		"#type" => "select",
 		"#title" => t("Indicate whether this is a correct answer or a wrong answer."),
-		"#default_value" => $dropdown_default,
+		//"#default_value" => variable_get("plugin_select", "plugin1"),
 		"#options" => array(
 		"9999" => t("Answer is correct"),
 		"-1" => t("Answer is wrong"),
 		),
         '#attributes' => array(
-          'onkeypress' => 'Multichoice.refreshCorrect(this)',
-          'onkeyup' => 'Multichoice.refreshCorrect(this)',
-          'onchange' => 'Multichoice.refreshCorrect(this)'
+          'onkeypress' => 'breadcrumb_multichoice.refreshCorrect(this)',
+          'onkeyup' => 'breadcrumb_multichoice.refreshCorrect(this)',
+          'onchange' => 'breadcrumb_multichoice.refreshCorrect(this)'
         ),
         '#parents' => array('alternatives', $i, 'score_if_chosen')
 		//"#description" => t("Select plugin."),
 		);
 
-	  // jkm this field is hidden since now calculated. First we need to figure out if this is a right answer (alwsys 9999) or if it is a wrong answer (calc score from alternative number)
-	  // we don't know if the question is right or wrong at this point, so we assume it is wrong and double check later when the form is submitted
+	  // jkm this field is hidden since now calculated. First we need to figure out if this is a right answer (alwsys 9999)
+	  // or if it is a wrong answer (calc score from alternative number)
+	  // we don't know if the question is right or wrong at this point,
+	  // so we assume it is wrong and double check later when the form is submitted
 
 	  // this field drives the built in right/wrong indicator so we use it to set the score. pos = right, neg = wrong
 
@@ -838,9 +681,9 @@ function get_group_terms() {
         '#default_value' => $calc_score, // jkm use calc score isntead
         '#description' => t('This score is added to the users total score if the user chooses this alternative.'),
         '#attributes' => array(
-          'onkeypress' => 'Multichoice.refreshCorrect(this)',
-          'onkeyup' => 'Multichoice.refreshCorrect(this)',
-          'onchange' => 'Multichoice.refreshCorrect(this)'
+          'onkeypress' => 'breadcrumb_multichoice.refreshCorrect(this)',
+          'onkeyup' => 'breadcrumb_multichoice.refreshCorrect(this)',
+          'onchange' => 'breadcrumb_multichoice.refreshCorrect(this)'
         ),
         '#parents' => array('alternatives', $i, 'score_if_chosen')
       ); */
@@ -850,13 +693,6 @@ function get_group_terms() {
         '#base_type' => 'textarea',
         '#title' => t('Feedback if chosen (make it positive if this is a correct answer, or corrective if this is a wrong answer)'),
         '#description' => t('This feedback is given to users who choose this alternative.'),
-=======
-      $form['alternatives'][$i]['advanced']['feedback_if_chosen'] = array(
-        '#type' => 'text_format',
-        '#base_type' => 'textarea',
-        '#title' => t('Feedback if chosen'),
-        '#description' => t('This feedback is given to users who chooses this alternative.'),
->>>>>>> 473c11e4c54fee51fe1d9050f459f871bb83724c
         '#parents' => array('alternatives', $i, 'feedback_if_chosen'),
         '#default_value' => $short['feedback_if_chosen'],
         '#format' => isset($short['feedback_if_chosen_format']) ? $short['feedback_if_chosen_format'] : NULL,
@@ -864,7 +700,6 @@ function get_group_terms() {
       );
       // We add 'helper' to trick the current version of the wysiwyg module to add an editor to several
       // textareas in the same fieldset
-<<<<<<< HEAD
 
 	  // jkm 8/19/13 turn this into a drop down driven by the taxonomy of groups
 
@@ -874,46 +709,17 @@ function get_group_terms() {
     '#id' => 'limiter',
     '#options' => get_group_terms(),
 	*/
-
-	// jkm 9/21/13 Build a list from the taxonomy and use it for the dropdown
-
-	//get the list of locations from taxonomy to use in the dropdown
-    $dropdown_source = taxonomy_get_tree(16) ;
-	$dropdown_array = array('0' => t("Unassigned"));
-	foreach ($dropdown_source as $item) {
-		$key = $item->tid;
-		$value = $item->name;
-		$dropdown_array[$key] = $value;
-	}
-
-	//location filter dropdown
-	/* $form['filterset']['locationfilter'] = array(
-	  '#weight' => '1',
-	  '#key_type' => 'associative',
-	  '#multiple_toggle' => '1',
-	  '#type' => 'select',
-	  '#options' => $dropdown_array,
-	  '#title' => 'Filter by location',
-	); */
-
-//	unset($dropdown_array);
-
-	// end list build
-
-   /* original
-
-    $form['alternatives'][$i]['advanced']['helper']['feedback_if_not_chosen'] = array(
+      $form['alternatives'][$i]['advanced']['helper']['feedback_if_not_chosen'] = array(
         //'#type' => 'text_format',
 		"#type" => "select",
         '#base_type' => 'textarea',
-        '#title' => t('Tested Knowledge Area'),  // jkm 9/9/13
-        '#description' => t('Assign this response to a resource that provides a clue to the answer that guides the student to the corect response.'),
-        '#parents' => array('alternatives', $i, 'feedback_if_not_chosen'),
+        '#title' => t('Group ID'),
+        '#description' => t('Select the group this answer belongs to'),
+        //'#parents' => array('alternatives', $i, 'feedback_if_not_chosen'),
         '#default_value' => $short['feedback_if_not_chosen'],
         //'#format' => isset($short['feedback_if_not_chosen_format']) ? $short['feedback_if_not_chosen_format'] : NULL,
         //'#rows' => 3,
 		"#options" => array(
-		"0" => t("Unassigned"),
 		"100" => t("PORT"),
 		"101" => t("ISDA"),
 		"102" => t("ISDA_CAP"),
@@ -930,74 +736,31 @@ function get_group_terms() {
 		"113" => t("SOP"),
 		"114" => t("BIBLIOGRAPHY"),
 		)
-      );  */
-
-	 // drupal_set_message(t('from db: ]' . $short['feedback_if_not_chosen'] . '['));
-
-	  $form['alternatives'][$i]['advanced']['helper']['feedback_if_not_chosen'] = array(
-        //'#type' => 'text_format',
-		"#type" => "select",
-        '#base_type' => 'textarea',
-        '#title' => t('Tested Knowledge Area'),  // jkm 9/9/13
-        '#description' => t('Assign this response to a resource that provides a clue to the answer and guides the student to the corect response.'),
-        '#parents' => array('alternatives', $i, 'feedback_if_not_chosen'),
-        '#default_value' => $short['feedback_if_not_chosen'],
-        //'#format' => isset($short['feedback_if_not_chosen_format']) ? $short['feedback_if_not_chosen_format'] : NULL,
-        //'#rows' => 3,
-		'#options' => $dropdown_array,
       );
       $default_value = isset($this->node->alternatives[$i]['score_if_chosen']) ? $this->node->alternatives[$i]['score_if_chosen'] : 0;
-=======
-      $form['alternatives'][$i]['advanced']['helper']['feedback_if_not_chosen'] = array(
-        '#type' => 'text_format',
-        '#base_type' => 'textarea',
-        '#title' => t('Feedback if not chosen'),
-        '#description' => t('This feedback is given to users who doesn\'t choose this alternative.'),
-        '#parents' => array('alternatives', $i, 'feedback_if_not_chosen'),
-        '#default_value' => $short['feedback_if_not_chosen'],
-        '#format' => isset($short['feedback_if_not_chosen_format']) ? $short['feedback_if_not_chosen_format'] : NULL,
-        '#rows' => 3,
-      );
-      $default_value = isset($this->node->alternatives[$i]['score_if_chosen']) ? $this->node->alternatives[$i]['score_if_chosen'] : 0;
-      $form['alternatives'][$i]['advanced']['score_if_chosen'] = array(
-        '#type' => 'textfield',
-        '#title' => t('Score if chosen'),
-        '#size' => 4,
-        '#maxlength' => 4,
-        '#default_value' => $default_value,
-        '#description' => t('This score is added to the users total score if the user chooses this alternative.'),
-        '#attributes' => array(
-          'onkeypress' => 'Multichoice.refreshCorrect(this)',
-          'onkeyup' => 'Multichoice.refreshCorrect(this)',
-          'onchange' => 'Multichoice.refreshCorrect(this)'
-        ),
-        '#parents' => array('alternatives', $i, 'score_if_chosen')
-      );
->>>>>>> 473c11e4c54fee51fe1d9050f459f871bb83724c
 
       $default_value = $short['score_if_not_chosen'];
       if (!isset($default_value)) {
         $default_value = '0';
       }
+	  // jkm 8/19/13   this field is not used, so we set the field as hidden and leave it blank
       $form['alternatives'][$i]['advanced']['score_if_not_chosen'] = array(
         '#type' => 'textfield',
-        '#title' => t('Score if not chosen'),
+		'#access' => FALSE, // jkm  hide field
+        '#title' => t('Field not used - set to 0'),
         '#size' => 4,
         '#maxlength' => 4,
-        '#default_value' => $default_value,
+        '#default_value' => 0,  // set to 0 instead of default value
         '#description' => t('This score is added to the users total score if the user doesn\'t choose this alternative. Only used if multiple answers are allowed.'),
         '#attributes' => array(
-          'onkeypress' => 'Multichoice.refreshCorrect(this)',
-          'onkeyup' => 'Multichoice.refreshCorrect(this)',
-          'onchange' => 'Multichoice.refreshCorrect(this)'
+          'onkeypress' => 'breadcrumb_multichoice.refreshCorrect(this)',
+          'onkeyup' => 'breadcrumb_multichoice.refreshCorrect(this)',
+          'onchange' => 'breadcrumb_multichoice.refreshCorrect(this)'
         ),
         '#parents' => array('alternatives', $i, 'score_if_not_chosen')
       );
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> 473c11e4c54fee51fe1d9050f459f871bb83724c
     // ahah helper tag. New questions will be inserted before this tag
     $form['alternatives']["placeholder"] = array(
       '#markup' => '<div id="placeholder"></div>',
@@ -1009,20 +772,20 @@ function get_group_terms() {
       '#value' => $get,
     );
 
-    $form['alternatives']['multichoice_add_alternative'] = array(
+    $form['alternatives']['breadcrumb_multichoice_add_alternative'] = array(
       '#type' => 'submit',
       '#value' => t('Add more alternatives'),
-      '#submit' => array('multichoice_more_choices_submit'), // If no javascript action.
+      '#submit' => array('breadcrumb_multichoice_more_choices_submit'), // If no javascript action.
       '#limit_validation_errors' => array(),
       '#ajax' => array(
-        'callback' => 'multichoice_add_alternative_ajax_callback',
+        'callback' => 'breadcrumb_multichoice_add_alternative_ajax_callback',
         'wrapper' => 'placeholder',
         'effect' => 'slide',
         'method' => 'before',
       ),
     );
     $form['#attached']['js'] = array(
-      drupal_get_path('module', 'multichoice') . '/multichoice.js',
+      drupal_get_path('module', 'breadcrumb_multichoice') . '/breadcrumb_multichoice.js',
     );
 
     return $form;
@@ -1044,7 +807,7 @@ function get_group_terms() {
     // We try to fetch the users settings
     elseif ($settings = $this->getUserSettings()) {
     }
-    // The user is creating his first multichoice node
+    // The user is creating his first breadcrumb_multichoice node
     else {
       $settings['choice_multi'] = 0;
       $settings['choice_random'] = 0;
@@ -1062,7 +825,7 @@ function get_group_terms() {
   private function getUserSettings() {
     global $user;
     $res = db_query('SELECT choice_multi, choice_boolean, choice_random
-            FROM {quiz_multichoice_user_settings}
+            FROM {quiz_breadcrumb_multichoice_user_settings}
             WHERE uid = :uid', array(':uid' => $user->uid))->fetchAssoc();
     if ($res) {
       return $res;
@@ -1077,7 +840,7 @@ function get_group_terms() {
    */
   private function saveUserSettings() {
     global $user;
-    db_merge('quiz_multichoice_user_settings')
+    db_merge('quiz_breadcrumb_multichoice_user_settings')
       ->key(array('uid' => $user->uid))
       ->fields(array(
         'choice_random' => $this->node->choice_random,
@@ -1114,7 +877,7 @@ function get_group_terms() {
 /**
  * Extension of QuizQuestionResponse
  */
-class MultichoiceResponse extends QuizQuestionResponse {
+class breadcrumb_multichoiceResponse extends QuizQuestionResponse {
   /**
    * ID of the answers.
    */
@@ -1145,8 +908,8 @@ class MultichoiceResponse extends QuizQuestionResponse {
     }
     // We load the answer from the database
     else {
-      $res = db_query('SELECT answer_id FROM {quiz_multichoice_user_answers} ua
-              LEFT OUTER JOIN {quiz_multichoice_user_answer_multi} uam ON(uam.user_answer_id = ua.id)
+      $res = db_query('SELECT answer_id FROM {quiz_breadcrumb_multichoice_user_answers} ua
+              LEFT OUTER JOIN {quiz_breadcrumb_multichoice_user_answer_multi} uam ON(uam.user_answer_id = ua.id)
               WHERE ua.result_id = :result_id AND ua.question_nid = :question_nid AND ua.question_vid = :question_vid', array(':result_id' => $result_id, ':question_nid' => $this->question->nid, ':question_vid' => $this->question->vid));
       while ($res_o = $res->fetch()) {
         $this->user_answer_ids[] = $res_o->answer_id;
@@ -1179,7 +942,7 @@ class MultichoiceResponse extends QuizQuestionResponse {
    * @see QuizQuestionResponse#save()
    */
   public function save() {
-    $user_answer_id = db_insert('quiz_multichoice_user_answers')
+    $user_answer_id = db_insert('quiz_breadcrumb_multichoice_user_answers')
       ->fields(array(
         'result_id' => $this->rid,
         'question_vid' => $this->question->vid,
@@ -1188,7 +951,7 @@ class MultichoiceResponse extends QuizQuestionResponse {
       ))
       ->execute();
 
-    $query = db_insert('quiz_multichoice_user_answer_multi')
+    $query = db_insert('quiz_breadcrumb_multichoice_user_answer_multi')
       ->fields(array('user_answer_id', 'answer_id'));
     for ($i = 0; $i < count($this->user_answer_ids); $i++) {
       $query->values(array($user_answer_id, $this->user_answer_ids[$i]));
@@ -1203,18 +966,18 @@ class MultichoiceResponse extends QuizQuestionResponse {
    */
   public function delete() {
     $user_answer_id = array();
-    $query = db_query('SELECT id FROM {quiz_multichoice_user_answers} WHERE question_nid = :nid AND question_vid = :vid AND result_id = :result_id', array(':nid' => $this->question->nid, ':vid' => $this->question->vid, ':result_id' => $this->rid));
+    $query = db_query('SELECT id FROM {quiz_breadcrumb_multichoice_user_answers} WHERE question_nid = :nid AND question_vid = :vid AND result_id = :result_id', array(':nid' => $this->question->nid, ':vid' => $this->question->vid, ':result_id' => $this->rid));
     while ($user_answer = $query->fetch()) {
       $user_answer_id[] = $user_answer->id;
     }
 
     if (!empty($user_answer_id)) {
-      db_delete('quiz_multichoice_user_answer_multi')
+      db_delete('quiz_breadcrumb_multichoice_user_answer_multi')
         ->condition('user_answer_id', $user_answer_id, 'IN')
         ->execute();
     }
 
-    db_delete('quiz_multichoice_user_answers')
+    db_delete('quiz_breadcrumb_multichoice_user_answers')
       ->condition('result_id', $this->rid)
       ->condition('question_nid', $this->question->nid)
       ->condition('question_vid', $this->question->vid)
@@ -1346,7 +1109,7 @@ class MultichoiceResponse extends QuizQuestionResponse {
       $i++;
     }
     // Return themed report
-    return array('#markup' => theme('multichoice_response', array('data' => $data)));
+    return array('#markup' => theme('breadcrumb_multichoice_response', array('data' => $data)));
   }
 
   /**
@@ -1359,7 +1122,7 @@ class MultichoiceResponse extends QuizQuestionResponse {
     if (!$this->question->choice_random) {
       return;
     }
-    $result = db_query('SELECT choice_order FROM {quiz_multichoice_user_answers}
+    $result = db_query('SELECT choice_order FROM {quiz_breadcrumb_multichoice_user_answers}
             WHERE result_id = :result_id AND question_nid = :question_nid AND question_vid = :question_vid', array(':result_id' => $this->rid, ':question_nid' => $this->question->nid, ':question_vid' => $this->question->vid))->fetchField();
     if (!$result) {
       return;
