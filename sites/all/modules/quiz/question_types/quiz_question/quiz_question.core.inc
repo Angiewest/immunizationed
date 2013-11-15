@@ -97,11 +97,11 @@ abstract class QuizQuestion {
       $form['helper']['#theme'] = 'quiz_question_creation_form';
       $form['title'] = array(
         '#type' => 'textfield',
-        '#title' => t('Title'),
+        '#title' => t('Administrative Title'), // jkm 9/9/13
         '#maxlength' => 255,
         '#default_value' => $this->node->title,
         '#required' => FALSE,
-        '#description' => t('Add a title that will help distinguish this question from other questions. This will not be seen during the quiz.'),
+        '#description' => t('Add a title that will help distinguish this question from other questions in quiz reports. This will not be seen during the quiz.'),  // jkm
       );
     }
     else {
@@ -253,7 +253,8 @@ abstract class QuizQuestion {
       if (count($latest) > 0) {
         $form['add_directly']['latest'] = array(
           '#type' => 'checkboxes',
-          '#title' => t('The @latest latest @quiz nodes this question isn\'t a member of', array('@latest' => count($latest), '@quiz' => QUIZ_NAME)),
+         // jkm 9/9/13  '#title' => t('The @latest latest @quiz nodes this question isn\'t a member of', array('@latest' => count($latest), '@quiz' => QUIZ_NAME)),
+          '#title' => t('Assign this question to a quiz', array('@latest' => count($latest), '@quiz' => QUIZ_NAME)),		  
           '#description' => t('If you check any of the checkboxes this question will be added to the corresponding @quiz. If the @quiz has been answered a new revision will be created automatically.', array('@quiz' => QUIZ_NAME)),
           '#options' => $latest,
           '#default_value' => $latest_default,
