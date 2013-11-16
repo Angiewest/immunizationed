@@ -6,16 +6,16 @@
  */
 
 /**
- * Helper function for breadcrumbs_multichoice_update_6400
+ * Helper function for tutorialchoice_update_6400
  *
- * Converts the database from the old to the new breadcrumbs_multichoice module
+ * Converts the database from the old to the new tutorialchoice module
  *
  * @param $sandbox
  *  Array to store progress in
  * @return
  *  Array with progress data
  */
-function _breadcrumbs_multichoice_update_6400(&$sandbox = NULL) {
+function _tutorialchoice_update_6400(&$sandbox = NULL) {
   $to_return = array();
   $sandbox['current_step'] = isset($sandbox['current_step']) ? $sandbox['current_step'] : 0;
 
@@ -29,7 +29,7 @@ function _breadcrumbs_multichoice_update_6400(&$sandbox = NULL) {
 
   // Do all the updates in the cureent step
   foreach ($steps[$sandbox['current_step']] as $value) {
-    $function = '_breadcrumbs_multichoice_' . $value;
+    $function = '_tutorialchoice_' . $value;
     $function($to_return, $sandbox);
   }
 
@@ -47,15 +47,15 @@ function _breadcrumbs_multichoice_update_6400(&$sandbox = NULL) {
  * @param $sandbox
  *  Array where persistent data can be stored, and progress can be found
  */
-function _breadcrumbs_multichoice_alter_user_answers1(&$to_return, &$sandbox = NULL) {
-  db_drop_primary_key('quiz_breadcrumbs_multichoice_user_answers');
-  db_add_field('quiz_breadcrumbs_multichoice_user_answers', 'id', array(
+function _tutorialchoice_alter_user_answers1(&$to_return, &$sandbox = NULL) {
+  db_drop_primary_key('quiz_tutorialchoice_user_answers');
+  db_add_field('quiz_tutorialchoice_user_answers', 'id', array(
     'type' => 'serial',
     'unsignet' => TRUE,
     'not_null' => TRUE,
   ), array('primary key' => array('id')));
-  db_add_field('quiz_breadcrumbs_multichoice_user_answers', 'choice_order', array('type' => 'text'));
-  db_create_table('quiz_breadcrumbs_multichoice_user_answer_multi', array(
+  db_add_field('quiz_tutorialchoice_user_answers', 'choice_order', array('type' => 'text'));
+  db_create_table('quiz_tutorialchoice_user_answer_multi', array(
     'fields' => array(
       'user_answer_id' => array(
         'type' => 'int',
@@ -82,7 +82,7 @@ function _breadcrumbs_multichoice_alter_user_answers1(&$to_return, &$sandbox = N
  * @param $sandbox
  *  Array where persistent data can be stored, and progress can be found
  */
-function _breadcrumbs_multichoice_move_old_answers(&$to_return, &$sandbox = NULL) {
+function _tutorialchoice_move_old_answers(&$to_return, &$sandbox = NULL) {
   // Store persistent data in the sandbox variable
   if (!isset($sandbox['step_progress'])) {
     $sandbox['step_progress'] = 0;
@@ -90,15 +90,15 @@ function _breadcrumbs_multichoice_move_old_answers(&$to_return, &$sandbox = NULL
     $sandbox['last_nid'] = -1;
     $sandbox['last_vid'] = -1;
     $sandbox['last_id'] = -1;
-    $sandbox['step_max'] = db_query('SELECT COUNT(DISTINCT id) FROM {quiz_breadcrumbs_multichoice_user_answers}')->fetchField();
+    $sandbox['step_max'] = db_query('SELECT COUNT(DISTINCT id) FROM {quiz_tutorialchoice_user_answers}')->fetchField();
   }
   // Fetch old user ans
   $sql = 'SELECT id, answer_id, question_nid, question_vid, result_id
-          FROM {quiz_breadcrumbs_multichoice_user_answers}
+          FROM {quiz_tutorialchoice_user_answers}
           WHERE result_id >= %d
           ORDER BY result_id, question_nid, question_vid, answer_id';
   $res = db_query_range('SELECT id, answer_id, question_nid, question_vid, result_id
-          FROM {quiz_breadcrumbs_multichoice_user_answers}
+          FROM {quiz_tutorialchoice_user_answers}
           WHERE result_id >= :result_id
           ORDER BY result_id, question_nid, question_vid, answer_id', array(':result_id' => $sandbox['last_rid']));
   $progress_to_add = 0;
@@ -106,13 +106,13 @@ function _breadcrumbs_multichoice_move_old_answers(&$to_return, &$sandbox = NULL
     if ($res_o->question_nid == $sandbox['last_nid']
      && $res_o->question_vid == $sandbox['last_vid']
      && $res_o->result_id    == $sandbox['last_rid']) {
-      // We only keep one row for each question result in quiz_breadcrumbs_multichoice_user_answers
+      // We only keep one row for each question result in quiz_tutorialchoice_user_answers
       if ($res_o->id > $sandbox['last_id']) {
-        $sql2 = 'DELETE FROM {quiz_breadcrumbs_multichoice_user_answers}
+        $sql2 = 'DELETE FROM {quiz_tutorialchoice_user_answers}
                  WHERE id = %d';
         // TODO Please review the conversion of this statement to the D7 database API syntax.
         /* db_query($sql2, $res_o->id) */
-        db_delete('quiz_breadcrumbs_multichoice_user_answers')
+        db_delete('quiz_tutorialchoice_user_answers')
   ->condition('id', $res_o->id)
   ->execute();
         if ($progress_to_add + $sandbox['step_progress'] + 1 >= $sandbox['step_max']) {
@@ -129,8 +129,8 @@ function _breadcrumbs_multichoice_move_old_answers(&$to_return, &$sandbox = NULL
       $sandbox['step_progress'] += $progress_to_add;
       $progress_to_add = 0;
     }
-    // We insert ther answers in quiz_breadcrumbs_multichoice_user_answer_multi
-    $sql = 'INSERT IGNORE INTO {quiz_breadcrumbs_multichoice_user_answer_multi}
+    // We insert ther answers in quiz_tutorialchoice_user_answer_multi
+    $sql = 'INSERT IGNORE INTO {quiz_tutorialchoice_user_answer_multi}
             (user_answer_id, answer_id)
             VALUES(%d, %d)';
     // TODO Please convert this statement to the D7 database API syntax.
@@ -140,7 +140,7 @@ function _breadcrumbs_multichoice_move_old_answers(&$to_return, &$sandbox = NULL
   }
   // We move on if all user answers have been moved
   if ($sandbox['step_progress'] >= $sandbox['step_max']) {
-    _breadcrumbs_multichoice_next_step($to_return, $sandbox);
+    _tutorialchoice_next_step($to_return, $sandbox);
   }
 }
 
@@ -152,20 +152,20 @@ function _breadcrumbs_multichoice_move_old_answers(&$to_return, &$sandbox = NULL
  * @param $sandbox
  *  Array where persistent data can be stored, and progress can be found
  */
-function _breadcrumbs_multichoice_alter_user_answers2(&$to_return, &$sandbox = NULL) {
-  db_drop_field('quiz_breadcrumbs_multichoice_user_answers', 'answer_id');
+function _tutorialchoice_alter_user_answers2(&$to_return, &$sandbox = NULL) {
+  db_drop_field('quiz_tutorialchoice_user_answers', 'answer_id');
 }
 
 /**
- * We create a new table to store breadcrumbs_multichoice properties in
+ * We create a new table to store tutorialchoice properties in
  *
  * @param $to_return
  *  Array where progress can be reported
  * @param $sandbox
  *  Array where persistent data can be stored, and progress can be found
  */
-function _breadcrumbs_multichoice_create_properties(&$to_return, &$sandbox = NULL) {
-  db_create_table('quiz_breadcrumbs_multichoice_properties', array(
+function _tutorialchoice_create_properties(&$to_return, &$sandbox = NULL) {
+  db_create_table('quiz_tutorialchoice_properties', array(
     'fields' => array(
       'nid' => array(
         'type' => 'int',
@@ -203,58 +203,58 @@ function _breadcrumbs_multichoice_create_properties(&$to_return, &$sandbox = NUL
 }
 
 /**
- * We alter the quiz_breadcrumbs_multichoice_answers table to fit the new data model
+ * We alter the quiz_tutorialchoice_answers table to fit the new data model
  *
  * @param $to_return
  *  Array where progress can be reported
  * @param $sandbox
  *  Array where persistent data can be stored, and progress can be found
  */
-function _breadcrumbs_multichoice_alter_answers(&$to_return, &$sandbox = NULL) {
-  //db_drop_primary_key($to_return, 'quiz_breadcrumbs_multichoice_answers');
-  db_change_field('quiz_breadcrumbs_multichoice_answers', 'answer_id', 'id', array(
+function _tutorialchoice_alter_answers(&$to_return, &$sandbox = NULL) {
+  //db_drop_primary_key($to_return, 'quiz_tutorialchoice_answers');
+  db_change_field('quiz_tutorialchoice_answers', 'answer_id', 'id', array(
     'type' => 'serial',
     'unsigned' => TRUE,
     'not null' => TRUE,
   ));
-  db_change_field('quiz_breadcrumbs_multichoice_answers', 'nid', 'question_nid', array(
+  db_change_field('quiz_tutorialchoice_answers', 'nid', 'question_nid', array(
     'type' => 'int',
     'unsigned' => TRUE,
     'not null' => TRUE,
   ));
-  db_change_field('quiz_breadcrumbs_multichoice_answers', 'vid', 'question_vid', array(
+  db_change_field('quiz_tutorialchoice_answers', 'vid', 'question_vid', array(
     'type' => 'int',
     'unsigned' => TRUE,
     'not null' => TRUE,
   ));
-  db_change_field('quiz_breadcrumbs_multichoice_answers', 'feedback', 'feedback_if_chosen', array(
+  db_change_field('quiz_tutorialchoice_answers', 'feedback', 'feedback_if_chosen', array(
     'type' => 'text',
   ));
-  db_add_field('quiz_breadcrumbs_multichoice_answers', 'feedback_if_chosen_format', array(
+  db_add_field('quiz_tutorialchoice_answers', 'feedback_if_chosen_format', array(
     'type' => 'int',
   ));
-  db_add_field('quiz_breadcrumbs_multichoice_answers', 'feedback_if_not_chosen', array(
+  db_add_field('quiz_tutorialchoice_answers', 'feedback_if_not_chosen', array(
     'type' => 'text',
   ));
-  db_add_field('quiz_breadcrumbs_multichoice_answers', 'feedback_if_not_chosen_format', array(
+  db_add_field('quiz_tutorialchoice_answers', 'feedback_if_not_chosen_format', array(
     'type' => 'int',
   ));
-  db_add_field('quiz_breadcrumbs_multichoice_answers', 'answer_format', array(
+  db_add_field('quiz_tutorialchoice_answers', 'answer_format', array(
     'type' => 'int',
   ));
-  db_change_field('quiz_breadcrumbs_multichoice_answers', 'is_correct', 'score_if_chosen', array(
+  db_change_field('quiz_tutorialchoice_answers', 'is_correct', 'score_if_chosen', array(
     'type' => 'int',
     'unsigned' => TRUE,
     'not_null' => TRUE,
     'default' => 0,
   ));
-  db_add_field('quiz_breadcrumbs_multichoice_answers', 'score_if_not_chosen', array(
+  db_add_field('quiz_tutorialchoice_answers', 'score_if_not_chosen', array(
     'type' => 'int',
     'unsigned' => TRUE,
     'not_null' => TRUE,
     'default' => 0,
   ));
-  db_drop_field('quiz_breadcrumbs_multichoice_answers', 'result_option');
+  db_drop_field('quiz_tutorialchoice_answers', 'result_option');
 }
 
 /**
@@ -265,22 +265,22 @@ function _breadcrumbs_multichoice_alter_answers(&$to_return, &$sandbox = NULL) {
  * @param $sandbox
  *  Array where persistent data can be stored, and progress can be found
  */
-function _breadcrumbs_multichoice_check_answers(&$to_return, &$sandbox) {
+function _tutorialchoice_check_answers(&$to_return, &$sandbox) {
   // Init persistent variables
-  if (!isset($sandbox['breadcrumbs_multichoice_check_answers'])) {
+  if (!isset($sandbox['tutorialchoice_check_answers'])) {
     $sandbox['step_progress'] = 0;
-    $sandbox['breadcrumbs_multichoice_check_answers'] = TRUE;
+    $sandbox['tutorialchoice_check_answers'] = TRUE;
     $sandbox['last_nid'] = 0;
     $sandbox['last_vid'] = 0;
-    $sandbox['step_max'] = db_query('SELECT COUNT(DISTINCT id) FROM {quiz_breadcrumbs_multichoice_answers}')->fetchField();
+    $sandbox['step_max'] = db_query('SELECT COUNT(DISTINCT id) FROM {quiz_tutorialchoice_answers}')->fetchField();
   }
   $sandbox['num_corrects'] = 0;
   $sql = 'SELECT id, question_nid, question_vid, score_if_chosen, score_if_not_chosen
-          FROM {quiz_breadcrumbs_multichoice_answers}
+          FROM {quiz_tutorialchoice_answers}
           WHERE question_nid >= %d AND question_vid >= %d
           ORDER BY question_nid, question_vid';
   $res = db_query_range('SELECT id, question_nid, question_vid, score_if_chosen, score_if_not_chosen
-          FROM {quiz_breadcrumbs_multichoice_answers}
+          FROM {quiz_tutorialchoice_answers}
           WHERE question_nid >= :question_nid AND question_vid >= :question_vid
           ORDER BY question_nid, question_vid', array(':question_nid' => $sandbox['last_nid'], ':question_vid' => $sandbox['last_vid']));
   $progress_to_add = 0;
@@ -308,7 +308,7 @@ function _breadcrumbs_multichoice_check_answers(&$to_return, &$sandbox) {
               FROM {node_revision}
               WHERE vid = :vid', array(':vid' => $res_o->question_vid));
       $sandbox['last_format'] = $res2->fetchField();
-      $sql = 'INSERT INTO {quiz_breadcrumbs_multichoice_properties}
+      $sql = 'INSERT INTO {quiz_tutorialchoice_properties}
               (nid, vid, choice_boolean)
               VALUES(%d, %d, 1)';
       // TODO Please convert this statement to the D7 database API syntax.
@@ -320,12 +320,12 @@ function _breadcrumbs_multichoice_check_answers(&$to_return, &$sandbox) {
       $sandbox['num_corrects']++;
       if ($sandbox['num_corrects'] == 2) {
         // If more than one answer is correct we set the choice_multi property to one.
-        $sql = 'UPDATE {quiz_breadcrumbs_multichoice_properties}
+        $sql = 'UPDATE {quiz_tutorialchoice_properties}
                 SET choice_multi = 1
                 WHERE nid = %d AND vid = %d';
         // TODO Please review the conversion of this statement to the D7 database API syntax.
         /* db_query($sql, $res_o->question_nid, $res_o->question_vid) */
-        db_update('quiz_breadcrumbs_multichoice_properties')
+        db_update('quiz_tutorialchoice_properties')
   ->fields(array(
     'choice_multi' =>  1,
   ))
@@ -335,13 +335,13 @@ function _breadcrumbs_multichoice_check_answers(&$to_return, &$sandbox) {
       }
     }
     // Update all the formats
-    $sql = 'UPDATE {quiz_breadcrumbs_multichoice_answers}
+    $sql = 'UPDATE {quiz_tutorialchoice_answers}
             SET answer_format = %d, feedback_if_chosen_format = %d, feedback_if_not_chosen_format = %d
             WHERE question_vid = %d'; // This table haven't been indexed yet, making this query very slow... :/
     $lf = $sandbox['last_format'];
     // TODO Please review the conversion of this statement to the D7 database API syntax.
     /* db_query($sql, $lf, $lf, $lf, $res_o->question_vid) */
-    db_update('quiz_breadcrumbs_multichoice_answers')
+    db_update('quiz_tutorialchoice_answers')
   ->fields(array(
     'answer_format' => $lf,
     'feedback_if_chosen_format' => $lf,
@@ -354,7 +354,7 @@ function _breadcrumbs_multichoice_check_answers(&$to_return, &$sandbox) {
   $sandbox['step_progress'] += $progress_to_add;
   // Check if we are finished, and jump to the next step if we are
   if ($sandbox['step_progress'] >= $sandbox['step_max']) {
-    _breadcrumbs_multichoice_next_step($to_return, $sandbox);
+    _tutorialchoice_next_step($to_return, $sandbox);
   }
 }
 
@@ -366,8 +366,8 @@ function _breadcrumbs_multichoice_check_answers(&$to_return, &$sandbox) {
  * @param $sandbox
  *  Array where persistent data can be stored, and progress can be found
  */
-function _breadcrumbs_multichoice_create_user_settings(&$to_return, &$sandbox = NULL) {
-  db_create_table('quiz_breadcrumbs_multichoice_user_settings', array(
+function _tutorialchoice_create_user_settings(&$to_return, &$sandbox = NULL) {
+  db_create_table('quiz_tutorialchoice_user_settings', array(
     'fields' => array(
       'uid' => array(
         'type' => 'int',
@@ -399,6 +399,6 @@ function _breadcrumbs_multichoice_create_user_settings(&$to_return, &$sandbox = 
  * @param $sandbox
  *  Array where persistent data can be stored, and progress can be found
  */
-function _breadcrumbs_multichoice_next_step(&$to_return, &$sandbox) {
+function _tutorialchoice_next_step(&$to_return, &$sandbox) {
   $sandbox['current_step']++;
 }

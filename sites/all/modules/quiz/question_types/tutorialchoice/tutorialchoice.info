@@ -1,0 +1,12 @@
+name = Quiz tutorialchoice
+package = Quiz Question
+description = Tutorial choice question type for quiz.
+core = 7.x
+php = 5
+dependencies[] = quiz
+dependencies[] = quiz_question
+
+files[] = tutorialchoice.classes.inc
+files[] = tutorialchoice.test
+
+

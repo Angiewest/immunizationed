@@ -1,9 +1,9 @@
 (function($) {
 /**
  * @file
- * JS enabling one filter fieldset to control filter formats for all textareas in alternatives.
+ * JS enabling one filter fieldset to controll filter formats for all textareas in alternatives.
  */
-Drupal.behaviors.breadcrumb_multichoiceBehavior = {
+Drupal.behaviors.multichoiceBehavior = {
   attach: function (context, settings) {
     // When the top input filter selector is clicked change the rest of the selectors to the same value
     $('.quiz-filter:first :radio').click(function(){
@@ -14,10 +14,10 @@ Drupal.behaviors.breadcrumb_multichoiceBehavior = {
 
     // Change all format selectors to have the same value as the first
     var defaultValue = $('.quiz-filter:first :radio[checked=1]').val();
-    $('.quiz-filter:not(:first):not(.breadcrumb_multichoiceBehavior-processed) :radio[value='+defaultValue+']').click().change().addClass('breadcrumb_multichoiceBehavior-processed');
+    $('.quiz-filter:not(:first):not(.multichoiceBehavior-processed) :radio[value='+defaultValue+']').click().change().addClass('multichoiceBehavior-processed');
 
     // Hide all format selectors except the first
-    $('.quiz-filter:not(:first)').hide().addClass('breadcrumb_multichoiceStayHidden');
+    $('.quiz-filter:not(:first)').hide().addClass('multichoiceStayHidden');
 
     // Move the first input selector to the input-all-ph helper tag
     $('.quiz-filter:first').insertAfter('#input-all-ph');
@@ -26,7 +26,7 @@ Drupal.behaviors.breadcrumb_multichoiceBehavior = {
     var oldToggle = Drupal.toggleFieldset;
     Drupal.toggleFieldset = function(context) {
       oldToggle(context);
-      $('.breadcrumb_multichoiceStayHidden').hide();
+      $('.multichoiceStayHidden').hide();
     };
   }
 };
