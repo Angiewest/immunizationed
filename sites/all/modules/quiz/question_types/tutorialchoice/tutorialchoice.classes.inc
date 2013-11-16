@@ -135,7 +135,8 @@ class tutorialchoiceQuestion extends QuizQuestion {
 
     // We also add warnings on other possible user errors
     $this->warn();
-
+         drupal_set_message('Made it to saveNodeProperties' . $is_new);
+    
     if ($is_new) {
       $id = db_insert('quiz_tutorialchoice_properties')
         ->fields(array(
@@ -291,6 +292,7 @@ class tutorialchoiceQuestion extends QuizQuestion {
    * QuizQuestion#validate()
    */
   public function validateNode(array &$form) {
+         drupal_set_message('Marker' . $this->node->choice_multi);
     if ($this->node->choice_multi == 0) {
       $found_one_correct = FALSE;
       for ($i = 0; (isset($this->node->alternatives[$i]) && is_array($this->node->alternatives[$i])); $i++) {
@@ -321,7 +323,7 @@ class tutorialchoiceQuestion extends QuizQuestion {
 		
 		// check correct marker in synch
 		
-		//drupal_set_message('Marker:' . t($short['score_if_chosen'] . '-' . $short['correct']));
+		drupal_set_message('Marker:' . t($short['score_if_chosen'] . '-' . $short['correct']));
 		if ($short['score_if_chosen'] != '9999' && $short['correct'] == 1) {
 			drupal_set_message(t('marker out of synch'));
 			$short['correct'] = 0;
@@ -609,7 +611,7 @@ function get_group_terms() {
       '#type' => 'checkbox',
       '#title' => t('Multiple answers'),
       '#description' => t('Allow any number of answers(checkboxes are used). If this box is not checked, one, and only one answer is allowed(radiobuttons are used).'),
-      '#default_value' => $default_settings['choice_multi'],
+      '#default_value' => TRUE,
       '#parents' => array('choice_multi'),
     );
     $form['alternatives']['settings']['choice_random'] = array(
@@ -975,22 +977,23 @@ function get_group_terms() {
    * @see QuizQuestion#getMaximumScore()
    */
   public function getMaximumScore() {
-    if ($this->node->choice_boolean) {
-      return 1;
-    }
+//    if ($this->node->choice_boolean) {
+//      return 1;
+ //   }
 
-    $max = 0;
-    for ($i = 0; isset($this->node->alternatives[$i]); $i++) {
-      $short = $this->node->alternatives[$i];
-      if ($this->node->choice_multi) {
-        $max += max($short['score_if_chosen'], $short['score_if_not_chosen']);
-      }
-      else {
-        $max = max($max, $short['score_if_chosen'], $short['score_if_not_chosen']);
-      }
-    }
-    return max($max, 1);
-  }
+//    $max = 0;
+//    for ($i = 0; isset($this->node->alternatives[$i]); $i++) {
+//      $short = $this->node->alternatives[$i];
+//      if ($this->node->choice_multi) {
+//        $max += max($short['score_if_chosen'], $short['score_if_not_chosen']);
+//      }
+//      else {
+//        $max = max($max, $short['score_if_chosen'], $short['score_if_not_chosen']);
+//      }
+//    }
+//    return max($max, 1);
+//  }
+    return 1;
 }
 
 /**
