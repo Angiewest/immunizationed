@@ -984,7 +984,8 @@ function get_group_terms() {
     for ($i = 0; isset($this->node->alternatives[$i]); $i++) {
      $short = $this->node->alternatives[$i];
      if ($this->node->choice_multi) {
-       $max += max($short['score_if_chosen'], $short['score_if_not_chosen']);
+//       $max += max($short['score_if_chosen'], $short['score_if_not_chosen']);
+         $max += 1;
       }
       else {
        $max = max($max, $short['score_if_chosen'], $short['score_if_not_chosen']);

@@ -2444,6 +2444,8 @@ function quiz_store_question_result($quiz, $result, $options) {
                ", array(':nid' => $result->nid, ':vid' => $result->vid, ':vid' => $quiz->vid, ':tid' => $result->tid))->fetchField();
   }
   $points = round($result->score * $scale);
+  if ($points<0) $points=0;
+  if ($points>1) $points=1;
   // Insert result data, or update existing data.
   $rid_count = db_query("SELECT COUNT('result_id') AS count
               FROM {quiz_node_results_answers}
