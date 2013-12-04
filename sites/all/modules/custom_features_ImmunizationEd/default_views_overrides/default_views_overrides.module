@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Default views overrides feature.
+ */
+
+include_once 'default_views_overrides.features.inc';

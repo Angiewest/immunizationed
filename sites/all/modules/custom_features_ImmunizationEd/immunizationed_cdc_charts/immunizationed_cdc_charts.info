@@ -1,0 +1,16 @@
+name = immunizationed_cdc_charts
+core = 7.x
+package = immunizationed
+version = 7.x-1.0
+project = immunizationed_cdc_charts
+dependencies[] = ctools
+dependencies[] = google_chart_tools_views
+dependencies[] = page_manager
+dependencies[] = views
+dependencies[] = views_content
+features[ctools][] = page_manager:pages_default:1
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[page_manager_pages][] = cdc_practice_charts
+features[views_view][] = progress_combined_cumulative_line_charts_all_sites
+project path = sites/all/modules/custom_features_immunizationed
