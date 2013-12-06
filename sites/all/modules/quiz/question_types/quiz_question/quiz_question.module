@@ -766,12 +766,15 @@ function _quiz_question_response_get_instance($rid, $question, $answer = NULL, $
     return FALSE;
   }
   $info = _quiz_question_get_implementations();
+    dpm($info);
   $constructor = $info[$question->type]['response provider'];
+  dpm($constructor);
   $to_return = new $constructor($rid, $question, $answer);
   // All responce classes must extend QuizQuestionResponse
   if (!($to_return instanceof QuizQuestionResponse)) {
     drupal_set_message(t('The question-response isn\'t a QuizQuestionResponse. It needs to extend the QuizQuestionResponse interface, or extend the abstractQuizQuestionResponse class.'), 'error', FALSE);
   }
+    dpm($to_return);
   // Cache the responce instance
   $quiz_responses[$rid][$question->vid] = $to_return;
 

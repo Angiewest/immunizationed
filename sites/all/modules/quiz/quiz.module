@@ -2058,6 +2058,7 @@ function quiz_take_quiz($quiz) {
     $result = module_invoke($module, 'evaluate_question', $former_question, $_SESSION['quiz_' . $quiz->nid]['result_id']);
     $q_passed_validation = $result->is_valid;
     $check_jump = TRUE;
+    dpm($result);
     if ($q_passed_validation === TRUE) {
       quiz_store_question_result($quiz, $result, array('set_msg' => TRUE, 'question_data' => $former_question_array));
     }
@@ -2452,6 +2453,7 @@ function quiz_store_question_result($quiz, $result, $options) {
               WHERE question_nid = :question_nid
               AND question_vid = :question_vid
               AND result_id = :result_id", array(':question_nid' => $result->nid, ':question_vid' => $result->vid, ':result_id' => $result->rid))->fetchField();
+  dpm($result);
   if ($rid_count > 0) {
     $update = db_update('quiz_node_results_answers')
       ->fields(array(
