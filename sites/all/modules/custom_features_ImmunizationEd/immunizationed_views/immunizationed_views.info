@@ -4,6 +4,7 @@ core = 7.x
 package = immunizationed
 version = 7.x-1.0
 project = immunizationed_views
+dependencies[] = admin_views
 dependencies[] = better_exposed_filters
 dependencies[] = comment
 dependencies[] = ctools

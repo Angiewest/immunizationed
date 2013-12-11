@@ -191,7 +191,7 @@ function immunizationed_views_views_default_views() {
       'empty_column' => 0,
     ),
     'field_date_task_completed' => array(
-      'sortable' => 0,
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
@@ -257,7 +257,6 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['fields']['field_date_task_completed']['table'] = 'field_data_field_date_task_completed';
   $handler->display->display_options['fields']['field_date_task_completed']['field'] = 'field_date_task_completed';
   $handler->display->display_options['fields']['field_date_task_completed']['label'] = 'Date Completed';
-  $handler->display->display_options['fields']['field_date_task_completed']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_date_task_completed']['settings'] = array(
     'format_type' => 'short',
     'fromto' => 'both',
@@ -360,9 +359,95 @@ function immunizationed_views_views_default_views() {
     4 => 0,
     3 => 0,
   );
+  /* Filter criterion: Content: Date Task Completed (field_date_task_completed) */
+  $handler->display->display_options['filters']['field_date_task_completed_value']['id'] = 'field_date_task_completed_value';
+  $handler->display->display_options['filters']['field_date_task_completed_value']['table'] = 'field_data_field_date_task_completed';
+  $handler->display->display_options['filters']['field_date_task_completed_value']['field'] = 'field_date_task_completed_value';
+  $handler->display->display_options['filters']['field_date_task_completed_value']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_date_task_completed_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_date_task_completed_value']['expose']['operator_id'] = 'field_date_task_completed_value_op';
+  $handler->display->display_options['filters']['field_date_task_completed_value']['expose']['label'] = 'Completion date';
+  $handler->display->display_options['filters']['field_date_task_completed_value']['expose']['use_operator'] = TRUE;
+  $handler->display->display_options['filters']['field_date_task_completed_value']['expose']['operator'] = 'field_date_task_completed_value_op';
+  $handler->display->display_options['filters']['field_date_task_completed_value']['expose']['identifier'] = 'field_date_task_completed_value';
+  $handler->display->display_options['filters']['field_date_task_completed_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    4 => 0,
+    8 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_date_task_completed_value']['default_date'] = 'now';
 
   /* Display: Content pane */
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'task' => 'task',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Task start date (field_task_start_date) */
+  $handler->display->display_options['filters']['field_task_start_date_value']['id'] = 'field_task_start_date_value';
+  $handler->display->display_options['filters']['field_task_start_date_value']['table'] = 'field_data_field_task_start_date';
+  $handler->display->display_options['filters']['field_task_start_date_value']['field'] = 'field_task_start_date_value';
+  $handler->display->display_options['filters']['field_task_start_date_value']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_task_start_date_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_task_start_date_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_task_start_date_value']['default_date'] = 'now';
+  /* Filter criterion: due date filter */
+  $handler->display->display_options['filters']['field_task_due_date_value']['id'] = 'field_task_due_date_value';
+  $handler->display->display_options['filters']['field_task_due_date_value']['table'] = 'field_data_field_task_due_date';
+  $handler->display->display_options['filters']['field_task_due_date_value']['field'] = 'field_task_due_date_value';
+  $handler->display->display_options['filters']['field_task_due_date_value']['ui_name'] = 'due date filter';
+  $handler->display->display_options['filters']['field_task_due_date_value']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_task_due_date_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_task_due_date_value']['expose']['operator_id'] = 'field_task_due_date_value_op';
+  $handler->display->display_options['filters']['field_task_due_date_value']['expose']['label'] = 'Due date';
+  $handler->display->display_options['filters']['field_task_due_date_value']['expose']['description'] = 'View all incomplete tasks with a due date prior to:';
+  $handler->display->display_options['filters']['field_task_due_date_value']['expose']['operator'] = 'field_task_due_date_value_op';
+  $handler->display->display_options['filters']['field_task_due_date_value']['expose']['identifier'] = 'due_date_filter';
+  $handler->display->display_options['filters']['field_task_due_date_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    5 => 0,
+    6 => 0,
+    4 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_task_due_date_value']['default_date'] = 'now';
+  $handler->display->display_options['filters']['field_task_due_date_value']['year_range'] = '-1:+1';
+  /* Filter criterion: User: Practice membership (og_user_node) */
+  $handler->display->display_options['filters']['og_user_node_target_id']['id'] = 'og_user_node_target_id';
+  $handler->display->display_options['filters']['og_user_node_target_id']['table'] = 'og_membership';
+  $handler->display->display_options['filters']['og_user_node_target_id']['field'] = 'og_user_node_target_id';
+  $handler->display->display_options['filters']['og_user_node_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['operator_id'] = 'og_user_node_target_id_op';
+  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['operator'] = 'og_user_node_target_id_op';
+  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['identifier'] = 'og_user_node_target_id';
+  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    5 => 0,
+    6 => 0,
+    4 => 0,
+    3 => 0,
+  );
   $handler->display->display_options['inherit_panels_path'] = '1';
 
   /* Display: Page */
@@ -918,9 +1003,47 @@ function immunizationed_views_views_default_views() {
     4 => 0,
     3 => 0,
   );
+  /* Filter criterion: Content: Date Task Completed (field_date_task_completed) */
+  $handler->display->display_options['filters']['field_date_task_completed_value']['id'] = 'field_date_task_completed_value';
+  $handler->display->display_options['filters']['field_date_task_completed_value']['table'] = 'field_data_field_date_task_completed';
+  $handler->display->display_options['filters']['field_date_task_completed_value']['field'] = 'field_date_task_completed_value';
 
   /* Display: Content pane */
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'task' => 'task',
+  );
+  /* Filter criterion: User: Practice membership (og_user_node) */
+  $handler->display->display_options['filters']['og_user_node_target_id']['id'] = 'og_user_node_target_id';
+  $handler->display->display_options['filters']['og_user_node_target_id']['table'] = 'og_membership';
+  $handler->display->display_options['filters']['og_user_node_target_id']['field'] = 'og_user_node_target_id';
+  $handler->display->display_options['filters']['og_user_node_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['operator_id'] = 'og_user_node_target_id_op';
+  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['label'] = 'Group membership (og_user_node)';
+  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['operator'] = 'og_user_node_target_id_op';
+  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['identifier'] = 'og_user_node_target_id';
+  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    5 => 0,
+    6 => 0,
+    4 => 0,
+    3 => 0,
+  );
   $handler->display->display_options['inherit_panels_path'] = '1';
 
   /* Display: Page */
@@ -2753,7 +2876,6 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['access']['perm'] = 'unsubscribe';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'grid';
-  $handler->display->display_options['style_options']['columns'] = '2';
   $handler->display->display_options['style_options']['alignment'] = 'vertical';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
@@ -2801,10 +2923,10 @@ function immunizationed_views_views_default_views() {
     'pillar_tags' => 0,
   );
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Content: Pillar tags (field_pillar_tags) */
-  $handler->display->display_options['sorts']['field_pillar_tags_tid']['id'] = 'field_pillar_tags_tid';
-  $handler->display->display_options['sorts']['field_pillar_tags_tid']['table'] = 'field_data_field_pillar_tags';
-  $handler->display->display_options['sorts']['field_pillar_tags_tid']['field'] = 'field_pillar_tags_tid';
+  /* Sort criterion: Weight: Weight */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'weight_weights';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['filter_groups']['groups'] = array(
     1 => 'AND',
@@ -2850,7 +2972,7 @@ function immunizationed_views_views_default_views() {
   $view->description = 'Show all tasks of a group.';
   $view->tag = 'Practice';
   $view->base_table = 'node';
-  $view->human_name = 'Practice Improvement Dashboard';
+  $view->human_name = 'Practice Improvement Dashboard for SOP2 - 2013';
   $view->core = 0;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -3007,6 +3129,10 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'task' => 'task',
   );
+  /* Filter criterion: Content: Title */
+  $handler->display->display_options['filters']['title']['id'] = 'title';
+  $handler->display->display_options['filters']['title']['table'] = 'node';
+  $handler->display->display_options['filters']['title']['field'] = 'title';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page_1');
@@ -3081,6 +3207,46 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['fields']['field_responsible_role']['field'] = 'field_responsible_role';
   $handler->display->display_options['fields']['field_responsible_role']['delta_offset'] = '0';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  /* Filter criterion: OG membership: Group_type */
+  $handler->display->display_options['filters']['group_type']['id'] = 'group_type';
+  $handler->display->display_options['filters']['group_type']['table'] = 'og_membership';
+  $handler->display->display_options['filters']['group_type']['field'] = 'group_type';
+  $handler->display->display_options['filters']['group_type']['relationship'] = 'og_membership_rel';
+  $handler->display->display_options['filters']['group_type']['value'] = array(
+    'node' => 'node',
+  );
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'task' => 'task',
+  );
+  /* Filter criterion: Content: Title */
+  $handler->display->display_options['filters']['title']['id'] = 'title';
+  $handler->display->display_options['filters']['title']['table'] = 'node';
+  $handler->display->display_options['filters']['title']['field'] = 'title';
+  $handler->display->display_options['filters']['title']['operator'] = '!=';
+  $handler->display->display_options['filters']['title']['value'] = 'Order initial 20-25% increase in vaccine supplies';
+  /* Filter criterion: Content: Title */
+  $handler->display->display_options['filters']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['filters']['title_1']['table'] = 'node';
+  $handler->display->display_options['filters']['title_1']['field'] = 'title';
+  $handler->display->display_options['filters']['title_1']['operator'] = '!=';
+  $handler->display->display_options['filters']['title_1']['value'] = 'establish baseline measure';
+  /* Filter criterion: Content: Title */
+  $handler->display->display_options['filters']['title_2']['id'] = 'title_2';
+  $handler->display->display_options['filters']['title_2']['table'] = 'node';
+  $handler->display->display_options['filters']['title_2']['field'] = 'title';
+  $handler->display->display_options['filters']['title_2']['operator'] = '!=';
+  $handler->display->display_options['filters']['title_2']['value'] = 'Choose your immunization measure';
   $handler->display->display_options['path'] = 'node/%/blueprints';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Blueprints';
@@ -3193,6 +3359,7 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
   /* Filter criterion: OG membership: Group_type */
   $handler->display->display_options['filters']['group_type']['id'] = 'group_type';
   $handler->display->display_options['filters']['group_type']['table'] = 'og_membership';
@@ -3201,32 +3368,49 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['filters']['group_type']['value'] = array(
     'node' => 'node',
   );
+  $handler->display->display_options['filters']['group_type']['group'] = 1;
   /* Filter criterion: Content: Date Task Completed (field_date_task_completed) */
   $handler->display->display_options['filters']['field_date_task_completed_value']['id'] = 'field_date_task_completed_value';
   $handler->display->display_options['filters']['field_date_task_completed_value']['table'] = 'field_data_field_date_task_completed';
   $handler->display->display_options['filters']['field_date_task_completed_value']['field'] = 'field_date_task_completed_value';
   $handler->display->display_options['filters']['field_date_task_completed_value']['operator'] = 'empty';
+  $handler->display->display_options['filters']['field_date_task_completed_value']['group'] = 1;
   /* Filter criterion: Content: Task start date (field_task_start_date) */
   $handler->display->display_options['filters']['field_task_start_date_value']['id'] = 'field_task_start_date_value';
   $handler->display->display_options['filters']['field_task_start_date_value']['table'] = 'field_data_field_task_start_date';
   $handler->display->display_options['filters']['field_task_start_date_value']['field'] = 'field_task_start_date_value';
   $handler->display->display_options['filters']['field_task_start_date_value']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_task_start_date_value']['expose']['operator_id'] = 'field_task_start_date_value_op';
-  $handler->display->display_options['filters']['field_task_start_date_value']['expose']['label'] = 'Task start date (field_task_start_date)';
-  $handler->display->display_options['filters']['field_task_start_date_value']['expose']['use_operator'] = TRUE;
-  $handler->display->display_options['filters']['field_task_start_date_value']['expose']['operator'] = 'field_task_start_date_value_op';
-  $handler->display->display_options['filters']['field_task_start_date_value']['expose']['identifier'] = 'field_task_start_date_value';
-  $handler->display->display_options['filters']['field_task_start_date_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    4 => 0,
-    8 => 0,
-    3 => 0,
-  );
   $handler->display->display_options['filters']['field_task_start_date_value']['default_date'] = 'now';
+  /* Filter criterion: Content: Title */
+  $handler->display->display_options['filters']['title']['id'] = 'title';
+  $handler->display->display_options['filters']['title']['table'] = 'node';
+  $handler->display->display_options['filters']['title']['field'] = 'title';
+  $handler->display->display_options['filters']['title']['operator'] = '!=';
+  $handler->display->display_options['filters']['title']['value'] = 'establish baseline measure';
+  /* Filter criterion: Content: Title */
+  $handler->display->display_options['filters']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['filters']['title_1']['table'] = 'node';
+  $handler->display->display_options['filters']['title_1']['field'] = 'title';
+  $handler->display->display_options['filters']['title_1']['operator'] = '!=';
+  $handler->display->display_options['filters']['title_1']['value'] = 'Order initial 20-25% increase in vaccine supplies';
+  /* Filter criterion: Content: Title */
+  $handler->display->display_options['filters']['title_2']['id'] = 'title_2';
+  $handler->display->display_options['filters']['title_2']['table'] = 'node';
+  $handler->display->display_options['filters']['title_2']['field'] = 'title';
+  $handler->display->display_options['filters']['title_2']['operator'] = '!=';
+  $handler->display->display_options['filters']['title_2']['value'] = 'choose your immunization measure';
+  /* Filter criterion: Content: Title */
+  $handler->display->display_options['filters']['title_3']['id'] = 'title_3';
+  $handler->display->display_options['filters']['title_3']['table'] = 'node';
+  $handler->display->display_options['filters']['title_3']['field'] = 'title';
+  $handler->display->display_options['filters']['title_3']['operator'] = '!=';
+  $handler->display->display_options['filters']['title_3']['value'] = 'Conduct your practice capacity assessment of vaccine storage';
+  /* Filter criterion: Content: Title */
+  $handler->display->display_options['filters']['title_4']['id'] = 'title_4';
+  $handler->display->display_options['filters']['title_4']['table'] = 'node';
+  $handler->display->display_options['filters']['title_4']['field'] = 'title';
+  $handler->display->display_options['filters']['title_4']['operator'] = '!=';
+  $handler->display->display_options['filters']['title_4']['value'] = 'Review your vaccine inventory process';
   $export['practice_task_content'] = $view;
 
   $view = new view();

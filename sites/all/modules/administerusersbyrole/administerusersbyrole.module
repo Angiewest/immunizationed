@@ -5,7 +5,7 @@
  * Provides fine-grained permissions for creating, editing, and deleting users.
  *
  * This module allows site builders to set up fine-grained permissions for
- * allowing users to edit and cancel other users:  more specific than
+ * allowing users to edit and cancel other users Ñ more specific than
  * Drupal Core's all-or-nothing 'administer users' permission.  It also
  * provides and enforces a 'create users' permission.
  */
@@ -46,6 +46,35 @@ function administerusersbyrole_menu_alter(&$items) {
   $items['admin/people/create']['access arguments'] = array('create users');
 }
 
+/**
+ * Implements hook_init().
+ */
+function administerusersbyrole_init() {
+  if (arg(0) === 'user') {
+    switch (arg(2)) {
+      case 'edit':
+        $uid = arg(1);
+        $account = user_load($uid);
+
+        if (!_administerusersbyrole_can_edit_user($account)) {
+          drupal_set_message(t('You do not have permission to edit %user.', array('%user' => $account->name)), 'error');
+          drupal_goto('user/' . $account->uid);
+        }
+        break;
+
+      case 'cancel':
+        $uid = arg(1);
+        $account = user_load($uid);
+
+        if (!_administerusersbyrole_can_cancel_user($account)) {
+          drupal_set_message(t('You do not have permission to cancel %user.', array('%user' => $account->name)), 'error');
+          drupal_goto('user/' . $account->uid);
+        }
+        break;
+    }
+  }
+}
+
 function _administerusersbyrole_can_edit_user($account) {
   global $user;
   if ($account->uid == $user->uid) {
@@ -55,12 +84,6 @@ function _administerusersbyrole_can_edit_user($account) {
   // allow only uid1 to edit uid1
   if ($account->uid == 1) {
     return FALSE;
-  }
-
-  // We mave been passed a mock account object. If so, load the user to ensure
-  // that we have roles to check against.
-  if (!isset($account->roles)) {
-    $account = user_load($account->uid);
   }
 
   if ($account->roles === array(DRUPAL_AUTHENTICATED_RID => 'authenticated user')) {
@@ -87,12 +110,6 @@ function _administerusersbyrole_can_edit_user($account) {
 function _administerusersbyrole_can_cancel_user($account) {
   if ($account->uid == 1) {
     return FALSE;
-  }
-
-  // We mave been passed a mock account object. If so, load the user to ensure
-  // that we have roles to check against.
-  if (!isset($account->roles)) {
-    $account = user_load($account->uid);
   }
 
   if ($account->roles === array(DRUPAL_AUTHENTICATED_RID => 'authenticated user')) {
@@ -138,22 +155,18 @@ function administerusersbyrole_form_user_multiple_cancel_confirm_alter(&$form, &
 }
 
 /**
- * Implements hook_form_FORM_ID_alter().
- *
- * Make the user edit form consider our permissions when determining which
- * elements should be visible to administrators.
+ * Implements hook_user_update().
  */
-function administerusersbyrole_form_user_profile_form_alter(&$form, &$form_state) {
-  global $user;
-
-  $account = $form['#user'];
-  $register = ($form['#user']->uid > 0 ? FALSE : TRUE);
-
-  $admin = _administerusersbyrole_can_edit_user($account);
-  $admin = !empty($admin) ? TRUE : user_access('administer users');
-
-  $form['account']['name']['#access'] = ($register || ($user->uid == $account->uid && user_access('change own username')) || $admin);
-  $form['account']['status']['#access'] = ($account->uid == $user->uid) ?  $form['account']['status']['#access'] : $admin;
+function administerusersbyrole_user_update(&$edit, $account, $category) {
+  if ($category === 'account') {
+    if (!_administerusersbyrole_can_edit_user($account)) {
+      if (isset($edit['status'])) {
+        $action = $edit['status'] ? t('unblock') : t('block');
+        drupal_set_message(t('You do not have permission to !action %user.', array('!action' => $action, '%user' => $account->name)), 'error');
+        unset($edit['status']);
+      }
+    }
+  }
 }
 
 /**
@@ -166,14 +179,4 @@ function _administerusersbyrole_build_perm_string($role_name, $op = 'edit', $oth
     $perm .= ' and other roles';
   }
   return $perm;
-}
-
-/**
- * Implements hook_views_api().
- */
-function administerusersbyrole_views_api() {
-  return array(
-    'api' => 3,
-    'path' => drupal_get_path('module', 'administerusersbyrole') . '/views',
-  );
 }

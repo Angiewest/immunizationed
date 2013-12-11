@@ -12,9 +12,10 @@ function immunizationed_practice_default_rules_configuration() {
   $items['rules_practice_member_subscribe_pending_'] = entity_import('rules_config', '{ "rules_practice_member_subscribe_pending_" : {
       "LABEL" : "Practice member subscribe (Pending)",
       "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
       "TAGS" : [ "practice" ],
       "REQUIRES" : [ "rules", "og" ],
-      "ON" : [ "og_user_insert" ],
+      "ON" : { "og_user_insert" : [  ] },
       "IF" : [
         { "data_is" : { "data" : [ "og-membership:state" ], "value" : "2" } },
         { "entity_is_of_type" : { "entity" : [ "og-membership:group" ], "type" : "node" } }
@@ -28,7 +29,7 @@ function immunizationed_practice_default_rules_configuration() {
         { "mail" : {
             "to" : [ "account:mail" ],
             "subject" : "Your membership request for \\u0027[group:title]\\u0027",
-            "message" : "[account:name],\\r\\n\\r\\nYour membership to group \\u0027[group:title]\\u0027 located at [group:url] is pending approval."
+            "message" : "[account:name],\\u000D\\u000A\\u000D\\u000AYour membership to group \\u0027[group:title]\\u0027 located at [group:url] is pending approval."
           }
         },
         { "og_get_managers" : {
@@ -43,7 +44,7 @@ function immunizationed_practice_default_rules_configuration() {
               { "mail" : {
                   "to" : [ "list-item:mail" ],
                   "subject" : "[account:name] membership request [group:title]",
-                  "message" : "[group:author:name],\\r\\n\\r\\n[account:name] requests membership for group \\u0027[group:title]\\u0027 in [group:url].\\r\\n\\r\\n[og_membership:og-membership-request]",
+                  "message" : "[group:author:name],\\u000D\\u000A\\u000D\\u000A[account:name] requests membership for group \\u0027[group:title]\\u0027 in [group:url].\\u000D\\u000A\\u000D\\u000A[og_membership:og-membership-request]",
                   "language" : [ "" ]
                 }
               }

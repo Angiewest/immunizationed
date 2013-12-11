@@ -394,7 +394,7 @@ function immunizationed_structure_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 14,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -431,7 +431,7 @@ function immunizationed_structure_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 15,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -468,7 +468,7 @@ function immunizationed_structure_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 16,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -504,12 +504,9 @@ function immunizationed_structure_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'file_entity',
-        'settings' => array(
-          'file_view_mode' => 'default',
-        ),
-        'type' => 'file_rendered',
-        'weight' => -1,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -541,22 +538,34 @@ function immunizationed_structure_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
-          'private' => 'private',
-          'public' => 'public',
+          0 => 'public',
+          1 => 'private',
         ),
         'allowed_types' => array(
-          0 => 0,
-          'audio' => 0,
-          'document' => 0,
-          'image' => 'image',
-          'video' => 0,
+          0 => 'image',
         ),
-        'browser_plugins' => array(
-          'media_default--media_browser_1' => 0,
-          'media_default--media_browser_my_files' => 0,
-          'media_internet' => 0,
-          'upload' => 0,
+        'browser_plugins' => array(),
+        'filefield_sources' => array(
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+          ),
         ),
+        'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
@@ -576,7 +585,7 @@ function immunizationed_structure_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 13,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -613,7 +622,7 @@ function immunizationed_structure_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 10,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -652,7 +661,7 @@ function immunizationed_structure_field_default_field_instances() {
         'module' => 'og_ui',
         'settings' => array(),
         'type' => 'og_list_default',
-        'weight' => 11,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -815,7 +824,7 @@ function immunizationed_structure_field_default_field_instances() {
     'label' => 'Book page graphic',
     'required' => 0,
     'settings' => array(
-      'alt_field' => 0,
+      'alt_field' => 1,
       'default_image' => 0,
       'file_directory' => 'pictures/books',
       'file_extensions' => 'png gif jpg jpeg',
@@ -827,23 +836,15 @@ function immunizationed_structure_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'image',
       'settings' => array(
-        'allowed_schemes' => array(
-          0 => 'public',
-          1 => 'private',
-        ),
-        'allowed_types' => array(
-          0 => 'image',
-        ),
-        'browser_plugins' => array(),
         'filefield_sources' => array(
           'filefield_sources' => array(
             'attach' => 'attach',
             'clipboard' => 'clipboard',
-            'imce' => 'imce',
             'reference' => 'reference',
             'remote' => 'remote',
+            'upload' => 'upload',
           ),
           'source_attach' => array(
             'absolute' => 0,
@@ -857,18 +858,10 @@ function immunizationed_structure_field_default_field_instances() {
             'autocomplete' => 1,
           ),
         ),
-        'insert' => 1,
-        'insert_absolute' => 0,
-        'insert_class' => '',
-        'insert_default' => 'image_thumbnail',
-        'insert_styles' => array(
-          '<all>' => '<all>',
-        ),
-        'insert_width' => '',
-        'preview_image_style' => 'thumbnail',
+        'preview_image_style' => 'medium',
         'progress_indicator' => 'throbber',
       ),
-      'type' => 'media_generic',
+      'type' => 'image_image',
       'weight' => 2,
     ),
   );
@@ -1097,11 +1090,16 @@ function immunizationed_structure_field_default_field_instances() {
         'allowed_types' => array(
           0 => 0,
           'audio' => 0,
-          'default' => 0,
+          'document' => 0,
           'image' => 'image',
           'video' => 0,
         ),
-        'browser_plugins' => array(),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'media_internet' => 0,
+          'upload' => 0,
+        ),
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
@@ -1304,6 +1302,46 @@ function immunizationed_structure_field_default_field_instances() {
       ),
       'type' => 'taxonomy_autocomplete',
       'weight' => 33,
+    ),
+  );
+
+  // Exported field_instance: 'node-nuts_bolts-field_certification_entity'
+  $field_instances['node-nuts_bolts-field_certification_entity'] = array(
+    'bundle' => 'nuts_bolts',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_certification_entity',
+    'label' => 'certification entity',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 35,
     ),
   );
 
@@ -2854,7 +2892,6 @@ function immunizationed_structure_field_default_field_instances() {
     'bundle' => 'video',
     'default_value' => array(
       0 => array(
-        'title' => '[current-page:title]',
         'url' => 'sites/default/files/video/',
       ),
     ),
@@ -2877,7 +2914,7 @@ function immunizationed_structure_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_internal_video_url',
-    'label' => 'Internal video url',
+    'label' => 'Video link',
     'required' => 0,
     'settings' => array(
       'attributes' => array(
@@ -3173,7 +3210,6 @@ function immunizationed_structure_field_default_field_instances() {
   t('Image');
   t('Integer used to calculate due date');
   t('Integer used to calculate suggested start date.');
-  t('Internal video url');
   t('Links');
   t('Links to resources associated with this waypoint.');
   t('Optionally enter a fixed due date');
@@ -3215,6 +3251,7 @@ function immunizationed_structure_field_default_field_instances() {
   t('Upload a graphic to be displayed with this page');
   t('Upload an image to associate with this content');
   t('Upload an image to go with this article.');
+  t('Video link');
   t('Visibility');
   t('add links to resources');
   t('article image');

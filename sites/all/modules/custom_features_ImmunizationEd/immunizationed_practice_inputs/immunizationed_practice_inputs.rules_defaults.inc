@@ -13,10 +13,16 @@ function immunizationed_practice_inputs_default_rules_configuration() {
       "LABEL" : "Redirect practice admins to edit task tab",
       "PLUGIN" : "reaction rule",
       "WEIGHT" : "-10",
+      "OWNER" : "rules",
       "REQUIRES" : [ "rules", "og" ],
-      "ON" : [ "node_view" ],
+      "ON" : { "node_view" : [  ] },
       "IF" : [
-        { "node_is_of_type" : { "node" : [ "node" ], "type" : { "value" : { "task" : "task" } } } },
+        { "entity_is_of_bundle" : {
+            "entity" : [ "node" ],
+            "type" : "node",
+            "bundle" : { "value" : { "task" : "task" } }
+          }
+        },
         { "og_user_has_permission" : {
             "permission" : "update any task content",
             "group" : [ "node:og-group-ref:0" ],

@@ -109,6 +109,7 @@ features[variable][] = additional_settings__active_tab_offsite_resource
 features[variable][] = additional_settings__active_tab_page
 features[variable][] = additional_settings__active_tab_roadmap_waypoint
 features[variable][] = additional_settings__active_tab_video
+features[variable][] = date_format_us_short_date
 features[variable][] = diff_enable_revisions_page_node_article
 features[variable][] = diff_enable_revisions_page_node_offsite_resource
 features[variable][] = diff_enable_revisions_page_node_task

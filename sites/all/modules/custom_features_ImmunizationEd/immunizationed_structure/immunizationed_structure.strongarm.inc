@@ -830,6 +830,9 @@ function immunizationed_structure_strongarm() {
         'path' => array(
           'weight' => '30',
         ),
+        'redirect' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),
@@ -942,6 +945,9 @@ function immunizationed_structure_strongarm() {
         ),
         'path' => array(
           'weight' => '2',
+        ),
+        'redirect' => array(
+          'weight' => '30',
         ),
       ),
       'display' => array(

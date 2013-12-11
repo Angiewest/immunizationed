@@ -48,10 +48,12 @@ function immunizationed_media_image_default_styles() {
     'label' => 'itty-bitty',
   );
 
-  // Exported image style: large.
-  $styles['large'] = array(
+  // Exported image style: mediumish.
+  $styles['mediumish'] = array(
+    'name' => 'mediumish',
+    'label' => 'mediumish (190 x 190)',
     'effects' => array(
-      0 => array(
+      3 => array(
         'label' => 'Scale',
         'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
         'effect callback' => 'image_scale_effect',
@@ -61,39 +63,13 @@ function immunizationed_media_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => 480,
-          'height' => 480,
+          'width' => 190,
+          'height' => 190,
           'upscale' => 0,
         ),
-        'weight' => 0,
+        'weight' => 1,
       ),
     ),
-    'name' => 'large',
-    'label' => 'large',
-  );
-
-  // Exported image style: medium.
-  $styles['medium'] = array(
-    'effects' => array(
-      0 => array(
-        'label' => 'Scale',
-        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
-        'effect callback' => 'image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'image_scale_form',
-        'summary theme' => 'image_scale_summary',
-        'module' => 'image',
-        'name' => 'image_scale',
-        'data' => array(
-          'width' => 220,
-          'height' => 220,
-          'upscale' => 1,
-        ),
-        'weight' => 0,
-      ),
-    ),
-    'name' => 'medium',
-    'label' => 'medium',
   );
 
   // Exported image style: screenshot.
@@ -118,30 +94,6 @@ function immunizationed_media_image_default_styles() {
       ),
     ),
     'label' => 'screenshot',
-  );
-
-  // Exported image style: thumbnail.
-  $styles['thumbnail'] = array(
-    'effects' => array(
-      0 => array(
-        'label' => 'Scale',
-        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
-        'effect callback' => 'image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'image_scale_form',
-        'summary theme' => 'image_scale_summary',
-        'module' => 'image',
-        'name' => 'image_scale',
-        'data' => array(
-          'width' => 100,
-          'height' => 100,
-          'upscale' => 1,
-        ),
-        'weight' => 0,
-      ),
-    ),
-    'name' => 'thumbnail',
-    'label' => 'thumbnail',
   );
 
   // Exported image style: tiny.

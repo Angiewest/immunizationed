@@ -33,7 +33,7 @@ function immunizationed_practice_panelizer_defaults() {
   $panelizer->link_to_entity = TRUE;
   $panelizer->extra = array();
   $display = new panels_display();
-  $display->layout = 'threecol_25_50_25_stacked';
+  $display->layout = 'twocol_bricks';
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(
@@ -66,83 +66,6 @@ function immunizationed_practice_panelizer_defaults() {
     $pane = new stdClass();
     $pane->pid = 'new-1';
     $pane->panel = 'bottom';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'practice_selected_strategies-panel_pane_1';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array();
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-1'] = $pane;
-    $display->panels['bottom'][0] = 'new-1';
-    $pane = new stdClass();
-    $pane->pid = 'new-2';
-    $pane->panel = 'bottom';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'practice_task_content-panel_pane_1';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array();
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 1;
-    $pane->locks = array();
-    $display->content['new-2'] = $pane;
-    $display->panels['bottom'][1] = 'new-2';
-    $pane = new stdClass();
-    $pane->pid = 'new-3';
-    $pane->panel = 'bottom';
-    $pane->type = 'block';
-    $pane->subtype = 'menu-menu-practice-charts';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 0,
-      'override_title_text' => 'View Charts',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-      'style' => 'default',
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 2;
-    $pane->locks = array();
-    $display->content['new-3'] = $pane;
-    $display->panels['bottom'][2] = 'new-3';
-    $pane = new stdClass();
-    $pane->pid = 'new-4';
-    $pane->panel = 'bottom';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'meeting_minutes-panel_pane_1';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array();
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-      'style' => 'default',
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 3;
-    $pane->locks = array();
-    $display->content['new-4'] = $pane;
-    $display->panels['bottom'][3] = 'new-4';
-    $pane = new stdClass();
-    $pane->pid = 'new-5';
-    $pane->panel = 'bottom';
     $pane->type = 'views';
     $pane->subtype = 'practice_announcements_content';
     $pane->shown = TRUE;
@@ -169,34 +92,22 @@ function immunizationed_practice_panelizer_defaults() {
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
+      'style' => 'rounded_corners',
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 4;
+    $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-5'] = $pane;
-    $display->panels['bottom'][4] = 'new-5';
+    $display->content['new-1'] = $pane;
+    $display->panels['bottom'][0] = 'new-1';
     $pane = new stdClass();
-    $pane->pid = 'new-6';
-    $pane->panel = 'left';
-    $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_practice_address';
+    $pane->pid = 'new-2';
+    $pane->panel = 'left_above';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'progress_flu_charts_practices-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array(
-      'label' => 'hidden',
-      'formatter' => 'addressfield_default',
-      'delta_limit' => 0,
-      'delta_offset' => '0',
-      'delta_reversed' => FALSE,
-      'formatter_settings' => array(
-        'format_handlers' => array(
-          0 => 'address',
-        ),
-        'use_widget_handlers' => 1,
-      ),
-      'context' => 'panelizer',
-    );
+    $pane->configuration = array();
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
@@ -205,89 +116,50 @@ function immunizationed_practice_panelizer_defaults() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-6'] = $pane;
-    $display->panels['left'][0] = 'new-6';
+    $display->content['new-2'] = $pane;
+    $display->panels['left_above'][0] = 'new-2';
     $pane = new stdClass();
-    $pane->pid = 'new-7';
-    $pane->panel = 'left';
-    $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_practice_phone';
+    $pane->pid = 'new-3';
+    $pane->panel = 'left_below';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'og_perm',
+          'settings' => array(
+            'perm' => 'add user',
+          ),
+          'context' => array(
+            0 => 'logged-in-user',
+            1 => 'panelizer',
+          ),
+          'not' => FALSE,
+        ),
+      ),
+    );
     $pane->configuration = array(
-      'label' => 'hidden',
-      'formatter' => 'text_default',
-      'delta_limit' => 0,
-      'delta_offset' => '0',
-      'delta_reversed' => FALSE,
-      'formatter_settings' => array(),
-      'context' => 'panelizer',
+      'admin_title' => 'entityreference prepopulate url link to add user',
+      'title' => 'Manage the crew',
+      'body' => '<ul><li><a href="/group/node/%node:nid/admin/people/invite"><span style="line-height: 1.538em;">Add new member to site</span></a></li><li><a href="/group/node/%node:nid/admin/people">Manage members</a></li></ul>',
+      'format' => 'filtered_html',
+      'substitute' => 1,
     );
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
+      'style' => 'block',
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 1;
+    $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-7'] = $pane;
-    $display->panels['left'][1] = 'new-7';
+    $display->content['new-3'] = $pane;
+    $display->panels['left_below'][0] = 'new-3';
     $pane = new stdClass();
-    $pane->pid = 'new-8';
-    $pane->panel = 'left';
-    $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_practice_website';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'label' => 'hidden',
-      'formatter' => 'link_default',
-      'delta_limit' => 0,
-      'delta_offset' => '0',
-      'delta_reversed' => FALSE,
-      'formatter_settings' => array(),
-      'context' => 'panelizer',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 2;
-    $pane->locks = array();
-    $display->content['new-8'] = $pane;
-    $display->panels['left'][2] = 'new-8';
-    $pane = new stdClass();
-    $pane->pid = 'new-9';
-    $pane->panel = 'left';
-    $pane->type = 'entity_field';
-    $pane->subtype = 'node:body';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'label' => 'hidden',
-      'formatter' => 'text_default',
-      'delta_limit' => 0,
-      'delta_offset' => '0',
-      'delta_reversed' => FALSE,
-      'formatter_settings' => array(),
-      'context' => 'panelizer',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 3;
-    $pane->locks = array();
-    $display->content['new-9'] = $pane;
-    $display->panels['left'][3] = 'new-9';
-    $pane = new stdClass();
-    $pane->pid = 'new-10';
-    $pane->panel = 'left';
+    $pane->pid = 'new-4';
+    $pane->panel = 'left_below';
     $pane->type = 'views_panes';
     $pane->subtype = 'practice_crew-panel_pane_1';
     $pane->shown = TRUE;
@@ -300,13 +172,97 @@ function immunizationed_practice_panelizer_defaults() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 4;
+    $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-10'] = $pane;
-    $display->panels['left'][4] = 'new-10';
+    $display->content['new-4'] = $pane;
+    $display->panels['left_below'][1] = 'new-4';
     $pane = new stdClass();
-    $pane->pid = 'new-11';
+    $pane->pid = 'new-5';
     $pane->panel = 'middle';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'practice_task_content-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+      'style' => 'block',
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-5'] = $pane;
+    $display->panels['middle'][0] = 'new-5';
+    $pane = new stdClass();
+    $pane->pid = 'new-6';
+    $pane->panel = 'right_above';
+    $pane->type = 'block';
+    $pane->subtype = 'menu-menu-practice-charts';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => 'View Charts',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+      'style' => 'block',
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-6'] = $pane;
+    $display->panels['right_above'][0] = 'new-6';
+    $pane = new stdClass();
+    $pane->pid = 'new-7';
+    $pane->panel = 'right_below';
+    $pane->type = 'node_prepopulate';
+    $pane->subtype = 'node_prepopulate';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'logic' => 'and',
+      'plugins' => array(
+        0 => array(
+          'name' => 'og_perm',
+          'settings' => array(
+            'perm' => 'update group',
+          ),
+          'context' => array(
+            0 => 'logged-in-user',
+            1 => 'panelizer',
+          ),
+          'not' => FALSE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'types' => array(
+        'meeting_agenda' => 'meeting_agenda',
+        'announcement' => 'announcement',
+      ),
+      'field_name' => 'og_group_ref',
+      'context' => 'panelizer',
+      'override_title' => 1,
+      'override_title_text' => 'Update your practice',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+      'style' => 'block',
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-7'] = $pane;
+    $display->panels['right_below'][0] = 'new-7';
+    $pane = new stdClass();
+    $pane->pid = 'new-8';
+    $pane->panel = 'right_below';
     $pane->type = 'node_prepopulate';
     $pane->subtype = 'node_prepopulate';
     $pane->shown = TRUE;
@@ -344,99 +300,49 @@ function immunizationed_practice_panelizer_defaults() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-11'] = $pane;
-    $display->panels['middle'][0] = 'new-11';
-    $pane = new stdClass();
-    $pane->pid = 'new-12';
-    $pane->panel = 'right';
-    $pane->type = 'custom';
-    $pane->subtype = 'custom';
-    $pane->shown = TRUE;
-    $pane->access = array(
-      'plugins' => array(
-        0 => array(
-          'name' => 'og_perm',
-          'settings' => array(
-            'perm' => 'add user',
-          ),
-          'context' => array(
-            0 => 'logged-in-user',
-            1 => 'panelizer',
-          ),
-          'not' => FALSE,
-        ),
-      ),
-    );
-    $pane->configuration = array(
-      'admin_title' => 'entityreference prepopulate url link to add user',
-      'title' => 'Manage the crew',
-      'body' => '<ul><li><a href="/group/node/%node:nid/admin/people/invite"><span style="line-height: 1.538em;">Add new member to site</span></a></li><li><a href="/group/node/%node:nid/admin/people">Manage members</a></li></ul>',
-      'format' => 'filtered_html',
-      'substitute' => 1,
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-      'style' => 'block',
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-12'] = $pane;
-    $display->panels['right'][0] = 'new-12';
-    $pane = new stdClass();
-    $pane->pid = 'new-13';
-    $pane->panel = 'right';
-    $pane->type = 'node_prepopulate';
-    $pane->subtype = 'node_prepopulate';
-    $pane->shown = TRUE;
-    $pane->access = array(
-      'logic' => 'and',
-      'plugins' => array(
-        0 => array(
-          'name' => 'og_perm',
-          'settings' => array(
-            'perm' => 'update group',
-          ),
-          'context' => array(
-            0 => 'logged-in-user',
-            1 => 'panelizer',
-          ),
-          'not' => FALSE,
-        ),
-      ),
-    );
-    $pane->configuration = array(
-      'types' => array(
-        'meeting_agenda' => 'meeting_agenda',
-        'announcement' => 'announcement',
-      ),
-      'field_name' => 'og_group_ref',
-      'context' => 'panelizer',
-      'override_title' => 1,
-      'override_title_text' => 'Update your practice',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-      'style' => 'block',
-    );
-    $pane->css = array();
-    $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-13'] = $pane;
-    $display->panels['right'][1] = 'new-13';
+    $display->content['new-8'] = $pane;
+    $display->panels['right_below'][1] = 'new-8';
     $pane = new stdClass();
-    $pane->pid = 'new-14';
+    $pane->pid = 'new-9';
+    $pane->panel = 'right_below';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'meeting_minutes-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+      'style' => 'default',
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $display->content['new-9'] = $pane;
+    $display->panels['right_below'][2] = 'new-9';
+    $pane = new stdClass();
+    $pane->pid = 'new-10';
     $pane->panel = 'top';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_practice_photo';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'role',
+          'settings' => array(
+            'rids' => array(
+              0 => 5,
+            ),
+          ),
+          'context' => 'logged-in-user',
+          'not' => TRUE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'label' => 'hidden',
       'formatter' => 'image',
@@ -444,29 +350,43 @@ function immunizationed_practice_panelizer_defaults() {
       'delta_offset' => '0',
       'delta_reversed' => FALSE,
       'formatter_settings' => array(
-        'image_link' => 'content',
         'image_style' => 'thumbnail',
+        'image_link' => '',
       ),
       'context' => 'panelizer',
+      'override_title' => 0,
+      'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
-      'style' => 'rounded_corners',
     );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-14'] = $pane;
-    $display->panels['top'][0] = 'new-14';
+    $display->content['new-10'] = $pane;
+    $display->panels['top'][0] = 'new-10';
     $pane = new stdClass();
-    $pane->pid = 'new-15';
+    $pane->pid = 'new-11';
     $pane->panel = 'top';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:group_group';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'role',
+          'settings' => array(
+            'rids' => array(
+              0 => 5,
+            ),
+          ),
+          'context' => 'logged-in-user',
+          'not' => TRUE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'label' => 'hidden',
       'formatter' => 'og_group_subscribe',
@@ -488,8 +408,190 @@ function immunizationed_practice_panelizer_defaults() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
+    $display->content['new-11'] = $pane;
+    $display->panels['top'][1] = 'new-11';
+    $pane = new stdClass();
+    $pane->pid = 'new-12';
+    $pane->panel = 'top';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'node:field_practice_website';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'role',
+          'settings' => array(
+            'rids' => array(
+              0 => 5,
+            ),
+          ),
+          'context' => 'logged-in-user',
+          'not' => TRUE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'label' => 'hidden',
+      'formatter' => 'link_default',
+      'delta_limit' => 0,
+      'delta_offset' => '0',
+      'delta_reversed' => FALSE,
+      'formatter_settings' => array(),
+      'context' => 'panelizer',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $display->content['new-12'] = $pane;
+    $display->panels['top'][2] = 'new-12';
+    $pane = new stdClass();
+    $pane->pid = 'new-13';
+    $pane->panel = 'top';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'node:field_practice_address';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'role',
+          'settings' => array(
+            'rids' => array(
+              0 => 5,
+            ),
+          ),
+          'context' => 'logged-in-user',
+          'not' => TRUE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'label' => 'hidden',
+      'formatter' => 'addressfield_default',
+      'delta_limit' => 0,
+      'delta_offset' => '0',
+      'delta_reversed' => FALSE,
+      'formatter_settings' => array(
+        'format_handlers' => array(
+          0 => 'address',
+        ),
+        'use_widget_handlers' => 1,
+      ),
+      'context' => 'panelizer',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 3;
+    $pane->locks = array();
+    $display->content['new-13'] = $pane;
+    $display->panels['top'][3] = 'new-13';
+    $pane = new stdClass();
+    $pane->pid = 'new-14';
+    $pane->panel = 'top';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'node:field_practice_phone';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'role',
+          'settings' => array(
+            'rids' => array(
+              0 => 5,
+            ),
+          ),
+          'context' => 'logged-in-user',
+          'not' => TRUE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'label' => 'hidden',
+      'formatter' => 'text_default',
+      'delta_limit' => 0,
+      'delta_offset' => '0',
+      'delta_reversed' => FALSE,
+      'formatter_settings' => array(),
+      'context' => 'panelizer',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 4;
+    $pane->locks = array();
+    $display->content['new-14'] = $pane;
+    $display->panels['top'][4] = 'new-14';
+    $pane = new stdClass();
+    $pane->pid = 'new-15';
+    $pane->panel = 'top';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'node:body';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'role',
+          'settings' => array(
+            'rids' => array(
+              0 => 5,
+            ),
+          ),
+          'context' => 'logged-in-user',
+          'not' => TRUE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'label' => 'hidden',
+      'formatter' => 'text_default',
+      'delta_limit' => 0,
+      'delta_offset' => '0',
+      'delta_reversed' => FALSE,
+      'formatter_settings' => array(),
+      'context' => 'panelizer',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 5;
+    $pane->locks = array();
     $display->content['new-15'] = $pane;
-    $display->panels['top'][1] = 'new-15';
+    $display->panels['top'][5] = 'new-15';
+    $pane = new stdClass();
+    $pane->pid = 'new-16';
+    $pane->panel = 'top';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'practice_selected_strategies-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(),
+    );
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+      'style' => 'block',
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 6;
+    $pane->locks = array();
+    $display->content['new-16'] = $pane;
+    $display->panels['top'][6] = 'new-16';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $panelizer->display = $display;

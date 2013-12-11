@@ -35,3 +35,58 @@ function immunizationed_misc_form_node_type_form_alter(&$form, &$form_state){
      $form['diff']['diff_enable_revisions_page_node']['#default_value']=0;
      $form['diff']['#access'] = false;
 }
+
+/*
+ * custom functions for computed fields
+ * 
+ * function computed_field_YOUR_FIELD_MACHINE_NAME_compute(&$entity_field, $entity_type, $entity, $field, $instance, $langcode, $items) {
+  $entity_field[0]['value'] = 'value';
+}
+ * Parameters:
+&$entity_field - The computed field. Used to store the computed value.
+$entity_type - The entity type: node, user, comment, etc.
+$entity - The actual entity (a node, user, comment, etc.)
+$field - General field settings.
+$instance - Field instance settings.
+$items - The list of items.
+Note:
+Make sure $entity_field is passed by reference.
+ * 
+ * <?php
+function computed_field_YOUR_FIELD_MACHINE_NAME_display($field, $entity_field_item, $entity_lang, $langcode) {
+  return '$' . number_format($entity_field_item['value'], 2);
+}
+?>
+*/
+/*
+ * Computed fields for Vaccination data from EMR
+ *
+function computed_field_field_computed_target_flu_doses_compute(&$entity_field, $entity_type, $entity, $field, $instance, $langcode, $items){
+  $OgId=$entity->og_group_ref['und'][0]['target_id'];
+  $practice=node_load($OgId);
+  $rate=array_pop(array_pop(field_get_items('node',$practice,'field_target_flu_percent')))/100;
+  $target_doses=array_pop(array_pop(field_get_items($entity_type,$entity,'field_all_flu_eligible_est_visit'))) * $rate;
+  $entity_field[0]['value']= round($target_doses);
+}
+function computed_field_field_computed_target_pneumo_dos_compute(&$entity_field, $entity_type, $entity, $field, $instance, $langcode, $items){
+  $OgId=$entity->og_group_ref['und'][0]['target_id'];
+  $practice=node_load($OgId);
+  $rate=array_pop(array_pop(field_get_items('node',$practice,'field_target_pneumo_percent')))/100;
+  $target_doses=array_pop(array_pop(field_get_items($entity_type,$entity,'field_pneumo_eligible_est_visits'))) * $rate;
+  $entity_field[0]['value']= round($target_doses);
+}
+function computed_field_field_computed_target_tdap_doses_compute(&$entity_field, $entity_type, $entity, $field, $instance, $langcode, $items){
+  $OgId=$entity->og_group_ref['und'][0]['target_id'];
+  $practice=node_load($OgId);
+  $rate=array_pop(array_pop(field_get_items('node',$practice,'field_target_tdap_percent')))/100;
+  $target_doses=array_pop(array_pop(field_get_items($entity_type,$entity,'field_tdap_eligible_estimated_vi'))) * $rate;
+  $entity_field[0]['value']= round($target_doses);
+}
+ * 
+ */
+// function computed_field_field_computed_total_doses_compute(&$entity_field, $entity_type, $entity, $field, $instance, $langcode, $items){
+  // $entity_field[0]['value']= 
+    // array_pop(array_pop(field_get_items($entity_type,$entity,'field_pneumo'))) +
+    // array_pop(array_pop(field_get_items($entity_type,$entity,'field_influenza'))) +
+    // array_pop(array_pop(field_get_items($entity_type,$entity,'field_tdap')));
+// }

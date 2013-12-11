@@ -68,7 +68,7 @@ function immunizationed_emr_importer_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '6',
+          'weight' => '7',
         ),
         'path' => array(
           'weight' => '1',

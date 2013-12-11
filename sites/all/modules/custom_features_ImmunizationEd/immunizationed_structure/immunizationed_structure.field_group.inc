@@ -30,7 +30,7 @@ function immunizationed_structure_field_group_info() {
       'label' => 'Audience',
       'instance_settings' => array(
         'required_fields' => 0,
-        'classes' => '',
+        'classes' => ' group-audience-tags field-group-accordion-item',
         'description' => '',
       ),
       'formatter' => 'closed',
@@ -58,7 +58,7 @@ function immunizationed_structure_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-audience-tags field-group-accordion-item',
         'required_fields' => 1,
       ),
     ),
@@ -86,7 +86,7 @@ function immunizationed_structure_field_group_info() {
       'label' => 'CME required information',
       'instance_settings' => array(
         'required_fields' => 0,
-        'classes' => '',
+        'classes' => ' group-cme field-group-accordion-item',
         'description' => '',
       ),
       'formatter' => 'closed',
@@ -114,7 +114,7 @@ function immunizationed_structure_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-cme field-group-accordion-item',
         'required_fields' => 1,
       ),
     ),
@@ -142,7 +142,7 @@ function immunizationed_structure_field_group_info() {
       'label' => 'Content tags',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => ' group-content-tags field-group-accordion-item',
         'description' => '',
       ),
       'formatter' => 'open',
@@ -171,7 +171,7 @@ function immunizationed_structure_field_group_info() {
       'label' => 'Content tags',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => ' group-content-tags field-group-accordion-item',
         'description' => '',
       ),
       'formatter' => 'open',
@@ -199,7 +199,7 @@ function immunizationed_structure_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-help-topics-tags field-group-accordion-item',
         'required_fields' => 1,
       ),
     ),
@@ -219,15 +219,15 @@ function immunizationed_structure_field_group_info() {
     'label' => 'Content tags',
     'weight' => '33',
     'children' => array(
-      0 => 'group_content_tags',
+      0 => 'group_audience_tags',
       1 => 'group_cme',
-      2 => 'group_audience_tags',
+      2 => 'group_content_tags',
     ),
     'format_type' => 'accordion',
     'format_settings' => array(
       'label' => 'Content tags',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => ' group-tags field-group-accordion',
         'effect' => 'bounceslide',
       ),
     ),
@@ -256,7 +256,7 @@ function immunizationed_structure_field_group_info() {
     'format_settings' => array(
       'label' => 'Tags',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => ' group-tags field-group-accordion',
         'effect' => 'bounceslide',
       ),
     ),

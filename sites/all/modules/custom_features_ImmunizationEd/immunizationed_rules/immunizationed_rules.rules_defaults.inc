@@ -12,22 +12,25 @@ function immunizationed_rules_default_rules_configuration() {
   $items['rules_actions_on_login'] = entity_import('rules_config', '{ "rules_actions_on_login" : {
       "LABEL" : "Actions on login",
       "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
       "TAGS" : [ "login" ],
       "REQUIRES" : [ "rules" ],
-      "ON" : [ "user_login" ],
+      "ON" : { "user_login" : [  ] },
       "DO" : [ { "component_rules_rules_on_login" : { "user" : [ "account" ] } } ]
     }
   }');
   $items['rules_actions_on_practice_creation'] = entity_import('rules_config', '{ "rules_actions_on_practice_creation" : {
       "LABEL" : "Actions on practice creation",
       "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
       "TAGS" : [ "practice" ],
       "REQUIRES" : [ "rules", "og" ],
-      "ON" : [ "node_insert" ],
+      "ON" : { "node_insert" : [  ] },
       "IF" : [
-        { "node_is_of_type" : {
-            "node" : [ "node" ],
-            "type" : { "value" : { "practice_group" : "practice_group" } }
+        { "entity_is_of_bundle" : {
+            "entity" : [ "node" ],
+            "type" : "node",
+            "bundle" : { "value" : { "practice_group" : "practice_group" } }
           }
         },
         { "og_user_in_group" : {
@@ -60,9 +63,10 @@ function immunizationed_rules_default_rules_configuration() {
   $items['rules_actions_on_role_change'] = entity_import('rules_config', '{ "rules_actions_on_role_change" : {
       "LABEL" : "Actions on special role selection",
       "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
       "TAGS" : [ "role", "users" ],
       "REQUIRES" : [ "rules", "og" ],
-      "ON" : [ "user_presave" ],
+      "ON" : { "user_presave" : [  ] },
       "IF" : [
         { "data_is_empty" : { "data" : [ "account-unchanged:field-responsible-role" ] } },
         { "NOT data_is_empty" : { "data" : [ "account:field-responsible-role" ] } },
@@ -96,18 +100,18 @@ function immunizationed_rules_default_rules_configuration() {
   $items['rules_actions_on_strategy_selection_save'] = entity_import('rules_config', '{ "rules_actions_on_strategy_selection_save" : {
       "LABEL" : "Actions on strategy selection save",
       "PLUGIN" : "reaction rule",
-      "TAGS" : [ "autofill" ],
+      "OWNER" : "rules",
       "REQUIRES" : [ "rules", "views_bulk_operations" ],
-      "ON" : [ "node_insert" ],
+      "ON" : { "node_insert" : [  ] },
       "IF" : [
-        { "node_is_of_type" : {
-            "node" : [ "node" ],
-            "type" : { "value" : {
+        { "entity_is_of_bundle" : {
+            "entity" : [ "node" ],
+            "type" : "node",
+            "bundle" : { "value" : {
                 "convenient_vaccination_services" : "convenient_vaccination_services",
+                "patient_notification" : "patient_notification",
                 "enhanced_vaccination_systems" : "enhanced_vaccination_systems",
-                "meeting_agenda" : "meeting_agenda",
-                "motivation" : "motivation",
-                "patient_notification" : "patient_notification"
+                "motivation" : "motivation"
               }
             }
           }
@@ -142,9 +146,10 @@ function immunizationed_rules_default_rules_configuration() {
   $items['rules_add_practice_admin_role_to_special_roles'] = entity_import('rules_config', '{ "rules_add_practice_admin_role_to_special_roles" : {
       "LABEL" : "Add group member and practice admin role to practice admins on login",
       "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
       "TAGS" : [ "practice", "users" ],
       "REQUIRES" : [ "rules", "og" ],
-      "ON" : [ "user_login" ],
+      "ON" : { "user_login" : [  ] },
       "IF" : [
         { "NOT data_is_empty" : { "data" : [ "account:og-membership" ] } },
         { "OR" : [
@@ -175,6 +180,7 @@ function immunizationed_rules_default_rules_configuration() {
   $items['rules_add_site_permissions_to_practice_creator'] = entity_import('rules_config', '{ "rules_add_site_permissions_to_practice_creator" : {
       "LABEL" : "Add site permissions to practice creator",
       "PLUGIN" : "rule",
+      "OWNER" : "rules",
       "TAGS" : [ "practice" ],
       "REQUIRES" : [ "rules" ],
       "USES VARIABLES" : {
@@ -190,10 +196,83 @@ function immunizationed_rules_default_rules_configuration() {
       ]
     }
   }');
+  $items['rules_calculate_vaccination_goals'] = entity_import('rules_config', '{ "rules_calculate_vaccination_goals" : {
+      "LABEL" : "calculate vaccination goals for practices on baseline import",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "rules", "feeds" ],
+      "ON" : { "feeds_import_baseline_rate_importer" : [  ] },
+      "IF" : [
+        { "entity_is_of_bundle" : {
+            "entity" : [ "node" ],
+            "type" : "node",
+            "bundle" : { "value" : { "practice_group" : "practice_group" } }
+          }
+        },
+        { "OR" : [
+            { "NOT data_is_empty" : { "data" : [ "node:field-baseline-flu-vax-rate" ] } },
+            { "NOT data_is_empty" : { "data" : [ "node:field-baseline-pneumo-vax-rate" ] } },
+            { "NOT data_is_empty" : { "data" : [ "node:field-baseline-tdap-vax-rate" ] } }
+          ]
+        },
+        { "AND" : [
+            { "data_is_empty" : { "data" : [ "node:field-target-flu-percent" ] } },
+            { "data_is_empty" : { "data" : [ "node:field-target-pneumo-percent" ] } },
+            { "data_is_empty" : { "data" : [ "node:field-target-tdap-percent" ] } }
+          ]
+        }
+      ],
+      "DO" : [
+        { "data_calc" : {
+            "USING" : {
+              "input_1" : [ "node:field-baseline-flu-vax-rate" ],
+              "op" : "+",
+              "input_2" : "20"
+            },
+            "PROVIDE" : { "result" : { "flu_result" : "flu result" } }
+          }
+        },
+        { "data_calc" : {
+            "USING" : {
+              "input_1" : [ "node:field-baseline-pneumo-vax-rate" ],
+              "op" : "+",
+              "input_2" : "20"
+            },
+            "PROVIDE" : { "result" : { "pneumo_result" : "pneumo result" } }
+          }
+        },
+        { "data_calc" : {
+            "USING" : {
+              "input_1" : [ "node:field-baseline-tdap-vax-rate" ],
+              "op" : "+",
+              "input_2" : "20"
+            },
+            "PROVIDE" : { "result" : { "tdap_result" : "tdap result" } }
+          }
+        },
+        { "data_set" : {
+            "data" : [ "node:field-target-flu-percent" ],
+            "value" : [ "flu-result" ]
+          }
+        },
+        { "data_set" : {
+            "data" : [ "node:field-target-pneumo-percent" ],
+            "value" : [ "pneumo-result" ]
+          }
+        },
+        { "data_set" : {
+            "data" : [ "node:field-target-tdap-percent" ],
+            "value" : [ "tdap-result" ]
+          }
+        },
+        { "drupal_message" : { "message" : "The baseline vaccination rates of eligible patients at [node:title] are as follows:\\u003Cbr\\u003E\\u000D\\u000AInfluenza: [node:field-baseline-flu-vax-rate]\\u003Cbr\\u003E\\u000D\\u000APneumo: [node:field-baseline-pneumo-vax-rate]\\u003Cbr\\u003E\\u000D\\u000ATdap: [node:field-baseline-tdap-vax-rate]\\u003Cbr\\u003E\\u000D\\u000AThe goals have been calculated as:\\u003Cbr\\u003E\\u000D\\u000AInfluenza: [node:field-target-flu-percent]\\u0009\\u003Cbr\\u003E\\u000D\\u000APneumo: [node:field-target-pneumo-percent]\\u003Cbr\\u003E\\u000D\\u000ATdap: [node:field-target-tdap-percent]\\u003Cbr\\u003E\\u000D\\u000A\\u003Cbr\\u003E\\u000D\\u000AGood luck!" } }
+      ]
+    }
+  }');
   $items['rules_check_instruction_fields'] = entity_import('rules_config', '{ "rules_check_instruction_fields" : {
       "LABEL" : "Fill assembly step fields",
       "PLUGIN" : "rule set",
-      "TAGS" : [ "task" ],
+      "OWNER" : "rules",
       "REQUIRES" : [ "rules", "date_conversions" ],
       "USES VARIABLES" : {
         "fetched_instruction" : { "label" : "fetched instruction", "type" : "node" },
@@ -214,10 +293,16 @@ function immunizationed_rules_default_rules_configuration() {
             },
             "IF" : [
               { "OR" : [
-                  { "node_is_of_type" : { "node" : [ "new-step" ], "type" : { "value" : { "task" : "task" } } } },
-                  { "node_is_of_type" : {
-                      "node" : [ "fetched-instruction" ],
-                      "type" : { "value" : { "roadmap_waypoint" : "roadmap_waypoint" } }
+                  { "entity_is_of_bundle" : {
+                      "entity" : [ "new-step" ],
+                      "type" : "node",
+                      "bundle" : { "value" : { "task" : "task" } }
+                    }
+                  },
+                  { "entity_is_of_bundle" : {
+                      "entity" : [ "fetched-instruction" ],
+                      "type" : "node",
+                      "bundle" : { "value" : { "roadmap_waypoint" : "roadmap_waypoint" } }
                     }
                   }
                 ]
@@ -300,44 +385,25 @@ function immunizationed_rules_default_rules_configuration() {
       "LABEL" : "Redirect to group home after group content addition",
       "PLUGIN" : "reaction rule",
       "WEIGHT" : "10",
-      "TAGS" : [ "content" ],
+      "OWNER" : "rules",
       "REQUIRES" : [ "rules" ],
-      "ON" : [ "node_insert", "node_update" ],
+      "ON" : { "node_insert" : [  ], "node_update" : [  ] },
       "IF" : [
         { "entity_has_field" : { "entity" : [ "node" ], "field" : "og_group_ref" } },
-        { "AND" : [
-            { "OR" : [
-                { "node_is_of_type" : {
-                    "node" : [ "node" ],
-                    "type" : { "value" : { "meeting_agenda" : "meeting_agenda" } }
-                  }
-                },
-                { "node_is_of_type" : {
-                    "node" : [ "node" ],
-                    "type" : { "value" : { "announcement" : "announcement" } }
-                  }
-                },
-                { "node_is_of_type" : { "node" : [ "node" ], "type" : { "value" : { "task" : "task" } } } },
-                { "node_is_of_type" : {
-                    "node" : [ "node" ],
-                    "type" : { "value" : { "practice_group" : "practice_group" } }
-                  }
-                },
-                { "node_is_of_type" : {
-                    "node" : [ "node" ],
-                    "type" : { "value" : {
-                        "convenient_vaccination_services" : "convenient_vaccination_services",
-                        "enhanced_vaccination_systems" : "enhanced_vaccination_systems",
-                        "meeting_agenda" : "meeting_agenda",
-                        "motivation" : "motivation",
-                        "patient_notification" : "patient_notification"
-                      }
-                    }
-                  }
-                }
-              ]
+        { "entity_is_of_bundle" : {
+            "entity" : [ "node" ],
+            "type" : "node",
+            "bundle" : { "value" : {
+                "task" : "task",
+                "meeting_agenda" : "meeting_agenda",
+                "convenient_vaccination_services" : "convenient_vaccination_services",
+                "patient_notification" : "patient_notification",
+                "enhanced_vaccination_systems" : "enhanced_vaccination_systems",
+                "motivation" : "motivation",
+                "announcement" : "announcement"
+              }
             }
-          ]
+          }
         }
       ],
       "DO" : [ { "redirect" : { "url" : [ "node:og-group-ref:0:url" ] } } ]
@@ -346,6 +412,7 @@ function immunizationed_rules_default_rules_configuration() {
   $items['rules_create_tasks_from_assembly_instructions'] = entity_import('rules_config', '{ "rules_create_tasks_from_assembly_instructions" : {
       "LABEL" : "Create tasks from assembly instructions",
       "PLUGIN" : "rule set",
+      "OWNER" : "rules",
       "TAGS" : [ "task" ],
       "REQUIRES" : [ "rules", "views_bulk_operations", "og" ],
       "USES VARIABLES" : {
@@ -419,9 +486,10 @@ function immunizationed_rules_default_rules_configuration() {
       "LABEL" : "Practice member approved",
       "PLUGIN" : "reaction rule",
       "WEIGHT" : "3",
+      "OWNER" : "rules",
       "TAGS" : [ "practice" ],
       "REQUIRES" : [ "rules", "og" ],
-      "ON" : [ "og_user_insert" ],
+      "ON" : { "og_user_insert" : [  ] },
       "IF" : [
         { "data_is" : { "data" : [ "og-membership:state" ], "value" : "1" } },
         { "entity_is_of_type" : { "entity" : [ "og-membership:group" ], "type" : "node" } },
@@ -447,9 +515,10 @@ function immunizationed_rules_default_rules_configuration() {
   $items['rules_practice_member_exit'] = entity_import('rules_config', '{ "rules_practice_member_exit" : {
       "LABEL" : "Practice member exit",
       "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
       "TAGS" : [ "practice" ],
       "REQUIRES" : [ "rules", "og" ],
-      "ON" : [ "og_user_delete" ],
+      "ON" : { "og_user_delete" : [  ] },
       "IF" : [ { "data_is_empty" : { "data" : [ "account:og-membership" ] } } ],
       "DO" : [
         { "user_remove_role" : { "account" : [ "account" ], "roles" : { "value" : { "5" : "5" } } } },
@@ -460,6 +529,7 @@ function immunizationed_rules_default_rules_configuration() {
   $items['rules_rules_on_login'] = entity_import('rules_config', '{ "rules_rules_on_login" : {
       "LABEL" : "Actions on login",
       "PLUGIN" : "rule set",
+      "OWNER" : "rules",
       "TAGS" : [ "login" ],
       "REQUIRES" : [ "rules", "og" ],
       "USES VARIABLES" : { "user" : { "label" : "logging in user", "type" : "user" } },
@@ -511,13 +581,18 @@ function immunizationed_rules_default_rules_configuration() {
   $items['rules_send_email_for_article_posted_to_practice_page'] = entity_import('rules_config', '{ "rules_send_email_for_article_posted_to_practice_page" : {
       "LABEL" : "send email for article posted to practice page",
       "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
       "TAGS" : [ "notifications" ],
-      "REQUIRES" : [ "rules", "og" ],
-      "ON" : [ "node_insert" ],
+      "REQUIRES" : [ "og", "rules" ],
+      "ON" : { "node_insert" : [  ] },
       "IF" : [
-        { "node_is_published" : { "node" : [ "node" ] } },
         { "og_entity_is_group_content" : { "entity" : [ "node" ] } },
-        { "node_is_of_type" : { "node" : [ "node" ], "type" : { "value" : { "article" : "article" } } } }
+        { "entity_is_of_bundle" : {
+            "entity" : [ "node" ],
+            "type" : "node",
+            "bundle" : { "value" : { "article" : "article" } }
+          }
+        }
       ],
       "DO" : [
         { "og_get_members" : {
@@ -546,6 +621,7 @@ function immunizationed_rules_default_rules_configuration() {
   $items['rules_send_email_when_practice_is_created'] = entity_import('rules_config', '{ "rules_send_email_when_practice_is_created" : {
       "LABEL" : "Send email when practice is created",
       "PLUGIN" : "rule",
+      "OWNER" : "rules",
       "REQUIRES" : [ "rules" ],
       "USES VARIABLES" : {
         "practice" : { "label" : "practice", "type" : "node" },
@@ -573,6 +649,7 @@ function immunizationed_rules_default_rules_configuration() {
   $items['rules_send_emails'] = entity_import('rules_config', '{ "rules_send_emails" : {
       "LABEL" : "Send emails",
       "PLUGIN" : "rule set",
+      "OWNER" : "rules",
       "TAGS" : [ "email", "users" ],
       "REQUIRES" : [ "rules" ],
       "USES VARIABLES" : {
@@ -610,7 +687,7 @@ function immunizationed_rules_default_rules_configuration() {
   $items['rules_send_task_email'] = entity_import('rules_config', '{ "rules_send_task_email" : {
       "LABEL" : "Send task email",
       "PLUGIN" : "rule set",
-      "TAGS" : [ "task" ],
+      "OWNER" : "rules",
       "REQUIRES" : [ "views_bulk_operations", "rules", "og" ],
       "USES VARIABLES" : { "assembly_step" : { "label" : "assembly step", "type" : "node" } },
       "RULES" : [
@@ -647,9 +724,10 @@ function immunizationed_rules_default_rules_configuration() {
               "group_members" : { "group_members" : "List of group members" }
             },
             "IF" : [
-              { "node_is_of_type" : {
-                  "node" : [ "assembly-step" ],
-                  "type" : { "value" : { "task" : "task" } }
+              { "entity_is_of_bundle" : {
+                  "entity" : [ "assembly-step" ],
+                  "type" : "node",
+                  "bundle" : { "value" : { "task" : "task" } }
                 }
               },
               { "entity_has_field" : { "entity" : [ "assembly-step" ], "field" : "og_group_ref" } },
@@ -689,6 +767,7 @@ function immunizationed_rules_default_rules_configuration() {
   $items['rules_unpublish_old_strategy'] = entity_import('rules_config', '{ "rules_unpublish_old_strategy" : {
       "LABEL" : "Unpublish old strategy",
       "PLUGIN" : "rule",
+      "OWNER" : "rules",
       "TAGS" : [ "practice" ],
       "REQUIRES" : [ "rules" ],
       "USES VARIABLES" : {
