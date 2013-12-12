@@ -228,5 +228,5 @@ sites/*/private
 
 # Ignore server specific junk
 /aspnet_client
-*/web.config
+web.config
 

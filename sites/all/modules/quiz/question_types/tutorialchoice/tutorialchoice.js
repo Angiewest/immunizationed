@@ -1,8 +1,8 @@
-var breadcrumb_multichoice = breadcrumb_multichoice || {};
+var tutorialchoice = tutorialchoice || {};
 (function($) {
 
-breadcrumb_multichoice.refreshScores = function(checkbox, scoring) {
-  var prefix = '#' + breadcrumb_multichoice.getCorrectIdPrefix(checkbox.id);
+tutorialchoice.refreshScores = function(checkbox, scoring) {
+  var prefix = '#' + tutorialchoice.getCorrectIdPrefix(checkbox.id);
   if (checkbox.checked) {
     $(prefix + 'score-if-chosen').val('1');
     $(prefix + 'score-if-not-chosen').val('0');
@@ -35,13 +35,13 @@ breadcrumb_multichoice.refreshScores = function(checkbox, scoring) {
  * @param textfield
  *  The textfield(score) that is being updated
  */
-breadcrumb_multichoice.refreshCorrect = function(textfield) {
-  var prefix = '#' + breadcrumb_multichoice.getCorrectIdPrefix(textfield.id);
+tutorialchoice.refreshCorrect = function(textfield) {
+  var prefix = '#' + tutorialchoice.getCorrectIdPrefix(textfield.id);
   var chosenScore;
   var notChosenScore;
 
   // Fetch the score if chosen and score if not chosen values for the active alternative
-  if (breadcrumb_multichoice.isChosen(textfield.id)) {
+  if (tutorialchoice.isChosen(textfield.id)) {
     chosenScore = new Number(textfield.value);
     notChosenScore = new Number($(prefix + 'score-if-not-chosen').val());
   }
@@ -67,7 +67,7 @@ breadcrumb_multichoice.refreshCorrect = function(textfield) {
  * @return
  *  The common prefix for all the alternatives in this alternative fieldset
  */
-breadcrumb_multichoice.getCorrectIdPrefix = function(string) {
+tutorialchoice.getCorrectIdPrefix = function(string) {
   // TODO: Will the regExp below always work?
   var pattern = new RegExp("^(edit-alternatives-[0-9]{1,2}-)(?:correct|score-if-(?:not-|)chosen)$");
   pattern.exec(string);
@@ -82,7 +82,7 @@ breadcrumb_multichoice.getCorrectIdPrefix = function(string) {
  * @return
  *  True if the string ends with "score-if-chosen", false otherwise.
  */
-breadcrumb_multichoice.isChosen = function(string) {
+tutorialchoice.isChosen = function(string) {
   var pattern = new RegExp("score-if-chosen$");
   return pattern.test(string);
 }

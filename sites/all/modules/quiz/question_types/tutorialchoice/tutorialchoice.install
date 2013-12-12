@@ -1,30 +1,33 @@
 <?php
 
 /**
+ * Sponsored by: Norwegian Centre for Telemedicine
+ * Code: falcon
+ *
  * @file
- * breadcrumb_multichoice Install (a quiz question type)
+ * tutorialchoice Install (a quiz question type)
  */
 
 
 /**
  * Implements hook_install().
  */
-function breadcrumb_multichoice_install() {
-  // Add body field to breadcrumb_multichoice node
-  quiz_question_add_body_field('breadcrumb_multichoice');
+function tutorialchoice_install() {
+  // Add body field to tutorialchoice node
+  quiz_question_add_body_field('tutorialchoice');
 
   // TODO The drupal_(un)install_schema functions are called automatically in D7.
-  // drupal_install_schema('breadcrumb_multichoice')
+  // drupal_install_schema('tutorialchoice')
   cache_clear_all('autoload:', 'cache');
-  variable_set('node_options_breadcrumb_multichoice', array('status'));
+  variable_set('node_options_tutorialchoice', array('status'));
 }
 
 /**
  * Implements hook_schema().
  */
-function breadcrumb_multichoice_schema() {
+function tutorialchoice_schema() {
   // Stores the users answers to a question.
-  $schema['quiz_breadcrumb_multichoice_user_answers'] = array(
+  $schema['quiz_tutorialchoice_user_answers'] = array(
     'fields' => array(
       'id' => array(
         'type' => 'serial',
@@ -58,7 +61,7 @@ function breadcrumb_multichoice_schema() {
     ),
   );
 
-  $schema['quiz_breadcrumb_multichoice_user_answer_multi'] = array(
+  $schema['quiz_tutorialchoice_user_answer_multi'] = array(
     'fields' => array(
       'user_answer_id' => array(
         'type' => 'int',
@@ -79,7 +82,7 @@ function breadcrumb_multichoice_schema() {
     ),
   );
 
-  $schema['quiz_breadcrumb_multichoice_properties'] = array(
+  $schema['quiz_tutorialchoice_properties'] = array(
     'fields' => array(
       'nid' => array(
         'type' => 'int',
@@ -118,7 +121,7 @@ function breadcrumb_multichoice_schema() {
   /*
    * Holds each answer in the answer_collections.
    */
-  $schema['quiz_breadcrumb_multichoice_answers'] = array(
+  $schema['quiz_tutorialchoice_answers'] = array(
     'fields' => array(
       'id' => array(
         'type' => 'serial',
@@ -181,7 +184,7 @@ function breadcrumb_multichoice_schema() {
     )
   );
 
-  $schema['quiz_breadcrumb_multichoice_user_settings'] = array(
+  $schema['quiz_tutorialchoice_user_settings'] = array(
     'fields' => array(
       'uid' => array(
         'type' => 'int',
@@ -217,15 +220,15 @@ function breadcrumb_multichoice_schema() {
 /**
  * Implements hook_uninstall().
  */
-function breadcrumb_multichoice_uninstall() {
+function tutorialchoice_uninstall() {
   // TODO The drupal_(un)install_schema functions are called automatically in D7.
-  // drupal_uninstall_schema('breadcrumb_multichoice')
+  // drupal_uninstall_schema('tutorialchoice')
   $var = array(
-    'breadcrumb_multichoice_def_scoring',
-    'breadcrumb_multichoice_def_num_of_alts',
+    'tutorialchoice_def_scoring',
+    'tutorialchoice_def_num_of_alts',
   );
   foreach ($var as $v) {
     variable_del($v);
   }
-  drupal_set_message(t("The breadcrumb_multichoice module has been uninstalled. breadcrumb_multichoice nodes may still exist, but they will not function properly."));
+  drupal_set_message(t("The tutorialchoice module has been uninstalled. tutorialchoice nodes may still exist, but they will not function properly."));
 }
