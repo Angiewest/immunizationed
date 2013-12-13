@@ -1305,6 +1305,46 @@ function immunizationed_structure_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-nuts_bolts-field_certification_entity'
+  $field_instances['node-nuts_bolts-field_certification_entity'] = array(
+    'bundle' => 'nuts_bolts',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_certification_entity',
+    'label' => 'certification entity',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 35,
+    ),
+  );
+
   // Exported field_instance: 'node-offsite_resource-body'
   $field_instances['node-offsite_resource-body'] = array(
     'bundle' => 'offsite_resource',
