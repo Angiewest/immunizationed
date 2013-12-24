@@ -30,11 +30,10 @@ function display_analysis($quiz_nid, $question_nid, $question_vid, $question_num
   }
   
   // 1) read each potential group with feedback text
-//    $res = db_query("SELECT answer,feedback_if_chosen,feedback_if_not_chosen,score_if_chosen FROM {quiz_tutorialchoice_answers} WHERE question_nid = :ques_nid ORDER BY score_if_chosen DESC", array(':ques_nid' => $question_nid));
-//   $res = db_query("SELECT feedback_if_not_chosen as group_id,MIN(score_if_chosen),MIN(feedback_if_chosen) FROM {quiz_tutorialchoice_answers} WHERE question_nid = :ques_nid GROUP BY feedback_if_not_chosen ORDER BY score_if_chosen DESC", array(':ques_nid' => $question_nid));
+//    $res = db_query("SELECT answer,feedback_if_chosen,feedback_if_not_chosen,score_if_chosen FROM {quiz_multichoice_answers} WHERE question_nid = :ques_nid ORDER BY score_if_chosen DESC", array(':ques_nid' => $question_nid));
+//   $res = db_query("SELECT feedback_if_not_chosen as group_id,MIN(score_if_chosen),MIN(feedback_if_chosen) FROM {quiz_multichoice_answers} WHERE question_nid = :ques_nid GROUP BY feedback_if_not_chosen ORDER BY score_if_chosen DESC", array(':ques_nid' => $question_nid));
 
-	// jkm 9/23/13 moved R/W indicator to format field
-   $res = db_query("SELECT feedback_if_not_chosen as group_id,MAX(score_if_chosen) as min_group_score,MIN(CONCAT(feedback_if_not_chosen_format,':',feedback_if_chosen)) As right_text,MAX(CONCAT(feedback_if_not_chosen_format,':',feedback_if_chosen)) as wrong_text FROM {quiz_tutorialchoice_answers} WHERE question_nid = :ques_nid AND question_vid = :ques_vid GROUP BY feedback_if_not_chosen ORDER BY score_if_chosen ", array(':ques_nid' => $question_nid, ':ques_vid' => $question_vid));
+   $res = db_query("SELECT feedback_if_not_chosen as group_id,MAX(score_if_chosen) as min_group_score,MIN(feedback_if_chosen) As right_text,MAX(feedback_if_chosen) as wrong_text FROM {quiz_multichoice_answers} WHERE question_nid = :ques_nid AND question_vid = :ques_vid GROUP BY feedback_if_not_chosen ORDER BY score_if_chosen ", array(':ques_nid' => $question_nid, ':ques_vid' => $question_vid));
   //     drupal_set_message("score'" . $score);
   $num_wrong = 0; 
   foreach ($res as $res_o) {
@@ -53,7 +52,7 @@ function display_analysis($quiz_nid, $question_nid, $question_vid, $question_num
   
   // count how many correct answers are on this question
   // if selected all correct answers and no wrong ones, shows the results for each group
-   $res = db_query("SELECT COUNT(*) as num_right FROM {quiz_tutorialchoice_answers} WHERE question_nid = :ques_nid AND question_vid = :ques_vid AND score_if_chosen > 0", array(':ques_nid' => $question_nid, ':ques_vid' => $question_vid));
+   $res = db_query("SELECT COUNT(*) as num_right FROM {quiz_multichoice_answers} WHERE question_nid = :ques_nid AND question_vid = :ques_vid AND score_if_chosen > 0", array(':ques_nid' => $question_nid, ':ques_vid' => $question_vid));
    foreach ($res as $res_o) {
         $num_pos_right = $res_o-> num_right;
    }
@@ -75,7 +74,7 @@ function display_correct_results($question_nid, $question_vid) {
     drupal_set_message(t('Very good! You selected all the correct answers:'));
     
     // get each correct group verbiage and display it
-   $res = db_query("SELECT DISTINCT feedback_if_chosen as right_text FROM {quiz_tutorialchoice_answers} WHERE question_nid = :ques_nid AND question_vid = :ques_vid AND score_if_chosen > 0", array(':ques_nid' => $question_nid, ':ques_vid' => $question_vid));
+   $res = db_query("SELECT DISTINCT feedback_if_chosen as right_text FROM {quiz_multichoice_answers} WHERE question_nid = :ques_nid AND question_vid = :ques_vid AND score_if_chosen > 0", array(':ques_nid' => $question_nid, ':ques_vid' => $question_vid));
    foreach ($res as $res_o) {
         drupal_set_message(t(substr($res_o-> right_text,2)));
    }
@@ -716,7 +715,7 @@ function quiz_form_alter(&$form, $form_state, $form_id) {
   
    // test and dump certain tracing values
    //drupal_set_message(t('Form ID' . $form_id));
-   //if ($form_id=='tutorialchoice_node_form') {
+   //if ($form_id=='multichoice_node_form') {
 		// change label
 		//drupal_set_message(t('There are ' . count($form['alternatives']) . ' elements'));
 		//$num_alts = count($form['alternatives']) - 11;
@@ -2058,7 +2057,6 @@ function quiz_take_quiz($quiz) {
     $result = module_invoke($module, 'evaluate_question', $former_question, $_SESSION['quiz_' . $quiz->nid]['result_id']);
     $q_passed_validation = $result->is_valid;
     $check_jump = TRUE;
-    dpm($result);
     if ($q_passed_validation === TRUE) {
       quiz_store_question_result($quiz, $result, array('set_msg' => TRUE, 'question_data' => $former_question_array));
     }
@@ -2445,15 +2443,12 @@ function quiz_store_question_result($quiz, $result, $options) {
                ", array(':nid' => $result->nid, ':vid' => $result->vid, ':vid' => $quiz->vid, ':tid' => $result->tid))->fetchField();
   }
   $points = round($result->score * $scale);
-  if ($points<0) $points=0;
-  if ($points>1) $points=1;
   // Insert result data, or update existing data.
   $rid_count = db_query("SELECT COUNT('result_id') AS count
               FROM {quiz_node_results_answers}
               WHERE question_nid = :question_nid
               AND question_vid = :question_vid
               AND result_id = :result_id", array(':question_nid' => $result->nid, ':question_vid' => $result->vid, ':result_id' => $result->rid))->fetchField();
-  dpm($result);
   if ($rid_count > 0) {
     $update = db_update('quiz_node_results_answers')
       ->fields(array(
@@ -3659,7 +3654,7 @@ function _quiz_get_question_types() {
   // Get question types from the modules that defines them..
   $quiz_questions = module_invoke_all('quiz_question_info');
   if (empty($quiz_questions)) {
-    drupal_set_message(t('You need to install and enable at least one question type(tutorialchoice for instance) to use quiz.'), 'warning', FALSE);
+    drupal_set_message(t('You need to install and enable at least one question type(multichoice for instance) to use quiz.'), 'warning', FALSE);
     return array();
   }
 

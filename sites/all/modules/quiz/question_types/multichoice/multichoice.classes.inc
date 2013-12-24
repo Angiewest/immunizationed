@@ -204,6 +204,7 @@ class MultichoiceQuestion extends QuizQuestion {
    *  The alternative index
    */
   private function insertAlternative($i) {
+    // jkm 8/31/13 force default value for fileds no longer used ($alternatives['score_if_not_chosen'])
     $alternatives = $this->node->alternatives[$i];
     db_insert('quiz_multichoice_answers')
       ->fields(array(
@@ -211,8 +212,10 @@ class MultichoiceQuestion extends QuizQuestion {
         'answer_format' => $alternatives['answer']['format'],
         'feedback_if_chosen' => $alternatives['feedback_if_chosen']['value'],
         'feedback_if_chosen_format' => $alternatives['feedback_if_chosen']['format'],
-        'feedback_if_not_chosen' => $alternatives['feedback_if_not_chosen']['value'],
-        'feedback_if_not_chosen_format' => $alternatives['feedback_if_not_chosen']['format'],
+        //'feedback_if_not_chosen' => $alternatives['feedback_if_not_chosen']['value'],
+        'feedback_if_not_chosen' => "No feedback chosen",		
+        //'feedback_if_not_chosen_format' => $alternatives['feedback_if_not_chosen']['format'],
+        'feedback_if_not_chosen_format' => "feedback_if_not_chosen",		
         'score_if_chosen' => $alternatives['score_if_chosen'],
         'score_if_not_chosen' => $alternatives['score_if_not_chosen'],
         'question_nid' => $this->node->nid,
@@ -256,6 +259,7 @@ class MultichoiceQuestion extends QuizQuestion {
       $found_one_correct = FALSE;
       for ($i = 0; (isset($this->node->alternatives[$i]) && is_array($this->node->alternatives[$i])); $i++) {
         $short = $this->node->alternatives[$i];
+			
         if (drupal_strlen($this->checkMarkup($i, 'answer')) < 1) {
           continue;
         }
@@ -278,6 +282,29 @@ class MultichoiceQuestion extends QuizQuestion {
         if (strlen($this->checkMarkup($i, 'answer')) < 1) {
           continue;
         }
+		
+
+		
+        // check custom field to see if right or wrong
+		if ($short['correct'] == 1) {
+				drupal_set_message(t('right answer...'));
+			$ans_right = TRUE;
+		} else {
+				drupal_set_message(t('wrong answer...'));		
+			$ans_right = FALSE;		
+		}
+		
+		// jkm 8/19/13 set score to neg value if answer is wrong (so right answers are always worth more than wrong) 
+		if ($ans_right) $short['score_if_chosen']  = -(pow(2, $i));
+		drupal_set_message($short['score_if_chosen']);	
+		
+		// check if tagged as right or wrong and prefix feedback ith R: or W:	
+        if ($ans_right) {
+				$short['feedback_if_chosen'] = "R: " . $short['feedback_if_chosen'];
+		} else {
+				$short['feedback_if_chosen'] = "W: " . $short['feedback_if_chosen'];		
+		}
+			
         if ($short['score_if_chosen'] < $short['score_if_not_chosen'] && $short['correct']) {
           form_set_error("alternatives][$i][score_if_not_chosen", t('The alternative is marked as correct, but gives more points if you don\'t select it.'));
         }
@@ -449,6 +476,39 @@ class MultichoiceQuestion extends QuizQuestion {
   }
 
   /**
+   * form to loopup available groups
+   *
+   */
+   
+function get_group_terms() {  
+    // get the vid value from vocabulary_node_types file
+    //$result = db_query("SELECT * FROM vocabulary_node_types WHERE type = 'my_type' ");  
+    //$node = db_fetch_object($result) ;
+    //$vid = $node->vid ; 
+
+    // get corresponding term names from term_data file
+    //$items = array();
+    //$terms = taxonomy_get_tree($vid);
+    //foreach ( $terms as $term ) {
+    //    $count = taxonomy_term_count_nodes($term->tid);
+    //    if ($count) {       
+    //        $items[$term->tid] = $term->name;
+    //    }
+    //} 
+	
+	  // setup the array of radio buttons
+ $items = array(
+    0 => "Group 1",
+    1 => "Group 2",
+    2 => "Group 3",
+    3 => "Group 4",
+    4 => "Group 5"
+  );
+  
+	return $items;
+}
+	
+  /**
    * Implementation of getCreationForm
    *
    * @see QuizQuestion#getCreationForm()
@@ -565,14 +625,17 @@ class MultichoiceQuestion extends QuizQuestion {
         '#value' => $short['id'],
       );
 
+	  // jkm 8/20/13 change to just text field
+	  
       $form['alternatives'][$i]['answer'] = array(
-        '#type' => 'text_format',
-        '#base_type' => 'textarea',
+        //'#type' => 'text_format',
+		'#type' => 'textfield',
+        //'#base_type' => 'textarea',
         '#title' => t('Alternative !i', array('!i' => ($i + 1))),
         '#default_value' => $short['answer'],
         '#required' => $i < 2,
-        '#format' => isset($short['answer_format']) ? $short['answer_format'] : NULL,
-        '#rows' => 3,
+        //'#format' => isset($short['answer_format']) ? $short['answer_format'] : NULL,
+       // '#rows' => 3,
       );
 
       $form['alternatives'][$i]['advanced'] = array(
@@ -581,10 +644,53 @@ class MultichoiceQuestion extends QuizQuestion {
         '#collapsible' => TRUE,
         '#collapsed' => TRUE,
       );
+	  
+	  // jkm 8/19/13  Add a new field to hold if right or wrong answer
+	   $form['alternatives'][$i]['advanced']['score_if_chosen'] = array(
+		"#type" => "select", 
+		"#title" => t("Indicate whether this is a correct answer or a wrong answer."), 
+		//"#default_value" => variable_get("plugin_select", "plugin1"),
+		"#options" => array(
+		"9999" => t("Answer is correct"),
+		"-1" => t("Answer is wrong"), 
+		),
+        '#attributes' => array(
+          'onkeypress' => 'Multichoice.refreshCorrect(this)',
+          'onkeyup' => 'Multichoice.refreshCorrect(this)',
+          'onchange' => 'Multichoice.refreshCorrect(this)'
+        ),
+        '#parents' => array('alternatives', $i, 'score_if_chosen')		
+		//"#description" => t("Select plugin."),
+		);
+	  
+	  // jkm this field is hidden since now calculated. First we need to figure out if this is a right answer (alwsys 9999) or if it is a wrong answer (calc score from alternative number)
+	  // we don't know if the question is right or wrong at this point, so we assume it is wrong and double check later when the form is submitted
+	  
+	  // this field drives the built in right/wrong indicator so we use it to set the score. pos = right, neg = wrong
+	  
+	  //$calc_score = -(pow(2, $i));   //populate as if it was a wrong answer
+	  
+     /* $form['alternatives'][$i]['advanced']['score_if_chosen'] = array(
+        '#type' => 'textfield',
+		//'#access' => FALSE, // jkm  hide field		
+		//  jkm 6/13/13 Added custom message
+        '#title' => t('Score if chosen (9999 if correct, -1,-2,-4,-8,-16,etc if wrong)'),
+        '#size' => 4,
+        '#maxlength' => 4,
+        '#default_value' => $calc_score, // jkm use calc score isntead
+        '#description' => t('This score is added to the users total score if the user chooses this alternative.'),
+        '#attributes' => array(
+          'onkeypress' => 'Multichoice.refreshCorrect(this)',
+          'onkeyup' => 'Multichoice.refreshCorrect(this)',
+          'onchange' => 'Multichoice.refreshCorrect(this)'
+        ),
+        '#parents' => array('alternatives', $i, 'score_if_chosen')
+      ); */
+	  
       $form['alternatives'][$i]['advanced']['feedback_if_chosen'] = array(
         '#type' => 'text_format',
         '#base_type' => 'textarea',
-        '#title' => t('Feedback if chosen'),
+        '#title' => t('Feedback if chosen (make it positive is this is a correct answer, or corrective if this is a wrong answer)'),
         '#description' => t('This feedback is given to users who chooses this alternative.'),
         '#parents' => array('alternatives', $i, 'feedback_if_chosen'),
         '#default_value' => $short['feedback_if_chosen'],
@@ -593,42 +699,57 @@ class MultichoiceQuestion extends QuizQuestion {
       );
       // We add 'helper' to trick the current version of the wysiwyg module to add an editor to several
       // textareas in the same fieldset
+	  
+	  // jkm 8/19/13 turn this into a drop down driven by the taxonomy of groups
+	  
+	  /*
+	      '#type' => 'select',
+    '#title' => t('Choose a value'),
+    '#id' => 'limiter', 
+    '#options' => get_group_terms(),
+	*/
       $form['alternatives'][$i]['advanced']['helper']['feedback_if_not_chosen'] = array(
-        '#type' => 'text_format',
+        //'#type' => 'text_format',
+		"#type" => "select", 
         '#base_type' => 'textarea',
-        '#title' => t('Feedback if not chosen'),
-        '#description' => t('This feedback is given to users who doesn\'t choose this alternative.'),
-        '#parents' => array('alternatives', $i, 'feedback_if_not_chosen'),
+        '#title' => t('Group ID'),
+        '#description' => t('Select the group this answer belongs to'),
+        //'#parents' => array('alternatives', $i, 'feedback_if_not_chosen'),
         '#default_value' => $short['feedback_if_not_chosen'],
-        '#format' => isset($short['feedback_if_not_chosen_format']) ? $short['feedback_if_not_chosen_format'] : NULL,
-        '#rows' => 3,
+        //'#format' => isset($short['feedback_if_not_chosen_format']) ? $short['feedback_if_not_chosen_format'] : NULL,
+        //'#rows' => 3,
+		"#options" => array(
+		"100" => t("PORT"),
+		"101" => t("ISDA"),
+		"102" => t("ISDA_CAP"),
+		"103" => t("INTRODUCTION"),
+		"104" => t("SYMPTOMS"),
+		"105" => t("HISTORY"),
+		"106" => t("VITAL_SIGNS"),
+		"107" => t("PHYSICAL_EXAMINATION"),
+		"108" => t("X_RAY"),
+		"109" => t("BACTERIA"),
+		"110" => t("SHOTS"),
+		"111" => t("EPI"),
+		"112" => t("COMMUNITY_GUIDE"),
+		"113" => t("SOP"),
+		"114" => t("BIBLIOGRAPHY"),
+		)
       );
       $default_value = isset($this->node->alternatives[$i]['score_if_chosen']) ? $this->node->alternatives[$i]['score_if_chosen'] : 0;
-      $form['alternatives'][$i]['advanced']['score_if_chosen'] = array(
-        '#type' => 'textfield',
-        '#title' => t('Score if chosen'),
-        '#size' => 4,
-        '#maxlength' => 4,
-        '#default_value' => $default_value,
-        '#description' => t('This score is added to the users total score if the user chooses this alternative.'),
-        '#attributes' => array(
-          'onkeypress' => 'Multichoice.refreshCorrect(this)',
-          'onkeyup' => 'Multichoice.refreshCorrect(this)',
-          'onchange' => 'Multichoice.refreshCorrect(this)'
-        ),
-        '#parents' => array('alternatives', $i, 'score_if_chosen')
-      );
-
+	  
       $default_value = $short['score_if_not_chosen'];
       if (!isset($default_value)) {
         $default_value = '0';
       }
+	  // jkm 8/19/13   this field is not used, so we set the field as hidden and leave it blank
       $form['alternatives'][$i]['advanced']['score_if_not_chosen'] = array(
         '#type' => 'textfield',
-        '#title' => t('Score if not chosen'),
+		'#access' => FALSE, // jkm  hide field
+        '#title' => t('Field not used - set to 0'),
         '#size' => 4,
         '#maxlength' => 4,
-        '#default_value' => $default_value,
+        '#default_value' => 0,  // set to 0 instead of default value
         '#description' => t('This score is added to the users total score if the user doesn\'t choose this alternative. Only used if multiple answers are allowed.'),
         '#attributes' => array(
           'onkeypress' => 'Multichoice.refreshCorrect(this)',
@@ -638,6 +759,7 @@ class MultichoiceQuestion extends QuizQuestion {
         '#parents' => array('alternatives', $i, 'score_if_not_chosen')
       );
     }
+	
     // ahah helper tag. New questions will be inserted before this tag
     $form['alternatives']["placeholder"] = array(
       '#markup' => '<div id="placeholder"></div>',

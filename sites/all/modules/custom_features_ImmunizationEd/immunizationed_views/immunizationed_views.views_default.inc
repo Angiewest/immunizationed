@@ -2438,8 +2438,10 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
+    'nuts_bolts' => 'nuts_bolts',
     'required_disclosure' => 'required_disclosure',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Content: Has taxonomy term */
   $handler->display->display_options['filters']['tid']['id'] = 'tid';
   $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
@@ -2447,6 +2449,22 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['filters']['tid']['value'] = array(
     0 => '8',
   );
+  $handler->display->display_options['filters']['tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['tid']['expose']['operator_id'] = 'tid_op';
+  $handler->display->display_options['filters']['tid']['expose']['label'] = 'Has taxonomy term';
+  $handler->display->display_options['filters']['tid']['expose']['operator'] = 'tid_op';
+  $handler->display->display_options['filters']['tid']['expose']['identifier'] = 'tid';
+  $handler->display->display_options['filters']['tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    4 => 0,
+    8 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['tid']['type'] = 'select';
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'certification_entities';
 
   /* Display: Content pane */
@@ -3411,14 +3429,12 @@ function immunizationed_views_views_default_views() {
   $handler->display->display_options['filters']['title_4']['field'] = 'title';
   $handler->display->display_options['filters']['title_4']['operator'] = '!=';
   $handler->display->display_options['filters']['title_4']['value'] = 'Review your vaccine inventory process';
-
   /* Filter criterion: Content: Title */
   $handler->display->display_options['filters']['title_5']['id'] = 'title_5';
   $handler->display->display_options['filters']['title_5']['table'] = 'node';
   $handler->display->display_options['filters']['title_5']['field'] = 'title';
   $handler->display->display_options['filters']['title_5']['operator'] = '!=';
   $handler->display->display_options['filters']['title_5']['value'] = 'Hold 2nd monthly meeting with members of the Toolkit Team and/or staff';
-
   $export['practice_task_content'] = $view;
 
   $view = new view();
