@@ -234,3 +234,4 @@ sites/*/files
 sites/*/private
 
 */web.config
+workspace.xml
