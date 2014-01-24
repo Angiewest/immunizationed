@@ -13,6 +13,20 @@ function immunizationed_core_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'admin_menu_components';
+  $strongarm->value = array(
+    'admin_menu.icon' => TRUE,
+    'admin_menu.menu' => TRUE,
+    'admin_menu.users' => TRUE,
+    'shortcut.links' => TRUE,
+    'admin_menu.search' => FALSE,
+    'admin_menu.account' => FALSE,
+  );
+  $export['admin_menu_components'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'admin_menu_margin_top';
   $strongarm->value = 1;
   $export['admin_menu_margin_top'] = $strongarm;
@@ -51,13 +65,6 @@ function immunizationed_core_strongarm() {
   $strongarm->name = 'admin_theme';
   $strongarm->value = 'seven';
   $export['admin_theme'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'advanced__active_tab';
-  $strongarm->value = 'edit-plugins';
-  $export['advanced__active_tab'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

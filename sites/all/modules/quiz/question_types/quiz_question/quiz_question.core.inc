@@ -97,11 +97,11 @@ abstract class QuizQuestion {
       $form['helper']['#theme'] = 'quiz_question_creation_form';
       $form['title'] = array(
         '#type' => 'textfield',
-        '#title' => t('Title'),
+        '#title' => t('Administrative Title'), // jkm 9/9/13
         '#maxlength' => 255,
         '#default_value' => $this->node->title,
         '#required' => FALSE,
-        '#description' => t('Add a title that will help distinguish this question from other questions. This will not be seen during the quiz.'),
+        '#description' => t('Add a title that will help distinguish this question from other questions in quiz reports. This will not be seen during the quiz.'),  // jkm
       );
     }
     else {
@@ -197,7 +197,7 @@ abstract class QuizQuestion {
         // Suplementing with other available quizzes...
         $found = implode(', ', array_merge($already_nids, $latest_nids));
         $sql = "SELECT n.nid, n.vid, title, changed FROM {node} n
-        		JOIN {quiz_node_properties} qnp ON qnp.vid = n.vid
+            JOIN {quiz_node_properties} qnp ON qnp.vid = n.vid
                 WHERE type = 'quiz' AND qnp.randomization < 3";
         if (drupal_strlen($found) > 0) {
           $sql .= " AND n.nid NOT IN ($found)";
@@ -253,7 +253,8 @@ abstract class QuizQuestion {
       if (count($latest) > 0) {
         $form['add_directly']['latest'] = array(
           '#type' => 'checkboxes',
-          '#title' => t('The @latest latest @quiz nodes this question isn\'t a member of', array('@latest' => count($latest), '@quiz' => QUIZ_NAME)),
+         // jkm 9/9/13  '#title' => t('The @latest latest @quiz nodes this question isn\'t a member of', array('@latest' => count($latest), '@quiz' => QUIZ_NAME)),
+          '#title' => t('Assign this question to a quiz', array('@latest' => count($latest), '@quiz' => QUIZ_NAME)),		  
           '#description' => t('If you check any of the checkboxes this question will be added to the corresponding @quiz. If the @quiz has been answered a new revision will be created automatically.', array('@quiz' => QUIZ_NAME)),
           '#options' => $latest,
           '#default_value' => $latest_default,
@@ -310,9 +311,6 @@ abstract class QuizQuestion {
     if (isset($this->nodeProperties)) {
       return $this->nodeProperties;
     }
-    $sql = 'SELECT max_score
-            FROM {quiz_question_properties}
-            WHERE nid = %d AND vid = %d';
     $props['max_score'] = db_query('SELECT max_score
             FROM {quiz_question_properties}
             WHERE nid = :nid AND vid = :vid', array(':nid' => $this->node->nid, ':vid' => $this->node->vid))->fetchField();
@@ -344,21 +342,19 @@ abstract class QuizQuestion {
     // We call the abstract function saveNodeProperties to save type specific data
     $this->saveNodeProperties($is_new);
 
-    $is_new_node = $is_new || $this->node->revision == 1;
+    db_merge('quiz_question_properties')
+      ->key(array(
+        'nid' => $this->node->nid,
+        'vid' => $this->node->vid,
+      ))
+      ->fields(array(
+        'nid' => $this->node->nid,
+        'vid' => $this->node->vid,
+        'max_score' => $this->getMaximumScore(),
+      ))
+      ->execute();
 
-    // Save general data
-    if ($is_new_node) {
-      db_query('INSERT INTO {quiz_question_properties} (nid, vid, max_score) VALUES(:nid, :vid, :max_score)', array(':nid' => $this->node->nid, ':vid' => $this->node->vid, ':max_score' => $this->getMaximumScore()));
-    }
-    else {
-      db_update('quiz_question_properties')
-        ->fields(array(
-          'max_score' => $this->getMaximumScore(),
-        ))
-        ->condition('nid', $this->node->nid)
-        ->condition('vid', $this->node->vid)
-        ->execute();
-    }
+
 
     // Save what quizzes this question belongs to.
     $quizzes_kept = $this->saveRelationships();
@@ -576,17 +572,17 @@ abstract class QuizQuestion {
       ->execute();
       $quizzes_to_update[] = $new_node->vid;
     }
-    
+
     // Update max_score for relationships if auto update max score is enabled
     // for question
     if(isset($this->node->nid)) {
       $result = db_query(
-          'SELECT parent_vid as vid from {quiz_node_relationship} where child_nid = :nid and child_vid = :vid and auto_update_max_score=1', 
-          array(':nid' => $this->node->nid, ':vid' => $this->node->vid));      
+          'SELECT parent_vid as vid from {quiz_node_relationship} where child_nid = :nid and child_vid = :vid and auto_update_max_score=1',
+          array(':nid' => $this->node->nid, ':vid' => $this->node->vid));
       foreach ($result as $record) {
         $quizzes_to_update[] = $record->vid;
       }
-      
+
       db_update('quiz_node_relationship')
         ->fields(array('max_score' => $this->getMaximumScore()))
         ->condition('child_nid', $this->node->nid)
@@ -594,7 +590,7 @@ abstract class QuizQuestion {
         ->condition('auto_update_max_score', 1)
         ->execute();
     }
-    
+
     quiz_update_max_score_properties($quizzes_to_update);
     return $quizzes_kept;
   }
@@ -641,14 +637,15 @@ abstract class QuizQuestion {
    * Utility function that returns the format of the node body
    */
   protected function getFormat() {
-    $body = field_get_items('node', $this->question, 'body');
-    return ($body ? $body[0]['format'] : NULL);
+    $node = isset($this->node) ? $this->node : $this->question;
+    $body = field_get_items('node', $node, 'body');
+    return isset($body[0]['format']) ? $body[0]['format'] : NULL;
   }
-  
+
   /**
    * This may be overridden in subclasses. If it returns true,
-   * it means the max_score is updated for all occurrences of 
-   * this question in quizzes.  
+   * it means the max_score is updated for all occurrences of
+   * this question in quizzes.
    */
   protected function autoUpdateMaxScore() {
     return false;
@@ -880,6 +877,7 @@ abstract class QuizQuestionResponse {
     $form['#is_correct'] = $this->isCorrect();
     $form['#is_evaluated'] = $this->isEvaluated();
     $form['#is_skipped'] = $this->is_skipped;
+    $form['#is_doubtful'] = $this->is_doubtful;
     return $form;
   }
 

@@ -58,8 +58,8 @@ function immunizationed_emr_importer_default_rules_configuration() {
       "TAGS" : [ "import" ],
       "REQUIRES" : [ "rules", "feeds" ],
       "ON" : {
-        "feeds_import_emr_baseline_import" : [],
-        "feeds_import_pitt_progress_emr_importer" : []
+        "feeds_import_emr_baseline_import" : [  ],
+        "feeds_import_pitt_progress_emr_importer" : [  ]
       },
       "IF" : [
         { "component_rules_check_feed_item_for_practice_assignment" : { "unsaved_feed_item" : [ "node" ] } }
@@ -88,59 +88,29 @@ function immunizationed_emr_importer_default_rules_configuration() {
         "unsaved_feed_item" : { "label" : "unsaved feed item", "type" : "node" }
       },
       "IF" : [
-        { "entity_has_field" : {
-            "entity" : [ "unsaved-feed-item" ],
-            "field" : "field_tdap_eligible_estimated_vi"
-          }
-        },
-        { "entity_has_field" : { "entity" : [ "unsaved-feed-item" ], "field" : "field_target_flu_doses" } },
-        { "entity_has_field" : {
-            "entity" : [ "unsaved-feed-item" ],
-            "field" : "field_target_pneumo_doses"
-          }
-        },
-        { "entity_has_field" : {
-            "entity" : [ "unsaved-feed-item" ],
-            "field" : "field_target_tdap_doses"
-          }
-        },
-        { "entity_has_field" : { "entity" : [ "practice-list-item" ], "field" : "field_epic_id" } },
-        { "entity_has_field" : { "entity" : [ "unsaved-feed-item" ], "field" : "field_epic_id" } },
-        { "data_is" : {
-            "data" : [ "practice-list-item:field-epic-id" ],
-            "value" : [ "unsaved-feed-item:field-epic-id" ]
-          }
-        },
-        { "entity_has_field" : { "entity" : [ "unsaved-feed-item" ], "field" : "og_group_ref" } },
-        { "entity_is_of_type" : { "entity" : [ "practice-list-item" ], "type" : "node" } },
         { "entity_is_of_bundle" : {
             "entity" : [ "practice-list-item" ],
             "type" : "node",
             "bundle" : { "value" : { "practice_group" : "practice_group" } }
           }
         },
-        { "entity_has_field" : {
+        { "entity_is_of_bundle" : {
             "entity" : [ "unsaved-feed-item" ],
-            "field" : "field_all_flu_eligible_est_visit"
+            "type" : "node",
+            "bundle" : { "value" : { "vaccination_data_from_emr" : "vaccination_data_from_emr" } }
           }
         },
-        { "entity_has_field" : {
-            "entity" : [ "unsaved-feed-item" ],
-            "field" : "field_pneumo_eligible_est_visits"
+        { "data_is" : {
+            "data" : [ "practice-list-item:field-epic-id" ],
+            "value" : [ "unsaved-feed-item:field-epic-id" ]
           }
-        },
-        { "entity_is_of_type" : { "entity" : [ "practice-list-item" ], "type" : "node" } }
+        }
       ],
       "DO" : [
-        { "entity_fetch" : {
-            "USING" : { "type" : "node", "id" : [ "practice-list-item:nid" ] },
-            "PROVIDE" : { "entity_fetched" : { "entity_fetched" : "Fetched entity" } }
-          }
-        },
         { "data_calc" : {
             "USING" : {
               "input_1" : [ "practice-list-item:field-target-flu-percent" ],
-              "op" : "\\/",
+              "op" : "\\u002F",
               "input_2" : "100"
             },
             "PROVIDE" : { "result" : { "flu_rate_decimal" : "flu rate decimal" } }
@@ -163,7 +133,7 @@ function immunizationed_emr_importer_default_rules_configuration() {
         { "data_calc" : {
             "USING" : {
               "input_1" : [ "practice-list-item:field-target-pneumo-percent" ],
-              "op" : "\\/",
+              "op" : "\\u002F",
               "input_2" : "100"
             },
             "PROVIDE" : { "result" : { "pneumo_target_decimal" : "pneumo target decimal" } }
@@ -172,7 +142,7 @@ function immunizationed_emr_importer_default_rules_configuration() {
         { "data_calc" : {
             "USING" : {
               "input_1" : [ "practice-list-item:field-target-tdap-percent" ],
-              "op" : "\\/",
+              "op" : "\\u002F",
               "input_2" : "100"
             },
             "PROVIDE" : { "result" : { "tdap_target_decimal" : "tdap target decimal" } }

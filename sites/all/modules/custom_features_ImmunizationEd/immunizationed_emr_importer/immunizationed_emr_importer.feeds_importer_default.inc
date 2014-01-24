@@ -402,23 +402,28 @@ function immunizationed_emr_importer_feeds_importer_default() {
             'unique' => FALSE,
           ),
           19 => array(
-            'source' => 'Weekly_tdap_indicated',
-            'target' => 'field_tdap_vaccine_indicated',
-            'unique' => FALSE,
-          ),
-          20 => array(
             'source' => 'weekly_tdap_eligible',
             'target' => 'field_tdap_eligible_estimated_vi',
             'unique' => FALSE,
           ),
-          21 => array(
+          20 => array(
             'source' => 'weekly_pneumo_indicated',
             'target' => 'field_pneumo_vaccine_indicated',
             'unique' => FALSE,
           ),
-          22 => array(
+          21 => array(
             'source' => 'weekly_pneumo_eligible',
             'target' => 'field_pneumo_eligible_est_visits',
+            'unique' => FALSE,
+          ),
+          22 => array(
+            'source' => 'weekly_TDAP_indicated',
+            'target' => 'field_tdap_vaccine_indicated',
+            'unique' => FALSE,
+          ),
+          23 => array(
+            'source' => 'data',
+            'target' => 'field_data_type',
             'unique' => FALSE,
           ),
         ),
