@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ProjectModuleManager">
-    <modules />
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/sites/all/modules/Custom/Custom.iml" filepath="$PROJECT_DIR$/sites/all/modules/Custom/Custom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sites/all/modules/quiz/includes/ajax_quiz/ajax_quiz.iml" filepath="$PROJECT_DIR$/sites/all/modules/quiz/includes/ajax_quiz/ajax_quiz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sites/all/modules/custom_features_ImmunizationEd/custom_features_ImmunizationEd.iml" filepath="$PROJECT_DIR$/sites/all/modules/custom_features_ImmunizationEd/custom_features_ImmunizationEd.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sites/all/modules/quiz/question_types/quiz_ddlines/js/js.iml" filepath="$PROJECT_DIR$/sites/all/modules/quiz/question_types/quiz_ddlines/js/js.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sites/all/modules/quiz/question_types/multichoice/multichoice.iml" filepath="$PROJECT_DIR$/sites/all/modules/quiz/question_types/multichoice/multichoice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sites/all/modules/quiz/question_types/scale/scale.iml" filepath="$PROJECT_DIR$/sites/all/modules/quiz/question_types/scale/scale.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sites/all/modules/quiz/theme/theme.iml" filepath="$PROJECT_DIR$/sites/all/modules/quiz/theme/theme.iml" />
+    </modules>
   </component>
 </project>
 
