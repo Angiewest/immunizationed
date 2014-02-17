@@ -66,7 +66,7 @@ function immunizationed_core_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'energetic',
-        'weight' => 1,
+        'weight' => -4,
       ),
       'seven' => array(
         'region' => 'dashboard_inactive',
@@ -98,7 +98,7 @@ function immunizationed_core_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'energetic',
-        'weight' => -6,
+        'weight' => -12,
       ),
       'seven' => array(
         'region' => '',
@@ -162,7 +162,7 @@ function immunizationed_core_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'energetic',
-        'weight' => 2,
+        'weight' => -3,
       ),
       'seven' => array(
         'region' => 'dashboard_main',
@@ -194,7 +194,7 @@ function immunizationed_core_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'energetic',
-        'weight' => 5,
+        'weight' => 0,
       ),
       'seven' => array(
         'region' => '',
@@ -226,7 +226,7 @@ function immunizationed_core_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'energetic',
-        'weight' => 3,
+        'weight' => -2,
       ),
       'seven' => array(
         'region' => 'dashboard_sidebar',
@@ -258,7 +258,7 @@ function immunizationed_core_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'energetic',
-        'weight' => 3,
+        'weight' => -1,
       ),
       'seven' => array(
         'region' => '',
@@ -290,7 +290,7 @@ function immunizationed_core_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'energetic',
-        'weight' => 6,
+        'weight' => 1,
       ),
       'seven' => array(
         'region' => 'help',
@@ -386,7 +386,7 @@ function immunizationed_core_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'energetic',
-        'weight' => -4,
+        'weight' => -10,
       ),
       'seven' => array(
         'region' => '',
@@ -420,7 +420,7 @@ function immunizationed_core_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'energetic',
-        'weight' => -3,
+        'weight' => -9,
       ),
       'seven' => array(
         'region' => '',
@@ -452,7 +452,7 @@ function immunizationed_core_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'energetic',
-        'weight' => -9,
+        'weight' => -7,
       ),
       'seven' => array(
         'region' => '',
@@ -518,7 +518,7 @@ function immunizationed_core_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'energetic',
-        'weight' => 6,
+        'weight' => 2,
       ),
       'seven' => array(
         'region' => 'content',
@@ -550,7 +550,7 @@ function immunizationed_core_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'energetic',
-        'weight' => 7,
+        'weight' => 5,
       ),
       'seven' => array(
         'region' => 'dashboard_sidebar',
@@ -582,7 +582,7 @@ function immunizationed_core_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'energetic',
-        'weight' => 8,
+        'weight' => 6,
       ),
       'seven' => array(
         'region' => 'dashboard_sidebar',
@@ -614,7 +614,7 @@ function immunizationed_core_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'energetic',
-        'weight' => -14,
+        'weight' => -16,
       ),
       'seven' => array(
         'region' => '',
@@ -646,7 +646,7 @@ function immunizationed_core_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'energetic',
-        'weight' => 0,
+        'weight' => 3,
       ),
       'seven' => array(
         'region' => '',
@@ -678,7 +678,7 @@ function immunizationed_core_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'energetic',
-        'weight' => 7,
+        'weight' => 4,
       ),
       'seven' => array(
         'region' => '',

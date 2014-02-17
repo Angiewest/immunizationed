@@ -191,79 +191,6 @@ function immunizationed_emr_importer_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-vaccination_data_from_emr-field_data'
-  $field_instances['node-vaccination_data_from_emr-field_data'] = array(
-    'bundle' => 'vaccination_data_from_emr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 47,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_data',
-    'label' => 'Data',
-    'required' => FALSE,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 40,
-    ),
-  );
-
-  // Exported field_instance: 'node-vaccination_data_from_emr-field_data_type'
-  $field_instances['node-vaccination_data_from_emr-field_data_type'] = array(
-    'bundle' => 'vaccination_data_from_emr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 48,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_data_type',
-    'label' => 'Data type',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 40,
-    ),
-  );
-
   // Exported field_instance: 'node-vaccination_data_from_emr-field_day_of_month'
   $field_instances['node-vaccination_data_from_emr-field_day_of_month'] = array(
     'bundle' => 'vaccination_data_from_emr',
@@ -1733,8 +1660,6 @@ function immunizationed_emr_importer_field_default_field_instances() {
   t('Aggregation of even week numbers into odd week numbers containing reporting period end date.');
   t('Baseline indicator');
   t('Biweek');
-  t('Data');
-  t('Data type');
   t('Day of month');
   t('Day of year');
   t('Epic ID');
