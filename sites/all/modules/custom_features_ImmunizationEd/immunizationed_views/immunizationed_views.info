@@ -31,6 +31,7 @@ features[views_view][] = clone_of_og_user_groups
 features[views_view][] = comparison_report2
 features[views_view][] = other_additions_to_views
 features[views_view][] = people
+features[views_view][] = pitt_emr_progress_nodes
 features[views_view][] = pitt_required_disclosures_view
 features[views_view][] = practice_announcements_content
 features[views_view][] = practice_selected_strategies

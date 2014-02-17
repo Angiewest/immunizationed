@@ -2393,6 +2393,799 @@ function immunizationed_views_views_default_views() {
   $export['people'] = $view;
 
   $view = new view();
+  $view->name = 'pitt_emr_progress_nodes';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Pitt EMR Progress Nodes';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Pitt EMR Progress Nodes';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'administer permissions';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '50';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_practice',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'views_bulk_operations' => 'views_bulk_operations',
+    'field_baseline_indicator' => 'field_baseline_indicator',
+    'field_biweek_number' => 'field_biweek_number',
+    'field_epic_id' => 'field_epic_id',
+    'field_all_flu_eligible_est_visit' => 'field_all_flu_eligible_est_visit',
+    'field_flu_vaccine_indicated_' => 'field_flu_vaccine_indicated_',
+    'field_influenza' => 'field_influenza',
+    'field_month' => 'field_month',
+    'field_pneumo' => 'field_pneumo',
+    'field_pneumo_eligible_est_visits' => 'field_pneumo_eligible_est_visits',
+    'field_pneumo_vaccine_indicated' => 'field_pneumo_vaccine_indicated',
+    'field_practice' => 'field_practice',
+    'field_quarter' => 'field_quarter',
+    'field_report_id' => 'field_report_id',
+    'field_reporting_period' => 'field_reporting_period',
+    'field_reporting_period_start_biw' => 'field_reporting_period_start_biw',
+    'field_target_flu_doses' => 'field_target_flu_doses',
+    'field_target_pneumo_doses' => 'field_target_pneumo_doses',
+    'field_target_tdap_doses' => 'field_target_tdap_doses',
+    'field_tdap' => 'field_tdap',
+    'field_tdap_eligible_estimated_vi' => 'field_tdap_eligible_estimated_vi',
+    'field_tdap_vaccine_indicated' => 'field_tdap_vaccine_indicated',
+    'field_visit_date' => 'field_visit_date',
+    'field_visits' => 'field_visits',
+    'field_week' => 'field_week',
+    'field_year' => 'field_year',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'views_bulk_operations' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_baseline_indicator' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_biweek_number' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_epic_id' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_all_flu_eligible_est_visit' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_flu_vaccine_indicated_' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_influenza' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_month' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_pneumo' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_pneumo_eligible_est_visits' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_pneumo_vaccine_indicated' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_practice' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_quarter' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_report_id' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_reporting_period' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_reporting_period_start_biw' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_target_flu_doses' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_target_pneumo_doses' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_target_tdap_doses' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_tdap' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_tdap_eligible_estimated_vi' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_tdap_vaccine_indicated' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_visit_date' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_visits' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_week' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_year' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  /* Relationship: OG membership: OG membership from Node */
+  $handler->display->display_options['relationships']['og_membership_rel']['id'] = 'og_membership_rel';
+  $handler->display->display_options['relationships']['og_membership_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['og_membership_rel']['field'] = 'og_membership_rel';
+  /* Relationship: OG membership: User from OG membership */
+  $handler->display->display_options['relationships']['og_membership_related_user']['id'] = 'og_membership_related_user';
+  $handler->display->display_options['relationships']['og_membership_related_user']['table'] = 'og_membership';
+  $handler->display->display_options['relationships']['og_membership_related_user']['field'] = 'og_membership_related_user';
+  $handler->display->display_options['relationships']['og_membership_related_user']['relationship'] = 'og_membership_rel';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Bulk operations: Content */
+  $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
+  $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '0';
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['force_single'] = 0;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['entity_load_capacity'] = '10';
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_operations'] = array(
+    'rules_component::rules_add_site_permissions_to_practice_creator' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'rules_component::rules_assign_practice_to_emr_import_record' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::node_assign_owner_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'rules_component::rules_create_tasks_from_assembly_instructions' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::views_bulk_operations_delete_item' => array(
+      'selected' => 1,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::views_bulk_operations_script_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'rules_component::immunizationed_emr_importer_fetch_practice_nodes_from_list' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'rules_component::rules_check_instruction_fields' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'rules_component::rules_loop_through_list_of_practices' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::node_make_sticky_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::node_make_unsticky_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::views_bulk_operations_modify_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+      'settings' => array(
+        'show_all_tokens' => 1,
+        'display_values' => array(
+          '_all_' => '_all_',
+        ),
+      ),
+    ),
+    'action::views_bulk_operations_argument_selector_action' => array(
+      'selected' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+      'settings' => array(
+        'url' => '',
+      ),
+    ),
+    'action::node_promote_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::node_publish_action' => array(
+      'selected' => 1,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::node_unpromote_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::node_save_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::system_send_email_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'rules_component::rules_send_email_when_practice_is_created' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::mimemail_send_email_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'rules_component::rules_send_task_email' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::panelizer_set_status_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'rules_component::rules_skip_import_of_empty_feed_items' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::node_unpublish_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::node_unpublish_by_keyword_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'rules_component::rules_unpublish_old_strategy' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::auto_entitylabel_entity_update_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::pathauto_node_update_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+  );
+  /* Field: Content: Baseline indicator */
+  $handler->display->display_options['fields']['field_baseline_indicator']['id'] = 'field_baseline_indicator';
+  $handler->display->display_options['fields']['field_baseline_indicator']['table'] = 'field_data_field_baseline_indicator';
+  $handler->display->display_options['fields']['field_baseline_indicator']['field'] = 'field_baseline_indicator';
+  $handler->display->display_options['fields']['field_baseline_indicator']['label'] = 'Baseline';
+  /* Field: Content: Biweek */
+  $handler->display->display_options['fields']['field_biweek_number']['id'] = 'field_biweek_number';
+  $handler->display->display_options['fields']['field_biweek_number']['table'] = 'field_data_field_biweek_number';
+  $handler->display->display_options['fields']['field_biweek_number']['field'] = 'field_biweek_number';
+  $handler->display->display_options['fields']['field_biweek_number']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Epic ID */
+  $handler->display->display_options['fields']['field_epic_id']['id'] = 'field_epic_id';
+  $handler->display->display_options['fields']['field_epic_id']['table'] = 'field_data_field_epic_id';
+  $handler->display->display_options['fields']['field_epic_id']['field'] = 'field_epic_id';
+  $handler->display->display_options['fields']['field_epic_id']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Flu eligible visits */
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['id'] = 'field_all_flu_eligible_est_visit';
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['table'] = 'field_data_field_all_flu_eligible_est_visit';
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['field'] = 'field_all_flu_eligible_est_visit';
+  $handler->display->display_options['fields']['field_all_flu_eligible_est_visit']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Flu vaccine indicated  */
+  $handler->display->display_options['fields']['field_flu_vaccine_indicated_']['id'] = 'field_flu_vaccine_indicated_';
+  $handler->display->display_options['fields']['field_flu_vaccine_indicated_']['table'] = 'field_data_field_flu_vaccine_indicated_';
+  $handler->display->display_options['fields']['field_flu_vaccine_indicated_']['field'] = 'field_flu_vaccine_indicated_';
+  $handler->display->display_options['fields']['field_flu_vaccine_indicated_']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Influenza */
+  $handler->display->display_options['fields']['field_influenza']['id'] = 'field_influenza';
+  $handler->display->display_options['fields']['field_influenza']['table'] = 'field_data_field_influenza';
+  $handler->display->display_options['fields']['field_influenza']['field'] = 'field_influenza';
+  $handler->display->display_options['fields']['field_influenza']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Month */
+  $handler->display->display_options['fields']['field_month']['id'] = 'field_month';
+  $handler->display->display_options['fields']['field_month']['table'] = 'field_data_field_month';
+  $handler->display->display_options['fields']['field_month']['field'] = 'field_month';
+  $handler->display->display_options['fields']['field_month']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Pneumo */
+  $handler->display->display_options['fields']['field_pneumo']['id'] = 'field_pneumo';
+  $handler->display->display_options['fields']['field_pneumo']['table'] = 'field_data_field_pneumo';
+  $handler->display->display_options['fields']['field_pneumo']['field'] = 'field_pneumo';
+  $handler->display->display_options['fields']['field_pneumo']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Pneumo eligible estimated visits */
+  $handler->display->display_options['fields']['field_pneumo_eligible_est_visits']['id'] = 'field_pneumo_eligible_est_visits';
+  $handler->display->display_options['fields']['field_pneumo_eligible_est_visits']['table'] = 'field_data_field_pneumo_eligible_est_visits';
+  $handler->display->display_options['fields']['field_pneumo_eligible_est_visits']['field'] = 'field_pneumo_eligible_est_visits';
+  $handler->display->display_options['fields']['field_pneumo_eligible_est_visits']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Pneumo vaccine indicated */
+  $handler->display->display_options['fields']['field_pneumo_vaccine_indicated']['id'] = 'field_pneumo_vaccine_indicated';
+  $handler->display->display_options['fields']['field_pneumo_vaccine_indicated']['table'] = 'field_data_field_pneumo_vaccine_indicated';
+  $handler->display->display_options['fields']['field_pneumo_vaccine_indicated']['field'] = 'field_pneumo_vaccine_indicated';
+  $handler->display->display_options['fields']['field_pneumo_vaccine_indicated']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Practice */
+  $handler->display->display_options['fields']['field_practice']['id'] = 'field_practice';
+  $handler->display->display_options['fields']['field_practice']['table'] = 'field_data_field_practice';
+  $handler->display->display_options['fields']['field_practice']['field'] = 'field_practice';
+  $handler->display->display_options['fields']['field_practice']['relationship'] = 'og_membership_related_node';
+  /* Field: Content: Quarter */
+  $handler->display->display_options['fields']['field_quarter']['id'] = 'field_quarter';
+  $handler->display->display_options['fields']['field_quarter']['table'] = 'field_data_field_quarter';
+  $handler->display->display_options['fields']['field_quarter']['field'] = 'field_quarter';
+  $handler->display->display_options['fields']['field_quarter']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Report ID */
+  $handler->display->display_options['fields']['field_report_id']['id'] = 'field_report_id';
+  $handler->display->display_options['fields']['field_report_id']['table'] = 'field_data_field_report_id';
+  $handler->display->display_options['fields']['field_report_id']['field'] = 'field_report_id';
+  /* Field: Content: Reporting period */
+  $handler->display->display_options['fields']['field_reporting_period']['id'] = 'field_reporting_period';
+  $handler->display->display_options['fields']['field_reporting_period']['table'] = 'field_data_field_reporting_period';
+  $handler->display->display_options['fields']['field_reporting_period']['field'] = 'field_reporting_period';
+  $handler->display->display_options['fields']['field_reporting_period']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'value',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: Content: Reporting period start biweekly */
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['id'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['table'] = 'field_data_field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['field'] = 'field_reporting_period_start_biw';
+  $handler->display->display_options['fields']['field_reporting_period_start_biw']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: Content: Target influenza doses */
+  $handler->display->display_options['fields']['field_target_flu_doses']['id'] = 'field_target_flu_doses';
+  $handler->display->display_options['fields']['field_target_flu_doses']['table'] = 'field_data_field_target_flu_doses';
+  $handler->display->display_options['fields']['field_target_flu_doses']['field'] = 'field_target_flu_doses';
+  $handler->display->display_options['fields']['field_target_flu_doses']['settings'] = array(
+    'thousand_separator' => '',
+    'decimal_separator' => '.',
+    'scale' => '2',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Target pneumo doses */
+  $handler->display->display_options['fields']['field_target_pneumo_doses']['id'] = 'field_target_pneumo_doses';
+  $handler->display->display_options['fields']['field_target_pneumo_doses']['table'] = 'field_data_field_target_pneumo_doses';
+  $handler->display->display_options['fields']['field_target_pneumo_doses']['field'] = 'field_target_pneumo_doses';
+  $handler->display->display_options['fields']['field_target_pneumo_doses']['settings'] = array(
+    'thousand_separator' => '',
+    'decimal_separator' => '.',
+    'scale' => '2',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Target TDAP doses */
+  $handler->display->display_options['fields']['field_target_tdap_doses']['id'] = 'field_target_tdap_doses';
+  $handler->display->display_options['fields']['field_target_tdap_doses']['table'] = 'field_data_field_target_tdap_doses';
+  $handler->display->display_options['fields']['field_target_tdap_doses']['field'] = 'field_target_tdap_doses';
+  $handler->display->display_options['fields']['field_target_tdap_doses']['settings'] = array(
+    'thousand_separator' => '',
+    'decimal_separator' => '.',
+    'scale' => '2',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: TDAP */
+  $handler->display->display_options['fields']['field_tdap']['id'] = 'field_tdap';
+  $handler->display->display_options['fields']['field_tdap']['table'] = 'field_data_field_tdap';
+  $handler->display->display_options['fields']['field_tdap']['field'] = 'field_tdap';
+  $handler->display->display_options['fields']['field_tdap']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: TDAP eligible estimated visits */
+  $handler->display->display_options['fields']['field_tdap_eligible_estimated_vi']['id'] = 'field_tdap_eligible_estimated_vi';
+  $handler->display->display_options['fields']['field_tdap_eligible_estimated_vi']['table'] = 'field_data_field_tdap_eligible_estimated_vi';
+  $handler->display->display_options['fields']['field_tdap_eligible_estimated_vi']['field'] = 'field_tdap_eligible_estimated_vi';
+  $handler->display->display_options['fields']['field_tdap_eligible_estimated_vi']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: TDAP vaccine indicated */
+  $handler->display->display_options['fields']['field_tdap_vaccine_indicated']['id'] = 'field_tdap_vaccine_indicated';
+  $handler->display->display_options['fields']['field_tdap_vaccine_indicated']['table'] = 'field_data_field_tdap_vaccine_indicated';
+  $handler->display->display_options['fields']['field_tdap_vaccine_indicated']['field'] = 'field_tdap_vaccine_indicated';
+  $handler->display->display_options['fields']['field_tdap_vaccine_indicated']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Visit date */
+  $handler->display->display_options['fields']['field_visit_date']['id'] = 'field_visit_date';
+  $handler->display->display_options['fields']['field_visit_date']['table'] = 'field_data_field_visit_date';
+  $handler->display->display_options['fields']['field_visit_date']['field'] = 'field_visit_date';
+  $handler->display->display_options['fields']['field_visit_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: Content: Visits */
+  $handler->display->display_options['fields']['field_visits']['id'] = 'field_visits';
+  $handler->display->display_options['fields']['field_visits']['table'] = 'field_data_field_visits';
+  $handler->display->display_options['fields']['field_visits']['field'] = 'field_visits';
+  $handler->display->display_options['fields']['field_visits']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Week */
+  $handler->display->display_options['fields']['field_week']['id'] = 'field_week';
+  $handler->display->display_options['fields']['field_week']['table'] = 'field_data_field_week';
+  $handler->display->display_options['fields']['field_week']['field'] = 'field_week';
+  $handler->display->display_options['fields']['field_week']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Year */
+  $handler->display->display_options['fields']['field_year']['id'] = 'field_year';
+  $handler->display->display_options['fields']['field_year']['table'] = 'field_data_field_year';
+  $handler->display->display_options['fields']['field_year']['field'] = 'field_year';
+  $handler->display->display_options['fields']['field_year']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['link_to_node'] = TRUE;
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'vaccination_data_from_emr' => 'vaccination_data_from_emr',
+  );
+  /* Filter criterion: User: Practice membership (og_user_node) */
+  $handler->display->display_options['filters']['og_user_node_target_id']['id'] = 'og_user_node_target_id';
+  $handler->display->display_options['filters']['og_user_node_target_id']['table'] = 'og_membership';
+  $handler->display->display_options['filters']['og_user_node_target_id']['field'] = 'og_user_node_target_id';
+  $handler->display->display_options['filters']['og_user_node_target_id']['value'] = array(
+    645 => '645',
+    955 => '955',
+    1200 => '1200',
+    1238 => '1238',
+    1276 => '1276',
+    1314 => '1314',
+    1390 => '1390',
+    1428 => '1428',
+    1584 => '1584',
+    1622 => '1622',
+    2299 => '2299',
+  );
+  $handler->display->display_options['filters']['og_user_node_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['operator_id'] = 'og_user_node_target_id_op';
+  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['label'] = 'Practice';
+  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['operator'] = 'og_user_node_target_id_op';
+  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['identifier'] = 'og_user_node_target_id';
+  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    4 => 0,
+    8 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['reduce'] = TRUE;
+  /* Filter criterion: Content: Visit date (field_visit_date) */
+  $handler->display->display_options['filters']['field_visit_date_value']['id'] = 'field_visit_date_value';
+  $handler->display->display_options['filters']['field_visit_date_value']['table'] = 'field_data_field_visit_date';
+  $handler->display->display_options['filters']['field_visit_date_value']['field'] = 'field_visit_date_value';
+  $handler->display->display_options['filters']['field_visit_date_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_visit_date_value']['value']['value'] = '2013-08-01';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'admin/content/pitt-emr-progress-nodes';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Pitt EMR Progress Nodes';
+  $handler->display->display_options['menu']['name'] = 'menu-site-admin';
+
+  /* Display: Data export */
+  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['style_options']['provide_file'] = 0;
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['style_options']['quote'] = 1;
+  $handler->display->display_options['style_options']['trim'] = 0;
+  $handler->display->display_options['style_options']['replace_newlines'] = 0;
+  $handler->display->display_options['style_options']['header'] = 1;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'vaccination_data_from_emr' => 'vaccination_data_from_emr',
+  );
+  /* Filter criterion: Content: Visit date (field_visit_date) */
+  $handler->display->display_options['filters']['field_visit_date_value']['id'] = 'field_visit_date_value';
+  $handler->display->display_options['filters']['field_visit_date_value']['table'] = 'field_data_field_visit_date';
+  $handler->display->display_options['filters']['field_visit_date_value']['field'] = 'field_visit_date_value';
+  $handler->display->display_options['filters']['field_visit_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_visit_date_value']['value']['value'] = '2013-08-01';
+  $handler->display->display_options['path'] = 'admin/content/pitt-emr-progress-nodes/export';
+  $export['pitt_emr_progress_nodes'] = $view;
+
+  $view = new view();
   $view->name = 'pitt_required_disclosures_view';
   $view->description = 'Required disclosures on pages with Pitt CME material';
   $view->tag = 'default';
