@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Assembly step feature.
+ */
+
+include_once 'assembly_step.features.inc';
