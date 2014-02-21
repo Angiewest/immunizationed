@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Pillar strategies feature.
+ */
+
+include_once 'pillar_strategies.features.inc';
