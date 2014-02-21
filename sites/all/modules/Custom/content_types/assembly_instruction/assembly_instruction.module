@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Assembly Instruction feature.
+ */
+
+include_once 'assembly_instruction.features.inc';
