@@ -20,7 +20,7 @@ sites/*/private
 ##Intellij
 #################
 
-*/.idea
+*/*.idea
 *workspace.xml
 
 #################
@@ -239,3 +239,4 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 
+.idea/
