@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * assembly_instruction.features.inc
+ * export_assembly_instruction.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function assembly_instruction_ctools_plugin_api($module = NULL, $api = NULL) {
+function export_assembly_instruction_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -16,7 +16,7 @@ function assembly_instruction_ctools_plugin_api($module = NULL, $api = NULL) {
 /**
  * Implements hook_node_info().
  */
-function assembly_instruction_node_info() {
+function export_assembly_instruction_node_info() {
   $items = array(
     'roadmap_waypoint' => array(
       'name' => t('Assembly instructions'),

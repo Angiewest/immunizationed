@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Export assembly instruction feature.
+ */
+
+include_once 'export_assembly_instruction.features.inc';
