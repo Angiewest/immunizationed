@@ -481,57 +481,6 @@ function assembly_step_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-task-group_content_access'
-  $field_instances['node-task-group_content_access'] = array(
-    'bundle' => 'task',
-    'default_value' => array(
-      0 => array(
-        'value' => 2,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => 'This should always be set to "private"',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 10,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'group_content_access',
-    'label' => 'Visibility',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'view modes' => array(
-      'full' => array(
-        'label' => 'above',
-        'type' => 'list_default',
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'type' => 'list_default',
-      ),
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 12,
-    ),
-    'widget_type' => 'options_select',
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('Date Task Completed');
@@ -545,8 +494,6 @@ function assembly_step_field_default_field_instances() {
   t('Task due date');
   t('Task start date');
   t('Task started date');
-  t('This should always be set to "private"');
-  t('Visibility');
   t('enter the date you completed this task');
   t('enter the date you started this task');
 

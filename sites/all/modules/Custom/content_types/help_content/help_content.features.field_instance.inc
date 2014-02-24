@@ -157,43 +157,6 @@ function help_content_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-help_manual_page-field_applicable_roles'
-  $field_instances['node-help_manual_page-field_applicable_roles'] = array(
-    'bundle' => 'help_manual_page',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Select the audience for this page',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 3,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_applicable_roles',
-    'label' => 'Applicable roles',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 7,
-    ),
-  );
-
   // Exported field_instance: 'node-help_manual_page-field_book_page_graphic'
   $field_instances['node-help_manual_page-field_book_page_graphic'] = array(
     'bundle' => 'help_manual_page',
@@ -436,47 +399,6 @@ function help_content_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-help_topic-field_applicable_roles'
-  $field_instances['node-help_topic-field_applicable_roles'] = array(
-    'bundle' => 'help_topic',
-    'default_value' => array(
-      0 => array(
-        'tid' => 56,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
-        'weight' => 1,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_applicable_roles',
-    'label' => 'Applicable roles',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 5,
-    ),
-  );
-
   // Exported field_instance: 'node-help_topic-field_content_type_reference_for'
   $field_instances['node-help_topic-field_content_type_reference_for'] = array(
     'bundle' => 'help_topic',
@@ -686,7 +608,6 @@ function help_content_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Applicable roles');
   t('Body');
   t('Book page graphic');
   t('Comment');
@@ -702,7 +623,6 @@ function help_content_field_default_field_instances() {
   t('Reference an existing video on the site');
   t('Reference to onsite video');
   t('Select the appropriate content type for this help topic');
-  t('Select the audience for this page');
   t('Select the relevant content for this page');
   t('upload a image that will be displayed in some views.');
 

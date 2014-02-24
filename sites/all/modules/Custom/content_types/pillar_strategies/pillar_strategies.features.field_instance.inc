@@ -483,75 +483,6 @@ function pillar_strategies_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-patient_notification-og_group_ref'
-  $field_instances['node-patient_notification-og_group_ref'] = array(
-    'bundle' => 'patient_notification',
-    'default_value' => NULL,
-    'default_value_function' => 'entityreference_prepopulate_field_default_value',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'og_ui',
-        'settings' => array(),
-        'type' => 'og_list_default',
-        'weight' => 12,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'og_group_ref',
-    'label' => 'Practice',
-    'required' => 0,
-    'settings' => array(
-      'behaviors' => array(
-        'og_widget' => array(
-          'admin' => array(
-            'widget_type' => 'entityreference_autocomplete',
-          ),
-          'default' => array(
-            'widget_type' => 'options_select',
-          ),
-          'status' => TRUE,
-        ),
-        'prepopulate' => array(
-          'action' => 'hide',
-          'action_on_edit' => 0,
-          'fallback' => 'none',
-          'og_context' => 1,
-          'skip_perm' => 0,
-          'status' => 1,
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'view modes' => array(
-      'full' => array(
-        'custom settings' => FALSE,
-        'label' => 'Full',
-        'type' => 'og_list_default',
-      ),
-      'teaser' => array(
-        'custom settings' => FALSE,
-        'label' => 'Teaser',
-        'type' => 'og_list_default',
-      ),
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'og',
-      'settings' => array(),
-      'type' => 'og_complex',
-      'weight' => 5,
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('Assembly instruction');
@@ -563,7 +494,6 @@ function pillar_strategies_field_default_field_instances() {
   t('Please enter your original motivation strategy, or you can create a new strategy here. ');
   t('Please enter your original patient notification strategy, or you can create a new strategy here. ');
   t('Please enter your original strategy for enhancing vaccination systems, or you can create a new strategy here. ');
-  t('Practice');
   t('Required assembly instruction');
   t('This is a list of strategies you and your clinic can use to keep people motivated. Please select your choices from the optional list above. If you have a great idea on how to motivate your clinic and staff, please type it in below. Finish by clicking "Save".');
   t('We highly recommend that you discuss the serious nature of vaccine preventable diseases with each patient at each patient visit. ');

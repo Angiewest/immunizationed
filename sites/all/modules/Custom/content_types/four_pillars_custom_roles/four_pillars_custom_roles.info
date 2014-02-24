@@ -1,0 +1,15 @@
+name = Four Pillars Custom roles
+core = 7.x
+package = Content types
+version = 7.x-1.0
+project = four_pillars_custom_roles
+dependencies[] = features
+dependencies[] = immunizationed_practice
+features[features_api][] = api:2
+features[user_role][] = Co-I admin
+features[user_role][] = Group member
+features[user_role][] = Practice admin
+features[user_role][] = administrator
+features[user_role][] = apprentice admin
+features[user_role][] = editor
+project path = sites/all/modules/custom/content_types
