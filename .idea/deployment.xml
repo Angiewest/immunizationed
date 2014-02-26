@@ -21,25 +21,16 @@
       <paths name="Stage-immunizationed.pitt.edu">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$/sites" web="/" />
-            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
           </mappings>
-        </serverdata>
-      </paths>
-      <paths name="Stage-practiceimprovement.pitt.edu">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$/sites" web="/" />
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="localhost-practiceimprovement.pitt.edu">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$/sites" web="/" />
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
+          <excludedPaths>
+            <excludedPath path="/aspnet_client" />
+            <excludedPath path="/.htaccess" />
+            <excludedPath path="/sites/default/settings.php.sav" />
+            <excludedPath path="/sites/default/settings.php" />
+            <excludedPath path="/sites/default/files/private/backup_migrate/scheduled" />
+            <excludedPath path="/sites/default/files/video" />
+          </excludedPaths>
         </serverdata>
       </paths>
     </serverData>
