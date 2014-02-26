@@ -223,15 +223,8 @@ pip-log.txt
 sites/*/settings*.php
 
 # Ignore paths that contain user-generated content.
-sites/*/files
+#sites/*/files
 sites/*/private
 /aspnet_client
-# Ignore configuration files that may contain sensitive information.
-sites/*/settings*.php
-
-# Ignore paths that contain user-generated content.
-sites/*/files
-sites/*/private
-
 */web.config
 workspace.xml
