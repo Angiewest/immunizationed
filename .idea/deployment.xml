@@ -1,35 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData">
+  <component name="PublishConfigData" exclude=".svn;.cvs;.idea;.DS_Store;.git;.hg;aspnet_client;bootstrap.inc*;settings.php*;.htaccess;web.config*;*.iml;.gitignore">
     <serverData>
-      <paths name="Prod-immunizationed.pitt.edu">
+      <paths name="Immunizationed-PROD">
         <serverdata>
           <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/" local="$PROJECT_DIR$/../CurrentDrupal" web="/" />
+            <mapping deploy="/sites" local="$PROJECT_DIR$/sites" web="/" />
           </mappings>
           <excludedPaths>
-            <excludedPath path="/aspnet_client" />
-            <excludedPath path="/sites/default" />
-            <excludedPath path="/.gitignore" />
-            <excludedPath path="/.htaccess" />
-            <excludedPath path="/web.config" />
-            <excludedPath local="true" path="$PROJECT_DIR$/sites/default" />
-            <excludedPath local="true" path="$PROJECT_DIR$/sites/sites.iml" />
+            <excludedPath path="/sites/default/files" />
+            <excludedPath path="/sites/default/local-settings.php" />
           </excludedPaths>
         </serverdata>
       </paths>
-      <paths name="Stage-immunizationed.pitt.edu">
+      <paths name="Immunizationed-STAGE">
         <serverdata>
           <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/" local="$PROJECT_DIR$/../CurrentDrupal" web="/" />
+            <mapping deploy="/sites" local="$PROJECT_DIR$/sites" web="/" />
           </mappings>
           <excludedPaths>
-            <excludedPath path="/aspnet_client" />
-            <excludedPath path="/.htaccess" />
-            <excludedPath path="/sites/default/settings.php.sav" />
-            <excludedPath path="/sites/default/settings.php" />
-            <excludedPath path="/sites/default/files/private/backup_migrate/scheduled" />
-            <excludedPath path="/sites/default/files/video" />
+            <excludedPath path="/sites/default/files" />
+            <excludedPath path="/.gitignore" />
           </excludedPaths>
         </serverdata>
       </paths>
